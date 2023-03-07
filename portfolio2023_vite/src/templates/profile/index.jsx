@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 export default function profilePage(props) {
   return (
     <main id="pageContents" className="page-contents page-profile">
-      <section className="visual">
-        <div className="common-wrap">
-          <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-        </div>
+      <section className="mv">
+        <h2 className='mv-title'>
+          <span className='mv-title-border-text flex'>ready for</span>
+          <span className='mv-title-fill-text flex'>interaction</span>
+        </h2>
       </section>
       <section className="mc mc-career">
         <div className="common-wrap">

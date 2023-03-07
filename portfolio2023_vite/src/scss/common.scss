@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$wrap_width: 1440px;
+$wrap_padding: 80px;
+
+:root {
+  --bg-color-basic: white;
+  --title-color-basic: #333;
+  --phrase-color-basic: #999;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color-basic: #1a1a1a;
+    --title-color-basic: #fff;
+    --phrase-color-basic: #ccc;
+  }
+}
+
+html {
+  width:100%;
+}
+body {
+  width:100%;
+  background: #1a1a1a;
+}
+
+.page-container {
+  width:100%;
+}
+.page-header {
+  width:100%;
+}
+.common-wrap {
+  width:100%;
+  max-width:#{$wrap_width + $wrap_padding*2};
+  margin:0 auto;
+  padding:0 $wrap_padding;
+}
