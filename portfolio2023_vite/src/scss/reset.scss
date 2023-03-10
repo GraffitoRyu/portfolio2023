@@ -28,7 +28,7 @@
 // {}
 
 /* Document */
-html {width:100%; font-size:10px; font-family:'Noto Sans KR', '맑은 고딕', 'Malgun Gothic', '돋움', 'dotum', 'Helvetica', 'Apple SD Gothic Neo', sans-serif; background-color:#fff;}
+html {width:100%; font-size:10px; font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', Roboto, 'Helvetica', 'Helvetica Neue', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', '맑은 고딕', 'Malgun Gothic', '돋움', 'dotum', Oxygen, 'Oxygen-Sans', 'Ubuntu', 'Cantarell', sans-serif; background-color:#fff;}
 body {width:100%; position:relative;  background:none;}
 
 /* Text */
@@ -38,7 +38,7 @@ p, span, i, sup, sub, del, ins, s {word-break:keep-all; margin:0; padding:0;}
 span, i {word-break:keep-all; margin:0; padding:0;}
 i, address, cite, em, q {font-weight:400; font-style:normal;}
 blockquote, abbr, dfn {font-weight:400;}
-pre, code, samp, kbd, var {font-family:'Consolas', 'Monaco', 'Menlo', 'DejaVu Sans Mono', monospace;}
+pre, code, samp, kbd, var {font-family:'Consolas', 'Monaco', 'Menlo', 'DejaVu Sans Mono', SFMono-Regular, 'Liberation Mono', 'Courier New', monospace;}
 blockquote, q {quotes:none;}
 blockquote:before, blockquote:after, q:before, q:after {content:''; content:none;}
 
