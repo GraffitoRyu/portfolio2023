@@ -11,6 +11,7 @@ export default function app() {
         <Routes>
           <Route element={<Pages.Profile />} path="/" />
           <Route element={<Pages.Projects />} path="/projects" />
+          <Route element={<Pages.Transition />} path="/transition" />
         </Routes>
       </HelmetProvider>
     </BrowserRouter>
