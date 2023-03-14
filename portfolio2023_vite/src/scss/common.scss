@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 $wrap_width: 1440px;
 $wrap_padding: 80px;
 
@@ -15,7 +11,12 @@ $wrap_padding: 80px;
     --bg-color-basic: #1a1a1a;
     --title-color-basic: #fff;
     --phrase-color-basic: #ccc;
+    --text-color-basic: #fff;
   }
+}
+
+* {
+  font-family:'Noto Sans KR';
 }
 
 html {
@@ -34,10 +35,78 @@ body {
 }
 .page-header {
   width:100%;
+  padding:80px 0;
 }
 .common-wrap {
   width:100%;
   max-width:#{$wrap_width + $wrap_padding*2};
   margin:0 auto;
   padding:0 $wrap_padding;
+}
+
+.current-time {
+  span {
+    font-size:20px;
+    font-weight:500;
+    color:#9f9f9f;
+  }
+}
+
+.gnb {
+  margin-left:auto;
+  .gnb-btn {
+    margin: 0 20px;
+    position:relative;
+    &::before, &:after {
+      content:'';
+      display:block;
+      width:0;
+      height:2px;
+      border-radius:1px;
+      background: white;
+      transform-origin: right;
+      position:absolute;
+      right:-16px;
+      top:calc(50% + 1px);
+      opacity:0;
+      transition: width 0.2s linear 0.15s, opacity 0.2s linear 0.15s;
+    }
+    &:before {
+      transform:rotate(45deg);
+    }
+    &:after {
+      transform:rotate(-45deg);
+    }
+    span {
+      font-size:20px;
+      color:var(--text-color-basic);
+      font-weight:500;
+      &:before {
+        content:'';
+        display:block;
+        width:0;
+        height:2px;
+        border-radius:1px;
+        background: white;
+        position: absolute;
+        top:calc(50% + 1px);
+        right:-16px;
+        left:auto;
+        transition:width 0.3s;
+      }
+    }
+    &:hover {
+      &:before, &:after {
+        opacity:1;
+        width:8px;
+      }
+      span {
+        &:before {
+          left:0;
+          right:auto;
+          width:calc(100% + 16px);
+        }
+      }
+    }
+  }
 }
