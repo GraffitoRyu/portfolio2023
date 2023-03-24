@@ -39,7 +39,7 @@ body {
 }
 .common-wrap {
   width:100%;
-  max-width:#{$wrap_width + $wrap_padding*2};
+  // max-width:#{$wrap_width + $wrap_padding*2};
   margin:0 auto;
   padding:0 $wrap_padding;
 }
