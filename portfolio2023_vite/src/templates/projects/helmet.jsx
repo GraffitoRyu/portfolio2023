@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 
-import PageHeader from '../../components/pageHeader/pageHeader';
-import PageFooter from '../../components/pageFooter/pageFooter';
+import PageHeader from '../../components/common/pageHeader';
+import PageFooter from '../../components/common/pageFooter';
 import Contents from './index';
 
 export default function projectsHelmet() {

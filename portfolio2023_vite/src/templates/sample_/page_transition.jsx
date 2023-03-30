@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import useInterval from '../../hooks/useInterval';
+import useInterval from '../../hooks/util/useInterval';
 
 import '../../scss/sample.scss';
 

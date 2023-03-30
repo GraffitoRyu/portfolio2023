@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import path, { resolve } from 'path';
 import react from '@vitejs/plugin-react-swc';
+import svgr from 'vite-plugin-svgr';
 
 const publicDir = resolve(__dirname, 'public');
 const outDir = resolve(__dirname, 'dist');
@@ -17,6 +18,7 @@ export default defineConfig({
   },
   preview: { port: '2871', },
   plugins: [
+    svgr(),
     react(),
   ],
   build: {
@@ -30,7 +32,7 @@ export default defineConfig({
         projects: path.resolve(pages, 'projects/index.html'),
       },
       external: [
-        '/public/vendor/**',
+        // '/public/vendor/**',
         '/src/**',
       ],
     },
