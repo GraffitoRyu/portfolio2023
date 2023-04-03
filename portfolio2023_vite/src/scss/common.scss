@@ -3,7 +3,6 @@
 
 * {
   font-family:'Noto Sans KR';
-  letter-spacing: rem(-1px);
 }
 
 html {
@@ -19,7 +18,7 @@ body {
 }
 
 .side-padding {
-  padding: 0 rem($stdPadding);
+  padding: 0 rem(80px);
 }
 
 .page-container {
@@ -29,13 +28,13 @@ body {
 
 .page-header {
   width:100%;
-  padding:rem($stdPadding);
+  padding:rem(80px);
 }
 
 .current-time {
-  border-top:4px solid white;
+  border-top:rem(4px) solid white;
   span {
-    font-size:$headerFontSize;
+    font-size:rem(20px);
     font-weight:500;
     color:#9f9f9f;
   }
@@ -44,15 +43,107 @@ body {
 .gnb {
   margin-left:auto;
   .gnb-btn {
-    margin: 0 $headerFontSize;
+    margin: 0 rem(20px);
     position:relative;
     span {
-      font-size:$headerFontSize;
+      font-size:rem(20px);
       color:var(--text-color-0);
       font-weight:500;
     }
   }
 }
+
+
+
+
+
+
+.util-item {
+  margin-left:rem(24px);
+}
+.util-btn {
+  width:rem(48px);
+  height:rem(48px);
+  border-radius:rem(8px);
+  transition:background-color .3s;
+  &:hover {
+    background: var(--bg-color-1);
+  }
+  .util-icon {
+    width:rem(24px);
+    height:rem(24px);
+    svg {
+      width:100%;
+      height:100%;
+      object-fit: contain;
+    }
+  }
+}
+.theme-list {
+  width:rem(120px);
+  border-radius:rem(8px);
+  background: var(--bg-color-2);
+  top:100%;
+  transform: translateY(rem(10px));
+  .theme-item {
+    width:100%;
+  }
+  .util-icon {
+    width:rem(48px);
+    height:rem(48px);
+  }
+  span {
+    font: {
+      size:rem(16px);
+      weight:500;
+    }
+    line-height:rem(16px);
+    color:var(--text-color-4);
+  }
+}
+.theme-menu {
+  &[theme='dark'] {
+    .util-btn .light-icon { display:none; }
+    .theme-item {
+      .util-icon {
+        path, circle, rect {
+          fill: var(--text-color-4);
+        }
+      }
+      &[item-theme='dark'] {
+        path, circle, rect {
+          fill: var(--text-color-0);
+        }
+        span {
+          color: var(--text-color-0);
+        }
+      }
+    }
+  }
+  &[theme='light'] {
+    .util-btn .dark-icon { display:none; }
+    .theme-item {
+      .util-icon {
+        path, circle, rect {
+          fill: var(--text-color-3);
+        }
+      }
+      &[item-theme='light'] {
+        path, circle, rect {
+          fill: var(--text-color-6);
+        }
+      }
+      span {
+        color: var(--text-color-6);
+      }
+    }
+  }
+}
+
+
+
+
+
 
 .page-visual {
   width:100%;

@@ -1,12 +1,4 @@
-// common size
-$stdSize_pc: 2560px;
-$stdSize_m: 720px;
-$stdPadding: 80px;
-
-// header size
-$headerFontSize: 20px;
-
 // util
 @function rem($px) {
-  @return calc($px * 100rem / $stdSize_pc);
+  @return ($px / 20px) * 1rem;
 }

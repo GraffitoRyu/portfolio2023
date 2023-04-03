@@ -5,7 +5,15 @@ import { HelmetProvider } from 'react-helmet-async';
 
 import * as Pages from './templates/pageContents';
 
+import checkScreenSize from './hooks/util/checkScreenSize';
+import windowResizeCheck from './hooks/util/windowResize';
+
 export default function app() {
+  useEffect(() => {
+    checkScreenSize();
+    windowResizeCheck(checkScreenSize, 20);
+  }, [])
+
   return (
     <RecoilRoot>
       <BrowserRouter>

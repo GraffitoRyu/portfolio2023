@@ -8,39 +8,23 @@ export const themeState = atom({
 export const themeStateSelector = selector({
   key: "themeStateSelector",
   get: ({ get }) => {
-    return (get(themeState) == "" ? getSystemTheme() : get(themeState));
+    const theme = (get(themeState) == "" ? getSystemTheme() : get(themeState));
+    applyTheme(theme);
+    return theme;
   },
-  set: ({ set }, changeTheme) => set(themeState, changeTheme),
+  set: ({ set }, changeTheme) => {
+    applyTheme(changeTheme);
+    return set(themeState, changeTheme)
+  },
 });
 
-export function getSystemTheme() {
+function getSystemTheme() {
     const systemTheme = window.matchMedia(`(prefers-color-scheme: dark)`);
     return (systemTheme.matches ? 'dark' : 'light');
 }
 
-export function applyTheme() {
-  const theme = useRecoilValue(themeStateSelector);
-
-  document.querySelector("html").classList.remove('light-theme dark-theme');
+function applyTheme(theme) {
+  document.querySelector("html").classList.remove('dark-theme');
+  document.querySelector("html").classList.remove('light-theme');
   document.querySelector("html").classList.add(`${theme}-theme`);
 }
-
-// import { useEffect, useState } from "react";
-
-// export default function checkSystemTheme() {
-//   const checkDark = window.matchMedia(`(prefers-color-scheme: dark)`);
-//   const getCurTheme = () => checkDark.matches;
-//   const [isDark, setDark] = useState(getCurTheme());
-//   const themeChecker = e => {
-//     setDark(e.matches);
-//     if (e.matches) document.querySelector("html").classList.add("dark-theme");
-//     else document.querySelector("html").classList.remove("dark-theme");
-//   }
-
-//   useEffect(() => {
-//     checkDark.addListener(themeChecker);
-//     return () => checkDark.removeListener(themeChecker);
-//   }, [])
-
-//   return isDark;
-// }
