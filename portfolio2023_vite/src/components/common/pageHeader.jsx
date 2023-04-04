@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { themeStateSelector } from '../../hooks/recoil/theme';
+import { themeStateSelector, getSystemTheme } from "../../hooks/recoil/theme";
 
 import { ReactComponent as IconGithub } from '../../svg/header/github_icon.svg';
 import { ReactComponent as IconNotion } from '../../svg/header/notion_icon.svg';
@@ -11,8 +11,18 @@ import { ReactComponent as ThemeSystem } from '../../svg/btn/theme_system.svg';
 
 export default function pageHeader() {
   const [curTime, setCurTime] = useState(new Date);
-
   const [themeState, setThemeState] = useRecoilState(themeStateSelector);
+  const [toggleTheme, setToggleTheme] = useState(false);
+  
+  const toggleThemeMenu = (changeTheme) => {
+    setToggleTheme(!toggleTheme);
+    if (!changeTheme) return;
+    setThemeState(prev => ({
+      ...prev,
+      isSystem: (changeTheme == 'system'),
+      theme: (changeTheme == 'system' ? getSystemTheme() : changeTheme),
+    }));
+  }
   
   useEffect(() => {
     setTimeout(() => {
@@ -44,27 +54,27 @@ export default function pageHeader() {
         </button>
       </nav>
       <div className="util-menu flex items-center">
-        <div className="util-item theme-menu relative" theme={themeState}>
-          <button type="button" className="util-btn theme-btn flex items-center justify-center">
+        <div className="util-item theme-menu relative" theme={themeState.theme} system={themeState.isSystem ? 'on' : 'off'} toggle={toggleTheme ? 'on' : 'off'}>
+          <button type="button" className="util-btn theme-btn flex items-center justify-center" onClick={() => toggleThemeMenu()}>
             <figure className="util-icon flex items-center justify-center">
               <ThemeLight className="light-icon" />
               <ThemeDark className="dark-icon" />
             </figure>
           </button>
           <div className="theme-list absolute">
-            <button type="button" className="theme-item flex items-center" item-theme="light">
+            <button type="button" className="theme-item flex items-center" item-theme="light" onClick={() => toggleThemeMenu("light")}>
               <figure className="util-icon flex items-center justify-center">
                 <ThemeLight />
               </figure>
               <span>Light</span>
             </button>
-            <button type="button" className="theme-item flex items-center" item-theme="dark">
+            <button type="button" className="theme-item flex items-center" item-theme="dark" onClick={() => toggleThemeMenu("dark")}>
               <figure className="util-icon flex items-center justify-center">
                 <ThemeDark />
               </figure>
               <span>Dark</span>
             </button>
-            <button type="button" className="theme-item flex items-center" item-theme="system">
+            <button type="button" className="theme-item flex items-center" item-theme="system" onClick={() => toggleThemeMenu("system")}>
               <figure className="util-icon flex items-center justify-center">
                 <ThemeSystem />
               </figure>

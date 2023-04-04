@@ -15,6 +15,14 @@ body {
   width:100%;
   min-height:100%;
   background: var(--bg-color-0);
+  transition: background-color .3s;
+}
+
+span {
+  transition: color .3s;
+}
+path, rect, circle {
+  transition: fill .3s;
 }
 
 .side-padding {
@@ -36,7 +44,7 @@ body {
   span {
     font-size:rem(20px);
     font-weight:500;
-    color:#9f9f9f;
+    color:var(--text-color-0);
   }
 }
 
@@ -80,6 +88,7 @@ body {
   }
 }
 .theme-list {
+  display:none;
   width:rem(120px);
   border-radius:rem(8px);
   background: var(--bg-color-2);
@@ -102,7 +111,21 @@ body {
   }
 }
 .theme-menu {
+  &[toggle='on'] {
+    .theme-list {
+      display:block;
+    }
+  }
+  // dark
   &[theme='dark'] {
+    @mixin selected_dark {
+      path, circle, rect {
+        fill: var(--text-color-0);
+      }
+      span {
+        color: var(--text-color-0);
+      }
+    }
     .util-btn .light-icon { display:none; }
     .theme-item {
       .util-icon {
@@ -110,31 +133,58 @@ body {
           fill: var(--text-color-4);
         }
       }
-      &[item-theme='dark'] {
-        path, circle, rect {
-          fill: var(--text-color-0);
+      span {
+        color: var(--text-color-4);
+      }
+    }
+    &[system='on'] {
+      .theme-item {
+        &[item-theme='system'] {
+          @include selected_dark();
         }
-        span {
-          color: var(--text-color-0);
+      }
+    }
+    &[system='off'] {
+      .theme-item {
+        &[item-theme='dark'] {
+          @include selected_dark();
         }
       }
     }
   }
+  // light
   &[theme='light'] {
+    @mixin selected_light {
+      path, circle, rect {
+        fill: var(--text-color-3);
+      }
+      span {
+        color: var(--text-color-3);
+      }
+    }
     .util-btn .dark-icon { display:none; }
     .theme-item {
       .util-icon {
-        path, circle, rect {
-          fill: var(--text-color-3);
-        }
-      }
-      &[item-theme='light'] {
         path, circle, rect {
           fill: var(--text-color-6);
         }
       }
       span {
         color: var(--text-color-6);
+      }
+    }
+    &[system='on'] {
+      .theme-item {
+        &[item-theme='system'] {
+          @include selected_light();
+        }
+      }
+    }
+    &[system='off'] {
+      .theme-item {
+        &[item-theme='light'] {
+          @include selected_light()
+        }
       }
     }
   }
