@@ -1,4 +1,4 @@
 // util
-@function rem($px) {
-  @return calc($px / 20px * 1rem);
+@function rem($px, $std: 20px) {
+  @return calc($px / $std * 1rem);
 }

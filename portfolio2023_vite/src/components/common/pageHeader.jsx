@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { themeStateSelector, getSystemTheme } from "../../hooks/recoil/theme";
+import checkHeaderHeight from "../../hooks/util/checkHeaderHeight";
 
 import { ReactComponent as IconGithub } from '../../svg/header/github_icon.svg';
 import { ReactComponent as IconNotion } from '../../svg/header/notion_icon.svg';
@@ -25,6 +27,8 @@ export default function pageHeader() {
   }
   
   useEffect(() => {
+    checkHeaderHeight();
+
     setTimeout(() => {
       setCurTime(new Date());
     }, 1000);
@@ -32,8 +36,8 @@ export default function pageHeader() {
 
   return (
     <header id="pageHeader" className="page-header flex side-padding">
-      <time className="current-time">
-        <span>
+      <div className="current-time flex items-center">
+        <time>
           {curTime.toLocaleString("ko-KR", {
             year: "numeric",
             month: "2-digit",
@@ -43,22 +47,22 @@ export default function pageHeader() {
             second: "2-digit",
             hour12: false,
           })}
-        </span>
-      </time>
+        </time>
+      </div>
       <nav className="gnb flex items-center">
-        <button className="gnb-btn items-center" type="button">
+        <Link className="gnb-btn items-center" to="/">
           <span>프로필</span>
-        </button>
-        <button className="gnb-btn items-center" type="button">
+        </Link>
+        <Link className="gnb-btn items-center" to='/projects'>
           <span>프로젝트</span>
-        </button>
+        </Link>
       </nav>
       <div className="util-menu flex items-center">
         <div className="util-item theme-menu relative" theme={themeState.theme} system={themeState.isSystem ? 'on' : 'off'} toggle={toggleTheme ? 'on' : 'off'}>
           <button type="button" className="util-btn theme-btn flex items-center justify-center" onClick={() => toggleThemeMenu()}>
             <figure className="util-icon flex items-center justify-center">
-              <ThemeLight className="light-icon" />
-              <ThemeDark className="dark-icon" />
+              <ThemeLight className="light-icon header-icon" />
+              <ThemeDark className="dark-icon header-icon" />
             </figure>
           </button>
           <div className="theme-list absolute">
@@ -85,14 +89,14 @@ export default function pageHeader() {
         <div className="util-item">
           <a href="https://github.com/GraffitoRyu" target="_blank" className="util-btn external-btn flex items-center justify-center">
             <figure className="util-icon">
-              <IconGithub />
+              <IconGithub className='header-icon' />
             </figure>
           </a>
         </div>
         <div className="util-item">
           <a href="https://github.com/GraffitoRyu" target="_blank" className="util-btn external-btn flex items-center justify-center">
             <figure className="util-icon">
-              <IconNotion />
+              <IconNotion className='header-icon' />
             </figure>
           </a>
         </div>
