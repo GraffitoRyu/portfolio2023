@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
-/* reset; ~ 2023. 03. */
+/* reset; ~ 2023. 04. */
 :root {-webkit-tap-highlight-color:transparent;  text-size-adjust: none; overflow-wrap:break-word; word-break:break-word;}
 *, *:before, *:after {border:0; margin:0; padding:0; box-sizing:border-box;}
 *:before, *:after {border:0; margin:0; padding:0; box-sizing:border-box;}
-* {letter-spacing:-.5px; flex-shrink:0; overscroll-behavior-y: none;/*iOS 스크롤 바운스 해제*/}
+* {letter-spacing:-.05em; flex-shrink:0; overscroll-behavior-y: none;/*iOS 스크롤 바운스 해제*/}
 *:focus, *:focus-within, *:focus-visible {outline:none;}
 /* 공통 RESET */
 // html, body,
