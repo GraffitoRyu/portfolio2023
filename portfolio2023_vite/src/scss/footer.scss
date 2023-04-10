@@ -1,0 +1,37 @@
+@import "./css_variable";
+@import "./scss_global";
+
+.page-footer {
+  min-height: rem(920px);
+  padding: rem(80px);
+
+  .footer-card {
+    padding: rem(80px);
+    border-radius: rem(80px);
+    background: var(--footer-bg);
+  }
+
+  .page-title-text {
+    font: {
+      size: rem(160px);
+    }
+
+    line-height: rem(160px);
+  }
+
+  .page-title-border-text {
+    -webkit-text-stroke: 1px var(--footer-page-title-border);
+  }
+
+  .page-title-filled-text {
+    color: var(--footer-page-title-filled);
+  }
+
+  .footer-experience {
+    span {
+      font-size: rem(48px);
+      color: var(--footer-page-title-filled);
+      line-height: rem(64px);
+    }
+  }
+}

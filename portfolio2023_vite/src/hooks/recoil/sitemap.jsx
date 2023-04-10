@@ -1,19 +1,17 @@
 import { atom } from "recoil";
 
-export const rootDirectory = window.location.pathname;
-
 export const sitemap = atom({
   key: "sitemap",
   default: [
     {
       key: "sitemap/profile",
-      path: rootDirectory,
+      path: "/",
       external: false,
       name: "프로필",
     },
     {
       key: "sitemap/projects",
-      path: `${rootDirectory}projects`,
+      path: "/projects",
       external: false,
       name: "프로젝트",
     },

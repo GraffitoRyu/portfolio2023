@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from "recoil";
+import React, { useEffect, useRef, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { RecoilRoot } from "recoil";
 import { HelmetProvider } from "react-helmet-async";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import {
+  TransitionGroup,
+  CSSTransition,
+  SwitchTransition,
+} from "react-transition-group";
 
 import * as Pages from "./templates/pageContents";
 
 import checkScreenSize from "./hooks/util/checkScreenSize";
 import windowResizeCheck from "./hooks/util/windowResize";
 
-import "./scss/page_transition.scss";
-
 export default function app() {
   const rootDirectory = location.pathname;
+  const nodeRef = useRef();
 
   useEffect(() => {
     checkScreenSize();
@@ -29,21 +26,28 @@ export default function app() {
     <RecoilRoot>
       <BrowserRouter>
         <HelmetProvider>
-          <TransitionGroup className="transition-wrapper relative">
+          <SwitchTransition className="transition-wrapper relative">
             <CSSTransition
               key={rootDirectory}
+              nodeRef={nodeRef}
               classNames={"page-move"}
               timeout={300}
+              unmountOnExit
             >
               <Routes location={location}>
-                <Route element={<Pages.Profile />} path={`${rootDirectory}`} />
+                <Route
+                  element={<Pages.Profile />}
+                  path={`${rootDirectory}`}
+                  ref={nodeRef}
+                />
                 <Route
                   element={<Pages.Projects />}
                   path={`${rootDirectory}projects`}
+                  ref={nodeRef}
                 />
               </Routes>
             </CSSTransition>
-          </TransitionGroup>
+          </SwitchTransition>
         </HelmetProvider>
       </BrowserRouter>
     </RecoilRoot>

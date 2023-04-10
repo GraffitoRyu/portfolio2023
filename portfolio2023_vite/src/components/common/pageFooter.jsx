@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
 import { sitemap } from "../../hooks/recoil/sitemap";
-import FooterSitemapBtn from "./footerSitemapBtn";
+import FooterSitemapBtn from "../buttons/footerSitemapBtn";
 
 export default function pageFooter() {
   const sitemapData = useRecoilValue(sitemap);

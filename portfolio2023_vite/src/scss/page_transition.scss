@@ -1,3 +1,16 @@
-.page-move-exiting {
-  transform: translate3d(0, 10vh, 100px);
+.page-move-exit {
+  transform: translateX(0);
+}
+.page-move-exit-active {
+  transform: translate(100%);
+  transition: transform 0.7s;
+}
+
+.page-move-enter {
+  transform: traslateX(100%);
+}
+
+.page-move-enter-active {
+  transform: translateX(0);
+  transition: transform 0.7s;
 }
