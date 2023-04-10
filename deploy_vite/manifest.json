@@ -23,104 +23,14 @@
     "file": "assets/notion_icon-1ea49ff9.svg",
     "src": "../src/svg/header/notion_icon.svg"
   },
-  "_page-1a256918.js": {
+  "_page-f58ab6f6.js": {
     "css": [
-      "assets/page-185337c5.css"
+      "assets/page-01e95af1.css"
     ],
-    "file": "assets/page-1a256918.js"
-  },
-  "_page-23f32011.js": {
-    "css": [
-      "assets/page-807426ac.css"
-    ],
-    "file": "assets/page-23f32011.js"
-  },
-  "_page-3867e2ac.js": {
-    "css": [
-      "assets/page-807426ac.css"
-    ],
-    "file": "assets/page-3867e2ac.js"
-  },
-  "_page-552ba507.js": {
-    "css": [
-      "assets/page-185337c5.css"
-    ],
-    "file": "assets/page-552ba507.js"
-  },
-  "_page-57acf8fd.js": {
-    "css": [
-      "assets/page-185337c5.css"
-    ],
-    "file": "assets/page-57acf8fd.js"
-  },
-  "_page-5bf60c1d.js": {
-    "css": [
-      "assets/page-807426ac.css"
-    ],
-    "file": "assets/page-5bf60c1d.js"
-  },
-  "_page-784c35c6.js": {
-    "css": [
-      "assets/page-185337c5.css"
-    ],
-    "file": "assets/page-784c35c6.js"
-  },
-  "_page-7aa1ef1a.js": {
-    "css": [
-      "assets/page-807426ac.css"
-    ],
-    "file": "assets/page-7aa1ef1a.js"
-  },
-  "_page-7be21054.js": {
-    "css": [
-      "assets/page-185337c5.css"
-    ],
-    "file": "assets/page-7be21054.js"
-  },
-  "_page-8b4df4aa.js": {
-    "css": [
-      "assets/page-185337c5.css"
-    ],
-    "file": "assets/page-8b4df4aa.js"
-  },
-  "_page-9422218c.js": {
-    "css": [
-      "assets/page-185337c5.css"
-    ],
-    "file": "assets/page-9422218c.js"
-  },
-  "_page-9dae9594.js": {
-    "css": [
-      "assets/page-185337c5.css"
-    ],
-    "file": "assets/page-9dae9594.js"
-  },
-  "_page-b2949bc6.js": {
-    "css": [
-      "assets/page-807426ac.css"
-    ],
-    "file": "assets/page-b2949bc6.js"
-  },
-  "_page-b83727ad.js": {
-    "css": [
-      "assets/page-807426ac.css"
-    ],
-    "file": "assets/page-b83727ad.js"
-  },
-  "_page-e3ccbbb5.js": {
-    "css": [
-      "assets/page-73ce1584.css"
-    ],
-    "file": "assets/page-e3ccbbb5.js"
-  },
-  "_page-e9112870.js": {
-    "css": [
-      "assets/page-807426ac.css"
-    ],
-    "file": "assets/page-e9112870.js"
+    "file": "assets/page-f58ab6f6.js"
   },
   "page.css": {
-    "file": "assets/page-73ce1584.css",
+    "file": "assets/page-01e95af1.css",
     "src": "page.css"
   }
 }
