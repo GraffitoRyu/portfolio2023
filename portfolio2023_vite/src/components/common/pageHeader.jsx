@@ -4,19 +4,23 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 import { themeStateSelector, getSystemTheme } from "../../hooks/recoil/theme";
 import checkHeaderHeight from "../../hooks/util/checkHeaderHeight";
+import closeByClickOutside from "../../hooks/util/closeByClickOutside";
 
 import { ReactComponent as IconGithub } from "../../svg/header/github_icon.svg";
 import { ReactComponent as IconNotion } from "../../svg/header/notion_icon.svg";
 import { ReactComponent as ThemeLight } from "../../svg/btn/theme_light.svg";
 import { ReactComponent as ThemeDark } from "../../svg/btn/theme_dark.svg";
 import { ReactComponent as ThemeSystem } from "../../svg/btn/theme_system.svg";
-import closeByClickOutside from "../../hooks/util/closeByClickOutside";
+
+import { sitemap } from "../../hooks/recoil/sitemap";
 
 export default function pageHeader() {
   const [curTime, setCurTime] = useState(new Date());
   const [themeState, setThemeState] = useRecoilState(themeStateSelector);
   const [toggleTheme, setToggleTheme] = useState(false);
   const themeMenu = useRef();
+
+  const sitemapData = useRecoilValue(sitemap).filter((d) => !d.external);
 
   const toggleThemeMenu = (changeTheme) => {
     setToggleTheme(!toggleTheme);
@@ -59,12 +63,17 @@ export default function pageHeader() {
         </time>
       </div>
       <nav className="gnb flex items-center ml-auto">
-        <Link className="gnb-btn items-center relative" to="/">
-          <span>프로필</span>
-        </Link>
-        <Link className="gnb-btn items-center relative" to="/projects">
-          <span>프로젝트</span>
-        </Link>
+        {sitemapData.map((d, i) => {
+          return (
+            <Link
+              className="gnb-btn items-center relative"
+              to={d.path}
+              key={`gnb_${i}`}
+            >
+              <span>{d.name}</span>
+            </Link>
+          );
+        })}
       </nav>
       <div className="util-menu flex items-center">
         <div

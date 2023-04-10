@@ -18,6 +18,8 @@ import windowResizeCheck from "./hooks/util/windowResize";
 import "./scss/page_transition.scss";
 
 export default function app() {
+  const rootDirectory = window.location.pathname;
+
   useEffect(() => {
     checkScreenSize();
     windowResizeCheck(checkScreenSize, 20);
@@ -34,8 +36,11 @@ export default function app() {
               timeout={300}
             >
               <Routes location={location}>
-                <Route element={<Pages.Profile />} path="/" />
-                <Route element={<Pages.Projects />} path="/projects" />
+                <Route element={<Pages.Profile />} path={`${rootDirectory}`} />
+                <Route
+                  element={<Pages.Projects />}
+                  path={`${rootDirectory}projects`}
+                />
               </Routes>
             </CSSTransition>
           </TransitionGroup>
