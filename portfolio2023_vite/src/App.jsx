@@ -18,7 +18,7 @@ import windowResizeCheck from "./hooks/util/windowResize";
 import "./scss/page_transition.scss";
 
 export default function app() {
-  const rootDirectory = window.location.pathname;
+  const rootDirectory = location.pathname;
 
   useEffect(() => {
     checkScreenSize();
@@ -31,7 +31,7 @@ export default function app() {
         <HelmetProvider>
           <TransitionGroup className="transition-wrapper relative">
             <CSSTransition
-              key={location.pathname}
+              key={rootDirectory}
               classNames={"page-move"}
               timeout={300}
             >
