@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react-swc';
 import svgr from 'vite-plugin-svgr';
 
 const publicDir = resolve(__dirname, 'public');
-const outDir = resolve(__dirname, 'dist');
+const outDir = resolve(__dirname, '../deploy_vite');
 const pages = resolve(__dirname, 'pages');
 
 // https://vitejs.dev/config/

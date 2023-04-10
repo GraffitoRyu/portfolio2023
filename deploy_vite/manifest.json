@@ -1,0 +1,36 @@
+{
+  "../src/svg/btn/theme_dark.svg": {
+    "file": "assets/theme_dark-bfa0276c.svg",
+    "src": "../src/svg/btn/theme_dark.svg"
+  },
+  "../src/svg/btn/theme_light.svg": {
+    "file": "assets/theme_light-6226d543.svg",
+    "src": "../src/svg/btn/theme_light.svg"
+  },
+  "../src/svg/btn/theme_system.svg": {
+    "file": "assets/theme_system-0372e250.svg",
+    "src": "../src/svg/btn/theme_system.svg"
+  },
+  "../src/svg/common/external_icon.svg": {
+    "file": "assets/external_icon-1ffc6183.svg",
+    "src": "../src/svg/common/external_icon.svg"
+  },
+  "../src/svg/header/github_icon.svg": {
+    "file": "assets/github_icon-e3f56dab.svg",
+    "src": "../src/svg/header/github_icon.svg"
+  },
+  "../src/svg/header/notion_icon.svg": {
+    "file": "assets/notion_icon-1ea49ff9.svg",
+    "src": "../src/svg/header/notion_icon.svg"
+  },
+  "_page-9422218c.js": {
+    "css": [
+      "assets/page-185337c5.css"
+    ],
+    "file": "assets/page-9422218c.js"
+  },
+  "page.css": {
+    "file": "assets/page-185337c5.css",
+    "src": "page.css"
+  }
+}
