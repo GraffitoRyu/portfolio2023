@@ -1,34 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from "recoil";
+import { HelmetProvider } from "react-helmet-async";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-function App() {
-  const [count, setCount] = useState(0)
+import * as Pages from "./templates/pageContents";
+
+import checkScreenSize from "./hooks/util/checkScreenSize";
+import windowResizeCheck from "./hooks/util/windowResize";
+
+import "./scss/page_transition.scss";
+
+export default function app() {
+  useEffect(() => {
+    checkScreenSize();
+    windowResizeCheck(checkScreenSize, 20);
+  }, []);
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <RecoilRoot>
+      <BrowserRouter>
+        <HelmetProvider>
+          <TransitionGroup className="transition-wrapper relative">
+            <CSSTransition
+              key={location.pathname}
+              classNames={"page-move"}
+              timeout={300}
+            >
+              <Routes location={location}>
+                <Route element={<Pages.Profile />} path="/" />
+                <Route element={<Pages.Projects />} path="/projects" />
+              </Routes>
+            </CSSTransition>
+          </TransitionGroup>
+        </HelmetProvider>
+      </BrowserRouter>
+    </RecoilRoot>
+  );
 }
-
-export default App

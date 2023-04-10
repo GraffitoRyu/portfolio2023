@@ -1,0 +1,42 @@
+@import './scss_global';
+
+
+.page-section {
+
+}
+
+.intro-section {
+  h2 {
+    margin-bottom:rem(160px);
+    font-size:rem(64px);
+    font-weight:300;
+    line-height:rem(80px);
+    color:var(--intro-title);
+    strong {
+      font-weight:500;
+      color:var(--intro-emph);
+    }
+  }
+  p {
+    font-size:rem(32px);
+    font-weight:400;
+    line-height:rem(56px);
+    color:var(--intro-desc)
+  }
+}
+
+.section-header {
+  h2 {
+    margin-bottom:rem(80px);
+    font-size:rem(40px);
+    font-weight:700;
+    line-height:rem(40px);
+    color:var(--section-header-title);
+  }
+  p {
+    font-size:rem(64px);
+    font-weight:300;
+    line-height:rem(80px);
+    color:var(--section-header-desc);
+  }
+}
