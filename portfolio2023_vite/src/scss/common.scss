@@ -1,37 +1,50 @@
-@import './css_variable';
-@import './scss_global';
+@import "./css_variable";
+@import "./scss_global";
 
 * {
-  font-family:'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 
 html {
-  width:100%;
-  height:100%;
-  font-size:1vw;
-  // @media only screen and (max-width:1400px) {
-  //   font-size:.9vw;
+  width: 100%;
+  height: 100%;
+  font-size: 1vw;
+
+  // @media only screen and (max-width: 1920px) {
+  //   font-size: 19.2px;
   // }
-  @media only screen and (max-width:1200px) {
-    font-size:10px;
+
+  @media only screen and (max-width: 1000px) {
+    font-size: 2vw;
   }
-  @media only screen and (max-width:460px) {
-    font-size:10px;
+
+  @media only screen and (max-width: 460px) {
+    font-size: 10px;
   }
 }
 
 body {
-  width:100%;
-  min-height:100%;
+  width: 100%;
+  min-height: 100%;
   background: var(--bg-color-0);
-  transition: background-color .3s;
+  transition: background-color 0.3s;
 }
 
-h1, h2, h3, h4, h5, h6, p, span {
-  transition: color .3s;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  transition: color 0.3s;
 }
-path, rect, circle {
-  transition: fill .3s;
+
+path,
+rect,
+circle {
+  transition: fill 0.3s;
 }
 
 .side-padding {
@@ -39,275 +52,300 @@ path, rect, circle {
 }
 
 .around-padding {
-  padding:0 rem(80px);
-}
-
-.page-container {
-  width:100%;
-  min-height:100%;
+  padding: 0 rem(80px);
 }
 
 .page-header {
-  width:100%;
-  padding:rem(80px);
-  font-size:rem(20px);
-  // font-size:20px;
-  // @media only screen and (max-width:1600px) {
-  //   font-size:16px;
-  // }
-  // @media only screen and (max-width:1200px) {
-  //   font-size:14px;
-  // }
+  padding: rem(80px);
+  font-size: rem(20px);
 }
 
 .current-time {
-  border-top:rem(4px) solid white;
-  border-bottom:rem(4px) solid transparent;
-  padding:0 rem(40px) 0 rem(2px);
+  border-top: rem(4px) solid var(--time-bar);
+  border-bottom: rem(4px) solid transparent;
+  padding: 0 rem(40px) 0 rem(2px);
+
   time {
-    font-weight:500;
-    color:var(--text-color-4);
+    font-weight: var(--weight-medium);
+    color: var(--time-text);
   }
 }
 
 .gnb {
-  margin-left:auto;
   .gnb-btn {
     margin: 0 rem(20px);
-    position:relative;
+
     span {
-      // font-size:rem(20px);
-      color:var(--text-color-0);
-      font-weight:500;
+      color: var(--gnb-menu);
+      font-weight: var(--weight-medium);
     }
   }
 }
-
-
-
-
-
 
 .util-item {
-  margin-left:rem(24px);
+  margin-left: rem(24px);
 }
+
 .util-btn {
-  width:rem(48px);
-  height:rem(48px);
-  border-radius:rem(8px);
-  transition:background-color .3s;
+  width: rem(48px);
+  height: rem(48px);
+  border-radius: rem(8px);
+  transition: background-color 0.3s;
+
   .header-icon {
-    path, circle, rect {
-      fill: var(--header-icon-color);
+    path,
+    circle,
+    rect {
+      fill: var(--header-icon);
     }
   }
-  
+
   &:hover {
-    background: var(--header-bg-color);
+    background: var(--header-bg);
+
     .header-icon {
-      path, circle, rect {
-        fill: var(--header-icon-hover-color);
+      path,
+      circle,
+      rect {
+        fill: var(--header-icon-hover);
       }
     }
   }
+
   &:active {
     .header-icon {
-      path, circle, rect {
-        fill: var(--header-icon-active-color);
+      path,
+      circle,
+      rect {
+        fill: var(--header-icon-active);
       }
     }
   }
+
   &.theme-btn {
     &:active {
       .header-icon {
-        path, circle, rect {
-          fill: var(--theme-icon-active-color);
+        path,
+        circle,
+        rect {
+          fill: var(--theme-icon-active);
         }
       }
     }
   }
 }
+
 .util-icon {
-  width:rem(24px);
-  height:rem(24px);
+  width: rem(24px);
+  height: rem(24px);
+
   svg {
-    width:100%;
-    max-width:rem(24px);
-    height:100%;
-    max-height:rem(24px);
+    width: 100%;
+    max-width: rem(24px);
+    height: 100%;
+    max-height: rem(24px);
     object-fit: contain;
   }
 }
+
 .theme-list {
-  display:none;
-  width:rem(120px);
-  border-radius:rem(8px);
+  display: none;
+  width: rem(120px);
+  border-radius: rem(8px);
   background: var(--bg-color-2);
-  top:100%;
   transform: translateY(rem(10px));
-  .theme-item {
-    width:100%;
-  }
+
   .util-icon {
-    width:rem(48px);
-    height:rem(48px);
+    width: rem(48px);
+    height: rem(48px);
   }
+
   span {
     font: {
-      size:rem(16px);
-      weight:500;
+      size: rem(16px);
+      weight: 500;
     }
-    line-height:rem(16px);
-    color:var(--text-color-4);
+
+    line-height: rem(16px);
+    color: var(--text-color-4);
   }
 }
+
 .theme-menu {
-  &[toggle='on'] {
+  &[toggle="on"] {
     .theme-list {
-      display:block;
+      display: block;
     }
   }
+
   // dark
-  &[theme='dark'] {
+  &[theme="dark"] {
     @mixin selected_dark {
-      path, circle, rect {
+      path,
+      circle,
+      rect {
         fill: var(--text-color-0);
       }
+
       span {
         color: var(--text-color-0);
       }
     }
-    .util-btn .light-icon { display:none; }
+
+    .util-btn .light-icon {
+      display: none;
+    }
+
     .theme-item {
       .util-icon {
-        path, circle, rect {
+        path,
+        circle,
+        rect {
           fill: var(--text-color-4);
         }
       }
+
       span {
         color: var(--text-color-4);
       }
     }
-    &[system='on'] {
+
+    &[system="on"] {
       .theme-item {
-        &[item-theme='system'] {
+        &[item-theme="system"] {
           @include selected_dark();
         }
       }
     }
-    &[system='off'] {
+
+    &[system="off"] {
       .theme-item {
-        &[item-theme='dark'] {
+        &[item-theme="dark"] {
           @include selected_dark();
         }
       }
     }
   }
+
   // light
-  &[theme='light'] {
+  &[theme="light"] {
     @mixin selected_light {
-      path, circle, rect {
+      path,
+      circle,
+      rect {
         fill: var(--text-color-3);
       }
+
       span {
         color: var(--text-color-3);
       }
     }
-    .util-btn .dark-icon { display:none; }
+
+    .util-btn .dark-icon {
+      display: none;
+    }
+
     .theme-item {
       .util-icon {
-        path, circle, rect {
+        path,
+        circle,
+        rect {
           fill: var(--text-color-6);
         }
       }
+
       span {
         color: var(--text-color-6);
       }
     }
-    &[system='on'] {
+
+    &[system="on"] {
       .theme-item {
-        &[item-theme='system'] {
+        &[item-theme="system"] {
           @include selected_light();
         }
       }
     }
-    &[system='off'] {
+
+    &[system="off"] {
       .theme-item {
-        &[item-theme='light'] {
-          @include selected_light()
+        &[item-theme="light"] {
+          @include selected_light();
         }
       }
     }
   }
 }
 
-
-
 .page-title-border-text {
   font: {
-    weight:400;
-    family:'Noto Serif KR';
+    weight: 400;
+    family: "Noto Serif KR";
   }
-  color:transparent;
+
+  color: transparent;
 }
+
 .page-title-filled-text {
-  font-weight:700;
+  font-weight: 700;
 }
-
-
 
 .page-visual {
-  width:100%;
-  height:calc(100vh - var(--header-height));
+  height: calc(100vh - var(--header-height));
+
   .page-title-text {
     font: {
-      size:rem(240px);
+      size: rem(240px);
     }
+
     line-height: rem(240px);
   }
+
   .page-title-border-text {
     -webkit-text-stroke: 1px var(--page-title-border);
   }
+
   .page-title-filled-text {
-    color:var(--page-title-filled);
+    color: var(--page-title-filled);
   }
 }
-
-
-
 
 .page-section {
   padding-top: rem(240px);
   padding-bottom: rem(240px);
 }
 
-
-
-
-
-
 .page-footer {
-  width:100%;
-  height:100vh;
-  min-height:rem(920px);
-  padding:rem(80px);
+  min-height: rem(920px);
+  padding: rem(80px);
+
   .footer-card {
-    width:100%;
-    height:100%;
-    padding:rem(80px);
-    border-radius:rem(80px);
+    padding: rem(80px);
+    border-radius: rem(80px);
     background: var(--footer-bg);
   }
+
   .page-title-text {
     font: {
-      size:rem(160px);
+      size: rem(160px);
     }
+
     line-height: rem(160px);
   }
+
   .page-title-border-text {
     -webkit-text-stroke: 1px var(--footer-page-title-border);
   }
+
   .page-title-filled-text {
-    color:var(--footer-page-title-filled);
+    color: var(--footer-page-title-filled);
+  }
+
+  .footer-experience {
+    span {
+      font-size: rem(48px);
+      color: var(--footer-page-title-filled);
+      line-height: rem(64px);
+    }
   }
 }

@@ -6,12 +6,19 @@ export default function pageFooter() {
   const sitemapData = useRecoilValue(sitemap);
 
   return (
-    <footer id="pageFooter" className="page-footer around-padding">
-      <div className="footer-card flex flex-col justify-between">
+    <footer
+      id="pageFooter"
+      className="page-footer around-padding w-full h-screen"
+    >
+      <div className="footer-card flex flex-col justify-between w-full h-full">
         <header className="footer-header flex justify-between">
           <h2 className="footer-title">
-            <span className="page-title-text page-title-border-text flex items-center">Let's work</span>
-            <span className="page-title-text page-title-filled-text flex items-center">together</span>
+            <span className="page-title-text page-title-border-text flex items-center">
+              Let's work
+            </span>
+            <span className="page-title-text page-title-filled-text flex items-center">
+              together
+            </span>
           </h2>
           <p className="published">published in April, 2023.</p>
         </header>
@@ -24,9 +31,9 @@ export default function pageFooter() {
           </p>
           <dl className="footer-info footer-sitemap">
             <dt>류대현</dt>
-            {sitemapData.map((d, i) =>
+            {sitemapData.map((d, i) => (
               <FooterSitemapBtn data={d} key={`footer_sitemap_${i}`} />
-            )}
+            ))}
           </dl>
         </div>
       </div>
