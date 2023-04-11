@@ -3,6 +3,7 @@ import { atom, selector } from "recoil";
 export const themeStateAtom = atom({
   key: "themeStateAtom",
   default: {
+    isOpen: false,
     isSystem: true,
     theme: getSystemTheme(), // light, dark
   },
@@ -11,7 +12,9 @@ export const themeStateAtom = atom({
 export const themeStateSelector = selector({
   key: "themeStateSelector",
   get: ({ get }) => {
-    const theme = get(themeStateAtom).isSystem ? getSystemTheme() : get(themeStateAtom).theme;
+    const theme = get(themeStateAtom).isSystem
+      ? getSystemTheme()
+      : get(themeStateAtom).theme;
     applyTheme(theme);
     return get(themeStateAtom);
   },

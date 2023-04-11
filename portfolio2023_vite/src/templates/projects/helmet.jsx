@@ -20,11 +20,13 @@ export default function projectsHelmet() {
         <meta name="msapplication-TileColor" content={metaColor} />
         <meta name="theme-color" content={metaColor} />
       </Helmet>
-      <div className="sticky-container relative">
-        <PageHeader />
-        <Contents />
+      <div className="transition-container">
+        <div className="sticky-container relative">
+          <PageHeader />
+          <Contents />
+        </div>
+        <PageFooter />
       </div>
-      <PageFooter />
     </>
   );
 }

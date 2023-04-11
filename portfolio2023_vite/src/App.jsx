@@ -1,21 +1,39 @@
 import React, { useEffect, useRef, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { RecoilRoot } from "recoil";
-import { HelmetProvider } from "react-helmet-async";
 import {
-  TransitionGroup,
-  CSSTransition,
-  SwitchTransition,
-} from "react-transition-group";
+  createBrowserRouter,
+  Route,
+  Routes,
+  useOutlet,
+  RouterProvider,
+} from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import * as Pages from "./templates/pageContents";
 
 import checkScreenSize from "./hooks/util/checkScreenSize";
 import windowResizeCheck from "./hooks/util/windowResize";
+import { sitemap } from "./hooks/recoil/sitemap";
 
-export default function app() {
+export default function App() {
   const rootDirectory = location.pathname;
-  const nodeRef = useRef();
+  const curOutlet = useOutlet();
+
+  const sitemapData = useRecoilValue(sitemap);
+  const routes = sitemapData.filter((d) => !d.external);
+  const { nodeRef } = routes.find((page) => page.path === rootDirectory) ?? {};
+  const routerData = {
+    path: routes[0].path,
+    element: routes[0].components,
+    children: routes
+      .filter((d, i) => i > 0)
+      .map((d) => ({
+        index: d.path === "/",
+        path: d.path === "/" ? undefined : d.path,
+        element: d.components,
+      })),
+  };
+  const router = createBrowserRouter(routerData);
 
   useEffect(() => {
     checkScreenSize();
@@ -23,33 +41,25 @@ export default function app() {
   }, []);
 
   return (
-    <RecoilRoot>
-      <BrowserRouter>
-        <HelmetProvider>
-          <SwitchTransition className="transition-wrapper relative">
-            <CSSTransition
-              key={rootDirectory}
-              nodeRef={nodeRef}
-              classNames={"page-move"}
-              timeout={300}
-              unmountOnExit
-            >
-              <Routes location={location}>
-                <Route
-                  element={<Pages.Profile />}
-                  path={`${rootDirectory}`}
-                  ref={nodeRef}
-                />
-                <Route
-                  element={<Pages.Projects />}
-                  path={`${rootDirectory}projects`}
-                  ref={nodeRef}
-                />
-              </Routes>
-            </CSSTransition>
-          </SwitchTransition>
-        </HelmetProvider>
-      </BrowserRouter>
-    </RecoilRoot>
+    <RouterProvider router={router}>
+      <TransitionGroup className="transitions-wrapper">
+        <CSSTransition
+          key={location.key}
+          classNames={"page"}
+          nodeRef={nodeRef}
+          timeout={300}
+          unmountOnExit
+        >
+          {(state) => <div className="test"></div>}
+          {/* <Routes location={location}>
+          <Route element={<Pages.Profile />} path={`${rootDirectory}`} />
+          <Route
+            element={<Pages.Projects />}
+            path={`${rootDirectory}projects`}
+          />
+        </Routes> */}
+        </CSSTransition>
+      </TransitionGroup>
+    </RouterProvider>
   );
 }

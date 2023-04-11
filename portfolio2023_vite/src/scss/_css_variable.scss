@@ -29,7 +29,8 @@
   --time-bar: #707070;
   --time-text: #909090;
   --gnb-menu: #909090;
-  --gnb-menu-hover: #3a3a3a;
+  --gnb-menu-hover: #5a5a5a;
+  --gnb-menu-selected: #3a3a3a;
   --header-bg: #efefef;
   --header-icon: #707070;
   --header-icon-hover: #5a5a5a;
@@ -77,6 +78,11 @@
     --text-color-6: #5a5a5a;
 
     // page header
+    --time-bar: #909090;
+    --time-text: #909090;
+    --gnb-menu: #5a5a5a;
+    --gnb-menu-hover: #fff;
+    --gnb-menu-selected: #ccc;
     --header-icon: #707070;
     --header-bg: #3a3a3a;
     --header-icon-hover: #ccc;

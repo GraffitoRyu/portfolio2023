@@ -25,6 +25,11 @@
       color: var(--gnb-menu);
       font-weight: var(--weight-medium);
     }
+    &.on {
+      span {
+        color: var(--gnb-menu-selected);
+      }
+    }
   }
 }
 
