@@ -23,6 +23,7 @@ export default function App() {
 
   return (
     <RouterProvider router={customRouter}>
+      {/** 페이지 전환 컨테이너 컴포넌트화 */}
       <ContentsRoot />
     </RouterProvider>
   );

@@ -1,16 +1,34 @@
+.page-exit,
+.page-enter {
+  transition: transform 10s, opacity 10s;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+.page-enter {
+  transform: translate3d(0, 20vh, -100px);
+  opacity: 0;
+}
 .page-exit {
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
+}
+.page-exit-done {
+  transform: translate3d(0, 20vh, 100px);
+  opacity: 0;
+  z-index: -99999;
+  perspective: 600px;
 }
 .page-exit-active {
-  transform: translate(100%);
-  transition: transform 0.7s;
+  transform: translate3d(0, 20vh, 100px);
+  z-index: -99999;
+  // transform: translate3d(0, 0, 0);
+  perspective: 600px;
 }
 
-.page-enter {
-  transform: traslateX(100%);
+.page-enter-done {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
 }
 
 .page-enter-active {
-  transform: translateX(0);
-  transition: transform 0.7s;
+  transform: translate3d(0, 0, 0);
 }

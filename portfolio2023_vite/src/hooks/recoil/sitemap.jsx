@@ -8,7 +8,7 @@ export const sitemapData = [
   {
     key: "sitemap/profile",
     code: "profile",
-    path: "/",
+    path: getRootPathname(),
     external: false,
     name: "프로필",
     components: <Pages.Profile />,
@@ -17,7 +17,7 @@ export const sitemapData = [
   {
     key: "sitemap/projects",
     code: "projects",
-    path: "/projects",
+    path: getRootPathname() + "projects",
     external: false,
     name: "프로젝트",
     components: <Pages.Projects />,
@@ -60,3 +60,10 @@ export const routerSet = atom({
     },
   ],
 });
+
+function getRootPathname() {
+  const currentpath = window.location.pathname;
+  return currentpath.includes("projects")
+    ? currentpath.replace("projects", "")
+    : currentpath;
+}

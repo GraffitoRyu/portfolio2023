@@ -1,11 +1,6 @@
-import { useEffect, createRef } from "react";
-import { useRecoilValue, useRecoilState } from "recoil";
+import { createRef } from "react";
 import { useOutlet, useLocation } from "react-router-dom";
-import {
-  SwitchTransition,
-  TransitionGroup,
-  CSSTransition,
-} from "react-transition-group";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import { sitemapData } from "../hooks/recoil/sitemap";
 
@@ -22,10 +17,8 @@ export default function contentsRoot() {
   const { nodeRef } =
     routesData.find(route => route.path === rootDirectory) ?? {};
 
-  useEffect(() => {}, []);
-
   return (
-    <SwitchTransition className="transitions-wrapper">
+    <TransitionGroup className="transitions-wrapper">
       <CSSTransition
         key={rootDirectory}
         classNames={"page"}
@@ -39,6 +32,6 @@ export default function contentsRoot() {
           </div>
         )}
       </CSSTransition>
-    </SwitchTransition>
+    </TransitionGroup>
   );
 }
