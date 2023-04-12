@@ -1,42 +1,62 @@
-import { createRef } from "react";
 import { atom } from "recoil";
 
+// components
 import * as Pages from "../../templates/pageContents";
+import ContentsRoot from "../../roots/contentsRoot";
+
+export const sitemapData = [
+  {
+    key: "sitemap/profile",
+    code: "profile",
+    path: "/",
+    external: false,
+    name: "프로필",
+    components: <Pages.Profile />,
+    nodeRef: undefined,
+  },
+  {
+    key: "sitemap/projects",
+    code: "projects",
+    path: "/projects",
+    external: false,
+    name: "프로젝트",
+    components: <Pages.Projects />,
+    nodeRef: undefined,
+  },
+  {
+    key: "sitemap/github",
+    code: "github",
+    path: "https://github.com/GraffitoRyu",
+    external: true,
+    name: "Github",
+  },
+  {
+    key: "sitemap/notion",
+    code: "notion",
+    path: "https://www.notion.so/Ryu-Daehyeon-cc635240ed4f405ab6d27ec603f8b023?pvs=4",
+    external: true,
+    name: "Notion",
+  },
+];
 
 export const sitemap = atom({
   key: "sitemap",
+  default: sitemapData,
+});
+
+export const routerSet = atom({
+  key: "routerData",
   default: [
     {
-      key: "sitemap/profile",
-      code: "profile",
       path: "/",
-      external: false,
-      name: "프로필",
-      components: <Pages.Profile />,
-      nodeRef: createRef(),
-    },
-    {
-      key: "sitemap/projects",
-      code: "projects",
-      path: "/projects",
-      external: false,
-      name: "프로젝트",
-      components: <Pages.Projects />,
-      nodeRef: createRef(),
-    },
-    {
-      key: "sitemap/github",
-      code: "github",
-      path: "https://github.com/GraffitoRyu",
-      external: true,
-      name: "Github",
-    },
-    {
-      key: "sitemap/notion",
-      code: "notion",
-      path: "https://www.notion.so/Ryu-Daehyeon-cc635240ed4f405ab6d27ec603f8b023?pvs=4",
-      external: true,
-      name: "Notion",
+      element: <ContentsRoot />,
+      children: sitemapData
+        .filter(d => !d.external)
+        .map(d => ({
+          index: d.path === "/",
+          path: d.path === "/" ? undefined : d.path,
+          element: d.components,
+        })),
     },
   ],
 });

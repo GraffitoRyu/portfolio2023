@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-
-import PageHeader from "../../components/common/pageHeader";
-import PageFooter from "../../components/common/pageFooter";
-import Contents from "./index";
-
-import { themeStateAtom } from "../../hooks/recoil/theme";
 import { useRecoilValue } from "recoil";
+
+// components
+import ProjectsPage from "./index";
+
+// util
+import { themeStateAtom } from "../../hooks/recoil/theme";
 
 export default function projectsHelmet() {
   const theme = useRecoilValue(themeStateAtom);
@@ -20,13 +19,7 @@ export default function projectsHelmet() {
         <meta name="msapplication-TileColor" content={metaColor} />
         <meta name="theme-color" content={metaColor} />
       </Helmet>
-      <div className="transition-container">
-        <div className="sticky-container relative">
-          <PageHeader />
-          <Contents />
-        </div>
-        <PageFooter />
-      </div>
+      <ProjectsPage />
     </>
   );
 }

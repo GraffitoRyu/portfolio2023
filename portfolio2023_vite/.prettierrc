@@ -3,7 +3,8 @@
     {
       "files": "**/*.jsx",
       "options": {
-        "singleAttributePeLline": false
+        "singleAttributePeLline": false,
+        "arrowParens": "avoid"
       }
     }
   ]

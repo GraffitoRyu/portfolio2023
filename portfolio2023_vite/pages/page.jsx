@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import RouteRoot from "../src/routerRoot";
+import { RecoilRoot } from "recoil";
+import { HelmetProvider } from "react-helmet-async";
+import App from "../src/App";
 
 import "../src/scss/reset.scss";
 import "../src/scss/tailwind.scss";
@@ -15,6 +17,10 @@ import "../src/scss/page_transition.scss";
 const pageContainer = document.querySelector("#pageContainer");
 ReactDOM.createRoot(pageContainer).render(
   <React.StrictMode>
-    <RouteRoot />
+    <RecoilRoot>
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
+    </RecoilRoot>
   </React.StrictMode>
 );
