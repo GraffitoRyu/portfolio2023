@@ -3,7 +3,7 @@ import { useRecoilValue } from "recoil";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // components
-import ContentsRoot from "./roots/contentsRoot";
+import TransContainer from "./templates/pageTransition/transContainer";
 
 // data
 import { routerSet } from "./hooks/recoil/sitemap";
@@ -13,6 +13,7 @@ import checkScreenSize from "./hooks/util/checkScreenSize";
 import windowResizeCheck from "./hooks/util/windowResize";
 
 export default function App() {
+  // 라우터 설정
   const routerData = useRecoilValue(routerSet);
   const customRouter = createBrowserRouter(routerData);
 
@@ -23,8 +24,7 @@ export default function App() {
 
   return (
     <RouterProvider router={customRouter}>
-      {/** 페이지 전환 컨테이너 컴포넌트화 */}
-      <ContentsRoot />
+      <TransContainer />
     </RouterProvider>
   );
 }

@@ -4,6 +4,7 @@
 .page-header {
   padding: rem(80px);
   font-size: rem(20px);
+  z-index: 99999;
 }
 
 .current-time {
@@ -52,7 +53,7 @@
   }
 
   &:hover {
-    background: var(--header-bg);
+    background: var(--header-icon-bg);
 
     .header-icon {
       path,
@@ -103,7 +104,7 @@
   display: none;
   width: rem(120px);
   border-radius: rem(8px);
-  background: var(--bg-color-2);
+  background: var(--theme-menu-bg);
   transform: translateY(rem(10px));
 
   .util-icon {
@@ -118,11 +119,35 @@
     }
 
     line-height: rem(16px);
-    color: var(--text-color-4);
+    color: var(--theme-text);
   }
 }
 
 .theme-menu {
+  @mixin selected_theme {
+    path,
+    circle,
+    rect {
+      fill: var(--theme-menu-icon-selected);
+    }
+
+    span {
+      color: var(--theme-menu-icon-selected);
+    }
+  }
+  .theme-item {
+    .util-icon {
+      path,
+      circle,
+      rect {
+        fill: var(--theme-menu-icon);
+      }
+    }
+
+    span {
+      color: var(--theme-menu-icon);
+    }
+  }
   &[toggle="on"] {
     .theme-list {
       display: block;
@@ -131,40 +156,14 @@
 
   // dark
   &[theme="dark"] {
-    @mixin selected_dark {
-      path,
-      circle,
-      rect {
-        fill: var(--text-color-0);
-      }
-
-      span {
-        color: var(--text-color-0);
-      }
-    }
-
     .util-btn .light-icon {
       display: none;
-    }
-
-    .theme-item {
-      .util-icon {
-        path,
-        circle,
-        rect {
-          fill: var(--text-color-4);
-        }
-      }
-
-      span {
-        color: var(--text-color-4);
-      }
     }
 
     &[system="on"] {
       .theme-item {
         &[item-theme="system"] {
-          @include selected_dark();
+          @include selected_theme();
         }
       }
     }
@@ -172,7 +171,7 @@
     &[system="off"] {
       .theme-item {
         &[item-theme="dark"] {
-          @include selected_dark();
+          @include selected_theme();
         }
       }
     }
@@ -180,40 +179,14 @@
 
   // light
   &[theme="light"] {
-    @mixin selected_light {
-      path,
-      circle,
-      rect {
-        fill: var(--text-color-3);
-      }
-
-      span {
-        color: var(--text-color-3);
-      }
-    }
-
     .util-btn .dark-icon {
       display: none;
-    }
-
-    .theme-item {
-      .util-icon {
-        path,
-        circle,
-        rect {
-          fill: var(--text-color-6);
-        }
-      }
-
-      span {
-        color: var(--text-color-6);
-      }
     }
 
     &[system="on"] {
       .theme-item {
         &[item-theme="system"] {
-          @include selected_light();
+          @include selected_theme();
         }
       }
     }
@@ -221,7 +194,7 @@
     &[system="off"] {
       .theme-item {
         &[item-theme="light"] {
-          @include selected_light();
+          @include selected_theme();
         }
       }
     }

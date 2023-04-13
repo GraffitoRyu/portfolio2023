@@ -1,12 +1,13 @@
-// components
+import SeoHelmet from "../../components/seo/helmet";
 import PageHeader from "../../components/common/pageHeader";
 import PageFooter from "../../components/common/pageFooter";
-import PageContents from "./contents";
+import PageContents from "./pageContents";
 
-export default function projectsPage(props) {
+export default function transContainer() {
   return (
     <>
-      <div className="sticky-container relative">
+      <SeoHelmet />
+      <div className="sticky-container relative page-bg">
         <PageHeader />
         <PageContents />
       </div>

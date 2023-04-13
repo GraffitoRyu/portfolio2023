@@ -1,29 +1,19 @@
 :root {
+  // common variable
   --screen-size-x: 1920px;
   --screen-size-y: 927px;
   --header-height: 208px;
 
+  // font weight
   --weight-light: 400;
   --weight-regular: 500;
   --weight-medium: 700;
   --weight-bold: 900;
   --weight-black: 900;
 
-  // colors
-  --bg-color-0: #fff;
-  --bg-color-1: #f5f5f5;
-  --bg-color-2: #e3e3e3;
-  --bg-color-3: #a0a0a0;
-  --bg-color-4: #909090;
-  --bg-color-5: #707070;
-
-  --text-color-6: #1a1a1a;
-  --text-color-1: #3a3a3a;
-  --text-color-2: #5a5a5a;
-  --text-color-3: #707070;
-  --text-color-4: #909090;
-  --text-color-5: #a0a0a0;
-  --text-color-6: #ccc;
+  // page bcakground
+  --frame-bg: #efefef;
+  --page-bg: #fff;
 
   // page header
   --time-bar: #707070;
@@ -31,11 +21,15 @@
   --gnb-menu: #909090;
   --gnb-menu-hover: #5a5a5a;
   --gnb-menu-selected: #3a3a3a;
-  --header-bg: #efefef;
   --header-icon: #707070;
+  --header-icon-bg: #efefef;
   --header-icon-hover: #5a5a5a;
   --header-icon-active: #1a1a1a;
   --theme-icon-active: #ffc700;
+  --theme-menu-bg: #5a5a5a;
+  --theme-menu-icon: #ccc;
+  --theme-menu-icon-selected: #707070;
+  --theme-text: #909090;
 
   // page visual
   --page-title-border: #a0a0a0;
@@ -43,12 +37,12 @@
 
   // section header
   --section-header-title: #3a3a3a;
-  --section-header-desc: #909090;
+  --section-header-desc: #a0a0a0;
 
   // intro section
   --intro-title: #909090;
   --intro-emph: #3a3a3a;
-  --intro-desc: #707070;
+  --intro-desc: #909090;
 
   // page-footer
   --footer-bg: #efefef;
@@ -56,26 +50,16 @@
   --footer-page-title-filled: #707070;
 
   &.dark-theme {
+    // font weight
     --weight-light: 300;
     --weight-regular: 400;
     --weight-medium: 500;
     --weight-bold: 700;
     --weight-black: 900;
 
-    --bg-color-0: #1a1a1a;
-    --bg-color-1: #3a3a3a;
-    --bg-color-2: #5a5a5a;
-    --bg-color-3: #707070;
-    --bg-color-4: #909090;
-    --bg-color-5: #a0a0a0;
-
-    --text-color-0: #fff;
-    --text-color-1: #efefef;
-    --text-color-2: #ccc;
-    --text-color-3: #a0a0a0;
-    --text-color-4: #909090;
-    --text-color-5: #707070;
-    --text-color-6: #5a5a5a;
+    // page bcakground
+    --frame-bg: #141414;
+    --page-bg: #1a1a1a;
 
     // page header
     --time-bar: #909090;
@@ -84,10 +68,14 @@
     --gnb-menu-hover: #fff;
     --gnb-menu-selected: #ccc;
     --header-icon: #707070;
-    --header-bg: #3a3a3a;
+    --header-icon-bg: #3a3a3a;
     --header-icon-hover: #ccc;
     --header-icon-active: #fff;
     --theme-icon-active: #ffd12d;
+    --theme-menu-bg: #5a5a5a;
+    --theme-menu-icon: #909090;
+    --theme-menu-icon-selected: #fff;
+    --theme-text: #909090;
 
     // page visual
     --page-title-border: #a0a0a0;
@@ -108,18 +96,3 @@
     --footer-page-title-filled: #707070;
   }
 }
-
-// @media (prefers-color-scheme: dark) {
-//   :root {
-//     --bg-color-0: #1a1a1a;
-//     --bg-color-1: #3a3a3a;
-//     --bg-color-2: #707070;
-
-//     --text-color-0: #fff;
-//     --text-color-1: #ccc;
-//     --text-color-2: #a0a0a0;
-//     --text-color-3: #9f9f9f;
-//     --text-color-4: #707070;
-//     --text-color-5: #5a5a5a;
-//   }
-// }

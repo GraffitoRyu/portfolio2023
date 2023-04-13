@@ -7,8 +7,9 @@ import App from "../src/App";
 import "../src/scss/reset.scss";
 import "../src/scss/tailwind.scss";
 import "../src/scss/common.scss";
-import "../src/scss/header.scss";
-import "../src/scss/footer.scss";
+import "../src/scss/pageHeader.scss";
+import "../src/scss/pageFooter.scss";
+import "../src/scss/pageVisual.scss";
 import "../src/scss/profile.scss";
 import "../src/scss/projects.scss";
 

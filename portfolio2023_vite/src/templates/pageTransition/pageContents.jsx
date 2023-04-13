@@ -2,33 +2,34 @@ import { createRef } from "react";
 import { useOutlet, useLocation } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-import { sitemapData } from "../hooks/recoil/sitemap";
+// data
+import { sitemapData } from "../../hooks/recoil/sitemap";
 
-const routesData = sitemapData.map(d => {
-  return !d.external ? { ...d, nodeRef: createRef() } : d;
-});
+export default function pageContents() {
+  // 페이지 전환 ref 설정
+  const routesData = sitemapData.map(d => {
+    return !d.external ? { ...d, nodeRef: createRef() } : d;
+  });
 
-export default function contentsRoot() {
+  // 페이지 전환 설정
   const location = useLocation();
-  const curOutlet = useOutlet();
+  const currentOutlet = useOutlet();
   const rootDirectory = location.pathname;
-  console.log("pathname:", rootDirectory);
-
   const { nodeRef } =
     routesData.find(route => route.path === rootDirectory) ?? {};
 
   return (
-    <TransitionGroup className="transitions-wrapper">
+    <TransitionGroup className="transitions-wrapper page-contents-container w-full">
       <CSSTransition
         key={rootDirectory}
         classNames={"page"}
         nodeRef={nodeRef}
-        timeout={300}
+        timeout={1000}
         unmountOnExit
       >
         {state => (
-          <div ref={nodeRef} className="transition-container">
-            {curOutlet}
+          <div ref={nodeRef} className="transition-container w-full">
+            {currentOutlet}
           </div>
         )}
       </CSSTransition>

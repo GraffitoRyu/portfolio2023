@@ -8,7 +8,7 @@ export default function pageFooter() {
   return (
     <footer
       id="pageFooter"
-      className="page-footer around-padding w-full h-screen"
+      className="page-footer around-padding page-bg w-full h-screen"
     >
       <div className="footer-card flex flex-col justify-between w-full h-full">
         <header className="footer-header flex justify-between">

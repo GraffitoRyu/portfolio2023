@@ -3,9 +3,12 @@ import PageVisual from "../../components/common/pageVisual";
 
 export default function pageContents() {
   return (
-    <main id="pageContents" className="page-contents page-profile">
+    <main
+      id="pageContents"
+      className="page-contents page-profile relative top-0"
+    >
       <PageVisual borderText="Ready for" filledText="interaction" />
-      <section className="page-section side-padding lg:flex items-start intro-section">
+      <section className="page-section side-padding intro-section lg:flex items-start">
         <header className="section-header lg:w-1/2"></header>
         <div className="section-contents lg:w-1/2">
           <h2>
@@ -17,11 +20,11 @@ export default function pageContents() {
             </div>
           </h2>
           <p>
-            <span>2018년 웹 디자인과 웹 퍼블리싱으로 시작하여, </span>
+            <span>2018년 웹 디자인과 웹 퍼블리싱으로 시작하여,</span>
             <br />
-            <span>2020년부터는 프론트엔드 개발 위주로 경험을 쌓았습니다. </span>
+            <span>2020년부터는 프론트엔드 개발 위주로 경험을 쌓았습니다.</span>
             <br />
-            <span>컴포넌트 기반 구조와, 인터랙티브한 반응형 웹을 </span>
+            <span>컴포넌트 기반 구조와, 인터랙티브한 반응형 웹을</span>
             <br />
             <span>각각 효율적으로 구축하기 위해 항상 연구하고 있습니다.</span>
           </p>

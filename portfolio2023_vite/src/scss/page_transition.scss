@@ -1,34 +1,21 @@
-.page-exit,
-.page-enter {
-  transition: transform 10s, opacity 10s;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
+.transition-wrapper {
+  overflow: hidden;
 }
-.page-enter {
-  transform: translate3d(0, 20vh, -100px);
-  opacity: 0;
+.transition-container {
 }
+
+// 기존 페이지
 .page-exit {
-  transform: translate3d(0, 0, 0);
-}
-.page-exit-done {
-  transform: translate3d(0, 20vh, 100px);
-  opacity: 0;
-  z-index: -99999;
-  perspective: 600px;
 }
 .page-exit-active {
-  transform: translate3d(0, 20vh, 100px);
-  z-index: -99999;
-  // transform: translate3d(0, 0, 0);
-  perspective: 600px;
+}
+.page-exit-done {
 }
 
-.page-enter-done {
-  transform: translate3d(0, 0, 0);
-  opacity: 1;
+// 이동된 페이지
+.page-enter {
 }
-
 .page-enter-active {
-  transform: translate3d(0, 0, 0);
+}
+.page-enter-done {
 }
