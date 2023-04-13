@@ -1,13 +1,17 @@
-import { Link } from 'react-router-dom';
-import { ReactComponent as IconExternal } from '../../svg/common/external_icon.svg';
+import { Link } from "react-router-dom";
+import { ReactComponent as IconExternal } from "../../svg/common/external_icon.svg";
 
 export default function footerSitemapBtn(props) {
   const d = props.data;
 
   return (
-    <dd>
+    <dd className="w-full flex items-center">
       {d.external ? (
-        <a className="footer-sitemap-btn flex items-center" href={d.path} target="_blank">
+        <a
+          className="footer-sitemap-btn flex items-center"
+          href={d.path}
+          target="_blank"
+        >
           <span>{d.name}</span>
           <figure>
             <IconExternal />
@@ -16,9 +20,6 @@ export default function footerSitemapBtn(props) {
       ) : (
         <Link className="footer-sitemap-btn flex items-center" to={d.path}>
           <span>{d.name}</span>
-          <figure>
-            <IconExternal />
-          </figure>
         </Link>
       )}
     </dd>

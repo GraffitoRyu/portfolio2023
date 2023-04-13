@@ -11,6 +11,12 @@
   --weight-bold: 900;
   --weight-black: 900;
 
+  // scrollbar
+  --scroll-thumb: rgba(26, 26, 26, 0.6);
+
+  // cursor
+  --cursor: #fff;
+
   // page bcakground
   --frame-bg: #efefef;
   --page-bg: #fff;
@@ -40,6 +46,8 @@
   --section-header-desc: #a0a0a0;
 
   // intro section
+  --intro-grad-from: rgb(255, 255, 255);
+  --intro-grad-to: rgba(255, 255, 255, 0);
   --intro-title: #909090;
   --intro-emph: #3a3a3a;
   --intro-desc: #909090;
@@ -48,6 +56,10 @@
   --footer-bg: #efefef;
   --footer-page-title-border: #ccc;
   --footer-page-title-filled: #707070;
+  --footer-info-title: #707070;
+  --footer-btn: #a0a0a0;
+  --footer-icon: #707070;
+  --footer-btn-hover: #3a3a3a;
 
   &.dark-theme {
     // font weight
@@ -56,6 +68,12 @@
     --weight-medium: 500;
     --weight-bold: 700;
     --weight-black: 900;
+
+    // cursor
+    --cursor: #fff;
+
+    // scrollbar
+    --scroll-thumb: rgba(63, 63, 63, 0.6);
 
     // page bcakground
     --frame-bg: #141414;
@@ -86,6 +104,8 @@
     --section-header-desc: #707070;
 
     // intro section
+    --intro-grad-from: rgb(26, 26, 26);
+    --intro-grad-to: rgba(26, 26, 26, 0);
     --intro-title: #a0a0a0;
     --intro-emph: white;
     --intro-desc: #ccc;
@@ -94,5 +114,9 @@
     --footer-bg: #252525;
     --footer-page-title-border: #707070;
     --footer-page-title-filled: #707070;
+    --footer-info-title: #ccc;
+    --footer-btn: #a0a0a0;
+    --footer-icon: #ccc;
+    --footer-btn-hover: #fff;
   }
 }

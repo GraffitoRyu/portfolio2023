@@ -29,8 +29,16 @@ export default function pageFooter() {
             <span>based in Daejeon, South Korea</span>
             <span>4+ years of experience</span>
           </p>
-          <dl className="footer-info footer-sitemap">
-            <dt>류대현</dt>
+          <dl className="footer-info footer-sitemap w-1/4">
+            {/* <dt>류대현</dt> */}
+            {sitemapData
+              .filter(d => d.header)
+              .map((d, i) => (
+                <FooterSitemapBtn data={d} key={`footer_sitemap_${i}`} />
+              ))}
+          </dl>
+          <dl className="footer-info footer-sitemap w-1/4">
+            {/* <dt>Contact</dt> */}
             {sitemapData.map((d, i) => (
               <FooterSitemapBtn data={d} key={`footer_sitemap_${i}`} />
             ))}

@@ -8,7 +8,9 @@ import { ReactComponent as IconGithub } from "../../svg/header/github_icon.svg";
 import { ReactComponent as IconNotion } from "../../svg/header/notion_icon.svg";
 
 export default function externalMenu() {
-  const externalData = useRecoilValue(sitemap).filter((d) => d.external);
+  const externalData = useRecoilValue(sitemap).filter(
+    d => d.external && d.header
+  );
   const externalIcon = (code, options) => {
     if (code == "github") return <IconGithub {...options} />;
     else if (code == "notion") return <IconNotion {...options} />;

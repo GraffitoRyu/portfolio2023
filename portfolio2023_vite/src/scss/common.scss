@@ -3,6 +3,7 @@
 
 * {
   font-family: "Noto Sans KR";
+  cursor: none !important;
 }
 
 html {
@@ -19,6 +20,16 @@ html {
 
   @media only screen and (max-width: 460px) {
     font-size: 10px;
+  }
+  overflow: overlay;
+  &::-webkit-scrollbar {
+    width: rem(24px);
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: rem(12px);
+    border: rem(8px) solid transparent;
+    background: var(--scroll-thumb);
+    background-clip: padding-box;
   }
 }
 
@@ -73,7 +84,7 @@ circle {
 }
 
 .page-contents-container {
-  margin-top: -var(--header-height);
+  margin-top: calc(var(--header-height) * -1);
 }
 
 .page-section {
@@ -83,11 +94,11 @@ circle {
   position: relative;
   z-index: 100;
   &.intro-section {
-    background: rgb(26, 26, 26);
+    background: var(--intro-grad-from);
     background: linear-gradient(
       0deg,
-      rgba(26, 26, 26, 1) 0%,
-      rgba(26, 26, 26, 0) 80%
+      var(--intro-grad-from) 0%,
+      var(--intro-grad-to) 60%
     );
   }
 }

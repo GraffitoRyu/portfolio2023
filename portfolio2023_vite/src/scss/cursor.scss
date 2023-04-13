@@ -1,0 +1,29 @@
+@import "./css_variable";
+@import "./scss_global";
+
+.cursor-container {
+  width: 1px;
+  height: 1px;
+  position: fixed;
+  z-index: 9999999;
+  pointer-events: none;
+  backface-visibility: visible;
+  mix-blend-mode: difference;
+  .cursor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cursor);
+    transition: width 0.3s, height 0.3s;
+  }
+  &.link {
+    .cursor {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
