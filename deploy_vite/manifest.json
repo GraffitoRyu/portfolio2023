@@ -1,4 +1,8 @@
 {
+  "../src/svg/btn/project_open.svg": {
+    "file": "assets/project_open-141a1967.svg",
+    "src": "../src/svg/btn/project_open.svg"
+  },
   "../src/svg/btn/theme_dark.svg": {
     "file": "assets/theme_dark-bfa0276c.svg",
     "src": "../src/svg/btn/theme_dark.svg"
@@ -23,14 +27,14 @@
     "file": "assets/notion_icon-1ea49ff9.svg",
     "src": "../src/svg/header/notion_icon.svg"
   },
-  "_page-ac35712e.js": {
+  "_page-daee5e47.js": {
     "css": [
-      "assets/page-dbf1e153.css"
+      "assets/page-1b78c8e8.css"
     ],
-    "file": "assets/page-ac35712e.js"
+    "file": "assets/page-daee5e47.js"
   },
   "page.css": {
-    "file": "assets/page-dbf1e153.css",
+    "file": "assets/page-1b78c8e8.css",
     "src": "page.css"
   }
 }
