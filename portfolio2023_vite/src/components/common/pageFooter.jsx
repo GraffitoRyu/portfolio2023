@@ -1,10 +1,10 @@
-import { useRecoilValue } from "recoil";
-import { sitemap } from "../../hooks/recoil/sitemap";
+// components
 import FooterSitemapBtn from "../buttons/footerSitemapBtn";
 
-export default function pageFooter() {
-  const sitemapData = useRecoilValue(sitemap);
+// data
+import { sitemapData } from "../../data/sitemap";
 
+export default function pageFooter() {
   return (
     <footer
       id="pageFooter"

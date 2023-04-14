@@ -3,7 +3,7 @@ import { useOutlet, useLocation } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 // data
-import { sitemapData } from "../../hooks/recoil/sitemap";
+import { sitemapData } from "../../data/sitemap";
 
 export default function pageContents() {
   // 페이지 전환 ref 설정

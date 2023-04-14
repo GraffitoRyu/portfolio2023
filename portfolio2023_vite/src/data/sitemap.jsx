@@ -1,8 +1,8 @@
 import { atom } from "recoil";
 
 // components
-import * as Pages from "../../templates/routes";
-import TransContainer from "../../templates/pageTransition/transContainer";
+import * as Pages from "../templates/routes";
+import TransContainer from "../templates/pageTransition/transContainer";
 
 export const sitemapData = [
   {
@@ -43,31 +43,23 @@ export const sitemapData = [
   },
 ];
 
-export const sitemap = atom({
-  key: "sitemapState",
-  default: sitemapData,
-});
-
-export const routerSet = atom({
-  key: "routerData",
-  default: [
-    {
-      path: "/",
-      element: <TransContainer />,
-      children: sitemapData
-        .filter(d => !d.external)
-        .map(d => ({
-          index: d.path === "/",
-          path: d.path === "/" ? undefined : d.path,
-          element: d.components,
-        })),
-    },
-  ],
-});
+export const routerSet = [
+  {
+    path: "/",
+    element: <TransContainer />,
+    children: sitemapData
+      .filter(d => !d.external)
+      .map(d => ({
+        index: d.path === "/",
+        path: d.path === "/" ? undefined : d.path,
+        element: d.components,
+      })),
+  },
+];
 
 function getRootPathname() {
-  const currentpath = window.location.pathname;
-  return currentpath.includes("projects")
-    ? currentpath.replace("projects", "")
-    : currentpath;
+  const currentPath = window.location.pathname;
+  return currentPath.includes("projects")
+    ? currentPath.replace("projects", "")
+    : currentPath;
 }

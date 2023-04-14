@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RecoilRoot } from "recoil";
+import { RecoilRoot, RecoilEnv } from "recoil";
 import { HelmetProvider } from "react-helmet-async";
 import App from "../src/App";
 import Cursor from "../src/components/common/cursor";
@@ -16,6 +16,8 @@ import "../src/scss/profile.scss";
 import "../src/scss/projects.scss";
 
 import "../src/scss/page_transition.scss";
+
+RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
 const pageContainer = document.querySelector("#pageContainer");
 ReactDOM.createRoot(pageContainer).render(

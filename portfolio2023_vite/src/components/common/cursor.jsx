@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 // data
-import { cursor } from "../../hooks/recoil/cursor.data";
+import { cursor } from "../../hooks/state/cursor";
 import { useRecoilState } from "recoil";
 
 export default function customCursor() {
@@ -22,7 +22,6 @@ export default function customCursor() {
         y: e.clientY,
         hover: isInteractiveElement,
       };
-      console.log(d);
       setPos(d);
     }
   };

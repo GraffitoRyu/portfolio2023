@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+
+// svg
 import { ReactComponent as IconExternal } from "../../svg/common/external_icon.svg";
 
 export default function footerSitemapBtn(props) {

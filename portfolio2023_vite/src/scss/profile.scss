@@ -1,42 +1,144 @@
-@import './scss_global';
-
+@import "./css_variable";
+@import "./scss_global";
 
 .page-section {
-
 }
 
 .intro-section {
   h2 {
-    margin-bottom:rem(160px);
-    font-size:rem(64px);
-    font-weight:300;
-    line-height:rem(80px);
-    color:var(--intro-title);
+    margin-bottom: rem(160px);
+    font-size: rem(64px);
+    font-weight: 300;
+    line-height: rem(80px);
+    color: var(--intro-title);
     strong {
-      font-weight:500;
-      color:var(--intro-emph);
+      font-weight: 500;
+      color: var(--intro-emph);
     }
   }
   p {
-    font-size:rem(32px);
-    font-weight:400;
-    line-height:rem(56px);
-    color:var(--intro-desc)
+    font-size: rem(32px);
+    font-weight: 400;
+    line-height: rem(56px);
+    color: var(--intro-desc);
   }
 }
 
 .section-header {
   h2 {
-    margin-bottom:rem(80px);
-    font-size:rem(40px);
-    font-weight:700;
-    line-height:rem(40px);
-    color:var(--section-header-title);
+    margin-bottom: rem(80px);
+    font-size: rem(40px);
+    font-weight: 700;
+    line-height: rem(40px);
+    color: var(--section-header-title);
   }
   p {
-    font-size:rem(64px);
-    font-weight:300;
-    line-height:rem(80px);
-    color:var(--section-header-desc);
+    font-size: rem(64px);
+    font-weight: 300;
+    line-height: rem(80px);
+    color: var(--section-header-desc);
+  }
+}
+
+.career-list {
+  .career-item {
+    margin-bottom: rem(80px);
+  }
+  .period {
+    margin-bottom: rem(24px);
+    color: var(--career-period);
+    font: {
+      size: rem(20px);
+      weight: var(--weight-regular);
+    }
+    span {
+      width: rem(40px);
+      height: 1px;
+      margin: 0 rem(16px);
+      background: var(--career-period);
+    }
+  }
+  h3 {
+    margin-bottom: rem(24px);
+    strong {
+      color: var(--career-role);
+      line-height: rem(32px);
+      font: {
+        size: rem(32px);
+        weight: var(--weight-medium);
+      }
+    }
+    span {
+      color: var(--career-company);
+      line-height: rem(24px);
+      font: {
+        size: rem(24px);
+        weight: var(--weight-regular);
+      }
+      &:before {
+        content: "";
+        display: block;
+        width: rem(2px);
+        height: rem(24px);
+        margin: 0 rem(16px) 0 rem(24px);
+        background: var(--career-company);
+      }
+    }
+  }
+  p {
+    color: var(--career-desc);
+    line-height: rem(32px);
+    font: {
+      size: rem(24px);
+      weight: var(--weight-regular);
+    }
+  }
+}
+
+.experience-list {
+  .experience-item {
+    margin-bottom: rem(80px);
+  }
+  dt {
+    margin-bottom: rem(40px);
+    color: var(--exp-title);
+    font: {
+      size: rem(40px);
+      weight: var(--weight-medium);
+    }
+  }
+  p,
+  span {
+    color: var(--exp-desc);
+    line-height: 32px;
+    font: {
+      size: rem(24px);
+      weight: var(--weight-regular);
+    }
+  }
+  .depth-desc {
+    &:before {
+      content: "";
+      display: block;
+      width: rem(8px);
+      height: rem(8px);
+      margin: rem(8px) rem(16px) 0;
+      border-radius: 50%;
+      background: var(--exp-desc);
+    }
+  }
+}
+
+.tool-list {
+  margin-top: rem(120px);
+  li {
+    color: var(--tools);
+    margin: 0 rem(80px) rem(64px);
+    letter-spacing: 0.001em;
+    line-height: rem(64px);
+    font: {
+      size: rem(40px);
+      weight: 500;
+    }
   }
 }

@@ -8,7 +8,7 @@ import { ReactComponent as ThemeSystem } from "../../svg/btn/theme_system.svg";
 
 // util
 import closeByClickOutside from "../../hooks/util/closeByClickOutside";
-import { themeStateSelector, getSystemTheme } from "../../hooks/recoil/theme";
+import { themeStateSelector, getSystemTheme } from "../../hooks/state/theme";
 
 export default function themeMenu() {
   const [themeState, setThemeState] = useRecoilState(themeStateSelector);
@@ -20,9 +20,9 @@ export default function themeMenu() {
     else if (code == "system") return <ThemeSystem {...options} />;
   };
 
-  const toggleThemeMenu = (changeTheme) => {
+  const toggleThemeMenu = changeTheme => {
     // 토글 동작만 실행
-    setThemeState((prev) => ({
+    setThemeState(prev => ({
       ...prev,
       isOpen: !themeState.isOpen,
     }));
@@ -31,7 +31,7 @@ export default function themeMenu() {
     if (!changeTheme) return;
 
     // 테마 변경
-    setThemeState((prev) => ({
+    setThemeState(prev => ({
       ...prev,
       isSystem: changeTheme == "system",
       theme: changeTheme == "system" ? getSystemTheme() : changeTheme,
@@ -60,7 +60,7 @@ export default function themeMenu() {
         </figure>
       </button>
       <div className="theme-list absolute top-full">
-        {themeData.map((theme) => (
+        {themeData.map(theme => (
           <button
             type="button"
             className="theme-item flex items-center w-full"

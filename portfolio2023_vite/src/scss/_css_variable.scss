@@ -3,6 +3,13 @@
   --screen-size-x: 1920px;
   --screen-size-y: 927px;
   --header-height: 208px;
+  --trans-time-color: 0.3s;
+  --trans-time-cursor: 0.3s;
+  --trans-time-move: 0.4s;
+  --trans-func-quad: cubic-bezier(0.5, 1, 0.89, 1);
+  --trans-func-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --trans-func-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-func-back: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   // font weight
   --weight-light: 400;
@@ -17,7 +24,7 @@
   // cursor
   --cursor: #fff;
 
-  // page bcakground
+  // page background
   --frame-bg: #efefef;
   --page-bg: #fff;
 
@@ -61,6 +68,25 @@
   --footer-icon: #707070;
   --footer-btn-hover: #3a3a3a;
 
+  // career
+  --career-period: #a0a0a0;
+  --career-role: #5a5a5a;
+  --career-company: #b0b0b0;
+  --career-desc: #a0a0a0;
+
+  // experience
+  --exp-title: #5a5a5a;
+  --exp-desc: #a0a0a0;
+
+  // tools
+  --tools: #ccc;
+
+  // projects
+  --proj-border: #3a3a3a;
+  --proj-title: #5a5a5a;
+  --proj-desc: #707070;
+  --proj-hover: #fff;
+
   &.dark-theme {
     // font weight
     --weight-light: 300;
@@ -75,7 +101,7 @@
     // scrollbar
     --scroll-thumb: rgba(63, 63, 63, 0.6);
 
-    // page bcakground
+    // page background
     --frame-bg: #141414;
     --page-bg: #1a1a1a;
 
@@ -118,5 +144,24 @@
     --footer-btn: #a0a0a0;
     --footer-icon: #ccc;
     --footer-btn-hover: #fff;
+
+    // career
+    --career-period: #909090;
+    --career-role: #efefef;
+    --career-company: #707070;
+    --career-desc: #a0a0a0;
+
+    // experience
+    --exp-title: #fff;
+    --exp-desc: #a0a0a0;
+
+    // tools
+    --tools: #707070;
+
+    // projects
+    --proj-border: #3a3a3a;
+    --proj-title: #5a5a5a;
+    --proj-desc: #707070;
+    --proj-hover: #fff;
   }
 }

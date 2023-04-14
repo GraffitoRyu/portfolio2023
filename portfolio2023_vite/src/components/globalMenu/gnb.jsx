@@ -1,17 +1,15 @@
-import { NavLink, Link } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { NavLink } from "react-router-dom";
 
 // data
-import { sitemap } from "../../hooks/recoil/sitemap";
+import { sitemapData } from "../../data/sitemap";
 
 export default function gnb() {
-  const sitemapData = useRecoilValue(sitemap).filter(d => !d.external);
   const btnClass = "gnb-btn items-center relative";
 
   return (
     <nav className="gnb flex items-center ml-auto">
       {sitemapData
-        .filter(d => d.header)
+        .filter(d => d.header && !d.external)
         .map((d, i) => (
           <NavLink
             className={({ isActive, isPending }) =>

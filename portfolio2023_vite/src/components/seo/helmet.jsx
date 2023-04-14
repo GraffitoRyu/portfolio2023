@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 import getPageDataBySitemap from "../../hooks/util/getPageDataBySitemap";
 
 // data
-import { themeStateAtom } from "../../hooks/recoil/theme";
+import { themeStateAtom } from "../../hooks/state/theme";
 
 export default function seoHelmet() {
   const theme = useRecoilValue(themeStateAtom);

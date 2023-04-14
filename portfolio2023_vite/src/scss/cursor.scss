@@ -18,7 +18,7 @@
     height: 8px;
     border-radius: 50%;
     background: var(--cursor);
-    transition: width 0.3s, height 0.3s;
+    transition: width var(--trans-time-cursor), height var(--trans-time-cursor);
   }
   &.link {
     .cursor {
