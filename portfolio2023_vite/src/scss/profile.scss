@@ -3,7 +3,11 @@
 
 .page-section {
 }
-
+:not(.intro-section) {
+  .section-contents {
+    padding-top: rem(120px);
+  }
+}
 .intro-section {
   h2 {
     margin-bottom: rem(160px);
@@ -130,7 +134,6 @@
 }
 
 .tool-list {
-  margin-top: rem(120px);
   li {
     color: var(--tools);
     margin: 0 rem(80px) rem(64px);
