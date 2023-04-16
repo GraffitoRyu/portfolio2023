@@ -55,6 +55,12 @@ span {
   transition: color var(--trans-time-color);
 }
 
+a,
+button {
+  transition: color var(--trans-time-color),
+    background-color var(--trans-time-color);
+}
+
 path,
 rect,
 circle {

@@ -2,3 +2,16 @@
 @function rem($px, $std: 25.6px) {
   @return calc($px / $std * 1rem);
 }
+
+$trans_color: color var(--trans-time-color);
+$trans_bgColor: background-color var(--trans-time-color);
+$trans_opacity: opacity var(--trans-time-move);
+$trans_opacity_quad: opacity var(--trans-time-move) 0s var(--trans-func-quad);
+$trans_opacity_quart: opacity var(--trans-time-move) 0s var(--trans-func-quart);
+$trans_opacity_expo: opacity var(--trans-time-move) 0s var(--trans-func-expo);
+$trans_opacity_back: opacity var(--trans-time-move) 0s var(--trans-func-back);
+$trans_form: transform var(--trans-time-move);
+$trans_form_quad: transform var(--trans-time-move) 0s var(--trans-func-quad);
+$trans_form_quart: transform var(--trans-time-move) 0s var(--trans-func-quart);
+$trans_form_expo: transform var(--trans-time-move) 0s var(--trans-func-expo);
+$trans_form_back: transform var(--trans-time-move) 0s var(--trans-func-back);

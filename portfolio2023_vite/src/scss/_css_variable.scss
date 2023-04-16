@@ -3,9 +3,9 @@
   --screen-size-x: 1920px;
   --screen-size-y: 927px;
   --header-height: 208px;
-  --trans-time-color: 0.3s;
-  --trans-time-cursor: 0.3s;
-  --trans-time-move: 0.6s;
+  --trans-time-color: 0.4s;
+  --trans-time-cursor: 0.4s;
+  --trans-time-move: 0.8s;
   --trans-func-quad: cubic-bezier(0.5, 1, 0.89, 1);
   --trans-func-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --trans-func-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -83,6 +83,7 @@
 
   // projects
   --proj-border: #3a3a3a;
+  --proj-bg-hover: #efefef;
   --proj-title: #5a5a5a;
   --proj-desc: #707070;
   --proj-hover: #1a1a1a;
@@ -160,6 +161,7 @@
 
     // projects
     --proj-border: #3a3a3a;
+    --proj-bg-hover: #242424;
     --proj-title: #5a5a5a;
     --proj-desc: #707070;
     --proj-hover: #fff;

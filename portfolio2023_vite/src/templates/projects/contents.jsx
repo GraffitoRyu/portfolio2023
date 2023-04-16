@@ -16,7 +16,7 @@ export default function pageContents(props) {
         header={undefined}
         contents={<Intro />}
       />
-      <section className="page-section side-padding">
+      <section className="page-section">
         <ProjectList />
       </section>
     </main>

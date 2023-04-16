@@ -36,7 +36,7 @@ export default function projectItem(props) {
         className="summary relative w-full overflow-hidden lg:text-right"
         type="button"
       >
-        <div className="wrapper">
+        <div className="wrapper relative">
           <div className="period-container overflow-hidden lg:absolute left-full">
             <div className="period flex items-center">
               <time>{d.period[0].toLocaleString(userLocale, dateOptions)}</time>

@@ -7,12 +7,6 @@
 .project-item {
   border-bottom: 1px solid var(--proj-border);
 
-  @mixin textTransition {
-    transition: color var(--trans-time-color),
-      transform var(--trans-time-move) 0s var(--trans-func-quart),
-      opacity var(--trans-time-move);
-  }
-
   .summary {
     color: var(--proj-desc);
     .wrapper {
@@ -25,7 +19,7 @@
   }
   .period {
     white-space: nowrap;
-    @include textTransition();
+    transition: $trans_form_quart, $trans_opacity_quart;
     time {
       color: var(--proj-title);
       font: {
@@ -38,6 +32,7 @@
       height: rem(1px);
       margin: 0 rem(16px);
       background: var(--proj-title);
+      transition: $trans_bgColor;
     }
   }
   .summary-title {
@@ -48,7 +43,7 @@
       size: rem(96px);
       weight: 700;
     }
-    @include textTransition();
+    transition: $trans_color, $trans_opacity_quart, $trans_form_quart;
   }
   p {
     margin-bottom: rem(48px);
@@ -57,7 +52,7 @@
       size: rem(32px);
       weight: var(--weight-regular);
     }
-    @include textTransition();
+    transition: $trans_color, $trans_opacity_quart, $trans_form_quart;
   }
   .role {
     li {
@@ -73,6 +68,7 @@
         margin: 0 rem(24px);
         transform: translateY(rem(2px));
         background: var(--proj-desc);
+        transition: $trans_bgColor;
       }
       &:last-child {
         &:after {
@@ -80,7 +76,7 @@
         }
       }
     }
-    @include textTransition();
+    transition: $trans_opacity_quart, $trans_form_quart;
   }
   .project-open-icon {
     width: rem(160px);
@@ -89,8 +85,7 @@
     right: rem(80px);
     transform: translate(-100%, 100%);
     opacity: 0;
-    transition: transform var(--trans-time-move) var(--trans-func-expo),
-      opacity var(--trans-time-move) var(--trans-func-expo);
+    transition: $trans_form_expo, $trans_opacity_expo;
     svg {
       width: 100%;
       height: 100%;
@@ -109,7 +104,7 @@
     line-height: rem(240px);
     text-decoration-thickness: 0.05em;
     top: 100%;
-    @include textTransition();
+    transition: $trans_form_quart;
     span {
       margin-right: rem(80px);
       &:after {
@@ -119,6 +114,7 @@
   }
 
   &.hover {
+    background: var(--proj-bg-hover);
     .period {
       transform: translateY(-100%);
       opacity: 0;
