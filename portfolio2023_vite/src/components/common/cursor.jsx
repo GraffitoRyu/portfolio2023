@@ -1,12 +1,16 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 // data
 import { cursor } from "../../hooks/state/cursor";
-import { useRecoilState } from "recoil";
+
+// state
+import { mobileSelector } from "../../hooks/state/mobile";
 
 export default function customCursor() {
   // 마우스 장치 여부
-  if (!matchMedia("(pointer:fine)").matches) return;
+  const [cursorHide, setCursorHide] = useState(true);
+  const isMobile = useRecoilValue(mobileSelector);
 
   const [pos, setPos] = useRecoilState(cursor);
   const cursorRef = useRef();
@@ -27,15 +31,23 @@ export default function customCursor() {
   };
 
   useEffect(() => {
-    window.addEventListener("mousemove", updatePos);
-    return () => {
-      window.removeEventListener("mousemove", updatePos);
-    };
+    setCursorHide(isMobile);
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (!isMobile || matchMedia("(pointer:fine)").matches) {
+      window.addEventListener("mousemove", updatePos);
+      return () => {
+        window.removeEventListener("mousemove", updatePos);
+      };
+    }
   }, [pos]);
 
   return (
     <div
-      className={`cursor-container fixed ${pos.hover}`}
+      className={`cursor-container fixed ${pos.hover} ${
+        cursorHide ? "opacity-0" : ""
+      }`}
       ref={cursorRef}
       style={{ top: pos.y, left: pos.x }}
     >

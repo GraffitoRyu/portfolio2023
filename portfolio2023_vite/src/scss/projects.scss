@@ -6,16 +6,23 @@
 }
 .project-item {
   border-bottom: 1px solid var(--proj-border);
+  user-select: none;
 
   .summary {
     color: var(--proj-desc);
     .wrapper {
-      width: rem(1440px);
+      width: 100%;
       padding: rem(80px);
+      @media only screen and (min-width: 1024px) {
+        width: rem(1440px);
+      }
     }
   }
   .period-container {
-    transform: translateX(rem(80px));
+    transform: translateX(0);
+    @media only screen and (min-width: 1024px) {
+      transform: translateX(rem(80px));
+    }
   }
   .period {
     white-space: nowrap;
@@ -145,6 +152,25 @@
     }
     to {
       transform: translateX(-100%);
+    }
+  }
+
+  &:active {
+    background: var(--proj-bg-hover);
+    .period {
+      color: var(--proj-hover);
+    }
+    .summary-title,
+    p,
+    .role {
+      color: var(--proj-hover);
+    }
+    .project-open-icon {
+      transform: translate(0, 0);
+      opacity: 1;
+      path {
+        fill: var(--proj-hover);
+      }
     }
   }
 }

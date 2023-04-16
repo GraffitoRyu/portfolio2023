@@ -8,19 +8,19 @@
 
 html {
   width: 100%;
-  font-size: 1vw;
+  // font-size: 1vw;
+  font-size: 10px;
 
-  // @media only screen and (max-width: 1920px) {
-  //   font-size: 19.2px;
-  // }
-
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (min-width: 640px) {
+    // font-size: 10px;
     font-size: 2vw;
   }
 
-  @media only screen and (max-width: 460px) {
-    font-size: 10px;
+  @media only screen and (min-width: 1024px) {
+    // font-size: 2vw;
+    font-size: 1vw;
   }
+
   overflow: overlay;
   &::-webkit-scrollbar {
     width: rem(24px);

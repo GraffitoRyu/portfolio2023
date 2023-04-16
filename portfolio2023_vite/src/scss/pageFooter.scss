@@ -28,14 +28,19 @@
   }
 }
 
+.footer-contents {
+  // height: 30%;
+  // min-height: rem(160px);
+}
+
 .footer-experience {
   span {
     color: var(--footer-page-title-filled);
-    line-height: rem(48px);
-    letter-spacing: 0.01em;
+    line-height: rem(40px);
+    letter-spacing: -0.02em;
     font: {
-      size: rem(32px);
-      weight: var(--weight-light);
+      size: rem(24px);
+      weight: var(--weight-medium);
     }
   }
 }

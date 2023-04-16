@@ -22,7 +22,7 @@ export default function pageFooter() {
           </h2>
           <p className="published">published in April, 2023.</p>
         </header>
-        <div className="footer-contents flex">
+        <div className="footer-contents flex w-full">
           <p className="footer-experience flex flex-col w-1/2">
             <span>Front-end Development</span>
             <span>Web Publish</span>

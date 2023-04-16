@@ -1,10 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useRecoilValue } from "recoil";
 
 // svg
 import { ReactComponent as IconOpenProject } from "../../svg/btn/project_open.svg";
 
 // util
 import getSlideTextSet from "../../hooks/util/getSlideTextSet";
+
+// state
+import { mobileState } from "../../hooks/state/mobile";
 
 export default function projectItem(props) {
   const d = props.data;
@@ -16,6 +20,7 @@ export default function projectItem(props) {
     year: "numeric",
   };
 
+  const isMobile = useRecoilValue(mobileState);
   const [hover, setHover] = useState(false);
   const [textArr, setTextArr] = useState([titleText]);
   const slideText = useRef();
@@ -28,12 +33,14 @@ export default function projectItem(props) {
 
   return (
     <li
-      className={`project-item flex w-full relative ${hover ? "hover" : ""}`}
+      className={`project-item flex w-full relative ${
+        hover && !isMobile ? "hover" : ""
+      }`}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
       <button
-        className="summary relative w-full overflow-hidden lg:text-right"
+        className="summary relative w-full overflow-hidden text-left lg:text-right"
         type="button"
       >
         <div className="wrapper relative">
