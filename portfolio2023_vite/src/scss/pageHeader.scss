@@ -52,7 +52,7 @@
     }
   }
 
-  &:hover {
+  &.hover {
     background: var(--header-icon-bg);
 
     .header-icon {
@@ -146,6 +146,20 @@
 
     span {
       color: var(--theme-menu-icon);
+    }
+
+    &.hover {
+      .util-icon {
+        path,
+        circle,
+        rect {
+          fill: var(--theme-menu-icon-selected);
+        }
+      }
+
+      span {
+        color: var(--theme-menu-icon-selected);
+      }
     }
   }
   &[toggle="on"] {

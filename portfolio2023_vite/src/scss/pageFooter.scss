@@ -77,7 +77,7 @@
     rect {
       fill: var(--footer-icon);
     }
-    &:hover {
+    &.hover {
       span {
         color: var(--footer-btn-hover);
       }

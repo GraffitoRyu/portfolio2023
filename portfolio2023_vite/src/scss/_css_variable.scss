@@ -5,7 +5,7 @@
   --header-height: 208px;
   --trans-time-color: 0.3s;
   --trans-time-cursor: 0.3s;
-  --trans-time-move: 0.4s;
+  --trans-time-move: 0.6s;
   --trans-func-quad: cubic-bezier(0.5, 1, 0.89, 1);
   --trans-func-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --trans-func-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -39,9 +39,9 @@
   --header-icon-hover: #5a5a5a;
   --header-icon-active: #1a1a1a;
   --theme-icon-active: #ffc700;
-  --theme-menu-bg: #5a5a5a;
-  --theme-menu-icon: #ccc;
-  --theme-menu-icon-selected: #707070;
+  --theme-menu-bg: #efefef;
+  --theme-menu-icon: #bfbfbf;
+  --theme-menu-icon-selected: #5a5a5a;
   --theme-text: #909090;
 
   // page visual
@@ -85,7 +85,7 @@
   --proj-border: #3a3a3a;
   --proj-title: #5a5a5a;
   --proj-desc: #707070;
-  --proj-hover: #fff;
+  --proj-hover: #1a1a1a;
 
   &.dark-theme {
     // font weight

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 
 // svg
@@ -11,9 +11,15 @@ import closeByClickOutside from "../../hooks/util/closeByClickOutside";
 import { themeStateSelector, getSystemTheme } from "../../hooks/state/theme";
 
 export default function themeMenu() {
+  const [hover, setHover] = useState(false);
   const [themeState, setThemeState] = useRecoilState(themeStateSelector);
   const themeMenuRef = useRef();
   const themeData = ["light", "dark", "system"];
+  const [themeHover, setThemeHover] = useState({
+    light: false,
+    dark: false,
+    system: false,
+  });
   const themeIcon = (code, options) => {
     if (code == "light") return <ThemeLight {...options} />;
     else if (code == "dark") return <ThemeDark {...options} />;
@@ -51,8 +57,12 @@ export default function themeMenu() {
     >
       <button
         type="button"
-        className="util-btn theme-btn flex items-center justify-center"
+        className={`util-btn theme-btn flex items-center justify-center ${
+          hover ? "hover" : ""
+        }`}
         onClick={() => toggleThemeMenu()}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
       >
         <figure className="util-icon flex items-center justify-center">
           <ThemeLight className="light-icon header-icon" />
@@ -63,9 +73,13 @@ export default function themeMenu() {
         {themeData.map(theme => (
           <button
             type="button"
-            className="theme-item flex items-center w-full"
+            className={`theme-item flex items-center w-full ${
+              themeHover[theme] ? "hover" : ""
+            }`}
             item-theme={theme}
             onClick={() => toggleThemeMenu(theme)}
+            onMouseEnter={() => setThemeHover({ [theme]: true })}
+            onMouseLeave={() => setThemeHover({ [theme]: false })}
             key={theme}
           >
             <figure className="util-icon flex items-center justify-center">

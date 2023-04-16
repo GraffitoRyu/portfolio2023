@@ -5,18 +5,27 @@
   border-top: 1px solid var(--proj-border);
 }
 .project-item {
-  padding: rem(80px);
   border-bottom: 1px solid var(--proj-border);
+
+  @mixin textTransition {
+    transition: color var(--trans-time-color),
+      transform var(--trans-time-move) 0s var(--trans-func-quart),
+      opacity var(--trans-time-move);
+  }
+
   .summary {
-    width: rem(1440px);
     color: var(--proj-desc);
+    .wrapper {
+      width: rem(1440px);
+      padding: rem(80px);
+    }
   }
   .period-container {
     transform: translateX(rem(80px));
   }
   .period {
     white-space: nowrap;
-    transition: transform var(--trans-time-move), opacity var(--trans-time-move);
+    @include textTransition();
     time {
       color: var(--proj-title);
       font: {
@@ -31,16 +40,15 @@
       background: var(--proj-title);
     }
   }
-  h3 {
+  .summary-title {
     margin-bottom: rem(24px);
     line-height: rem(96px);
     color: var(--proj-title);
     font: {
       size: rem(96px);
-      weight: var(--weight-bold);
+      weight: 700;
     }
-    transition: color var(--trans-time-color), transform var(--trans-time-move),
-      opacity var(--trans-time-move);
+    @include textTransition();
   }
   p {
     margin-bottom: rem(48px);
@@ -49,8 +57,7 @@
       size: rem(32px);
       weight: var(--weight-regular);
     }
-    transition: color var(--trans-time-color), transform var(--trans-time-move),
-      opacity var(--trans-time-move);
+    @include textTransition();
   }
   .role {
     li {
@@ -73,8 +80,7 @@
         }
       }
     }
-    transition: color var(--trans-time-color), transform var(--trans-time-move),
-      opacity var(--trans-time-move);
+    @include textTransition();
   }
   .project-open-icon {
     width: rem(160px);
@@ -94,12 +100,30 @@
       fill: var(--proj-border);
     }
   }
+  .hover-title {
+    font: {
+      size: rem(240px);
+      weight: 700;
+    }
+    color: var(--proj-hover);
+    line-height: rem(240px);
+    text-decoration-thickness: 0.05em;
+    top: 100%;
+    @include textTransition();
+    span {
+      margin-right: rem(80px);
+      &:after {
+        content: " ";
+      }
+    }
+  }
+
   &.hover {
     .period {
       transform: translateY(-100%);
       opacity: 0;
     }
-    h3,
+    .summary-title,
     p,
     .role {
       transform: translateY(-150%);
@@ -111,6 +135,20 @@
       path {
         fill: var(--proj-hover);
       }
+    }
+    .hover-title {
+      transform: translateY(-112%);
+      span {
+        animation: slideText 2s linear 0s infinite;
+      }
+    }
+  }
+  @keyframes slideText {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
     }
   }
 }

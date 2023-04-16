@@ -1,17 +1,19 @@
 import { useEffect } from "react";
 
-// util
-import checkHeaderHeight from "../../hooks/util/checkHeaderHeight";
-
 // components
 import HeaderTimer from "../headTimer/timer";
 import GnbMenu from "../globalMenu/gnb";
 import ExternalMenu from "../globalMenu/external";
 import ThemeMenu from "../globalMenu/theme";
 
+// util
+import checkHeaderHeight from "../../hooks/util/checkHeaderHeight";
+import windowResizeCheck from "../../hooks/util/windowResize";
+
 export default function pageHeader() {
   useEffect(() => {
     checkHeaderHeight();
+    windowResizeCheck(checkHeaderHeight, 20);
   }, []);
 
   return (

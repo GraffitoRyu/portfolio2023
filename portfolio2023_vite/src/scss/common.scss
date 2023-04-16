@@ -95,14 +95,15 @@ circle {
   padding-top: rem(240px);
   padding-bottom: rem(240px);
   background-color: var(--page-bg);
+  transition: background-color var(--trans-time-color);
   position: relative;
   z-index: 100;
   &.intro-section {
     background: var(--intro-grad-from);
     background: linear-gradient(
       0deg,
-      var(--intro-grad-from) 0%,
-      var(--intro-grad-to) 60%
+      var(--intro-grad-from) 50%,
+      var(--intro-grad-to) 100%
     );
   }
 }
