@@ -8,7 +8,7 @@ import { ReactComponent as IconOpenProject } from "../../svg/btn/project_open.sv
 import getSlideTextSet from "../../hooks/util/getSlideTextSet";
 
 // state
-import { mobileState } from "../../hooks/state/mobile";
+import { accessDeviceSelector } from "../../hooks/state/accessDevice";
 
 export default function projectItem(props) {
   const d = props.data;
@@ -20,7 +20,7 @@ export default function projectItem(props) {
     year: "numeric",
   };
 
-  const isMobile = useRecoilValue(mobileState);
+  const { mobile } = useRecoilValue(accessDeviceSelector);
   const [hover, setHover] = useState(false);
   const [textArr, setTextArr] = useState([titleText]);
   const slideText = useRef();
@@ -34,7 +34,7 @@ export default function projectItem(props) {
   return (
     <li
       className={`project-item flex w-full relative ${
-        hover && !isMobile ? "hover" : ""
+        hover && !mobile ? "hover" : ""
       }`}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}

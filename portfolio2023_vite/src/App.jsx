@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 // components
 import TransContainer from "./templates/pageTransition/transContainer";
@@ -9,9 +9,7 @@ import TransContainer from "./templates/pageTransition/transContainer";
 import { routerSet } from "./data/sitemap";
 
 // state
-import { mobileSelector } from "./hooks/state/mobile";
-import { appleSelector } from "./hooks/state/apple";
-import { tabletSelector } from "./hooks/state/tablet";
+import { accessDeviceSelector } from "./hooks/state/accessDevice";
 
 // util
 import checkScreenSize from "./hooks/util/checkScreenSize";
@@ -20,32 +18,11 @@ import windowResizeCheck from "./hooks/util/windowResize";
 export default function App() {
   // 라우터 설정
   const customRouter = createBrowserRouter(routerSet);
-  const [isMobile, setMobile] = useRecoilState(mobileSelector);
-  const [isAppleWeb, setApple] = useRecoilState(appleSelector);
-  const [isTablet, setTablet] = useRecoilState(tabletSelector);
-
-  const checkDevice = async () => {
-    console.log(`----------------- check device --------------`);
-
-    document.querySelector("html").classList.remove("mobile");
-    document.querySelector("html").classList.remove("apple-web");
-    document.querySelector("html").classList.remove("tablet");
-    if (isMobile) document.querySelector("html").classList.add("mobile");
-    if (isAppleWeb) document.querySelector("html").classList.add("apple-web");
-    if (isTablet) document.querySelector("html").classList.add("tablet");
-
-    await setMobile();
-    await setApple();
-    await setTablet(isMobile);
-
-    console.log("isMobile:", isMobile);
-    console.log("isAppleWeb:", isAppleWeb);
-    console.log("isTablet:", isTablet);
-  };
+  const setDevice = useSetRecoilState(accessDeviceSelector);
 
   useEffect(() => {
-    checkDevice();
-    windowResizeCheck(checkDevice, 20);
+    setDevice();
+    windowResizeCheck(() => setDevice(), 20);
   }, []);
 
   useEffect(() => {
