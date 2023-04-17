@@ -2,15 +2,18 @@
 @import "./scss_global";
 
 .transition-wrapper {
-  overflow: hidden;
+  // overflow: hidden;
 }
 .transition-container {
 }
 
 // 기존 페이지
 .page-exit {
+  position: absolute;
+  transition: opacity 1s;
 }
 .page-exit-active {
+  opacity: 0;
 }
 .page-exit-done {
 }
