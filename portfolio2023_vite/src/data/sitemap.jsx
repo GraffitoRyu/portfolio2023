@@ -59,7 +59,7 @@ export const routerSet = [
 
 function getRootPathname() {
   const currentPath = window.location.pathname;
-  return currentPath.includes("projects")
-    ? currentPath.replace("projects", "")
+  return currentPath.includes("projects/")
+    ? currentPath.replace("projects/", "")
     : currentPath;
 }
