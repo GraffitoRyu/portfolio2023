@@ -49,6 +49,9 @@
           width var(--trans-time-move) 0s var(--trans-func-quart);
       }
     }
+    @media only screen and (max-width: 640px) {
+      margin-bottom: rem(24px);
+    }
   }
   .summary-title {
     margin-bottom: rem(24px);
@@ -59,10 +62,14 @@
       weight: 700;
     }
     transition: $trans_color, $trans_opacity_quart, $trans_form_quart;
+    @media only screen and (max-width: 640px) {
+      font-size: rem(56px);
+      line-height: rem(56px);
+    }
   }
   p {
     margin-bottom: rem(48px);
-    line-height: rem(32px);
+    line-height: rem(48px);
     font: {
       size: rem(32px);
       weight: var(--weight-regular);
@@ -108,6 +115,10 @@
     }
     path {
       fill: var(--proj-border);
+    }
+    @media only screen and (max-width: 640px) {
+      width: rem(120px);
+      height: rem(120px);
     }
   }
   .hover-title {

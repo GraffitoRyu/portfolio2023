@@ -2,15 +2,17 @@
 @import "./scss_global";
 
 .page-visual {
+  // height: 60vh;
   height: 100vh;
-  // height: calc(100vh - var(--header-height));
+  --title-size: #{rem(144px)};
+
+  @media only screen and (min-width: 1024px) {
+    --title-size: #{rem(240px)};
+  }
 
   .page-title-text {
-    font: {
-      size: rem(240px);
-    }
-
-    line-height: rem(240px);
+    font-size: var(--title-size);
+    line-height: var(--title-size);
   }
 
   .page-title-border-text {

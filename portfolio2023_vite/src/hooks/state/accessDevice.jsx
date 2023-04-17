@@ -37,10 +37,15 @@ export const accessDeviceSelector = selector({
     };
 
     const _html = document.querySelector("html");
-    _html.classList.remove("mobile", "apple-web", "tablet");
+
     if (isMobile) _html.classList.add("mobile");
+    else _html.classList.remove("mobile");
+
     if (isApple) _html.classList.add("apple");
+    else _html.classList.remove("apple");
+
     if (isTablet) _html.classList.add("tablet");
+    else _html.classList.remove("tablet");
 
     set(accessDeviceAtom, updateState);
   },

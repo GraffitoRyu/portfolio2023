@@ -25,6 +25,7 @@ export default function projectItem(props) {
   const [textArr, setTextArr] = useState([titleText]);
   const slideText = useRef();
   const [slideDuration, setSlideDuration] = useState(2);
+
   useEffect(() => {
     const { array, width } = getSlideTextSet(slideText);
     setTextArr(array);

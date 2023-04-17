@@ -2,7 +2,6 @@
 @import "./scss_global";
 
 .page-footer {
-  min-height: rem(920px);
   padding: rem(80px);
 
   .footer-card {
@@ -26,6 +25,14 @@
   .page-title-filled-text {
     color: var(--footer-page-title-filled);
   }
+
+  @media only screen and (min-width: 1024px) {
+    min-height: rem(920px);
+  }
+}
+
+.footer-header {
+  margin-bottom: rem(160px);
 }
 
 .footer-contents {

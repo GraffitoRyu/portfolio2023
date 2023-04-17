@@ -10,7 +10,7 @@ html {
   // font-size: 1vw;
   font-size: 10px;
 
-  @media only screen and (min-width: 640px) {
+  @media only screen and (min-width: 580px) {
     // font-size: 10px;
     font-size: 2vw;
   }
@@ -22,11 +22,11 @@ html {
 
   overflow: overlay;
   &::-webkit-scrollbar {
-    width: rem(24px);
+    width: 24px;
   }
   &::-webkit-scrollbar-thumb {
-    border-radius: rem(12px);
-    border: rem(8px) solid transparent;
+    border-radius: 12px;
+    border: 8px solid transparent;
     background: var(--scroll-thumb);
     background-clip: padding-box;
   }
@@ -76,7 +76,7 @@ circle {
 }
 
 .around-padding {
-  padding: 0 rem(80px);
+  padding: rem(80px);
 }
 
 .page-title-border-text {
@@ -107,8 +107,19 @@ circle {
     background: var(--intro-grad-from);
     background: linear-gradient(
       0deg,
-      var(--intro-grad-from) 50%,
+      var(--intro-grad-from) 30%,
       var(--intro-grad-to) 100%
     );
+    .section-header {
+      height: 40vh;
+    }
+    @media only screen and (min-width: 1024px) {
+      background: var(--intro-grad-from);
+      background: linear-gradient(
+        0deg,
+        var(--intro-grad-from) 0%,
+        var(--intro-grad-to) 100%
+      );
+    }
   }
 }

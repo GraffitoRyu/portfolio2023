@@ -8,10 +8,10 @@ export default function pageFooter() {
   return (
     <footer
       id="pageFooter"
-      className="page-footer around-padding page-bg w-full h-screen"
+      className="page-footer around-padding page-bg w-full lg:h-screen"
     >
-      <div className="footer-card flex flex-col justify-between w-full h-full">
-        <header className="footer-header flex justify-between">
+      <div className="footer-card flex flex-col justify-between w-full lg:h-full">
+        <header className="footer-header sm:flex justify-between">
           <h2 className="footer-title">
             <span className="page-title-text page-title-border-text flex items-center">
               Let's work
@@ -22,7 +22,7 @@ export default function pageFooter() {
           </h2>
           <p className="published">published in April, 2023.</p>
         </header>
-        <div className="footer-contents flex w-full">
+        <div className="footer-contents sm:flex w-full">
           <p className="footer-experience flex flex-col w-1/2">
             <span>Front-end Development</span>
             <span>Web Publish</span>

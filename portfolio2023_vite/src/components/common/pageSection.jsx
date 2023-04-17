@@ -9,7 +9,7 @@ export default function section(props) {
     <section
       className={`page-section side-padding lg:flex items-start ${sectionCode}-section`}
     >
-      <header className="section-header lg:w-1/2">
+      <header className={`section-header lg:w-1/2`}>
         {header ? (
           <React.Fragment>
             <h2 className="capitalize">{header.title}</h2>

@@ -21,15 +21,18 @@
 .gnb {
   .gnb-btn {
     margin: 0 rem(20px);
-
+    color: var(--gnb-menu);
+    font-weight: var(--weight-medium);
+    transition: $trans_color;
     span {
-      color: var(--gnb-menu);
-      font-weight: var(--weight-medium);
     }
     &.on {
+      color: var(--gnb-menu-selected);
       span {
-        color: var(--gnb-menu-selected);
       }
+    }
+    &.hover {
+      color: var(--gnb-menu-hover);
     }
   }
 }
