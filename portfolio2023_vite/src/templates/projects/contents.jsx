@@ -7,20 +7,17 @@ import ProjectList from "../../components/projects/list";
 export default function pageContents(props) {
   return (
     <>
-      <main
-        id="pageContents"
-        className="page-contents page-projects scroll-container"
-      >
-        <PageVisual borderText="Selected" filledText="projects" />
-        <PageSection
-          sectionCode="intro"
-          header={undefined}
-          contents={<Intro />}
-        />
-        <section className="page-section">
-          <ProjectList />
-        </section>
-      </main>
+      {/* <main id="pageContents" className="page-contents page-projects"> */}
+      <PageVisual borderText="Selected" filledText="projects" />
+      <PageSection
+        sectionCode="intro"
+        header={undefined}
+        contents={<Intro />}
+      />
+      <section className="page-section">
+        <ProjectList />
+      </section>
+      {/* </main> */}
     </>
   );
 }
