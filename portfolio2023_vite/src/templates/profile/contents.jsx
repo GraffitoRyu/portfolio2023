@@ -10,7 +10,7 @@ export default function pageContents() {
   return (
     <main
       id="pageContents"
-      className="page-contents page-profile relative top-0"
+      className="page-contents page-profile relative top-0 parallax-frame"
     >
       <PageVisual borderText="Ready for" filledText="interaction" />
       <PageSection

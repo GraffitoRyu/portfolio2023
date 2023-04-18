@@ -8,7 +8,7 @@ export default function pageContents(props) {
   return (
     <main
       id="pageContents"
-      className="page-contents page-projects relative top-0"
+      className="page-contents page-projects relative top-0 parallax-frame"
     >
       <PageVisual borderText="Selected" filledText="projects" />
       <PageSection
