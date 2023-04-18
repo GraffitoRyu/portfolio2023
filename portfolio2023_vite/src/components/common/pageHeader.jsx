@@ -19,7 +19,7 @@ export default function pageHeader() {
   return (
     <header
       id="pageHeader"
-      className="page-header flex side-padding sticky w-full top-0"
+      className="page-header flex side-padding sticky w-full top-0 left-0"
     >
       <HeaderTimer />
       <GnbMenu />
