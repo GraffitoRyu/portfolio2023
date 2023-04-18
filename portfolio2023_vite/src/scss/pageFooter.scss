@@ -3,7 +3,8 @@
 
 .page-footer {
   padding: rem(80px);
-
+  position: relative;
+  z-index: 1000;
   .footer-card {
     padding: rem(80px);
     border-radius: rem(80px);

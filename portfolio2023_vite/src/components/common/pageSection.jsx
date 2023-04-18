@@ -7,7 +7,7 @@ export default function section(props) {
 
   return (
     <section
-      className={`page-section side-padding lg:flex items-start ${sectionCode}-section`}
+      className={`page-section side-padding lg:flex items-start ${sectionCode}-section relative`}
     >
       <header className={`section-header lg:w-1/2`}>
         {header ? (

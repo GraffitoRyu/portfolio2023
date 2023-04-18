@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 // components
 import * as Pages from "../templates/routes";
-import TransContainer from "../templates/pageTransition/transContainer";
+import PageContents from "../templates/pageContents";
 
 export const sitemapData = [
   {
@@ -46,7 +46,7 @@ export const sitemapData = [
 export const routerSet = [
   {
     path: "/",
-    element: <TransContainer />,
+    element: <PageContents />,
     children: sitemapData
       .filter(d => !d.external)
       .map(d => ({

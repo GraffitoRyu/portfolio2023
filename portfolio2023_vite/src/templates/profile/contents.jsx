@@ -8,10 +8,8 @@ import Tools from "../../components/profile/tools";
 
 export default function pageContents() {
   return (
-    <main
-      id="pageContents"
-      className="page-contents page-profile relative top-0 parallax-frame"
-    >
+    <>
+      {/* <main id="pageContents" className="page-contents page-profile"> */}
       <PageVisual borderText="Ready for" filledText="interaction" />
       <PageSection
         sectionCode="intro"
@@ -48,6 +46,7 @@ export default function pageContents() {
         }}
         contents={<Tools />}
       />
-    </main>
+      {/* </main> */}
+    </>
   );
 }

@@ -14,7 +14,7 @@ export default defineConfig({
   publicDir: publicDir,
   appType: 'mpa',
   server: {
-    host: '192.168.10.144',
+    host: '192.168.219.108',
     port: '3333',
   },
   preview: { port: '2871', },

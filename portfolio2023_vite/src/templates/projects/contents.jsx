@@ -6,10 +6,8 @@ import ProjectList from "../../components/projects/list";
 
 export default function pageContents(props) {
   return (
-    <main
-      id="pageContents"
-      className="page-contents page-projects relative top-0 parallax-frame"
-    >
+    <>
+      {/* <main id="pageContents" className="page-contents page-projects"> */}
       <PageVisual borderText="Selected" filledText="projects" />
       <PageSection
         sectionCode="intro"
@@ -19,6 +17,7 @@ export default function pageContents(props) {
       <section className="page-section">
         <ProjectList />
       </section>
-    </main>
+      {/* </main> */}
+    </>
   );
 }
