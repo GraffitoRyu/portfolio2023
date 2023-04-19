@@ -111,6 +111,7 @@ circle {
   transition: background-color var(--trans-time-color);
   position: relative;
   &.intro-section {
+    padding-top: 0;
     background: var(--intro-grad-from);
     background: linear-gradient(
       0deg,

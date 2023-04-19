@@ -5,8 +5,8 @@ import { HelmetProvider } from "react-helmet-async";
 import App from "../src/App";
 import Cursor from "../src/components/common/cursor";
 
-import "../src/scss/reset.scss";
 import "../src/scss/tailwind.scss";
+import "../src/scss/reset.scss";
 import "../src/scss/common.scss";
 import "../src/scss/cursor.scss";
 import "../src/scss/parallax.scss";

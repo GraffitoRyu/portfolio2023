@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useOutlet } from "react-router-dom";
 
 // components
@@ -7,17 +7,22 @@ import SeoHelmet from "../components/seo/helmet";
 import PageHeader from "../components/common/pageHeader";
 import PageFooter from "../components/common/pageFooter";
 
-// state
-import { scrollState } from "../hooks/state/scroll";
-
 // util
 import windowScroll from "../hooks/util/windowScroll";
 import setStickyPos from "../hooks/util/setStickyPos";
+
+// state
+import { pageState } from "../hooks/state/page";
+import { scrollState } from "../hooks/state/scroll";
+import { sectionState } from "../hooks/state/section";
 
 export default function transContainer() {
   const currentOutlet = useOutlet();
   const containerRef = useRef();
   const setScrollPos = useSetRecoilState(scrollState);
+
+  const pageCategory = useRecoilValue(pageState);
+  // const section = useRecoilValue(sectionState[pageCategory]);
 
   const updateScrollPos = () => {
     if (containerRef?.current) {

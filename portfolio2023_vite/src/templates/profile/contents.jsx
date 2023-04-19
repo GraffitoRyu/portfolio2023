@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
+
 // components
 import PageVisual from "../../components/common/pageVisual";
 import PageSection from "../../components/common/pageSection";
@@ -6,26 +9,32 @@ import Career from "../../components/profile/career";
 import Experience from "../../components/profile/experience";
 import Tools from "../../components/profile/tools";
 
+// state
+import { pageState } from "../../hooks/state/page";
+
 export default function pageContents() {
+  const setPageState = useSetRecoilState(pageState);
+
+  useEffect(() => {
+    setPageState(prev => ({ ...prev, cur: "profile" }));
+  }, []);
+
   return (
     <>
       {/* <main id="pageContents" className="page-contents page-profile"> */}
       <PageSection
-        page="profile"
         index={0}
         section_code="visual"
         borderText="Ready for"
         filledText="interaction"
       />
       <PageSection
-        page="profile"
         index={1}
         section_code="intro"
         header={{ empty: true }}
         contents={<Intro />}
       />
       <PageSection
-        page="profile"
         index={2}
         section_code="career"
         header={{
@@ -36,7 +45,6 @@ export default function pageContents() {
         contents={<Career />}
       />
       <PageSection
-        page="profile"
         index={3}
         section_code="experience"
         header={{
@@ -53,7 +61,6 @@ export default function pageContents() {
         contents={<Experience />}
       />
       <PageSection
-        page="profile"
         index={4}
         section_code="tools"
         header={{

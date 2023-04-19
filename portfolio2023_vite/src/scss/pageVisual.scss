@@ -16,13 +16,24 @@
   .page-title-text {
     font-size: var(--title-size);
     line-height: var(--title-size);
+    transform: translateY(50%);
+    opacity: 0;
+    transition-property: transform, opacity;
+    transition-duration: 3s;
+    &.loaded {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 
   .page-title-border-text {
     -webkit-text-stroke: 1px var(--page-title-border);
+    transition-timing-function: var(--trans-func-expo);
   }
 
   .page-title-filled-text {
     color: var(--page-title-filled);
+    transition-timing-function: var(--trans-func-expo);
+    transition-delay: 0.48s;
   }
 }

@@ -1,21 +1,27 @@
-import React, { useRef, useEffect } from "react";
-import { useSetRecoilState } from "recoil";
+import React, { useRef, useEffect, useState } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 // components
 import PageVisual from "./pageVisual";
 
-// state
-import { sectionState } from "../../hooks/state/section";
+// util
 import windowResize from "../../hooks/util/windowResize";
 
+// state
+import { sectionState } from "../../hooks/state/section";
+import { pageState } from "../../hooks/state/page";
+
 export default function section(props) {
-  const pageCategory = props.page;
   const index = props.index;
   const sectionCode = props.section_code;
   const header = props.header;
   const contents = props.contents;
 
+  const pageCategory = useRecoilValue(pageState).cur;
+  const isVisual = sectionCode === "visual";
+
   const sectionRef = useRef();
+  const [loaded, setLoaded] = useState("");
   const setSection = useSetRecoilState(sectionState[pageCategory]);
 
   const sectionClass = [
@@ -29,8 +35,10 @@ export default function section(props) {
   const updateSectionState = () => {
     const state = {
       index: index,
-      offset: sectionRef?.current.offsetTop,
+      view: false,
     };
+    if (sectionRef?.current) state.offset = sectionRef.current.offsetTop;
+
     setSection(prev => ({
       ...prev,
       [sectionCode]: { ...state },
@@ -44,7 +52,11 @@ export default function section(props) {
     }, 50);
   }, []);
 
-  return sectionCode == "visual" ? (
+  useEffect(() => {
+    if (isVisual) setLoaded("loaded");
+  }, []);
+
+  return isVisual ? (
     //   <PageVisual {...props} ref={sectionRef} />
     <section
       className="page-visual visual-section around-padding w-full flex items-center sm:items-end parallax-section"
@@ -52,10 +64,14 @@ export default function section(props) {
     >
       <div className="parallax-layer parallax-depth-6 flex items-center sm:items-end around-padding">
         <h1 className="page-title">
-          <span className="page-title-text page-title-border-text flex items-center">
+          <span
+            className={`page-title-text page-title-border-text flex items-center ${loaded}`}
+          >
             {props.borderText}
           </span>
-          <span className="page-title-text page-title-filled-text flex items-center">
+          <span
+            className={`page-title-text page-title-filled-text flex items-center ${loaded}`}
+          >
             {props.filledText}
           </span>
         </h1>
