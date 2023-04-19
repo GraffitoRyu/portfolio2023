@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import { useOutlet } from "react-router-dom";
 
 // components
@@ -14,21 +14,21 @@ import setStickyPos from "../hooks/util/setStickyPos";
 // state
 import { pageState } from "../hooks/state/page";
 import { scrollState } from "../hooks/state/scroll";
-import { sectionState } from "../hooks/state/section";
+import { sectionState, sectionOffsetState } from "../hooks/state/section";
 
 export default function transContainer() {
   const currentOutlet = useOutlet();
   const containerRef = useRef();
-  const setScrollPos = useSetRecoilState(scrollState);
+  const [scrollPos, setScrollPos] = useRecoilState(scrollState);
 
-  const pageCategory = useRecoilValue(pageState);
-  // const section = useRecoilValue(sectionState[pageCategory]);
+  const pageCategory = useRecoilValue(pageState).cur;
+  const section = useRecoilValue(sectionState[pageCategory]);
+  const sectionOffset = useRecoilValue(sectionOffsetState[pageCategory]);
 
   const updateScrollPos = () => {
     if (containerRef?.current) {
-      const scrollPos = containerRef.current.scrollTop;
       setScrollPos(containerRef.current.scrollTop);
-      setStickyPos(scrollPos);
+      setStickyPos(containerRef.current.scrollTop);
     }
   };
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function transContainer() {
   return (
     <>
       <SeoHelmet />
-      <PageHeader />
+      <PageHeader scrollPos={scrollPos} />
       <div className="scroll-container parallax-frame" ref={containerRef}>
         {currentOutlet}
         <PageFooter />

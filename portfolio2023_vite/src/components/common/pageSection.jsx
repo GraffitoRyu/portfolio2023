@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
 
 // components
 import PageVisual from "./pageVisual";
@@ -10,6 +10,8 @@ import windowResize from "../../hooks/util/windowResize";
 // state
 import { sectionState } from "../../hooks/state/section";
 import { pageState } from "../../hooks/state/page";
+import { sectionOffsetState } from "../../hooks/state/section";
+import updateArrayAtom from "../../hooks/util/updateArrayAtom";
 
 export default function section(props) {
   const index = props.index;
@@ -22,7 +24,8 @@ export default function section(props) {
 
   const sectionRef = useRef();
   const [loaded, setLoaded] = useState("");
-  const setSection = useSetRecoilState(sectionState[pageCategory]);
+  const [section, setSection] = useRecoilState(sectionState[pageCategory]);
+  const setSectionOffset = useSetRecoilState(sectionOffsetState[pageCategory]);
 
   const sectionClass = [
     "side-padding",
@@ -33,16 +36,27 @@ export default function section(props) {
   ];
 
   const updateSectionState = () => {
-    const state = {
-      index: index,
+    let state = {
+      order: index,
       view: false,
     };
-    if (sectionRef?.current) state.offset = sectionRef.current.offsetTop;
+    if (sectionRef?.current) {
+      const offsetY = sectionRef.current.offsetTop;
+      const height = sectionRef.current.clientHeight;
+      state = {
+        ...state,
+        offset: offsetY,
+        height: height,
+        range: [offsetY, offsetY + height],
+      };
+    }
 
     setSection(prev => ({
       ...prev,
       [sectionCode]: { ...state },
     }));
+
+    setSectionOffset(prev => updateArrayAtom(prev, index, state.range));
   };
 
   useEffect(() => {
@@ -50,6 +64,7 @@ export default function section(props) {
     windowResize(() => {
       updateSectionState();
     }, 50);
+    console.log(section);
   }, []);
 
   useEffect(() => {

@@ -10,3 +10,14 @@ export const sectionState = {
     default: {},
   }),
 };
+
+export const sectionOffsetState = {
+  profile: atom({
+    key: "profileSectionOffsetState",
+    default: [],
+  }),
+  projects: atom({
+    key: "projectsSectionOffsetState",
+    default: [],
+  }),
+};

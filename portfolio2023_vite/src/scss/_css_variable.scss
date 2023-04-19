@@ -13,7 +13,7 @@
   --trans-func-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --trans-func-back: cubic-bezier(0.34, 1.56, 0.64, 1);
   --trans-time-color: var(--ms-300);
-  --trans-time-cursor: var(--ms-400);
+  --trans-time-cursor: var(--ms-300);
   --trans-time-move: var(--ms-800);
   --screen-size-x: 1920px;
   --screen-size-y: 927px;
@@ -41,6 +41,10 @@
   // page background
   --frame-bg: #efefef;
   --page-bg: #fff;
+
+  // selection
+  --selection-bg: #44e588;
+  --selection-text: #3a3a3a;
 
   // page header
   --time-bar: #707070;
@@ -120,6 +124,10 @@
     // page background
     --frame-bg: #141414;
     --page-bg: #1a1a1a;
+
+    // selection
+    --selection-bg: #e28f38;
+    --selection-text: white;
 
     // page header
     --time-bar: #909090;

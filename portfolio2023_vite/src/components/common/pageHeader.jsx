@@ -12,9 +12,9 @@ import { headerState } from "../../hooks/state/header";
 
 // util
 import windowResize from "../../hooks/util/windowResize";
-import { setCSSProps } from "../../hooks/util/cssProperty";
+import { getCSSProps, setCSSProps } from "../../hooks/util/cssProperty";
 
-export default function pageHeader() {
+export default function pageHeader(props) {
   const headerRef = useRef();
   const setHeader = useSetRecoilState(headerState);
 
@@ -38,6 +38,10 @@ export default function pageHeader() {
       ref={headerRef}
     >
       <HeaderTimer />
+      {/* <div className="flex items-center" style={{ color: "#fff" }}>
+        headerHeight: {getCSSProps("--header-height")} / footerOffset:
+        {getCSSProps("--footer-offset-y")} / scrollPos: {props.scrollPos}
+      </div> */}
       <GnbMenu />
       <div className="util-menu flex items-center">
         <ThemeMenu />

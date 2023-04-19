@@ -6,6 +6,7 @@
   font-size: rem(20px);
   z-index: 500;
   transform: translate(0, var(--header-sticky-pos));
+  pointer-events: none;
 }
 
 .current-time {
@@ -20,6 +21,7 @@
 }
 
 .gnb {
+  pointer-events: all;
   .gnb-btn {
     margin: 0 rem(20px);
     color: var(--gnb-menu);
@@ -36,6 +38,7 @@
 
 .util-item {
   margin-left: rem(24px);
+  pointer-events: all;
 }
 
 .util-btn {
