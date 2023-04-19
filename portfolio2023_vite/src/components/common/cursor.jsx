@@ -6,6 +6,7 @@ import { cursor } from "../../hooks/state/cursor";
 
 // state
 import { accessDeviceSelector } from "../../hooks/state/accessDevice";
+import { setCSSProps } from "../../hooks/util/cssProperty";
 
 export default function customCursor() {
   // 마우스 장치 여부
@@ -27,6 +28,8 @@ export default function customCursor() {
         hover: isInteractiveElement,
       };
       setPos(d);
+      setCSSProps("--cursor-x", `${e.clientX}px`);
+      setCSSProps("--cursor-y", `${e.clientY}px`);
     }
   };
 
@@ -49,7 +52,6 @@ export default function customCursor() {
         cursorHide ? "opacity-0" : ""
       }`}
       ref={cursorRef}
-      style={{ top: pos.y, left: pos.x }}
     >
       <figure className="cursor"></figure>
     </div>

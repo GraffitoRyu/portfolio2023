@@ -5,6 +5,7 @@
   padding: rem(80px);
   font-size: rem(20px);
   z-index: 500;
+  transform: translate(0, var(--header-sticky-pos));
 }
 
 .current-time {
@@ -24,12 +25,8 @@
     color: var(--gnb-menu);
     font-weight: var(--weight-medium);
     transition: $trans_color;
-    span {
-    }
     &.on {
       color: var(--gnb-menu-selected);
-      span {
-      }
     }
     &.hover {
       color: var(--gnb-menu-hover);

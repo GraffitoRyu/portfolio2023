@@ -12,12 +12,16 @@
   --trans-func-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --trans-func-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --trans-func-back: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --screen-size-x: 1920px;
-  --screen-size-y: 927px;
-  --header-height: 208px;
   --trans-time-color: var(--ms-300);
   --trans-time-cursor: var(--ms-400);
   --trans-time-move: var(--ms-800);
+  --screen-size-x: 1920px;
+  --screen-size-y: 927px;
+  --header-height: 208px;
+  --footer-offset-y: 0px;
+  // --scroll-pos: 0px;
+  --header-sticky-pos: 0px;
+  --footer-padding: 80px;
 
   // font weight
   --weight-light: 400;
@@ -31,6 +35,8 @@
 
   // cursor
   --cursor: #fff;
+  --cursor-x: 0px;
+  --cursor-y: 0px;
 
   // page background
   --frame-bg: #efefef;
