@@ -5,6 +5,8 @@
   width: 1px;
   height: 1px;
   position: fixed;
+  top: var(--cursor-y);
+  left: var(--cursor-x);
   z-index: 9999999;
   pointer-events: none;
   backface-visibility: visible;

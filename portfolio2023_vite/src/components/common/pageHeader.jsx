@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 // components
 import HeaderTimer from "../headTimer/timer";
@@ -11,17 +11,17 @@ import ThemeMenu from "../globalMenu/theme";
 import { headerState } from "../../hooks/state/header";
 
 // util
-import saveCssHeaderHeight from "../../hooks/util/saveCssHeaderHeight";
 import windowResizeCheck from "../../hooks/util/windowResize";
+import { setCSSProps } from "../../hooks/util/cssProperty";
 
 export default function pageHeader() {
   const headerRef = useRef();
-  const [header, setHeader] = useRecoilState(headerState);
+  const setHeader = useSetRecoilState(headerState);
 
   const updateHeaderHeight = () => {
     if (headerRef?.current) {
-      const height = headerRef.current.clientHeight;
-      saveCssHeaderHeight(height);
+      const height = headerRef.current.offsetHeight;
+      setCSSProps("--header-height", `${height}px`);
       setHeader(prev => ({ ...prev, height: height }));
     }
   };
@@ -29,14 +29,13 @@ export default function pageHeader() {
   useEffect(() => {
     updateHeaderHeight();
     windowResizeCheck(updateHeaderHeight, 20);
-  }, [header.stickyPos]);
+  }, []);
 
   return (
     <header
       id="pageHeader"
       className="page-header flex side-padding fixed w-full left-0"
       ref={headerRef}
-      style={{ transform: `translateY(${header.stickyPos}px)` }}
     >
       <HeaderTimer />
       <GnbMenu />

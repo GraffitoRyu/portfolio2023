@@ -1,39 +1,40 @@
-import { useEffect, useRef, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useEffect, useRef } from "react";
+import { useSetRecoilState } from "recoil";
 
 // components
 import FooterSitemapBtn from "../buttons/footerSitemapBtn";
 
 // data
 import { sitemapData } from "../../data/sitemap";
-import { scrollState } from "../../hooks/state/scroll";
 
 // state
-import { headerState } from "../../hooks/state/header";
 import { footerState } from "../../hooks/state/footer";
 
 // util
 import windowResizeCheck from "../../hooks/util/windowResize";
+import { setCSSProps } from "../../hooks/util/cssProperty";
 
 export default function pageFooter() {
   const footerRef = useRef();
-  const [footer, setFooter] = useRecoilState(footerState);
+  const setFooter = useSetRecoilState(footerState);
 
   const updateFooterPos = () => {
     if (footerRef?.current) {
-      setFooter({ offset: footerRef.current.offsetTop });
+      const offsetY = footerRef.current.offsetTop;
+      setCSSProps("--footer-offset-y", `${offsetY}px`);
+      setFooter(prev => ({ ...prev, offset: offsetY }));
     }
   };
 
   useEffect(() => {
     updateFooterPos();
     windowResizeCheck(updateFooterPos, 20);
-  }, [footer.offset]);
+  }, []);
 
   return (
     <footer
       id="pageFooter"
-      className="page-footer around-padding page-bg w-full lg:h-screen"
+      className="page-footer page-bg w-full lg:h-screen"
       ref={footerRef}
     >
       <div className="footer-card flex flex-col justify-between w-full lg:h-full">

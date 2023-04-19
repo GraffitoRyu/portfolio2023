@@ -12,13 +12,18 @@ import { routerSet } from "./data/sitemap";
 import { accessDeviceSelector } from "./hooks/state/accessDevice";
 
 // util
-import checkScreenSize from "./hooks/util/checkScreenSize";
 import windowResizeCheck from "./hooks/util/windowResize";
+import { setCSSProps } from "./hooks/util/cssProperty";
 
 export default function App() {
   // 라우터 설정
   const customRouter = createBrowserRouter(routerSet);
   const setDevice = useSetRecoilState(accessDeviceSelector);
+
+  const updateScreenSize = () => {
+    setCSSProps("--screen-size-x", `${window.innerWidth}px`);
+    setCSSProps("--screen-size-y", `${window.innerHeight}px`);
+  };
 
   useEffect(() => {
     setDevice();
@@ -26,8 +31,8 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    checkScreenSize();
-    windowResizeCheck(checkScreenSize, 20);
+    updateScreenSize();
+    windowResizeCheck(updateScreenSize, 20);
   }, []);
 
   return (
