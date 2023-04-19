@@ -11,7 +11,7 @@ import ThemeMenu from "../globalMenu/theme";
 import { headerState } from "../../hooks/state/header";
 
 // util
-import windowResizeCheck from "../../hooks/util/windowResize";
+import windowResize from "../../hooks/util/windowResize";
 import { setCSSProps } from "../../hooks/util/cssProperty";
 
 export default function pageHeader() {
@@ -28,7 +28,7 @@ export default function pageHeader() {
 
   useEffect(() => {
     updateHeaderHeight();
-    windowResizeCheck(updateHeaderHeight, 20);
+    windowResize(updateHeaderHeight, 20);
   }, []);
 
   return (
