@@ -1,4 +1,4 @@
-export default function windowResizeCheck(updateFunction, checkTime) {
+export default function windowResize(updateFunction, checkTime) {
   function debounce(callback) {
     let timer = undefined;
     return () => {

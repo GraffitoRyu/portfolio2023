@@ -3,6 +3,7 @@ $parallax-level: 20;
 
 .parallax-frame {
   perspective: $parallax-deep;
+  // perspective-origin: 100% top;
 }
 .parallax-section {
   transform-style: preserve-3d;
@@ -14,6 +15,7 @@ $parallax-level: 20;
   left: 0;
   width: 100%;
   height: 100%;
+  // transform-origin: 100% top;
 }
 
 @for $level from 1 to $parallax-level {

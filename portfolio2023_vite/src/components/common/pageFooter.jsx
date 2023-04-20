@@ -11,7 +11,7 @@ import { sitemapData } from "../../data/sitemap";
 import { footerState } from "../../hooks/state/footer";
 
 // util
-import windowResizeCheck from "../../hooks/util/windowResize";
+import windowResize from "../../hooks/util/windowResize";
 import { setCSSProps } from "../../hooks/util/cssProperty";
 
 export default function pageFooter() {
@@ -28,7 +28,7 @@ export default function pageFooter() {
 
   useEffect(() => {
     updateFooterPos();
-    windowResizeCheck(updateFooterPos, 20);
+    windowResize(updateFooterPos, 20);
   }, []);
 
   return (

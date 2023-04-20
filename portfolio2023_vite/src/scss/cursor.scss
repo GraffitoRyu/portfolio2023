@@ -28,4 +28,11 @@
       height: 40px;
     }
   }
+  &.text {
+    .cursor {
+      width: rem(4px);
+      height: rem(40px);
+      border-radius: rem(2px);
+    }
+  }
 }

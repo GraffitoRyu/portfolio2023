@@ -5,7 +5,7 @@ export default function career() {
       period: [new Date("2019-11-15"), new Date("2023-01-06")],
       role: "프론트엔드 엔지니어",
       company: "3SECONDZ",
-      desc: "자사 솔루션 서비스 웹페이지 프론트엔드 및 퍼블리싱 개발 및 유지보수 담당",
+      desc: "자사 솔루션 서비스 웹페이지 프론트엔드, 퍼블리싱 개발 및 유지보수 담당",
     },
     {
       key: "kweb",

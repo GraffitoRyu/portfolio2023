@@ -150,13 +150,19 @@
 }
 
 .tool-list {
+  width: calc(100% + rem(160px));
+  margin: 0 rem(-80px);
   li {
     color: var(--tools);
-    margin: 0 rem(80px) rem(64px);
+    padding: 0 rem(80px);
+    margin-bottom: rem(64px);
     line-height: rem(64px);
     font: {
       size: rem(40px);
       weight: 700;
     }
+  }
+  @media only screen and (min-width: 1024px) {
+    padding-right: rem(240px);
   }
 }

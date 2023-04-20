@@ -16,7 +16,7 @@ export default function tools() {
   ];
 
   return (
-    <ul className="tool-list flex flex-wrap items-center">
+    <ul className="tool-list flex flex-wrap items-center justify-center lg:justify-start">
       {toolList.map(d => (
         <li key={d}>{d}</li>
       ))}
