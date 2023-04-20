@@ -42,7 +42,7 @@ export default function transContainer() {
     <>
       <SeoHelmet />
       <PageHeader scrollPos={scrollPos} />
-      <div className="scroll-container parallax-frame" ref={containerRef}>
+      <div className="scroll-container" ref={containerRef}>
         {currentOutlet}
         <PageFooter />
       </div>

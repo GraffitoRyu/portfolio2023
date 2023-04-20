@@ -64,34 +64,14 @@ export default function section(props) {
     windowResize(() => {
       updateSectionState();
     }, 50);
-    console.log(section);
   }, []);
 
   useEffect(() => {
-    if (isVisual) setLoaded("loaded");
+    // if (isVisual) setLoaded("loaded");
   }, []);
 
   return isVisual ? (
-    //   <PageVisual {...props} ref={sectionRef} />
-    <section
-      className="page-visual visual-section around-padding w-full flex items-center sm:items-end parallax-section"
-      ref={sectionRef}
-    >
-      <div className="parallax-layer parallax-depth-6 flex items-center sm:items-end around-padding">
-        <h1 className="page-title">
-          <span
-            className={`page-title-text page-title-border-text flex items-center ${loaded}`}
-          >
-            {props.borderText}
-          </span>
-          <span
-            className={`page-title-text page-title-filled-text flex items-center ${loaded}`}
-          >
-            {props.filledText}
-          </span>
-        </h1>
-      </div>
-    </section>
+    <PageVisual {...props} visualRef={sectionRef} />
   ) : (
     <section
       className={`page-section ${header ? sectionClass.join(" ") : "w-full"}`}
