@@ -18,6 +18,8 @@ export default function pageVisual(props) {
   // 스크롤 애니메이션
   // 1. InView로 화면 내 들어왔는지 체크
   // 2. 들어왔을 떄, offset과 scrollPos로 애니메이션 처리
+  //  --> 깔끔하게 움직이지 않음,
+  //  --> react-scroll-motion 병행
 
   useEffect(() => {
     if (inView) {
