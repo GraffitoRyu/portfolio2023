@@ -8,6 +8,11 @@
     padding-top: rem(120px);
   }
 }
+
+.section-header {
+  top: var(--header-height);
+}
+
 .intro-section {
   h2 {
     margin-bottom: rem(160px);

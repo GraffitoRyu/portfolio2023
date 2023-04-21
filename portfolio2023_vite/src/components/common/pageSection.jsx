@@ -20,20 +20,12 @@ export default function section(props) {
   const contents = props.contents;
 
   const pageCategory = useRecoilValue(pageState).cur;
-  const isVisual = sectionCode === "visual";
 
   const sectionRef = useRef();
-  const [loaded, setLoaded] = useState("");
   const [section, setSection] = useRecoilState(sectionState[pageCategory]);
   const setSectionOffset = useSetRecoilState(sectionOffsetState[pageCategory]);
 
-  const sectionClass = [
-    "side-padding",
-    "lg:flex",
-    "items-start",
-    `${sectionCode}-section`,
-    "relative",
-  ];
+  const sectionClass = ["side-padding", "items-start", "relative"];
 
   const updateSectionState = () => {
     let state = {
@@ -66,19 +58,16 @@ export default function section(props) {
     }, 50);
   }, []);
 
-  useEffect(() => {
-    // if (isVisual) setLoaded("loaded");
-  }, []);
-
-  return isVisual ? (
-    <PageVisual {...props} visualRef={sectionRef} />
-  ) : (
+  return (
     <section
-      className={`page-section ${header ? sectionClass.join(" ") : "w-full"}`}
+      className={`page-section ${sectionCode}-section lg:flex ${
+        header ? sectionClass.join(" ") : "w-full"
+      } ${sectionCode == "intro" ? "flex-wrap" : ""}`}
       ref={sectionRef}
     >
+      {sectionCode == "intro" ? <PageVisual {...props} /> : ""}
       {header ? (
-        <header className={`section-header lg:w-1/2`}>
+        <header className="section-header lg:w-1/2 sticky">
           {header.empty ? (
             ""
           ) : (

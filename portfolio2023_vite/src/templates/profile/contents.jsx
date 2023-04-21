@@ -21,21 +21,16 @@ export default function pageContents() {
 
   return (
     <>
-      {/* <main id="pageContents" className="page-contents page-profile"> */}
       <PageSection
         index={0}
-        section_code="visual"
-        borderText="Ready for"
-        filledText="interaction"
-      />
-      <PageSection
-        index={1}
         section_code="intro"
         header={{ empty: true }}
+        borderText="Ready for"
+        filledText="interaction"
         contents={<Intro />}
       />
       <PageSection
-        index={2}
+        index={1}
         section_code="career"
         header={{
           empty: false,
@@ -45,7 +40,7 @@ export default function pageContents() {
         contents={<Career />}
       />
       <PageSection
-        index={3}
+        index={2}
         section_code="experience"
         header={{
           empty: false,
@@ -61,7 +56,7 @@ export default function pageContents() {
         contents={<Experience />}
       />
       <PageSection
-        index={4}
+        index={3}
         section_code="tools"
         header={{
           empty: false,
@@ -70,7 +65,6 @@ export default function pageContents() {
         }}
         contents={<Tools />}
       />
-      {/* </main> */}
     </>
   );
 }

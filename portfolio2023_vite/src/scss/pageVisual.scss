@@ -2,7 +2,6 @@
 @import "./scss_global";
 
 .page-visual {
-  // height: 60vh;
   height: 100vh;
   --title-size: #{rem(144px)};
 
@@ -10,31 +9,20 @@
     --title-size: #{rem(240px)};
   }
   .page-title {
-    // margin-bottom: rem(240px);
-    transition: transform 1ms;
+    margin-bottom: rem(160px);
+    pointer-events: none;
   }
 
   .page-title-text {
     font-size: var(--title-size);
     line-height: var(--title-size);
-    // transform: translateY(50%);
-    // opacity: 0;
-    // transition-property: transform, opacity;
-    // transition-duration: 3s;
-    // &.loaded {
-    //   transform: translateY(0);
-    //   opacity: 1;
-    // }
   }
 
   .page-title-border-text {
     -webkit-text-stroke: 1px var(--page-title-border);
-    // transition-timing-function: var(--trans-func-expo);
   }
 
   .page-title-filled-text {
     color: var(--page-title-filled);
-    // transition-timing-function: var(--trans-func-expo);
-    // transition-delay: 0.48s;
   }
 }
