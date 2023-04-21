@@ -67,7 +67,7 @@ export default function section(props) {
     >
       {sectionCode == "intro" ? <PageVisual {...props} /> : ""}
       {header ? (
-        <header className="section-header lg:w-1/2 sticky">
+        <header className="section-header lg:w-1/2 lg:sticky">
           {header.empty ? (
             ""
           ) : (
