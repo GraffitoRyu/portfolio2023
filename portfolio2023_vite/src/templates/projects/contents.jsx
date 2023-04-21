@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
 // components
-import PageSection from "../../components/common/pageSection";
+import PageSection from "../../components/section/pageSection";
 import Intro from "../../components/projects/intro";
 import ProjectList from "../../components/projects/list";
 

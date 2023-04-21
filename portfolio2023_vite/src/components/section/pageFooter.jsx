@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useSetRecoilState } from "recoil";
 
 // components
-import FooterSitemapBtn from "../buttons/footerSitemapBtn";
+import FooterSitemapBtn from "../globalMenu/footerSitemapBtn";
 
 // data
 import { sitemapData } from "../../data/sitemap";

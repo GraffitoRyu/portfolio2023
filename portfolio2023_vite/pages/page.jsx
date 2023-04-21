@@ -2,14 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RecoilRoot, RecoilEnv } from "recoil";
 import { HelmetProvider } from "react-helmet-async";
+
+// components
 import App from "../src/App";
-import Cursor from "../src/components/common/cursor";
+import Cursor from "../src/components/cursor/cursor";
+import PageTransition from "../src/components/pageTransition/pageTransition";
 
 import "../src/scss/tailwind.scss";
 import "../src/scss/reset.scss";
 import "../src/scss/common.scss";
+import "../src/scss/pageTransition.scss";
 import "../src/scss/cursor.scss";
-// import "../src/scss/parallax.scss";
 import "../src/scss/pageHeader.scss";
 import "../src/scss/pageFooter.scss";
 import "../src/scss/pageVisual.scss";
@@ -24,6 +27,7 @@ const pageContainer = document.querySelector("#pageContainer");
 ReactDOM.createRoot(pageContainer).render(
   <React.StrictMode>
     <RecoilRoot>
+      <PageTransition />
       <HelmetProvider>
         <App />
       </HelmetProvider>

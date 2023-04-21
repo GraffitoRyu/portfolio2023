@@ -49,7 +49,7 @@ export default function pageVisual(props) {
 
   return (
     <div
-      className="page-visual around-padding w-full flex items-center sm:items-end"
+      className="page-visual w-full flex items-center sm:items-end"
       ref={visualRef}
     >
       <h1

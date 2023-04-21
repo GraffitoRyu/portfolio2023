@@ -4,7 +4,7 @@
 .page-header {
   padding: rem(80px);
   font-size: rem(20px);
-  z-index: 500;
+  z-index: 1000;
   transform: translate(0, var(--header-sticky-pos));
   pointer-events: none;
 }

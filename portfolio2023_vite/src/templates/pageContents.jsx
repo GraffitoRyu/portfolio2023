@@ -4,8 +4,8 @@ import { useOutlet } from "react-router-dom";
 
 // components
 import SeoHelmet from "../components/seo/helmet";
-import PageHeader from "../components/common/pageHeader";
-import PageFooter from "../components/common/pageFooter";
+import PageHeader from "../components/section/pageHeader";
+import PageFooter from "../components/section/pageFooter";
 
 // util
 import windowScroll from "../hooks/util/windowScroll";

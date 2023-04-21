@@ -2,15 +2,20 @@
 @import "./scss_global";
 
 .page-visual {
-  height: 100vh;
+  height: 40vh;
+  @media only screen and (min-width: 1024px) {
+    height: 100%;
+  }
   --title-size: #{rem(144px)};
 
   @media only screen and (min-width: 1024px) {
     --title-size: #{rem(240px)};
   }
   .page-title {
-    margin-bottom: rem(160px);
     pointer-events: none;
+    @media only screen and (min-width: 1024px) {
+      margin-bottom: rem(160px);
+    }
   }
 
   .page-title-text {
