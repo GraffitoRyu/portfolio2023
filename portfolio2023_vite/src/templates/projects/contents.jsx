@@ -18,26 +18,20 @@ export default function pageContents(props) {
 
   return (
     <>
-      {/* <main id="pageContents" className="page-contents page-projects"> */}
       <PageSection
         index={0}
-        section_code="visual"
-        borderText="Selected"
-        filledText="projects"
-      />
-      <PageSection
-        index={1}
         section_code="intro"
         header={{ empty: true }}
+        borderText="Selected"
+        filledText="projects"
         contents={<Intro />}
       />
       <PageSection
-        index={2}
+        index={1}
         section_code="projectsList"
         header={undefined}
         contents={<ProjectList />}
       />
-      {/* </main> */}
     </>
   );
 }
