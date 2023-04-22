@@ -5,7 +5,6 @@ import { useOutlet } from "react-router-dom";
 // components
 import SeoHelmet from "../components/seo/helmet";
 import PageHeader from "../components/section/pageHeader";
-import PageFooter from "../components/section/pageFooter";
 
 // util
 import windowScroll from "../hooks/util/windowScroll";
@@ -44,7 +43,6 @@ export default function transContainer() {
       <PageHeader scrollPos={scrollPos} />
       <div className="scroll-container" ref={containerRef}>
         {currentOutlet}
-        <PageFooter />
       </div>
     </>
   );

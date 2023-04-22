@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
 // components
+import PageFooter from "../../components/section/pageFooter";
 import PageSection from "../../components/section/pageSection";
 import Intro from "../../components/projects/intro";
 import ProjectList from "../../components/projects/list";
@@ -32,6 +33,7 @@ export default function pageContents(props) {
         header={undefined}
         contents={<ProjectList />}
       />
+      <PageFooter />
     </>
   );
 }

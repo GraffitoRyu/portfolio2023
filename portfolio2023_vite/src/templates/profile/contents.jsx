@@ -3,6 +3,7 @@ import { useSetRecoilState } from "recoil";
 
 // components
 import PageSection from "../../components/section/pageSection";
+import PageFooter from "../../components/section/pageFooter";
 import Intro from "../../components/profile/intro";
 import Career from "../../components/profile/career";
 import Experience from "../../components/profile/experience";
@@ -64,6 +65,7 @@ export default function pageContents() {
         }}
         contents={<Tools />}
       />
+      <PageFooter />
     </>
   );
 }
