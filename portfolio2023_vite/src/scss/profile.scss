@@ -1,46 +1,8 @@
 @import "./css_variable";
 @import "./scss_global";
 
-.page-section {
-}
-:not(.intro-section) {
-  .section-contents {
-    padding-top: rem(120px);
-  }
-}
-
 .section-header {
   top: var(--header-height);
-}
-
-.intro-section {
-  h2 {
-    margin-bottom: rem(160px);
-    font-weight: 300;
-    font-size: rem(48px);
-    line-height: rem(64px);
-    color: var(--intro-title);
-    strong {
-      font-weight: 500;
-      color: var(--intro-emph);
-    }
-  }
-  p {
-    font-size: rem(24px);
-    line-height: rem(40px);
-    font-weight: 400;
-    color: var(--intro-desc);
-  }
-  @media only screen and (min-width: 1024px) {
-    h2 {
-      font-size: rem(64px);
-      line-height: rem(80px);
-    }
-    p {
-      font-size: rem(32px);
-      line-height: rem(56px);
-    }
-  }
 }
 
 .section-header {

@@ -72,28 +72,32 @@ circle {
   height: 100%;
   overflow-x: hidden;
   overflow-y: overlay;
-  &::-webkit-scrollbar {
-    width: 24px;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 12px;
-    border: 8px solid transparent;
-    background: var(--scroll-thumb);
-    background-clip: padding-box;
+}
+
+html:not(.mobile) {
+  .scroll-container {
+    &::-webkit-scrollbar {
+      width: 24px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 12px;
+      border: 8px solid transparent;
+      background: var(--scroll-thumb);
+      background-clip: padding-box;
+    }
   }
 }
 
 .page-bg {
-  background: var(--page-bg);
-  transition: background-color var(--trans-time-color);
+  // background: var(--page-bg);4
 }
 
 .side-padding {
-  padding: 0 rem(80px);
+  @include sidePadding();
 }
 
 .around-padding {
-  padding: rem(80px);
+  @include aroundPadding();
 }
 
 .page-title-border-text {
@@ -109,30 +113,20 @@ circle {
 }
 
 .page-section {
-  padding-top: rem(240px);
-  padding-bottom: rem(240px);
-  background-color: var(--page-bg);
-  transition: background-color var(--trans-time-color);
+  // background-color: var(--page-bg);
+  transition: $trans_bgColor;
   position: relative;
-  &.intro-section {
-    background: var(--intro-grad-from);
-    background: linear-gradient(
-      0deg,
-      var(--intro-grad-from) 30%,
-      var(--intro-grad-to) 100%
-    );
+  &:not(.intro-section) {
+    padding-top: rem(240px);
+    padding-bottom: rem(240px);
     .section-header {
-      height: 40vh;
+      margin-bottom: rem(160px);
     }
     @media only screen and (min-width: 1024px) {
-      background: var(--intro-grad-from);
-      background: linear-gradient(
-        0deg,
-        var(--intro-grad-from) 0%,
-        var(--intro-grad-to) 100%
-      );
+      padding-bottom: 0;
     }
   }
+
   @for $i from 1 to 10 {
     &:nth-child(#{$i}) {
       z-index: #{$i * 10};

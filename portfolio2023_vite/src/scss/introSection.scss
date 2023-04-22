@@ -1,0 +1,83 @@
+@import "./css_variable";
+@import "./scss_global";
+
+.intro-section {
+  // background: var(--intro-grad-from);
+  // background: linear-gradient(
+  //   0deg,
+  //   var(--intro-grad-from) 30%,
+  //   var(--intro-grad-to) 100%
+  // );
+  .section-contents {
+    @include sidePadding();
+    padding-top: 20vh;
+    @media only screen and (min-width: 1024px) {
+      padding-top: 0;
+    }
+  }
+
+  .page-visual {
+    height: 50vh;
+    --title-size: #{rem(144px)};
+
+    @media only screen and (min-width: 1024px) {
+      height: 100vh;
+      --title-size: #{rem(320px)};
+    }
+
+    .page-title {
+      pointer-events: none;
+      @media only screen and (min-width: 1024px) {
+        margin-bottom: var(--title-size);
+      }
+    }
+
+    .page-title-text {
+      font-size: var(--title-size);
+      line-height: var(--title-size);
+      // padding-bottom: calc(var(--title-size) * 0.2);
+    }
+
+    .page-title-border-text {
+      -webkit-text-stroke: 1px var(--page-title-border);
+    }
+
+    .page-title-filled-text {
+      color: var(--page-title-filled);
+    }
+  }
+
+  h2 {
+    margin-bottom: rem(160px);
+    font-weight: 300;
+    font-size: rem(48px);
+    line-height: rem(64px);
+    color: var(--intro-title);
+    strong {
+      font-weight: 500;
+      color: var(--intro-emph);
+    }
+  }
+  p {
+    font-size: rem(24px);
+    line-height: rem(40px);
+    font-weight: 400;
+    color: var(--intro-desc);
+  }
+  @media only screen and (min-width: 1024px) {
+    // background: var(--intro-grad-from);
+    // background: linear-gradient(
+    //   0deg,
+    //   var(--intro-grad-from) 0%,
+    //   var(--intro-grad-to) 100%
+    // );
+    h2 {
+      font-size: rem(64px);
+      line-height: rem(80px);
+    }
+    p {
+      font-size: rem(32px);
+      line-height: rem(56px);
+    }
+  }
+}

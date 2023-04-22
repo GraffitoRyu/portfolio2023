@@ -25,7 +25,7 @@ export default function section(props) {
   const [section, setSection] = useRecoilState(sectionState[pageCategory]);
   const setSectionOffset = useSetRecoilState(sectionOffsetState[pageCategory]);
 
-  const sectionClass = ["side-padding", "items-start", "relative"];
+  const sectionClass = ["items-start", "relative"];
 
   const updateSectionState = () => {
     let state = {
@@ -62,15 +62,19 @@ export default function section(props) {
     <section
       className={`page-section ${sectionCode}-section lg:flex ${
         header ? sectionClass.join(" ") : "w-full"
-      } ${sectionCode == "intro" ? "flex-wrap" : ""}`}
+      } ${
+        sectionCode == "intro"
+          ? "flex-wrap h-full lg:h-auto"
+          : `${sectionCode == "projectsList" ? "" : "side-padding"}`
+      }`}
       ref={sectionRef}
     >
       {sectionCode == "intro" ? <PageVisual {...props} /> : ""}
       {header ? (
         <header
           className={`section-header lg:w-1/2 lg:sticky ${
-            sectionCode == "intro" ? "hidden" : ""
-          }`}
+            sectionCode == "projectsList" ? "hidden" : ""
+          } ${sectionCode == "intro" ? "hidden lg:block self-stretch" : ""}`}
         >
           {header.empty ? (
             ""

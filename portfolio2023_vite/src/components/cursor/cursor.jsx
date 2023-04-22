@@ -33,14 +33,12 @@ export default function customCursor() {
         hover: isInteractiveElement,
       };
       setPos(d);
-      // setCSSProps("--cursor-x", `${e.clientX}px`);
-      // setCSSProps("--cursor-y", `${e.clientY}px`);
     }
   };
 
   useEffect(() => {
     setCursorHide(mobile);
-  }, [mobile]);
+  }, []);
 
   useEffect(() => {
     if (!mobile || matchMedia("(pointer:fine)").matches) {

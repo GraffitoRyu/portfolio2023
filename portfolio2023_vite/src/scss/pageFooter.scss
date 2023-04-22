@@ -2,33 +2,34 @@
 @import "./scss_global";
 
 .page-footer {
-  padding: rem(80px);
   position: relative;
   z-index: 1000;
-  .footer-card {
-    padding: rem(80px);
-    border-radius: rem(80px);
-    background: var(--footer-bg);
-  }
+
+  // .footer-card {
+  //   padding: rem(80px);
+  background: var(--footer-bg);
+  // }
 
   .page-title-text {
     font: {
       size: rem(160px);
     }
-
     line-height: rem(160px);
   }
 
   .page-title-border-text {
     -webkit-text-stroke: 1px var(--footer-page-title-border);
   }
-
   .page-title-filled-text {
     color: var(--footer-page-title-filled);
   }
 
   @media only screen and (min-width: 1024px) {
+    padding: rem(80px);
     min-height: rem(920px);
+    .footer-card {
+      border-radius: rem(80px);
+    }
   }
 }
 
@@ -42,13 +43,23 @@
 }
 
 .footer-experience {
-  span {
-    color: var(--footer-page-title-filled);
+  line-height: rem(64px);
+  letter-spacing: -0.02em;
+  font: {
+    size: rem(40px);
+    weight: var(--weight-medium);
+  }
+  color: var(--footer-page-title-filled);
+  dt {
+    margin-bottom: rem(40px);
+  }
+  dd {
+  }
+
+  @media only screen and (min-width: 768px) {
     line-height: rem(40px);
-    letter-spacing: -0.02em;
     font: {
       size: rem(24px);
-      weight: var(--weight-medium);
     }
   }
 }
@@ -64,20 +75,20 @@
     }
   }
   .footer-sitemap-btn {
-    height: rem(40px);
+    height: rem(80px);
     font: {
-      size: rem(24px);
+      size: rem(48px);
       weight: var(--weight-regular);
     }
     span {
       margin-right: rem(10px);
       margin-top: rem(-2px);
-      line-height: rem(24px);
+      line-height: rem(40px);
       color: var(--footer-btn);
     }
     figure {
-      width: rem(16px);
-      height: rem(16px);
+      width: rem(40px);
+      height: rem(40px);
       font-size: 0;
       svg {
         width: 100%;
@@ -98,6 +109,17 @@
       circle,
       rect {
         fill: var(--footer-btn-hover);
+      }
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .footer-sitemap-btn {
+      height: rem(56px);
+      font-size: rem(24px);
+      figure {
+        width: rem(16px);
+        height: rem(16px);
       }
     }
   }

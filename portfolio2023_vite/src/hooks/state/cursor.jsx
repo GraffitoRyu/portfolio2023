@@ -5,6 +5,6 @@ export const cursor = atom({
   default: {
     x: 0,
     y: 0,
-    hover: undefined,
+    hover: "",
   },
 });

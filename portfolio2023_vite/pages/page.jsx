@@ -15,7 +15,7 @@ import "../src/scss/pageTransition.scss";
 import "../src/scss/cursor.scss";
 import "../src/scss/pageHeader.scss";
 import "../src/scss/pageFooter.scss";
-import "../src/scss/pageVisual.scss";
+import "../src/scss/introSection.scss";
 import "../src/scss/profile.scss";
 import "../src/scss/projects.scss";
 

@@ -34,10 +34,10 @@ export default function pageFooter() {
   return (
     <footer
       id="pageFooter"
-      className="page-footer page-bg w-full lg:h-screen"
+      className="page-footer page-bg w-full h-full lg:h-screen"
       ref={footerRef}
     >
-      <div className="footer-card flex flex-col justify-between w-full lg:h-full">
+      <div className="footer-card flex flex-col lg:justify-between w-full h-full">
         <header className="footer-header sm:flex justify-between">
           <h2 className="footer-title">
             <span className="page-title-text page-title-border-text flex items-center">
@@ -47,16 +47,16 @@ export default function pageFooter() {
               together
             </span>
           </h2>
-          <p className="published">published in April, 2023.</p>
         </header>
-        <div className="footer-contents sm:flex w-full">
-          <p className="footer-experience flex flex-col w-1/2">
-            <span>Front-end Development</span>
-            <span>Web Publish</span>
-            <span>based in Daejeon, South Korea</span>
-            <span>4+ years of experience</span>
-          </p>
-          <dl className="footer-info footer-sitemap w-1/4">
+        <div className="footer-contents flex flex-wrap lg:flex-nowrap w-full flex-1 lg:flex-none">
+          <dl className="footer-experience flex flex-col w-full lg:w-1/2 mb-auto lg:mb-0">
+            <dt>Ryu, Daehyeon</dt>
+            <dd>Front-end Development</dd>
+            <dd>Web Publish</dd>
+            <dd>based in Daejeon, South Korea</dd>
+            <dd>4+ years of experience</dd>
+          </dl>
+          <dl className="footer-info footer-sitemap w-1/2 lg:w-1/4">
             {/* <dt>류대현</dt> */}
             {sitemapData
               .filter(d => d.header)
@@ -64,7 +64,7 @@ export default function pageFooter() {
                 <FooterSitemapBtn data={d} key={`footer_sitemap_${i}`} />
               ))}
           </dl>
-          <dl className="footer-info footer-sitemap w-1/4">
+          <dl className="footer-info footer-sitemap w-1/2 lg:w-1/4">
             {/* <dt>Contact</dt> */}
             {sitemapData.map((d, i) => (
               <FooterSitemapBtn data={d} key={`footer_sitemap_${i}`} />

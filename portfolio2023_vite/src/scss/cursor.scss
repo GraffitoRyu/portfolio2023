@@ -20,6 +20,7 @@
     height: 8px;
     border-radius: 50%;
     background: var(--cursor);
+    opacity: 0.7;
     transition: width var(--trans-time-cursor), height var(--trans-time-cursor);
   }
   &.link {

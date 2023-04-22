@@ -2,8 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { InView, useInView } from "react-intersection-observer";
 import { useRecoilValue } from "recoil";
 
+// state
 import { scrollState } from "../../hooks/state/scroll";
+
+// util
 import windowScroll from "../../hooks/util/windowScroll";
+import { easeOutSine } from "../../hooks/util/cubicBezier";
 
 export default function pageVisual(props) {
   const { borderText, filledText } = props;
@@ -22,34 +26,24 @@ export default function pageVisual(props) {
     onChange: inView => setViewportState(inView),
   });
 
-  // 스크롤 애니메이션
-  // 1. InView로 화면 내 들어왔는지 체크
-  // 2. 들어왔을 떄, offset과 scrollPos로 애니메이션 처리
-  //  --> 깔끔하게 움직이지 않음,
-  //  --> react-scroll-motion 병행
-
   useEffect(() => {
     if (visualRef?.current) {
+      const _vh = visualRef.current.clientHeight;
+      const scrollRatio =
+        (scrollPos / _vh < 0 ? 0 : scrollPos / _vh > 1 ? 1 : scrollPos / _vh) *
+        1.3;
       const _y = scrollPos / 6;
-      const _op = 1 - (scrollPos / visualRef.current.clientHeight) * 1.2;
+      const _op = 1 - (scrollRatio < 0 ? 0 : scrollRatio > 1 ? 1 : scrollRatio);
       setTitle({
         y: _y,
-        opacity: _op < 0 ? 0 : _op > 1 ? 1 : _op,
+        opacity: _op,
       });
     }
   }, [scrollPos]);
 
-  /**
-   *
-   * 인트로 섹션 구조 변경
-   *  [visual]
-   *  [description]
-   *
-   */
-
   return (
     <div
-      className="page-visual w-full flex items-center sm:items-end"
+      className="page-visual side-padding w-full flex items-end"
       ref={visualRef}
     >
       <h1
@@ -58,7 +52,7 @@ export default function pageVisual(props) {
         viewport={inView ? "in" : "out"}
         style={{
           transform: `translate3d(0,-${title.y}px, 0)`,
-          opacity: title.opacity,
+          opacity: !isNaN(title.opacity) ? title.opacity : 1,
         }}
       >
         <span className="page-title-text page-title-border-text flex items-center">

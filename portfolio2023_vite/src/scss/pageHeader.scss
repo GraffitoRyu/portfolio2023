@@ -5,8 +5,10 @@
   padding: rem(80px);
   font-size: rem(20px);
   z-index: 1000;
-  transform: translate(0, var(--header-sticky-pos));
   pointer-events: none;
+  // @media only screen and (min-width: 1024px) {
+  transform: translate(0, var(--header-sticky-pos));
+  // }
 }
 
 .current-time {

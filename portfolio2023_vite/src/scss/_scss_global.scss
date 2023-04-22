@@ -15,3 +15,11 @@ $trans_form_quad: transform var(--trans-time-move) 0s var(--trans-func-quad);
 $trans_form_quart: transform var(--trans-time-move) 0s var(--trans-func-quart);
 $trans_form_expo: transform var(--trans-time-move) 0s var(--trans-func-expo);
 $trans_form_back: transform var(--trans-time-move) 0s var(--trans-func-back);
+
+@mixin sidePadding {
+  padding: 0 rem(80px);
+}
+
+@mixin aroundPadding {
+  padding: rem(80px);
+}
