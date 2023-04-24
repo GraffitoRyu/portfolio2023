@@ -3,12 +3,12 @@
 
 .page-footer {
   position: relative;
-  z-index: 1000;
-
-  // .footer-card {
-  //   padding: rem(80px);
+  z-index: 600;
   background: var(--footer-bg);
-  // }
+
+  .footer-card {
+    padding: rem(80px);
+  }
 
   .page-title-text {
     font: {
@@ -25,11 +25,7 @@
   }
 
   @media only screen and (min-width: 1024px) {
-    padding: rem(80px);
     min-height: rem(920px);
-    .footer-card {
-      border-radius: rem(80px);
-    }
   }
 }
 
@@ -40,6 +36,8 @@
 .footer-contents {
   // height: 30%;
   // min-height: rem(160px);
+  border-top: 1px solid var(--footer-border);
+  padding-top: rem(80px);
 }
 
 .footer-experience {
@@ -96,20 +94,12 @@
         object-fit: contain;
       }
     }
-    path,
-    circle,
-    rect {
-      fill: var(--footer-icon);
-    }
+    @include svgColor(var(--footer-icon));
     &.hover {
       span {
         color: var(--footer-btn-hover);
       }
-      path,
-      circle,
-      rect {
-        fill: var(--footer-btn-hover);
-      }
+      @include svgColor(var(--footer-btn-hover));
     }
   }
 

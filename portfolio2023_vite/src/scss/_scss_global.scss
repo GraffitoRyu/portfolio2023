@@ -23,3 +23,11 @@ $trans_form_back: transform var(--trans-time-move) 0s var(--trans-func-back);
 @mixin aroundPadding {
   padding: rem(80px);
 }
+
+@mixin svgColor($color) {
+  rect,
+  circle,
+  path {
+    fill: $color;
+  }
+}

@@ -1,0 +1,25 @@
+@import "./css_variable";
+@import "./scss_global";
+
+.btn-box {
+  width: rem(48px);
+  height: rem(48px);
+  border-radius: rem(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: rem(16px);
+    height: rem(16px);
+    object-fit: contain;
+  }
+  border: rem(2px) solid var(--btn);
+  color: var(--btn);
+  @include svgColor(var(--btn));
+  &.hover {
+    background: var(--btn-hover-bg);
+    color: var(--btn-hover-contents);
+    @include svgColor(var(--btn-hover-contents));
+  }
+}

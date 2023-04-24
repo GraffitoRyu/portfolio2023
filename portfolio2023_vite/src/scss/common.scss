@@ -53,6 +53,7 @@ span {
 a,
 button {
   transition: color var(--trans-time-color),
+    border-color var(--trans-time-color),
     background-color var(--trans-time-color);
 }
 
@@ -72,6 +73,13 @@ circle {
   height: 100%;
   overflow-x: hidden;
   overflow-y: overlay;
+  &.fix-area {
+    overflow: hidden;
+    .project-list {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
 }
 
 html:not(.mobile) {

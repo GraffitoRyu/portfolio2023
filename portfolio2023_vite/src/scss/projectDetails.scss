@@ -1,0 +1,20 @@
+@import "./css_variable";
+@import "./scss_global";
+
+.project-details-container {
+  z-index: 1000;
+  height: calc(100% - var(--header-height));
+  border-top-left-radius: rem(80px);
+  border-top-right-radius: rem(80px);
+  background: rgb(26, 26, 26);
+  background: linear-gradient(
+    0deg,
+    rgba(26, 26, 26, 1) 0%,
+    rgba(32, 36, 43, 1) 100%
+  );
+  transition: $trans_form_expo;
+  transform: translate(0, 100%);
+  .details-header {
+    padding: rem(80px);
+  }
+}

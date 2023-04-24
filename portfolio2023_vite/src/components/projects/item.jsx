@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 // svg
 import { ReactComponent as IconOpenProject } from "../../svg/btn/project_open.svg";
@@ -9,6 +9,8 @@ import getSlideTextSet from "../../hooks/util/getSlideTextSet";
 
 // state
 import { accessDeviceSelector } from "../../hooks/state/accessDevice";
+import { useSearchParams } from "react-router-dom";
+import { detailsState } from "../../hooks/state/projectDetails";
 
 export default function projectItem(props) {
   const d = props.data;
@@ -25,6 +27,15 @@ export default function projectItem(props) {
   const [textArr, setTextArr] = useState([titleText]);
   const slideText = useRef();
   const [slideDuration, setSlideDuration] = useState(2);
+
+  const [urlParams, setUrlParams] = useSearchParams();
+  const [details, setDetails] = useRecoilState(detailsState);
+
+  const openDetails = () => {
+    setUrlParams({ category: d.pathQuery });
+    setDetails({ open: true, category: d.pathQuery });
+    console.log(`open details:`, d.pathQuery);
+  };
 
   useEffect(() => {
     const { array, width } = getSlideTextSet(slideText);
@@ -43,6 +54,7 @@ export default function projectItem(props) {
       <button
         className="summary relative w-full overflow-hidden text-left lg:text-right"
         type="button"
+        onClick={() => openDetails()}
       >
         <div className="wrapper relative">
           <div className="period-container overflow-hidden lg:absolute left-full">

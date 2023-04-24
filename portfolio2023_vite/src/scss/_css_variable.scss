@@ -38,6 +38,11 @@
   --cursor-x: 0px;
   --cursor-y: 0px;
 
+  // btn
+  --btn: #5a5a5a;
+  --btn-hover-bg: #3f3f3f;
+  --btn-hover-contents: #fff;
+
   // page background
   --frame-bg: #efefef;
   --page-bg: #fff;
@@ -81,6 +86,7 @@
   --footer-bg: #efefef;
   --footer-page-title-border: #ccc;
   --footer-page-title-filled: #707070;
+  --footer-border: #efefef;
   --footer-info-title: #707070;
   --footer-btn: #a0a0a0;
   --footer-icon: #707070;
@@ -117,6 +123,11 @@
 
     // cursor
     --cursor: #fff;
+
+    // btn
+    --btn: #fff;
+    --btn-hover-bg: #fff;
+    --btn-hover-contents: #555;
 
     // scrollbar
     --scroll-thumb: rgba(90, 90, 90, 0.6);
@@ -164,6 +175,7 @@
     --footer-bg: #252525;
     --footer-page-title-border: #707070;
     --footer-page-title-filled: #707070;
+    --footer-border: #3a3a3a;
     --footer-info-title: #ccc;
     --footer-btn: #a0a0a0;
     --footer-icon: #ccc;

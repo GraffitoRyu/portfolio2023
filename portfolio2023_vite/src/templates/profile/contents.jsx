@@ -12,11 +12,16 @@ import Tools from "../../components/profile/tools";
 
 // state
 import { pageState } from "../../hooks/state/page";
+import { detailsState } from "../../hooks/state/projectDetails";
 
 export default function pageContents() {
   const setPageState = useSetRecoilState(pageState);
 
+  // 프로젝트 디테일 초기화
+  const setDetails = useSetRecoilState(detailsState);
+
   useEffect(() => {
+    setDetails({ open: false, category: undefined });
     setPageState(prev => ({ ...prev, cur: "profile" }));
   }, []);
 

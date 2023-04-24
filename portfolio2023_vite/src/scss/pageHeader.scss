@@ -50,43 +50,27 @@
   transition: background-color var(--trans-time-color);
 
   .header-icon {
-    path,
-    circle,
-    rect {
-      fill: var(--header-icon);
-    }
+    @include svgColor(var(--header-icon));
   }
 
   &.hover {
     background: var(--header-icon-bg);
 
     .header-icon {
-      path,
-      circle,
-      rect {
-        fill: var(--header-icon-hover);
-      }
+      @include svgColor(var(--header-icon-hover));
     }
   }
 
   &:active {
     .header-icon {
-      path,
-      circle,
-      rect {
-        fill: var(--header-icon-active);
-      }
+      @include svgColor(var(--header-icon-active));
     }
   }
 
   &.theme-btn {
     &:active {
       .header-icon {
-        path,
-        circle,
-        rect {
-          fill: var(--theme-icon-active);
-        }
+        @include svgColor(var(--theme-icon-active));
       }
     }
   }
@@ -130,11 +114,7 @@
 
 .theme-menu {
   @mixin selected_theme {
-    path,
-    circle,
-    rect {
-      fill: var(--theme-menu-icon-selected);
-    }
+    @include svgColor(var(--theme-menu-icon-selected));
 
     span {
       color: var(--theme-menu-icon-selected);
@@ -142,11 +122,7 @@
   }
   .theme-item {
     .util-icon {
-      path,
-      circle,
-      rect {
-        fill: var(--theme-menu-icon);
-      }
+      @include svgColor(var(--theme-menu-icon));
     }
 
     span {
@@ -155,11 +131,7 @@
 
     &.hover {
       .util-icon {
-        path,
-        circle,
-        rect {
-          fill: var(--theme-menu-icon-selected);
-        }
+        @include svgColor(var(--theme-menu-icon-selected));
       }
 
       span {

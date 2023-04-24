@@ -12,7 +12,7 @@ import { headerState } from "../../hooks/state/header";
 
 // util
 import windowResize from "../../hooks/util/windowResize";
-import { getCSSProps, setCSSProps } from "../../hooks/util/cssProperty";
+import { setCSSProps } from "../../hooks/util/cssProperty";
 
 export default function pageHeader(props) {
   const headerRef = useRef();
