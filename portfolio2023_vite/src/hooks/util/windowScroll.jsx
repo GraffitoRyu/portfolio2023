@@ -1,10 +1,11 @@
-export default function windowScroll(container = document, callback, isClear) {
+export default function windowScroll(container, callback, isClear) {
+  const _container = container ? container : window;
   if (isClear) {
-    container.removeEventListener("scroll", callback, { passive: false });
+    _container.removeEventListener("scroll", callback, { passive: false });
     return;
   }
-  container.addEventListener("scroll", callback, { passive: false });
+  _container.addEventListener("scroll", callback, { passive: false });
   return () => {
-    container.removeEventListener("scroll", callback, { passive: false });
+    _container.removeEventListener("scroll", callback, { passive: false });
   };
 }

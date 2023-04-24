@@ -116,14 +116,15 @@ html:not(.mobile) {
   // background-color: var(--page-bg);
   transition: $trans_bgColor;
   position: relative;
+
   &:not(.intro-section) {
     padding-top: rem(240px);
-    padding-bottom: rem(240px);
+    padding-bottom: 0;
+    @media only screen and (min-width: 1024px) {
+      padding-bottom: rem(240px);
+    }
     .section-header {
       margin-bottom: rem(160px);
-    }
-    @media only screen and (min-width: 1024px) {
-      padding-bottom: 0;
     }
   }
 

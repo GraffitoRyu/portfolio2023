@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 // components
-import PageContents from "./templates/pageContents";
+import PageTemplate from "./templates/transPage/pageTemplate";
 
 // data
 import { routerSet } from "./data/sitemap";
@@ -37,8 +37,7 @@ export default function App() {
 
   return (
     <RouterProvider router={customRouter}>
-      {/* <TransContainer /> */}
-      <PageContents />
+      <PageTemplate />
     </RouterProvider>
   );
 }

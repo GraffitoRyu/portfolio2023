@@ -1,8 +1,10 @@
-import { atom } from "recoil";
+// import { atom } from "recoil";
 
 // components
 import * as Pages from "../templates/routes";
-import PageContents from "../templates/pageContents";
+// import TransContainer from "../templates/transPage/transContainer";
+// import PageContents from "../templates/transPage/scrollContainer";
+import PageTemplate from "../templates/transPage/pageTemplate";
 
 export const sitemapData = [
   {
@@ -45,21 +47,23 @@ export const sitemapData = [
 
 export const routerSet = [
   {
-    path: "/",
-    element: <PageContents />,
+    path: getRootPathname(),
+    // element: <PageContents />,
+    // element: <TransContainer />,
+    element: <PageTemplate />,
     children: sitemapData
       .filter(d => !d.external)
       .map(d => ({
-        index: d.path === "/",
-        path: d.path === "/" ? undefined : d.path,
+        index: d.path === getRootPathname(),
+        path: d.path === getRootPathname() ? undefined : d.path,
         element: d.components,
       })),
   },
 ];
 
-function getRootPathname() {
+export function getRootPathname() {
   const currentPath = window.location.pathname;
   return currentPath.includes("projects")
-    ? currentPath.replace(/projects/gi, "")
+    ? currentPath.replace(/projects/gi, "").replace("//", "/")
     : currentPath;
 }

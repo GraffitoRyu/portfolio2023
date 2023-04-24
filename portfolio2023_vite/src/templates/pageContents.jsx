@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, createRef } from "react";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { useOutlet } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 // components
 import SeoHelmet from "../components/seo/helmet";
@@ -15,14 +16,25 @@ import { pageState } from "../hooks/state/page";
 import { scrollState } from "../hooks/state/scroll";
 import { sectionState, sectionOffsetState } from "../hooks/state/section";
 
+// data
+import { getRootPathname, sitemapData } from "../data/sitemap";
+
 export default function transContainer() {
+  const nowPagePath = location.pathname;
   const currentOutlet = useOutlet();
   const containerRef = useRef();
   const [scrollPos, setScrollPos] = useRecoilState(scrollState);
 
-  const pageCategory = useRecoilValue(pageState).cur;
-  const section = useRecoilValue(sectionState[pageCategory]);
-  const sectionOffset = useRecoilValue(sectionOffsetState[pageCategory]);
+  // 페이지 전환 컨텐츠 ref 설정
+  const routesData = sitemapData.map(d => {
+    return !d.external ? { ...d, nodeRef: createRef() } : d;
+  });
+  const { nodeRef } =
+    routesData.find(route => route.path === nowPagePath) ?? {};
+
+  // const pageCategory = useRecoilValue(pageState).cur;
+  // const section = useRecoilValue(sectionState[pageCategory]);
+  // const sectionOffset = useRecoilValue(sectionOffsetState[pageCategory]);
 
   const updateScrollPos = () => {
     if (containerRef?.current) {
@@ -30,7 +42,9 @@ export default function transContainer() {
       setStickyPos(containerRef.current.scrollTop);
     }
   };
+
   useEffect(() => {
+    console.log("now path: ", nowPagePath);
     updateScrollPos();
     windowScroll(containerRef.current, () => {
       updateScrollPos();
@@ -41,9 +55,25 @@ export default function transContainer() {
     <>
       <SeoHelmet />
       <PageHeader scrollPos={scrollPos} />
-      <div className="scroll-container" ref={containerRef}>
-        {currentOutlet}
-      </div>
+      <TransitionGroup className="transPage-container w-full h-full overflow-hidden">
+        <CSSTransition
+          classNames={"transPage"}
+          key={nowPagePath}
+          nodeRef={nodeRef}
+          timeout={3000}
+          unmountOnExit
+        >
+          {state => {
+            console.log(state);
+            // if (state == '')
+            return (
+              <div className="scroll-container w-full" ref={containerRef}>
+                {currentOutlet}
+              </div>
+            );
+          }}
+        </CSSTransition>
+      </TransitionGroup>
     </>
   );
 }

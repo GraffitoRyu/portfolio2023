@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
 // components
+import SeoHelmet from "../../components/seo/helmet";
 import PageSection from "../../components/section/pageSection";
 import PageFooter from "../../components/section/pageFooter";
 import Intro from "../../components/profile/intro";
@@ -21,6 +22,7 @@ export default function pageContents() {
 
   return (
     <>
+      <SeoHelmet />
       <PageSection
         index={0}
         section_code="intro"

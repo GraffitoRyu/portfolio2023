@@ -4,13 +4,13 @@ import { pageTransitionState } from "../../hooks/state/pageTransition";
 import { pageState } from "../../hooks/state/page";
 
 export default function pageTransition() {
+  return "";
   const [transHeight, setTransHeight] = useRecoilState(pageTransitionState);
   const pageName = useRecoilValue(pageState);
 
   useEffect(() => {
     // mount
     setTimeout(() => {
-      document.querySelector(".scroll-container").scrollTo(0, 0);
       setTransHeight(prev => ({ ...prev, loading: false, height: 0 }));
     }, 2000);
     return () => {
