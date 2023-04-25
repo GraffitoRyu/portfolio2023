@@ -31,3 +31,13 @@ $trans_form_back: transform var(--trans-time-move) 0s var(--trans-func-back);
     fill: $color;
   }
 }
+
+@mixin svgStroke($width, $color) {
+  rect,
+  circle,
+  path {
+    stroke-width: $width;
+    stroke: $color;
+    stroke-linecap: round;
+  }
+}

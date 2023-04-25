@@ -60,7 +60,7 @@ button {
 path,
 rect,
 circle {
-  transition: fill var(--trans-time-color);
+  transition: fill var(--trans-time-color), stroke var(--trans-time-color);
 }
 
 .page-container {
