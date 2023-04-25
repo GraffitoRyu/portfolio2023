@@ -8,7 +8,7 @@ export default function projectList() {
   return (
     <ul className="project-list">
       {projectsData.map(d => (
-        <ProjectItem data={d} key={d.key} />
+        <ProjectItem data={d.summary} pathQuery={d.pathQuery} key={d.key} />
       ))}
     </ul>
   );

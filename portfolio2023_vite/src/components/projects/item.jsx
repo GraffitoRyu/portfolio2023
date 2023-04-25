@@ -11,6 +11,7 @@ import getSlideTextSet from "../../hooks/util/getSlideTextSet";
 import { accessDeviceSelector } from "../../hooks/state/accessDevice";
 import { useSearchParams } from "react-router-dom";
 import { detailsState } from "../../hooks/state/projectDetails";
+import replaceNewlineToBr from "../../hooks/util/replaceNewlineToBr";
 
 export default function projectItem(props) {
   const d = props.data;
@@ -32,9 +33,8 @@ export default function projectItem(props) {
   const [details, setDetails] = useRecoilState(detailsState);
 
   const openDetails = () => {
-    setUrlParams({ category: d.pathQuery });
-    setDetails({ open: true, category: d.pathQuery });
-    console.log(`open details:`, d.pathQuery);
+    setUrlParams({ category: props.pathQuery });
+    setDetails({ open: true, category: props.pathQuery });
   };
 
   useEffect(() => {
@@ -66,14 +66,7 @@ export default function projectItem(props) {
           </div>
           <div className="h3-container overflow-hidden">
             <h3 className="summary-title w-full">
-              {d.title.includes("\n")
-                ? d.title.split("\n").map((t, i) => (
-                    <React.Fragment key={`title_${i}`}>
-                      {t}
-                      <br />
-                    </React.Fragment>
-                  ))
-                : d.title}
+              {replaceNewlineToBr(d.title)}
             </h3>
           </div>
           <div className="p-container overflow-hidden">

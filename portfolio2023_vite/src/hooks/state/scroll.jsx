@@ -2,5 +2,8 @@ import { atom } from "recoil";
 
 export const scrollState = atom({
   key: "scrollState",
-  default: 0,
+  default: {
+    page: 0,
+    details: 0,
+  },
 });

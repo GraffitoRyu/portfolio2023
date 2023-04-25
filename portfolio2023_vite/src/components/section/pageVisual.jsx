@@ -1,13 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { InView, useInView } from "react-intersection-observer";
+import { useInView } from "react-intersection-observer";
 import { useRecoilValue } from "recoil";
 
 // state
 import { scrollState } from "../../hooks/state/scroll";
-
-// util
-import windowScroll from "../../hooks/util/windowScroll";
-import { easeOutSine } from "../../hooks/util/cubicBezier";
 
 export default function pageVisual(props) {
   const { borderText, filledText } = props;
@@ -17,22 +13,24 @@ export default function pageVisual(props) {
     y: 0,
     opacity: 1,
   });
-  const [viewportState, setViewportState] = useState(false);
   const {
     ref: titleRef,
     inView,
     entry,
   } = useInView({
-    onChange: inView => setViewportState(inView),
+    // onChange: inView => setViewportState(inView),
   });
 
   useEffect(() => {
     if (visualRef?.current) {
       const _vh = visualRef.current.clientHeight;
       const scrollRatio =
-        (scrollPos / _vh < 0 ? 0 : scrollPos / _vh > 1 ? 1 : scrollPos / _vh) *
-        1.3;
-      const _y = scrollPos / 6;
+        (scrollPos.page / _vh < 0
+          ? 0
+          : scrollPos.page / _vh > 1
+          ? 1
+          : scrollPos.page / _vh) * 1.3;
+      const _y = scrollPos.page / 6;
       const _op = 1 - (scrollRatio < 0 ? 0 : scrollRatio > 1 ? 1 : scrollRatio);
       setTitle({
         y: _y,
@@ -47,7 +45,7 @@ export default function pageVisual(props) {
       ref={visualRef}
     >
       <h1
-        className="page-title fixed"
+        className="page-title fixed pointer-events-none"
         ref={titleRef}
         viewport={inView ? "in" : "out"}
         style={{

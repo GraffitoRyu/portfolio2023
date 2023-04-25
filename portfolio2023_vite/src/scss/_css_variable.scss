@@ -34,7 +34,8 @@
   --scroll-thumb: rgba(26, 26, 26, 0.6);
 
   // cursor
-  --cursor: #fff;
+  --cursor: #1a1a1a;
+  --cursor-hover: rgba(26, 26, 26, 0.1);
   --cursor-x: 0px;
   --cursor-y: 0px;
 
@@ -113,6 +114,11 @@
   --proj-desc: #707070;
   --proj-hover: #5a5a5a;
 
+  // details
+  --details-main-title: #3a3a3a;
+  --details-sub-title: #707070;
+  --details-desc: #a0a0a0;
+
   &.dark-theme {
     // font weight
     --weight-light: 300;
@@ -123,6 +129,7 @@
 
     // cursor
     --cursor: #fff;
+    --cursor-hover: rgba(255, 255, 255, 0.1);
 
     // btn
     --btn: #fff;
@@ -201,5 +208,10 @@
     --proj-period: #5a5a5a;
     --proj-desc: #707070;
     --proj-hover: #fff;
+
+    // details
+    --details-main-title: white;
+    --details-sub-title: #707070;
+    --details-desc: #a0a0a0;
   }
 }

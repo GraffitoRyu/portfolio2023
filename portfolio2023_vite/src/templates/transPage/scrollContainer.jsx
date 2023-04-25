@@ -24,7 +24,7 @@ export default function scrollContainer() {
   const updateScrollPos = () => {
     if (scrollRef?.current) {
       const pos = scrollRef.current.scrollTop;
-      setScrollPos(pos);
+      setScrollPos(prev => ({ ...prev, page: pos }));
       setStickyPos(pos);
     }
   };
@@ -39,7 +39,10 @@ export default function scrollContainer() {
   }, []);
 
   return (
-    <div className={`scroll-container w-full ${fixArea}`} ref={scrollRef}>
+    <div
+      className={`scroll-container custom-scrollbar w-full ${fixArea}`}
+      ref={scrollRef}
+    >
       {contentsOutlet}
     </div>
   );

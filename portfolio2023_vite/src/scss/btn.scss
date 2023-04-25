@@ -9,15 +9,33 @@
   align-items: center;
   justify-content: center;
 
+  border: rem(2px) solid var(--btn);
+  color: var(--btn);
+  @include svgColor(var(--btn));
+  @include svgStroke(rem(1px), var(--btn));
+
+  .btn-text {
+    margin-right: rem(16px);
+    line-height: rem(16px);
+    font: {
+      size: rem(16px);
+      weight: var(--weight-medium);
+    }
+  }
   svg {
     width: rem(16px);
     height: rem(16px);
     object-fit: contain;
   }
-  border: rem(2px) solid var(--btn);
-  color: var(--btn);
-  @include svgColor(var(--btn));
-  @include svgStroke(rem(1px), var(--btn));
+  &.w-auto {
+    width: auto;
+    padding: 0 rem(16px);
+  }
+  &.svg-h-auto {
+    svg {
+      height: auto;
+    }
+  }
   &.hover {
     background: var(--btn-hover-bg);
     color: var(--btn-hover-contents);

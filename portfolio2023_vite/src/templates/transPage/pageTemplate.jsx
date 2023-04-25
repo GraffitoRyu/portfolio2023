@@ -1,8 +1,9 @@
+import { useLocation } from "react-router-dom";
+
 // components
 import TransContainer from "./transContainer";
 import PageHeader from "../../components/section/pageHeader";
-import ProjectDetails from "../projects/details";
-import { useLocation } from "react-router-dom";
+import ProjectDetails from "../projectDetails/container";
 
 export default function pageTemplate() {
   // 고정 요소 배치

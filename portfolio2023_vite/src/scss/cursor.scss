@@ -10,7 +10,7 @@
   z-index: 9999999;
   pointer-events: none;
   backface-visibility: visible;
-  mix-blend-mode: difference;
+  // mix-blend-mode: difference;
   .cursor {
     position: absolute;
     top: 50%;
@@ -19,18 +19,21 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
+    border: 1px solid var(--cursor);
     background: var(--cursor);
-    // opacity: 0.7;
-    transition: width var(--trans-time-cursor), height var(--trans-time-cursor);
+    transition: width var(--trans-time-cursor), height var(--trans-time-cursor),
+      background-color var(--trans-time-cursor);
   }
   &.link {
-    mix-blend-mode: overlay;
+    //   mix-blend-mode: overlay;
     .cursor {
       width: 64px;
       height: 64px;
+      background: var(--cursor-hover);
     }
   }
   &.text {
+    mix-blend-mode: difference;
     .cursor {
       width: rem(4px);
       height: rem(40px);
