@@ -1,26 +1,34 @@
 {
   "../src/svg/btn/close.svg": {
-    "file": "assets/close-e3185b0d.svg",
+    "file": "assets/close-c443f732.svg",
     "src": "../src/svg/btn/close.svg"
   },
+  "../src/svg/btn/link.svg": {
+    "file": "assets/link-23275dd1.svg",
+    "src": "../src/svg/btn/link.svg"
+  },
   "../src/svg/btn/project_open.svg": {
-    "file": "assets/project_open-141a1967.svg",
+    "file": "assets/project_open-a4caea58.svg",
     "src": "../src/svg/btn/project_open.svg"
   },
   "../src/svg/btn/theme_dark.svg": {
-    "file": "assets/theme_dark-bfa0276c.svg",
+    "file": "assets/theme_dark-cdaf53e5.svg",
     "src": "../src/svg/btn/theme_dark.svg"
   },
   "../src/svg/btn/theme_light.svg": {
-    "file": "assets/theme_light-6226d543.svg",
+    "file": "assets/theme_light-b5d74609.svg",
     "src": "../src/svg/btn/theme_light.svg"
   },
   "../src/svg/btn/theme_system.svg": {
-    "file": "assets/theme_system-0372e250.svg",
+    "file": "assets/theme_system-3ac4dd2c.svg",
     "src": "../src/svg/btn/theme_system.svg"
   },
+  "../src/svg/btn/top.svg": {
+    "file": "assets/top-c26ab49d.svg",
+    "src": "../src/svg/btn/top.svg"
+  },
   "../src/svg/common/external_icon.svg": {
-    "file": "assets/external_icon-1ffc6183.svg",
+    "file": "assets/external_icon-79615557.svg",
     "src": "../src/svg/common/external_icon.svg"
   },
   "../src/svg/header/github_icon.svg": {
@@ -31,14 +39,14 @@
     "file": "assets/notion_icon-1ea49ff9.svg",
     "src": "../src/svg/header/notion_icon.svg"
   },
-  "_page-592e609c.js": {
+  "_page-354628c3.js": {
     "css": [
-      "assets/page-1a483e6a.css"
+      "assets/page-09629dc3.css"
     ],
-    "file": "assets/page-592e609c.js"
+    "file": "assets/page-354628c3.js"
   },
   "page.css": {
-    "file": "assets/page-1a483e6a.css",
+    "file": "assets/page-09629dc3.css",
     "src": "page.css"
   }
 }
