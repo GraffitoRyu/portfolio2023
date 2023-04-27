@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 // data
 import { sitemapData } from "../../data/sitemap";
 import { useState } from "react";
+import getPageDataBySitemap from "../../hooks/util/getPageDataBySitemap";
 
 export default function gnb() {
   const [gnbHover, setGnbHover] = useState({
@@ -10,6 +11,7 @@ export default function gnb() {
     projects: false,
   });
   const btnClass = `gnb-btn items-center relative`;
+  const pageData = getPageDataBySitemap();
 
   return (
     <nav className="gnb flex items-center ml-auto">
@@ -18,7 +20,10 @@ export default function gnb() {
         .map(d => (
           <NavLink
             className={({ isActive, isPending }) => {
-              const active = isActive && !gnbHover[d.code] ? " on" : "";
+              const active =
+                (isActive && !gnbHover[d.code]) || pageData.code == d.code
+                  ? " on"
+                  : "";
               const hover = !active && gnbHover[d.code] ? " hover" : "";
               return btnClass + active + hover;
             }}

@@ -1,9 +1,5 @@
-// import { atom } from "recoil";
-
 // components
 import * as Pages from "../templates/routes";
-// import TransContainer from "../templates/transPage/transContainer";
-// import PageContents from "../templates/transPage/scrollContainer";
 import PageTemplate from "../templates/transPage/pageTemplate";
 
 export const sitemapData = [
@@ -48,8 +44,6 @@ export const sitemapData = [
 export const routerSet = [
   {
     path: getRootPathname(),
-    // element: <PageContents />,
-    // element: <TransContainer />,
     element: <PageTemplate />,
     children: sitemapData
       .filter(d => !d.external)

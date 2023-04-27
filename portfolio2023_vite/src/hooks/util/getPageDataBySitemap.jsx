@@ -1,4 +1,4 @@
-import { sitemapData, getRootPathname } from "../../data/sitemap";
+import { sitemapData } from "../../data/sitemap";
 
 export default function getPageDataBySitemap() {
   return (
