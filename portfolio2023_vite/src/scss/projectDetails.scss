@@ -176,7 +176,7 @@
     border-radius: rem(24px);
     border: 1px solid white;
     background: #dfdfdf;
-    $scale_: 1.4 / remRatio(48px);
+    $scale_: calc(1.4 / remRatio(48px));
     img {
       transform: scale($scale_);
     }
