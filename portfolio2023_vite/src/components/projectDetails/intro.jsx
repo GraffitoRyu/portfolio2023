@@ -21,7 +21,7 @@ import { accessDeviceAtom } from "../../hooks/state/accessDevice";
 
 export default function detailsIntro() {
   const [urlParams, setUrlParams] = useSearchParams();
-  const setDetails = useSetRecoilState(detailsState);
+  const [details, setDetails] = useRecoilState(detailsState);
   const d = getDetailsData(urlParams.get("category"));
 
   const closeDetails = () => {
@@ -96,7 +96,6 @@ export default function detailsIntro() {
   const updateTitlePos = ratio => {
     const _x = updateX(ratio);
     const _y = updateY(ratio);
-    console.log(`최초 위치: ${_t.y} / 업데이트 위치: ${_y}`);
     if (detailsTitleRef?.current)
       detailsTitleRef.current.style.transform = `translate(${_x}px, ${_y}px)`;
   };
@@ -147,8 +146,12 @@ export default function detailsIntro() {
   }, []);
 
   useEffect(() => {
-    updateTitleState(scrollPos.details);
-  }, [scrollPos.details, mobileView, _t, _c]);
+    updateByResize();
+  }, [details.open]);
+
+  useEffect(() => {
+    if (details.open) updateTitleState(scrollPos.details);
+  }, [scrollPos.details, mobileView, _t, _c, details.open]);
 
   return (
     <section
