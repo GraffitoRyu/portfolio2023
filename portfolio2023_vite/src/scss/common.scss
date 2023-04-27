@@ -16,16 +16,13 @@ body {
 }
 
 html {
-  // font-size: 1vw;
   font-size: 10px;
 
   @media only screen and (min-width: 580px) {
-    // font-size: 10px;
     font-size: 2vw;
   }
 
   @media only screen and (min-width: 1024px) {
-    // font-size: 2vw;
     font-size: 1vw;
   }
 }

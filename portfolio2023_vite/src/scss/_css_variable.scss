@@ -17,6 +17,7 @@
   --trans-time-move: var(--ms-800);
   --screen-size-x: 1920px;
   --screen-size-y: 927px;
+  --root-font-size: 10px;
   --header-height: 208px;
   --footer-offset-y: 0px;
   // --scroll-pos: 0px;
@@ -211,7 +212,7 @@
 
     // details
     --details-main-title: white;
-    --details-sub-title: #707070;
+    --details-sub-title: #ccc;
     --details-desc: #a0a0a0;
   }
 }

@@ -25,6 +25,7 @@
     }
   }
   .period {
+    margin-bottom: rem(24px);
     white-space: nowrap;
     time {
       color: var(--proj-period);
@@ -49,8 +50,8 @@
           width var(--trans-time-move) 0s var(--trans-func-quart);
       }
     }
-    @media only screen and (max-width: 640px) {
-      margin-bottom: rem(24px);
+    @media only screen and (min-width: 1024px) {
+      margin-bottom: 0;
     }
   }
   .summary-title {

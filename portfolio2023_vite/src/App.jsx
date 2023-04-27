@@ -23,6 +23,12 @@ export default function App() {
   const updateScreenSize = () => {
     setCSSProps("--screen-size-x", `${window.innerWidth}px`);
     setCSSProps("--screen-size-y", `${window.innerHeight}px`);
+    setCSSProps(
+      "--root-font-size",
+      getComputedStyle(document.querySelector("html")).getPropertyValue(
+        "font-size"
+      )
+    );
   };
 
   useEffect(() => {
