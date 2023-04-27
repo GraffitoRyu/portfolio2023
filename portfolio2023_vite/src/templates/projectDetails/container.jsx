@@ -40,6 +40,7 @@ export default function projectDetails() {
   };
 
   useEffect(() => {
+    if (details.open) detailsScrollRef.current.scrollTop = 0;
     initDetailsOpen();
   }, [details.open]);
 
