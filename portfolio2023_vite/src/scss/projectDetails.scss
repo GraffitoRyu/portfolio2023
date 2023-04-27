@@ -23,6 +23,7 @@
 .project-details {
   overflow-x: hidden;
   overflow-y: overlay;
+  scroll-behavior: smooth;
   @include gradBG();
   @media only screen and (min-width: 1024px) {
     background: none;
@@ -37,6 +38,7 @@
 
 .details-intro {
   padding-top: var(--header-height);
+  padding-bottom: rem(160px);
 
   @mixin categoryFont {
     line-height: rem(24px);
@@ -60,10 +62,13 @@
       .details-title-container {
         position: static;
         transform: none !important;
-        .details-title {
-          width: auto;
-          @include categoryFont();
-        }
+      }
+      .details-title {
+        width: auto;
+        @include categoryFont();
+      }
+      .details-subtitle {
+        display: none;
       }
     }
   }
@@ -96,7 +101,8 @@
   }
 
   .details-title-mobile-container {
-    margin-bottom: rem(80px);
+    padding-top: rem(240px);
+    padding-bottom: rem(160px);
     .details-title {
       font: {
         size: rem(80px);
@@ -155,6 +161,10 @@
   }
   .details-introduce {
     padding-left: 0;
+    .details-info-item {
+      height: auto;
+      margin-bottom: rem(120px);
+    }
   }
   @media only screen and (min-width: 1024px) {
     .details-summary {

@@ -56,18 +56,35 @@ export default function detailsInfo() {
       <div className="details-introduce w-full lg:w-1/2">
         <dl className="details-info-item w-full">
           <dt>서비스 소개</dt>
-          {d?.service?.desc.map((desc, i) => (
-            <dd key={`desc_${i}`}>{desc}</dd>
-          ))}
+          {d?.service?.desc.map((desc, i) => generateDesc(desc, i))}
         </dl>
         <dl className="details-info-item w-full h-auto">
           <dt>업무 경험</dt>
-          {d?.experience?.desc.map((desc, i) => (
-            <dd key={`desc_${i}`}>{desc}</dd>
-          ))}
+          {d?.experience?.desc.map((desc, i) => generateDesc(desc, i))}
           <dd></dd>
         </dl>
       </div>
     </section>
+  );
+}
+
+function generateDesc(d, i1) {
+  const depth1 = typeof d !== "string" ? d.depth1 : d;
+  const depth2 = typeof d !== "string" && d?.depth2 ? d.depth2 : undefined;
+  return (
+    <dd key={`d1_${i1}`}>
+      {depth2 ? (
+        <>
+          <span>{depth1}</span>
+          <ul>
+            {depth2.map((d2, i2) => (
+              <li key={`d2_${i2}`}>{d2}</li>
+            ))}
+          </ul>
+        </>
+      ) : (
+        depth1
+      )}
+    </dd>
   );
 }

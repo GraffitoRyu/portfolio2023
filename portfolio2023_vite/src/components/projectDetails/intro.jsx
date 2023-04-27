@@ -17,6 +17,9 @@ import getDetailsData from "../../hooks/util/getDetailsData";
 import useComputedStyle from "../../hooks/util/useComputedStyle";
 import windowResize from "../../hooks/util/windowResize";
 import { easeOutQuart } from "../../hooks/util/cubicBezier";
+import { headerState } from "../../hooks/state/header";
+import useMatrix from "../../hooks/util/useMatrix";
+import { accessDeviceAtom, checkDevice } from "../../hooks/state/accessDevice";
 
 export default function detailsIntro() {
   const [urlParams, setUrlParams] = useSearchParams();
@@ -38,102 +41,122 @@ export default function detailsIntro() {
   const detailsTitleRef = useRef();
   const titleTextRef = useRef();
   const subtitleTextRef = useRef();
+  const header = useRecoilValue(headerState);
   const scrollPos = useRecoilValue(scrollState);
-  const [mobileView, setMobileView] = useState(false);
+  const device = useRecoilValue(accessDeviceAtom);
+  const [mobileView, setMobileView] = useState(device.mobile);
   const [fixedTitle, setFixedTitle] = useState("");
-  const [initTitle, setInitTitle] = useState({
-    y: 0,
-    fontSize: 160,
-  });
+  const [_t, setInitTitle] = useState({ y: 0, size: 160 });
+  const [_c, setCategory] = useState({ y: 0, w: 0, size: 24 });
+
+  const cutRange = (v, min, max) => {
+    if (!isNaN(v) && !isNaN(min) && !isNaN(max))
+      return v < min ? min : v > max ? max : v;
+    else return v;
+  };
+
+  const updateDeltaRatio = scrollTop => 1 - cutRange(scrollTop, 0, _t.y) / _t.y;
+  const updateSize = ratio => cutRange(_t.size * ratio, _c.size, _t.size);
+  const updateX = ratio => cutRange(_c.w - _c.w * ratio, 0, _c.w);
+  const updateY = ratio => cutRange(_t.y * ratio, 0, _t.y);
+
+  const resetStyle = () => {
+    setFixedTitle("");
+    detailsTitleRef?.current?.removeAttribute("style");
+    titleTextRef?.current?.removeAttribute("style");
+    subtitleTextRef?.current?.removeAttribute("style");
+  };
 
   const updateInitTitle = () => {
-    const screenX = window.innerWidth;
-    if (screenX < 1024) {
-      setMobileView(true);
-      return;
-    }
-    setMobileView(false);
-    if (introRef?.current) {
-      const details_vh = introRef.current.clientHeight;
-      const sectionPadding = useComputedStyle(introRef.current, "padding-top");
-      const titleHeight = detailsTitleRef.current.clientHeight;
-      const initFontSize = useComputedStyle(titleTextRef.current, "font-size");
+    console.log(mobileView);
+    if (!mobileView && introRef?.current) {
+      // const details_vh = window.innerHeight - header.height;
+      // const sectionPadding = useComputedStyle(introRef?.current, "padding-top");
+      // const titleHeight = detailsTitleRef?.current?.clientHeight;
+      // const initY = details_vh - titleHeight - sectionPadding * 2;
 
-      const initY = details_vh - titleHeight - sectionPadding * 2;
+      const initSize = useComputedStyle(titleTextRef.current, "font-size");
+      const posArr = useMatrix(detailsTitleRef?.current);
+
       setInitTitle({
-        ...initTitle,
-        y: initY,
-        fontSize: initFontSize,
+        y: posArr[1],
+        size: initSize,
       });
     }
   };
 
-  const cutRange = (v, min, max) => {
-    return v < min ? min : v > max ? max : v;
+  const updateCategory = () => {
+    if (!mobileView && titleCategory?.current) {
+      const el = titleCategory.current;
+      setCategory({
+        y: el.offsetTop,
+        w: el.clientWidth,
+        size: useComputedStyle(el, "font-size"),
+      });
+    }
   };
 
-  useEffect(() => {
-    updateInitTitle();
-    windowResize(updateInitTitle, 50);
-  }, []);
+  const updateTitleSize = ratio => {
+    if (titleTextRef?.current)
+      titleTextRef.current.style.fontSize = `${updateSize(ratio)}px`;
+  };
 
-  useEffect(() => {
+  const updateTitlePos = ratio => {
+    const _x = updateX(ratio);
+    const _y = updateY(ratio);
+    console.log(`최초 위치: ${_t.y} / 업데이트 위치: ${_y}`);
+    if (detailsTitleRef?.current)
+      detailsTitleRef.current.style.transform = `translate(${_x}px, ${_y}px)`;
+  };
+
+  const updateSubtitle = ratio => {
+    if (subtitleTextRef?.current)
+      subtitleTextRef.current.style.opacity = Math.pow(ratio, 4);
+  };
+
+  const updateTitleState = scrollTop => {
     if (mobileView) {
-      detailsTitleRef?.current?.removeAttribute("style");
-      titleTextRef?.current?.removeAttribute("style");
-      subtitleTextRef?.current?.removeAttribute("style");
+      resetStyle();
       return;
     }
 
-    const top = scrollPos.details;
-    const initY = initTitle.y;
-    const initFontSize = initTitle.fontSize;
+    if (0 < scrollTop) {
+      const r_ = updateDeltaRatio(scrollTop);
+      const curY = updateY(r_);
 
-    if (titleCategory?.current) {
-      const category = {
-        pos: titleCategory.current.offsetTop,
-        width: titleCategory.current.clientWidth,
-        size: useComputedStyle(titleCategory.current, "font-size"),
-      };
-      // console.log(`category`, category);
+      // 타이틀 서브텍스트 투명도 업데이트
+      updateSubtitle(r_);
 
-      const deltaRatio = (initY - cutRange(top, 0, initY)) / initY;
+      // 상단 고정 클래스
+      if (_c.y < curY) setFixedTitle("");
+      else setFixedTitle("fix-header-title");
 
-      const posX = cutRange(
-        category.width - category.width * deltaRatio,
-        0,
-        category.width
-      );
-      const posY = cutRange(initY * deltaRatio, 0, initY - category.pos);
-      const deltaSize = cutRange(
-        initFontSize * deltaRatio,
-        category.size,
-        initFontSize
-      );
-      const sub_ = {
-        opacity: deltaRatio / 2,
-        hide: posY < category.pos ? "none" : "block",
-      };
-
-      if (top > 0) {
-        setFixedTitle("");
-        titleTextRef.current.style.fontSize = `${deltaSize}px`;
-        subtitleTextRef.current.style.opacity = sub_.opacity;
-        subtitleTextRef.current.style.display = sub_.hide;
-
-        if (posY > category.pos) {
-          detailsTitleRef.current.style.transform = `translate(${posX}px, ${posY}px)`;
-        } else {
-          detailsTitleRef.current.removeAttribute("style");
-          titleTextRef.current.removeAttribute("style");
-          setFixedTitle("fix-header-title");
-        }
-      } else {
-        setFixedTitle("");
-        detailsTitleRef.current.removeAttribute("style");
+      // 타이틀 업데이트
+      if (_c.y < curY && curY < _t.y) {
+        updateTitleSize(r_);
+        updateTitlePos(r_);
       }
+    } else {
+      // 초기 상태
+      resetStyle();
     }
-  }, [scrollPos.details]);
+  };
+
+  const updateByResize = () => {
+    setMobileView(device.mobile ? device.mobile : window.innerWidth < 1024);
+    updateInitTitle();
+    updateCategory();
+    updateTitleState(scrollPos.details);
+  };
+
+  useEffect(() => {
+    updateByResize();
+    windowResize(updateByResize, 50);
+  }, []);
+
+  useEffect(() => {
+    updateTitleState(scrollPos.details);
+  }, [scrollPos.details, mobileView, _t, _c]);
 
   return (
     <section
