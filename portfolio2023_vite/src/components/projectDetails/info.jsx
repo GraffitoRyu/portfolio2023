@@ -1,4 +1,9 @@
 import { useSearchParams } from "react-router-dom";
+
+// data
+import { getRootPathname } from "../../data/sitemap";
+
+// util
 import getDetailsData from "../../hooks/util/getDetailsData";
 
 export default function detailsInfo() {
@@ -47,7 +52,7 @@ export default function detailsInfo() {
                 title={t}
                 key={t}
               >
-                <img src={`/img/tools/${t}.png`} alt={t} />
+                <img src={`${getRootPathname()}img/tools/${t}.png`} alt={t} />
               </figure>
             ))}
           </dd>
