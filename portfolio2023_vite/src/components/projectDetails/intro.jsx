@@ -16,10 +16,8 @@ import { scrollState } from "../../hooks/state/scroll";
 import getDetailsData from "../../hooks/util/getDetailsData";
 import useComputedStyle from "../../hooks/util/useComputedStyle";
 import windowResize from "../../hooks/util/windowResize";
-import { easeOutQuart } from "../../hooks/util/cubicBezier";
-import { headerState } from "../../hooks/state/header";
 import useMatrix from "../../hooks/util/useMatrix";
-import { accessDeviceAtom, checkDevice } from "../../hooks/state/accessDevice";
+import { accessDeviceAtom } from "../../hooks/state/accessDevice";
 
 export default function detailsIntro() {
   const [urlParams, setUrlParams] = useSearchParams();
@@ -41,7 +39,6 @@ export default function detailsIntro() {
   const detailsTitleRef = useRef();
   const titleTextRef = useRef();
   const subtitleTextRef = useRef();
-  const header = useRecoilValue(headerState);
   const scrollPos = useRecoilValue(scrollState);
   const device = useRecoilValue(accessDeviceAtom);
   const [mobileView, setMobileView] = useState(device.mobile);
@@ -68,20 +65,15 @@ export default function detailsIntro() {
   };
 
   const updateInitTitle = () => {
-    console.log(mobileView);
-    if (!mobileView && introRef?.current) {
-      // const details_vh = window.innerHeight - header.height;
-      // const sectionPadding = useComputedStyle(introRef?.current, "padding-top");
-      // const titleHeight = detailsTitleRef?.current?.clientHeight;
-      // const initY = details_vh - titleHeight - sectionPadding * 2;
-
+    if (!mobileView && introRef?.current && titleTextRef?.current) {
       const initSize = useComputedStyle(titleTextRef.current, "font-size");
-      const posArr = useMatrix(detailsTitleRef?.current);
-
-      setInitTitle({
-        y: posArr[1],
-        size: initSize,
-      });
+      const posArr = useMatrix(detailsTitleRef.current);
+      if (posArr?.length > 1) {
+        setInitTitle({
+          y: posArr[1],
+          size: initSize,
+        });
+      }
     }
   };
 
