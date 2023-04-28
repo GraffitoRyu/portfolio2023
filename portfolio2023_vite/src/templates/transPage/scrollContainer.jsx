@@ -11,9 +11,10 @@ import { detailsState } from "../../hooks/state/projectDetails";
 import setStickyPos from "../../hooks/util/setStickyPos";
 import windowScroll from "../../hooks/util/windowScroll";
 
-export default function scrollContainer() {
+export default function scrollContainer(props) {
   const scrollRef = useRef();
-  const contentsOutlet = useOutlet();
+  const contentsOutlet = props.contents;
+  // const contentsOutlet = useOutlet();
 
   const page = useRecoilValue(pageState);
   const details = useRecoilValue(detailsState);
@@ -37,7 +38,7 @@ export default function scrollContainer() {
     // 페이지 전환 시작 시, 현재 화면 유지
     if (page.transStep == "enter") setTransPage("overflow-hidden");
     // 페이지 전환 시, 스크롤 초기화
-    if (scrollRef?.current && page.transStep == "entered") {
+    if (scrollRef?.current && page.transStep == "exited") {
       scrollRef.current.scrollTop = 0;
       setTransPage("");
     }

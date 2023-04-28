@@ -14,7 +14,10 @@ export default function transCover() {
 
   useEffect(() => {
     if (page.transStep == "enter") setTransPos({ ...pos });
-    else if (page.transStep == "entered") setTransPos({ ...pos });
+    else if (
+      ["exiting", "exited", "entering"].some(d => page.transStep.includes(d))
+    )
+      setTransPos({ ...pos });
   }, [page.transStep]);
 
   return (

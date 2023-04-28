@@ -4,10 +4,12 @@ import { useRecoilValue } from "recoil";
 
 // state
 import { scrollState } from "../../hooks/state/scroll";
+import { pageState } from "../../hooks/state/page";
 
 export default function pageVisual(props) {
   const { borderText, filledText } = props;
   const visualRef = useRef();
+  const page = useRecoilValue(pageState);
   const scrollPos = useRecoilValue(scrollState);
   const [title, setTitle] = useState({
     y: 0,
@@ -39,12 +41,14 @@ export default function pageVisual(props) {
   useEffect(() => {
     // initiate
     // console.log(` -+- initiate Visual Section -+-`);
-    updateTitleParallax(0);
-  }, []);
+    if (page.transStep == "exited") {
+      updateTitleParallax(0);
+    }
+  }, [page.transStep]);
 
   useEffect(() => {
     // update scroll
-    updateTitleParallax();
+    if (page.transStep == "entered") updateTitleParallax();
   }, [scrollPos.page]);
 
   return (

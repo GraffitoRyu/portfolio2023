@@ -1,5 +1,5 @@
 import React, { createRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useOutlet } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
@@ -16,6 +16,7 @@ export default function transContainer() {
   const loc = useLocation();
   const nowPagePath = loc.pathname;
   const [page, setPageState] = useRecoilState(pageState);
+  const _outlet = useOutlet();
 
   // 페이지 전환 컨텐츠 ref 설정
   const routesData = sitemapData.map(d => {
@@ -24,7 +25,7 @@ export default function transContainer() {
   const { nodeRef } = routesData.find(r => r.path === nowPagePath) ?? {};
 
   const updateTransState = state => {
-    console.log(`[ UPDATE TRANSITION STATE ] :: state: `, state);
+    // console.log(`[ UPDATE TRANSITION STATE ] :: state: `, state);
     setPageState(prev => ({ ...prev, transStep: state }));
   };
 
@@ -49,7 +50,7 @@ export default function transContainer() {
           // 스크롤 컨테이너 분리; 페이지 이동 시 스크롤 안먹힘 수정 필요
           return (
             <div className="w-full h-full overflow-hidden" ref={nodeRef}>
-              <ScrollContainer />
+              <ScrollContainer contents={_outlet} />
             </div>
           );
         }}
