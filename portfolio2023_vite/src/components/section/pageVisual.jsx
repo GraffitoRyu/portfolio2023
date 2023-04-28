@@ -21,23 +21,31 @@ export default function pageVisual(props) {
     // onChange: inView => setViewportState(inView),
   });
 
+  const cutRange = (v, min, max) => {
+    if (!isNaN(v) && !isNaN(min) && !isNaN(max))
+      return v < min ? min : v > max ? max : v;
+    else return v;
+  };
+  const updateTitleParallax = (top = scrollPos.page) => {
+    const _vh = visualRef?.current?.clientHeight;
+    if (isNaN(_vh) || !_vh) return;
+
+    const scrollRatio = cutRange(top / _vh, 0, 1) * 1.3;
+    const _y = top / 6;
+    const _op = 1 - cutRange(scrollRatio, 0, 1);
+    setTitle({ y: _y, opacity: _op });
+  };
+
   useEffect(() => {
-    if (visualRef?.current) {
-      const _vh = visualRef.current.clientHeight;
-      const scrollRatio =
-        (scrollPos.page / _vh < 0
-          ? 0
-          : scrollPos.page / _vh > 1
-          ? 1
-          : scrollPos.page / _vh) * 1.3;
-      const _y = scrollPos.page / 6;
-      const _op = 1 - (scrollRatio < 0 ? 0 : scrollRatio > 1 ? 1 : scrollRatio);
-      setTitle({
-        y: _y,
-        opacity: _op,
-      });
-    }
-  }, [scrollPos]);
+    // initiate
+    // console.log(` -+- initiate Visual Section -+-`);
+    updateTitleParallax(0);
+  }, []);
+
+  useEffect(() => {
+    // update scroll
+    updateTitleParallax();
+  }, [scrollPos.page]);
 
   return (
     <div

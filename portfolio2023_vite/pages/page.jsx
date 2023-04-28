@@ -6,7 +6,6 @@ import { HelmetProvider } from "react-helmet-async";
 // components
 import App from "../src/App";
 import Cursor from "../src/components/cursor/cursor";
-import PageTransition from "../src/components/pageTransition/pageTransition";
 
 import "../src/scss/tailwind.scss";
 import "../src/scss/reset.scss";
@@ -27,7 +26,6 @@ const pageContainer = document.querySelector("#pageContainer");
 ReactDOM.createRoot(pageContainer).render(
   <React.StrictMode>
     <RecoilRoot>
-      <PageTransition />
       <HelmetProvider>
         <App />
       </HelmetProvider>

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 // components
 import FooterSitemapBtn from "../globalMenu/footerSitemapBtn";
@@ -9,27 +9,38 @@ import { sitemapData } from "../../data/sitemap";
 
 // state
 import { footerState } from "../../hooks/state/footer";
+import { scrollState } from "../../hooks/state/scroll";
+import { pageState } from "../../hooks/state/page";
 
 // util
 import windowResize from "../../hooks/util/windowResize";
 import { setCSSProps } from "../../hooks/util/cssProperty";
+import setStickyPos from "../../hooks/util/setStickyPos";
 
 export default function pageFooter() {
   const footerRef = useRef();
   const setFooter = useSetRecoilState(footerState);
+  const page = useRecoilValue(pageState);
+  const scroll = useRecoilValue(scrollState);
 
   const updateFooterPos = () => {
-    if (footerRef?.current) {
-      const offsetY = footerRef.current.offsetTop;
-      setCSSProps("--footer-offset-y", `${offsetY}px`);
-      setFooter(prev => ({ ...prev, offset: offsetY }));
-    }
+    const offsetY = footerRef?.current?.offsetTop;
+    if (isNaN(offsetY)) return;
+    setCSSProps("--footer-offset-y", `${offsetY}px`);
+    setFooter(prev => ({ ...prev, offset: offsetY }));
   };
 
   useEffect(() => {
+    // initiate
     updateFooterPos();
     windowResize(updateFooterPos, 20);
   }, []);
+
+  useEffect(() => {
+    // 페이지 변경 시, 푸터 위치 업데이트
+    updateFooterPos();
+    setStickyPos(scroll.page);
+  }, [page.transStep]);
 
   return (
     <footer
