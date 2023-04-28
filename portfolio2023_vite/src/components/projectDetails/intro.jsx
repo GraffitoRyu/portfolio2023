@@ -65,6 +65,7 @@ export default function detailsIntro() {
     detailsTitleRef?.current?.removeAttribute("style");
     titleTextRef?.current?.removeAttribute("style");
     subtitleTextRef?.current?.removeAttribute("style");
+    introVisual?.current?.removeAttribute("style");
   };
 
   const updateInitTitle = () => {
