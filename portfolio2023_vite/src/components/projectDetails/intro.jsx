@@ -46,6 +46,9 @@ export default function detailsIntro() {
   const device = useRecoilValue(accessDeviceAtom);
   const [mobileView, setMobileView] = useState(device.mobile);
   const [fixedTitle, setFixedTitle] = useState("");
+  const visualImg = d?.pathQuery
+    ? `${getRootPathname()}img/details/intro_${d?.pathQuery}.jpg`
+    : undefined;
   const [_t, setInitTitle] = useState({ y: 0, size: 160 });
   const [_c, setCategory] = useState({ y: 0, w: 0, size: 24 });
 
@@ -217,7 +220,7 @@ export default function detailsIntro() {
       >
         <img
           className="w-full h-full object-cover"
-          src={`${getRootPathname()}img/details/intro_${d?.pathQuery}.jpg`}
+          src={visualImg}
           alt={d?.pathQuery}
         />
       </figure>
