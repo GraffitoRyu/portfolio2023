@@ -6,7 +6,9 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 // components
 import CloseBtn from "../buttons/close";
 import OpenLinkBtn from "../buttons/openLink";
-import TopBtn from "../buttons/top";
+
+// data
+import { getRootPathname } from "../../data/sitemap";
 
 // state
 import { detailsState } from "../../hooks/state/projectDetails";
@@ -39,6 +41,7 @@ export default function detailsIntro() {
   const detailsTitleRef = useRef();
   const titleTextRef = useRef();
   const subtitleTextRef = useRef();
+  const introVisual = useRef();
   const scrollPos = useRecoilValue(scrollState);
   const device = useRecoilValue(accessDeviceAtom);
   const [mobileView, setMobileView] = useState(device.mobile);
@@ -105,6 +108,11 @@ export default function detailsIntro() {
       subtitleTextRef.current.style.opacity = Math.pow(ratio, 4);
   };
 
+  const updateIntroVisual = ratio => {
+    if (introVisual?.current)
+      introVisual.current.style.opacity = cutRange(Math.pow(ratio, 2), 0.1, 1);
+  };
+
   const updateTitleState = scrollTop => {
     if (mobileView) {
       resetStyle();
@@ -117,6 +125,7 @@ export default function detailsIntro() {
 
       // 타이틀 서브텍스트 투명도 업데이트
       updateSubtitle(r_);
+      updateIntroVisual(r_);
 
       // 상단 고정 클래스
       if (_c.y < curY) setFixedTitle("");
@@ -186,7 +195,7 @@ export default function detailsIntro() {
           btnClickCallback={() => closeDetails()}
         />
       </header>
-      <div className="details-title-mobile-container lg:hidden">
+      <div className="details-title-mobile-container lg:hidden relative">
         <h1 className="details-title w-full">
           {d?.summary?.title.split("\n").map((t, i) => (
             <span className="block break-keep" key={`title_${i}`}>
@@ -196,11 +205,21 @@ export default function detailsIntro() {
         </h1>
         <p className="details-subtitle">{d?.summary?.desc}</p>
       </div>
-      <ul className="details-btn-list flex items-center lg:justify-end lg:mt-auto">
+      <ul className="details-btn-list flex items-center lg:justify-end lg:mt-auto relative">
         <li>
           <OpenLinkBtn url={d?.service?.link} />
         </li>
       </ul>
+      <figure
+        className="details-intro-bg w-full h-full pointer-events-none overflow-hidden absolute top-0 left-0"
+        ref={introVisual}
+      >
+        <img
+          className="w-full h-full object-cover"
+          src={`${getRootPathname()}img/details/intro_${d?.pathQuery}.jpg`}
+          alt={d?.pathQuery}
+        />
+      </figure>
     </section>
   );
 }
