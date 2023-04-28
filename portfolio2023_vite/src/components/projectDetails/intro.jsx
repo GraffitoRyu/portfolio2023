@@ -200,9 +200,6 @@ export default function detailsIntro() {
         <li>
           <OpenLinkBtn url={d?.service?.link} />
         </li>
-        {/* <li className="fixed">
-          <TopBtn />
-        </li> */}
       </ul>
     </section>
   );

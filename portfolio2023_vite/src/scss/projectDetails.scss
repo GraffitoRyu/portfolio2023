@@ -2,12 +2,13 @@
 @import "./scss_global";
 
 @mixin gradBG {
-  background: rgb(26, 26, 26);
-  background: linear-gradient(
-    0deg,
-    rgba(26, 26, 26, 1) 0%,
-    rgba(37, 45, 56, 1) 100%
-  );
+  background-color: var(--details-bg);
+  // background: rgb(26, 26, 26);
+  // background: linear-gradient(
+  //   0deg,
+  //   rgba(26, 26, 26, 1) 0%,
+  //   rgba(37, 45, 56, 1) 100%
+  // );
 }
 
 .project-details-container {
@@ -32,7 +33,7 @@
 
 .details-section {
   @media only screen and (min-width: 1024px) {
-    background: rgb(26, 26, 26);
+    background-color: var(--details-bg);
   }
 }
 
@@ -119,6 +120,7 @@
 
   @media only screen and (min-width: 1024px) {
     padding-top: 0;
+    padding-bottom: rem(80px);
     height: calc(100vh - var(--header-height));
     @include gradBG();
     .page-category {
@@ -148,7 +150,7 @@
 
     .details-btn-list {
       li {
-        margin-left: 0 0 0 rem(40px);
+        margin: 0 0 0 rem(40px);
       }
     }
   }
@@ -184,8 +186,8 @@
     height: rem(48px);
     margin: 0 rem(4px);
     border-radius: rem(24px);
-    border: 1px solid white;
-    background: #dfdfdf;
+    border: 1px solid var(--details-stack-border);
+    background: var(--details-stack-bg);
     $scale_: calc(1.4 / remRatio(48px));
     img {
       transform: scale($scale_);
@@ -204,7 +206,7 @@
   }
   dt {
     margin-bottom: rem(40px);
-    color: #707070;
+    color: var(--details-item-title);
     line-height: rem(32px);
     font: {
       size: rem(24px);
@@ -212,11 +214,11 @@
     }
   }
   dd {
-    color: #b0b0b0;
+    color: var(--details-desc);
     line-height: rem(48px);
     font: {
       size: rem(24px);
-      weight: var(--weight-medium);
+      weight: 500;
     }
   }
 }

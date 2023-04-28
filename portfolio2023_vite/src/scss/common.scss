@@ -28,7 +28,7 @@ html {
 }
 
 body {
-  background-color: var(--frame-bg);
+  background-color: var(--page-bg);
   transition: background-color var(--trans-time-color);
 }
 
@@ -70,6 +70,7 @@ circle {
   height: 100%;
   overflow-x: hidden;
   overflow-y: overlay;
+  scroll-behavior: smooth;
   &.fix-area {
     overflow: hidden;
     .page-section {
@@ -118,7 +119,6 @@ html:not(.mobile) {
 }
 
 .page-section {
-  // background-color: var(--page-bg);
   transition: $trans_bgColor, $trans_opacity_expo;
   position: relative;
 
