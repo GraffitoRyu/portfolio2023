@@ -6,7 +6,6 @@ import { cursor } from "../../hooks/state/cursor";
 
 // state
 import { accessDeviceSelector } from "../../hooks/state/accessDevice";
-import { setCSSProps } from "../../hooks/util/cssProperty";
 
 export default function customCursor() {
   // 마우스 장치 여부
