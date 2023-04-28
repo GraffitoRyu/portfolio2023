@@ -23,10 +23,6 @@
     "file": "assets/theme_system-3ac4dd2c.svg",
     "src": "../src/svg/btn/theme_system.svg"
   },
-  "../src/svg/btn/top.svg": {
-    "file": "assets/top-c26ab49d.svg",
-    "src": "../src/svg/btn/top.svg"
-  },
   "../src/svg/common/external_icon.svg": {
     "file": "assets/external_icon-79615557.svg",
     "src": "../src/svg/common/external_icon.svg"
@@ -39,14 +35,14 @@
     "file": "assets/notion_icon-1ea49ff9.svg",
     "src": "../src/svg/header/notion_icon.svg"
   },
-  "_page-96a484dd.js": {
+  "_page-0767747a.js": {
     "css": [
-      "assets/page-2fbc5dec.css"
+      "assets/page-c2457047.css"
     ],
-    "file": "assets/page-96a484dd.js"
+    "file": "assets/page-0767747a.js"
   },
   "page.css": {
-    "file": "assets/page-2fbc5dec.css",
+    "file": "assets/page-c2457047.css",
     "src": "page.css"
   }
 }
