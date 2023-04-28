@@ -117,6 +117,11 @@
 
   // details
   --details-bg: rgba(202, 208, 215, 1);
+  --details-visual-grad: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 40%,
+    rgba(255, 255, 255, 0.6) 100%
+  );
   --details-main-title: #3a3a3a;
   --details-sub-title: #707070;
   --details-item-title: #909090;
@@ -216,6 +221,11 @@
 
     // details
     --details-bg: rgba(26, 26, 26, 1);
+    --details-visual-grad: linear-gradient(
+      0deg,
+      rgba(26, 26, 26, 1) 40%,
+      rgba(26, 26, 26, 0.6) 100%
+    );
     --details-main-title: white;
     --details-sub-title: #ccc;
     --details-item-title: #707070;
