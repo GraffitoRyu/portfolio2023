@@ -30,7 +30,7 @@ ReactDOM.createRoot(pageContainer).render(
       <HelmetProvider>
         <App />
       </HelmetProvider>
-      <TransCover />
+      <TransCover type="bubble" />
       <Cursor />
     </RecoilRoot>
   </React.StrictMode>
