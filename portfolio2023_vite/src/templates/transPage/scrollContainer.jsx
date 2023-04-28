@@ -18,6 +18,7 @@ export default function scrollContainer() {
   const page = useRecoilValue(pageState);
   const details = useRecoilValue(detailsState);
   const [fixArea, setFixArea] = useState("");
+  const [transPage, setTransPage] = useState("");
 
   const setScrollPos = useSetRecoilState(scrollState);
 
@@ -33,9 +34,13 @@ export default function scrollContainer() {
   }, [page, details]);
 
   useEffect(() => {
+    // 페이지 전환 시작 시, 현재 화면 유지
+    if (page.transStep == "enter") setTransPage("overflow-hidden");
     // 페이지 전환 시, 스크롤 초기화
-    if (scrollRef?.current && page.transStep == "entered")
+    if (scrollRef?.current && page.transStep == "entered") {
       scrollRef.current.scrollTop = 0;
+      setTransPage("");
+    }
   }, [page.transStep]);
 
   useEffect(() => {
@@ -46,7 +51,7 @@ export default function scrollContainer() {
 
   return (
     <div
-      className={`scroll-container custom-scrollbar w-full ${fixArea}`}
+      className={`scroll-container custom-scrollbar w-full ${fixArea} ${transPage}`}
       ref={scrollRef}
     >
       {contentsOutlet}
