@@ -1,0 +1,17 @@
+@import "./css_variable";
+@import "./scss_global";
+
+.intro-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--intro-bg);
+  font-size: rem(120px);
+  color: var(--intro-text);
+}
