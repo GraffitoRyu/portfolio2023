@@ -24,6 +24,12 @@ export default function App() {
     setCSSProps("--screen-size-x", `${window.innerWidth}px`);
     setCSSProps("--screen-size-y", `${window.innerHeight}px`);
     setCSSProps(
+      "--screen-pytha",
+      `${Math.sqrt(
+        Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)
+      )}px`
+    );
+    setCSSProps(
       "--root-font-size",
       getComputedStyle(document.querySelector("html")).getPropertyValue(
         "font-size"

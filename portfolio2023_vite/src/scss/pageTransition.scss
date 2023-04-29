@@ -118,8 +118,8 @@
         opacity: 1;
       }
       .trans-cover {
-        width: calc(var(--screen-size-x) + var(--screen-size-y));
-        height: calc(var(--screen-size-x) + var(--screen-size-y));
+        width: calc(var(--screen-pytha) * 2);
+        height: calc(var(--screen-pytha) * 2);
         transition-delay: 0s;
         .trans-depth {
           width: 100%;
