@@ -23,7 +23,7 @@ export default function projectDetails() {
   const initDetailsOpen = () => {
     const category = urlParams.get("category");
     if (category) {
-      setDetails({ open: true, category: category });
+      setDetails(prev => ({ ...prev, open: true, category: category }));
       const e = detailsRoute.find(d => d.pathQuery === category) ? true : false;
       setIsExist(e);
     }

@@ -14,6 +14,7 @@ import { accessDeviceSelector } from "./hooks/state/accessDevice";
 // util
 import windowResizeCheck from "./hooks/util/windowResize";
 import { setCSSProps } from "./hooks/util/cssProperty";
+import changeOrientation from "./hooks/util/changeOrientation";
 
 export default function App() {
   // 라우터 설정
@@ -39,6 +40,7 @@ export default function App() {
 
   useEffect(() => {
     setDevice();
+    changeOrientation(() => setDevice());
     windowResizeCheck(() => setDevice(), 20);
   }, []);
 

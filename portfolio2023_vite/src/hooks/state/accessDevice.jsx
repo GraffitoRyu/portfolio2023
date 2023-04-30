@@ -8,10 +8,10 @@ export const checkDevice = {
     ),
   tablet: () =>
     /Tablet|iPad/i.test(navigator.userAgent) &&
-    !navigator.userAgent.includes("Mobile") &&
     /Android|Mobile|iP(hone|od|ad)|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/.test(
       navigator.userAgent
     ),
+  orientation: () => screen.orientation.type,
 };
 
 export const accessDeviceAtom = atom({
@@ -20,6 +20,7 @@ export const accessDeviceAtom = atom({
     apple: checkDevice.apple(),
     mobile: checkDevice.mobile(),
     tablet: checkDevice.tablet(),
+    orientation: checkDevice.orientation(),
   },
 });
 
@@ -30,10 +31,12 @@ export const accessDeviceSelector = selector({
     const isApple = checkDevice.apple();
     const isMobile = checkDevice.mobile();
     const isTablet = checkDevice.tablet();
+    const orientationType = checkDevice.orientation();
     const updateState = {
       apple: isApple,
       mobile: isMobile,
       tablet: isTablet,
+      orientation: orientationType,
     };
 
     const _html = document.querySelector("html");

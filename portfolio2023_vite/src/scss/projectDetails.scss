@@ -74,6 +74,10 @@
       .details-title {
         width: auto;
         @include categoryFont();
+        span {
+          display: inline;
+          margin-right: rem(8px);
+        }
       }
       .details-subtitle {
         display: none;
@@ -89,6 +93,9 @@
   .details-title {
     line-height: 100%;
     color: var(--details-main-title);
+    span {
+      display: block;
+    }
   }
   .details-subtitle {
     margin-top: rem(40px);
@@ -128,7 +135,7 @@
   }
 
   @media only screen and (min-width: 1024px) {
-    height: calc(100vh - var(--header-height));
+    height: calc(var(--screen-size-y) - var(--header-height));
     padding-top: 0;
     padding-bottom: rem(80px);
     position: static;
@@ -145,7 +152,7 @@
       left: rem(80px);
       transform: translate(
         0,
-        calc(100vh - var(--header-height) - rem(80px) * 2 - 100%)
+        calc(var(--screen-size-y) - var(--header-height) - rem(80px) * 2 - 100%)
       );
       .details-title {
         line-height: 100%;
@@ -168,7 +175,7 @@
 }
 
 .details-intro-bg {
-  height: 50%;
+  height: 100%;
   z-index: 0;
   img {
     filter: blur(4px);

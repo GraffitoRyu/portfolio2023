@@ -32,7 +32,7 @@ export default function detailsIntro() {
     setUrlParams(urlParams);
 
     // close details
-    setDetails({ open: false, category: undefined });
+    setDetails({ open: false, category: undefined, imgLoaded: false });
   };
 
   // 스크롤에 따라 타이틀을 fixed header로 이동
@@ -44,7 +44,7 @@ export default function detailsIntro() {
   const introVisual = useRef();
   const scrollPos = useRecoilValue(scrollState);
   const device = useRecoilValue(accessDeviceAtom);
-  const [mobileView, setMobileView] = useState(device.mobile);
+  const [mobileView, setMobileView] = useState(device.mobile && !device.tablet);
   const [fixedTitle, setFixedTitle] = useState("");
   const visualImg = d?.pathQuery
     ? `${getRootPathname()}img/details/intro_${d?.pathQuery}.jpg`
@@ -118,7 +118,7 @@ export default function detailsIntro() {
   };
 
   const updateTitleState = scrollTop => {
-    if (mobileView) {
+    if (mobileView || !device.tablet) {
       resetStyle();
       return;
     }
@@ -146,20 +146,34 @@ export default function detailsIntro() {
     }
   };
 
-  const updateByResize = () => {
-    setMobileView(device.mobile ? device.mobile : window.innerWidth < 1024);
+  const updateTitleScroll = () => {
+    const checkOnlyDevice = device.mobile && !device.tablet;
+    const checkOnlySize = !device.mobile && window.innerWidth < 1024;
+    const checkOrient = device.orientation.includes("portrait")
+      ? "portrait"
+      : "landscape";
+    setMobileView(
+      checkOnlyDevice ||
+        checkOnlySize ||
+        (device.tablet && checkOrient == "portrait")
+    );
     updateInitTitle();
     updateCategory();
     updateTitleState(scrollPos.details);
   };
 
   useEffect(() => {
-    updateByResize();
-    windowResize(updateByResize, 50);
+    updateTitleScroll();
+    windowResize(updateTitleScroll, 50);
   }, []);
 
   useEffect(() => {
-    updateByResize();
+    updateTitleScroll();
+    windowResize(updateTitleScroll, 50);
+  }, [device]);
+
+  useEffect(() => {
+    updateTitleScroll();
   }, [details.open]);
 
   useEffect(() => {
@@ -222,6 +236,8 @@ export default function detailsIntro() {
           className="w-full h-full object-cover"
           src={visualImg}
           alt={d?.pathQuery}
+          onLoad={() => setDetails(prev => ({ ...prev, imgLoaded: true }))}
+          onError={() => setDetails(prev => ({ ...prev, imgLoaded: false }))}
         />
       </figure>
     </section>

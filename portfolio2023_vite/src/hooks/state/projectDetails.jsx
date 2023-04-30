@@ -5,5 +5,6 @@ export const detailsState = atom({
   default: {
     open: false,
     category: undefined,
+    imgLoaded: false,
   },
 });
