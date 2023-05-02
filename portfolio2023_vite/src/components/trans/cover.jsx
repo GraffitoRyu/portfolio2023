@@ -29,8 +29,8 @@ function SlideTransition() {
       setSlideState("page-out");
     } else if (page.transStep == "exited") {
       setTimeout(() => {
-        setSlideState("page-in");
-      }, 400);
+        setSlideState("page-in"); // section/pageVisual.jsx 참조
+      }, [page.transDelay]);
     }
   }, [page.transStep]);
 

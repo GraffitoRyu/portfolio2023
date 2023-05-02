@@ -51,7 +51,9 @@ export default function pageVisual(props) {
       setLoadTitle("");
     } else if (page.transStep == "exited") {
       updateTitleParallax(0);
-      setLoadTitle("loaded");
+      setTimeout(() => {
+        setLoadTitle("loaded");
+      }, page.transDelay + 100); // trans/cover.jsx 참조
     }
   }, [page.transStep]);
 
