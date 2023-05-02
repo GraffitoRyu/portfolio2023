@@ -24,6 +24,8 @@ import { accessDeviceAtom } from "../../hooks/state/accessDevice";
 export default function detailsIntro() {
   const [urlParams, setUrlParams] = useSearchParams();
   const [details, setDetails] = useRecoilState(detailsState);
+  const [closed, setClosed] = useState("closed");
+  const [subTitleDelay, setSubTitleDelay] = useState(0.24);
   const d = getDetailsData(urlParams.get("category"));
 
   const closeDetails = () => {
@@ -32,7 +34,25 @@ export default function detailsIntro() {
     setUrlParams(urlParams);
 
     // close details
-    setDetails({ open: false, category: undefined, imgLoaded: false });
+    setDetails(prev => ({
+      ...prev,
+      open: false,
+      category: undefined,
+      imgLoaded: false,
+    }));
+
+    setSubTitleDelay(0.24);
+
+    setTimeout(() => {
+      setDetails(prev => ({ ...prev, openComplete: false }));
+      setClosed("closed");
+    }, details.openDuration);
+  };
+
+  const updateSubTitleDelay = () => {
+    const lineLength = d?.summary?.title.split("\n").length + 1;
+    const order = !isNaN(lineLength) ? lineLength : 1;
+    setSubTitleDelay(order * 0.24);
   };
 
   // 스크롤에 따라 타이틀을 fixed header로 이동
@@ -173,8 +193,13 @@ export default function detailsIntro() {
   }, [device]);
 
   useEffect(() => {
+    updateSubTitleDelay();
     updateTitleScroll();
   }, [details.open]);
+
+  useEffect(() => {
+    setClosed(details.openComplete ? "" : "closed");
+  }, [details]);
 
   useEffect(() => {
     if (details.open) updateTitleState(scrollPos.details);
@@ -197,15 +222,17 @@ export default function detailsIntro() {
           className={`details-title-container lg:pointer-events-none lg:absolute`}
           ref={detailsTitleRef}
         >
-          <h1 className="details-title lg:w-3/4" ref={titleTextRef}>
+          <h1 className={`details-title lg:w-3/4 ${closed}`} ref={titleTextRef}>
             {d?.summary?.title.split("\n").map((t, i) => (
               <span className="whitespace-nowrap" key={`title_${i}`}>
                 {t}
               </span>
             ))}
           </h1>
-          <p className="details-subtitle" ref={subtitleTextRef}>
-            {d?.summary?.desc}
+          <p className={`details-subtitle ${closed}`} ref={subtitleTextRef}>
+            <span style={{ transitionDelay: `${subTitleDelay}s` }}>
+              {d?.summary?.desc}
+            </span>
           </p>
         </div>
         <CloseBtn
@@ -214,14 +241,18 @@ export default function detailsIntro() {
         />
       </header>
       <div className="details-title-mobile-container lg:hidden relative">
-        <h1 className="details-title w-full">
+        <h1 className={`details-title w-full ${closed}`}>
           {d?.summary?.title.split("\n").map((t, i) => (
             <span className="block break-keep" key={`title_${i}`}>
               {t}
             </span>
           ))}
         </h1>
-        <p className="details-subtitle">{d?.summary?.desc}</p>
+        <p className={`details-subtitle ${closed}`}>
+          <span style={{ transitionDelay: `${subTitleDelay}s` }}>
+            {d?.summary?.desc}
+          </span>
+        </p>
       </div>
       <ul className="details-btn-list flex items-center lg:justify-end lg:mt-auto relative">
         <li>

@@ -34,7 +34,13 @@ export default function projectItem(props) {
 
   const openDetails = () => {
     setUrlParams({ category: props.pathQuery });
-    setDetails({ open: true, category: props.pathQuery });
+    setDetails(prev => ({
+      ...prev,
+      open: true,
+      category: props.pathQuery,
+      imgLoaded: false,
+      openComplete: false,
+    }));
   };
 
   useEffect(() => {

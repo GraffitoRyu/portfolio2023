@@ -9,14 +9,18 @@ import DetailsMedia from "../../components/projectDetails/media";
 
 // state
 import { detailsState } from "../../hooks/state/projectDetails";
+import { scrollState } from "../../hooks/state/scroll";
 
 // data
 import { detailsRoute } from "../../data/projects";
-import { scrollState } from "../../hooks/state/scroll";
+
+// util
 import windowScroll from "../../hooks/util/windowScroll";
+import useComputedStyle from "../../hooks/util/useComputedStyle";
 
 export default function projectDetails() {
   const [urlParams] = useSearchParams();
+  const projectDetailsRef = useRef();
   const [details, setDetails] = useRecoilState(detailsState);
   const [isExist, setIsExist] = useState(false);
 
@@ -26,11 +30,23 @@ export default function projectDetails() {
       setDetails(prev => ({ ...prev, open: true, category: category }));
       const e = detailsRoute.find(d => d.pathQuery === category) ? true : false;
       setIsExist(e);
+
+      setTimeout(() => {
+        setDetails(prev => ({ ...prev, openComplete: true }));
+      }, details.openDuration);
     }
   };
 
   const detailsScrollRef = useRef();
   const setScrollPos = useSetRecoilState(scrollState);
+
+  const updateOpenDuration = () => {
+    const openDuration = projectDetailsRef?.current
+      ? useComputedStyle(projectDetailsRef.current, "transition-duration") *
+        1000
+      : 800;
+    setDetails(prev => ({ ...prev, openDuration: openDuration / 2 }));
+  };
 
   const updateDetailsSCrollPos = () => {
     if (detailsScrollRef?.current) {
@@ -45,6 +61,7 @@ export default function projectDetails() {
   }, [details.open]);
 
   useEffect(() => {
+    updateOpenDuration();
     updateDetailsSCrollPos();
     windowScroll(detailsScrollRef.current, updateDetailsSCrollPos);
   }, []);
@@ -52,6 +69,7 @@ export default function projectDetails() {
   return (
     <div
       className="project-details-container overflow-hidden w-full fixed bottom-0 left-0"
+      ref={projectDetailsRef}
       style={{
         transform: `translate(0,${details.open && isExist ? 0 : "100%"})`,
       }}

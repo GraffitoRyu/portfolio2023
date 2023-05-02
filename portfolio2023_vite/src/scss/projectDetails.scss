@@ -90,16 +90,47 @@
       margin: 0 rem(16px);
     }
   }
+
+  @mixin fadeInTitle($direction) {
+    span {
+      display: block;
+      transition-duration: 0.8s;
+      @if ($direction == "up" or $direction == "down") {
+        transition: $trans_form_quad, $trans_opacity_quad;
+        // transition: $trans_form_quart, $trans_opacity_quart;
+      } @else if ($direction == "left" or $direction == "right") {
+        transition: $trans_form_expo, $trans_opacity_expo;
+      }
+      @for $ti from 1 to 3 {
+        &:nth-child(#{$ti + 1}) {
+          transition-delay: 0.24s * $ti;
+        }
+      }
+    }
+    &.closed {
+      span {
+        opacity: 0;
+        @if ($direction == "up") {
+          transform: translateY(50%);
+        } @else if ($direction == "down") {
+          transform: translateY(-50%);
+        } @else if ($direction == "left") {
+          transform: translateX(50%);
+        } @else if ($direction == "right") {
+          transform: translateX(-50%);
+        }
+      }
+    }
+  }
   .details-title {
     line-height: 100%;
     color: var(--details-main-title);
-    span {
-      display: block;
-    }
+    @include fadeInTitle("up");
   }
   .details-subtitle {
     margin-top: rem(40px);
     color: var(--details-sub-title);
+    @include fadeInTitle("up");
   }
   .details-title-container {
     .details-title {
