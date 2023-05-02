@@ -118,7 +118,7 @@ export default function detailsIntro() {
   };
 
   const updateTitleState = scrollTop => {
-    if (mobileView || !device.tablet) {
+    if (mobileView || (device.mobile && !device.tablet)) {
       resetStyle();
       return;
     }
