@@ -11,6 +11,7 @@ export default function pageVisual(props) {
   const visualRef = useRef();
   const page = useRecoilValue(pageState);
   const scrollPos = useRecoilValue(scrollState);
+  const [loadTitle, setLoadTitle] = useState("");
   const [title, setTitle] = useState({
     y: 0,
     opacity: 1,
@@ -40,9 +41,17 @@ export default function pageVisual(props) {
 
   useEffect(() => {
     // initiate
-    // console.log(` -+- initiate Visual Section -+-`);
-    if (page.transStep == "exited") {
+    setLoadTitle("loaded");
+  }, []);
+
+  useEffect(() => {
+    console.log(` -+- initiate Visual Section -+-`, page.transStep);
+    // enter -> exit => entering -> exiting -> entered -> exited
+    if (page.transStep == "exiting") {
+      setLoadTitle("");
+    } else if (page.transStep == "exited") {
       updateTitleParallax(0);
+      setLoadTitle("loaded");
     }
   }, [page.transStep]);
 
@@ -65,12 +74,16 @@ export default function pageVisual(props) {
           opacity: !isNaN(title.opacity) ? title.opacity : 1,
         }}
       >
-        <span className="page-title-text page-title-border-text flex items-center">
-          {borderText}
-        </span>
-        <span className="page-title-text page-title-filled-text flex items-center">
-          {filledText}
-        </span>
+        <div
+          className={`page-title-text page-title-border-text flex items-center`}
+        >
+          <span className={`${loadTitle}`}>{borderText}</span>
+        </div>
+        <div
+          className={`page-title-text page-title-filled-text flex items-center`}
+        >
+          <span className={`${loadTitle}`}>{filledText}</span>
+        </div>
       </h1>
     </div>
   );

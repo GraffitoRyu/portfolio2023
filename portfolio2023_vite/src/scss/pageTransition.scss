@@ -1,17 +1,13 @@
 @import "./css_variable";
 @import "./scss_global";
 
-.trans-container {
-}
 .trans-enter,
 .trans-exit {
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 555;
-  // transition: all 3s;
+  transition: all 1s;
   .scroll-container {
     overflow: hidden;
+    background: var(--page-bg);
   }
   &:after {
     display: none;
@@ -25,53 +21,64 @@
   }
 }
 .trans-exit {
+  z-index: 800;
   &:after {
     content: "EXIT";
     color: white;
   }
 }
-.trans-exiting {
-}
 .trans-enter {
+  z-index: 600;
   &:after {
     content: "ENTER";
     color: red;
   }
-  opacity: 0;
 }
 
-.trans-entering {
-  opacity: 0;
-}
+// .trans-exit-active {
+//   // transform: scale(0.9);
+//   // border-radius: rem(80px);
+//   .scroll-container {
+//     // filter: blur(rem(10px));
+//   }
+// }
+// .trans-exit-done {
+//   .scroll-container {
+//     // filter: blur(rem(10px));
+//   }
+// }
+// .trans-enter-active {
+//   // opacity: 0;
+// }
 
 .trans-cover-container {
   // display: none;
   z-index: 99999;
   $targetSize: rem(120px);
-  .trans-target {
-    transform: translate(-50%, -50%);
-    color: var(--trans-target);
-    letter-spacing: -0.1em;
-    opacity: 1;
-    line-height: $targetSize;
-    font: {
-      size: $targetSize;
-      weight: var(--weight-medium);
-    }
-    span {
-      transform: translateY(100%);
-      transition: transform 0.4s var(--trans-func-expo);
-    }
-  }
   &[type="slide"] {
+    .trans-target {
+      height: #{$targetSize * 1.2};
+      color: var(--trans-target);
+      letter-spacing: -0.1em;
+      font: {
+        size: $targetSize;
+        weight: var(--weight-medium);
+        family: "Noto Serif KR";
+      }
+      span {
+        line-height: $targetSize;
+        top: 100%;
+        left: rem(80px);
+        transition: top 0.4s;
+      }
+    }
     .trans-cover {
       height: 0;
       top: 0;
       background: var(--trans-cover-bg);
-      transition: height 0.6s var(--trans-func-expo);
-      transition-delay: 0.16s;
+      transition: height 1s var(--trans-func-expo);
     }
-    &.entering {
+    &.page-out {
       .trans-cover {
         top: auto;
         bottom: 0;
@@ -80,9 +87,28 @@
       }
       .trans-target {
         span {
-          transform: translateY(0);
+          top: 0;
           transition-delay: 0.2s;
         }
+      }
+    }
+    &.page-in {
+      .trans-cover {
+        transition-delay: 0.2s;
+      }
+      .trans-target {
+        span {
+          top: 100%;
+          animation: slidePageIn 0.4s;
+        }
+      }
+    }
+    @keyframes slidePageIn {
+      0% {
+        top: 0;
+      }
+      100% {
+        top: -100%;
       }
     }
   }

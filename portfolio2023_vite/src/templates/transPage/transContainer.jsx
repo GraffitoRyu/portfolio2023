@@ -1,10 +1,11 @@
-import React, { createRef } from "react";
+import React, { createRef, useEffect } from "react";
 import { useLocation, useOutlet } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 // components
 import ScrollContainer from "./scrollContainer";
+import TransCover from "../../components/trans/cover";
 
 // data
 import { sitemapData } from "../../data/sitemap";
@@ -29,6 +30,8 @@ export default function transContainer() {
     setPageState(prev => ({ ...prev, transStep: state }));
   };
 
+  // useEffect(() => {}, [page.transStep]);
+
   return (
     <TransitionGroup className="trans-container w-full h-full overflow-hidden">
       <CSSTransition
@@ -49,12 +52,16 @@ export default function transContainer() {
         {state => {
           // 스크롤 컨테이너 분리; 페이지 이동 시 스크롤 안먹힘 수정 필요
           return (
-            <div className="w-full h-full overflow-hidden" ref={nodeRef}>
+            <div
+              className="w-full h-full overflow-hidden top-0 left-0"
+              ref={nodeRef}
+            >
               <ScrollContainer contents={_outlet} />
             </div>
           );
         }}
       </CSSTransition>
+      <TransCover type="slide" />
     </TransitionGroup>
   );
 }

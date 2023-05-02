@@ -6,7 +6,7 @@ import { HelmetProvider } from "react-helmet-async";
 // components
 import App from "../src/App";
 import Cursor from "../src/components/cursor/cursor";
-import TransCover from "../src/components/trans/cover";
+// import TransCover from "../src/components/trans/cover";
 
 import "../src/scss/tailwind.scss";
 import "../src/scss/reset.scss";
@@ -30,7 +30,7 @@ ReactDOM.createRoot(pageContainer).render(
       <HelmetProvider>
         <App />
       </HelmetProvider>
-      <TransCover type="bubble" />
+      {/* <TransCover type="slide" /> */}
       <Cursor />
     </RecoilRoot>
   </React.StrictMode>

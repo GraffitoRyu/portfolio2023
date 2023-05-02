@@ -33,15 +33,36 @@
     .page-title-text {
       font-size: var(--title-size);
       line-height: var(--title-size);
-      // padding-bottom: calc(var(--title-size) * 0.2);
+      span {
+        transition: $trans_form_quart, $trans_opacity_quart;
+        // transition: $trans_form_quad, $trans_opacity_quad;
+        transform: translateY(50%);
+        opacity: 0;
+        &.loaded {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
     }
 
     .page-title-border-text {
       -webkit-text-stroke: 1px var(--page-title-border);
+      span {
+        transition-delay: 0s;
+        .loaded {
+          // transition-delay: 0.16s;
+        }
+      }
     }
 
     .page-title-filled-text {
       color: var(--page-title-filled);
+      span {
+        transition-delay: 0.08s;
+        &.loaded {
+          transition-delay: 0.32s;
+        }
+      }
     }
   }
 
