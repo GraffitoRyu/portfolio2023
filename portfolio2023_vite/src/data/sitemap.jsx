@@ -41,17 +41,19 @@ export const sitemapData = [
   },
 ];
 
+const routerChild = sitemapData
+  .filter(d => !d.external)
+  .map(d => ({
+    index: d.path === getRootPathname(),
+    path: d.path === getRootPathname() ? undefined : d.path,
+    element: d.components,
+  }));
+
 export const routerSet = [
   {
     path: getRootPathname(),
     element: <PageTemplate />,
-    children: sitemapData
-      .filter(d => !d.external)
-      .map(d => ({
-        index: d.path === getRootPathname(),
-        path: d.path === getRootPathname() ? undefined : d.path,
-        element: d.components,
-      })),
+    children: routerChild,
   },
 ];
 

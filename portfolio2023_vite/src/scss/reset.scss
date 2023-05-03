@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* reset; ~ 2023. 04. */
+/* reset; ~ 2023. 05. */
 :root {-webkit-tap-highlight-color:transparent;  text-size-adjust: none; overflow-wrap:break-word; word-break:break-word;}
 *, *:before, *:after {border:0; margin:0; padding:0; box-sizing:border-box;}
 *:before, *:after {border:0; margin:0; padding:0; box-sizing:border-box;}
@@ -28,7 +28,7 @@
 // {}
 
 /* Document */
-html {width:100%; font-size:10px; font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', Roboto, 'Helvetica', 'Helvetica Neue', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', '맑은 고딕', 'Malgun Gothic', '돋움', 'dotum', Oxygen, 'Oxygen-Sans', 'Ubuntu', 'Cantarell', sans-serif; background-color:#fff;}
+html {width:100%; font-size:10px; font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', Roboto, 'Helvetica', 'Helvetica Neue', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', '맑은 고딕', 'Malgun Gothic', '돋움', 'dotum', Oxygen, 'Oxygen-Sans', 'Ubuntu', 'Cantarell', sans-serif; background-color:#fff; touch-action: manipulation;}
 body {width:100%; position:relative;  background:none;}
 
 /* Text */
@@ -80,9 +80,9 @@ datalist {} /* 특정 input 태그에 대해, 자동완성 기능 제공 */
 /* 인터렉션 요소 */
 a {display:block; color:#333; text-decoration:none;}
 input, select, button, textarea {display:block; outline:none; background:transparent; box-shadow:none; border-radius:0;}
-button {appearance:none; cursor:pointer; font-family:inherit;}
+button {appearance:none; cursor:pointer; font-family:inherit; user-select: none;}
 textarea {resize:none;}
-select {appearance:none;}
+select {appearance:none; user-select: none;}
 select::-ms-expand {
   /* IE 8 */
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";

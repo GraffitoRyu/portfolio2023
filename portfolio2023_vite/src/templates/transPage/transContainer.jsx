@@ -39,7 +39,6 @@ export default function transContainer() {
         key={nowPagePath}
         nodeRef={nodeRef}
         timeout={page.transDuration}
-        in
         unmountOnExit
         // enter -> exit => entering -> exiting -> entered -> exited
         onEnter={() => updateTransState("enter")}

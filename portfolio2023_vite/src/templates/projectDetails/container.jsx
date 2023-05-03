@@ -56,15 +56,15 @@ export default function projectDetails() {
   };
 
   useEffect(() => {
-    if (details.open) detailsScrollRef.current.scrollTop = 0;
-    initDetailsOpen();
-  }, [details.open]);
-
-  useEffect(() => {
     updateOpenDuration();
     updateDetailsSCrollPos();
     windowScroll(detailsScrollRef.current, updateDetailsSCrollPos);
   }, []);
+
+  useEffect(() => {
+    if (details.open) detailsScrollRef.current.scrollTop = 0;
+    initDetailsOpen();
+  }, [details.open]);
 
   return (
     <div

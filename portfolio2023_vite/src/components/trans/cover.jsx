@@ -40,7 +40,7 @@ function SlideTransition() {
       type="slide"
     >
       <div className="trans-cover absolute left-0 w-full"></div>
-      <h1 className="trans-target w-full uppercase pointer-events-none overflow-hidden relative">
+      <h1 className="trans-target w-full capitalize pointer-events-none overflow-hidden relative">
         <span className="absolute flex items-center">{page?.cur}</span>
       </h1>
     </div>
