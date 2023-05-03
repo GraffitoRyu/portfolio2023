@@ -45,7 +45,7 @@ export default function pageFooter() {
   return (
     <footer
       id="pageFooter"
-      className="page-footer page-bg w-full h-full lg:h-screen"
+      className="page-footer page-bg w-full h-full overflow-hidden"
       ref={footerRef}
     >
       <div className="footer-card flex flex-col lg:justify-between w-full h-full">
@@ -59,7 +59,7 @@ export default function pageFooter() {
             </span>
           </h2>
         </header>
-        <div className="footer-contents flex flex-wrap lg:flex-nowrap w-full flex-1 lg:flex-none">
+        <div className="footer-contents mt-auto flex flex-wrap lg:flex-nowrap w-full flex-1 lg:flex-none">
           <dl className="footer-experience flex flex-col w-full lg:w-1/2 mb-auto lg:mb-0">
             <dt>Ryu, Daehyeon</dt>
             <dd>Front-end Development</dd>

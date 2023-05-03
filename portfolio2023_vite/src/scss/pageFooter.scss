@@ -2,7 +2,6 @@
 @import "./scss_global";
 
 .page-footer {
-  position: relative;
   z-index: 600;
   background: var(--footer-bg);
 
@@ -11,10 +10,8 @@
   }
 
   .page-title-text {
-    font: {
-      size: rem(160px);
-    }
-    line-height: rem(160px);
+    font-size: rem(160px);
+    line-height: 1em;
   }
 
   .page-title-border-text {
@@ -26,6 +23,9 @@
 
   @media only screen and (min-width: 1024px) {
     min-height: rem(920px);
+    .page-title-text {
+      font-size: rem(240px);
+    }
   }
 }
 
