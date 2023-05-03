@@ -13,13 +13,14 @@ import { getRootPathname } from "../../data/sitemap";
 // state
 import { detailsState } from "../../hooks/state/projectDetails";
 import { scrollState } from "../../hooks/state/scroll";
+import { accessDeviceAtom } from "../../hooks/state/accessDevice";
 
 // util
 import getDetailsData from "../../hooks/util/getDetailsData";
 import useComputedStyle from "../../hooks/util/useComputedStyle";
 import windowResize from "../../hooks/util/windowResize";
 import useMatrix from "../../hooks/util/useMatrix";
-import { accessDeviceAtom } from "../../hooks/state/accessDevice";
+import useRange from "../../hooks/util/useRange";
 
 export default function detailsIntro() {
   const [urlParams, setUrlParams] = useSearchParams();
@@ -72,16 +73,10 @@ export default function detailsIntro() {
   const [_t, setInitTitle] = useState({ y: 0, size: 160 });
   const [_c, setCategory] = useState({ y: 0, w: 0, size: 24 });
 
-  const cutRange = (v, min, max) => {
-    if (!isNaN(v) && !isNaN(min) && !isNaN(max))
-      return v < min ? min : v > max ? max : v;
-    else return v;
-  };
-
-  const updateDeltaRatio = scrollTop => 1 - cutRange(scrollTop, 0, _t.y) / _t.y;
-  const updateSize = ratio => cutRange(_t.size * ratio, _c.size, _t.size);
-  const updateX = ratio => cutRange(_c.w - _c.w * ratio, 0, _c.w);
-  const updateY = ratio => cutRange(_t.y * ratio, 0, _t.y);
+  const updateDeltaRatio = scrollTop => 1 - useRange(scrollTop, 0, _t.y) / _t.y;
+  const updateSize = ratio => useRange(_t.size * ratio, _c.size, _t.size);
+  const updateX = ratio => useRange(_c.w - _c.w * ratio, 0, _c.w);
+  const updateY = ratio => useRange(_t.y * ratio, 0, _t.y);
 
   const resetStyle = () => {
     setFixedTitle("");
@@ -134,7 +129,7 @@ export default function detailsIntro() {
 
   const updateIntroVisual = ratio => {
     if (introVisual?.current)
-      introVisual.current.style.opacity = cutRange(Math.pow(ratio, 2), 0.1, 1);
+      introVisual.current.style.opacity = useRange(Math.pow(ratio, 2), 0.1, 1);
   };
 
   const updateTitleState = scrollTop => {

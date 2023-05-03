@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useRecoilValue } from "recoil";
 
@@ -6,9 +6,13 @@ import { useRecoilValue } from "recoil";
 import { scrollState } from "../../hooks/state/scroll";
 import { pageState } from "../../hooks/state/page";
 
+// util
+import useRange from "../../hooks/util/useRange";
+
 export default function pageVisual(props) {
   const { borderText, filledText } = props;
   const visualRef = useRef();
+  // const titleRef = useRef();
   const page = useRecoilValue(pageState);
   const scrollPos = useRecoilValue(scrollState);
   const [loadTitle, setLoadTitle] = useState("");
@@ -16,26 +20,25 @@ export default function pageVisual(props) {
     y: 0,
     opacity: 1,
   });
-  const {
-    ref: titleRef,
-    inView,
-    entry,
-  } = useInView({
-    // onChange: inView => setViewportState(inView),
-  });
+  const { ref: sectionViewRef, inView, entry } = useInView();
 
-  const cutRange = (v, min, max) => {
-    if (!isNaN(v) && !isNaN(min) && !isNaN(max))
-      return v < min ? min : v > max ? max : v;
-    else return v;
-  };
+  const visualViewRef = useCallback(
+    node => {
+      visualRef.current = node;
+      sectionViewRef(node);
+    },
+    [sectionViewRef]
+  );
+
   const updateTitleParallax = (top = scrollPos.page) => {
-    const _vh = visualRef?.current?.clientHeight;
+    if (!inView || !visualRef?.current) return;
+
+    const _vh = visualRef.current.clientHeight;
     if (isNaN(_vh) || !_vh) return;
 
-    const scrollRatio = cutRange(top / _vh, 0, 1) * 1.3;
+    const scrollRatio = useRange(top / _vh, 0, 1) * 1.3;
     const _y = top / 6;
-    const _op = 1 - cutRange(scrollRatio, 0, 1);
+    const _op = 1 - useRange(scrollRatio, 0, 1);
     setTitle({ y: _y, opacity: _op });
   };
 
@@ -45,7 +48,7 @@ export default function pageVisual(props) {
   }, []);
 
   useEffect(() => {
-    console.log(` -+- initiate Visual Section -+-`, page.transStep);
+    // console.log(` -+- initiate Visual Section -+-`, page.transStep);
     // enter -> exit => entering -> exiting -> entered -> exited
     if (page.transStep == "exiting") {
       setLoadTitle("");
@@ -64,12 +67,12 @@ export default function pageVisual(props) {
 
   return (
     <div
-      className="page-visual side-padding w-full flex items-end"
-      ref={visualRef}
+      className="page-visual side-padding w-full flex items-end overflow-hidden"
+      ref={visualViewRef}
     >
       <h1
         className="page-title fixed pointer-events-none"
-        ref={titleRef}
+        // ref={titleRef}
         viewport={inView ? "in" : "out"}
         style={{
           transform: `translate3d(0,-${title.y}px, 0)`,

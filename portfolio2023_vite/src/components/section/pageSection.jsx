@@ -60,7 +60,7 @@ export default function section(props) {
 
   return (
     <section
-      className={`page-section ${sectionCode}-section lg:flex ${
+      className={`page-section ${sectionCode}-section overflow-hidden lg:flex ${
         header ? sectionClass.join(" ") : "w-full"
       } ${
         sectionCode == "intro"

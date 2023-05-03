@@ -1,25 +1,22 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // svg
 import { ReactComponent as IconExternal } from "../../svg/common/external_icon.svg";
-import { useState } from "react";
 
-export default function footerSitemapBtn(props) {
+export default function gnbFooter(props) {
   const d = props.data;
-
-  const [hover, setHover] = useState(false);
+  const [hover, setHover] = useState("");
 
   return (
     <dd className="w-full flex items-center">
       {d.external ? (
         <a
-          className={`footer-sitemap-btn flex items-center ${
-            hover ? "hover" : ""
-          }`}
+          className={`footer-btn inline-flex items-center ${hover}`}
           href={d.path}
           target="_blank"
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
+          onMouseEnter={() => setHover("hover")}
+          onMouseLeave={() => setHover("")}
         >
           <span>{d.name}</span>
           <figure>
@@ -28,12 +25,10 @@ export default function footerSitemapBtn(props) {
         </a>
       ) : (
         <Link
-          className={`footer-sitemap-btn flex items-center ${
-            hover ? "hover" : ""
-          }`}
+          className={`footer-btn inline-flex items-center ${hover}`}
           to={d.path}
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
+          onMouseEnter={() => setHover("hover")}
+          onMouseLeave={() => setHover("")}
         >
           <span>{d.name}</span>
         </Link>
