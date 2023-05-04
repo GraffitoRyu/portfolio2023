@@ -64,8 +64,12 @@ export default function detailsIntro() {
   const subtitleTextRef = useRef();
   const introVisual = useRef();
   const scrollPos = useRecoilValue(scrollState);
-  const device = useRecoilValue(accessDeviceAtom);
-  const [mobileView, setMobileView] = useState(device.mobile && !device.tablet);
+  const {
+    mobile: isMobile,
+    tablet: isTablet,
+    orientation,
+  } = useRecoilValue(accessDeviceAtom);
+  const [mobileView, setMobileView] = useState(isMobile && !isTablet);
   const [fixedTitle, setFixedTitle] = useState("");
   const visualImg = d?.pathQuery
     ? `${getRootPathname()}img/details/intro_${d?.pathQuery}.jpg`
@@ -133,7 +137,7 @@ export default function detailsIntro() {
   };
 
   const updateTitleState = scrollTop => {
-    if (mobileView || (device.mobile && !device.tablet)) {
+    if (mobileView || (isMobile && !isTablet)) {
       resetStyle();
       return;
     }
@@ -162,15 +166,15 @@ export default function detailsIntro() {
   };
 
   const updateTitleScroll = () => {
-    const checkOnlyDevice = device.mobile && !device.tablet;
-    const checkOnlySize = !device.mobile && window.innerWidth < 1024;
-    const checkOrient = device.orientation.includes("portrait")
+    const checkOnlyDevice = isMobile && !isTablet;
+    const checkOnlySize = !isMobile && window.innerWidth < 1024;
+    const checkOrient = orientation.includes("portrait")
       ? "portrait"
       : "landscape";
     setMobileView(
       checkOnlyDevice ||
         checkOnlySize ||
-        (device.tablet && checkOrient == "portrait")
+        (isTablet && checkOrient == "portrait")
     );
     updateInitTitle();
     updateCategory();
@@ -179,13 +183,13 @@ export default function detailsIntro() {
 
   useEffect(() => {
     updateTitleScroll();
-    windowResize(updateTitleScroll, 50);
+    windowResize(() => updateTitleScroll(), 50);
   }, []);
 
   useEffect(() => {
     updateTitleScroll();
-    windowResize(updateTitleScroll, 50);
-  }, [device]);
+    windowResize(() => updateTitleScroll(), 50);
+  }, [isMobile, isTablet]);
 
   useEffect(() => {
     updateSubTitleDelay();

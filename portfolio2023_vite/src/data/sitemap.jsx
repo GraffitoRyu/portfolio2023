@@ -100,7 +100,7 @@ export const sitemapData = [
 ];
 
 const routerChild = sitemapData
-  .filter(d => !d.external)
+  .filter(d => !d.external && !d.contact)
   .map(d => ({
     index: d.path === getRootPathname(),
     path: d.path === getRootPathname() ? undefined : d.path,
@@ -118,6 +118,6 @@ export const routerSet = [
 export function getRootPathname() {
   const currentPath = window.location.pathname;
   return currentPath.includes("projects")
-    ? currentPath.replace(/projects/gi, "").replace("//", "/")
+    ? currentPath.replaceAll("projects", "").replace("//", "/")
     : currentPath;
 }

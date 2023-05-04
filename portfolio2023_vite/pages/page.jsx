@@ -3,10 +3,6 @@ import ReactDOM from "react-dom/client";
 import { RecoilRoot, RecoilEnv } from "recoil";
 import { HelmetProvider } from "react-helmet-async";
 
-// components
-import App from "../src/App";
-import Cursor from "../src/components/cursor/cursor";
-
 import "../src/scss/tailwind.scss";
 import "../src/scss/reset.scss";
 import "../src/scss/cursor.scss";
@@ -19,6 +15,10 @@ import "../src/scss/introSection.scss";
 import "../src/scss/profile.scss";
 import "../src/scss/projects.scss";
 import "../src/scss/projectDetails.scss";
+
+// components
+import App from "../src/App";
+import Cursor from "../src/components/cursor/cursor";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 

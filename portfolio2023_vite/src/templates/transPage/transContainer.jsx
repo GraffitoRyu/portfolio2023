@@ -20,9 +20,9 @@ export default function transContainer() {
   const _outlet = useOutlet();
 
   // 페이지 전환 컨텐츠 ref 설정
-  const routesData = sitemapData.map(d => {
-    return !d.external ? { ...d, nodeRef: createRef() } : d;
-  });
+  const routesData = sitemapData
+    .filter(r => !r.external && !r.contact)
+    .map(d => ({ ...d, nodeRef: createRef() }));
   const { nodeRef } = routesData.find(r => r.path === nowPagePath) ?? {};
 
   const updateTransState = state => {

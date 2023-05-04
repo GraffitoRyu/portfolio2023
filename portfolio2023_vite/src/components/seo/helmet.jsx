@@ -8,8 +8,8 @@ import getPageDataBySitemap from "../../hooks/util/getPageDataBySitemap";
 import { themeStateAtom } from "../../hooks/state/theme";
 
 export default function seoHelmet() {
-  const theme = useRecoilValue(themeStateAtom);
-  const metaColor = theme.theme == "dark" ? "#5a5a5a" : "#cccccc";
+  const { theme } = useRecoilValue(themeStateAtom);
+  const metaColor = theme == "dark" ? "#5a5a5a" : "#cccccc";
   const pageData = getPageDataBySitemap();
   const pageName = pageData ? pageData.name + " | " : "";
   return (

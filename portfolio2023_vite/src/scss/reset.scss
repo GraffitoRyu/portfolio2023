@@ -6,26 +6,6 @@
 *:before, *:after {border:0; margin:0; padding:0; box-sizing:border-box;}
 * {letter-spacing:-.05em; flex-shrink:0; overscroll-behavior-y: none;/*iOS 스크롤 바운스 해제*/}
 *:focus, *:focus-within, *:focus-visible {outline:none;}
-/* 공통 RESET */
-// html, body,
-// div, iframe,
-// h1, h2, h3, h4, h5, h6,
-// p, span, strong, b, i, sup, sub, del, ins, s, hr,
-// i, address, cite, em, q, u,
-// blockquote, abbr, dfn,
-// pre, code, samp, kbd, var,
-// img,
-// ul, ol, dl, li, dt, dd,
-// table, thead, tbody, tfoot, tr, th, td, caption,
-// form, fieldset, label, legend,
-// article, aside, footer, header, main, nav, section, time,
-// audio, canvas, figure, figcaption, video,
-// meter, progress,
-// mark, details, summary, datalist,
-// a,
-// input, select, button, textarea,
-// :before, :after
-// {}
 
 /* Document */
 html {width:100%; font-size:10px; font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', Roboto, 'Helvetica', 'Helvetica Neue', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', '맑은 고딕', 'Malgun Gothic', '돋움', 'dotum', Oxygen, 'Oxygen-Sans', 'Ubuntu', 'Cantarell', sans-serif; background-color:#fff; touch-action: manipulation;}

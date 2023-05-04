@@ -26,6 +26,9 @@ export default function pageFooter() {
   const page = useRecoilValue(pageState);
   const scroll = useRecoilValue(scrollState);
 
+  const ft_gnb = sitemapData.filter(d => d.key.includes("sitemap"));
+  const ft_contact = sitemapData.filter(d => d.key.includes("contact"));
+
   const [footerTitle, setFooterTitle] = useState({
     yRatio: 0,
   });
@@ -61,15 +64,13 @@ export default function pageFooter() {
   useEffect(() => {
     // initiate
     updateFooterPos();
-    windowResize(updateFooterPos, 20);
+    windowResize(() => updateFooterPos(), 20);
   }, []);
 
   useEffect(() => {
     // 페이지 변경 시, 푸터 위치 업데이트
     updateFooterPos();
     setStickyPos(scroll.page);
-
-    // if (page.transStep == "exited") updateTitleParallax();
   }, [page.transStep, inView]);
 
   useEffect(() => {
@@ -107,19 +108,15 @@ export default function pageFooter() {
           </dl>
           <dl className="footer-info footer-sitemap w-1/2 xl:w-1/4">
             <dt className="capitalize">portfolio</dt>
-            {sitemapData
-              .filter(d => d.key.includes("sitemap"))
-              .map((d, i) => (
-                <GnbFooter data={d} key={`footer_sitemap_${i}`} />
-              ))}
+            {ft_gnb.map((d, i) => (
+              <GnbFooter data={d} key={`footer_sitemap_${i}`} />
+            ))}
           </dl>
           <dl className="footer-info footer-sitemap w-1/2 xl:w-1/4">
             <dt className="capitalize">contact</dt>
-            {sitemapData
-              .filter(d => d.key.includes("contact"))
-              .map((d, i) => (
-                <ContactBtn data={d} key={`footer_sitemap_${i}`} />
-              ))}
+            {ft_contact.map((d, i) => (
+              <ContactBtn data={d} key={`footer_sitemap_${i}`} />
+            ))}
           </dl>
         </div>
       </div>

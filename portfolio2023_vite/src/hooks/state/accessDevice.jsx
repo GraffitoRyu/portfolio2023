@@ -1,16 +1,39 @@
 import { atom, selector } from "recoil";
 
+const condition = {
+  apple: ["iPhone", "iPad", "iPod", "Mac"],
+  tablet: ["Tablet", "iPad"],
+  mobile: [
+    "Android",
+    "Mobile",
+    "iPhone",
+    "iPod",
+    "iPad",
+    "BlackBerry",
+    "IEMobile",
+    "Kindle",
+    "NetFront",
+    "Silk-Accelerated",
+    "hpwOS",
+    "webOS",
+    "Fennec",
+    "Minimo",
+    "Opera Mobi",
+    "Opera Mini",
+    "Blazer",
+    "Dolfin",
+    "Dolphin",
+    "Skyfire",
+    "Zune",
+  ],
+};
+
 export const checkDevice = {
-  apple: () => /iP(hone|od|ad)|Mac/.test(navigator.userAgent),
-  mobile: () =>
-    /Android|Mobile|iP(hone|od|ad)|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/.test(
-      navigator.userAgent
-    ),
+  apple: () => condition.apple.some(dvc => navigator.userAgent.includes(dvc)),
+  mobile: () => condition.mobile.some(dvc => navigator.userAgent.includes(dvc)),
   tablet: () =>
-    /Tablet|iPad/i.test(navigator.userAgent) &&
-    /Android|Mobile|iP(hone|od|ad)|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/.test(
-      navigator.userAgent
-    ),
+    condition.tablet.some(dvc => navigator.userAgent.includes(dvc)) &&
+    condition.mobile.some(dvc => navigator.userAgent.includes(dvc)),
   orientation: () => screen.orientation.type,
 };
 

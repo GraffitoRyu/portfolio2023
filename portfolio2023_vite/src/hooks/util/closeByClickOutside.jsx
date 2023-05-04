@@ -15,7 +15,7 @@ export default function closeByClickOutside(ref, selector) {
   function closeRef(e) {
     // 열려있을 때, 바깥을 클릭했을 때
     if (state.isOpen && ref.current && !ref.current.contains(e.target))
-      setState((prev) => ({
+      setState(prev => ({
         ...prev,
         isOpen: false, // 닫기
       }));

@@ -28,7 +28,7 @@ export default function pageHeader(props) {
 
   useEffect(() => {
     updateHeaderHeight();
-    windowResize(updateHeaderHeight, 20);
+    windowResize(() => updateHeaderHeight(), 20);
   }, []);
 
   return (
