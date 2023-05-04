@@ -46,8 +46,9 @@ export default function projectItem(props) {
   useEffect(() => {
     const { array, width } = getSlideTextSet(slideText);
     setTextArr(array);
+    // setSlideDuration(width / 1000);
     setSlideDuration((width / 1000) * 3.2);
-  }, []);
+  }, [hover]);
 
   return (
     <li
