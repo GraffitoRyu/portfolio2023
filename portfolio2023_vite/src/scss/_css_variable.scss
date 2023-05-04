@@ -33,8 +33,8 @@
   --weight-black: 900;
 
   // page transition
-  --trans-cover-bg: #fbdd72;
-  --trans-target: #3a3a3a;
+  --trans-cover-bg: #3a3a3a;
+  --trans-target: #fff;
 
   // scrollbar
   --scroll-thumb: rgba(26, 26, 26, 0.6);
@@ -92,14 +92,14 @@
 
   // page-footer
   --footer-bg: #efefef;
-  --footer-page-title-border: #ccc;
-  --footer-page-title-filled: #707070;
+  --footer-page-title-border: #a0a0a0;
+  --footer-page-title-filled: #5a5a5a;
   --footer-border: #ccc;
   --footer-desc: #909090;
   --footer-info-title: #707070;
-  --footer-btn: #a0a0a0;
+  --footer-btn: #b0b0b0;
   --footer-icon: #707070;
-  --footer-btn-hover: #3a3a3a;
+  --footer-btn-hover: #1a1a1a;
 
   // career
   --career-period: #a0a0a0;

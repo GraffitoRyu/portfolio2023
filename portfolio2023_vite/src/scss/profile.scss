@@ -1,21 +1,38 @@
 @import "./css_variable";
 @import "./scss_global";
 
+$sectionTitleSize: rem(40px);
+$sectionTitleMargin: rem(80px);
+$descSize: 24px;
+$descLine: 2em;
+
+.profile-section {
+  .section-contents {
+    padding-top: #{$sectionTitleSize + $sectionTitleMargin};
+    p,
+    span {
+      font-size: rem($descSize);
+      font-weight: var(--weight-regular);
+      line-height: $descLine;
+    }
+  }
+}
+
 .section-header {
   top: var(--header-height);
 }
 
 .section-header {
   h2 {
-    margin-bottom: rem(80px);
-    font-size: rem(40px);
-    line-height: rem(40px);
+    margin-bottom: $sectionTitleMargin;
+    font-size: $sectionTitleSize;
+    line-height: 1em;
     font-weight: 700;
     color: var(--section-header-title);
   }
   p {
     font-size: rem(48px);
-    line-height: rem(64px);
+    line-height: 1.75em;
     font-weight: 300;
     color: var(--section-header-desc);
   }
@@ -74,11 +91,7 @@
   }
   p {
     color: var(--career-desc);
-    line-height: rem(32px);
-    font: {
-      size: rem(24px);
-      weight: var(--weight-regular);
-    }
+    line-height: 1em;
   }
 }
 
@@ -97,11 +110,6 @@
   p,
   span {
     color: var(--exp-desc);
-    line-height: 32px;
-    font: {
-      size: rem(24px);
-      weight: var(--weight-regular);
-    }
   }
   .depth-desc {
     &:before {
