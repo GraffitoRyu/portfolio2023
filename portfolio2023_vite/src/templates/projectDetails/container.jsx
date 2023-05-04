@@ -80,7 +80,7 @@ export default function projectDetails() {
       >
         <DetailsIntro />
         <DetailsInfo />
-        <DetailsMedia />
+        {/* <DetailsMedia /> */}
       </article>
     </div>
   );
