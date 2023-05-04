@@ -1,39 +1,16 @@
 @import "./css_variable";
 @import "./scss_global";
 
-.page-footer {
-  z-index: 600;
-  background: var(--footer-bg);
-
-  .footer-card {
-    padding: rem(80px);
-  }
-
-  .page-title-text {
-    font-size: rem(160px);
-    line-height: 1em;
-  }
-
-  .page-title-border-text {
-    -webkit-text-stroke: 1px var(--footer-page-title-border);
-  }
-  .page-title-filled-text {
-    color: var(--footer-page-title-filled);
-  }
-
-  @media only screen and (min-width: 1024px) {
-    min-height: rem(920px);
+@mixin ftTitleSize($font, $margin) {
+  .page-footer {
     .page-title-text {
-      font-size: rem(240px);
+      font-size: rem($font);
     }
   }
+  .footer-header {
+    margin-bottom: rem($margin);
+  }
 }
-
-.footer-header {
-  margin-bottom: rem(160px);
-  transition: transform 0.4s;
-}
-
 @mixin ftTextMargin($mb, $lh) {
   dt {
     margin-bottom: rem($mb);
@@ -45,7 +22,7 @@
 
 @mixin ftTextSize($px) {
   $font: rem($px);
-  $icon: rem($px * 2 / 3);
+  $icon: rem(calc($px * 2 / 3));
   font-size: $font;
   figure {
     width: $icon;
@@ -55,7 +32,7 @@
 
 @mixin ftResponsive($size) {
   .footer-contents {
-    @include ftTextMargin($size, #{$size * 5 / 3});
+    @include ftTextMargin($size, #{calc($size * 5 / 3)});
     .footer-experience {
       @include ftTextSize($size);
     }
@@ -68,12 +45,9 @@
   }
 }
 
-.footer-contents {
-  // height: 30%;
-  // min-height: rem(160px);
-  border-top: 1px solid var(--footer-border);
-  padding-top: rem(80px);
-  letter-spacing: 0;
+.page-footer {
+  z-index: 600;
+  background: var(--footer-bg);
   figure {
     font-size: 0;
     svg {
@@ -83,6 +57,29 @@
       object-fit: contain;
     }
   }
+  .footer-card {
+    padding: rem(80px);
+  }
+  .page-title-text {
+    line-height: 1em;
+  }
+  .page-title-border-text {
+    -webkit-text-stroke: 1px var(--footer-page-title-border);
+  }
+  .page-title-filled-text {
+    color: var(--footer-page-title-filled);
+  }
+}
+
+.footer-header {
+  transition: transform 0.4s;
+}
+
+.footer-contents {
+  border-top: 1px solid var(--footer-border);
+  padding-top: rem(80px);
+  padding-bottom: rem(160px);
+  letter-spacing: 0;
   dt {
     font-family: "Noto Serif KR";
     font-weight: var(--weight-medium);
@@ -95,7 +92,7 @@
 }
 
 .footer-experience {
-  margin-bottom: rem(80px);
+  margin-bottom: rem(160px);
   color: var(--footer-desc);
   dd {
     font-weight: var(--weight-light);
@@ -122,16 +119,23 @@
     }
   }
 }
+@include ftTitleSize(160px, 80px);
+@include ftResponsive(32px);
 
 @media only screen and (min-width: 768px) {
-  @include ftResponsive(32px);
+  @include ftResponsive(24px);
   .footer-contents {
+    padding-bottom: 0;
     .footer-experience {
-      margin-bottom: rem(160px);
+      margin-bottom: rem(80px);
     }
   }
 }
+@media only screen and (min-width: 960px) {
+  @include ftTitleSize(114px, 80px);
+}
 @media only screen and (min-width: 1280px) {
+  @include ftTitleSize(240px, 160px);
   @include ftResponsive(24px);
   .footer-contents {
     .footer-experience {

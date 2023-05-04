@@ -97,7 +97,7 @@ export default function pageFooter() {
             </span>
           </h2>
         </header>
-        <div className="footer-contents mt-auto flex flex-wrap xl:flex-nowrap w-full flex-1 lg:flex-none">
+        <div className="footer-contents mt-auto flex flex-wrap xl:flex-nowrap w-full xl:align-start">
           <dl className="footer-experience flex flex-col w-full xl:w-1/2 mb-auto lg:mb-0">
             <dt>Ryu, Daehyeon</dt>
             <dd>UIUX Engineering</dd>
