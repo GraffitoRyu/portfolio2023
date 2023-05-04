@@ -60,12 +60,14 @@ export default function section(props) {
 
   return (
     <section
-      className={`page-section ${sectionCode}-section overflow-hidden lg:flex ${
+      className={`page-section ${sectionCode}-section lg:flex ${
         header ? sectionClass.join(" ") : "w-full"
       } ${
         sectionCode == "intro"
           ? "flex-wrap h-full lg:h-auto"
-          : `${sectionCode == "projectsList" ? "" : "side-padding"}`
+          : `${pageCategory}-section ${
+              sectionCode == "projectsList" ? "" : "side-padding"
+            }`
       }`}
       ref={sectionRef}
     >
