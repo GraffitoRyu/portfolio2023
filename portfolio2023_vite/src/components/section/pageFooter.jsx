@@ -70,7 +70,7 @@ export default function pageFooter() {
     setStickyPos(scroll.page);
 
     // if (page.transStep == "exited") updateTitleParallax();
-  }, [page.transStep]);
+  }, [page.transStep, inView]);
 
   useEffect(() => {
     if (page.transStep == "entered") updateTitleParallax();
