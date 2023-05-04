@@ -30,8 +30,6 @@ export default function transContainer() {
     setPageState(prev => ({ ...prev, transStep: state }));
   };
 
-  // useEffect(() => {}, [page.transStep]);
-
   return (
     <TransitionGroup className="trans-container w-full h-full overflow-hidden">
       <CSSTransition
