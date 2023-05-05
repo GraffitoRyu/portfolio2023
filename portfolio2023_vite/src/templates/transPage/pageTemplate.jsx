@@ -1,12 +1,16 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 
 // components
 import PageHeader from "../../components/section/pageHeader";
 import TransContainer from "./transContainer";
 import ProjectDetails from "../projectDetails/container";
-import { useSetRecoilState } from "recoil";
+
+// state
 import { headerState } from "../../hooks/state/header";
+
+// util
 import { setCSSProps } from "../../hooks/util/cssProperty";
 
 export default function pageTemplate() {

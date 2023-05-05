@@ -12,7 +12,10 @@ export const detailsData = [
       title: "TeamSolution",
       desc: "실시간 텔레메트리 데이터 모니터링 및 실시간 주행 관제 솔루션",
       role: ["프론트엔드 개발", "웹 퍼블리싱", "유지보수"],
-      period: [new Date("2019-11-01"), new Date("2022-11-01")],
+      period: [
+        new Date("2019-11-01T00:00:00"),
+        new Date("2022-11-01T00:00:00"),
+      ],
     },
     service: {
       provider: "3SECONDZ",
@@ -69,7 +72,10 @@ export const detailsData = [
       title: "RaceSolution\n& HUD for broadcast",
       desc: "국내 최대 모터스포츠 경기 SUPERRACE의 관제 솔루션 및 방송 중계 오버레이 HUD",
       role: ["프론트엔드 개발", "웹 퍼블리싱", "유지보수"],
-      period: [new Date("2022-04-01"), new Date("2022-10-01")],
+      period: [
+        new Date("2022-04-01T00:00:00"),
+        new Date("2022-10-01T00:00:00"),
+      ],
     },
     service: {
       provider: "3SECONDZ",
@@ -112,7 +118,10 @@ export const detailsData = [
       title: "SolutionMaster",
       desc: "기관 및 R&D 목적으로 다수의 주행 차량을 관리 및 관제하기 위한 종합 관리 솔루션",
       role: ["프론트엔드 개발", "웹 퍼블리싱", "유지보수"],
-      period: [new Date("2021-02-01"), new Date("2022-12-01")],
+      period: [
+        new Date("2021-02-01T00:00:00"),
+        new Date("2022-12-01T00:00:00"),
+      ],
     },
     service: {
       provider: "3SECONDZ",
@@ -155,7 +164,10 @@ export const detailsData = [
       title: "Lap vs Lap",
       desc: "주행 세션 데이터 분석 서비스",
       role: ["프론트엔드 개발", "웹 퍼블리싱", "유지보수"],
-      period: [new Date("2021-07-01"), new Date("2022-12-01")],
+      period: [
+        new Date("2021-07-01T00:00:00"),
+        new Date("2022-12-01T00:00:00"),
+      ],
     },
     service: {
       provider: "3SECONDZ",

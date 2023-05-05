@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://graffitoryu.github.io/portfolio2023/deploy_vite/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
