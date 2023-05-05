@@ -168,13 +168,9 @@ export default function detailsIntro() {
   const updateTitleScroll = () => {
     const checkOnlyDevice = isMobile && !isTablet;
     const checkOnlySize = !isMobile && window.innerWidth < 1024;
-    const checkOrient = orientation.includes("portrait")
-      ? "portrait"
-      : "landscape";
+    const checkOrient = orientation.includes("portrait");
     setMobileView(
-      checkOnlyDevice ||
-        checkOnlySize ||
-        (isTablet && checkOrient == "portrait")
+      checkOnlyDevice || checkOnlySize || (isTablet && checkOrient)
     );
     updateInitTitle();
     updateCategory();

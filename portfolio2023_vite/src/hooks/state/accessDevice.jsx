@@ -34,16 +34,17 @@ export const checkDevice = {
   tablet: () =>
     condition.tablet.some(dvc => navigator.userAgent.includes(dvc)) &&
     condition.mobile.some(dvc => navigator.userAgent.includes(dvc)),
-  orientation: () => screen.orientation.type,
+  orientation: () =>
+    window.innerWidth < window.innerHeight ? "portrait" : "landscape",
 };
 
 export const accessDeviceAtom = atom({
   key: "accessDeviceAtom",
   default: {
-    apple: checkDevice.apple,
-    mobile: checkDevice.mobile,
-    tablet: checkDevice.tablet,
-    orientation: checkDevice.orientation,
+    apple: checkDevice.apple(),
+    mobile: checkDevice.mobile(),
+    tablet: checkDevice.tablet(),
+    orientation: checkDevice.orientation(),
   },
 });
 
@@ -51,10 +52,10 @@ export const accessDeviceSelector = selector({
   key: "accessDeviceSelector",
   get: ({ get }) => get(accessDeviceAtom),
   set: ({ set }) => {
-    const isApple = checkDevice.apple;
-    const isMobile = checkDevice.mobile;
-    const isTablet = checkDevice.tablet;
-    const orientationType = checkDevice.orientation;
+    const isApple = checkDevice.apple();
+    const isMobile = checkDevice.mobile();
+    const isTablet = checkDevice.tablet();
+    const orientationType = checkDevice.orientation();
     const updateState = {
       apple: isApple,
       mobile: isMobile,
