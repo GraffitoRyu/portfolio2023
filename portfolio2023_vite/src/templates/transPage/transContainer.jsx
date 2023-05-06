@@ -1,4 +1,4 @@
-import React, { createRef, useEffect } from "react";
+import React, { createRef } from "react";
 import { useLocation, useOutlet } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -6,6 +6,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 // components
 import ScrollContainer from "./scrollContainer";
 import TransCover from "../../components/trans/cover";
+import ProjectDetails from "../projectDetails/container";
 
 // data
 import { sitemapData } from "../../data/sitemap";
@@ -54,6 +55,7 @@ export default function transContainer() {
               ref={nodeRef}
             >
               <ScrollContainer contents={_outlet} />
+              <ProjectDetails />
             </div>
           );
         }}

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 // svg
@@ -9,7 +10,6 @@ import getSlideTextSet from "../../hooks/util/getSlideTextSet";
 
 // state
 import { accessDeviceSelector } from "../../hooks/state/accessDevice";
-import { useSearchParams } from "react-router-dom";
 import { detailsState } from "../../hooks/state/projectDetails";
 import replaceNewlineToBr from "../../hooks/util/replaceNewlineToBr";
 
@@ -29,10 +29,12 @@ export default function projectItem(props) {
   const slideText = useRef();
   const [slideDuration, setSlideDuration] = useState(2);
 
+  // const navigate = useNavigate();
   const [urlParams, setUrlParams] = useSearchParams();
   const [details, setDetails] = useRecoilState(detailsState);
 
   const openDetails = () => {
+    // navigate(props.pathQuery);
     setUrlParams({ category: props.pathQuery });
     setDetails(prev => ({
       ...prev,

@@ -1,11 +1,9 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 // components
 import PageHeader from "../../components/section/pageHeader";
 import TransContainer from "./transContainer";
-import ProjectDetails from "../projectDetails/container";
 
 // state
 import { headerState } from "../../hooks/state/header";
@@ -15,8 +13,6 @@ import { setCSSProps } from "../../hooks/util/cssProperty";
 
 export default function pageTemplate() {
   // 고정 요소 배치
-  const loc = useLocation();
-  const _path = loc.pathname;
   const setHeader = useSetRecoilState(headerState);
 
   const updateHeaderHeight = () => {
@@ -28,7 +24,6 @@ export default function pageTemplate() {
   };
 
   useEffect(() => {
-    // console.log("initiate page template");
     updateHeaderHeight();
   }, []);
 
@@ -36,7 +31,6 @@ export default function pageTemplate() {
     <>
       <PageHeader />
       <TransContainer />
-      {_path.includes("project") ? <ProjectDetails /> : ""}
     </>
   );
 }

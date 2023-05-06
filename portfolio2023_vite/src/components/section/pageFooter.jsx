@@ -26,7 +26,7 @@ export default function pageFooter() {
   const page = useRecoilValue(pageState);
   const scroll = useRecoilValue(scrollState);
 
-  const ft_gnb = sitemapData.filter(d => d.key.includes("sitemap"));
+  const ft_gnb = sitemapData.filter(d => d.key.includes("sitemap") && d.header);
   const ft_contact = sitemapData.filter(d => d.key.includes("contact"));
 
   const [footerTitle, setFooterTitle] = useState({

@@ -17,12 +17,23 @@ export const sitemapData = [
   {
     key: "sitemap/projects",
     code: "projects",
-    path: getRootPathname() + "projects",
+    path: `${getRootPathname()}projects`,
     header: true,
     contact: false,
     external: false,
     name: "프로젝트",
-    components: <Pages.Projects />,
+    components: <Pages.Projects details={false} />,
+    nodeRef: undefined,
+  },
+  {
+    key: "sitemap/projects",
+    code: "projects",
+    path: `${getRootPathname()}projects/:category`,
+    header: false,
+    contact: false,
+    external: false,
+    name: "프로젝트",
+    components: <Pages.Projects details={true} />,
     nodeRef: undefined,
   },
   {
@@ -100,10 +111,12 @@ export const sitemapData = [
 ];
 
 const routerChild = sitemapData
-  .filter(d => !d.external && !d.contact)
+  .filter(d => d.components)
   .map(d => ({
     index: d.path === getRootPathname(),
+    exact: d.path === getRootPathname(),
     path: d.path === getRootPathname() ? undefined : d.path,
+    // end: d.path === `${getRootPathname()}project`,
     element: d.components,
   }));
 
@@ -118,6 +131,6 @@ export const routerSet = [
 export function getRootPathname() {
   const currentPath = window.location.pathname;
   return currentPath.includes("projects")
-    ? currentPath.replaceAll("projects", "").replace("//", "/")
+    ? currentPath.split("projects")[0]
     : currentPath;
 }
