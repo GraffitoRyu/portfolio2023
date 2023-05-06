@@ -1,10 +1,10 @@
 // components
-import ProjectItem from "./item";
+import ProjectItem from "./Item";
 
 // data
 import { projectsData } from "../../data/projects";
 
-export default function projectList() {
+export default function ProjectList() {
   return (
     <ul className="project-list">
       {projectsData.map(d => (

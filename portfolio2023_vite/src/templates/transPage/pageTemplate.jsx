@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
 // components
-import PageHeader from "../../components/section/pageHeader";
-import TransContainer from "./transContainer";
+import PageHeader from "../../components/section/PageHeader";
+import TransContainer from "./TransContainer";
 
 // state
 import { headerState } from "../../hooks/state/header";
@@ -11,7 +11,7 @@ import { headerState } from "../../hooks/state/header";
 // util
 import { setCSSProps } from "../../hooks/util/cssProperty";
 
-export default function pageTemplate() {
+export default function PageTemplate() {
   // 고정 요소 배치
   const setHeader = useSetRecoilState(headerState);
 

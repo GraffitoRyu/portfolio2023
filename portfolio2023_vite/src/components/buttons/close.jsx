@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ReactComponent as BtnClose } from "../../svg/btn/close.svg";
 
-export default function closeBtn(props) {
+export default function CloseBtn(props) {
   const [hover, setHover] = useState("");
   const btnClassName = props.className;
   const btnClick = props.btnClickCallback;

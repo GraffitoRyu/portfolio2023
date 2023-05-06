@@ -2,19 +2,19 @@ import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
 // components
-import SeoHelmet from "../../components/seo/helmet";
-import PageSection from "../../components/section/pageSection";
-import PageFooter from "../../components/section/pageFooter";
-import Intro from "../../components/profile/intro";
-import Career from "../../components/profile/career";
-import Experience from "../../components/profile/experience";
-import Tools from "../../components/profile/tools";
+import SeoHelmet from "../../components/seo/Helmet";
+import PageSection from "../../components/section/PageSection";
+import PageFooter from "../../components/section/PageFooter";
+import Intro from "../../components/profile/Intro";
+import Career from "../../components/profile/Career";
+import Experience from "../../components/profile/Experience";
+import Tools from "../../components/profile/Tools";
 
 // state
 import { pageState } from "../../hooks/state/page";
 import { detailsState } from "../../hooks/state/projectDetails";
 
-export default function pageContents() {
+export default function PageContents() {
   const setPageState = useSetRecoilState(pageState);
 
   // 프로젝트 디테일 초기화

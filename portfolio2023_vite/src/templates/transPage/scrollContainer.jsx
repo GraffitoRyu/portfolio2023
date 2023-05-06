@@ -11,7 +11,7 @@ import { detailsState } from "../../hooks/state/projectDetails";
 import setStickyPos from "../../hooks/util/setStickyPos";
 import windowScroll from "../../hooks/util/windowScroll";
 
-export default function scrollContainer(props) {
+export default function ScrollContainer(props) {
   const scrollRef = useRef();
   const contentsOutlet = props.contents;
   // const contentsOutlet = useOutlet();

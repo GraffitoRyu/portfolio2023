@@ -18,7 +18,7 @@ import "../src/scss/projectDetails.scss";
 
 // components
 import App from "../src/App";
-import Cursor from "../src/components/cursor/cursor";
+import CustomCursor from "../src/components/cursor/Cursor";
 
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
@@ -29,7 +29,7 @@ ReactDOM.createRoot(pageContainer).render(
       <HelmetProvider>
         <App />
       </HelmetProvider>
-      <Cursor />
+      <CustomCursor />
     </RecoilRoot>
   </React.StrictMode>
 );

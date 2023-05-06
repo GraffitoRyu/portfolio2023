@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
 
 // components
-import PageVisual from "./pageVisual";
+import PageVisual from "./PageVisual";
 
 // util
 import windowResize from "../../hooks/util/windowResize";
@@ -13,7 +13,7 @@ import { pageState } from "../../hooks/state/page";
 import { sectionOffsetState } from "../../hooks/state/section";
 import updateArrayAtom from "../../hooks/util/updateArrayAtom";
 
-export default function section(props) {
+export default function Section(props) {
   const index = props.index;
   const sectionCode = props.section_code;
   const header = props.header;

@@ -3,8 +3,8 @@ import { useInView } from "react-intersection-observer";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 // components
-import GnbFooter from "../globalMenu/gnbFooter";
-import ContactBtn from "../globalMenu/contact";
+import GnbFooter from "../globalMenu/GnbFooter";
+import ContactBtn from "../globalMenu/Contact";
 
 // data
 import { sitemapData } from "../../data/sitemap";
@@ -20,7 +20,7 @@ import { setCSSProps } from "../../hooks/util/cssProperty";
 import setStickyPos from "../../hooks/util/setStickyPos";
 import useRange from "../../hooks/util/useRange";
 
-export default function pageFooter() {
+export default function PageFooter() {
   const footerRef = useRef();
   const setFooter = useSetRecoilState(footerState);
   const page = useRecoilValue(pageState);

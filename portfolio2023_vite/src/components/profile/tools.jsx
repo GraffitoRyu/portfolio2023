@@ -1,4 +1,4 @@
-export default function tools() {
+export default function Tools() {
   const toolList = [
     "Next.js",
     "React",

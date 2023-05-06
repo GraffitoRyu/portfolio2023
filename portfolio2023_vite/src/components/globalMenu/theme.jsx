@@ -10,7 +10,7 @@ import { ReactComponent as ThemeSystem } from "../../svg/btn/theme_system.svg";
 import closeByClickOutside from "../../hooks/util/closeByClickOutside";
 import { themeStateSelector, getSystemTheme } from "../../hooks/state/theme";
 
-export default function themeMenu() {
+export default function ThemeMenu() {
   const [hover, setHover] = useState(false);
   const [themeState, setThemeState] = useRecoilState(themeStateSelector);
   const themeMenuRef = useRef();

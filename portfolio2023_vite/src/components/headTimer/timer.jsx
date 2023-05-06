@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function headerTimer() {
+export default function HeaderTimer() {
   const [curTime, setCurTime] = useState(new Date());
 
   useEffect(() => {

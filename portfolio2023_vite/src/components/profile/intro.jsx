@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function profileIntro() {
+export default function ProfileIntro() {
   const desc = [
     "2018년 웹 디자인과 웹 퍼블리싱으로 시작하여,",
     "2020년부터는 프론트엔드 개발 위주로 경험을 쌓았습니다.",

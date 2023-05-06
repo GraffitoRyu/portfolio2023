@@ -7,7 +7,7 @@ import getPageDataBySitemap from "../../hooks/util/getPageDataBySitemap";
 // data
 import { themeStateAtom } from "../../hooks/state/theme";
 
-export default function seoHelmet() {
+export default function SeoHelmet() {
   const { theme } = useRecoilValue(themeStateAtom);
   const metaColor = theme == "dark" ? "#5a5a5a" : "#cccccc";
   const pageData = getPageDataBySitemap();

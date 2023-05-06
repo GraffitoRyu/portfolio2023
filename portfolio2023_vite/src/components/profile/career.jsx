@@ -1,4 +1,4 @@
-export default function career() {
+export default function Career() {
   const data = [
     {
       key: "3secondz",

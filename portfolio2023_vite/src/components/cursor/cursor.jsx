@@ -7,7 +7,7 @@ import { cursor } from "../../hooks/state/cursor";
 // state
 import { accessDeviceSelector } from "../../hooks/state/accessDevice";
 
-export default function customCursor() {
+export default function CustomCursor() {
   // 마우스 장치 여부
   const [cursorHide, setCursorHide] = useState(true);
   const { mobile } = useRecoilValue(accessDeviceSelector);

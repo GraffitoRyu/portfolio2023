@@ -6,7 +6,7 @@ import { getRootPathname } from "../../data/sitemap";
 // util
 import getDetailsData from "../../hooks/util/getDetailsData";
 
-export default function detailsInfo() {
+export default function DetailsInfo() {
   const [urlParams] = useSearchParams();
   const d = getDetailsData(urlParams.get("category"));
   const userLocale = navigator.language;

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function profileIntro() {
+export default function ProfileIntro() {
   const desc = [
     "참여했던 공개가 가능한 프로젝트 중 일부를 정리하였습니다.",
     "주로 프론트엔드 개발에 참여하였으며 마크업 단계에서부터 작업하였습니다.",

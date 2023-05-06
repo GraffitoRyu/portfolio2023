@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 import { cursor } from "../../hooks/state/cursor";
 import { pageState } from "../../hooks/state/page";
 
-export default function transCover(props) {
+export default function TransCover(props) {
   const type = props.type;
   return getTransitionByType(type);
 }

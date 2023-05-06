@@ -4,8 +4,8 @@ import { useSearchParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 // components
-import CloseBtn from "../buttons/close";
-import OpenLinkBtn from "../buttons/openLink";
+import CloseBtn from "../buttons/Close";
+import OpenLinkBtn from "../buttons/OpenLink";
 
 // data
 import { getRootPathname } from "../../data/sitemap";
@@ -22,7 +22,7 @@ import windowResize from "../../hooks/util/windowResize";
 import useMatrix from "../../hooks/util/useMatrix";
 import useRange from "../../hooks/util/useRange";
 
-export default function detailsIntro() {
+export default function DetailsIntro() {
   const [urlParams, setUrlParams] = useSearchParams();
   const [details, setDetails] = useRecoilState(detailsState);
   const [closed, setClosed] = useState("closed");

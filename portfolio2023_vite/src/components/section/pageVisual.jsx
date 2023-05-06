@@ -9,7 +9,7 @@ import { pageState } from "../../hooks/state/page";
 // util
 import useRange from "../../hooks/util/useRange";
 
-export default function pageVisual(props) {
+export default function PageVisual(props) {
   const { borderText, filledText } = props;
   const visualRef = useRef();
   // const titleRef = useRef();

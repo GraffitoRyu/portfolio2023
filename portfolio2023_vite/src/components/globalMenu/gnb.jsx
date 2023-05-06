@@ -5,7 +5,7 @@ import { sitemapData } from "../../data/sitemap";
 import { useState } from "react";
 import getPageDataBySitemap from "../../hooks/util/getPageDataBySitemap";
 
-export default function gnb() {
+export default function Gnb() {
   const [gnbHover, setGnbHover] = useState({
     profile: false,
     projects: false,

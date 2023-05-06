@@ -1,6 +1,6 @@
 // components
 import * as Pages from "../templates/routes";
-import PageTemplate from "../templates/transPage/pageTemplate";
+import PageTemplate from "../templates/transPage/PageTemplate";
 
 export const sitemapData = [
   {

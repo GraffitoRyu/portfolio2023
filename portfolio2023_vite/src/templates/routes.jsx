@@ -1,2 +1,2 @@
-export { default as Profile } from "./profile/contents";
-export { default as Projects } from "./projects/contents";
+export { default as Profile } from "./profile/Contents";
+export { default as Projects } from "./projects/Contents";

@@ -3,7 +3,7 @@ import { useState } from "react";
 // svg
 import { ReactComponent as IconExternal } from "../../svg/common/external_icon.svg";
 
-export default function contactBtn(props) {
+export default function ContactBtn(props) {
   const d = props.data;
   const [hover, setHover] = useState("");
 

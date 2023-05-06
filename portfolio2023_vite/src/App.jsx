@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 // components
-import PageTemplate from "./templates/transPage/pageTemplate";
+import PageTemplate from "./templates/transPage/PageTemplate";
 
 // data
 import { routerSet } from "./data/sitemap";

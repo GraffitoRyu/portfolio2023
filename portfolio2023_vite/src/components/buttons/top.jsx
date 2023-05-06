@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ReactComponent as BtnTop } from "../../svg/btn/top.svg";
 
-export default function topBtn(props) {
+export default function TopBtn(props) {
   const [hover, setHover] = useState("");
   const btnClassName = props.className;
   const btnClick = props.btnClickCallback;

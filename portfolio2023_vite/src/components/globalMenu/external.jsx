@@ -6,7 +6,7 @@ import { sitemapData } from "../../data/sitemap";
 import { ReactComponent as IconGithub } from "../../svg/header/github_icon.svg";
 import { ReactComponent as IconNotion } from "../../svg/header/notion_icon.svg";
 
-export default function externalMenu() {
+export default function ExternalMenu() {
   const externalData = sitemapData.filter(d => d.external && d.header);
   const [hover, setHover] = useState({
     github: false,

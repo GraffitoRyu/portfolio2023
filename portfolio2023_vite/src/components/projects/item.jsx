@@ -13,7 +13,7 @@ import { accessDeviceSelector } from "../../hooks/state/accessDevice";
 import { detailsState } from "../../hooks/state/projectDetails";
 import replaceNewlineToBr from "../../hooks/util/replaceNewlineToBr";
 
-export default function projectItem(props) {
+export default function ProjectItem(props) {
   const d = props.data;
   const titleText = d.title.replace("\n", " ");
 

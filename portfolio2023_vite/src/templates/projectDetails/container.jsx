@@ -3,9 +3,9 @@ import { useSearchParams } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
 // components
-import DetailsIntro from "../../components/projectDetails/intro";
-import DetailsInfo from "../../components/projectDetails/info";
-import DetailsMedia from "../../components/projectDetails/media";
+import DetailsIntro from "../../components/projectDetails/Intro";
+import DetailsInfo from "../../components/projectDetails/Info";
+import DetailsMedia from "../../components/projectDetails/Media";
 
 // state
 import { detailsState } from "../../hooks/state/projectDetails";
@@ -18,7 +18,7 @@ import { detailsRoute } from "../../data/projects";
 import windowScroll from "../../hooks/util/windowScroll";
 import useComputedStyle from "../../hooks/util/useComputedStyle";
 
-export default function projectDetails() {
+export default function ProjectDetails() {
   const [urlParams] = useSearchParams();
   const projectDetailsRef = useRef();
   const [details, setDetails] = useRecoilState(detailsState);

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // svg
 import { ReactComponent as IconExternal } from "../../svg/common/external_icon.svg";
 
-export default function gnbFooter(props) {
+export default function GnbFooter(props) {
   const d = props.data;
   const [hover, setHover] = useState("");
 

@@ -2,10 +2,10 @@ import { useEffect, useRef } from "react";
 import { useSetRecoilState } from "recoil";
 
 // components
-import HeaderTimer from "../headTimer/timer";
-import GnbMenu from "../globalMenu/gnb";
-import ExternalMenu from "../globalMenu/external";
-import ThemeMenu from "../globalMenu/theme";
+import HeaderTimer from "../headTimer/Timer";
+import GnbMenu from "../globalMenu/Gnb";
+import ExternalMenu from "../globalMenu/External";
+import ThemeMenu from "../globalMenu/Theme";
 
 // state
 import { headerState } from "../../hooks/state/header";
@@ -14,7 +14,7 @@ import { headerState } from "../../hooks/state/header";
 import windowResize from "../../hooks/util/windowResize";
 import { setCSSProps } from "../../hooks/util/cssProperty";
 
-export default function pageHeader(props) {
+export default function PageHeader(props) {
   const headerRef = useRef();
   const setHeader = useSetRecoilState(headerState);
 

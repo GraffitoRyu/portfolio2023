@@ -1,4 +1,4 @@
-export default function experience() {
+export default function Experience() {
   const data = [
     {
       key: "markup",

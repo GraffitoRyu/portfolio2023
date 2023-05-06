@@ -4,9 +4,9 @@ import { useRecoilState } from "recoil";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 // components
-import ScrollContainer from "./scrollContainer";
-import TransCover from "../../components/trans/cover";
-import ProjectDetails from "../projectDetails/container";
+import ScrollContainer from "./ScrollContainer";
+import TransCover from "../../components/trans/Cover";
+import ProjectDetails from "../projectDetails/Container";
 
 // data
 import { sitemapData } from "../../data/sitemap";
@@ -14,7 +14,7 @@ import { sitemapData } from "../../data/sitemap";
 // state
 import { pageState } from "../../hooks/state/page";
 
-export default function transContainer() {
+export default function TransContainer() {
   const loc = useLocation();
   const nowPagePath = loc.pathname;
   const [page, setPageState] = useRecoilState(pageState);
