@@ -26,7 +26,10 @@ export default function GnbFooter(props) {
       ) : (
         <Link
           className={`footer-btn inline-flex items-center ${hover}`}
-          to={d.path}
+          to={{
+            pathname: d.path,
+            state: { fromPathname: location.pathname },
+          }}
           onMouseEnter={() => setHover("hover")}
           onMouseLeave={() => setHover("")}
         >

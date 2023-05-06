@@ -1,19 +1,17 @@
 // components
 import { useEffect, useRef, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 // components
 import CloseBtn from "../buttons/Close";
 import OpenLinkBtn from "../buttons/OpenLink";
 
-// data
-import { getRootPathname } from "../../data/sitemap";
-
 // state
-import { detailsState } from "../../hooks/state/projectDetails";
+import { pageState } from "../../hooks/state/page";
 import { scrollState } from "../../hooks/state/scroll";
 import { accessDeviceAtom } from "../../hooks/state/accessDevice";
+import { detailsState } from "../../hooks/state/projectDetails";
 
 // util
 import getDetailsData from "../../hooks/util/getDetailsData";
@@ -23,7 +21,10 @@ import useMatrix from "../../hooks/util/useMatrix";
 import useRange from "../../hooks/util/useRange";
 
 export default function DetailsIntro() {
+  // const { category } = useParams();
+  // const navigate = useNavigate();
   const [urlParams, setUrlParams] = useSearchParams();
+  const setPage = useSetRecoilState(pageState);
   const [details, setDetails] = useRecoilState(detailsState);
   const [closed, setClosed] = useState("closed");
   const [subTitleDelay, setSubTitleDelay] = useState(0.24);
@@ -33,6 +34,7 @@ export default function DetailsIntro() {
     // update url params
     urlParams.delete("category");
     setUrlParams(urlParams);
+    setPage(prev => ({ ...prev, stay: true }));
 
     // close details
     setDetails(prev => ({
@@ -72,7 +74,7 @@ export default function DetailsIntro() {
   const [mobileView, setMobileView] = useState(isMobile && !isTablet);
   const [fixedTitle, setFixedTitle] = useState("");
   const visualImg = d?.pathQuery
-    ? `${getRootPathname()}img/details/intro_${d?.pathQuery}.jpg`
+    ? `/img/details/intro_${d?.pathQuery}.jpg`
     : undefined;
   const [_t, setInitTitle] = useState({ y: 0, size: 160 });
   const [_c, setCategory] = useState({ y: 0, w: 0, size: 24 });

@@ -25,6 +25,7 @@ function SlideTransition() {
 
   useEffect(() => {
     // enter -> exit => entering -> exiting -> entered -> exited
+    // if (!page.stay) {
     if (page.transStep == "entering") {
       setSlideState("page-out");
     } else if (page.transStep == "exited") {
@@ -32,6 +33,7 @@ function SlideTransition() {
         setSlideState("page-in"); // section/pageVisual.jsx 참조
       }, [page.transDelay]);
     }
+    // }
   }, [page.transStep]);
 
   return (

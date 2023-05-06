@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useParams } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
 // components
@@ -19,6 +19,7 @@ import windowScroll from "../../hooks/util/windowScroll";
 import useComputedStyle from "../../hooks/util/useComputedStyle";
 
 export default function ProjectDetails() {
+  // const { category } = useParams();
   const [urlParams] = useSearchParams();
   const projectDetailsRef = useRef();
   const [details, setDetails] = useRecoilState(detailsState);
@@ -34,6 +35,14 @@ export default function ProjectDetails() {
       setTimeout(() => {
         setDetails(prev => ({ ...prev, openComplete: true }));
       }, details.openDuration);
+    } else {
+      setDetails(prev => ({
+        ...prev,
+        open: false,
+        category: undefined,
+        imgLoaded: false,
+      }));
+      setIsExist(false);
     }
   };
 
@@ -64,7 +73,7 @@ export default function ProjectDetails() {
   useEffect(() => {
     if (details.open) detailsScrollRef.current.scrollTop = 0;
     initDetailsOpen();
-  }, [details.open]);
+  }, [details.open, urlParams]);
 
   return (
     <div

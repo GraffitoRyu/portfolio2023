@@ -6,7 +6,7 @@ export const sitemapData = [
   {
     key: "sitemap/profile",
     code: "profile",
-    path: getRootPathname(),
+    path: "/",
     header: true,
     contact: false,
     external: false,
@@ -17,7 +17,7 @@ export const sitemapData = [
   {
     key: "sitemap/projects",
     code: "projects",
-    path: `${getRootPathname()}projects`,
+    path: "/projects/",
     header: true,
     contact: false,
     external: false,
@@ -25,17 +25,17 @@ export const sitemapData = [
     components: <Pages.Projects details={false} />,
     nodeRef: undefined,
   },
-  {
-    key: "sitemap/projects",
-    code: "projects",
-    path: `${getRootPathname()}projects/:category`,
-    header: false,
-    contact: false,
-    external: false,
-    name: "프로젝트",
-    components: <Pages.Projects details={true} />,
-    nodeRef: undefined,
-  },
+  // {
+  //   key: "sitemap/projects",
+  //   code: "projects",
+  //   path: "/projects/:category",
+  //   header: false,
+  //   contact: false,
+  //   external: false,
+  //   name: "프로젝트",
+  //   // components: <Pages.Projects details={true} />,
+  //   nodeRef: undefined,
+  // },
   {
     key: "sitemap/github",
     code: "github",
@@ -113,24 +113,17 @@ export const sitemapData = [
 const routerChild = sitemapData
   .filter(d => d.components)
   .map(d => ({
-    index: d.path === getRootPathname(),
-    exact: d.path === getRootPathname(),
-    path: d.path === getRootPathname() ? undefined : d.path,
-    // end: d.path === `${getRootPathname()}project`,
+    index: d.path === "/",
+    exact: d.path === "/",
+    path: d.path === "/" ? undefined : d.path,
+    end: d.path.endsWith("project/"),
     element: d.components,
   }));
 
 export const routerSet = [
   {
-    path: getRootPathname(),
+    path: "/",
     element: <PageTemplate />,
     children: routerChild,
   },
 ];
-
-export function getRootPathname() {
-  const currentPath = window.location.pathname;
-  return currentPath.includes("projects")
-    ? currentPath.split("projects")[0]
-    : currentPath;
-}

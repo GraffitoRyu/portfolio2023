@@ -5,12 +5,13 @@ import { useRecoilState, useRecoilValue } from "recoil";
 // svg
 import { ReactComponent as IconOpenProject } from "../../svg/btn/project_open.svg";
 
-// util
-import getSlideTextSet from "../../hooks/util/getSlideTextSet";
-
 // state
 import { accessDeviceSelector } from "../../hooks/state/accessDevice";
 import { detailsState } from "../../hooks/state/projectDetails";
+import { pageState } from "../../hooks/state/page";
+
+// util
+import getSlideTextSet from "../../hooks/util/getSlideTextSet";
 import replaceNewlineToBr from "../../hooks/util/replaceNewlineToBr";
 
 export default function ProjectItem(props) {
@@ -30,11 +31,13 @@ export default function ProjectItem(props) {
   const [slideDuration, setSlideDuration] = useState(2);
 
   // const navigate = useNavigate();
+  const [page, setPage] = useRecoilState(pageState);
   const [urlParams, setUrlParams] = useSearchParams();
   const [details, setDetails] = useRecoilState(detailsState);
 
   const openDetails = () => {
-    // navigate(props.pathQuery);
+    // navigate(props.pathQuery, { replace: false });
+    setPage(prev => ({ ...prev, stay: true }));
     setUrlParams({ category: props.pathQuery });
     setDetails(prev => ({
       ...prev,

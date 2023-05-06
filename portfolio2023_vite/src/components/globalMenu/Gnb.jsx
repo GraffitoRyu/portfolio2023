@@ -27,7 +27,10 @@ export default function Gnb() {
               const hover = !active && gnbHover[d.code] ? " hover" : "";
               return btnClass + active + hover;
             }}
-            to={d.path}
+            to={{
+              pathname: d.path,
+              state: { fromPathname: location.pathname },
+            }}
             key={d.code}
             end={d.key.includes("projects")}
             onMouseEnter={() => setGnbHover({ [d.code]: true })}

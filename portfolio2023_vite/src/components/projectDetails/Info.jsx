@@ -1,12 +1,10 @@
-import { useSearchParams } from "react-router-dom";
-
-// data
-import { getRootPathname } from "../../data/sitemap";
+import { useParams, useSearchParams } from "react-router-dom";
 
 // util
 import getDetailsData from "../../hooks/util/getDetailsData";
 
 export default function DetailsInfo() {
+  // const { category } = useParams();
   const [urlParams] = useSearchParams();
   const d = getDetailsData(urlParams.get("category"));
   const userLocale = navigator.language;
@@ -52,7 +50,7 @@ export default function DetailsInfo() {
                 title={t}
                 key={t}
               >
-                <img src={`${getRootPathname()}img/tools/${t}.png`} alt={t} />
+                <img src={`/img/tools/${t}.png`} alt={t} />
               </figure>
             ))}
           </dd>
