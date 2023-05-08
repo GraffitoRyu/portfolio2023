@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useMatch, useResolvedPath } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 // data
@@ -12,13 +12,20 @@ import { pageState } from "../../hooks/state/page";
 import getPageDataBySitemap from "../../hooks/util/getPageDataBySitemap";
 
 export default function Gnb() {
+  const loc = useLocation();
+  const gnbData = sitemapData.filter(d => d.header && !d.external);
+  const curPage = gnbData.filter(g => g.path === loc.pathname)[0];
+  const setPageState = useSetRecoilState(pageState);
+
+  useEffect(() => {
+    setPageState(prev => ({ ...prev, cur: curPage.code }));
+  }, [loc]);
+
   return (
     <nav className="gnb flex items-center ml-auto">
-      {sitemapData
-        .filter(d => d.header && !d.external)
-        .map(d => (
-          <GnbBtn data={d} key={d.code} />
-        ))}
+      {gnbData.map(d => (
+        <GnbBtn data={d} key={d.code} />
+      ))}
     </nav>
   );
 }
@@ -32,14 +39,6 @@ function GnbBtn(props) {
   });
   const btnClass = `gnb-btn items-center relative`;
   const pageData = getPageDataBySitemap();
-
-  const setPageState = useSetRecoilState(pageState);
-  const resolved = useResolvedPath(d.path);
-  const match = useMatch({ path: resolved.pathname, end: true });
-
-  useEffect(() => {
-    setPageState(prev => ({ ...prev, cur: d.code }));
-  }, [match]);
 
   return (
     <NavLink
