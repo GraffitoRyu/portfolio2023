@@ -3,10 +3,10 @@
 
 .trans-enter,
 .trans-exit {
-  position: absolute;
-  transition: all 1s;
+  // position: absolute;
+  // transition: all 1s;
   .scroll-container {
-    overflow: hidden;
+    // overflow: hidden;
     background: var(--page-bg);
   }
   &:after {
@@ -28,6 +28,7 @@
   }
 }
 .trans-enter {
+  opacity: 0;
   z-index: 600;
   &:after {
     content: "ENTER";
@@ -70,6 +71,7 @@
         line-height: $targetSize;
         top: 100%;
         left: rem(80px);
+        transition: none;
       }
     }
     .trans-cover {

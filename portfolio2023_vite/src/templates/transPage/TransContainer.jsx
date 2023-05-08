@@ -1,7 +1,11 @@
 import React, { createRef } from "react";
 import { useLocation, useOutlet } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import {
+  TransitionGroup,
+  CSSTransition,
+  SwitchTransition,
+} from "react-transition-group";
 
 // components
 import ScrollContainer from "./ScrollContainer";
@@ -32,14 +36,17 @@ export default function TransContainer() {
   };
 
   return (
-    <TransitionGroup className="trans-container w-full h-full overflow-hidden">
+    <SwitchTransition>
+      {/* <TransitionGroup className="trans-container w-full h-full overflow-hidden"> */}
       <CSSTransition
         classNames="trans"
         key={nowPagePath}
         nodeRef={nodeRef}
+        // timeout={1000000}
         timeout={page.transDuration}
         unmountOnExit
-        // enter -> exit => entering -> exiting -> entered -> exited
+        // transitionGroup: enter -> exit => entering -> exiting -> entered -> exited
+        // SwitchTransition: exit -> exiting -> exited -> enter -> entering -> entered
         onEnter={() => updateTransState("enter")}
         onEntering={() => updateTransState("entering")}
         onEntered={() => updateTransState("entered")}
@@ -51,16 +58,17 @@ export default function TransContainer() {
           // 스크롤 컨테이너 분리; 페이지 이동 시 스크롤 안먹힘 수정 필요
           return (
             <div
-              className="w-full h-full overflow-hidden top-0 left-0"
+              className="w-full h-full overflow-hidden absolute top-0 left-0"
               ref={nodeRef}
             >
               <ScrollContainer contents={_outlet} />
-              <ProjectDetails />
             </div>
           );
         }}
       </CSSTransition>
-      <TransCover type="slide" />
-    </TransitionGroup>
+      {/* <ProjectDetails />
+      <TransCover type="slide" /> */}
+      {/* </TransitionGroup> */}
+    </SwitchTransition>
   );
 }

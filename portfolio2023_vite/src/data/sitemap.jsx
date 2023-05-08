@@ -117,6 +117,7 @@ const routerChild = sitemapData
     exact: d.path === "/",
     path: d.path === "/" ? undefined : d.path,
     end: d.path.endsWith("project/"),
+    pageName: d.name,
     element: d.components,
   }));
 

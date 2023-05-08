@@ -27,7 +27,7 @@ export default function ScrollContainer(props) {
     const pos = scrollRef?.current?.scrollTop;
     if (isNaN(pos)) return;
     setScrollPos(prev => ({ ...prev, page: pos }));
-    setStickyPos(pos);
+    setStickyPos(pos, page.cur);
   };
 
   useEffect(() => {
@@ -36,7 +36,8 @@ export default function ScrollContainer(props) {
 
   useEffect(() => {
     // 페이지 전환 시작 시, 현재 화면 유지
-    if (page.transStep == "enter") setTransPage("overflow-hidden");
+    // if (page.transStep == "exit") setTransPage("overflow-hidden");
+    if (page.transStep == "entered") updateScrollPos();
     // 페이지 전환 시, 스크롤 초기화
     if (scrollRef?.current && page.transStep == "exited") {
       scrollRef.current.scrollTop = 0;

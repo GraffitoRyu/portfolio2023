@@ -10,7 +10,7 @@ import ContactBtn from "../globalMenu/Contact";
 import { sitemapData } from "../../data/sitemap";
 
 // state
-import { footerState } from "../../hooks/state/footer";
+// import { footerState } from "../../hooks/state/footer";
 import { scrollState } from "../../hooks/state/scroll";
 import { pageState } from "../../hooks/state/page";
 
@@ -22,7 +22,7 @@ import useRange from "../../hooks/util/useRange";
 
 export default function PageFooter() {
   const footerRef = useRef();
-  const setFooter = useSetRecoilState(footerState);
+  // const setFooter = useSetRecoilState(footerState);
   const page = useRecoilValue(pageState);
   const scroll = useRecoilValue(scrollState);
 
@@ -56,8 +56,8 @@ export default function PageFooter() {
   const updateFooterPos = () => {
     const offsetY = footerRef?.current?.offsetTop;
     if (isNaN(offsetY)) return;
-    setCSSProps("--footer-offset-y", `${offsetY}px`);
-    setFooter(prev => ({ ...prev, offset: offsetY }));
+    setCSSProps(`--footer-offset-y-${page.cur}`, `${offsetY}px`);
+    // setFooter(prev => ({ ...prev, offset: offsetY }));
     updateTitleParallax();
   };
 
@@ -69,9 +69,9 @@ export default function PageFooter() {
 
   useEffect(() => {
     // 페이지 변경 시, 푸터 위치 업데이트
-    updateFooterPos();
-    setStickyPos(scroll.page);
-  }, [page.transStep, inView]);
+    if (page.transStep == "entered") updateFooterPos();
+    setStickyPos(scroll.page, page.cur);
+  }, [page, inView]);
 
   useEffect(() => {
     if (page.transStep == "entered") updateTitleParallax();

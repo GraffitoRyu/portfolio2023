@@ -24,11 +24,12 @@ function SlideTransition() {
   const [slideState, setSlideState] = useState("");
 
   useEffect(() => {
-    // enter -> exit => entering -> exiting -> entered -> exited
+    // transitionGroup: enter -> exit => entering -> exiting -> entered -> exited
+    // SwitchTransition: exit -> exiting -> exited -> enter -> entering -> entered
     // if (!page.stay) {
-    if (page.transStep == "entering") {
+    if (page.transStep == "exit") {
       setSlideState("page-out");
-    } else if (page.transStep == "exited") {
+    } else if (page.transStep == "entered") {
       setTimeout(() => {
         setSlideState("page-in"); // section/pageVisual.jsx 참조
       }, [page.transDelay]);
@@ -55,7 +56,7 @@ function BubbleTransition() {
   const page = useRecoilValue(pageState);
 
   useEffect(() => {
-    if (page.transStep == "enter") setTransPos({ ...pos });
+    if (page.transStep == "entering") setTransPos({ ...pos });
     else if (
       ["exiting", "exited", "entering"].some(d => page.transStep.includes(d))
     )

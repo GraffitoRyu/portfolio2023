@@ -4,6 +4,8 @@ import { useSetRecoilState } from "recoil";
 // components
 import PageHeader from "../../components/section/PageHeader";
 import TransContainer from "./TransContainer";
+import ProjectDetails from "../projectDetails/Container";
+import TransCover from "../../components/trans/Cover";
 
 // state
 import { headerState } from "../../hooks/state/header";
@@ -31,6 +33,8 @@ export default function PageTemplate() {
     <>
       <PageHeader />
       <TransContainer />
+      <ProjectDetails />
+      <TransCover type="slide" />
     </>
   );
 }

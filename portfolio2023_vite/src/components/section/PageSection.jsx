@@ -19,10 +19,10 @@ export default function Section(props) {
   const header = props.header;
   const contents = props.contents;
 
-  const pageCategory = useRecoilValue(pageState).cur;
+  const { cur: pageCategory } = useRecoilValue(pageState);
 
   const sectionRef = useRef();
-  const [section, setSection] = useRecoilState(sectionState[pageCategory]);
+  const setSection = useSetRecoilState(sectionState[pageCategory]);
   const setSectionOffset = useSetRecoilState(sectionOffsetState[pageCategory]);
 
   const sectionClass = ["items-start", "relative"];

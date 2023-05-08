@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useSetRecoilState } from "recoil";
+// import { useEffect } from "react";
+// import { useSetRecoilState } from "recoil";
 
 // components
 import SeoHelmet from "../../components/seo/Helmet";
@@ -9,14 +9,14 @@ import Intro from "../../components/projects/Intro";
 import ProjectList from "../../components/projects/List";
 
 // state
-import { pageState } from "../../hooks/state/page";
+// import { pageState } from "../../hooks/state/page";
 
 export default function PageContents() {
-  const setPageState = useSetRecoilState(pageState);
+  // const setPageState = useSetRecoilState(pageState);
 
-  useEffect(() => {
-    setPageState(prev => ({ ...prev, cur: "projects" }));
-  }, []);
+  // useEffect(() => {
+  //   setPageState(prev => ({ ...prev, cur: "projects" }));
+  // }, []);
 
   return (
     <>
