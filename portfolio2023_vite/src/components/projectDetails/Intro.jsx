@@ -29,6 +29,7 @@ export default function DetailsIntro() {
   const [closed, setClosed] = useState("closed");
   const [subTitleDelay, setSubTitleDelay] = useState(0.24);
   const d = getDetailsData(urlParams.get("category"));
+  const linkList = d?.service?.link;
 
   const closeDetails = () => {
     // update url params
@@ -251,11 +252,17 @@ export default function DetailsIntro() {
           </span>
         </p>
       </div>
-      <ul className="details-btn-list flex items-center lg:justify-end lg:mt-auto relative">
-        <li>
-          <OpenLinkBtn url={d?.service?.link} />
-        </li>
-      </ul>
+      {linkList ? (
+        <ul className="details-btn-list flex items-center lg:justify-end lg:mt-auto relative">
+          {linkList.map(link => (
+            <li key={link.key}>
+              <OpenLinkBtn {...link} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        ""
+      )}
       <figure
         className="details-intro-bg w-full h-full pointer-events-none overflow-hidden absolute top-0 left-0"
         ref={introVisual}

@@ -23,7 +23,7 @@ export default function DetailsInfo() {
         </dl>
         <dl className="details-info-item w-1/4 lg:w-1/2">
           <dt>작업 및 담당 기간</dt>
-          <dd>
+          <dd className="flex items-center">
             <time>
               {d?.summary?.period[0].toLocaleString(userLocale, dateOptions)}
             </time>
@@ -50,7 +50,14 @@ export default function DetailsInfo() {
                 title={t}
                 key={t}
               >
-                <img src={`/img/tools/${t}.png`} alt={t} />
+                <img
+                  src={`/img/tools/${t}.png`}
+                  alt={t}
+                  onError={({ currentTarget }) => {
+                    currentTarget.classList.add("hidden");
+                  }}
+                />
+                <figcaption className="uppercase">{t}</figcaption>
               </figure>
             ))}
           </dd>

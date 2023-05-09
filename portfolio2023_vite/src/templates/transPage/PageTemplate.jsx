@@ -34,7 +34,7 @@ export default function PageTemplate() {
       <PageHeader />
       <TransContainer />
       <ProjectDetails />
-      <TransCover type="slide" />
+      <TransCover />
     </>
   );
 }

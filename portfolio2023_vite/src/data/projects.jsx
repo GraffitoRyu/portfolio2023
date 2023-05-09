@@ -27,7 +27,28 @@ export const detailsData = [
         "개인 회원 및 매니저 회원의 관리 페이지 개선 및 유지보수",
         "TeamSolution 모바일 앱의 웹뷰 페이지 개선 및 유지보수",
       ],
-      link: "https://3secondz.com/livedemo",
+      link: [
+        {
+          key: "ts_home",
+          name: "3SECONDZ",
+          url: "https://www.3secondz.com/",
+        },
+        {
+          key: "ts_service",
+          name: "3SECONDZ 서비스 플랫폼",
+          url: "https://www.3secondz.com/service",
+        },
+        {
+          key: "ts_introduce",
+          name: "서비스 소개",
+          url: "https://3secondz.com/service/info_teamsolution",
+        },
+        {
+          key: "ts_demo",
+          name: "라이브 데모",
+          url: "https://3secondz.com/livedemo",
+        },
+      ],
     },
     experience: {
       stacks: [
@@ -69,7 +90,7 @@ export const detailsData = [
   {
     key: "rs",
     summary: {
-      title: "RaceSolution\n& HUD for broadcast",
+      title: "RaceSolution\n & HUD for broadcast",
       desc: "국내 최대 모터스포츠 경기 SUPERRACE의 관제 솔루션 및 방송 중계 오버레이 HUD",
       role: ["프론트엔드 개발", "웹 퍼블리싱", "유지보수"],
       period: [
@@ -84,7 +105,23 @@ export const detailsData = [
         "모터스포츠 경기의 실시간 주행 관제를 위한 솔루션으로 개발",
         "유튜브를 포함한 경기 중계 화면에서, 선수 개인 주행화면 송출 시 오버레이되는 HUD 화면 개발",
       ],
-      link: "https://3secondz.com/service",
+      link: [
+        {
+          key: "rs_home",
+          name: "3SECONDZ",
+          url: "https://www.3secondz.com/",
+        },
+        {
+          key: "rs_press",
+          name: "언론보도",
+          url: "https://sports.chosun.com/news/ntype.htm?id=202203250100155390009498&servicedate=20220324",
+        },
+        {
+          key: "rs_hud",
+          name: "HUD 방송영상",
+          url: "https://www.youtube.com/channel/UCTErTefCM2D-OH5D9CN8urQ",
+        },
+      ],
     },
     experience: {
       stacks: [
@@ -130,7 +167,13 @@ export const detailsData = [
         "제한없는 다수의 차량에 대한 주행 정보 관리 및 실시간 텔레메트리 관제 서비스 제공",
         "차량 관리만을 위한 관리 페이지와, 실시간 모니터링 및 조작을 위한 관제 페이지, 리플레이 페이지 제공",
       ],
-      link: "https://3secondz.com/service",
+      link: [
+        {
+          key: "sm_home",
+          name: "3SECONDZ",
+          url: "https://www.3secondz.com/",
+        },
+      ],
     },
     experience: {
       stacks: [
@@ -161,7 +204,7 @@ export const detailsData = [
   {
     key: "lvl",
     summary: {
-      title: "Lap vs Lap",
+      title: "Session Report;\n Lap vs Lap",
       desc: "주행 세션 데이터 분석 서비스",
       role: ["프론트엔드 개발", "웹 퍼블리싱", "유지보수"],
       period: [
@@ -176,7 +219,18 @@ export const detailsData = [
         "분석 대상 드라이버에 대한 주행 데이터 분석을 제공",
         "권한에 따라 접근 가능한 주행 데이터에 대한 비교 분석 서비스 제공",
       ],
-      link: "https://3secondz.com/demo",
+      link: [
+        {
+          key: "lvl_home",
+          name: "3SECONDZ",
+          url: "https://www.3secondz.com/",
+        },
+        {
+          key: "lvl_lapvslap",
+          name: "라이브 데모",
+          url: "https://www.3secondz.com/demo",
+        },
+      ],
     },
     experience: {
       stacks: [

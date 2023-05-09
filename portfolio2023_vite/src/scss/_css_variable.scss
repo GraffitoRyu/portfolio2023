@@ -136,6 +136,7 @@
   --details-desc: #5a5a5a;
   --details-stack-bg: #efefef;
   --details-stack-border: #b0b0b0;
+  --details-stack-text: #3a3a3a;
 
   &.dark-theme {
     // font weight
@@ -245,5 +246,6 @@
     --details-desc: #a0a0a0;
     --details-stack-bg: #dfdfdf;
     --details-stack-border: #fff;
+    --details-stack-text: #3a3a3a;
   }
 }

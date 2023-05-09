@@ -3,10 +3,11 @@ import { ReactComponent as BtnLink } from "../../svg/btn/link.svg";
 
 export default function OpenLinkBtn(props) {
   const [hover, setHover] = useState("");
-  const btnClassName = props.className;
-  const linkUrl = props.url;
+  const btnClassName = props?.className ?? "";
+  const linkUrl = props?.url;
+  const linkText = props?.name ?? "VIEW LINK";
 
-  return (
+  return props ? (
     <a
       className={`btn-box w-auto open-link-btn ${btnClassName} ${hover}`}
       target="_blank"
@@ -14,8 +15,10 @@ export default function OpenLinkBtn(props) {
       onMouseEnter={() => setHover("hover link")}
       onMouseLeave={() => setHover("")}
     >
-      <span className="btn-text">VIEW LIVE WEB</span>
+      <span className="btn-text">{linkText}</span>
       <BtnLink />
     </a>
+  ) : (
+    ""
   );
 }

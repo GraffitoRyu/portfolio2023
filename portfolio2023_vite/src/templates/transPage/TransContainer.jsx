@@ -37,12 +37,10 @@ export default function TransContainer() {
 
   return (
     <SwitchTransition>
-      {/* <TransitionGroup className="trans-container w-full h-full overflow-hidden"> */}
       <CSSTransition
         classNames="trans"
         key={nowPagePath}
         nodeRef={nodeRef}
-        // timeout={1000000}
         timeout={page.transDuration}
         unmountOnExit
         // transitionGroup: enter -> exit => entering -> exiting -> entered -> exited
@@ -66,9 +64,6 @@ export default function TransContainer() {
           );
         }}
       </CSSTransition>
-      {/* <ProjectDetails />
-      <TransCover type="slide" /> */}
-      {/* </TransitionGroup> */}
     </SwitchTransition>
   );
 }

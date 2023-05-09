@@ -14,7 +14,7 @@ import getPageDataBySitemap from "../../hooks/util/getPageDataBySitemap";
 export default function Gnb() {
   const loc = useLocation();
   const gnbData = sitemapData.filter(d => d.header && !d.external);
-  const curPage = gnbData.filter(g => g.path === loc.pathname)[0];
+  const curPage = gnbData.filter(g => g.path.includes(loc.pathname))[0];
   const setPageState = useSetRecoilState(pageState);
 
   useEffect(() => {
