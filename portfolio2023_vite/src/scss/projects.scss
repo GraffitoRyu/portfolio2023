@@ -27,18 +27,15 @@
   .period {
     margin-bottom: rem(24px);
     white-space: nowrap;
+    color: var(--proj-period);
+    font: {
+      size: rem(24px);
+      weight: var(--weight-medium);
+    }
     time {
-      color: var(--proj-period);
-      font: {
-        size: rem(24px);
-        weight: var(--weight-medium);
-      }
       transition: $trans_color, $trans_opacity_quart, $trans_form_quart;
     }
     span {
-      width: rem(56px);
-      height: rem(1px);
-      margin: 0 rem(16px);
       &:after {
         content: "";
         display: block;

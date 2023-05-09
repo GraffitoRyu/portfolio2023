@@ -23,7 +23,7 @@ export default function DetailsInfo() {
         </dl>
         <dl className="details-info-item w-1/4 lg:w-1/2">
           <dt>작업 및 담당 기간</dt>
-          <dd className="flex items-center">
+          <dd className="period">
             <time>
               {d?.summary?.period[0].toLocaleString(userLocale, dateOptions)}
             </time>

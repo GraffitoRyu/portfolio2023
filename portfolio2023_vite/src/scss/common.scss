@@ -118,6 +118,20 @@ html:not(.mobile) {
   font-weight: 700;
 }
 
+.period {
+  display: flex;
+  align-items: center;
+  font: {
+    size: rem(20px);
+    weight: var(--weight-regular);
+  }
+  span {
+    width: rem(56px);
+    height: rem(1px);
+    margin: 0 rem(16px);
+  }
+}
+
 .page-section {
   transition: $trans_bgColor, $trans_opacity_expo;
   position: relative;

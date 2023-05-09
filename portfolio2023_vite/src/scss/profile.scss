@@ -51,14 +51,7 @@ $descLine: 2em;
   .period {
     margin-bottom: rem(24px);
     color: var(--career-period);
-    font: {
-      size: rem(20px);
-      weight: var(--weight-regular);
-    }
     span {
-      width: rem(40px);
-      height: 1px;
-      margin: 0 rem(16px);
       background: var(--career-period);
     }
   }

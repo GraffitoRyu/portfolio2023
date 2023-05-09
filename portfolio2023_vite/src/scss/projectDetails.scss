@@ -307,4 +307,10 @@
       weight: 500;
     }
   }
+
+  .period {
+    span {
+      background: var(--details-desc);
+    }
+  }
 }
