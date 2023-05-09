@@ -7,6 +7,7 @@ export default function DetailsInfo() {
   // const { category } = useParams();
   const [urlParams] = useSearchParams();
   const d = getDetailsData(urlParams.get("category"));
+  const stackNoImg = ["ajax", "ejs", "websocket", "json"];
   const userLocale = navigator.language;
   const dateOptions = {
     month: "short",
@@ -46,18 +47,24 @@ export default function DetailsInfo() {
           <dd className="tech-stacks flex items-center flex-wrap">
             {d?.experience?.stacks.map(t => (
               <figure
-                className="tech-stacks-item flex items-center justify-center"
+                className="tech-stacks-item flex items-center justify-center backdrop-blur-sm"
                 title={t}
                 key={t}
               >
-                <img
-                  src={`/img/tools/${t}.png`}
-                  alt={t}
-                  onError={({ currentTarget }) => {
-                    currentTarget.classList.add("hidden");
-                  }}
-                />
-                <figcaption className="uppercase">{t}</figcaption>
+                {stackNoImg.includes(t) ? (
+                  ""
+                ) : (
+                  <img
+                    src={`/img/tools/${t}.png`}
+                    alt={t}
+                    onError={({ currentTarget }) => {
+                      currentTarget.classList.add("hidden");
+                    }}
+                  />
+                )}
+                <figcaption className="uppercase">
+                  {t.split("_").join(" ")}
+                </figcaption>
               </figure>
             ))}
           </dd>

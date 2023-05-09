@@ -274,8 +274,9 @@
     }
     figcaption {
       font-size: rem(16px);
+      font-weight: var(--weight-medium);
       line-height: 1em;
-      font-weight: 700;
+      letter-spacing: 0;
       color: var(--details-stack-text);
     }
   }

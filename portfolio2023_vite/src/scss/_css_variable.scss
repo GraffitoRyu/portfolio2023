@@ -134,9 +134,9 @@
   --details-sub-title: #707070;
   --details-item-title: #909090;
   --details-desc: #5a5a5a;
-  --details-stack-bg: #efefef;
-  --details-stack-border: #b0b0b0;
-  --details-stack-text: #3a3a3a;
+  --details-stack-bg: rgba(255, 255, 255, 0.24);
+  --details-stack-border: #a0a0a0;
+  --details-stack-text: #5a5a5a;
 
   &.dark-theme {
     // font weight
@@ -244,8 +244,8 @@
     --details-sub-title: #ccc;
     --details-item-title: #707070;
     --details-desc: #a0a0a0;
-    --details-stack-bg: #dfdfdf;
-    --details-stack-border: #fff;
-    --details-stack-text: #3a3a3a;
+    --details-stack-bg: rgba(255, 255, 255, 0.16);
+    --details-stack-border: #707070;
+    --details-stack-text: #ccc;
   }
 }
