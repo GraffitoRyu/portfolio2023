@@ -135,6 +135,10 @@
   .details-title-container {
     .details-title {
       @include categoryFont();
+      display: flex;
+      span {
+        margin-right: rem(8px);
+      }
     }
     .details-subtitle {
       display: none;
@@ -186,6 +190,7 @@
         calc(var(--screen-size-y) - var(--header-height) - rem(80px) * 2 - 100%)
       );
       .details-title {
+        display: block;
         line-height: 100%;
         font: {
           size: rem(160px);
@@ -310,8 +315,16 @@
   }
 
   .period {
+    display: block;
     span {
+      display: block;
+      margin: rem(16px) 0;
       background: var(--details-desc);
+    }
+  }
+  @media only screen and (min-width: 1024px) {
+    .period {
+      display: flex;
     }
   }
 }

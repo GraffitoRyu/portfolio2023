@@ -1,136 +1,177 @@
 @import "./css_variable";
 @import "./scss_global";
 
-$sectionTitleSize: rem(40px);
-$sectionTitleMargin: rem(80px);
-$descSize: 24px;
-$descLine: 2em;
-
 .profile-section {
   .section-contents {
-    padding-top: #{$sectionTitleSize + $sectionTitleMargin};
+    padding-top: 0;
     p,
     span {
-      font-size: rem($descSize);
+      font-size: rem(40px);
       font-weight: var(--weight-regular);
-      line-height: $descLine;
+      line-height: 2em;
     }
-  }
-}
-
-.section-header {
-  top: var(--header-height);
-}
-
-.section-header {
-  h2 {
-    margin-bottom: $sectionTitleMargin;
-    font-size: $sectionTitleSize;
-    line-height: 1em;
-    font-weight: 700;
-    color: var(--section-header-title);
-  }
-  p {
-    font-size: rem(48px);
-    line-height: 1.75em;
-    font-weight: 300;
-    color: var(--section-header-desc);
   }
   @media only screen and (min-width: 1024px) {
-    p {
-      font-size: rem(64px);
-      line-height: rem(80px);
+    .section-contents {
+      padding-top: rem(40px + 80px);
+      p,
+      span {
+        font-size: rem(24px);
+      }
     }
   }
-}
 
-.career-list {
-  .career-item {
-    margin-bottom: rem(80px);
+  .section-header {
+    top: var(--header-height);
   }
-  .period {
-    margin-bottom: rem(24px);
-    color: var(--career-period);
-    span {
-      background: var(--career-period);
+
+  .section-header {
+    h2 {
+      margin-bottom: rem(40px);
+      font-size: rem(64px);
+      line-height: 1em;
+      font-weight: 700;
+      color: var(--section-header-title);
+    }
+    p {
+      font-size: rem(48px);
+      line-height: 1.5em;
+      color: var(--section-header-desc);
+      span {
+        word-break: break-all;
+      }
+      br {
+        display: none;
+      }
+    }
+    @media only screen and (min-width: 1024px) {
+      h2 {
+        margin-bottom: rem(80px);
+        font-size: rem(40px);
+      }
+      p {
+        font-size: rem(64px);
+        font-weight: 300;
+        br {
+          display: inline;
+        }
+      }
     }
   }
-  h3 {
-    margin-bottom: rem(24px);
-    strong {
-      color: var(--career-role);
-      line-height: rem(32px);
+
+  .career-list {
+    .career-item {
+      margin-bottom: rem(80px);
+    }
+    .period {
+      margin-bottom: rem(24px);
+      color: var(--career-period);
+      span {
+        background: var(--career-period);
+      }
+    }
+    h3 {
+      margin-bottom: rem(32px);
+      strong {
+        color: var(--career-role);
+        line-height: 1em;
+        font: {
+          size: rem(48px);
+          weight: var(--weight-medium);
+        }
+      }
+      span {
+        color: var(--career-company);
+        line-height: 1em;
+        font: {
+          size: rem(40px);
+          weight: var(--weight-regular);
+        }
+        &:before {
+          content: "";
+          display: block;
+          width: rem(2px);
+          height: rem(24px);
+          margin: 0 rem(16px) 0 rem(24px);
+          background: var(--career-company);
+        }
+      }
+    }
+    p {
+      color: var(--career-desc);
+      line-height: 1.5em;
+    }
+    @media only screen and (min-width: 1024px) {
+      h3 {
+        margin-bottom: rem(24px);
+        strong {
+          font-size: rem(32px);
+        }
+        span {
+          font-size: rem(24px);
+        }
+      }
+      p {
+        line-height: 1em;
+      }
+    }
+  }
+
+  .experience-list {
+    .experience-item {
+      margin-bottom: rem(120px);
+    }
+    dt {
+      margin-bottom: rem(16px);
+      color: var(--exp-title);
       font: {
-        size: rem(32px);
+        size: rem(56px);
         weight: var(--weight-medium);
       }
     }
+    p,
     span {
-      color: var(--career-company);
-      line-height: rem(24px);
-      font: {
-        size: rem(24px);
-        weight: var(--weight-regular);
-      }
+      color: var(--exp-desc);
+    }
+    .depth-desc {
       &:before {
         content: "";
         display: block;
-        width: rem(2px);
-        height: rem(24px);
-        margin: 0 rem(16px) 0 rem(24px);
-        background: var(--career-company);
+        width: rem(8px);
+        height: rem(8px);
+        margin: rem(8px) rem(16px) 0;
+        border-radius: 50%;
+        background: var(--exp-desc);
+      }
+    }
+    @media only screen and (min-width: 1024px) {
+      .experience-item {
+        margin-bottom: rem(80px);
+      }
+      dt {
+        margin-bottom: rem(40px);
+        font-size: rem(40px);
       }
     }
   }
-  p {
-    color: var(--career-desc);
-    line-height: 1em;
-  }
-}
 
-.experience-list {
-  .experience-item {
-    margin-bottom: rem(80px);
-  }
-  dt {
-    margin-bottom: rem(40px);
-    color: var(--exp-title);
-    font: {
-      size: rem(40px);
-      weight: var(--weight-medium);
+  .tool-list {
+    width: calc(100% + rem(160px));
+    margin: 0 rem(-80px);
+    padding-bottom: rem(240px);
+    li {
+      color: var(--tools);
+      padding: 0 rem(80px);
+      margin-bottom: rem(64px);
+      line-height: rem(64px);
+      font: {
+        size: rem(40px);
+        weight: 700;
+      }
     }
-  }
-  p,
-  span {
-    color: var(--exp-desc);
-  }
-  .depth-desc {
-    &:before {
-      content: "";
-      display: block;
-      width: rem(8px);
-      height: rem(8px);
-      margin: rem(8px) rem(16px) 0;
-      border-radius: 50%;
-      background: var(--exp-desc);
+    @media only screen and (min-width: 1024px) {
+      padding-right: rem(240px);
+      padding-bottom: 0;
     }
-  }
-}
-
-.tool-list {
-  width: calc(100% + rem(160px));
-  margin: 0 rem(-80px);
-  li {
-    color: var(--tools);
-    padding: 0 rem(80px);
-    margin-bottom: rem(64px);
-    line-height: rem(64px);
-    font: {
-      size: rem(40px);
-      weight: 700;
-    }
-  }
-  @media only screen and (min-width: 1024px) {
-    padding-right: rem(240px);
   }
 }

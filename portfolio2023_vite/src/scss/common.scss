@@ -122,13 +122,24 @@ html:not(.mobile) {
   display: flex;
   align-items: center;
   font: {
-    size: rem(20px);
+    size: rem(32px);
     weight: var(--weight-regular);
   }
   span {
-    width: rem(56px);
+    width: rem(80px);
     height: rem(1px);
-    margin: 0 rem(16px);
+    margin: 0 rem(32px);
+  }
+  @media only screen and (min-width: 1024px) {
+    font: {
+      size: rem(20px);
+      weight: var(--weight-regular);
+    }
+    span {
+      width: rem(56px);
+      height: rem(1px);
+      margin: 0 rem(16px);
+    }
   }
 }
 
@@ -139,11 +150,14 @@ html:not(.mobile) {
   &:not(.intro-section) {
     padding-top: rem(240px);
     padding-bottom: 0;
+    .section-header {
+      margin-bottom: rem(120px);
+    }
     @media only screen and (min-width: 1024px) {
       padding-bottom: rem(240px);
-    }
-    .section-header {
-      margin-bottom: rem(160px);
+      .section-header {
+        margin-bottom: rem(160px);
+      }
     }
   }
 

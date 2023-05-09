@@ -42,7 +42,7 @@ export default function PageContents() {
         header={{
           empty: false,
           title: "career",
-          desc: ["지난 5년간 실무 경험을 쌓은", "근무 경력입니다."],
+          desc: ["지난 5년간 실무 경험을 쌓은 ", "근무 경력입니다."],
         }}
         contents={<Career />}
       />
@@ -53,10 +53,10 @@ export default function PageContents() {
           empty: false,
           title: "experience",
           desc: [
-            "현업에서는 다음의 경험으로",
-            "스펙트럼을 넓혔습니다.",
-            "여기에 더해, 보편적인 트렌드에",
-            "발맞춰 가기 위한 연구를",
+            "현업에서는 다음의 경험으로 ",
+            "스펙트럼을 넓혔습니다. ",
+            "여기에 더해, 보편적인 트렌드에 ",
+            "발맞춰 가기 위한 연구를 ",
             "진행중입니다.",
           ],
         }}
@@ -68,7 +68,7 @@ export default function PageContents() {
         header={{
           empty: false,
           title: "tools",
-          desc: ["경험을 쌓으며 다루게된", "활용 가능한 기술 스택입니다."],
+          desc: ["경험을 쌓으며 다루게된 ", "활용 가능한 기술 스택입니다."],
         }}
         contents={<Tools />}
       />

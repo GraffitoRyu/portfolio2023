@@ -18,8 +18,8 @@
   h2 {
     margin-bottom: rem(160px);
     font-weight: 300;
-    font-size: rem(48px);
-    line-height: rem(64px);
+    font-size: rem(56px);
+    line-height: rem(73px);
     color: var(--intro-title);
     strong {
       font-weight: 500;
@@ -27,18 +27,28 @@
     }
   }
   p {
-    font-size: rem(24px);
-    line-height: rem(40px);
+    font-size: rem(40px);
+    line-height: rem(64px);
     font-weight: 400;
     color: var(--intro-desc);
+    br {
+      display: none;
+    }
+  }
+  @media only screen and (min-width: 640px) {
+    h2 {
+      font-size: rem(48px);
+      line-height: rem(64px);
+    }
+    p {
+      font-size: rem(24px);
+      line-height: rem(40px);
+      br {
+        display: inline;
+      }
+    }
   }
   @media only screen and (min-width: 1024px) {
-    // background: var(--intro-grad-from);
-    // background: linear-gradient(
-    //   0deg,
-    //   var(--intro-grad-from) 0%,
-    //   var(--intro-grad-to) 100%
-    // );
     h2 {
       font-size: rem(64px);
       line-height: rem(80px);
