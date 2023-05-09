@@ -148,12 +148,13 @@ html:not(.mobile) {
   position: relative;
 
   &:not(.intro-section) {
-    padding-top: rem(240px);
+    padding-top: rem(320px);
     padding-bottom: 0;
     .section-header {
       margin-bottom: rem(120px);
     }
     @media only screen and (min-width: 1024px) {
+      padding-top: rem(240px);
       padding-bottom: rem(240px);
       .section-header {
         margin-bottom: rem(160px);
