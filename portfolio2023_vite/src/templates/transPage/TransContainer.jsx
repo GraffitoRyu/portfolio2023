@@ -41,7 +41,7 @@ export default function TransContainer() {
         classNames="trans"
         key={nowPagePath}
         nodeRef={nodeRef}
-        timeout={page.transDuration}
+        timeout={1000}
         unmountOnExit
         // transitionGroup: enter -> exit => entering -> exiting -> entered -> exited
         // SwitchTransition: exit -> exiting -> exited -> enter -> entering -> entered

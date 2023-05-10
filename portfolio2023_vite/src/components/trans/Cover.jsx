@@ -13,12 +13,8 @@ export default function TransCover() {
     // SwitchTransition: exit -> exiting -> exited -> enter -> entering -> entered
     if (page.transStep == "exit") {
       setSlideState("page-out");
-    } else if (page.transStep == "entered") {
-      if (page.init) {
-        setTimeout(() => {
-          setSlideState("page-in"); // section/pageVisual.jsx 참조
-        }, [page.transDelay]);
-      }
+    } else if (page.transStep == "entering") {
+      if (page.init) setSlideState("page-in"); // section/pageVisual.jsx 참조
     }
   }, [page.transStep]);
 

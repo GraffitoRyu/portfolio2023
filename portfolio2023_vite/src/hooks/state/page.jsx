@@ -7,7 +7,5 @@ export const pageState = atom({
     cur: "profile", // 현재 페이지
     stay: false,
     transStep: "entered", // 페이지 전환 효과를 위한 단계 구분 상태
-    transDuration: 1000, // 페이지 전환 시간 (ms)
-    transDelay: 400,
   },
 });

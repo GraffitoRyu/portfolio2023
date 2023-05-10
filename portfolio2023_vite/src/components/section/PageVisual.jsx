@@ -44,7 +44,7 @@ export default function PageVisual(props) {
 
   useEffect(() => {
     // initiate
-    setLoadTitle("loaded");
+    if (!page.init) setLoadTitle("loaded");
   }, []);
 
   useEffect(() => {
@@ -52,11 +52,12 @@ export default function PageVisual(props) {
     // enter -> exit => entering -> exiting -> entered -> exited
     if (page.transStep == "exiting") {
       setLoadTitle("");
-    } else if (page.transStep == "exited") {
+    } else if (page.transStep == "entering") {
       updateTitleParallax(0);
+      // } else if (page.transStep == "entered") {
       setTimeout(() => {
         setLoadTitle("loaded");
-      }, page.transDelay + 100); // trans/cover.jsx 참조
+      }, 400); // trans/cover.jsx 참조
     }
   }, [page.transStep]);
 
