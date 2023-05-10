@@ -11,7 +11,7 @@
   @media only screen and (min-width: 1024px) {
     padding-bottom: rem(240px);
     .section-contents {
-      padding: 0;
+      // padding: 0;
     }
   }
 
@@ -25,6 +25,14 @@
       font-weight: 500;
       color: var(--intro-emph);
     }
+    .intro-title {
+      transform: translateY(100%);
+      opacity: 0;
+      transition: $trans_form_quad, $trans_opacity_quad;
+      &:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+    }
   }
   p {
     font-size: rem(40px);
@@ -33,6 +41,25 @@
     color: var(--intro-desc);
     br {
       display: none;
+    }
+    span {
+      display: inline-block;
+      transform: translateY(50%);
+      opacity: 0;
+      transition: $trans_form_quad, $trans_opacity_quad;
+      // transition-duration: 0.4s;
+      @for $p_idx from 0 to 6 {
+        &:nth-child(#{$p_idx + 2}) {
+          transition-delay: #{0.2s * $p_idx};
+        }
+      }
+    }
+  }
+  .in-view {
+    .intro-title,
+    span {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
   @media only screen and (min-width: 640px) {

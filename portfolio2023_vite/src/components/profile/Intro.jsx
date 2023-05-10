@@ -1,4 +1,5 @@
 import React from "react";
+import { useInView } from "react-intersection-observer";
 
 export default function ProfileIntro() {
   const desc = [
@@ -8,15 +9,26 @@ export default function ProfileIntro() {
     "각각 효율적으로 구축하기 위해 항상 연구하고 있습니다.",
   ];
 
+  const { ref: titleRef, inView: titleView } = useInView({
+    triggerOnce: true,
+    rootMargin: "80px",
+    delay: 200,
+  });
+  const { ref: phraseRef, inView: phraseView } = useInView({
+    triggerOnce: true,
+    rootMargin: "80px",
+    delay: 400,
+  });
+
   return (
     <>
-      <h2>
+      <h2 className={titleView ? "in-view" : ""} ref={titleRef}>
         <div className="intro-title">인터랙션 이벤트 구현에 관심이 많은</div>
         <div className="intro-title">
           프론트엔드 개발자 <strong>류대현</strong>입니다.
         </div>
       </h2>
-      <p>
+      <p className={phraseView ? "in-view" : ""} ref={phraseRef}>
         {desc.map((d, i) => (
           <React.Fragment key={`desc_${i}`}>
             <span>{d}</span>

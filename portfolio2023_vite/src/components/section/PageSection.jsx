@@ -1,17 +1,18 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
+import { useInView } from "react-intersection-observer";
 
 // components
 import PageVisual from "./PageVisual";
 
 // util
 import windowResize from "../../hooks/util/windowResize";
+import updateArrayAtom from "../../hooks/util/updateArrayAtom";
 
 // state
 import { sectionState } from "../../hooks/state/section";
 import { pageState } from "../../hooks/state/page";
 import { sectionOffsetState } from "../../hooks/state/section";
-import updateArrayAtom from "../../hooks/util/updateArrayAtom";
 
 export default function Section(props) {
   const index = props.index;
@@ -22,10 +23,37 @@ export default function Section(props) {
   const { cur: pageCategory } = useRecoilValue(pageState);
 
   const sectionRef = useRef();
+  const { ref: sectionViewRef, inView: sectionView } = useInView();
+  const containerViewRef = useCallback(
+    node => {
+      sectionRef.current = node;
+      sectionViewRef(node);
+    },
+    [sectionViewRef]
+  );
   const setSection = useSetRecoilState(sectionState[pageCategory]);
   const setSectionOffset = useSetRecoilState(sectionOffsetState[pageCategory]);
 
-  const sectionClass = ["items-start", "relative"];
+  const isIntro_section = sectionCode == "intro" ? "intro" : "noneIntro";
+  const sectionClass = {
+    common: `page-section ${sectionCode}-section lg:flex items-start relative`,
+    intro: "flex-wrap h-full lg:h-auto",
+    noneIntro: `${pageCategory}-section`,
+  };
+  const headerCheck =
+    sectionCode == "intro" || sectionCode == "projectsList"
+      ? sectionCode
+      : "noneIntro";
+  const headerClass = {
+    common: "section-header lg:w-1/2 lg:sticky",
+    intro: "hidden lg:block self-stretch",
+    projectsList: "hidden",
+    noneIntro: "",
+  };
+
+  const { ref: headerRef, inView: headerView } = useInView();
+  const isHeaderView = () =>
+    sectionView && headerView ? "header-in-view" : "";
 
   const updateSectionState = () => {
     let state = {
@@ -60,23 +88,20 @@ export default function Section(props) {
 
   return (
     <section
-      className={`page-section ${sectionCode}-section lg:flex ${
-        header ? sectionClass.join(" ") : "w-full"
-      } ${
-        sectionCode == "intro"
-          ? "flex-wrap h-full lg:h-auto"
-          : `${pageCategory}-section ${
-              sectionCode == "projectsList" ? "" : "side-padding"
-            }`
+      className={`${sectionClass.common} ${sectionClass[isIntro_section]} ${
+        sectionCode == "projectsList" || sectionCode == "intro"
+          ? ""
+          : "side-padding"
       }`}
-      ref={sectionRef}
+      ref={containerViewRef}
     >
       {sectionCode == "intro" ? <PageVisual {...props} /> : ""}
       {header ? (
         <header
-          className={`section-header lg:w-1/2 lg:sticky ${
-            sectionCode == "projectsList" ? "hidden" : ""
-          } ${sectionCode == "intro" ? "hidden lg:block self-stretch" : ""}`}
+          className={`${headerClass.common} ${
+            headerClass[headerCheck]
+          } ${isHeaderView()}`}
+          ref={headerRef}
         >
           {header.empty ? (
             ""

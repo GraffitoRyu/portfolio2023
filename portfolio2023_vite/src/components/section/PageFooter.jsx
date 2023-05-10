@@ -22,7 +22,6 @@ import useRange from "../../hooks/util/useRange";
 
 export default function PageFooter() {
   const footerRef = useRef();
-  // const setFooter = useSetRecoilState(footerState);
   const page = useRecoilValue(pageState);
   const scroll = useRecoilValue(scrollState);
 
@@ -32,7 +31,7 @@ export default function PageFooter() {
   const [footerTitle, setFooterTitle] = useState({
     yRatio: 0,
   });
-  const { ref: sectionViewRef, inView, entry } = useInView();
+  const { ref: sectionViewRef, inView } = useInView();
   const footerViewRef = useCallback(
     node => {
       footerRef.current = node;
@@ -57,7 +56,6 @@ export default function PageFooter() {
     const offsetY = footerRef?.current?.offsetTop;
     if (isNaN(offsetY)) return;
     setCSSProps(`--footer-offset-y-${page.cur}`, `${offsetY}px`);
-    // setFooter(prev => ({ ...prev, offset: offsetY }));
     updateTitleParallax();
   };
 
