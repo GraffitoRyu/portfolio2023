@@ -253,7 +253,7 @@ export default function DetailsIntro() {
         </p>
       </div>
       {linkList ? (
-        <ul className="details-btn-list flex items-center lg:justify-end lg:mt-auto relative">
+        <ul className="details-btn-list relative flex items-center lg:justify-end lg:mt-auto flex-wrap">
           {linkList.map(link => (
             <li key={link.key}>
               <OpenLinkBtn {...link} />

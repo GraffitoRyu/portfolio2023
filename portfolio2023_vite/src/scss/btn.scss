@@ -2,9 +2,9 @@
 @import "./scss_global";
 
 .btn-box {
-  width: rem(48px);
-  height: rem(48px);
-  border-radius: rem(8px);
+  width: rem(80px);
+  height: rem(80px);
+  border-radius: rem(16px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,20 +16,20 @@
 
   .btn-text {
     margin-right: rem(16px);
-    line-height: rem(16px);
+    line-height: 1em;
     font: {
-      size: rem(16px);
+      size: rem(32px);
       weight: var(--weight-medium);
     }
   }
   svg {
-    width: rem(16px);
-    height: rem(16px);
+    width: rem(24px);
+    height: rem(24px);
     object-fit: contain;
   }
   &.w-auto {
     width: auto;
-    padding: 0 rem(16px);
+    padding: 0 rem(32px);
   }
   &.svg-h-auto {
     svg {
@@ -41,5 +41,25 @@
     color: var(--btn-hover-contents);
     @include svgColor(var(--btn-hover-contents));
     @include svgStroke(rem(3px), var(--btn-hover-contents));
+  }
+
+  @media only screen and (min-width: 1024px) {
+    width: rem(48px);
+    height: rem(48px);
+    border-radius: rem(8px);
+
+    .btn-text {
+      margin-right: rem(16px);
+      font-size: rem(16px);
+    }
+
+    svg {
+      width: rem(16px);
+      height: rem(16px);
+    }
+
+    &.w-auto {
+      padding: 0 rem(16px);
+    }
   }
 }

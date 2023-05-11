@@ -16,13 +16,13 @@ export default function DetailsInfo() {
   return (
     <section className="details-section side-padding details-info w-full lg:flex">
       <div className="details-summary w-full lg:w-1/2">
-        <dl className="details-info-item w-1/4 lg:w-1/2">
+        <dl className="details-info-item w-1/2">
           <dt>담당 업무</dt>
           {d?.summary?.role.map((r, i) => (
             <dd key={`role_${i}`}>{r}</dd>
           ))}
         </dl>
-        <dl className="details-info-item w-1/4 lg:w-1/2">
+        <dl className="details-info-item w-1/2">
           <dt>작업 및 담당 기간</dt>
           <dd className="period">
             <time>
@@ -34,11 +34,11 @@ export default function DetailsInfo() {
             </time>
           </dd>
         </dl>
-        <dl className="details-info-item w-1/4 lg:w-1/2">
+        <dl className="details-info-item w-1/2">
           <dt>서비스 제공</dt>
           <dd>{d?.service?.provider}</dd>
         </dl>
-        <dl className="details-info-item w-1/4 lg:w-1/2">
+        <dl className="details-info-item w-1/2">
           <dt>서비스 형태</dt>
           <dd>{d?.service?.platform}</dd>
         </dl>
@@ -78,7 +78,6 @@ export default function DetailsInfo() {
         <dl className="details-info-item w-full h-auto">
           <dt>업무 경험</dt>
           {d?.experience?.desc.map((desc, i) => generateDesc(desc, i))}
-          <dd></dd>
         </dl>
       </div>
     </section>
