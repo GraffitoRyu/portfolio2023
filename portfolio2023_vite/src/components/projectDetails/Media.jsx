@@ -1,9 +1,10 @@
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
 // util
 import getDetailsData from "../../hooks/util/getDetailsData";
-import { useCallback, useEffect, useRef } from "react";
+import replaceNewlineToBr from "../../hooks/util/replaceNewlineToBr";
 
 export default function DetailsMedia() {
   const [urlParams] = useSearchParams();
@@ -12,8 +13,24 @@ export default function DetailsMedia() {
   if (!d) return;
 
   return (
-    <section className="details-section details-media w-full h-screen">
-      {md.map((m, i) => (m.src ? <MediaSet key={i} {...m} /> : ""))}
+    <section className="details-section details-media w-full">
+      {md.map((m, i) =>
+        m.src ? (
+          <figure className="media-contents w-full" key={i}>
+            <MediaSet {...m} />
+            <div className="media-info w-full text-center">
+              <h4 className="w-full">{m.title}</h4>
+              {m.desc ? (
+                <p className="w-full">{replaceNewlineToBr(m.desc)}</p>
+              ) : (
+                ""
+              )}
+            </div>
+          </figure>
+        ) : (
+          ""
+        )
+      )}
     </section>
   );
 }
@@ -28,14 +45,14 @@ function ImageSet(props) {
   if (!props || !props.src) return;
   const src = props?.src;
   const alt = props?.title;
-  return <img src={src} alt={alt} />;
+  return <img className="w-full" src={src} alt={alt} />;
 }
 
 function VideoSet(props) {
-  if (!props || !props.src) return;
+  if (!props || !props.src) return "";
   const src = props?.src;
-
   const videoRef = useRef();
+  const [playState, setPlayState] = useState(false);
   const { ref: videoViewRef, inView: videoView } = useInView();
   const videoMergeRef = useCallback(
     node => {
@@ -47,13 +64,22 @@ function VideoSet(props) {
 
   useEffect(() => {
     if (videoRef?.current) {
+      setPlayState(videoView);
       if (videoView) videoRef.current.play();
       else videoRef.current.pause();
     }
   }, [videoView]);
 
   return (
-    <video className="projects-video" ref={videoMergeRef} preload="auto" loop>
+    <video
+      className="projects-video w-full"
+      play-state={`${playState}`}
+      ref={videoMergeRef}
+      preload="auto"
+      muted
+      loop
+      controls
+    >
       <source src={src} type="video/mp4" />
     </video>
   );

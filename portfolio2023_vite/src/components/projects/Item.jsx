@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 // svg
 import { ReactComponent as IconOpenProject } from "../../svg/btn/project_open.svg";
@@ -31,12 +31,11 @@ export default function ProjectItem(props) {
   const [slideDuration, setSlideDuration] = useState(2);
 
   // const navigate = useNavigate();
-  const [page, setPage] = useRecoilState(pageState);
+  const setPage = useSetRecoilState(pageState);
   const [urlParams, setUrlParams] = useSearchParams();
-  const [details, setDetails] = useRecoilState(detailsState);
+  const setDetails = useSetRecoilState(detailsState);
 
   const openDetails = () => {
-    // navigate(props.pathQuery, { replace: false });
     setPage(prev => ({ ...prev, stay: true }));
     setUrlParams({ category: props.pathQuery });
     setDetails(prev => ({
@@ -51,7 +50,6 @@ export default function ProjectItem(props) {
   useEffect(() => {
     const { array, width } = getSlideTextSet(slideText);
     setTextArr(array);
-    // setSlideDuration(width / 1000);
     setSlideDuration((width / 1000) * 3.2);
   }, [hover]);
 

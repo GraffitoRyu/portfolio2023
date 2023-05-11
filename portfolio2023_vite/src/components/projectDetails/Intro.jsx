@@ -1,6 +1,6 @@
 // components
 import { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 // components
@@ -195,11 +195,11 @@ export default function DetailsIntro() {
 
   useEffect(() => {
     setClosed(details.openComplete ? "" : "closed");
-  }, [details]);
+  }, [details.openComplete]);
 
   useEffect(() => {
     if (details.open) updateTitleState(scrollPos.details);
-  }, [scrollPos.details, mobileView, _t, _c, details.open]);
+  }, [scrollPos.details, mobileView, _t, _c]);
 
   return (
     <section
@@ -236,20 +236,25 @@ export default function DetailsIntro() {
           btnClickCallback={() => closeDetails()}
         />
       </header>
-      <div className="details-title-mobile-container lg:hidden relative">
-        <h1 className={`details-title w-full ${closed}`}>
-          {d?.summary?.title.split("\n").map((t, i) => (
-            <span className="block break-keep" key={`title_${i}`}>
-              {t}
+      {mobileView ? (
+        // 모바일을 위한 타이틀 컴포넌트
+        <div className="details-title-mobile-container lg:hidden relative">
+          <h1 className={`details-title w-full ${closed}`}>
+            {d?.summary?.title.split("\n").map((t, i) => (
+              <span className="block break-keep" key={`title_${i}`}>
+                {t}
+              </span>
+            ))}
+          </h1>
+          <p className={`details-subtitle ${closed}`}>
+            <span style={{ transitionDelay: `${subTitleDelay}s` }}>
+              {d?.summary?.desc}
             </span>
-          ))}
-        </h1>
-        <p className={`details-subtitle ${closed}`}>
-          <span style={{ transitionDelay: `${subTitleDelay}s` }}>
-            {d?.summary?.desc}
-          </span>
-        </p>
-      </div>
+          </p>
+        </div>
+      ) : (
+        ""
+      )}
       {linkList ? (
         <ul className="details-btn-list relative flex items-center lg:justify-end lg:mt-auto flex-wrap">
           {linkList.map(link => (

@@ -137,6 +137,8 @@
   --details-stack-bg: rgba(255, 255, 255, 0.24);
   --details-stack-border: #a0a0a0;
   --details-stack-text: #5a5a5a;
+  --details-caption-title: #1a1a1a;
+  --details-caption-desc: #5a5a5a;
 
   &.dark-theme {
     // font weight
@@ -247,5 +249,7 @@
     --details-stack-bg: rgba(255, 255, 255, 0.16);
     --details-stack-border: #707070;
     --details-stack-text: #ccc;
+    --details-caption-title: #fff;
+    --details-caption-desc: #a0a0a0;
   }
 }
