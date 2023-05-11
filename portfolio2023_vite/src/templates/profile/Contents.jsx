@@ -1,28 +1,24 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
 // components
 import SeoHelmet from "../../components/seo/Helmet";
 import PageSection from "../../components/section/PageSection";
+import PageIntro from "../../components/section/PageIntro";
 import PageFooter from "../../components/section/PageFooter";
-import Intro from "../../components/profile/Intro";
 import Career from "../../components/profile/Career";
 import Experience from "../../components/profile/Experience";
 import Tools from "../../components/profile/Tools";
 
 // state
-// import { pageState } from "../../hooks/state/page";
 import { detailsState } from "../../hooks/state/projectDetails";
 
 export default function PageContents() {
-  // const setPageState = useSetRecoilState(pageState);
-
   // 프로젝트 디테일 초기화
   const setDetails = useSetRecoilState(detailsState);
 
   useEffect(() => {
     setDetails({ open: false, category: undefined });
-    // setPageState(prev => ({ ...prev, cur: "profile" }));
   }, []);
 
   return (
@@ -34,7 +30,22 @@ export default function PageContents() {
         header={{ empty: true }}
         borderText="Ready for"
         filledText="interaction"
-        contents={<Intro />}
+        contents={
+          <PageIntro
+            title={[
+              "인터랙션 이벤트 구현에 관심이 많은",
+              <React.Fragment>
+                프론트엔드 개발자<strong>류대현</strong>입니다.
+              </React.Fragment>,
+            ]}
+            desc={[
+              "2018년 웹 디자인과 웹 퍼블리싱으로 시작하여, ",
+              "2020년부터는 프론트엔드 개발 위주로 경험을 쌓았습니다. ",
+              "컴포넌트 기반 구조와, 인터랙티브한 반응형 웹을 ",
+              "각각 효율적으로 구축하기 위해 항상 연구하고 있습니다.",
+            ]}
+          />
+        }
       />
       <PageSection
         index={1}
