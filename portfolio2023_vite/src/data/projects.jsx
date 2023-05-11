@@ -86,6 +86,20 @@ export const detailsData = [
         },
       ],
     },
+    media: [
+      {
+        referType: "image",
+        src: "https://drive.google.com/uc?export=download&id=1zPhnx2oEROLjPeqcBcw8RxjYtiM-CCZV",
+        title: "TeamSolution app",
+        desc: "",
+      },
+      {
+        referType: "video",
+        src: "https://drive.google.com/uc?export=download&id=1ZHTDbWyW_mH80cObTIffcuNwa_20Ljxn",
+        title: "TeamSolution Replay",
+        desc: "",
+      },
+    ],
   },
   {
     key: "rs",
@@ -148,6 +162,15 @@ export const detailsData = [
         "Ajax를 통한 경기선수 검색 기능 구현",
       ],
     },
+    media: [
+      {
+        referType: "image",
+        src: "",
+        title: "",
+        desc: "",
+      },
+      { referType: "video", src: "", title: "", desc: "" },
+    ],
   },
   {
     key: "sm",
@@ -200,6 +223,10 @@ export const detailsData = [
         "웹소켓을 통해, 등록된 자사 하드웨어의 상태 실시간 모니터링",
       ],
     },
+    media: [
+      { referType: "image", src: "", title: "", desc: "" },
+      { referType: "video", src: "", title: "", desc: "" },
+    ],
   },
   {
     key: "lvl",
@@ -255,6 +282,10 @@ export const detailsData = [
         "데이터의 탐색 기준 인덱스에 대해 상호 교체 운용을 위한 체계 구축",
       ],
     },
+    media: [
+      { referType: "image", src: "", title: "", desc: "" },
+      { referType: "video", src: "", title: "", desc: "" },
+    ],
   },
 ];
 

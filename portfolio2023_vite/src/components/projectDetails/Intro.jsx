@@ -21,8 +21,6 @@ import useMatrix from "../../hooks/util/useMatrix";
 import useRange from "../../hooks/util/useRange";
 
 export default function DetailsIntro() {
-  // const { category } = useParams();
-  // const navigate = useNavigate();
   const [urlParams, setUrlParams] = useSearchParams();
   const setPage = useSetRecoilState(pageState);
   const [details, setDetails] = useRecoilState(detailsState);

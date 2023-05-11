@@ -1,10 +1,9 @@
-import { useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 // util
 import getDetailsData from "../../hooks/util/getDetailsData";
 
 export default function DetailsInfo() {
-  // const { category } = useParams();
   const [urlParams] = useSearchParams();
   const d = getDetailsData(urlParams.get("category"));
   const stackNoImg = ["ajax", "ejs", "websocket", "json"];
