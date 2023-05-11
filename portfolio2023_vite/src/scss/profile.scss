@@ -6,7 +6,7 @@
     padding-top: 0;
     p,
     span {
-      font-size: rem(40px);
+      font-size: rem(32px);
       font-weight: var(--weight-regular);
       line-height: 2em;
     }
@@ -27,14 +27,14 @@
 
   .section-header {
     h2 {
-      margin-bottom: rem(40px);
-      font-size: rem(64px);
+      margin-bottom: rem(32px);
+      font-size: rem(48px);
       line-height: 1em;
       font-weight: 700;
       color: var(--section-header-title);
     }
     p {
-      font-size: rem(48px);
+      font-size: rem(32px);
       line-height: 1.5em;
       color: var(--section-header-desc);
       span {
@@ -64,7 +64,7 @@
       margin-bottom: rem(80px);
     }
     .period {
-      margin-bottom: rem(24px);
+      margin-bottom: rem(32px);
       color: var(--career-period);
       span {
         background: var(--career-period);
@@ -76,15 +76,16 @@
         color: var(--career-role);
         line-height: 1em;
         font: {
-          size: rem(48px);
+          size: rem(40px);
           weight: var(--weight-medium);
         }
       }
       span {
+        margin-top: rem(4px);
         color: var(--career-company);
         line-height: 1em;
         font: {
-          size: rem(40px);
+          size: rem(32px);
           weight: var(--weight-regular);
         }
         &:before {
