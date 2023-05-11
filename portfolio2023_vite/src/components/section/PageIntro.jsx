@@ -24,14 +24,12 @@ export default function PageIntro(props) {
 
   useEffect(() => {
     if (!page.init && page.transStep == "entered") {
-      console.log("initiate");
       setTimeout(() => setLoaded(true), 800);
     }
   }, []);
 
   useEffect(() => {
     if (page.init) {
-      console.log("page change");
       setLoaded(page.transStep == "entered");
     }
   }, [page.transStep]);

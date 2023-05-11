@@ -86,6 +86,26 @@ export const detailsData = [
         },
       ],
     },
+    media: [
+      {
+        referType: "image",
+        src: "/img/details/media_teamsolution_promotion.jpg",
+        title: "팀솔루션 프로모션 이미지",
+        desc: "PC의 웹 솔루션 관제화면과 드라이버를 위한 레이스모니터 안드로이드 어플리케이션",
+      },
+      {
+        referType: "image",
+        src: "/img/details/media_teamsolution_app_ex.jpg",
+        title: "팀솔루션 드라이버 애플리케이션 (안드로이드)",
+        desc: "웹뷰 화면의 퍼블리싱 및 프론트엔드 개발/유지보수 담당",
+      },
+      // {
+      //   referType: "video",
+      //   src: "https://drive.google.com/uc?export=download&id=1ZHTDbWyW_mH80cObTIffcuNwa_20Ljxn",
+      //   title: "팀솔루션 리플레이",
+      //   desc: "웹 솔루션 서비스 중 리플레이 기능 예시",
+      // },
+    ],
   },
   {
     key: "rs",
@@ -148,6 +168,32 @@ export const detailsData = [
         "Ajax를 통한 경기선수 검색 기능 구현",
       ],
     },
+    media: [
+      {
+        referType: "image",
+        src: "/img/details/media_racesolution_hud.jpg",
+        title: "레이스솔루션 방송용 HUD 송출 화면 (출처: 슈퍼레이스 유튜브)",
+        desc: "텔레메트리 데이터를 연결한 실시간 데이터를 HUD와 연동",
+      },
+      {
+        referType: "image",
+        src: "/img/details/media_racesolution_pc.jpg",
+        title: "레이스솔루션 매니저 관제 화면",
+        desc: "실시간 텔레메트리 데이터를 모니터링하며,\n 각 차량에 부착된 XYRO(텔레메트리 송신 하드웨어)를 제어",
+      },
+      // {
+      //   referType: "video",
+      //   src: "https://drive.google.com/uc?export=download&id=1z7jn0YUirm_Ypd1AETXIQLP_nhXAZHwi",
+      //   title: "레이스솔루션 테스트",
+      //   desc: "매니저가 관제하는 시나리오를 가정한 테스트",
+      // },
+      {
+        referType: "video",
+        src: "https://drive.google.com/uc?export=download&id=1ZHTDbWyW_mH80cObTIffcuNwa_20Ljxn",
+        title: "레이스솔루션 리플레이",
+        desc: "웹 솔루션 서비스 중 리플레이 기능 예시",
+      },
+    ],
   },
   {
     key: "sm",
@@ -200,6 +246,21 @@ export const detailsData = [
         "웹소켓을 통해, 등록된 자사 하드웨어의 상태 실시간 모니터링",
       ],
     },
+    media: [
+      {
+        referType: "image",
+        src: "/img/details/media_solutionmaster_manager.jpg",
+        title: "솔루션마스터 매니저 페이지",
+        desc: "드라이버, 하드웨어, 주행그룹, 주행세션데이터 관리 등 종합 관리 서비스",
+      },
+      {
+        referType: "image",
+        src: "/img/details/media_solutionmaster_control.jpg",
+        title: "솔루션마스터 관제화면",
+        desc: "좌측 트랙맵에서 실시간 위치정보와 더불어 여러 위젯을 활용하고,\n 우측의 패널에서 여러가지 데이터 모니터링이 가능하다.\n 현재 선택된 패널 메뉴는 하드웨어를 제어하는 패널",
+      },
+      // { referType: "video", src: "", title: "", desc: "" },
+    ],
   },
   {
     key: "lvl",
@@ -255,6 +316,20 @@ export const detailsData = [
         "데이터의 탐색 기준 인덱스에 대해 상호 교체 운용을 위한 체계 구축",
       ],
     },
+    media: [
+      {
+        referType: "image",
+        src: "/img/details/media_lapvslap.jpg",
+        title: "랩대랩 사용 화면",
+        desc: "",
+      },
+      // {
+      //   referType: "video",
+      //   src: "https://drive.google.com/uc?export=download&id=1miDqf-2Cw_P48P1Tc9ta1wj5ZHcAYWcq",
+      //   title: "랩대랩 사용 화면",
+      //   desc: "랩대랩의 각 기능 사용 예시",
+      // },
+    ],
   },
 ];
 

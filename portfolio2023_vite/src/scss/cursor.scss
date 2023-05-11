@@ -10,7 +10,6 @@
   z-index: 9999999;
   pointer-events: none;
   backface-visibility: visible;
-  // mix-blend-mode: difference;
   .cursor {
     position: absolute;
     top: 50%;
@@ -25,7 +24,6 @@
       background-color var(--trans-time-cursor);
   }
   &.link {
-    //   mix-blend-mode: overlay;
     .cursor {
       width: 64px;
       height: 64px;
