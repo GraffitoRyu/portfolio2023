@@ -2,7 +2,7 @@ import { useInView } from "react-intersection-observer";
 
 export default function Tools() {
   const toolList = [
-    "Next.js",
+    // "Next.js",
     "React",
     "Recoil",
     "Vite",
@@ -12,6 +12,8 @@ export default function Tools() {
     "WebSocket",
     "d3.js",
     "Google Maps API",
+    "Kakao Maps API",
+    "Mapbox GL",
     "Git/Github",
     // "VS Code",
     // "Figma",
