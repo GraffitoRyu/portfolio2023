@@ -11,16 +11,14 @@ import updateArrayAtom from "../../hooks/util/updateArrayAtom";
 
 // state
 import { sectionState } from "../../hooks/state/section";
-import { pageState } from "../../hooks/state/page";
 import { sectionOffsetState } from "../../hooks/state/section";
 
 export default function Section(props) {
   const index = props.index;
   const sectionCode = props.section_code;
+  const pageCategory = props.page_name;
   const header = props.header;
   const contents = props.contents;
-
-  const { cur: pageCategory } = useRecoilValue(pageState);
 
   const sectionRef = useRef();
   const { ref: sectionViewRef, inView: sectionView } = useInView();

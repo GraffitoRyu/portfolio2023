@@ -25,6 +25,7 @@ export default function PageContents() {
     <>
       <SeoHelmet />
       <PageSection
+        page_name="profile"
         index={0}
         section_code="intro"
         header={{ empty: true }}
@@ -48,6 +49,7 @@ export default function PageContents() {
         }
       />
       <PageSection
+        page_name="profile"
         index={1}
         section_code="career"
         header={{
@@ -58,6 +60,7 @@ export default function PageContents() {
         contents={<Career />}
       />
       <PageSection
+        page_name="profile"
         index={2}
         section_code="experience"
         header={{
@@ -74,6 +77,7 @@ export default function PageContents() {
         contents={<Experience />}
       />
       <PageSection
+        page_name="profile"
         index={3}
         section_code="tools"
         header={{
@@ -83,7 +87,7 @@ export default function PageContents() {
         }}
         contents={<Tools />}
       />
-      <PageFooter />
+      <PageFooter page_name="projects" />
     </>
   );
 }

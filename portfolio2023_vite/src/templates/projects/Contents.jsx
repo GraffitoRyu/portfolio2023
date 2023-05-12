@@ -10,6 +10,7 @@ export default function PageContents() {
     <>
       <SeoHelmet />
       <PageSection
+        page_name="projects"
         index={0}
         section_code="intro"
         header={{ empty: true }}
@@ -28,12 +29,13 @@ export default function PageContents() {
         }
       />
       <PageSection
+        page_name="projects"
         index={1}
         section_code="projectsList"
         header={undefined}
         contents={<ProjectList />}
       />
-      <PageFooter />
+      <PageFooter page_name="projects" />
     </>
   );
 }

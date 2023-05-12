@@ -1,16 +1,10 @@
 import React, { createRef } from "react";
 import { useLocation, useOutlet } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import {
-  TransitionGroup,
-  CSSTransition,
-  SwitchTransition,
-} from "react-transition-group";
+import { CSSTransition, SwitchTransition } from "react-transition-group";
 
 // components
 import ScrollContainer from "./ScrollContainer";
-import TransCover from "../../components/trans/Cover";
-import ProjectDetails from "../projectDetails/Container";
 
 // data
 import { sitemapData } from "../../data/sitemap";
@@ -41,8 +35,8 @@ export default function TransContainer() {
         classNames="trans"
         key={nowPagePath}
         nodeRef={nodeRef}
-        timeout={1000}
-        unmountOnExit
+        timeout={1600}
+        // unmountOnExit
         // transitionGroup: enter -> exit => entering -> exiting -> entered -> exited
         // SwitchTransition: exit -> exiting -> exited -> enter -> entering -> entered
         onEnter={() => updateTransState("enter")}
