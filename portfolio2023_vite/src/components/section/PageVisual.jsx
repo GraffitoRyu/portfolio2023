@@ -20,7 +20,7 @@ export default function PageVisual(props) {
     y: 0,
     opacity: 1,
   });
-  const { ref: sectionViewRef, inView, entry } = useInView();
+  const { ref: sectionViewRef, inView } = useInView();
 
   const visualViewRef = useCallback(
     node => {
@@ -36,7 +36,7 @@ export default function PageVisual(props) {
     const _vh = visualRef.current.clientHeight;
     if (isNaN(_vh) || !_vh) return;
 
-    const scrollRatio = useRange(top / _vh, 0, 1) * 1.3;
+    const scrollRatio = useRange(top / _vh, 0, 1);
     const _y = top / 6;
     const _op = 1 - useRange(scrollRatio, 0, 1);
     setTitle({ y: _y, opacity: _op });
@@ -48,7 +48,6 @@ export default function PageVisual(props) {
   }, []);
 
   useEffect(() => {
-    // console.log(` -+- initiate Visual Section -+-`, page.transStep);
     // enter -> exit => entering -> exiting -> entered -> exited
     if (page.transStep == "exiting") {
       setLoadTitle("");
@@ -73,8 +72,6 @@ export default function PageVisual(props) {
     >
       <h1
         className="page-title fixed pointer-events-none"
-        // ref={titleRef}
-        viewport={inView ? "in" : "out"}
         style={{
           transform: `translate3d(0,-${title.y}px, 0)`,
           opacity: !isNaN(title.opacity) ? title.opacity : 1,
