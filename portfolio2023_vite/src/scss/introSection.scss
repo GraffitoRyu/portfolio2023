@@ -118,7 +118,7 @@
   }
 
   .page-title-border-text {
-    -webkit-text-stroke: 1px var(--page-title-border);
+    -webkit-text-stroke: rem(2px) var(--page-title-border);
     span {
       transition-delay: 0s;
     }

@@ -92,7 +92,8 @@
 
 .theme-list {
   display: none;
-  width: rem(120px);
+  // width: rem(120px);
+  padding: rem(8px);
   border-radius: rem(8px);
   background: var(--theme-menu-bg);
   transform: translateY(rem(10px));
@@ -107,7 +108,7 @@
       size: rem(16px);
       weight: 500;
     }
-
+    letter-spacing: 0;
     line-height: rem(16px);
     color: var(--theme-text);
   }
@@ -122,6 +123,7 @@
     }
   }
   .theme-item {
+    width: rem(120px);
     .util-icon {
       @include svgColor(var(--theme-menu-icon));
     }

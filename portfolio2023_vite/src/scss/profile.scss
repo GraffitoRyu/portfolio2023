@@ -103,6 +103,9 @@
       line-height: 1.5em;
     }
     @media only screen and (min-width: 1024px) {
+      .period {
+        margin-bottom: rem(16px);
+      }
       h3 {
         margin-bottom: rem(24px);
         strong {
@@ -133,6 +136,7 @@
     p,
     span {
       color: var(--exp-desc);
+      font-weight: 400;
     }
     .depth-desc {
       &:before {
