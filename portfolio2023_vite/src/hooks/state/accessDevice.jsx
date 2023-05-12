@@ -33,7 +33,8 @@ export const checkDevice = {
   mobile: () => condition.mobile.some(dvc => navigator.userAgent.includes(dvc)),
   tablet: () =>
     condition.tablet.some(dvc => navigator.userAgent.includes(dvc)) &&
-    condition.mobile.some(dvc => navigator.userAgent.includes(dvc)),
+    condition.mobile.some(dvc => navigator.userAgent.includes(dvc)) &&
+    window.innerWidth > 768,
   orientation: () =>
     window.innerWidth < window.innerHeight ? "portrait" : "landscape",
 };

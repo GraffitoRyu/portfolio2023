@@ -271,9 +271,7 @@ export default function DetailsIntro() {
       {linkList ? (
         <ul className="details-btn-list relative flex items-center lg:justify-end lg:mt-auto flex-wrap">
           {linkList.map(link => (
-            <li key={link.key}>
-              <OpenLinkBtn {...link} />
-            </li>
+            <LinkItem key={link.key} data={link} />
           ))}
         </ul>
       ) : (
@@ -292,5 +290,28 @@ export default function DetailsIntro() {
         />
       </figure>
     </section>
+  );
+}
+
+function LinkItem(props) {
+  const data = props?.data;
+  const hide = data.hide;
+  const device = useRecoilValue(accessDeviceAtom);
+  const [btn, setBtn] = useState(true);
+
+  useEffect(() => {
+    setBtn(!hide || hide.filter(dvc => device[dvc]).length == 0);
+  }, []);
+
+  useEffect(() => {
+    setBtn(!hide || hide.filter(dvc => device[dvc]).length == 0);
+  }, [device]);
+
+  return btn ? (
+    <li>
+      <OpenLinkBtn {...data} />
+    </li>
+  ) : (
+    ""
   );
 }
