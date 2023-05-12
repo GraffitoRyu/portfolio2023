@@ -14,24 +14,29 @@ export default function DetailsMedia() {
 
   return (
     <section className="details-section details-media w-full">
-      {md.map((m, i) =>
-        m.src ? (
-          <figure className="media-contents w-full" key={i}>
-            <MediaSet {...m} />
-            <div className="media-info w-full text-center">
-              <h4 className="w-full">{m.title}</h4>
-              {m.desc ? (
-                <p className="w-full">{replaceNewlineToBr(m.desc)}</p>
-              ) : (
-                ""
-              )}
-            </div>
-          </figure>
-        ) : (
-          ""
-        )
-      )}
+      {md.map((m, i) => (m.src ? <MediaFigure data={m} key={i} /> : ""))}
     </section>
+  );
+}
+
+function MediaFigure(props) {
+  const m = props.data;
+  const { ref: figureRef, inView: figureView } = useInView({
+    triggerOnce: true,
+    rootMargin: "120px",
+    delay: 200,
+  });
+  return (
+    <figure
+      className={`media-contents w-full ${figureView ? "in-view" : ""}`}
+      ref={figureRef}
+    >
+      <MediaSet {...m} />
+      <div className="media-info w-full text-center">
+        <h4 className="w-full">{m.title}</h4>
+        {m.desc ? <p className="w-full">{replaceNewlineToBr(m.desc)}</p> : ""}
+      </div>
+    </figure>
   );
 }
 
@@ -45,7 +50,7 @@ function ImageSet(props) {
   if (!props || !props.src) return;
   const src = props?.src;
   const alt = props?.title;
-  return <img className="w-full" src={src} alt={alt} />;
+  return <img className="projects-media w-full" src={src} alt={alt} />;
 }
 
 function VideoSet(props) {
@@ -72,7 +77,7 @@ function VideoSet(props) {
 
   return (
     <video
-      className="projects-video w-full"
+      className="projects-media projects-video w-full"
       play-state={`${playState}`}
       ref={videoMergeRef}
       preload="auto"

@@ -1,11 +1,6 @@
 @import "./css_variable";
 @import "./scss_global";
 
-@mixin inView_all {
-  transform: translateY(0);
-  opacity: 1;
-}
-
 .profile-section {
   .section-contents {
     padding-top: 0;

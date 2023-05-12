@@ -125,8 +125,10 @@ export default function DetailsIntro() {
   };
 
   const updateTitleSize = ratio => {
-    if (titleTextRef?.current)
-      titleTextRef.current.style.fontSize = `${updateSize(ratio)}px`;
+    if (titleTextRef?.current) {
+      if (fixedTitle) titleTextRef.current.removeAttribute("style");
+      else titleTextRef.current.style.fontSize = `${updateSize(ratio)}px`;
+    }
   };
 
   const updateTitlePos = ratio => {
@@ -168,6 +170,8 @@ export default function DetailsIntro() {
       if (_c.y < curY && curY < _t.y) {
         updateTitleSize(r_);
         updateTitlePos(r_);
+      } else {
+        updateTitleSize();
       }
     } else {
       // 초기 상태
@@ -211,7 +215,7 @@ export default function DetailsIntro() {
   }, [mobileView, _t, _c]);
 
   useEffect(() => {
-    if (sectionView && details.open) updateTitleState(scrollPos.details);
+    if (details.open) updateTitleState(scrollPos.details);
   }, [scrollPos.details]);
 
   return (
