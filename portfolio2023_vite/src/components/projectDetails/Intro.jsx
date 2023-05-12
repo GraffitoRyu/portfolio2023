@@ -1,7 +1,8 @@
 // components
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useInView } from "react-intersection-observer";
 
 // components
 import CloseBtn from "../buttons/Close";
@@ -59,6 +60,14 @@ export default function DetailsIntro() {
 
   // 스크롤에 따라 타이틀을 fixed header로 이동
   const introRef = useRef();
+  const { ref: sectionViewRef, inView: sectionView } = useInView();
+  const detailsSectionViewRef = useCallback(
+    node => {
+      introRef.current = node;
+      sectionViewRef(node);
+    },
+    [sectionViewRef]
+  );
   const titleCategory = useRef();
   const detailsTitleRef = useRef();
   const titleTextRef = useRef();
@@ -199,14 +208,18 @@ export default function DetailsIntro() {
 
   useEffect(() => {
     if (details.open) updateTitleState(scrollPos.details);
-  }, [scrollPos.details, mobileView, _t, _c]);
+  }, [mobileView, _t, _c]);
+
+  useEffect(() => {
+    if (sectionView && details.open) updateTitleState(scrollPos.details);
+  }, [scrollPos.details]);
 
   return (
     <section
       className={`details-section details-intro around-padding w-full lg:flex lg:flex-col ${
         mobileView ? "mobile-view" : ""
       }`}
-      ref={introRef}
+      ref={detailsSectionViewRef}
     >
       <header
         className={`details-header side-padding w-full flex items-center fixed left-0 ${fixedTitle}`}

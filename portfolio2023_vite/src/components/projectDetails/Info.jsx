@@ -46,20 +46,14 @@ export default function DetailsInfo() {
           <dd className="tech-stacks flex items-center flex-wrap">
             {d?.experience?.stacks.map(t => (
               <figure
-                className="tech-stacks-item flex items-center justify-center backdrop-blur-sm"
+                className="tech-stacks-item flex items-center justify-center "
                 title={t}
                 key={t}
               >
                 {stackNoImg.includes(t) ? (
                   ""
                 ) : (
-                  <img
-                    src={`/img/tools/${t}.png`}
-                    alt={t}
-                    onError={({ currentTarget }) => {
-                      currentTarget.classList.add("hidden");
-                    }}
-                  />
+                  <img src={`/img/tools/${t}.png`} alt={t} />
                 )}
                 <figcaption className="uppercase">
                   {t.split("_").join(" ")}
