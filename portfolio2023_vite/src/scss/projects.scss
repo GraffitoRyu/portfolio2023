@@ -136,7 +136,7 @@
     line-height: rem(240px);
     text-decoration-thickness: 0.05em;
     top: 100%;
-    transition: $trans_form_quart;
+    transition: $trans_color, $trans_form_quart;
     span {
       margin-right: rem(80px);
       &:after {

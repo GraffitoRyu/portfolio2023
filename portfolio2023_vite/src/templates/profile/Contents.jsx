@@ -36,7 +36,7 @@ export default function PageContents() {
             title={[
               "인터랙션 이벤트 구현에 관심이 많은",
               <React.Fragment>
-                프론트엔드 개발자<strong>류대현</strong>입니다.
+                프론트엔드 개발자 <strong>류대현</strong>입니다.
               </React.Fragment>,
             ]}
             desc={[

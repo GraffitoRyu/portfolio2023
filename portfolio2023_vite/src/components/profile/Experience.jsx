@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+
 export default function Experience() {
   const data = [
     {
@@ -68,29 +71,56 @@ export default function Experience() {
       {data.map(item => (
         <li className="experience-item" key={item.key}>
           <dl>
-            <dt className="capitalize">{item.key}</dt>
+            <ExpTitle title={item.key} />
             {item.desc.map((desc, i) => (
-              <dd key={`depth1_${i}`}>
-                <p>{typeof desc !== "string" ? desc.depth1 : desc}</p>
-                {typeof desc !== "string" ? (
-                  <ul className="depth-item">
-                    {desc.depth2.map((depth2, i) => (
-                      <li
-                        className="depth-desc flex items-center"
-                        key={`depth2_${i}`}
-                      >
-                        <span>{depth2}</span>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  ""
-                )}
-              </dd>
+              <ExpDetails data={desc} key={`depth1_${i}`} />
             ))}
           </dl>
         </li>
       ))}
     </ul>
+  );
+}
+
+function ExpTitle(props) {
+  const title = props.title;
+  const { ref: expTitle, inView: expTitleView } = useInView({
+    triggerOnce: true,
+    rootMargin: "120px",
+    delay: 200,
+  });
+
+  return (
+    <dt
+      className={`capitalize ${expTitleView ? "in-view" : ""}`}
+      ref={expTitle}
+    >
+      {title}
+    </dt>
+  );
+}
+
+function ExpDetails(props) {
+  const d = props.data;
+  const { ref: expRef, inView: expView } = useInView({
+    triggerOnce: true,
+    rootMargin: "120px",
+    delay: 200,
+  });
+  return (
+    <dd className={expView ? "in-view" : ""} ref={expRef}>
+      <p>{typeof d !== "string" ? d.depth1 : d}</p>
+      {typeof d !== "string" ? (
+        <ul className="depth-item">
+          {d.depth2.map((depth2, i) => (
+            <li className="depth-desc flex items-center" key={`depth2_${i}`}>
+              <span>{depth2}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        ""
+      )}
+    </dd>
   );
 }

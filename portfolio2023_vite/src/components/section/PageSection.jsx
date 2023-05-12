@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState, useCallback } from "react";
-import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
+import React, { useRef, useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 import { useInView } from "react-intersection-observer";
 
 // components
@@ -21,14 +21,6 @@ export default function Section(props) {
   const contents = props.contents;
 
   const sectionRef = useRef();
-  const { ref: sectionViewRef, inView: sectionView } = useInView();
-  const containerViewRef = useCallback(
-    node => {
-      sectionRef.current = node;
-      sectionViewRef(node);
-    },
-    [sectionViewRef]
-  );
   const setSection = useSetRecoilState(sectionState[pageCategory]);
   const setSectionOffset = useSetRecoilState(sectionOffsetState[pageCategory]);
 
@@ -49,9 +41,12 @@ export default function Section(props) {
     noneIntro: "",
   };
 
-  const { ref: headerRef, inView: headerView } = useInView();
-  const isHeaderView = () =>
-    sectionView && headerView ? "header-in-view" : "";
+  const { ref: headerRef, inView: headerView } = useInView({
+    triggerOnce: true,
+    rootMargin: "120px",
+    delay: 200,
+  });
+  const isHeaderView = () => (headerView ? "header-in-view" : "");
 
   const updateSectionState = () => {
     let state = {
@@ -91,7 +86,7 @@ export default function Section(props) {
           ? ""
           : "side-padding"
       }`}
-      ref={containerViewRef}
+      ref={sectionRef}
     >
       {sectionCode == "intro" ? <PageVisual {...props} /> : ""}
       {header ? (

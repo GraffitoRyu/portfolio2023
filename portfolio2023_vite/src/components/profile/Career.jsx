@@ -1,3 +1,5 @@
+import { useInView } from "react-intersection-observer";
+
 export default function Career() {
   const data = [
     {
@@ -32,28 +34,42 @@ export default function Career() {
     },
   ];
 
+  return (
+    <ul className="career-list">
+      {data.map(d => (
+        <CareerItem data={d} key={d.key} />
+      ))}
+    </ul>
+  );
+}
+
+function CareerItem(props) {
+  const d = props.data;
+
   const userLocale = navigator.language;
   const dateOptions = {
     month: "short",
     year: "numeric",
   };
 
+  const { ref: itemRef, inView: itemView } = useInView({
+    triggerOnce: true,
+    rootMargin: "120px",
+    delay: 400,
+  });
+
   return (
-    <ul className="career-list">
-      {data.map(d => (
-        <li className="career-item" key={d.key}>
-          <div className="period flex items-center">
-            <time>{d.period[0].toLocaleString(userLocale, dateOptions)}</time>
-            <span></span>
-            <time>{d.period[1].toLocaleString(userLocale, dateOptions)}</time>
-          </div>
-          <h3 className="flex items-center">
-            <strong className="role">{d.role}</strong>
-            <span className="company flex items-center">{d.company}</span>
-          </h3>
-          <p>{d.desc}</p>
-        </li>
-      ))}
-    </ul>
+    <li className={`career-item ${itemView ? "in-view" : ""}`} ref={itemRef}>
+      <div className="period flex items-center">
+        <time>{d.period[0].toLocaleString(userLocale, dateOptions)}</time>
+        <span></span>
+        <time>{d.period[1].toLocaleString(userLocale, dateOptions)}</time>
+      </div>
+      <h3 className="flex items-center">
+        <strong className="role">{d.role}</strong>
+        <span className="company flex items-center">{d.company}</span>
+      </h3>
+      <p>{d.desc}</p>
+    </li>
   );
 }

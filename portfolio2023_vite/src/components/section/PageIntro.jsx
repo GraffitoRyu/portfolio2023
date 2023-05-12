@@ -38,7 +38,11 @@ export default function PageIntro(props) {
     <>
       <h2 className={loaded && titleView ? "in-view" : ""} ref={titleRef}>
         {title.map((d, i) => (
-          <div className="intro-title" key={`intro_${i}`}>
+          <div
+            className="intro-title"
+            key={`intro_${i}`}
+            style={{ transitionDelay: `${i * 0.1}s` }}
+          >
             {d}
           </div>
         ))}
@@ -46,7 +50,11 @@ export default function PageIntro(props) {
       <p className={loaded && phraseView ? "in-view" : ""} ref={phraseRef}>
         {desc.map((d, i) => (
           <React.Fragment key={`desc_${i}`}>
-            <span>{d}</span>
+            <span
+              style={{ transitionDelay: `${(title.length + i - 1) * 0.14}s` }}
+            >
+              {d}
+            </span>
             {i < desc.length - 1 ? <br /> : ""}
           </React.Fragment>
         ))}

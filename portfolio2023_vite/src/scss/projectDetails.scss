@@ -89,10 +89,10 @@
       display: block;
       transition-duration: 0.8s;
       @if ($direction == "up" or $direction == "down") {
-        transition: $trans_form_quad, $trans_opacity_quad;
+        transition: $trans_color, $trans_form_quad, $trans_opacity_quad;
         // transition: $trans_form_quart, $trans_opacity_quart;
       } @else if ($direction == "left" or $direction == "right") {
-        transition: $trans_form_expo, $trans_opacity_expo;
+        transition: $trans_color, $trans_form_expo, $trans_opacity_expo;
       }
       @for $ti from 1 to 3 {
         &:nth-child(#{$ti + 1}) {
@@ -179,7 +179,7 @@
     .page-category {
       span {
         opacity: 0;
-        transition: $trans_opacity;
+        transition: $trans_color, $trans_opacity;
       }
     }
     .details-title-container {

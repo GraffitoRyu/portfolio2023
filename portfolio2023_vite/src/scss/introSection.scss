@@ -10,9 +10,6 @@
   }
   @media only screen and (min-width: 1024px) {
     padding-bottom: rem(240px);
-    .section-contents {
-      // padding: 0;
-    }
   }
 
   h2 {
@@ -28,10 +25,7 @@
     .intro-title {
       transform: translateY(100%);
       opacity: 0;
-      transition: $trans_form_quad, $trans_opacity_quad;
-      &:nth-child(2) {
-        transition-delay: 0.2s;
-      }
+      transition: $trans_color, $trans_form_quad, $trans_opacity_quad;
     }
   }
   p {
@@ -46,13 +40,7 @@
       display: inline-block;
       transform: translateY(50%);
       opacity: 0;
-      transition: $trans_form, $trans_opacity;
-      // transition-duration: 0.4s;
-      @for $p_idx from 1 to 6 {
-        &:nth-of-type(#{$p_idx + 1}) {
-          transition-delay: #{0.1s * $p_idx};
-        }
-      }
+      transition: $trans_color, $trans_form, $trans_opacity;
     }
   }
   .in-view {
@@ -106,8 +94,7 @@
     font-size: var(--title-size);
     line-height: var(--title-size);
     span {
-      transition: $trans_form_quart, $trans_opacity_quart;
-      // transition: $trans_form_quad, $trans_opacity_quad;
+      transition: $trans_color, $trans_form_quart, $trans_opacity_quart;
       transform: translateY(50%);
       opacity: 0;
       &.loaded {
