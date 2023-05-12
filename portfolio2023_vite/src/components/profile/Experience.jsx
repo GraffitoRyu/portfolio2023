@@ -59,7 +59,7 @@ export default function Experience() {
       key: "learning",
       desc: [
         "React 기반의 컴포넌트 마크업 구축 및 인터랙션 구현",
-        "Redux, Recoil 등을 활용한 상태관리",
+        "React 환경에서의 상태관리 (Recoil)",
         "Next.js 환경에서의 프론트엔드 구축 작업",
         "Typescript",
       ],
