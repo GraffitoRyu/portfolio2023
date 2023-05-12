@@ -35,14 +35,14 @@
     "file": "assets/notion_icon-1ea49ff9.svg",
     "src": "../src/svg/header/notion_icon.svg"
   },
-  "_page-525af80c.js": {
+  "_page-2df2f4ff.js": {
     "css": [
-      "assets/page-7bdba5c0.css"
+      "assets/page-daf90bd1.css"
     ],
-    "file": "assets/page-525af80c.js"
+    "file": "assets/page-2df2f4ff.js"
   },
   "page.css": {
-    "file": "assets/page-7bdba5c0.css",
+    "file": "assets/page-daf90bd1.css",
     "src": "page.css"
   }
 }
