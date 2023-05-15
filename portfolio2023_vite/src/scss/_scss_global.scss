@@ -49,3 +49,8 @@ $trans_form_back: transform var(--trans-time-move) 0s var(--trans-func-back);
     stroke-linecap: round;
   }
 }
+
+@mixin inView_all {
+  transform: translateY(0);
+  opacity: 1;
+}
