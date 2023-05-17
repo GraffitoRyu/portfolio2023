@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+/* reset; ~ 2023. 05. */
+:root {-webkit-tap-highlight-color:transparent;  text-size-adjust: none; overflow-wrap:break-word; word-break:break-word;}
+*, *:before, *:after {border:0; margin:0; padding:0; box-sizing:border-box;}
+*:before, *:after {border:0; margin:0; padding:0; box-sizing:border-box;}
+* {letter-spacing:-.05em; flex-shrink:0; overscroll-behavior-y: none;/*iOS 스크롤 바운스 해제*/}
+*:focus, *:focus-within, *:focus-visible {outline:none;}
+
+/* Document */
+html {width:100%; font-size:10px; font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', Roboto, 'Helvetica', 'Helvetica Neue', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', '맑은 고딕', 'Malgun Gothic', '돋움', 'dotum', Oxygen, 'Oxygen-Sans', 'Ubuntu', 'Cantarell', sans-serif; background-color:#fff; touch-action: manipulation;}
+body {width:100%; position:relative;  background:none;}
+
+/* Text */
+h1, h2, h3, h4, h5, h6 {font-weight:500; margin:0; padding:0;}
+strong, b {font-weight:700;}
+p, span, i, sup, sub, del, ins, s {word-break:keep-all; margin:0; padding:0;}
+span, i {word-break:keep-all; margin:0; padding:0;}
+i, address, cite, em, q {font-weight:400; font-style:normal;}
+blockquote, abbr, dfn {font-weight:400;}
+pre, code, samp, kbd, var {font-family:'Consolas', 'Monaco', 'Menlo', 'DejaVu Sans Mono', SFMono-Regular, 'Liberation Mono', 'Courier New', monospace;}
+blockquote, q {quotes:none;}
+blockquote:before, blockquote:after, q:before, q:after {content:''; content:none;}
+
+/* Media */
+img, svg {perspective: 1; max-width:100%; object-fit: contain;}
+
+/* List */
+ul, ol, dl, li, dt, dd {list-style:none;}
+
+/* Table */
+table {border-collapse:collapse; border-spacing: 0; table-layout: fixed;}
+thead, tbody, tfoot {}
+tr {}
+th, td {}
+caption {display:none;}
+
+/* Form */
+form, fieldset {}
+label {display:block;}
+legend {display:none;}
+
+/* HTML5 - 일반 */
+article, aside, footer, header, main, nav, section, time {display:block;}
+/* HTML5 - Media */
+audio, canvas, figure, figcaption, video {display:block;}
+figure {font-size:0;}
+/* HTML5 - 게이지 형태 */
+meter, progress {display:block;}
+/* HTML5 - 기능이 포함된 태그 (특정 input 태그에 대해, 자동완성 기능 제공) */
+mark {display:inline;} /* highlight 기능, 텍스트에 배경칠을 하여 강조 */
+details, summary {display:block;}
+/* details - 아코디언 기법이 적용된 태그, 포함된 내용을 접었다 펴서 가릴 수 있음 */
+/* summary - details의 요약정보를 항상 보여줌, 아코디언 요소의 타이틀과 같은 역할 */
+datalist {} /* 특정 input 태그에 대해, 자동완성 기능 제공 */
+/* 미지원 또는 불필요 HTML 태그 목록 */
+/* command, embed, hgroup, keygen(암호화관련, form 내에서 활용), menu, output, ruby(,rt, rp; 한자/가나문자의 발음/훈독 등), wbr, acronym, applet, big, object */
+
+
+/* 인터렉션 요소 */
+a {display:block; color:#333; text-decoration:none;}
+input, select, button, textarea {display:block; outline:none; background:transparent; box-shadow:none; border-radius:0;}
+button {appearance:none; cursor:pointer; font-family:inherit; user-select: none;}
+textarea {resize:none;}
+select {appearance:none; user-select: none;}
+select::-ms-expand {
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  /* IE 5-7 */
+  filter: alpha(opacity=0);
+  /* Good browsers :) */
+  opacity:0;
+}
+input::placeholder {opacity:1;  color:#959595;}
+input:focus::placeholder {color:transparent;}
+textarea::placeholder {opacity:1;  color:#959595;}
+textarea:focus::placeholder {color:transparent;}
+[type=button], [type=reset], [type=submit] {appearance: button;}
+[type=search] {appearance:textfield; outline-offset:-2px}
+:-webkit-inner-spin-button, ::-webkit-outer-spin-button {height:auto}
+::-webkit-search-decoration {appearance:none}
+::-webkit-file-upload-button {appearance:button; font:inherit}
+input[type=text] {appearance:none;}
+input[type=date] {appearance:none;}
+input[type=date]::-webkit-inner-spin-button {display:none;}
+input[type=date]::-webkit-calendar-picker-indicator {opacity:0;}
+input[type=date]::-webkit-clear-button {display: none;}
+input[type=date]::-ms-clear {display: none;}
+input[type=number] {appearance:none;}
+input[type=number]::-webkit-inner-spin-button {display:none;}
+input[type=number]::-webkit-calendar-picker-indicator {opacity:0;}
+input[type=number]::-webkit-clear-button {display: none;}
+input[type=number]::-ms-clear {display: none;}
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none;  -moz-appearance:none;  appearance:none; }
+input[type=range]::-ms-track { cursor:pointer; background: transparent; border-color:transparent; color: transparent; }
+/*input[type=range]::-webkit-slider-runnable-track {} /*슬라이더 영역 스타일링*/
+/*input[type=range]::-webkit-slider-thumb { 
+  -webkit-appearance: none;
+  background: #fff;
+  cursor:pointer;
+  border-radius:50%;
+}*/
+/*input[type=range]::-moz-range-thumb { 
+  background: #fff;
+  cursor:pointer;
+  border-radius:50%;
+}*/
+/*input[type=range]::-ms-thumb { 
+  background: #fff;
+  cursor:pointer;
+  border-radius:50%;
+}*/
+input[type=checkbox] {appearance: checkbox;}
+input[type=time] {}
+input[type=button] {}
+input[type=email] {}
+input[type=password] {}
+input[type=reset] {}
+input[type=search] {}
+input[type=submit] {}
+input[type=tel] {}
+button:disabled {cursor:default;}
+progress { -webkit-appearance: none; border:1px solid #e1e1e1; }
+progress::-webkit-progress-bar { background-color:#fff }
+progress::-webkit-progress-value { background-color:grey; }
+
+.readonly {display:none;}
+
+/* 텍스트 블록지정 선택 방지 */
+/*
+a {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+*/
+
+/* 스크롤바 */
+/* .box {-webkit-overflow-scrolling:touch;} /* 모바일에서 터치로 스크롤 */
+/* .box::-webkit-scrollbar {width:0; height:0;} */ /* 스크롤 영역 ; width(height), background 수정 가능 */
+/* .box::-webkit-scrollbar-thumb {background:transparent;} */ /* 스크롤 막대 ; border-radius, box-shadow, background 수정 가능 */
+/* .box::-webkit-scrollbar-track {background:transparent;} */ /* 스크롤 막대 영역 ; border-radius, background, box-shadow 수정 가능 */
+
+/* 모바일 */
+@media (orientation: landscape) {
+  html.mobile-device {font-size: 1vw;}
+}
+@media (orientation: portrait) {
+  html.mobile-device {font-size: 1vw;}
+}
