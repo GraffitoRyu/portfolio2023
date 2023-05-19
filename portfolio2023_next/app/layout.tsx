@@ -1,14 +1,25 @@
-import { Noto_Sans_KR, Noto_Serif_KR } from "next/font/google";
+// meta data
 export { metadata } from "@/data/meta";
-import PageHeader from "@/components/common/PageHeader";
-import "@/styles/globals.scss";
-import PageFooter from "@/components/common/PageFooter";
 
-const notosanskr = Noto_Sans_KR({
+// fonts
+import { Noto_Sans_KR, Noto_Serif_KR } from "next/font/google";
+
+// common template
+import PageTemplate from "@/templates/PageTemplate";
+
+// components
+import ReactQuery from "@/components/roots/ReactQuery";
+import Recoil from "@/components/roots/Recoil";
+import Cursor from "@/components/cursor/Cursor";
+
+// styles
+import "@/styles/globals.scss";
+
+export const sans = Noto_Sans_KR({
   weight: ["300", "400", "500", "700", "900"],
   subsets: ["latin"],
 });
-const notoserifkr = Noto_Serif_KR({
+export const serif = Noto_Serif_KR({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
 });
@@ -20,10 +31,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className="">
-        <PageHeader />
-        {children}
-        <PageFooter />
+      <body>
+        <Recoil>
+          <ReactQuery>
+            <PageTemplate>{children}</PageTemplate>
+            <Cursor />
+          </ReactQuery>
+        </Recoil>
       </body>
     </html>
   );

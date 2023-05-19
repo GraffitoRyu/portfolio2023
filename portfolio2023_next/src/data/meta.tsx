@@ -40,6 +40,15 @@ export const metadata: Metadata = {
     { color: "#cccccc" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
+  // SEO
+  metadataBase: new URL("https://ryudh.com"),
+  // 대체 접속 경로
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/",
+    },
+  },
   // 오픈그래프
   openGraph: {
     type: "website",
@@ -54,6 +63,7 @@ export const metadata: Metadata = {
       },
     ],
   },
+  // favicon
   icons: {
     icon: [
       { url: "/favicon/favicon.ico" },
@@ -124,7 +134,5 @@ export const metadata: Metadata = {
       index: false,
       follow: false,
     },
-    Daumoa: { index: false, follow: false },
-    Naverbot: "noindex, nofollow",
   },
 };
