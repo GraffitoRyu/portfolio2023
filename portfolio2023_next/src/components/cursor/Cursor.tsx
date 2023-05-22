@@ -23,15 +23,15 @@ const CursorStyle = styled.div`
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    border: 1px solid #141414;
-    background: #141414;
+    border: 1px solid rgba(26, 26, 26, 0.4);
+    background: rgba(26, 26, 26, 0.4);
     transition: width 0.4s, height 0.4s, background-color 0.4s;
   }
   &.link {
     .cursor {
       width: 64px;
       height: 64px;
-      background: #141414;
+      background: rgba(255, 255, 255, 0.2);
     }
   }
   &.text {

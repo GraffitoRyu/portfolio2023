@@ -12,9 +12,7 @@ import ReactQuery from "@/components/roots/ReactQuery";
 import Recoil from "@/components/roots/Recoil";
 import Cursor from "@/components/cursor/Cursor";
 
-// styles
-import "@/styles/globals.scss";
-
+// fonts
 export const sans = Noto_Sans_KR({
   weight: ["300", "400", "500", "700", "900"],
   subsets: ["latin"],
@@ -23,6 +21,10 @@ export const serif = Noto_Serif_KR({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
 });
+
+// styles
+import "@/styles/scss/globals.scss";
+import { GlobalBtnStyle } from "@/styles/styled/btns";
 
 export default function RootLayout({
   children,
@@ -34,8 +36,11 @@ export default function RootLayout({
       <body>
         <Recoil>
           <ReactQuery>
-            <PageTemplate>{children}</PageTemplate>
-            <Cursor />
+            <GlobalBtnStyle />
+            <div className="page-container">
+              <PageTemplate>{children}</PageTemplate>
+              <Cursor />
+            </div>
           </ReactQuery>
         </Recoil>
       </body>
