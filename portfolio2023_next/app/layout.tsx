@@ -24,8 +24,8 @@ export const serif = Noto_Serif_KR({
 
 // styles
 import "@/styles/scss/globals.scss";
-import { GlobalBodyStyle } from "@/styles/styled/body";
-import { GlobalBtnStyle } from "@/styles/styled/btns";
+import { GlobalBodyStyle } from "@/styles/globalStyled/body";
+import { GlobalBtnStyle } from "@/styles/globalStyled/btns";
 
 export default function RootLayout({
   children,

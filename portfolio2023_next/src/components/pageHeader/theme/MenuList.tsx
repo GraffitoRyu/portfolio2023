@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { styled } from "styled-components";
@@ -12,7 +10,7 @@ import rem from "@/util/rem";
 import { applyTheme, getSystemTheme } from "@/util/theme";
 
 // style
-import { flex, SvgFill } from "@/styles/styled/mixins";
+import { flex, SvgFill } from "@/styles/globalStyled/mixins";
 
 // SVG
 import * as ThemeSvg from "./BtnIcons";
@@ -81,9 +79,9 @@ export default function ThemeMenuList() {
 
   useEffect(() => {
     applyTheme(theme.theme);
-    setOpenClass(theme.isOpen ? "" : "hidden");
     setThemeClass(theme.isSystem ? `system-${theme.theme}` : theme.theme);
   }, []);
+
   useEffect(() => {
     applyTheme(theme.theme);
     setOpenClass(theme.isOpen ? "" : "hidden");

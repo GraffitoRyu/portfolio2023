@@ -10,7 +10,7 @@ import { ThemeTypes, themeState } from "@/states/theme";
 import * as ThemeSvg from "./BtnIcons";
 
 // style
-import { position } from "@/styles/styled/mixins";
+import { position } from "@/styles/globalStyled/mixins";
 
 const ToggleIcon = styled.figure`
   width: 100%;

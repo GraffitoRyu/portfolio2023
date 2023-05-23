@@ -8,6 +8,7 @@ import { SitemapType } from "@/data/sitemap";
 import rem from "@/util/rem";
 
 const SitemapLink = styled(Link)`
+  margin-right: ${rem(80)};
   font-size: ${rem(24)};
   color: #ccc;
   &.now {
