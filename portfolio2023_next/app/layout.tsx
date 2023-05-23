@@ -1,5 +1,3 @@
-import { styled } from "styled-components";
-
 // meta data
 export { metadata } from "@/data/meta";
 
@@ -26,8 +24,8 @@ export const serif = Noto_Serif_KR({
 
 // styles
 import "@/styles/scss/globals.scss";
-import { GlobalBtnStyle } from "@/styles/styled/btns";
 import { GlobalBodyStyle } from "@/styles/styled/body";
+import { GlobalBtnStyle } from "@/styles/styled/btns";
 
 export default function RootLayout({
   children,
