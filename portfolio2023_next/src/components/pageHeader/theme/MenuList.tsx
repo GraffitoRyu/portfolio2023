@@ -1,18 +1,20 @@
-import { useRef } from "react";
+"use client";
+
 import { useRecoilState } from "recoil";
 import { styled } from "styled-components";
 
 // state
-import { themeSelector } from "@/states/theme";
+import { ThemeTypes, themeSelector, getSystemTheme } from "@/states/theme";
 
 // util
 import rem from "@/util/rem";
 
 // style
-import { flex } from "@/styles/styled/mixins";
+import { flex, SvgFill } from "@/styles/styled/mixins";
 
 // SVG
 import * as ThemeSvg from "./BtnIcons";
+import { useEffect, useState } from "react";
 function ThemeIcon(theme: string) {
   switch (theme) {
     case "light":
@@ -28,46 +30,80 @@ const menuHeight: string = rem(80);
 const ThemeMenuContainer = styled.div`
   width: ${rem(216)};
   background: #efefef;
-  li {
-    height: ${menuHeight};
-    padding: 0 ${rem(16)};
-  }
+`;
+const ThemeListItem = styled.li`
+  height: ${menuHeight};
+  padding: 0 ${rem(16)};
+`;
+const ThemeMenuBtn = styled.button`
   figure {
     width: ${menuHeight};
     height: ${menuHeight};
     ${flex}
+    ${SvgFill("#ccc")}
+  }
+  span {
+    color: #999;
+  }
+  &:not(.cur).hover,
+  &.selected {
+    figure {
+      ${SvgFill("#333")}
+    }
+    span {
+      color: #333;
+    }
   }
 `;
 
 export default function ThemeMenuList() {
-  const themeList = ["light", "dark", "system"];
-  const [theme, setTheme] = useRecoilState(themeSelector);
+  const themeList: string[] = ["light", "dark", "system"];
+  const themeState = Object.fromEntries(themeList.map(t => [t, ""])) ?? {};
+  const [theme, setTheme] = useRecoilState<ThemeTypes>(themeSelector);
+  const [openClass, setOpenClass] = useState<string>("hidden");
+  const [themeClass, setThemeClass] = useState<string>(getSystemTheme());
+  const [hover, setHover] = useState(themeState);
 
   const changeTheme: (selectedTheme: string) => void = selectedTheme => {
-    if (theme.theme === selectedTheme) return;
+    if (!selectedTheme) return;
     setTheme(prev => ({
       ...prev,
-      theme: selectedTheme,
+      isSystem: selectedTheme == "system",
+      theme: selectedTheme == "system" ? getSystemTheme() : selectedTheme,
     }));
   };
 
+  const updateSelected: (code: string) => string = code => {
+    if (theme.isSystem) return code === "system" ? "selected" : "";
+    return theme.theme === code ? "selected" : "";
+  };
+
+  useEffect(() => {
+    setOpenClass(theme.isOpen ? "" : "hidden");
+    setThemeClass(theme.isSystem ? `system-${theme.theme}` : theme.theme);
+  }, [theme]);
+
   return (
     <ThemeMenuContainer
-      className={`theme-menu absolute top-full left-0 ${
-        theme.isOpen ? "" : "hidden"
-      }`}
+      className={`theme-menu absolute top-full left-0 ${openClass} ${themeClass}`}
     >
       <ul className="w-full">
         {themeList.map(code => (
-          <li key={code} className="w-full">
-            <button
-              className="w-full h-full flex items-center"
+          <ThemeListItem key={code} className="w-full">
+            <ThemeMenuBtn
+              className={`w-full h-full flex items-center ${updateSelected(
+                code
+              )} ${hover[code]}`}
               onClick={() => changeTheme(code)}
+              onMouseEnter={() =>
+                setHover(prev => ({ ...prev, [code]: "hover" }))
+              }
+              onMouseLeave={() => setHover(prev => ({ ...prev, [code]: "" }))}
             >
               <figure>{ThemeIcon(code)}</figure>
               <span className="capitalize">{code}</span>
-            </button>
-          </li>
+            </ThemeMenuBtn>
+          </ThemeListItem>
         ))}
       </ul>
     </ThemeMenuContainer>

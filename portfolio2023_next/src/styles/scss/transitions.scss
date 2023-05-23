@@ -1,0 +1,32 @@
+$transColorTime: 0.2s;
+
+html,
+body {
+  transition: background-color $transColorTime;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+strong,
+span,
+i,
+time {
+  transition: color $transColorTime;
+}
+
+a,
+button {
+  transition: color $transColorTime, border-color $transColorTime,
+    background-color $transColorTime;
+}
+
+path,
+rect,
+circle {
+  transition: fill $transColorTime, stroke $transColorTime;
+}

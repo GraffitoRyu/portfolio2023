@@ -2,7 +2,7 @@ import { useRecoilState } from "recoil";
 import { styled } from "styled-components";
 
 // state
-import { themeSelector } from "@/states/theme";
+import { ThemeTypes, themeSelector } from "@/states/theme";
 
 // svg
 import * as ThemeSvg from "./BtnIcons";
@@ -20,7 +20,7 @@ function ThemeIcon(theme: string) {
 const ToggleBtn = styled.button``;
 
 export default function ThemeToggleBtn() {
-  const [theme, setTheme] = useRecoilState(themeSelector);
+  const [theme, setTheme] = useRecoilState<ThemeTypes>(themeSelector);
 
   const setToggle: () => void = () => {
     setTheme(prev => ({

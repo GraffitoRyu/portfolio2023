@@ -5,9 +5,6 @@ import { useRecoilState } from "recoil";
 import ThemeMenuList from "./MenuList";
 import ThemeToggleBtn from "./ToggleBtn";
 
-// util
-import { useClick, useRemoveClick } from "@/util/useClick";
-
 // state
 import { themeSelector } from "@/states/theme";
 
@@ -35,8 +32,8 @@ export default function ThemeContainer() {
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useClick(closeThemeMenu);
-    return () => useRemoveClick(closeThemeMenu);
+    document.addEventListener("click", closeThemeMenu);
+    return () => document.removeEventListener("click", closeThemeMenu);
   }, [theme.isOpen]);
 
   return (

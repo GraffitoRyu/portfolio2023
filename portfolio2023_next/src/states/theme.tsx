@@ -1,6 +1,6 @@
 import { atom, selector } from "recoil";
 
-type themeTypes = {
+export type ThemeTypes = {
   isOpen: boolean;
   isSystem: boolean;
   theme: string;
@@ -20,7 +20,7 @@ const applyTheme: (theme: string) => void = theme => {
   else rootClassList?.add(`${theme}-theme`);
 };
 
-export const themeState = atom<themeTypes>({
+export const themeState = atom<ThemeTypes>({
   key: "themeState",
   default: {
     isOpen: false,
@@ -32,13 +32,13 @@ export const themeState = atom<themeTypes>({
 export const themeSelector = selector({
   key: "themeSelector",
   get: ({ get }) => {
-    const state: themeTypes = get(themeState);
+    const state: ThemeTypes = get(themeState);
     const theme: string = state.isSystem ? getSystemTheme() : state.theme;
     applyTheme(theme);
     return get(themeState);
   },
   set: ({ set }, changeTheme) => {
-    applyTheme(changeTheme.theme);
+    if (changeTheme) applyTheme(changeTheme.theme);
     return set(themeState, changeTheme);
   },
 });
