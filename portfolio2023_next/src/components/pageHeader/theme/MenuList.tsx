@@ -3,7 +3,12 @@ import { useRecoilState } from "recoil";
 import { styled } from "styled-components";
 
 // state
-import { ThemeTypes, themeSelector, getSystemTheme } from "@/states/theme";
+import {
+  ThemeTypes,
+  themeState,
+  getSystemTheme,
+  applyTheme,
+} from "@/states/theme";
 
 // util
 import rem from "@/util/rem";
@@ -56,11 +61,11 @@ const ThemeMenuBtn = styled.button`
 
 export default function ThemeMenuList() {
   const themeList: string[] = ["light", "dark", "system"];
-  const themeState = Object.fromEntries(themeList.map(t => [t, ""])) ?? {};
-  const [theme, setTheme] = useRecoilState<ThemeTypes>(themeSelector);
+  const themeClasses = Object.fromEntries(themeList.map(t => [t, ""])) ?? {};
+  const [theme, setTheme] = useRecoilState<ThemeTypes>(themeState);
   const [openClass, setOpenClass] = useState<string>("hidden");
   const [themeClass, setThemeClass] = useState<string>(getSystemTheme());
-  const [hover, setHover] = useState(themeState);
+  const [hover, setHover] = useState(themeClasses);
 
   const changeTheme: (selectedTheme: string) => void = selectedTheme => {
     if (!selectedTheme) return;
@@ -77,6 +82,7 @@ export default function ThemeMenuList() {
   };
 
   useEffect(() => {
+    applyTheme(theme.theme);
     setOpenClass(theme.isOpen ? "" : "hidden");
     setThemeClass(theme.isSystem ? `system-${theme.theme}` : theme.theme);
   }, [theme]);

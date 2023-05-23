@@ -6,11 +6,11 @@ import ThemeMenuList from "./MenuList";
 import ThemeToggleBtn from "./ToggleBtn";
 
 // state
-import { ThemeTypes, themeSelector } from "@/states/theme";
+import { ThemeTypes, themeState } from "@/states/theme";
 
 export default function ThemeContainer() {
   const themeRef = useRef<HTMLDivElement>(null);
-  const [theme, setTheme] = useRecoilState<ThemeTypes>(themeSelector);
+  const [theme, setTheme] = useRecoilState<ThemeTypes>(themeState);
 
   const closeThemeMenu: (
     e: PointerEvent | MouseEvent | TouchEvent

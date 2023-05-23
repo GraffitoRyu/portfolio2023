@@ -4,7 +4,7 @@ import { useRecoilState } from "recoil";
 import { styled } from "styled-components";
 
 // state
-import { ThemeTypes, themeSelector } from "@/states/theme";
+import { ThemeTypes, themeState } from "@/states/theme";
 
 // svg
 import * as ThemeSvg from "./BtnIcons";
@@ -26,7 +26,7 @@ const ToggleIcon = styled.figure`
 `;
 
 export default function ThemeToggleBtn() {
-  const [theme, setTheme] = useRecoilState<ThemeTypes>(themeSelector);
+  const [theme, setTheme] = useRecoilState<ThemeTypes>(themeState);
 
   const setToggle: () => void = () => {
     setTheme(prev => ({
