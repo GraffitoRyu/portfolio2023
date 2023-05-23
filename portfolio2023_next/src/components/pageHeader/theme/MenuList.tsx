@@ -1,17 +1,15 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { styled } from "styled-components";
 
 // state
-import {
-  ThemeTypes,
-  themeState,
-  getSystemTheme,
-  applyTheme,
-} from "@/states/theme";
+import { ThemeTypes, themeState } from "@/states/theme";
 
 // util
 import rem from "@/util/rem";
+import { applyTheme, getSystemTheme } from "@/util/theme";
 
 // style
 import { flex, SvgFill } from "@/styles/styled/mixins";
@@ -64,7 +62,7 @@ export default function ThemeMenuList() {
   const themeClasses = Object.fromEntries(themeList.map(t => [t, ""])) ?? {};
   const [theme, setTheme] = useRecoilState<ThemeTypes>(themeState);
   const [openClass, setOpenClass] = useState<string>("hidden");
-  const [themeClass, setThemeClass] = useState<string>(getSystemTheme());
+  const [themeClass, setThemeClass] = useState<string>("system");
   const [hover, setHover] = useState(themeClasses);
 
   const changeTheme: (selectedTheme: string) => void = selectedTheme => {
@@ -81,6 +79,11 @@ export default function ThemeMenuList() {
     return theme.theme === code ? "selected" : "";
   };
 
+  useEffect(() => {
+    applyTheme(theme.theme);
+    setOpenClass(theme.isOpen ? "" : "hidden");
+    setThemeClass(theme.isSystem ? `system-${theme.theme}` : theme.theme);
+  }, []);
   useEffect(() => {
     applyTheme(theme.theme);
     setOpenClass(theme.isOpen ? "" : "hidden");
