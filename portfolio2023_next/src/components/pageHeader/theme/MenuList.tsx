@@ -1,5 +1,4 @@
-"use client";
-
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { styled } from "styled-components";
 
@@ -14,7 +13,6 @@ import { flex, SvgFill } from "@/styles/styled/mixins";
 
 // SVG
 import * as ThemeSvg from "./BtnIcons";
-import { useEffect, useState } from "react";
 function ThemeIcon(theme: string) {
   switch (theme) {
     case "light":
@@ -39,7 +37,7 @@ const ThemeMenuBtn = styled.button`
   figure {
     width: ${menuHeight};
     height: ${menuHeight};
-    ${flex}
+    ${flex({})}
     ${SvgFill("#ccc")}
   }
   span {

@@ -6,6 +6,14 @@
         "singleAttributePeLline": false,
         "arrowParens": "avoid"
       }
+    },
+    {
+      "files": "**/*.scss",
+      "options": {
+        "singleAttributePerLine": false,
+        "proseWrap": "preserve",
+        "embeddedLanguageFormatting": "off"
+      }
     }
   ]
 }

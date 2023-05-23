@@ -6,11 +6,11 @@ import ThemeMenuList from "./MenuList";
 import ThemeToggleBtn from "./ToggleBtn";
 
 // state
-import { themeSelector } from "@/states/theme";
+import { ThemeTypes, themeSelector } from "@/states/theme";
 
 export default function ThemeContainer() {
   const themeRef = useRef<HTMLDivElement>(null);
-  const [theme, setTheme] = useRecoilState(themeSelector);
+  const [theme, setTheme] = useRecoilState<ThemeTypes>(themeSelector);
 
   const closeThemeMenu: (
     e: PointerEvent | MouseEvent | TouchEvent
@@ -31,7 +31,6 @@ export default function ThemeContainer() {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     document.addEventListener("click", closeThemeMenu);
     return () => document.removeEventListener("click", closeThemeMenu);
   }, [theme.isOpen]);
