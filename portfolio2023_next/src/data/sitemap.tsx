@@ -1,4 +1,4 @@
-type SitemapType = {
+export type SitemapType = {
   code: string;
   name: string;
   path: string;

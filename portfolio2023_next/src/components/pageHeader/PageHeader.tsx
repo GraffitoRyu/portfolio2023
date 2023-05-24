@@ -7,7 +7,7 @@ import Gnb from "./Gnb";
 import TimeDisplay from "./TimeDisplay";
 
 // util
-import rem from "@/util/rem";
+import { rem } from "@/util/unit";
 
 const HeaderContainer = styled.header`
   padding: ${rem(80)};

@@ -5,7 +5,7 @@ import { ThemeProvider, styled } from "styled-components";
 import { useRecoilValue } from "recoil";
 
 // util
-import rem from "@/util/rem";
+import { rem } from "@/util/unit";
 
 // state
 import { ThemeTypes, themeState } from "@/states/theme";
@@ -14,11 +14,11 @@ type TimerTypes = {
   bar: string;
   text: string;
 };
-type ComponentsTypes = {
+type ModeTypes = {
   light: TimerTypes;
   dark: TimerTypes;
 };
-const componentsTheme: ComponentsTypes = {
+const componentsTheme: ModeTypes = {
   light: {
     bar: "#707070",
     text: "#909090",

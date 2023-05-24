@@ -1,9 +1,26 @@
 import { css } from "styled-components";
 
+// util
+import { getUnit } from "@/util/unit";
+
+type SizeTypes = {
+  width?: number | string;
+  height?: number | string;
+};
+
+export const size = ({ width, height }: SizeTypes) => css`
+  width: ${typeof width !== "undefined" ? getUnit(width) : "auto"};
+  height: ${typeof height !== "undefined" ? getUnit(height) : "auto"};
+`;
+export const maxSize = ({ width, height }: SizeTypes) => css`
+  max-width: ${typeof width !== "undefined" ? getUnit(width) : "auto"};
+  max-height: ${typeof height !== "undefined" ? getUnit(height) : "auto"};
+`;
+
 type FlexTypes = {
-  dir?: string;
-  std?: string;
-  cross?: string;
+  dir?: string | undefined;
+  std?: string | undefined;
+  cross?: string | undefined;
 };
 export const flex = ({ dir, std, cross }: FlexTypes) => css`
   display: flex;
@@ -13,12 +30,12 @@ export const flex = ({ dir, std, cross }: FlexTypes) => css`
 `;
 
 type PositionTypes = {
-  type?: string;
-  top?: string;
-  left?: string;
-  bottom?: string;
-  right?: string;
-  center?: boolean;
+  type?: string | undefined;
+  top?: string | undefined;
+  left?: string | undefined;
+  bottom?: string | undefined;
+  right?: string | undefined;
+  center?: boolean | undefined;
 };
 export const position = ({
   type,
