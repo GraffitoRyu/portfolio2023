@@ -1,10 +1,31 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { useRecoilState } from "recoil";
-import { styled } from "styled-components";
+import React, { useEffect, useRef, useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { ThemeProvider, styled } from "styled-components";
 
 import { CursorTypes, cursorState } from "@/states/cursor";
+import { themeState } from "@/states/theme";
+
+type CursorColorTypes = {
+  basic: string;
+  hover: string;
+};
+type CursorModeTypes = {
+  [key: string]: CursorColorTypes;
+  light: CursorColorTypes;
+  dark: CursorColorTypes;
+};
+const CursorColors: CursorModeTypes = {
+  light: {
+    basic: "#1a1a1a",
+    hover: "rgba(26,26,26,0.1)",
+  },
+  dark: {
+    basic: "#fff",
+    hover: "rgba(255,255,255,0.1)",
+  },
+};
 
 const CursorStyle = styled.div`
   width: 1px;
@@ -23,18 +44,19 @@ const CursorStyle = styled.div`
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    border: 1px solid rgba(26, 26, 26, 0.4);
-    background: rgba(26, 26, 26, 0.4);
+    border: 1px solid ${({ theme }) => theme.basic};
+    background: ${({ theme }) => theme.basic};
     transition: width 0.4s, height 0.4s, background-color 0.4s;
   }
   &.link {
     .cursor {
       width: 64px;
       height: 64px;
-      background: rgba(255, 255, 255, 0.2);
+      background: ${({ theme }) => theme.hover};
     }
   }
   &.text {
+    mix-blend-mode: difference;
     .cursor {
       width: 4px;
       height: 40px;
@@ -44,6 +66,8 @@ const CursorStyle = styled.div`
 `;
 
 export default function Cursor(): JSX.Element {
+  const { theme } = useRecoilValue(themeState);
+  const [colors, setColors] = useState<CursorColorTypes>(CursorColors.light);
   const [cursor, setCursor] = useRecoilState(cursorState);
   const cursorRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
@@ -71,15 +95,22 @@ export default function Cursor(): JSX.Element {
   useEffect(() => {
     if (matchMedia("(pointer:fine)").matches)
       window.addEventListener("mousemove", updateCursor);
+    return () => window.removeEventListener("mousemove", updateCursor);
   }, []);
 
+  useEffect(() => {
+    setColors(CursorColors[theme]);
+  }, [theme]);
+
   return (
-    <CursorStyle
-      className={`cursor-container ${cursor.hover}`}
-      ref={cursorRef}
-      style={{ left: cursor.x, top: cursor.y }}
-    >
-      <figure className="cursor"></figure>
-    </CursorStyle>
+    <ThemeProvider theme={colors}>
+      <CursorStyle
+        className={`cursor-container ${cursor.hover}`}
+        ref={cursorRef}
+        style={{ left: cursor.x, top: cursor.y }}
+      >
+        <figure className="cursor"></figure>
+      </CursorStyle>
+    </ThemeProvider>
   );
 }
