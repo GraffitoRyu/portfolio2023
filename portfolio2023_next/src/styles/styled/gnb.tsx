@@ -15,6 +15,7 @@ export type GnbColorTypes = {
   selected: string;
 };
 type GnbModeTypes = {
+  [index: string]: GnbColorTypes;
   light: GnbColorTypes;
   dark: GnbColorTypes;
 };
@@ -40,6 +41,7 @@ export type UtilColorTypes = {
   svgActive?: string;
 };
 type UtilModeTypes = {
+  [index: string]: UtilColorTypes;
   light: UtilColorTypes;
   dark: UtilColorTypes;
 };
@@ -66,6 +68,7 @@ export type ThemeMenuColorTypes = {
   selected: string;
 };
 type ThemeMenuModeTypes = {
+  [index: string]: ThemeMenuColorTypes;
   light: ThemeMenuColorTypes;
   dark: ThemeMenuColorTypes;
 };
