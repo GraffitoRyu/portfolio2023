@@ -71,7 +71,7 @@ export default function Cursor(): JSX.Element {
   const [cursor, setCursor] = useRecoilState(cursorState);
   const cursorRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  const updateCursor = (e: MouseEvent) => {
+  const updateCursor = (e: MouseEvent | PointerEvent) => {
     if (e?.target instanceof HTMLElement) {
       let targetElement = "";
       if (e.target.closest("a")) targetElement = "link";
@@ -93,9 +93,11 @@ export default function Cursor(): JSX.Element {
   };
 
   useEffect(() => {
-    if (matchMedia("(pointer:fine)").matches)
-      window.addEventListener("mousemove", updateCursor);
-    return () => window.removeEventListener("mousemove", updateCursor);
+    if (matchMedia("(pointer:fine)").matches) {
+      window.addEventListener("mousemove", e => updateCursor(e));
+      return () =>
+        window.removeEventListener("mousemove", e => updateCursor(e));
+    }
   }, []);
 
   useEffect(() => {

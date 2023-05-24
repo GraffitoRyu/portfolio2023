@@ -31,8 +31,8 @@ export default function ThemeContainer() {
   };
 
   useEffect(() => {
-    document.addEventListener("click", closeThemeMenu);
-    return () => document.removeEventListener("click", closeThemeMenu);
+    document.addEventListener("click", e => closeThemeMenu(e));
+    return () => document.removeEventListener("click", e => closeThemeMenu(e));
   }, [theme.isOpen]);
 
   return (
