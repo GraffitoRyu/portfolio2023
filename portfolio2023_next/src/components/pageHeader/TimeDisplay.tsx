@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { ThemeProvider, styled } from "styled-components";
 import { useRecoilValue } from "recoil";

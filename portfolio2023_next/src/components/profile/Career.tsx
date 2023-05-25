@@ -7,7 +7,7 @@ export default async function Career() {
   return (
     <ul className="career-list w-full">
       {careerData?.map((c: CareerTypes) => (
-        <li className="w-full" key={`career_${c.code}`}>
+        <li className="w-full" key={c.code}>
           <Period date={c.period} />
           <h3 className="flex items-center">
             <strong className="role">{c.role}</strong>

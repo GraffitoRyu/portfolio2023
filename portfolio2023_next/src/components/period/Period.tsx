@@ -17,7 +17,7 @@ export default function Period({
 }: {
   className: string | HTMLAttributes<HTMLDivElement>;
   date: string[];
-}) {
+}): JSX.Element {
   return (
     <div className={`period flex items-center ${className}`}>
       <PeriodTime date={date[0]} />
