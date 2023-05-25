@@ -2,7 +2,7 @@ type SummaryType = {
   title: string;
   desc: string;
   role: string[];
-  period: Date[];
+  period: string[];
 };
 
 type LinkType = {
