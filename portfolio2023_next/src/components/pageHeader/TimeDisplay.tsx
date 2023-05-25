@@ -15,6 +15,7 @@ type TimerTypes = {
   text: string;
 };
 type ModeTypes = {
+  [key: string]: TimerTypes;
   light: TimerTypes;
   dark: TimerTypes;
 };

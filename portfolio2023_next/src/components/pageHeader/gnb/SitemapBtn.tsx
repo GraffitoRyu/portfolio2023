@@ -36,7 +36,7 @@ export default function SitemapBtn({ path, name }: SitemapType) {
 
   useEffect(() => {
     setCurPage(path == curPath ? "now" : "");
-  }, [curPath]);
+  }, [curPath, path]);
 
   useEffect(() => {
     setColors(gnbMenuColors[theme]);

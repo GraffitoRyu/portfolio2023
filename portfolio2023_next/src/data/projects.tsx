@@ -34,25 +34,10 @@ type MediaType = {
   desc: string;
 };
 
-type ProjectsType = {
+export type ProjectsType = {
   code: string;
   summary: SummaryType;
   service: ServiceType;
   experience: ExpType;
   media: MediaType;
 };
-
-export const projectsData: ProjectsType = [
-  {
-    code: "teamsolution",
-    summary: {
-      title: "TeamSolution",
-      desc: "실시간 텔레메트리 데이터 모니터링 및 실시간 주행 관제 솔루션",
-      role: ["프론트엔드 개발", "웹 퍼블리싱", "유지보수"],
-      period: [
-        new Date("2019-11-01T00:00:00"),
-        new Date("2022-11-01T00:00:00"),
-      ],
-    },
-  },
-];

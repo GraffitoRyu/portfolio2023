@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 // components
 import ThemeMenuList from "./MenuList";
@@ -10,13 +10,14 @@ import { ThemeTypes, themeState } from "@/states/theme";
 
 export default function ThemeContainer() {
   const themeRef = useRef<HTMLDivElement>(null);
-  const [theme, setTheme] = useRecoilState<ThemeTypes>(themeState);
+  const setTheme = useSetRecoilState<ThemeTypes>(themeState);
+  const { isOpen } = useRecoilValue<ThemeTypes>(themeState);
 
   const closeThemeMenu: (
     e: PointerEvent | MouseEvent | TouchEvent
   ) => void = e => {
     if (
-      theme.isOpen == true &&
+      isOpen == true &&
       e?.target instanceof Element &&
       themeRef?.current instanceof Element
     ) {
@@ -33,7 +34,7 @@ export default function ThemeContainer() {
   useEffect(() => {
     document.addEventListener("click", e => closeThemeMenu(e));
     return () => document.removeEventListener("click", e => closeThemeMenu(e));
-  }, [theme.isOpen]);
+  }, [isOpen]);
 
   return (
     <div className="util-item theme-item relative" ref={themeRef}>

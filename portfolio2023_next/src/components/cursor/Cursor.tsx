@@ -5,7 +5,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { ThemeProvider, styled } from "styled-components";
 
 import { CursorTypes, cursorState } from "@/states/cursor";
-import { themeState } from "@/states/theme";
+import { ThemeTypes, themeState } from "@/states/theme";
 
 type CursorColorTypes = {
   basic: string;
@@ -65,13 +65,13 @@ const CursorStyle = styled.div`
   }
 `;
 
-export default function Cursor(): JSX.Element {
-  const { theme } = useRecoilValue(themeState);
+export default function Cursor() {
+  const { theme } = useRecoilValue<ThemeTypes>(themeState);
   const [colors, setColors] = useState<CursorColorTypes>(CursorColors.light);
-  const [cursor, setCursor] = useRecoilState(cursorState);
+  const [cursor, setCursor] = useRecoilState<CursorTypes>(cursorState);
   const cursorRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  const updateCursor = (e: MouseEvent | PointerEvent) => {
+  function updateCursor(e: MouseEvent | PointerEvent): void {
     if (e?.target instanceof HTMLElement) {
       let targetElement = "";
       if (e.target.closest("a")) targetElement = "link";
@@ -87,10 +87,9 @@ export default function Cursor(): JSX.Element {
         y: e.clientY,
         hover: targetElement,
       };
-
       setCursor(c);
     }
-  };
+  }
 
   useEffect(() => {
     if (matchMedia("(pointer:fine)").matches) {

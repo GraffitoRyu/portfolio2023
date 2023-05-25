@@ -71,6 +71,7 @@ const ThemeMenuBtn = styled.button`
 `;
 
 type hoverTypes = {
+  [key: string]: string | undefined;
   light?: string;
   dark?: string;
   system?: string;
