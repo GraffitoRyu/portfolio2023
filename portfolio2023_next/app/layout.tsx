@@ -23,6 +23,7 @@ export const serif = Noto_Serif_KR({
 });
 
 // styles
+import StyledComponentsRegistry from "./registry";
 import "@/styles/scss/globals.scss";
 import { GlobalBodyStyle } from "@/styles/styled/body";
 
@@ -32,18 +33,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
-      <body>
-        <Recoil>
-          <ReactQuery>
-            <GlobalBodyStyle />
-            <div className="page-container">
-              <PageTemplate>{children}</PageTemplate>
-              <Cursor />
-            </div>
-          </ReactQuery>
-        </Recoil>
-      </body>
-    </html>
+    <StyledComponentsRegistry>
+      <html lang="ko">
+        <body>
+          <Recoil>
+            <ReactQuery>
+              <GlobalBodyStyle />
+              <div className="page-container">
+                <PageTemplate>{children}</PageTemplate>
+                <Cursor />
+              </div>
+            </ReactQuery>
+          </Recoil>
+        </body>
+      </html>
+    </StyledComponentsRegistry>
   );
 }
