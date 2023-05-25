@@ -1,6 +1,6 @@
 [
   {
-    "key": "teamsolution",
+    "code": "teamsolution",
     "summary": {
       "title": "TeamSolution",
       "desc": "실시간 텔레메트리 데이터 모니터링 및 실시간 주행 관제 솔루션",
@@ -19,25 +19,25 @@
       ],
       "link": [
         {
-          "key": "ts_home",
+          "code": "ts_home",
           "name": "3SECONDZ",
           "url": "https://www.3secondz.com/",
           "hide": ""
         },
         {
-          "key": "ts_service",
+          "code": "ts_service",
           "name": "3SECONDZ 서비스 플랫폼",
           "url": "https://www.3secondz.com/service",
           "hide": ""
         },
         {
-          "key": "ts_introduce",
+          "code": "ts_introduce",
           "name": "서비스 소개",
           "url": "https://3secondz.com/service/info_teamsolution",
           "hide": ""
         },
         {
-          "key": "ts_demo",
+          "code": "ts_demo",
           "name": "라이브 데모 (PC전용)",
           "url": "https://3secondz.com/livedemo",
           "hide": ["mobile", "tablet"]
@@ -96,7 +96,7 @@
     ]
   },
   {
-    "key": "racesolution",
+    "code": "racesolution",
     "summary": {
       "title": "RaceSolution\n & HUD for broadcast",
       "desc": "국내 최대 모터스포츠 경기 SUPERRACE의 관제 솔루션 및 방송 중계 오버레이 HUD",
@@ -112,19 +112,19 @@
       ],
       "link": [
         {
-          "key": "rs_home",
+          "code": "rs_home",
           "name": "3SECONDZ",
           "url": "https://www.3secondz.com/",
           "hide": ""
         },
         {
-          "key": "rs_press",
+          "code": "rs_press",
           "name": "언론보도",
           "url": "https://sports.chosun.com/news/ntype.htm?id=202203250100155390009498&servicedate=20220324",
           "hide": ""
         },
         {
-          "key": "rs_hud",
+          "code": "rs_hud",
           "name": "HUD 방송영상",
           "url": "https://www.youtube.com/channel/UCTErTefCM2D-OH5D9CN8urQ",
           "hide": ""
@@ -178,7 +178,7 @@
     ]
   },
   {
-    "key": "solutionmaster",
+    "code": "solutionmaster",
     "summary": {
       "title": "SolutionMaster",
       "desc": "기관 및 R&D 목적으로 다수의 주행 차량을 관리 및 관제하기 위한 종합 관리 솔루션",
@@ -194,7 +194,7 @@
       ],
       "link": [
         {
-          "key": "sm_home",
+          "code": "sm_home",
           "name": "3SECONDZ",
           "url": "https://www.3secondz.com/",
           "hide": ""
@@ -242,7 +242,7 @@
     ]
   },
   {
-    "key": "lapvslap",
+    "code": "lapvslap",
     "summary": {
       "title": "Session Report;\n Lap vs Lap",
       "desc": "주행 세션 데이터 분석 서비스",
@@ -258,13 +258,13 @@
       ],
       "link": [
         {
-          "key": "lvl_home",
+          "code": "lvl_home",
           "name": "3SECONDZ",
           "url": "https://www.3secondz.com/",
           "hide": ""
         },
         {
-          "key": "lvl_lapvslap",
+          "code": "lvl_lapvslap",
           "name": "라이브 데모",
           "url": "https://www.3secondz.com/demo",
           "hide": ["tablet"]

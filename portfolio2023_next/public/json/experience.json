@@ -1,6 +1,6 @@
 [
   {
-    "key": "markup",
+    "code": "markup",
     "desc": [
       "검색 엔진 최적화 작업",
       "다양한 접속 환경에서의 크로스브라우징 트러블 슈팅",
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "key": "interaction",
+    "code": "interaction",
     "desc": [
       "jQuery를 기반으로 한 CSS와 JavaScript를 조합한 인터랙션 동작 구현",
       "Google Maps API, Kakao Maps API, Mapbox GL, leaflet 등을 활용한 지도 요소 구현",
@@ -21,7 +21,7 @@
     ]
   },
   {
-    "key": "data",
+    "code": "data",
     "desc": [
       "Ajax를 통한 json 데이터 비동기/동기 송수신",
       "websocket을 통한 json 데이터 수신",
@@ -35,7 +35,7 @@
     ]
   },
   {
-    "key": "collaboration",
+    "code": "collaboration",
     "desc": [
       {
         "depth1": "Node.js 환경에서, 백엔드와의 협업",
@@ -52,7 +52,7 @@
     ]
   },
   {
-    "key": "learning",
+    "code": "learning",
     "desc": [
       "React 기반의 컴포넌트 마크업 구축 및 인터랙션 구현",
       "React 환경에서의 상태관리 (Recoil)",

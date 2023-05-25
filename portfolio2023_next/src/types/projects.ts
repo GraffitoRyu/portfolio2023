@@ -6,7 +6,7 @@ type SummaryType = {
 };
 
 type LinkType = {
-  key: string;
+  code: string;
   name: string;
   url: string;
   hide: undefined | string[];
@@ -24,7 +24,7 @@ type ExpDepthType = {
 };
 type ExpType = {
   stacks: string[];
-  desc: [string | ExpDepthType];
+  desc: Array<string | ExpDepthType>;
 };
 
 type MediaType = {
@@ -35,6 +35,7 @@ type MediaType = {
 };
 
 export type ProjectsType = {
+  [index: string]: string | SummaryType | ServiceType | ExpType | MediaType;
   code: string;
   summary: SummaryType;
   service: ServiceType;

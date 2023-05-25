@@ -1,6 +1,6 @@
 [
   {
-    "key": "profile",
+    "code": "profile",
     "name": "프로필",
     "path": "/",
     "header": true,
@@ -8,7 +8,7 @@
     "external": false
   },
   {
-    "key": "projects",
+    "code": "projects",
     "name": "프로젝트",
     "path": "/projects",
     "header": true,
@@ -16,7 +16,7 @@
     "external": false
   },
   {
-    "key": "github",
+    "code": "github",
     "name": "Github",
     "path": "https://github.com/GraffitoRyu",
     "header": true,
@@ -24,7 +24,7 @@
     "external": true
   },
   {
-    "key": "notion",
+    "code": "notion",
     "name": "Notion",
     "path": "https://www.notion.so/Ryu-Daehyeon-cc635240ed4f405ab6d27ec603f8b023",
     "header": true,
@@ -32,7 +32,7 @@
     "external": true
   },
   {
-    "key": "jumpit",
+    "code": "jumpit",
     "name": "점핏",
     "path": "https://www.jumpit.co.kr/",
     "header": false,
@@ -40,7 +40,7 @@
     "external": true
   },
   {
-    "key": "wanted",
+    "code": "wanted",
     "name": "원티드",
     "path": "https://www.wanted.co.kr/",
     "header": false,
@@ -48,7 +48,7 @@
     "external": true
   },
   {
-    "key": "saramin",
+    "code": "saramin",
     "name": "사람인",
     "path": "https://www.saramin.co.kr/",
     "header": false,
@@ -56,7 +56,7 @@
     "external": true
   },
   {
-    "key": "jobkorea",
+    "code": "jobkorea",
     "name": "잡코리아",
     "path": "https://www.jobkorea.co.kr/",
     "header": false,
@@ -64,7 +64,7 @@
     "external": true
   },
   {
-    "key": "rocketpunch",
+    "code": "rocketpunch",
     "name": "로켓펀치",
     "path": "https://www.rocketpunch.com/@23a638d08c154043",
     "header": false,
@@ -72,7 +72,7 @@
     "external": true
   },
   {
-    "key": "kakao",
+    "code": "kakao",
     "name": "카카오톡 오픈채팅",
     "path": "https://open.kakao.com/o/s9PfGtif",
     "header": false,
