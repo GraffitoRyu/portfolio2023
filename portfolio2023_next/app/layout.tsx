@@ -16,16 +16,21 @@ import Cursor from "@/components/cursor/Cursor";
 export const sans = Noto_Sans_KR({
   weight: ["300", "400", "500", "700", "900"],
   subsets: ["latin"],
+  variable: "--sans-kr",
+  display: "swap",
 });
 export const serif = Noto_Serif_KR({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
+  variable: "--serif-kr",
+  display: "swap",
 });
 
 // styles
-import StyledComponentsRegistry from "./registry";
+import StyledComponentsRegistry from "./lib/registry";
 import "@/styles/scss/globals.scss";
 import { GlobalBodyStyle } from "@/styles/styled/body";
+import PageHeader from "@/components/pageHeader/PageHeader";
 
 export default function RootLayout({
   children,
@@ -33,20 +38,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <StyledComponentsRegistry>
-      <html lang="ko">
-        <body>
-          <Recoil>
-            <ReactQuery>
+    <html lang="ko">
+      <body>
+        <Recoil>
+          <ReactQuery>
+            <StyledComponentsRegistry>
               <GlobalBodyStyle />
-              <div className="page-container">
+              <div className="page-container relative">
+                <PageHeader />
                 <PageTemplate>{children}</PageTemplate>
                 <Cursor />
               </div>
-            </ReactQuery>
-          </Recoil>
-        </body>
-      </html>
-    </StyledComponentsRegistry>
+            </StyledComponentsRegistry>
+          </ReactQuery>
+        </Recoil>
+      </body>
+    </html>
   );
 }
