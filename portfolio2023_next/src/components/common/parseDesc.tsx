@@ -18,7 +18,7 @@ export default function ParseDescription({ data }: DescTypes) {
           </p>
           <ul>
             {data.depth2?.map((d2: string, i: number) => (
-              <li key={i}>
+              <li key={`parsed_${i}`}>
                 <span>- {d2}</span>
               </li>
             )) ?? ""}
