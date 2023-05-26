@@ -19,7 +19,7 @@ export default function Tools() {
   ];
   return (
     <ul className="tools-list">
-      {toolList.map((d: string) => <li key={d}>{d}</li>) ?? ""}
+      {toolList.map((d: string) => <li key={`tools_${d}`}>{d}</li>) ?? ""}
     </ul>
   );
 }

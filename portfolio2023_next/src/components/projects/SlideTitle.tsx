@@ -23,9 +23,16 @@ export default function SlideTitle({
 }) {
   const titleArr: string[] = new Array(3).fill(text);
 
-  return titleArr.map((title: string, i: number) => (
-    <TitleSpan key={i} style={{ animationDuration: `${duration}s` }}>
-      {title}
-    </TitleSpan>
-  ));
+  return (
+    <>
+      {titleArr.map((title: string, i: number) => (
+        <TitleSpan
+          key={`projectSlideTitle_${i}`}
+          style={{ animationDuration: `${duration}s` }}
+        >
+          {title}
+        </TitleSpan>
+      ))}
+    </>
+  );
 }

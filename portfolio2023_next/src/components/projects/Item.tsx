@@ -1,21 +1,26 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { ProjectsType } from "@/types/projects";
+import { SummaryType } from "@/types/projects";
 import Period from "../period/Period";
 import SlideTitle from "./SlideTitle";
 
-export default function ProjectItem({ summary }: ProjectsType): JSX.Element {
-  const slideRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+export default function ProjectItem({
+  summary,
+}: {
+  summary: SummaryType;
+}): JSX.Element {
+  const slideRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const [slideWidth, setSlideWidth] = useState<number>(0);
   const [duration, setDuration] = useState<number>(0);
 
   useEffect(() => {
-    if (slideRef.current) {
-      const width: number = slideRef.current.children?.[0]?.offsetWidth;
+    const { current: el } = slideRef;
+    if (el) {
+      const width: number = (el.children[0] as HTMLElement).offsetWidth;
       setSlideWidth(width);
     }
-  }, [slideRef.current]);
+  }, []);
 
   useEffect(() => {
     setDuration((slideWidth / 1000) * 3.2);

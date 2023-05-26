@@ -35,7 +35,7 @@ export default function SectionHeader({
           <HeaderTitle className="capitalize">{title}</HeaderTitle>
           <HeaderDesc>
             {desc?.map((d, i) => (
-              <React.Fragment key={`desc_${i}`}>
+              <React.Fragment key={`sectionHeaderDesc_${i}`}>
                 <span>{d}</span>
                 {i < desc.length - 1 ? <br /> : ""}
               </React.Fragment>
