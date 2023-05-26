@@ -6,16 +6,14 @@ import ThemeMenuList from "./MenuList";
 import ThemeToggleBtn from "./ToggleBtn";
 
 // state
-import { ThemeTypes, themeState } from "@/states/theme";
+import { ThemeStateTypes, themeState } from "@/states/theme";
 
 export default function ThemeContainer() {
   const themeRef = useRef<HTMLDivElement>(null);
-  const setTheme = useSetRecoilState<ThemeTypes>(themeState);
-  const { isOpen } = useRecoilValue<ThemeTypes>(themeState);
+  const setTheme = useSetRecoilState<ThemeStateTypes>(themeState);
+  const { isOpen } = useRecoilValue<ThemeStateTypes>(themeState);
 
-  const closeThemeMenu: (
-    e: PointerEvent | MouseEvent | TouchEvent
-  ) => void = e => {
+  function closeThemeMenu(e: PointerEvent | MouseEvent | TouchEvent): void {
     if (
       isOpen == true &&
       e?.target instanceof Element &&
@@ -29,12 +27,12 @@ export default function ThemeContainer() {
         }));
       }
     }
-  };
+  }
 
   useEffect(() => {
     document.addEventListener("click", e => closeThemeMenu(e));
     return () => document.removeEventListener("click", e => closeThemeMenu(e));
-  }, [isOpen]);
+  }, []);
 
   return (
     <div className="util-item theme-item relative" ref={themeRef}>

@@ -5,7 +5,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { ThemeProvider, styled } from "styled-components";
 
 import { CursorTypes, cursorState } from "@/states/cursor";
-import { ThemeTypes, themeState } from "@/states/theme";
+import { ThemeStateTypes, themeState } from "@/states/theme";
 
 type CursorColorTypes = {
   basic: string;
@@ -66,7 +66,7 @@ const CursorStyle = styled.div`
 `;
 
 export default function Cursor() {
-  const { theme } = useRecoilValue<ThemeTypes>(themeState);
+  const { theme } = useRecoilValue<ThemeStateTypes>(themeState);
   const [colors, setColors] = useState<CursorColorTypes>(CursorColors.light);
   const [cursor, setCursor] = useRecoilState<CursorTypes>(cursorState);
   const cursorRef = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -93,9 +93,8 @@ export default function Cursor() {
 
   useEffect(() => {
     if (matchMedia("(pointer:fine)").matches) {
-      window.addEventListener("mousemove", e => updateCursor(e));
-      return () =>
-        window.removeEventListener("mousemove", e => updateCursor(e));
+      window.addEventListener("mousemove", updateCursor);
+      return () => window.removeEventListener("mousemove", updateCursor);
     }
   }, []);
 

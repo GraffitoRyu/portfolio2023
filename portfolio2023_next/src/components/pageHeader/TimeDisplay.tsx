@@ -2,22 +2,16 @@ import { useEffect, useState } from "react";
 import { ThemeProvider, styled } from "styled-components";
 import { useRecoilValue } from "recoil";
 
+// type
+import { ModeTypes } from "@/types/themeColors/pageHeader";
+
 // util
 import { rem } from "@/util/unit";
 
 // state
-import { ThemeTypes, themeState } from "@/states/theme";
+import { ThemeStateTypes, themeState } from "@/states/theme";
 
-type TimerTypes = {
-  bar: string;
-  text: string;
-};
-type ModeTypes = {
-  [key: string]: TimerTypes;
-  light: TimerTypes;
-  dark: TimerTypes;
-};
-const componentsTheme: ModeTypes = {
+const timerColors: ModeTypes = {
   light: {
     bar: "#707070",
     text: "#909090",
@@ -28,7 +22,7 @@ const componentsTheme: ModeTypes = {
   },
 };
 
-const TimerStyle = styled.div`
+const TimerContainer = styled.div`
   border-top: ${rem(4)} solid ${({ theme }) => theme.bar};
   border-bottom: ${rem(4)} solid transparent;
   padding: 0 ${rem(40)} 0 ${rem(2)};
@@ -38,11 +32,10 @@ const TimerStyle = styled.div`
   }
 `;
 
-TimerStyle.defaultProps = { theme: { ...componentsTheme.light } };
-
 export default function TimeDisplay() {
   const [curTime, setCurTime] = useState<Date | undefined>(undefined);
-  const { theme } = useRecoilValue<ThemeTypes>(themeState);
+  const { theme } = useRecoilValue<ThemeStateTypes>(themeState);
+  const [colors, setColors] = useState(timerColors.light);
 
   // initiate time
   useEffect(() => {
@@ -56,9 +49,13 @@ export default function TimeDisplay() {
     }, 1000);
   }, [curTime]);
 
+  useEffect(() => {
+    setColors(timerColors[theme]);
+  }, [theme]);
+
   return (
-    <ThemeProvider theme={componentsTheme[theme]}>
-      <TimerStyle className="time-display">
+    <ThemeProvider theme={colors}>
+      <TimerContainer>
         <time>
           {curTime?.toLocaleString("ko-KR", {
             year: "numeric",
@@ -70,7 +67,7 @@ export default function TimeDisplay() {
             hour12: false,
           }) ?? "----.--.-- --:--:--"}
         </time>
-      </TimerStyle>
+      </TimerContainer>
     </ThemeProvider>
   );
 }

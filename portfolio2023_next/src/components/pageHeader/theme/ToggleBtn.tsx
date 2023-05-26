@@ -1,11 +1,9 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { ThemeProvider, styled } from "styled-components";
 
 // state
-import { ThemeTypes, themeState } from "@/states/theme";
+import { ThemeStateTypes, themeState } from "@/states/theme";
 
 // svg
 import * as ThemeSvg from "./BtnIcons";
@@ -36,7 +34,7 @@ const ToggleIcon = styled.figure`
 `;
 
 export default function ThemeToggleBtn() {
-  const [theme, setTheme] = useRecoilState<ThemeTypes>(themeState);
+  const [theme, setTheme] = useRecoilState<ThemeStateTypes>(themeState);
   const [hover, setHover] = useState<string>("");
   const [colors, setColors] = useState(utilBtnColors.light);
 

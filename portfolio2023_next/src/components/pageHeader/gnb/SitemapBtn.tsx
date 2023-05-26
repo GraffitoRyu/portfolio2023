@@ -4,6 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeProvider, styled } from "styled-components";
 
+// type
+import { GnbColorTypes } from "@/types/themeColors/pageHeader";
+
 // data
 import { SitemapType } from "@/data/sitemap";
 
@@ -11,8 +14,8 @@ import { SitemapType } from "@/data/sitemap";
 import { rem } from "@/util/unit";
 
 // style
-import { ThemeTypes, themeState } from "@/states/theme";
-import { GnbColorTypes, gnbMenuColors } from "@/styles/styled/gnb";
+import { ThemeStateTypes, themeState } from "@/states/theme";
+import { gnbMenuColors } from "@/styles/styled/gnb";
 
 const SitemapLink = styled(Link)`
   margin-right: ${rem(64)};
@@ -31,7 +34,7 @@ export default function SitemapBtn({ path, name }: SitemapType) {
   const curPath = usePathname();
   const [curPage, setCurPage] = useState<string>(path == curPath ? "now" : "");
   const [hover, setHover] = useState("");
-  const { theme } = useRecoilValue<ThemeTypes>(themeState);
+  const { theme } = useRecoilValue<ThemeStateTypes>(themeState);
   const [colors, setColors] = useState<GnbColorTypes>(gnbMenuColors.light);
 
   useEffect(() => {

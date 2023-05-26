@@ -4,19 +4,20 @@ import { ThemeProvider, styled } from "styled-components";
 
 // type
 import { SitemapType } from "@/data/sitemap";
+import { UtilColorTypes } from "@/types/themeColors/pageHeader";
 
 // util
 import { rem } from "@/util/unit";
 
 // style
-import { UtilColorTypes, utilBtnColors } from "@/styles/styled/gnb";
+import { SvgFill } from "@/styles/styled/mixins";
+import { utilBtnColors } from "@/styles/styled/gnb";
 
 // state
-import { ThemeTypes, themeState } from "@/states/theme";
+import { ThemeStateTypes, themeState } from "@/states/theme";
 
 // SVG
 import * as ExtSvg from "./BtnIcons";
-import { SvgFill } from "@/styles/styled/mixins";
 function ExtIcon(name: string) {
   switch (name) {
     case "Github":
@@ -61,7 +62,7 @@ const Tooltip = styled.div`
 `;
 
 export default function ExternalBtn({ path, name }: SitemapType) {
-  const { theme } = useRecoilValue<ThemeTypes>(themeState);
+  const { theme } = useRecoilValue<ThemeStateTypes>(themeState);
   const [hover, setHover] = useState<string>("");
   const [colors, setColors] = useState<UtilColorTypes>(utilBtnColors.light);
 

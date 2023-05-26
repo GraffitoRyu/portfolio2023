@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import { ThemeProvider, styled } from "styled-components";
 
 // state
-import { ThemeTypes, themeState } from "@/states/theme";
+import { ThemeStateTypes, themeState } from "@/states/theme";
 
 // util
 import { rem } from "@/util/unit";
@@ -82,7 +82,7 @@ export default function ThemeMenuList() {
   const themeClasses: hoverTypes =
     Object.fromEntries(themeList.map(t => [t, ""])) ?? {};
 
-  const [theme, setTheme] = useRecoilState<ThemeTypes>(themeState);
+  const [theme, setTheme] = useRecoilState<ThemeStateTypes>(themeState);
   const [openClass, setOpenClass] = useState<string>("hidden");
   const [themeClass, setThemeClass] = useState<string>("system");
   const [hover, setHover] = useState<hoverTypes>(themeClasses);
@@ -104,10 +104,10 @@ export default function ThemeMenuList() {
     return theme.theme === code ? "selected" : "";
   };
 
-  useEffect(() => {
-    applyTheme(theme.theme);
-    setThemeClass(theme.isSystem ? `system-${theme.theme}` : theme.theme);
-  }, []);
+  // useEffect(() => {
+  //   applyTheme(theme.theme);
+  //   setThemeClass(theme.isSystem ? `system-${theme.theme}` : theme.theme);
+  // }, []);
 
   useEffect(() => {
     setOpenClass(theme.isOpen ? "" : "hidden");
@@ -126,7 +126,7 @@ export default function ThemeMenuList() {
       >
         <ul className="w-full">
           {themeList.map((code: string) => (
-            <ThemeListItem key={code} className="w-full">
+            <ThemeListItem key={`themeMenu_${code}`} className="w-full">
               <ThemeMenuBtn
                 className={`w-full h-full flex items-center ${updateSelected(
                   code
