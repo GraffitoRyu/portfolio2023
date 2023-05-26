@@ -1,24 +1,20 @@
 import { createGlobalStyle } from "styled-components";
 
+// type
+import {
+  GnbModeTypes,
+  ThemeMenuModeTypes,
+  UtilModeTypes,
+} from "@/types/themeColors/pageHeader";
+
 // util
 import { rem } from "@/util/unit";
 
 // style
-import { btnStyle } from "./btns";
+import { btnStyle } from "./buttons";
 import { maxSize, size } from "./mixins";
 import { img } from "./img";
 
-// GNB 버튼 컬러
-export type GnbColorTypes = {
-  basic: string;
-  hover: string;
-  selected: string;
-};
-type GnbModeTypes = {
-  [index: string]: GnbColorTypes;
-  light: GnbColorTypes;
-  dark: GnbColorTypes;
-};
 export const gnbMenuColors: GnbModeTypes = {
   light: {
     basic: "#bfbfbf",
@@ -32,19 +28,6 @@ export const gnbMenuColors: GnbModeTypes = {
   },
 };
 
-// 유틸 버튼 컬러
-export type UtilColorTypes = {
-  bg: string;
-  bgHover?: string;
-  svg: string;
-  svgHover: string;
-  svgActive?: string;
-};
-type UtilModeTypes = {
-  [index: string]: UtilColorTypes;
-  light: UtilColorTypes;
-  dark: UtilColorTypes;
-};
 export const utilBtnColors: UtilModeTypes = {
   light: {
     bg: "#efefef",
@@ -60,18 +43,6 @@ export const utilBtnColors: UtilModeTypes = {
   },
 };
 
-// 테마 메뉴 컬러
-export type ThemeMenuColorTypes = {
-  container: string;
-  menu: string;
-  hover: string;
-  selected: string;
-};
-type ThemeMenuModeTypes = {
-  [index: string]: ThemeMenuColorTypes;
-  light: ThemeMenuColorTypes;
-  dark: ThemeMenuColorTypes;
-};
 export const themeMenuColors: ThemeMenuModeTypes = {
   light: {
     container: "#efefef",
