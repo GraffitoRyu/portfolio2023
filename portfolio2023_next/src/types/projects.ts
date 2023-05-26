@@ -1,33 +1,33 @@
-type SummaryType = {
+export type SummaryType = {
   title: string;
   desc: string;
   role: string[];
   period: string[];
 };
 
-type LinkType = {
+export type LinkType = {
   code: string;
   name: string;
   url: string;
   hide: undefined | string[];
 };
-type ServiceType = {
+export type ServiceType = {
   provider: string;
   platform: string;
   desc: string[];
   link: LinkType[];
 };
 
-type ExpDepthType = {
+export type ExpDepthType = {
   depth1: string;
   depth2: string[];
 };
-type ExpType = {
+export type ExpType = {
   stacks: string[];
   desc: Array<string | ExpDepthType>;
 };
 
-type MediaType = {
+export type MediaType = {
   referType: string;
   src: string;
   title: string;
