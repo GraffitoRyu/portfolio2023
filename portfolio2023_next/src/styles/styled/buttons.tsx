@@ -2,19 +2,14 @@
 
 import { css } from "styled-components";
 
+// type
+import { BtnTypes } from "@/types/button";
+
 // mixin
 import { SvgFill, SvgStroke, flex } from "./mixins";
 
 // util
 import { getUnit, rem } from "@/util/unit";
-
-type BtnTypes = {
-  width?: number | string;
-  height: number | string;
-  radius?: number | string;
-  borderWidth?: number;
-  color?: string;
-};
 
 export const btnStyle = ({
   width,
