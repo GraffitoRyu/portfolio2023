@@ -7,7 +7,8 @@ export default async function Career() {
   return (
     <ul className="career-list w-full">
       {careerData?.map((c: CareerTypes) => (
-        <li className="w-full" key={c.code}>
+        <li className="w-full" key={`career_${c.code}`}>
+          {/* @ts-expect-error Async Server Component */}
           <Period date={c.period} />
           <h3 className="flex items-center">
             <strong className="role">{c.role}</strong>
@@ -20,21 +21,9 @@ export default async function Career() {
   );
 }
 
-function PeriodTime({ date }: { date: string }): JSX.Element {
-  const d = new Date(date);
-  return (
-    <time>
-      {d.toLocaleString("ko-KR", {
-        month: "short",
-        year: "numeric",
-      })}
-    </time>
-  );
-}
-
 async function getCareer() {
   const res = await fetch("http://localhost:3000/json/career.json");
-  // if (!res.ok) throw new Error("Failed to fetch Career Data");
+  if (!res.ok) throw new Error("Failed to fetch Career Data");
   const data = await res.json();
   return data;
 }

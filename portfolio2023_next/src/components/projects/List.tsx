@@ -5,9 +5,9 @@ export default async function ProjectList() {
   const listData: ProjectsType[] | [] = (await getProjectsList()) ?? [];
 
   return (
-    <ul className="project-list">
-      {listData?.map((d: ProjectsType) => (
-        <ProjectItem key={d.code} summary={d.summary} />
+    <ul>
+      {listData?.map(({ code, summary }: ProjectsType) => (
+        <ProjectItem key={`projectList_${code}`} summary={summary} />
       ))}
     </ul>
   );

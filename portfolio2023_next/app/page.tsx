@@ -17,6 +17,7 @@ export default function Profile() {
           desc={["지난 5년간 실무 경험을 쌓은 ", "근무 경력입니다."]}
         />
         <SectionContents>
+          {/* @ts-expect-error Async Server Component */}
           <Career />
         </SectionContents>
       </PageSection>
@@ -32,6 +33,7 @@ export default function Profile() {
           ]}
         />
         <SectionContents>
+          {/* @ts-expect-error Async Server Component */}
           <Experience />
         </SectionContents>
       </PageSection>
