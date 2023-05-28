@@ -1,31 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { ThemeProvider, styled } from "styled-components";
+import React, { useEffect, useRef } from "react";
+import { useRecoilState } from "recoil";
+import { styled } from "styled-components";
 
 import { CursorTypes, cursorState } from "@/states/cursor";
-import { ThemeStateTypes, themeState } from "@/states/theme";
-
-type CursorColorTypes = {
-  basic: string;
-  hover: string;
-};
-type CursorModeTypes = {
-  [key: string]: CursorColorTypes;
-  light: CursorColorTypes;
-  dark: CursorColorTypes;
-};
-const CursorColors: CursorModeTypes = {
-  light: {
-    basic: "#1a1a1a",
-    hover: "rgba(26,26,26,0.1)",
-  },
-  dark: {
-    basic: "#fff",
-    hover: "rgba(255,255,255,0.1)",
-  },
-};
 
 const CursorStyle = styled.div`
   width: 1px;
@@ -44,15 +23,15 @@ const CursorStyle = styled.div`
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    border: 1px solid ${({ theme }) => theme.basic};
-    background: ${({ theme }) => theme.basic};
+    border: 1px solid ${({ theme }) => theme.cursor.basic};
+    background: ${({ theme }) => theme.cursor.basic};
     transition: width 0.4s, height 0.4s, background-color 0.4s;
   }
   &.link {
     .cursor {
       width: 64px;
       height: 64px;
-      background: ${({ theme }) => theme.hover};
+      background: ${({ theme }) => theme.cursor.hover};
     }
   }
   &.text {
@@ -66,8 +45,6 @@ const CursorStyle = styled.div`
 `;
 
 export default function Cursor() {
-  const { theme } = useRecoilValue<ThemeStateTypes>(themeState);
-  const [colors, setColors] = useState<CursorColorTypes>(CursorColors.light);
   const [cursor, setCursor] = useRecoilState<CursorTypes>(cursorState);
   const cursorRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
@@ -98,19 +75,13 @@ export default function Cursor() {
     }
   }, []);
 
-  useEffect(() => {
-    setColors(CursorColors[theme]);
-  }, [theme]);
-
   return (
-    <ThemeProvider theme={colors}>
-      <CursorStyle
-        className={`cursor-container ${cursor.hover}`}
-        ref={cursorRef}
-        style={{ left: cursor.x, top: cursor.y }}
-      >
-        <figure className="cursor"></figure>
-      </CursorStyle>
-    </ThemeProvider>
+    <CursorStyle
+      className={`cursor-container ${cursor.hover}`}
+      ref={cursorRef}
+      style={{ left: cursor.x, top: cursor.y }}
+    >
+      <figure className="cursor"></figure>
+    </CursorStyle>
   );
 }

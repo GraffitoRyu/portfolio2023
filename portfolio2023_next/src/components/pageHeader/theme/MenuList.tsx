@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { ThemeProvider, styled } from "styled-components";
+import { styled } from "styled-components";
 
 // state
 import { ThemeStateTypes, themeState } from "@/states/theme";
 
 // util
 import { rem } from "@/util/unit";
-import { applyTheme, getSystemTheme } from "@/util/theme";
+import { applyTheme, getSystemTheme } from "@/util/changeTheme";
 
 // style
 import { flex, size, SvgFill } from "@/styles/styled/mixins";
@@ -15,7 +15,6 @@ import { img } from "@/styles/styled/img";
 
 // SVG
 import * as ThemeSvg from "./BtnIcons";
-import { ThemeMenuColorTypes, themeMenuColors } from "@/styles/styled/gnb";
 function ThemeIcon(theme: string) {
   switch (theme) {
     case "light":
@@ -30,8 +29,8 @@ function ThemeIcon(theme: string) {
 const menuHeight: string = rem(56);
 const ThemeMenuContainer = styled.div`
   width: ${rem(160)};
-  transform: translateY(${rem(16)});
-  background: ${({ theme }) => theme.container};
+  transform: ${`translateY(${rem(16)})`};
+  background: ${({ theme }) => theme.gnbThemeMenu.container};
 `;
 const ThemeListItem = styled.li`
   height: ${menuHeight};
@@ -41,31 +40,31 @@ const ThemeMenuBtn = styled.button`
     ${size({ width: menuHeight })}
     font-size:0;
     ${flex({})}
-    ${({ theme }) => SvgFill(theme.menu)}
+    ${({ theme }) => SvgFill(theme.gnbThemeMenu.menu)}
     svg {
       ${img({ width: 24, height: 24 })}
     }
   }
   span {
     font-size: ${rem(16)};
-    color: ${({ theme }) => theme.menu};
+    color: ${({ theme }) => theme.gnbThemeMenu.menu};
     line-height: 1em;
     margin-top: ${rem(-2)};
   }
   &:not(.selected).hover {
     figure {
-      ${({ theme }) => SvgFill(theme.hover)}
+      ${({ theme }) => SvgFill(theme.gnbThemeMenu.hover)}
     }
     span {
-      color: ${({ theme }) => theme.hover};
+      color: ${({ theme }) => theme.gnbThemeMenu.hover};
     }
   }
   &.selected {
     figure {
-      ${({ theme }) => SvgFill(theme.selected)}
+      ${({ theme }) => SvgFill(theme.gnbThemeMenu.selected)}
     }
     span {
-      color: ${({ theme }) => theme.selected};
+      color: ${({ theme }) => theme.gnbThemeMenu.selected};
     }
   }
 `;
@@ -86,9 +85,6 @@ export default function ThemeMenuList() {
   const [openClass, setOpenClass] = useState<string>("hidden");
   const [themeClass, setThemeClass] = useState<string>("system");
   const [hover, setHover] = useState<hoverTypes>(themeClasses);
-  const [colors, setColors] = useState<ThemeMenuColorTypes>(
-    themeMenuColors.light
-  );
 
   const changeTheme: (selectedTheme: string) => void = selectedTheme => {
     if (!selectedTheme) return;
@@ -114,36 +110,33 @@ export default function ThemeMenuList() {
   }, [theme.isOpen]);
 
   useEffect(() => {
-    setColors(themeMenuColors[theme.theme]);
     applyTheme(theme.theme);
     setThemeClass(theme.isSystem ? `system-${theme.theme}` : theme.theme);
   }, [theme.theme, theme.isSystem]);
 
   return (
-    <ThemeProvider theme={colors}>
-      <ThemeMenuContainer
-        className={`theme-menu absolute top-full left-0 ${openClass} ${themeClass}`}
-      >
-        <ul className="w-full">
-          {themeList.map((code: string) => (
-            <ThemeListItem key={`themeMenu_${code}`} className="w-full">
-              <ThemeMenuBtn
-                className={`w-full h-full flex items-center ${updateSelected(
-                  code
-                )} ${hover[code]}`}
-                onClick={() => changeTheme(code)}
-                onMouseEnter={() =>
-                  setHover(prev => ({ ...prev, [code]: "hover" }))
-                }
-                onMouseLeave={() => setHover(prev => ({ ...prev, [code]: "" }))}
-              >
-                <figure>{ThemeIcon(code)}</figure>
-                <span className="capitalize">{code}</span>
-              </ThemeMenuBtn>
-            </ThemeListItem>
-          ))}
-        </ul>
-      </ThemeMenuContainer>
-    </ThemeProvider>
+    <ThemeMenuContainer
+      className={`theme-menu absolute top-full left-0 ${openClass} ${themeClass}`}
+    >
+      <ul className="w-full">
+        {themeList.map((code: string) => (
+          <ThemeListItem key={`themeMenu_${code}`} className="w-full">
+            <ThemeMenuBtn
+              className={`w-full h-full flex items-center ${updateSelected(
+                code
+              )} ${hover[code]}`}
+              onClick={() => changeTheme(code)}
+              onMouseEnter={() =>
+                setHover(prev => ({ ...prev, [code]: "hover" }))
+              }
+              onMouseLeave={() => setHover(prev => ({ ...prev, [code]: "" }))}
+            >
+              <figure>{ThemeIcon(code)}</figure>
+              <span className="capitalize">{code}</span>
+            </ThemeMenuBtn>
+          </ThemeListItem>
+        ))}
+      </ul>
+    </ThemeMenuContainer>
   );
 }

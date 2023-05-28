@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { ThemeProvider, styled } from "styled-components";
+import { styled } from "styled-components";
 
 // state
 import { ThemeStateTypes, themeState } from "@/states/theme";
@@ -10,16 +10,15 @@ import * as ThemeSvg from "./BtnIcons";
 
 // style
 import { SvgFill, position } from "@/styles/styled/mixins";
-import { utilBtnColors } from "@/styles/styled/gnb";
 
 const ToggleBtn = styled.button`
-  ${({ theme }) => SvgFill(theme.svg)};
+  ${({ theme }) => SvgFill(theme.gnbUtilBtn.svg)};
   &.hover {
-    background-color: ${({ theme }) => theme.bg};
-    ${({ theme }) => SvgFill(theme.svgHover)};
+    background-color: ${({ theme }) => theme.gnbUtilBtn.bg};
+    ${({ theme }) => SvgFill(theme.gnbUtilBtn.svgHover)};
   }
   &:active {
-    ${({ theme }) => SvgFill(theme.svgActive)};
+    ${({ theme }) => SvgFill(theme.gnbUtilBtn.svgActive)};
   }
 `;
 
@@ -36,7 +35,6 @@ const ToggleIcon = styled.figure`
 export default function ThemeToggleBtn() {
   const [theme, setTheme] = useRecoilState<ThemeStateTypes>(themeState);
   const [hover, setHover] = useState<string>("");
-  const [colors, setColors] = useState(utilBtnColors.light);
 
   const setToggle: () => void = () => {
     setTheme(prev => ({
@@ -49,23 +47,17 @@ export default function ThemeToggleBtn() {
     return theme.theme === thisTheme ? "on" : "";
   };
 
-  useEffect(() => {
-    setColors(utilBtnColors[theme.theme]);
-  }, [theme.theme]);
-
   return (
-    <ThemeProvider theme={colors}>
-      <ToggleBtn
-        className={`util-btn theme-btn ${hover}`}
-        onClick={() => setToggle()}
-        onMouseEnter={() => setHover("hover")}
-        onMouseLeave={() => setHover("")}
-      >
-        <ToggleIcon>
-          <ThemeSvg.Light className={updateIcon("light")} />
-          <ThemeSvg.Dark className={updateIcon("dark")} />
-        </ToggleIcon>
-      </ToggleBtn>
-    </ThemeProvider>
+    <ToggleBtn
+      className={`util-btn theme-btn ${hover}`}
+      onClick={() => setToggle()}
+      onMouseEnter={() => setHover("hover")}
+      onMouseLeave={() => setHover("")}
+    >
+      <ToggleIcon>
+        <ThemeSvg.Light className={updateIcon("light")} />
+        <ThemeSvg.Dark className={updateIcon("dark")} />
+      </ToggleIcon>
+    </ToggleBtn>
   );
 }

@@ -8,9 +8,11 @@ import { Noto_Sans_KR, Noto_Serif_KR } from "next/font/google";
 import PageTemplate from "@/templates/PageTemplate";
 
 // components
-import ReactQuery from "@/components/roots/ReactQuery";
 import Recoil from "@/components/roots/Recoil";
+import ReactQuery from "@/components/roots/ReactQuery";
+import ThemeColors from "@/components/roots/ThemeColor";
 import Cursor from "@/components/cursor/Cursor";
+import PageHeader from "@/components/pageHeader/PageHeader";
 
 // fonts
 export const sans = Noto_Sans_KR({
@@ -30,7 +32,6 @@ export const serif = Noto_Serif_KR({
 import StyledComponentsRegistry from "./lib/registry";
 import "@/styles/scss/globals.scss";
 import { GlobalBodyStyle } from "@/styles/styled/body";
-import PageHeader from "@/components/pageHeader/PageHeader";
 
 export default function RootLayout({
   children,
@@ -38,21 +39,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
-      <body>
-        <Recoil>
-          <ReactQuery>
-            <StyledComponentsRegistry>
-              <GlobalBodyStyle />
-              <div className="page-container relative">
-                <PageHeader />
-                <PageTemplate>{children}</PageTemplate>
-                <Cursor />
-              </div>
-            </StyledComponentsRegistry>
-          </ReactQuery>
-        </Recoil>
-      </body>
-    </html>
+    <StyledComponentsRegistry>
+      <html lang="ko">
+        <body>
+          <Recoil>
+            <ReactQuery>
+              <ThemeColors>
+                <GlobalBodyStyle />
+                <div className="page-container relative">
+                  <PageHeader />
+                  <PageTemplate>{children}</PageTemplate>
+                  <Cursor />
+                </div>
+              </ThemeColors>
+            </ReactQuery>
+          </Recoil>
+        </body>
+      </html>
+    </StyledComponentsRegistry>
   );
 }
