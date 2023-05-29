@@ -21,7 +21,7 @@ export default function PageHeader() {
   return (
     <HeaderContainer
       as="header"
-      className="page-header sticky top-0 left-0 w-full flex items-center"
+      className="fixed top-0 left-0 w-full flex items-center"
     >
       <TimeDisplay />
       <Gnb />
