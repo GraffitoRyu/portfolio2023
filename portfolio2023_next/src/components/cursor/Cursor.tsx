@@ -4,24 +4,23 @@ import React, { useEffect, useRef } from "react";
 import { useRecoilState } from "recoil";
 import { styled } from "styled-components";
 
+// state
 import { CursorTypes, cursorState } from "@/states/cursor";
 
+// style
+import { position, size } from "@/styles/styled/mixins";
+
+// util
+import { rem } from "@/util/unit";
+
 const CursorStyle = styled.div`
-  width: 1px;
-  height: 1px;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 9999999;
+  ${size({ width: "1px", height: "1px" })};
+  ${position({ type: "fixed", top: "0rem", left: "0rem", z: 9999 })}
   pointer-events: none;
   backface-visibility: visible;
   .cursor {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
+    ${size({ width: rem(8), height: rem(8) })};
+    ${position({ center: true })}
     border-radius: 50%;
     border: 1px solid ${({ theme }) => theme.cursor.basic};
     background: ${({ theme }) => theme.cursor.basic};
@@ -29,16 +28,14 @@ const CursorStyle = styled.div`
   }
   &.link {
     .cursor {
-      width: 64px;
-      height: 64px;
+      ${size({ width: rem(64), height: rem(64) })}
       background: ${({ theme }) => theme.cursor.hover};
     }
   }
   &.text {
     mix-blend-mode: difference;
     .cursor {
-      width: 4px;
-      height: 40px;
+      ${size({ width: rem(4), height: rem(40) })}
       border-radius: 2px;
     }
   }
