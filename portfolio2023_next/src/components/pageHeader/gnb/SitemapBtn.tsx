@@ -8,6 +8,8 @@ import { SitemapType } from "@/data/sitemap";
 
 // util
 import { rem } from "@/util/unit";
+import { useSetRecoilState } from "recoil";
+import { pageState, pageStateTypes } from "@/states/page";
 
 const SitemapLink = styled(Link)`
   margin-right: ${rem(64)};
@@ -22,8 +24,9 @@ const SitemapLink = styled(Link)`
   }
 `;
 
-export default function SitemapBtn({ path, name }: SitemapType) {
+export default function SitemapBtn({ code, path, name }: SitemapType) {
   const curPath = usePathname();
+  const setPageAtom = useSetRecoilState<pageStateTypes>(pageState);
   const [curPage, setCurPage] = useState<string>(path == curPath ? "now" : "");
   const [hover, setHover] = useState("");
 
@@ -37,6 +40,7 @@ export default function SitemapBtn({ path, name }: SitemapType) {
       className={`${curPage} ${hover}`}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
+      onClick={() => setPageAtom(prev => ({ ...prev, cur: code }))}
     >
       <span>{name}</span>
     </SitemapLink>
