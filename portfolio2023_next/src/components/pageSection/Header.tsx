@@ -12,6 +12,9 @@ type SectionHeaderTypes = {
   desc?: string[];
 };
 
+const Header = styled.header`
+  width: 50%;
+`;
 const HeaderTitle = styled.h2`
   margin-bottom: ${rem(80)};
   font-size: ${rem(32)};
@@ -27,7 +30,7 @@ export default function SectionHeader({
   desc,
 }: SectionHeaderTypes) {
   return (
-    <header className="section-header">
+    <Header className="section-header">
       {empty ? (
         ""
       ) : (
@@ -43,6 +46,6 @@ export default function SectionHeader({
           </HeaderDesc>
         </>
       )}
-    </header>
+    </Header>
   );
 }
