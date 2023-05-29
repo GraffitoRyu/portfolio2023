@@ -6,19 +6,21 @@ export default async function Career() {
 
   return (
     <ul className="career-list w-full">
-      {careerData?.map((c: CareerTypes) => {
-        return (
-          <li className="w-full" key={`career_${c.code}`}>
-            {/* @ts-expect-error Async Server Component */}
-            <Period date={c.period} />
-            <h3 className="flex items-center">
-              <strong className="role">{c.role}</strong>
-              <span className="company flex items-center">{c.company}</span>
-            </h3>
-            <p>{c.desc}</p>
-          </li>
-        );
-      }) ?? ""}
+      {careerData?.length > 0
+        ? careerData.map((c: CareerTypes) => {
+            return (
+              <li className="w-full" key={`career_${c.code}`}>
+                {/* @ts-expect-error Async Server Component */}
+                <Period date={c.period} />
+                <h3 className="flex items-center">
+                  <strong className="role">{c.role}</strong>
+                  <span className="company flex items-center">{c.company}</span>
+                </h3>
+                <p>{c.desc}</p>
+              </li>
+            );
+          })
+        : ""}
     </ul>
   );
 }
