@@ -1,4 +1,8 @@
+import React from "react";
+
 import PageSection from "@/components/pageSection/PageSection";
+import PageVisual from "@/components/pageSection/Visual";
+import PageIntro from "@/components/pageSection/Intro";
 import SectionHeader from "@/components/pageSection/Header";
 import SectionContents from "@/components/pageSection/Contents";
 import Career from "@/components/profile/Career";
@@ -8,9 +12,26 @@ import Tools from "@/components/profile/Tools";
 export default function Profile() {
   return (
     <>
-      <div className="page-section intro-section">
-        <h1>프로필</h1>
-      </div>
+      <PageSection className="intro-section" isVisual={true}>
+        <PageVisual title={["Ready for", "interaction"]} />
+        <SectionHeader empty={true} />
+        <SectionContents>
+          <PageIntro
+            title={[
+              "인터랙션 이벤트 구현에 관심이 많은",
+              <React.Fragment key="strongLine">
+                프론트엔드 개발자 <strong>류대현</strong>입니다.
+              </React.Fragment>,
+            ]}
+            desc={[
+              "2018년 웹 디자인과 웹 퍼블리싱으로 시작하여, ",
+              "2020년부터는 프론트엔드 개발 위주로 경험을 쌓았습니다. ",
+              "컴포넌트 기반 구조와, 인터랙티브한 반응형 웹을 ",
+              "각각 효율적으로 구축하기 위해 항상 연구하고 있습니다.",
+            ]}
+          />
+        </SectionContents>
+      </PageSection>
       <PageSection>
         <SectionHeader
           title="career"

@@ -1,13 +1,29 @@
+"use client";
+
 import React from "react";
+import { styled } from "styled-components";
+
+// util
+import { rem } from "@/util/unit";
+
+const Section = styled.section`
+  &:not(.intro-section) {
+    padding: ${rem(160)} ${rem(80)};
+  }
+`;
 
 export default function PageSection({
   children,
+  className,
+  isVisual,
 }: {
   children: React.ReactNode;
+  className?: string;
+  isVisual?: boolean;
 }) {
-  return (
-    <section className="page-section w-full flex items-start">
-      {children}
-    </section>
-  );
+  const sectionClass = [
+    `page-section w-full flex ${isVisual ? "flex-wrap" : "items-start"}`,
+  ];
+  if (className) sectionClass.push(className);
+  return <Section className={sectionClass.join(" ")}>{children}</Section>;
 }
