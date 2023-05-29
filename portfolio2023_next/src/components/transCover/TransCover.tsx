@@ -10,7 +10,6 @@ import { flex, position } from "@/styles/styled/mixins";
 import { rem } from "@/util/unit";
 import { useRecoilValue } from "recoil";
 import { pageState, pageStateTypes } from "@/states/page";
-import { serif } from "../../../app/layout";
 
 const TransitionCover = styled.div`
   ${position({ type: "fixed", left: "0rem", bottom: "0rem", z: 3000 })}
@@ -42,15 +41,15 @@ const TransTitle = styled.h1`
 `;
 
 export default function TransCover() {
-  const { cur } = useRecoilValue<pageStateTypes>(pageState);
+  const { init, cur, loaded } = useRecoilValue<pageStateTypes>(pageState);
   const [loading, setLoading] = useState("");
 
   useEffect(() => {
-    setLoading("loading");
-    setTimeout(() => {
-      setLoading("");
-    }, 3000);
-  }, [cur]);
+    if (init) {
+      if (loaded) setTimeout(() => setLoading(""), 3000);
+      else setLoading("loading");
+    }
+  }, [loaded]);
 
   return (
     <TransitionCover className={loading}>
