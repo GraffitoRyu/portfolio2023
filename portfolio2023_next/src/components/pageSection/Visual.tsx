@@ -7,7 +7,10 @@ import { rem } from "@/util/unit";
 import { flex, size } from "@/styles/styled/mixins";
 
 const VisualContainer = styled.div`
-  ${size({ width: "100%", height: `${window.innerHeight}px` })}
+  ${size({
+    width: "100%",
+    height: typeof window !== "undefined" ? `${window.innerHeight}px` : "100vh",
+  })}
   ${flex({ dir: "column", cross: "start" })}
   padding: 0 ${rem(80)};
 `;
