@@ -11,15 +11,13 @@ import ThemeColors from "@/components/roots/ThemeColor";
 import Cursor from "@/components/cursor/Cursor";
 
 // styles
+import { sans, serif } from "@/styles/fonts/fonts";
 import StyledComponentsRegistry from "./lib/registry";
 import "@/styles/scss/globals.scss";
 import { GlobalBodyStyle } from "@/styles/styled/body";
-import dynamic from "next/dynamic";
-import { sans, serif } from "@/styles/fonts/fonts";
-
-const TransCover = dynamic(() => import("@/components/transCover/TransCover"), {
-  ssr: false,
-});
+import { Suspense } from "react";
+import { NavigationEvents } from "@/components/transCover/TransEnter";
+import TransCover from "@/components/transCover/TransCover";
 
 export default function RootLayout({
   children,
@@ -29,7 +27,6 @@ export default function RootLayout({
   return (
     <StyledComponentsRegistry>
       <html lang="ko" className={`${sans.variable} ${serif.variable}`}>
-        <head></head>
         <body>
           <Recoil>
             <ReactQuery>
@@ -38,6 +35,9 @@ export default function RootLayout({
                 <div className="page-container w-full h-full relative">
                   <PageTemplate>{children}</PageTemplate>
                   {/* <TransCover /> */}
+                  <Suspense fallback={null}>
+                    <NavigationEvents />
+                  </Suspense>
                   <Cursor />
                 </div>
               </ThemeColors>
