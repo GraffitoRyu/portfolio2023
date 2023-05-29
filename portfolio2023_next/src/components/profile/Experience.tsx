@@ -1,6 +1,9 @@
-import { DescDepthTypes } from "@/types/common";
+// type
 import { ExperienceTypes } from "@/types/profile";
-import ParseDescription from "../common/ParseDesc";
+import { DescDepthTypes } from "@/types/parseDesc";
+
+// util components
+import ParseDescDepth from "../common/ParseDescDepth";
 
 export default async function Experience() {
   const expData: ExperienceTypes[] | [] = (await getExp()) ?? [];
@@ -13,7 +16,7 @@ export default async function Experience() {
             <dt className="Capitalize">{ex.code}</dt>
             {ex.desc?.map((desc: string | DescDepthTypes, i) => (
               <dd key={`exp_depth1_${i}`}>
-                <ParseDescription data={desc} />
+                <ParseDescDepth data={desc} />
               </dd>
             ))}
           </dl>

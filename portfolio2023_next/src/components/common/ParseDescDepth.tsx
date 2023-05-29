@@ -1,10 +1,6 @@
-import { DescDepthTypes } from "@/types/common";
+import { DescTypes } from "@/types/parseDesc";
 
-export type DescTypes = {
-  data: string | DescDepthTypes;
-};
-
-export default function ParseDescription({ data }: DescTypes) {
+export default function ParseDescDepth({ data }: DescTypes) {
   return (
     <>
       {typeof data === "string" ? (
