@@ -4,7 +4,7 @@ import React from "react";
 import { styled } from "styled-components";
 
 type IntroTypes = {
-  title: [string | React.ExoticComponent];
+  title: Array<string | JSX.Element>;
   desc: string[];
 };
 
@@ -14,7 +14,7 @@ export default function PageIntro({ title, desc }: IntroTypes) {
   return (
     <IntroContainer>
       <h2>
-        {title.map((t: string | React.ExoticComponent, i: number) => (
+        {title.map((t: string | JSX.Element, i: number) => (
           <React.Fragment key={`introTItle_${i}`}>
             <span>{t}</span>
             {i < title.length - 1 ? <br /> : ""}
