@@ -1,6 +1,6 @@
 import { DescDepthTypes } from "@/types/common";
 import { ExperienceTypes } from "@/types/profile";
-import ParseDescription from "@/components/common/parseDesc";
+import ParseDescription from "../common/ParseDesc";
 
 export default async function Experience() {
   const expData: ExperienceTypes[] | [] = (await getExp()) ?? [];
