@@ -1,8 +1,9 @@
-/* @tailwind base; */
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @import "./reset";
 @import "./variables";
+@import "./common";
 @import "./remRoot";
 @import "./transitions";
