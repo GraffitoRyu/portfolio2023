@@ -28,17 +28,20 @@ type FlexTypes = {
   dir?: string | undefined;
   std?: string | undefined;
   cross?: string | undefined;
+  wrap?: string | undefined;
 };
 /**
  * @property {string | undefined} [dir] : row, column
  * @property {string | undefined} [std] : justify-content (기준 축 정렬)
  * @property {string | undefined} [cross] : align-items (교차 축 정렬)
+ * @property {string | undefined} [wrap] : flex-wrap
  */
-export const flex = ({ dir, std, cross }: FlexTypes) => css`
+export const flex = ({ dir, std, cross, wrap }: FlexTypes) => css`
   display: flex;
   justify-content: ${std ?? "center"};
   align-items: ${cross ?? "center"};
-  ${dir ? `flex-direction: ${dir};` : ""}
+  ${dir && `flex-direction: ${dir};`}
+  ${wrap && `flex-wrap:${wrap};`}
 `;
 
 type PositionTypes = {
