@@ -20,10 +20,11 @@ export default function Gnb() {
   return (
     <nav className="gnb ml-auto flex items-center">
       <GnbCommonStyle />
-      {gnbData?.map(d => <SitemapBtn key={`sitemapMenu_${d.code}`} {...d} />) ??
-        ""}
+      {gnbData?.map((d: SitemapType) => (
+        <SitemapBtn key={`sitemapMenu_${d.code}`} {...d} />
+      )) ?? ""}
       {<ThemeContainer />}
-      {extData?.map(d => (
+      {extData?.map((d: SitemapType) => (
         <ExternalBtn key={`externalLink_${d.code}`} {...d} />
       )) ?? ""}
     </nav>
