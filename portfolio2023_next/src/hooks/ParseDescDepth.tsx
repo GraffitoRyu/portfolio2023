@@ -1,4 +1,18 @@
+import { size } from "@/styles/styled/mixins";
 import { DescTypes } from "@/types/parseDesc";
+import { rem } from "@/util/unit";
+import { styled } from "styled-components";
+
+const DepthItem = styled.li`
+  font-size: 0;
+  &:before {
+    content: "";
+    display: inline-block;
+    ${size({ width: rem(8), height: rem(8) })}
+    border-radius:50%;
+    margin: ${rem(8)} ${rem(16)} 0;
+  }
+`;
 
 export default function ParseDescDepth({ data }: DescTypes) {
   return (
@@ -12,11 +26,11 @@ export default function ParseDescDepth({ data }: DescTypes) {
           <p>
             <span>{data.depth1}</span>
           </p>
-          <ul>
+          <ul className="depth-desc">
             {data.depth2?.map((d2: string, i: number) => (
-              <li key={`parsed_${i}`}>
-                <span>- {d2}</span>
-              </li>
+              <DepthItem key={`parsed_${i}`}>
+                <span>{d2}</span>
+              </DepthItem>
             )) ?? ""}
           </ul>
         </>

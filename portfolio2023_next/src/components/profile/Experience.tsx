@@ -1,9 +1,51 @@
+"use client";
+
 // type
 import { ExperienceTypes } from "@/types/profile";
 import { DescDepthTypes } from "@/types/parseDesc";
 
 // util components
 import ParseDescDepth from "@/hooks/ParseDescDepth";
+import { styled } from "styled-components";
+import { rem } from "@/util/unit";
+
+const ExpItem = styled.li`
+  margin-bottom: ${rem(120)};
+  @media only screen and (min-width: 1024px) {
+    margin-bottom: ${rem(80)};
+  }
+`;
+
+const ExpTitle = styled.dt`
+  margin-bottom: ${rem(16)};
+  color: ${({ theme }) => theme.exp.title};
+  text-transform: capitalize;
+  @media only screen and (min-width: 1024px) {
+    margin-bottom: ${rem(80)};
+    font-size: ${rem(40)};
+  }
+`;
+
+const ExpDesc = styled.dd`
+  p,
+  span {
+    color: ${({ theme }) => theme.exp.desc};
+    font-size: ${rem(32)};
+    font-weight: 400;
+    line-height: 2em;
+  }
+  .depth-desc {
+    li:before {
+      background-color: ${({ theme }) => theme.exp.desc};
+    }
+  }
+  @media only screen and (min-width: 1024px) {
+    p,
+    span {
+      font-size: ${rem(24)};
+    }
+  }
+`;
 
 export default async function Experience() {
   const expData: ExperienceTypes[] | [] = (await getExp()) ?? [];
@@ -11,16 +53,16 @@ export default async function Experience() {
   return (
     <ul className="experience-list w-full">
       {expData?.map((ex: ExperienceTypes) => (
-        <li className="w-full" key={`exp_${ex.code}`}>
+        <ExpItem className="w-full" key={`exp_${ex.code}`}>
           <dl>
-            <dt className="Capitalize">{ex.code}</dt>
+            <ExpTitle className="Capitalize">{ex.code}</ExpTitle>
             {ex.desc?.map((desc: string | DescDepthTypes, i) => (
-              <dd key={`exp_depth1_${i}`}>
+              <ExpDesc key={`exp_depth1_${i}`}>
                 <ParseDescDepth data={desc} />
-              </dd>
+              </ExpDesc>
             ))}
           </dl>
-        </li>
+        </ExpItem>
       )) ?? ""}
     </ul>
   );

@@ -1,14 +1,27 @@
 "use client";
 
+import { flex, size } from "@/styles/styled/mixins";
 import { rem } from "@/util/unit";
 import { HTMLAttributes } from "react";
 import { styled } from "styled-components";
 
+const PeriodContainer = styled.div`
+  ${flex({ std: "start" })}
+  font-size: ${rem(32)};
+  font-weight: 400;
+  @media only screen and (min-width: 1024px) {
+    font-size: ${rem(20)};
+  }
+`;
+
 const Bar = styled.span`
-  width: ${rem(56)};
-  height: ${rem(2)};
-  margin: 0 ${rem(24)};
-  background-color: white;
+  width: ${rem(80)};
+  height: ${rem(1)};
+  margin: 0 ${rem(32)};
+  @media only screen and (min-width: 1024px) {
+    ${size({ width: rem(56), height: rem(2) })}
+    margin:0 ${rem(16)};
+  }
 `;
 
 export default function Period({
@@ -19,11 +32,11 @@ export default function Period({
   date: string[];
 }): JSX.Element {
   return (
-    <div className={`period flex items-center ${className}`}>
+    <PeriodContainer className={`period ${className}`}>
       <PeriodTime date={date[0]} />
       <Bar />
       <PeriodTime date={date[1]} />
-    </div>
+    </PeriodContainer>
   );
 }
 

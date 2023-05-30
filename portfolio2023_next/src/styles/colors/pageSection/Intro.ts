@@ -24,7 +24,7 @@ export const intro = {
     bgFrom: "rgb(26, 26, 26)",
     bgTo: "rgba(26, 26, 26, 0)",
     title: "#a0a0a0",
-    strong: "#fff",
-    desc: "#ccc",
+    strong: "#dfdfdf",
+    desc: "#a0a0a0",
   },
 };

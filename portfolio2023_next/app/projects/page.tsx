@@ -13,7 +13,7 @@ export default function Projects() {
       <PageSection className="intro-section" isVisual={true}>
         <PageVisual title={["Selected", "projects"]} />
         <SectionHeader empty={true} />
-        <SectionContents>
+        <SectionContents full={true}>
           <PageIntro
             title={["최근 참여한 프로젝트를 소개합니다."]}
             desc={[
