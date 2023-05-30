@@ -10,10 +10,10 @@ import { SitemapType, sitemapData } from "@/data/sitemap";
 import { GnbCommonStyle } from "@/styles/styled/gnb";
 
 const gnbData: SitemapType[] | undefined = sitemapData.filter(
-  d => d.header && !d.external
+  (d: SitemapType) => d.header && !d.external
 );
 const extData: SitemapType[] | undefined = sitemapData.filter(
-  d => d.header && d.external
+  (d: SitemapType) => d.header && d.external
 );
 
 export default function Gnb() {

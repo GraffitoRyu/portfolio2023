@@ -69,7 +69,7 @@ const ThemeMenuBtn = styled.button`
   }
 `;
 
-type hoverTypes = {
+type HoverTypes = {
   [key: string]: string | undefined;
   light?: string;
   dark?: string;
@@ -78,13 +78,13 @@ type hoverTypes = {
 
 export default function ThemeMenuList() {
   const themeList: string[] = ["light", "dark", "system"];
-  const themeClasses: hoverTypes =
+  const themeClasses: HoverTypes =
     Object.fromEntries(themeList.map(t => [t, ""])) ?? {};
 
   const [theme, setTheme] = useRecoilState<ThemeStateTypes>(themeState);
   const [openClass, setOpenClass] = useState<string>("hidden");
   const [themeClass, setThemeClass] = useState<string>("system");
-  const [hover, setHover] = useState<hoverTypes>(themeClasses);
+  const [hover, setHover] = useState<HoverTypes>(themeClasses);
 
   const changeTheme: (selectedTheme: string) => void = selectedTheme => {
     if (!selectedTheme) return;
