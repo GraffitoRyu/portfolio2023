@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 // meta data
 export { metadata } from "@/data/meta";
 
@@ -15,9 +17,10 @@ import { sans, serif } from "@/styles/fonts/fonts";
 import StyledComponentsRegistry from "./lib/registry";
 import "@/styles/scss/globals.scss";
 import { GlobalBodyStyle } from "@/styles/styled/body";
-import { Suspense } from "react";
-import { NavigationEvents } from "@/components/transCover/TransEnter";
-import TransCover from "@/components/transCover/TransCover";
+
+// util components
+import { PageLoadEvents } from "@/hooks/PageLoadEvents";
+// import TransCover from "@/components/pageTransition/TransCover";
 
 export default function RootLayout({
   children,
@@ -34,9 +37,8 @@ export default function RootLayout({
                 <GlobalBodyStyle />
                 <div className="page-container w-full h-full relative">
                   <PageTemplate>{children}</PageTemplate>
-                  {/* <TransCover /> */}
                   <Suspense fallback={null}>
-                    <NavigationEvents />
+                    <PageLoadEvents />
                   </Suspense>
                   <Cursor />
                 </div>

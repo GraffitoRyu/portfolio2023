@@ -2,7 +2,9 @@
 
 import React from "react";
 import { styled } from "styled-components";
-import ParseDescNewLine from "../common/ParseDescNewLine";
+
+// util components
+import ParseDescNewLine from "@/hooks/ParseDescNewLine";
 
 type IntroTypes = {
   title: Array<string | JSX.Element>;
