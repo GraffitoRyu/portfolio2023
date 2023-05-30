@@ -25,8 +25,10 @@ export default function Projects() {
           />
         </SectionContents>
       </PageSection>
-      {/* @ts-expect-error Async Server Component */}
-      <ProjectList />
+      <PageSection>
+        {/* @ts-expect-error Async Server Component */}
+        <ProjectList />
+      </PageSection>
     </>
   );
 }
