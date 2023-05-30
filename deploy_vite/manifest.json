@@ -35,14 +35,16 @@
     "file": "assets/notion_icon-1ea49ff9.svg",
     "src": "../src/svg/header/notion_icon.svg"
   },
-  "_page-cb889c6a.js": {
-    "css": [
-      "assets/page-80432b00.css"
-    ],
-    "file": "assets/page-cb889c6a.js"
+  "index.css": {
+    "file": "assets/index-80432b00.css",
+    "src": "index.css"
   },
-  "page.css": {
-    "file": "assets/page-80432b00.css",
-    "src": "page.css"
+  "index.html": {
+    "css": [
+      "assets/index-80432b00.css"
+    ],
+    "file": "assets/main-2d6ca20c.js",
+    "isEntry": true,
+    "src": "index.html"
   }
 }
