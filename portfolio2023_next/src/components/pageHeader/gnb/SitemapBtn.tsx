@@ -40,9 +40,10 @@ export default function SitemapBtn({ code, path, name }: SitemapType) {
       className={`${curPage} ${hover}`}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
-      onClick={() =>
-        setPageAtom(prev => ({ ...prev, cur: code, loaded: false }))
-      }
+      onClick={() => {
+        console.log("페이지 변경 시작: ", code);
+        setPageAtom(prev => ({ ...prev, cur: code, loaded: false }));
+      }}
     >
       <span>{name}</span>
     </SitemapLink>
