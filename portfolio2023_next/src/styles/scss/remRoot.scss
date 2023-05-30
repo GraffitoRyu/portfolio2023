@@ -1,12 +1,12 @@
 html {
   font-size: 10px;
   @media only screen and (min-width: 580px) {
-    font-size: 1.6vw;
+    font-size: 2vw;
   }
   @media only screen and (min-width: 1024px) {
-    font-size: 1.4vw;
-  }
-  @media only screen and (min-width: 1600px) {
     font-size: 1vw;
   }
+  // @media only screen and (min-width: 1600px) {
+  //   font-size: 1vw;
+  // }
 }
