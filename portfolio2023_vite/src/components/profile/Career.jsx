@@ -16,7 +16,7 @@ export default function Career() {
       key: "kweb",
       period: [
         new Date("2018-11-01T00:00:00"),
-        new Date("2019-03-31T00:00:00"),
+        new Date("2019-02-28T00:00:00"),
       ],
       role: "웹 퍼블리셔",
       company: "케이웹미디어",
