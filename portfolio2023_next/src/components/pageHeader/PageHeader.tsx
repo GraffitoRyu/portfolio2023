@@ -11,7 +11,7 @@ import { rem } from "@/util/unit";
 import { flex, position } from "@/styles/styled/mixins";
 
 const HeaderContainer = styled.header`
-  ${position({ type: "sticky", top: "0px", left: "0px" })}
+  ${position({ type: "sticky", top: 0, left: 0 })}
   ${flex({ std: "start" })}
   width:100%;
   padding: ${rem(80)};
