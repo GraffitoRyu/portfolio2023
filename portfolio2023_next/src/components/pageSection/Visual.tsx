@@ -14,7 +14,9 @@ const VisualContainer = styled.div`
     ${size({
       width: "100%",
       height:
-        typeof window !== "undefined" ? `${window.innerHeight}px` : "100vh",
+        typeof window !== "undefined"
+          ? `calc(${window.innerHeight}px - ${rem(80 * 2 + 32)})`
+          : "100vh",
     })}
   }
 `;
