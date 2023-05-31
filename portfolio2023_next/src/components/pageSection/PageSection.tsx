@@ -9,7 +9,7 @@ import { rem } from "@/util/unit";
 const Section = styled.section`
   position: relative;
   width: 100%;
-  &:not(.intro-section) {
+  &:not(.no-padding) {
     padding: ${rem(160)} ${rem(80)};
   }
 `;

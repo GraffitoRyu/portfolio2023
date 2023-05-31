@@ -12,7 +12,7 @@ import Tools from "@/components/profile/Tools";
 export default function Profile() {
   return (
     <>
-      <PageSection className="intro-section" isVisual={true}>
+      <PageSection className="intro-section no-padding" isVisual={true}>
         <PageVisual title={["Ready for", "interaction"]} />
         <SectionHeader empty={true} />
         <SectionContents>

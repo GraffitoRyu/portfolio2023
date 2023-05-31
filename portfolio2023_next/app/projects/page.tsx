@@ -10,10 +10,10 @@ import ProjectList from "@/components/projects/List";
 export default function Projects() {
   return (
     <>
-      <PageSection className="intro-section" isVisual={true}>
+      <PageSection className="intro-section no-padding" isVisual={true}>
         <PageVisual title={["Selected", "projects"]} />
         <SectionHeader empty={true} />
-        <SectionContents full={true}>
+        <SectionContents>
           <PageIntro
             title={["최근 참여한 프로젝트를 소개합니다."]}
             desc={[
@@ -25,9 +25,11 @@ export default function Projects() {
           />
         </SectionContents>
       </PageSection>
-      <PageSection>
-        {/* @ts-expect-error Async Server Component */}
-        <ProjectList />
+      <PageSection className="no-padding">
+        <SectionContents full={true}>
+          {/* @ts-expect-error Async Server Component */}
+          <ProjectList />
+        </SectionContents>
       </PageSection>
     </>
   );
