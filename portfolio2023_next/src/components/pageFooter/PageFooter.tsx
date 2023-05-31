@@ -7,8 +7,10 @@ import FooterUpperContainer from "./FooterUpper";
 import FooterLowerContainer from "./FooterLower";
 
 // style
-import { rem } from "@/util/unit";
 import { flex, position, size } from "@/styles/styled/mixins";
+
+// util
+import { rem } from "@/util/unit";
 
 const FooterContainer = styled.footer`
   ${position({ type: "relative", z: 600 })}

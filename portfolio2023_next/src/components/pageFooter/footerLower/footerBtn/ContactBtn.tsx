@@ -1,7 +1,13 @@
-import { SitemapType } from "@/data/sitemap";
-import { FooterBtn } from "@/styles/styled/footer";
-import ExternalIcon from "@/svg/common/external_icon.svg";
 import { useState } from "react";
+
+// svg
+import ExternalIcon from "@/svg/common/external_icon.svg";
+
+// style
+import { FooterBtn } from "@/styles/styled/footer";
+
+// data
+import { SitemapType } from "@/data/sitemap";
 
 export default function ContactBtn({ path, name }: SitemapType): JSX.Element {
   const [hover, setHover] = useState<string>("");

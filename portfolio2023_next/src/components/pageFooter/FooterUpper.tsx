@@ -1,6 +1,10 @@
-import { flex } from "@/styles/styled/mixins";
-import { rem } from "@/util/unit";
 import { styled } from "styled-components";
+
+// style
+import { flex } from "@/styles/styled/mixins";
+
+// util
+import { rem } from "@/util/unit";
 
 const FooterHeader = styled.header`
   margin-bottom: ${rem(80)};
@@ -47,7 +51,7 @@ export default function FooterUpperContainer() {
   return (
     <FooterHeader>
       <FooterTitle>
-        <span>Let's work</span>
+        <span>{`Let's work`}</span>
         <span>together</span>
       </FooterTitle>
     </FooterHeader>

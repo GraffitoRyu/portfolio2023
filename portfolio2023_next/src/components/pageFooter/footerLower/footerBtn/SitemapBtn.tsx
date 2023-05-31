@@ -1,9 +1,15 @@
-import { SitemapType } from "@/data/sitemap";
-import { FooterBtn } from "@/styles/styled/footer";
-import ExternalIcon from "@/svg/common/external_icon.svg";
-import Link from "next/link";
 import { useState } from "react";
+import Link from "next/link";
 import { styled } from "styled-components";
+
+// svg
+import ExternalIcon from "@/svg/common/external_icon.svg";
+
+// style
+import { FooterBtn } from "@/styles/styled/footer";
+
+// data
+import { SitemapType } from "@/data/sitemap";
 
 const FooterMenuBtn = styled(FooterBtn)``;
 

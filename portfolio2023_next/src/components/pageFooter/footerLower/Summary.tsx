@@ -1,6 +1,10 @@
-import { FooterInfoItem, FooterInfoTitle } from "@/styles/styled/footer";
-import { rem } from "@/util/unit";
 import { styled } from "styled-components";
+
+// style
+import { FooterInfoItem, FooterInfoTitle } from "@/styles/styled/footer";
+
+// util
+import { rem } from "@/util/unit";
 
 const FooterSummary = styled.dl`
   margin-right: auto;

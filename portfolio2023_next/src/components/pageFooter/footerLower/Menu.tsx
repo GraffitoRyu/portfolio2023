@@ -4,9 +4,11 @@ import { styled } from "styled-components";
 import ContactBtn from "./footerBtn/ContactBtn";
 import SitemapBtn from "./footerBtn/SitemapBtn";
 
+// style
+import { FooterInfoItem, FooterInfoTitle } from "@/styles/styled/footer";
+
 // data
 import { SitemapType, sitemapData } from "@/data/sitemap";
-import { FooterInfoItem, FooterInfoTitle } from "@/styles/styled/footer";
 
 const FooterMenu = styled.dl`
   width: 25%;
