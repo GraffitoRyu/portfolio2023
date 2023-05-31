@@ -35,13 +35,13 @@ export default function RootLayout({
             <ReactQuery>
               <ThemeColors>
                 <GlobalBodyStyle />
-                <div className="page-container w-full h-full relative">
+                <main className="page-container w-full h-full relative">
                   <PageTemplate>{children}</PageTemplate>
                   <Suspense fallback={null}>
                     <PageLoadEvents />
                   </Suspense>
                   <Cursor />
-                </div>
+                </main>
               </ThemeColors>
             </ReactQuery>
           </Recoil>
