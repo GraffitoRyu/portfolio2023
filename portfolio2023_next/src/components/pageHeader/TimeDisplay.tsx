@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 
@@ -5,6 +7,7 @@ import { styled } from "styled-components";
 import { rem } from "@/util/unit";
 
 const TimerContainer = styled.div`
+  height: ${rem(32)};
   border-top: ${rem(4)} solid ${({ theme }) => theme.timer.bar};
   border-bottom: ${rem(4)} solid transparent;
   padding: 0 ${rem(40)} 0 ${rem(2)};
@@ -16,11 +19,6 @@ const TimerContainer = styled.div`
 
 export default function TimeDisplay() {
   const [curTime, setCurTime] = useState<Date | undefined>(undefined);
-
-  // initiate time
-  useEffect(() => {
-    setCurTime(new Date());
-  }, []);
 
   // update real time
   useEffect(() => {
