@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import Head from "next/head";
 
 // meta data
 export { metadata } from "@/data/meta";
@@ -32,13 +31,13 @@ export default function RootLayout({
     <StyledComponentsRegistry>
       <html lang="ko">
         {/* <html lang="ko" className={`${sans.variable} ${serif.variable}`}> */}
-        <Head>
+        <head>
           {/* eslint-disable-next-line @next/next/no-page-custom-font */}
           <link
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;500;700&display=swap"
             rel="stylesheet"
           />
-        </Head>
+        </head>
         <body>
           <Recoil>
             <ReactQuery>
