@@ -19,7 +19,7 @@ const FooterSummary = styled.dl`
     margin-bottom: 0;
   }
 `;
-const FooterSummeryDesc = styled(FooterInfoItem)`
+const FooterSummaryDesc = styled(FooterInfoItem)`
   font-weight: 300;
   letter-spacing: 0;
 `;
@@ -27,11 +27,19 @@ const FooterSummeryDesc = styled(FooterInfoItem)`
 export default function FooterSummaryContainer() {
   return (
     <FooterSummary>
-      <FooterInfoTitle>Ryu, Daehyeon</FooterInfoTitle>
-      <FooterSummeryDesc>UIUX Engineering</FooterSummeryDesc>
-      <FooterSummeryDesc>Front-end Development</FooterSummeryDesc>
-      <FooterSummeryDesc>based in Daejeon, South Korea</FooterSummeryDesc>
-      <FooterSummeryDesc>4+ years of experience</FooterSummeryDesc>
+      <FooterInfoTitle key={`footerSummary`}>Ryu, Daehyeon</FooterInfoTitle>
+      <FooterSummaryDesc key={`footerSummary_0`}>
+        UIUX Engineering
+      </FooterSummaryDesc>
+      <FooterSummaryDesc key={`footerSummary_1`}>
+        Front-end Development
+      </FooterSummaryDesc>
+      <FooterSummaryDesc key={`footerSummary_2`}>
+        based in Daejeon, South Korea
+      </FooterSummaryDesc>
+      <FooterSummaryDesc key={`footerSummary_3`}>
+        4+ years of experience
+      </FooterSummaryDesc>
     </FooterSummary>
   );
 }

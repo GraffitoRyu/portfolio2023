@@ -29,7 +29,7 @@ export default function FooterMenuContainer({
 
   return (
     <FooterMenu>
-      <FooterInfoTitle>{title}</FooterInfoTitle>
+      <FooterInfoTitle key={`footerMenu`}>{title}</FooterInfoTitle>
       {data.map((d: SitemapType, i: number) => (
         <FooterMenuItem
           key={`footerMenu_${category}_${Math.floor(
