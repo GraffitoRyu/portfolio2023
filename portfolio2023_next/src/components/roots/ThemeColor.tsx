@@ -8,7 +8,7 @@ import { ThemeProvider } from "styled-components";
 import { ThemeStateTypes, themeState } from "@/states/theme";
 
 // style
-import { customThemes } from "@/styles/styled/color";
+import { customThemes } from "@/styles/styled/preset/color";
 
 export default function ThemeColors({ children }: { children: ReactNode }) {
   const { theme } = useRecoilValue<ThemeStateTypes>(themeState);

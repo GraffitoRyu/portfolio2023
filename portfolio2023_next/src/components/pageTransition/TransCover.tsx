@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 
 // style
-import { flex, position } from "@/styles/styled/mixins";
+import { flex, position } from "@/styles/styled/preset/mixins";
 
 // util
 import { rem } from "@/util/unit";

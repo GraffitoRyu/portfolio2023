@@ -1,7 +1,10 @@
 import { styled } from "styled-components";
 
 // style
-import { FooterInfoItem, FooterInfoTitle } from "@/styles/styled/footer";
+import {
+  FooterInfoItem,
+  FooterInfoTitle,
+} from "@/styles/styled/components/footer";
 
 // util
 import { rem } from "@/util/unit";

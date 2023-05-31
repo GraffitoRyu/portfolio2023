@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 // style
-import { flex } from "@/styles/styled/mixins";
+import { flex } from "@/styles/styled/preset/mixins";
 
 // util
 import { rem } from "@/util/unit";

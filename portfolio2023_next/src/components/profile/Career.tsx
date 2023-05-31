@@ -1,10 +1,18 @@
 "use client";
 
-import { CareerTypes } from "@/types/profile";
-import Period from "../period/Period";
 import { styled } from "styled-components";
+
+// components
+import Period from "../period/Period";
+
+// type
+import { CareerTypes } from "@/types/profile";
+
+// style
+import { flex, size } from "@/styles/styled/preset/mixins";
+
+// util
 import { rem } from "@/util/unit";
-import { flex, size } from "@/styles/styled/mixins";
 
 const CareerItem = styled.li`
   margin-bottom: ${rem(80)};
@@ -77,7 +85,6 @@ export default async function Career() {
         ? careerData.map((c: CareerTypes, i: number) => {
             return (
               <CareerItem className="w-full" key={`career_${c.code}_${i}`}>
-                {/* @ts-expect-error Async Server Component */}
                 <CareerPeriod date={c.period} />
                 <CareerTitle className="flex items-center">
                   <CareerRole className="role">{c.role}</CareerRole>

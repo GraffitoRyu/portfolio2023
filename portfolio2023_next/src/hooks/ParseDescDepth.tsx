@@ -1,4 +1,4 @@
-import { size } from "@/styles/styled/mixins";
+import { size } from "@/styles/styled/preset/mixins";
 import { DescTypes } from "@/types/parseDesc";
 import { rem } from "@/util/unit";
 import { styled } from "styled-components";

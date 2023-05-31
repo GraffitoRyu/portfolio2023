@@ -11,28 +11,34 @@
  * }
  */
 
-import { page, PageColorTypes } from "../colors/common/Page";
-import { cursor, CursorColorTypes } from "../colors/common/Cursor";
-import { scrollbar, ScrollBarColorTypes } from "../colors/common/Scrollbar";
-import { timer, TimerColorTypes } from "../colors/pageHeader/Timer";
+import { page, PageColorTypes } from "@/styles/colors/common/Page";
+import { cursor, CursorColorTypes } from "@/styles/colors/common/Cursor";
+import {
+  scrollbar,
+  ScrollBarColorTypes,
+} from "@/styles/colors/common/Scrollbar";
+import { timer, TimerColorTypes } from "@/styles/colors/pageHeader/Timer";
 import {
   gnbSitemapBtn,
   GnbSitemapBtnTypes,
-} from "../colors/pageHeader/SitemapBtn";
-import { gnbUtilBtn, GnbUtilTypes } from "../colors/pageHeader/UtilBtn";
-import { GnbThemeMenu, ThemeMenuTypes } from "../colors/pageHeader/ThemeMenu";
+} from "@/styles/colors/pageHeader/SitemapBtn";
+import { gnbUtilBtn, GnbUtilTypes } from "@/styles/colors/pageHeader/UtilBtn";
+import {
+  GnbThemeMenu,
+  ThemeMenuTypes,
+} from "@/styles/colors/pageHeader/ThemeMenu";
 import {
   sectionHeader,
   SectionHeaderTypes,
-} from "../colors/pageSection/Header";
-import { visual, VisualTypes } from "../colors/pageSection/Visual";
-import { intro, IntroTypes } from "../colors/pageSection/Intro";
-import { footer, FooterTypes } from "../colors/pageFooter/Footer";
-import { career, CareerColorTypes } from "../colors/profile/Career";
-import { experience, ExpColorTypes } from "../colors/profile/Experience";
-import { tools, ToolsColorTypes } from "../colors/profile/Tools";
-import { list, ListColorTypes } from "../colors/projects/List";
-import { details, DetailsColorTypes } from "../colors/projects/Details";
+} from "@/styles/colors/pageSection/Header";
+import { visual, VisualTypes } from "@/styles/colors/pageSection/Visual";
+import { intro, IntroTypes } from "@/styles/colors/pageSection/Intro";
+import { footer, FooterTypes } from "@/styles/colors/pageFooter/Footer";
+import { career, CareerColorTypes } from "@/styles/colors/profile/Career";
+import { experience, ExpColorTypes } from "@/styles/colors/profile/Experience";
+import { tools, ToolsColorTypes } from "@/styles/colors/profile/Tools";
+import { list, ListColorTypes } from "@/styles/colors/projects/List";
+import { details, DetailsColorTypes } from "@/styles/colors/projects/Details";
 
 export interface CustomThemeTypes {
   page: PageColorTypes;

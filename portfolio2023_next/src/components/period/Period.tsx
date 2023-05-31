@@ -1,14 +1,19 @@
 "use client";
 
-import { flex, size } from "@/styles/styled/mixins";
-import { rem } from "@/util/unit";
 import { HTMLAttributes } from "react";
 import { styled } from "styled-components";
+
+// style
+import { flex, size } from "@/styles/styled/preset/mixins";
+
+// util
+import { rem } from "@/util/unit";
 
 const PeriodContainer = styled.div`
   ${flex({ std: "start" })}
   font-size: ${rem(32)};
   font-weight: 400;
+  white-space: nowrap;
   @media only screen and (min-width: 1024px) {
     font-size: ${rem(20)};
   }
@@ -28,7 +33,7 @@ export default function Period({
   className,
   date,
 }: {
-  className: string | HTMLAttributes<HTMLDivElement>;
+  className?: string | HTMLAttributes<HTMLDivElement>;
   date: string[];
 }): JSX.Element {
   return (

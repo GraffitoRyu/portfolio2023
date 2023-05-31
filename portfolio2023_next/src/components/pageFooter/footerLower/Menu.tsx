@@ -5,7 +5,10 @@ import ContactBtn from "./footerBtn/ContactBtn";
 import SitemapBtn from "./footerBtn/SitemapBtn";
 
 // style
-import { FooterInfoItem, FooterInfoTitle } from "@/styles/styled/footer";
+import {
+  FooterInfoItem,
+  FooterInfoTitle,
+} from "@/styles/styled/components/footer";
 
 // data
 import { SitemapType, sitemapData } from "@/data/sitemap";

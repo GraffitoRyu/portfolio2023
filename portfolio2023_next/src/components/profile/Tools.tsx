@@ -1,8 +1,12 @@
 "use client";
 
-import { flex } from "@/styles/styled/mixins";
-import { rem } from "@/util/unit";
 import { styled } from "styled-components";
+
+// style
+import { flex } from "@/styles/styled/preset/mixins";
+
+// util
+import { rem } from "@/util/unit";
 
 const toolList = [
   "Next.js",

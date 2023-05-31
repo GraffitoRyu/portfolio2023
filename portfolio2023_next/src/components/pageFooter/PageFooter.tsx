@@ -7,7 +7,7 @@ import FooterUpperContainer from "./FooterUpper";
 import FooterLowerContainer from "./FooterLower";
 
 // style
-import { flex, position, size } from "@/styles/styled/mixins";
+import { flex, position, size } from "@/styles/styled/preset/mixins";
 
 // util
 import { rem } from "@/util/unit";

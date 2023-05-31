@@ -8,7 +8,7 @@ import { SitemapType } from "@/data/sitemap";
 import { rem } from "@/util/unit";
 
 // style
-import { SvgFill } from "@/styles/styled/mixins";
+import { SvgFill } from "@/styles/styled/preset/mixins";
 
 // SVG
 import * as ExtSvg from "./BtnIcons";

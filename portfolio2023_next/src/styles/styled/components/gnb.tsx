@@ -4,9 +4,9 @@ import { createGlobalStyle } from "styled-components";
 import { rem } from "@/util/unit";
 
 // style
-import { btnStyle } from "./buttons";
-import { maxSize, size } from "./mixins";
-import { img } from "./img";
+import { btnStyle } from "@/styles/styled/preset/buttons";
+import { maxSize, size } from "@/styles/styled/preset/mixins";
+import { img } from "@/styles/styled/preset/img";
 
 // GNB 공통 스타일
 export const GnbCommonStyle = createGlobalStyle`

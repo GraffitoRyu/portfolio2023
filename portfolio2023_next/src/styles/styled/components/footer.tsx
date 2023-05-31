@@ -1,7 +1,7 @@
 import { rem } from "@/util/unit";
 import { css, styled } from "styled-components";
-import { SvgFill, flex, size } from "./mixins";
-import { img } from "./img";
+import { SvgFill, flex, size } from "@/styles/styled/preset/mixins";
+import { img } from "@/styles/styled/preset/img";
 
 const FooterFontSize = css`
   font-size: ${rem(32)};

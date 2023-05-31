@@ -8,7 +8,7 @@ import { styled } from "styled-components";
 import { CursorTypes, cursorState } from "@/states/cursor";
 
 // style
-import { position, size } from "@/styles/styled/mixins";
+import { position, size } from "@/styles/styled/preset/mixins";
 
 // util
 import { rem } from "@/util/unit";

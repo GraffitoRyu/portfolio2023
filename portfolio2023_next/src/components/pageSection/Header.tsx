@@ -5,7 +5,7 @@ import { styled } from "styled-components";
 
 // util
 import { rem } from "@/util/unit";
-import { position } from "@/styles/styled/mixins";
+import { position } from "@/styles/styled/preset/mixins";
 
 type SectionHeaderTypes = {
   empty?: boolean;

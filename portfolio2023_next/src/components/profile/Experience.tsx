@@ -1,12 +1,15 @@
 "use client";
 
+import { styled } from "styled-components";
+
 // type
 import { ExperienceTypes } from "@/types/profile";
 import { DescDepthTypes } from "@/types/parseDesc";
 
 // util components
 import ParseDescDepth from "@/hooks/ParseDescDepth";
-import { styled } from "styled-components";
+
+// util
 import { rem } from "@/util/unit";
 
 const ExpItem = styled.li`

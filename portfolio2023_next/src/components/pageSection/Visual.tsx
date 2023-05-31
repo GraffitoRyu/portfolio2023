@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 
 // util
 import { rem } from "@/util/unit";
-import { flex, size } from "@/styles/styled/mixins";
+import { flex, size } from "@/styles/styled/preset/mixins";
 
 const VisualContainer = styled.div`
   ${size({ height: "50%" })}

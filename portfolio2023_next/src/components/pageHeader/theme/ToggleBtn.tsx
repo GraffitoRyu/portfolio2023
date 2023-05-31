@@ -9,7 +9,7 @@ import { ThemeStateTypes, themeState } from "@/states/theme";
 import * as ThemeSvg from "./BtnIcons";
 
 // style
-import { SvgFill, position } from "@/styles/styled/mixins";
+import { SvgFill, position } from "@/styles/styled/preset/mixins";
 
 const ToggleBtn = styled.button`
   ${({ theme }) => SvgFill(theme.gnbUtilBtn.svg)};

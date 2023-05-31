@@ -4,7 +4,7 @@ import { useState } from "react";
 import ExternalIcon from "@/svg/common/external_icon.svg";
 
 // style
-import { FooterBtn } from "@/styles/styled/footer";
+import { FooterBtn } from "@/styles/styled/components/footer";
 
 // data
 import { SitemapType } from "@/data/sitemap";

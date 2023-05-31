@@ -6,8 +6,8 @@ import { styled } from "styled-components";
 import { ThemeStateTypes, themeState } from "@/states/theme";
 
 // style
-import { img } from "@/styles/styled/img";
-import { SvgFill, flex, size } from "@/styles/styled/mixins";
+import { img } from "@/styles/styled/preset/img";
+import { SvgFill, flex, size } from "@/styles/styled/preset/mixins";
 
 // util
 import { getSystemTheme } from "@/util/changeTheme";

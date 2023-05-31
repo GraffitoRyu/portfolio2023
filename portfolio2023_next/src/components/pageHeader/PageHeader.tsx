@@ -8,7 +8,7 @@ import TimeDisplay from "./TimeDisplay";
 
 // util
 import { rem } from "@/util/unit";
-import { flex, position } from "@/styles/styled/mixins";
+import { flex, position } from "@/styles/styled/preset/mixins";
 
 const HeaderContainer = styled.header`
   ${position({ type: "sticky", top: 0, left: 0 })}

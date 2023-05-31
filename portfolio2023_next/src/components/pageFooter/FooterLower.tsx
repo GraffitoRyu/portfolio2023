@@ -5,7 +5,7 @@ import FooterMenuContainer from "./footerLower/Menu";
 import FooterSummaryContainer from "./footerLower/Summary";
 
 // style
-import { flex, size } from "@/styles/styled/mixins";
+import { flex, size } from "@/styles/styled/preset/mixins";
 
 // util
 import { rem } from "@/util/unit";
