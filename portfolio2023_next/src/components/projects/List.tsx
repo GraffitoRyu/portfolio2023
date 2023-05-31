@@ -1,12 +1,18 @@
-import { ProjectsType } from "@/types/projects";
+"use client";
+
+// components
 import ProjectItem from "./Item";
+import { ProjectListContainer } from "@/styles/styled/components/projectList";
+
+// type
+import { ProjectsType } from "@/types/projects";
 
 export default async function ProjectList() {
   const listData: ProjectsType[] | undefined =
     (await getProjectsList()) ?? undefined;
 
   return (
-    <ul>
+    <ProjectListContainer>
       {listData
         ? listData.map(({ code, summary }: ProjectsType) => (
             <ProjectItem
@@ -16,7 +22,7 @@ export default async function ProjectList() {
             />
           ))
         : ""}
-    </ul>
+    </ProjectListContainer>
   );
 }
 

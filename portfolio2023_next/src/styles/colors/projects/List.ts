@@ -1,6 +1,6 @@
 export interface ListColorTypes {
   border: string;
-  borderHover: string;
+  bgHover: string;
   title: string;
   period: string;
   desc: string;
@@ -16,7 +16,7 @@ export interface ListModeTypes {
 export const list = {
   light: {
     border: "#ccc",
-    borderHover: "#efefef",
+    bgHover: "#efefef",
     title: "#5a5a5a",
     period: "#bfbfbf",
     desc: "#707070",
@@ -24,7 +24,7 @@ export const list = {
   },
   dark: {
     border: "#3a3a3a",
-    borderHover: "#242424",
+    bgHover: "#242424",
     title: "#5a5a5a",
     period: "#5a5a5a",
     desc: "#707070",
