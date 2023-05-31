@@ -14,21 +14,46 @@ type IntroTypes = {
 
 const IntroTitle = styled.h2`
   margin-bottom: ${rem(160)};
-  font-weight: 300;
+  color: ${({ theme }) => theme.introSection.title};
   font-size: ${rem(48)};
   line-height: ${rem(64)};
-  color: ${({ theme }) => theme.introSection.title};
+  font-weight: 300;
   strong {
-    font-weight: 500;
     color: ${({ theme }) => theme.introSection.strong};
+    font-weight: 500;
+  }
+  @media only screen and (min-width: 1024px) {
+    font-size: ${rem(48)};
+    line-height: ${rem(64)};
+  }
+  @media only screen and (min-width: 1024px) {
+    font-size: ${rem(64)};
+    line-height: ${rem(80)};
   }
 `;
 
 const IntroDesc = styled.p`
+  color: ${({ theme }) => theme.introSection.desc};
   font-size: ${rem(32)};
   line-height: ${rem(56)};
   font-weight: 400;
-  color: ${({ theme }) => theme.introSection.desc};
+  br {
+    display: none;
+  }
+  span {
+    display: inline-block;
+  }
+  @media only screen and (min-width: 640px) {
+    font-size: ${rem(24)};
+    line-height: ${rem(40)};
+    br {
+      display: inline;
+    }
+  }
+  @media only screen and (min-width: 1024px) {
+    font-size: ${rem(32)};
+    line-height: ${rem(56)};
+  }
 `;
 
 export default function PageIntro({ title, desc }: IntroTypes) {
