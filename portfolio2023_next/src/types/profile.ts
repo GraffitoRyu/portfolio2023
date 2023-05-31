@@ -1,4 +1,4 @@
-import { DescDepthTypes } from "./common";
+import { DescDepthTypes } from "./parseDesc";
 
 export type CareerTypes = {
   [index: string]: string | string[] | undefined;

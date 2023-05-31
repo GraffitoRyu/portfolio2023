@@ -49,7 +49,7 @@ export default function TransCover() {
       if (loaded) setTimeout(() => setLoading(""), 3000);
       else setLoading("loading");
     }
-  }, [loaded]);
+  }, [init, loaded]);
 
   return (
     <TransitionCover className={loading}>

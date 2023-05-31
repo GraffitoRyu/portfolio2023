@@ -6,7 +6,7 @@ import { styled } from "styled-components";
 // components
 import PageHeader from "@/components/pageHeader/PageHeader";
 import PageFooter from "@/components/pageFooter/PageFooter";
-import PageTransition from "../roots/PageTransition";
+// import PageTransition from "../roots/PageTransition";
 
 const ScrollContainer = styled.div`
   width: 100%;
