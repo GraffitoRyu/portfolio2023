@@ -49,7 +49,11 @@ export default function PageVisual({ title }: { title: string[] }) {
     <VisualContainer>
       <VisualTitle>
         {title.map((t: string) => (
-          <VisualTitleLine key={t}>{t}</VisualTitleLine>
+          <VisualTitleLine
+            key={`visualTitle_${Math.floor(Math.random() * 1000)}_${t}`}
+          >
+            {t}
+          </VisualTitleLine>
         ))}
       </VisualTitle>
     </VisualContainer>

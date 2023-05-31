@@ -28,7 +28,11 @@ export default function ParseDescDepth({ data }: DescTypes) {
           </p>
           <ul className="depth-desc">
             {data.depth2?.map((d2: string, i: number) => (
-              <DepthItem key={`parsed_${i}`}>
+              <DepthItem
+                key={`parseDescDepth_${Math.floor(
+                  Math.random() * 100000000
+                )}_${i}`}
+              >
                 <span>{d2}</span>
               </DepthItem>
             )) ?? ""}

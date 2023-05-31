@@ -6,8 +6,10 @@ import Period from "../period/Period";
 import SlideTitle from "./SlideTitle";
 
 export default function ProjectItem({
+  code,
   summary,
 }: {
+  code: string;
   summary: SummaryType;
 }): JSX.Element {
   const slideRef = useRef() as React.MutableRefObject<HTMLDivElement>;
@@ -38,8 +40,8 @@ export default function ProjectItem({
             <p>{summary.desc}</p>
           </div>
           <ul className="fade-container overflow-hidden flex items-center justify-end">
-            {summary.role?.map((d: string, i: number) => (
-              <li key={i}>{d}</li>
+            {summary.role.map((d: string, i: number) => (
+              <li key={`${code}_role_${i}`}>{d}</li>
             ))}
           </ul>
         </div>

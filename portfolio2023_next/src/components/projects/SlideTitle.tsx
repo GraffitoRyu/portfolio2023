@@ -27,7 +27,7 @@ export default function SlideTitle({
     <>
       {titleArr.map((title: string, i: number) => (
         <TitleSpan
-          key={`projectSlideTitle_${i}`}
+          key={`projectSlideTitle_${Math.floor(Math.random() * 100000)}_${i}`}
           style={{ animationDuration: `${duration}s` }}
         >
           {title}

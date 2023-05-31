@@ -119,8 +119,11 @@ export default function ThemeMenuList() {
       className={`theme-menu absolute top-full left-0 ${openClass} ${themeClass}`}
     >
       <ul className="w-full">
-        {themeList.map((code: string) => (
-          <ThemeListItem key={`themeMenu_${code}`} className="w-full">
+        {themeList.map((code: string, i: number) => (
+          <ThemeListItem
+            key={`themeMenu_${code}_${Math.floor(Math.random() * 100000)}_${i}`}
+            className="w-full"
+          >
             <ThemeMenuBtn
               className={`w-full h-full flex items-center ${updateSelected(
                 code

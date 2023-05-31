@@ -68,14 +68,15 @@ const CareerDesc = styled.p`
 `;
 
 export default async function Career() {
-  const careerData: CareerTypes[] | [] = (await getCareer()) ?? [];
+  const careerData: CareerTypes[] | undefined =
+    (await getCareer()) ?? undefined;
 
   return (
     <ul className="career-list w-full">
-      {careerData?.length > 0
-        ? careerData.map((c: CareerTypes) => {
+      {careerData
+        ? careerData.map((c: CareerTypes, i: number) => {
             return (
-              <CareerItem className="w-full" key={`career_${c.code}`}>
+              <CareerItem className="w-full" key={`career_${c.code}_${i}`}>
                 {/* @ts-expect-error Async Server Component */}
                 <CareerPeriod date={c.period} />
                 <CareerTitle className="flex items-center">

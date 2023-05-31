@@ -48,22 +48,24 @@ const ExpDesc = styled.dd`
 `;
 
 export default async function Experience() {
-  const expData: ExperienceTypes[] | [] = (await getExp()) ?? [];
+  const expData: ExperienceTypes[] | undefined = (await getExp()) ?? undefined;
 
   return (
     <ul className="experience-list w-full">
-      {expData?.map((ex: ExperienceTypes) => (
-        <ExpItem className="w-full" key={`exp_${ex.code}`}>
-          <dl>
-            <ExpTitle className="Capitalize">{ex.code}</ExpTitle>
-            {ex.desc?.map((desc: string | DescDepthTypes, i) => (
-              <ExpDesc key={`exp_depth1_${i}`}>
-                <ParseDescDepth data={desc} />
-              </ExpDesc>
-            ))}
-          </dl>
-        </ExpItem>
-      )) ?? ""}
+      {expData
+        ? expData.map((ex: ExperienceTypes, i: number) => (
+            <ExpItem className="w-full" key={`exp_${ex.code}_${i}`}>
+              <dl>
+                <ExpTitle className="Capitalize">{ex.code}</ExpTitle>
+                {ex.desc?.map((desc: string | DescDepthTypes, i) => (
+                  <ExpDesc key={`exp_${ex.code}_depth1_${i}`}>
+                    <ParseDescDepth data={desc} />
+                  </ExpDesc>
+                ))}
+              </dl>
+            </ExpItem>
+          ))
+        : ""}
     </ul>
   );
 }

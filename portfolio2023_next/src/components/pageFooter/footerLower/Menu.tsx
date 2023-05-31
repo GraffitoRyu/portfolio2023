@@ -31,7 +31,11 @@ export default function FooterMenuContainer({
     <FooterMenu>
       <FooterInfoTitle>{title}</FooterInfoTitle>
       {data.map((d: SitemapType, i: number) => (
-        <FooterMenuItem key={`footerMenu_${category}_${i}`}>
+        <FooterMenuItem
+          key={`footerMenu_${category}_${Math.floor(
+            Math.random() * 1000000000
+          )}_${i}`}
+        >
           {category == "contact" ? (
             <ContactBtn {...d} />
           ) : (

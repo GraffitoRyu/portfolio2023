@@ -2,13 +2,20 @@ import { ProjectsType } from "@/types/projects";
 import ProjectItem from "./Item";
 
 export default async function ProjectList() {
-  const listData: ProjectsType[] | [] = (await getProjectsList()) ?? [];
+  const listData: ProjectsType[] | undefined =
+    (await getProjectsList()) ?? undefined;
 
   return (
     <ul>
-      {listData?.map(({ code, summary }: ProjectsType) => (
-        <ProjectItem key={`projectList_${code}`} summary={summary} />
-      ))}
+      {listData
+        ? listData.map(({ code, summary }: ProjectsType) => (
+            <ProjectItem
+              key={`projectList_${code}`}
+              code={code}
+              summary={summary}
+            />
+          ))
+        : ""}
     </ul>
   );
 }
