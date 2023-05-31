@@ -25,15 +25,13 @@ const StickyContainer = styled.div`
 export default function PageTemplate({ children }: { children: ReactNode }) {
   return (
     <>
-      <PageTransition>
-        <ScrollContainer>
-          <StickyContainer>
-            <PageHeader />
-            {children}
-          </StickyContainer>
-          <PageFooter />
-        </ScrollContainer>
-      </PageTransition>
+      <ScrollContainer>
+        <StickyContainer>
+          <PageHeader />
+          {children}
+        </StickyContainer>
+        <PageFooter />
+      </ScrollContainer>
     </>
   );
 }

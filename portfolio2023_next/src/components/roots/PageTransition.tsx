@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { SwitchTransition, Transition } from "react-transition-group";
+import { CSSTransition, SwitchTransition } from "react-transition-group";
 
 export default function PageTransition({
   children,
@@ -11,14 +11,15 @@ export default function PageTransition({
   const pathname = usePathname();
   return (
     <SwitchTransition>
-      <Transition
+      <CSSTransition
         key={pathname}
+        classNames={`trans`}
         timeout={1000}
         mountOnEnter={true}
         unmountOnExit={true}
       >
         {children}
-      </Transition>
+      </CSSTransition>
     </SwitchTransition>
   );
 }

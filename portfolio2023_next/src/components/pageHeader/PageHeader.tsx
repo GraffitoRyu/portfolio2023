@@ -23,7 +23,7 @@ const HeaderContainer = styled.header`
 
 export default function PageHeader() {
   return (
-    <HeaderContainer as="header">
+    <HeaderContainer>
       <TimeDisplay />
       <Gnb />
     </HeaderContainer>
