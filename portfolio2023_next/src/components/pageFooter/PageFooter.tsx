@@ -4,35 +4,35 @@ import { styled } from "styled-components";
 
 // components
 import FooterUpperContainer from "./FooterUpper";
-import FooterMenuContainer from "./FooterMenu";
+import FooterLowerContainer from "./FooterLower";
 
 // style
 import { rem } from "@/util/unit";
-import { flex } from "@/styles/styled/mixins";
+import { flex, position, size } from "@/styles/styled/mixins";
 
 const FooterContainer = styled.footer`
-  background-color: ${({ theme }) => theme.bg};
+  ${position({ type: "relative", z: 600 })}
+  ${size({
+    width: "100%",
+    height: typeof window === "undefined" ? "100vh" : `${window.innerHeight}px`,
+    padding: rem(80),
+  })}
+  background-color: ${({ theme }) => theme.footer.bg};
+  overflow: hidden;
 `;
 
-const FooterContents = styled.div`
-  border-top: 1px solid ${({ theme }) => theme.footer.divideLine};
+const FooterWrap = styled.div`
+  ${flex({ dir: "column", std: "start", cross: "start" })}
+  ${size({ width: "100%", height: "100%" })}
 `;
-const FooterSummary = styled.dl``;
+
 export default function PageFooter() {
   return (
-    <FooterContainer className="pager-footer w-full h-screen flex items-center">
-      <FooterUpperContainer />
-      <FooterContents>
-        <FooterSummary>
-          <dt>Ryu, Daehyeon</dt>
-          <dd>UIUX Engineering</dd>
-          <dd>Front-end Development</dd>
-          <dd>based in Daejeon, South Korea</dd>
-          <dd>4+ years of experience</dd>
-        </FooterSummary>
-        <FooterMenuContainer title="portfolio" category="header" />
-        <FooterMenuContainer title="contact" category="contact" />
-      </FooterContents>
+    <FooterContainer className="pager-footer">
+      <FooterWrap>
+        <FooterUpperContainer />
+        <FooterLowerContainer />
+      </FooterWrap>
     </FooterContainer>
   );
 }
