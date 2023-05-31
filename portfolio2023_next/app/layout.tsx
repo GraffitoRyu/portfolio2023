@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Head from "next/head";
 
 // meta data
 export { metadata } from "@/data/meta";
@@ -13,7 +14,7 @@ import ThemeColors from "@/components/roots/ThemeColor";
 import Cursor from "@/components/cursor/Cursor";
 
 // styles
-import { sans, serif } from "@/styles/fonts/fonts";
+// import { sans, serif } from "@/styles/fonts/fonts";
 import StyledComponentsRegistry from "./lib/registry";
 import "@/styles/scss/globals.scss";
 import { GlobalBodyStyle } from "@/styles/styled/body";
@@ -29,7 +30,15 @@ export default function RootLayout({
 }) {
   return (
     <StyledComponentsRegistry>
-      <html lang="ko" className={`${sans.variable} ${serif.variable}`}>
+      <html lang="ko">
+        {/* <html lang="ko" className={`${sans.variable} ${serif.variable}`}> */}
+        <Head>
+          {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+          <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;500;700&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
         <body>
           <Recoil>
             <ReactQuery>
