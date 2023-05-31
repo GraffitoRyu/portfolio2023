@@ -8,8 +8,12 @@ import TimeDisplay from "./TimeDisplay";
 
 // util
 import { rem } from "@/util/unit";
+import { flex, position } from "@/styles/styled/mixins";
 
 const HeaderContainer = styled.header`
+  ${position({ type: "sticky", top: "0px", left: "0px" })}
+  ${flex({ std: "start" })}
+  width:100%;
   padding: ${rem(80)};
   font-size: ${rem(20)};
   z-index: 2000;
@@ -19,10 +23,7 @@ const HeaderContainer = styled.header`
 
 export default function PageHeader() {
   return (
-    <HeaderContainer
-      as="header"
-      className="fixed top-0 left-0 w-full flex items-center"
-    >
+    <HeaderContainer as="header">
       <TimeDisplay />
       <Gnb />
     </HeaderContainer>
