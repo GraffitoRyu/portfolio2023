@@ -4,7 +4,7 @@ import { Suspense } from "react";
 export { metadata } from "@/data/meta";
 
 // common template
-import PageTemplate from "@/components/_templates/PageTemplate";
+import PageTemplate from "@/components/roots/PageTemplate";
 
 // components
 import Recoil from "@/components/roots/Recoil";
@@ -14,8 +14,8 @@ import Cursor from "@/components/cursor/Cursor";
 
 // styles
 // import { sans, serif } from "@/styles/fonts/fonts";
-import StyledComponentsRegistry from "./lib/registry";
 import "@/styles/scss/globals.scss";
+import StyledComponentsRegistry from "./lib/registry";
 import { GlobalBodyStyle } from "@/styles/styled/components/body";
 
 // util components

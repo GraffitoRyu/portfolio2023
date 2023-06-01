@@ -8,7 +8,7 @@ import SitemapBtn from "./footerBtn/SitemapBtn";
 import {
   FooterInfoItem,
   FooterInfoTitle,
-} from "@/styles/styled/components/footer";
+} from "@/styles/styled/components/pageFooter";
 
 // data
 import { SitemapType, sitemapData } from "@/data/sitemap";

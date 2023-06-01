@@ -6,7 +6,7 @@ import { styled } from "styled-components";
 import ExternalIcon from "@/svg/common/external_icon.svg";
 
 // style
-import { FooterBtn } from "@/styles/styled/components/footer";
+import { FooterBtn } from "@/styles/styled/components/pageFooter";
 
 // data
 import { SitemapType } from "@/data/sitemap";
