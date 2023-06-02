@@ -1,5 +1,6 @@
 import React from "react";
 
+// components
 import PageSection from "@/components/pageSection/PageSection";
 import PageVisual from "@/components/pageSection/pageVisual/Visual";
 import PageIntro from "@/components/pageSection/pageVisual/Intro";
