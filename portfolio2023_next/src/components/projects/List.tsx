@@ -15,11 +15,9 @@ export default async function ProjectList() {
     <ProjectListContainer>
       {listData
         ? listData.map(({ code, summary }: ProjectsType) => (
-            <ProjectItem
-              key={`projectList_${code}`}
-              code={code}
-              summary={summary}
-            />
+            <li className="w-full" key={`projectList_${code}`}>
+              <ProjectItem code={code} summary={summary} />
+            </li>
           ))
         : ""}
     </ProjectListContainer>

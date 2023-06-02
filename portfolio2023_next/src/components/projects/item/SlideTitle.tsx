@@ -32,7 +32,7 @@ export default function SlideTitle({
   }, [slideWidth]);
 
   return (
-    <HoverSlideTitle className={`${className}`} ref={slideRef}>
+    <HoverSlideTitle className={`${className ? className : ""}`} ref={slideRef}>
       {titleArr.map((title: string, i: number) => (
         <TitleSpan
           key={`projectSlideTitle_${Math.floor(Math.random() * 100000)}_${i}`}

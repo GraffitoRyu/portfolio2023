@@ -12,9 +12,7 @@ export default function PageSection({
   className?: string;
   isVisual?: boolean;
 }) {
-  const sectionClass = [
-    `page-section flex ${isVisual ? "flex-wrap" : "items-start"}`,
-  ];
+  const sectionClass = [`lg:flex ${isVisual ? "flex-wrap" : "items-start"}`];
   if (className) sectionClass.push(className);
   return (
     <PageSectionContainer className={sectionClass.join(" ")}>

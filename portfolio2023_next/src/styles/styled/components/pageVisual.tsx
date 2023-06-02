@@ -1,23 +1,19 @@
 "use client";
 
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 // util
-import { flex, size } from "../preset/mixins";
+import { flex } from "../preset/mixins";
 import { rem } from "@/util/unit";
 
 export const VisualContainer = styled.div`
-  ${size({ height: "50%" })}
   ${flex({ dir: "column", cross: "start" })}
-  padding: 0 ${rem(80)};
+  height: 50%;
   @media only screen and (min-width: 1024px) {
-    ${size({
-      width: "100%",
-      height:
-        typeof window !== "undefined"
-          ? `calc(${window.innerHeight}px - ${rem(80 * 2 + 32)})`
-          : "100vh",
-    })}
+    width: 100%;
+    height: ${typeof window !== "undefined"
+      ? `calc(${window.innerHeight}px - ${rem(80 * 2 + 32)})`
+      : "100vh"};
   }
 `;
 

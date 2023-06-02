@@ -12,7 +12,7 @@ import Tools from "@/components/profile/Tools";
 export default function Profile() {
   return (
     <>
-      <PageSection className="intro-section no-padding" isVisual={true}>
+      <PageSection className="side-h-padding" isVisual={true}>
         <PageVisual title={["Ready for", "interaction"]} />
         <SectionHeader empty={true} />
         <SectionContents>
@@ -32,7 +32,7 @@ export default function Profile() {
           />
         </SectionContents>
       </PageSection>
-      <PageSection>
+      <PageSection className="side-h-padding side-v-padding">
         <SectionHeader
           title="career"
           desc={["지난 5년간 실무 경험을 쌓은 ", "근무 경력입니다."]}
@@ -42,7 +42,7 @@ export default function Profile() {
           <Career />
         </SectionContents>
       </PageSection>
-      <PageSection>
+      <PageSection className="side-h-padding side-v-padding">
         <SectionHeader
           title="experience"
           desc={[
@@ -58,7 +58,7 @@ export default function Profile() {
           <Experience />
         </SectionContents>
       </PageSection>
-      <PageSection>
+      <PageSection className="side-h-padding side-v-padding">
         <SectionHeader
           title="tools"
           desc={["경험을 쌓으며 다루게된 ", "활용 가능한 기술 스택입니다."]}

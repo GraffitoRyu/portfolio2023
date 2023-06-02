@@ -16,7 +16,7 @@ export default function SectionHeader({
   desc,
 }: SectionHeaderTypes) {
   return (
-    <SectionHeaderContainer className="section-header">
+    <SectionHeaderContainer className="w-full lg:w-1/2">
       {empty ? (
         ""
       ) : (

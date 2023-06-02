@@ -11,7 +11,7 @@ export default function SectionContents({
   full?: boolean;
 }) {
   return (
-    <Contents className={`section-contents ${full ? "w-full" : "w-1/2"}`}>
+    <Contents className={`${full ? "w-full" : "w-full lg:w-1/2"}`}>
       {children}
     </Contents>
   );

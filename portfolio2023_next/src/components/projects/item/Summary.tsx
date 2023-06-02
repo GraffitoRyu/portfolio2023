@@ -15,7 +15,7 @@ import {
 // type
 import { SummaryType } from "@/types/projects";
 
-export default function ProjectButton({
+export default function ProjectSummary({
   className,
   code,
   summary,
@@ -25,7 +25,7 @@ export default function ProjectButton({
   summary: SummaryType;
 }) {
   return (
-    <ListBtnContainer className={`${className}`} type="button">
+    <ListBtnContainer className={`${className ? className : ""}`}>
       <ListBtnWrap>
         <ListBtnPeriod className="period" date={summary.period} />
         <FadeContainer>

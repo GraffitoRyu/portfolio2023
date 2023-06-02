@@ -11,7 +11,7 @@ export default function Period({
   date: string[];
 }): JSX.Element {
   return (
-    <PeriodContainer className={`period ${className}`}>
+    <PeriodContainer className={`period ${className ? className : ""}`}>
       <PeriodTime date={date[0]} />
       <Bar />
       <PeriodTime date={date[1]} />

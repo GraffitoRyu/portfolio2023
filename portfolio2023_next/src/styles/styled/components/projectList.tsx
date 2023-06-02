@@ -1,12 +1,14 @@
 "use client";
 
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 // components
 import Period from "@/components/period/Period";
 
 // style
-import { flex, position, size } from "../preset/mixins";
+import { img } from "../preset/img";
+import { easing } from "../preset/easing";
+import { SvgFill, flex, position, size, transition } from "../preset/mixins";
 
 // util
 import { rem } from "@/util/unit";
@@ -16,7 +18,7 @@ export const ProjectListContainer = styled.ul`
   border-top: 1px solid ${({ theme }) => theme.projectList.border};
 `;
 
-export const ProjectItemContainer = styled.li`
+export const ProjectItemContainer = styled.button`
   width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.projectList.border};
   user-select: none;
@@ -24,16 +26,13 @@ export const ProjectItemContainer = styled.li`
   position: relative;
 `;
 
-export const ListBtnContainer = styled.button`
+export const ListBtnContainer = styled.div`
   ${position({ type: "relative" })}
   width:100%;
   position: relative;
   overflow: hidden;
-  text-align: left;
   user-select: auto;
-  @media only screen and (min-width: 1024px) {
-    text-align: right;
-  }
+  ${transition([{ prop: "background-color", time: "0.4s" }])}
   ${ProjectItemContainer}.hover & {
     background-color: ${({ theme }) => theme.projectList.bgHover};
   }
@@ -49,25 +48,61 @@ export const ListBtnWrap = styled.div`
 `;
 
 export const ListBtnPeriod = styled(Period)`
-  ${position({ type: "absolute", left: "100%" })}
+  height: auto;
   margin-bottom: ${rem(24)};
   color: ${({ theme }) => theme.projectList.period};
   font-size: ${rem(24)};
   font-weight: 500;
   span {
-    background-color: ${({ theme }) => theme.projectList.period};
+    &:before {
+      background-color: ${({ theme }) => theme.projectList.period};
+      ${transition([
+        { prop: "width", time: "0.4s" },
+        { prop: "opacity", time: "0.4s" },
+      ])}
+    }
   }
   @media only screen and (min-width: 1024px) {
+    ${position({ type: "absolute", left: "100%" })}
+    height: ${rem(56)};
     margin-bottom: 0;
+  }
+  time {
+    ${transition([
+      { prop: "opacity", time: "0.4s" },
+      { prop: "transform", time: "0.4s" },
+    ])}
+  }
+  time:nth-of-type(1) {
+  }
+  time:nth-of-type(2) {
+    transition-delay: 0.08s;
+  }
+  ${ProjectItemContainer}.hover & {
+    time {
+      transform: translateX(-50%);
+      opacity: 0;
+    }
+
+    span:before {
+      width: 0;
+      opacity: 0;
+    }
   }
 `;
 export const FadeContainer = styled.div`
-  text-align: right;
+  text-align: left;
   overflow: hidden;
+  @media only screen and (min-width: 1024px) {
+    text-align: right;
+  }
 `;
 
 export const FadeListContainer = styled(FadeContainer)`
-  ${flex({ std: "end" })}
+  ${flex({ std: "start" })}
+  @media only screen and (min-width: 1024px) {
+    justify-content: flex-end;
+  }
 `;
 
 export const ListBtnTitle = styled.h3`
@@ -79,6 +114,14 @@ export const ListBtnTitle = styled.h3`
   @media only screen and (min-width: 640px) {
     font-size: ${rem(56)};
   }
+  ${transition([
+    { prop: "transform", time: "0.4s", easing: easing.quart },
+    { prop: "opacity", time: "0.4s", easing: easing.quart },
+  ])}
+  ${ProjectItemContainer}.hover & {
+    transform: translateY(100%);
+    opacity: 0;
+  }
 `;
 
 export const ListBtnDesc = styled.p`
@@ -86,10 +129,18 @@ export const ListBtnDesc = styled.p`
   font-size: ${rem(32)};
   font-weight: 400;
   line-height: 1em;
+  ${transition([
+    { prop: "transform", time: "0.4s", easing: easing.quart, delay: "0.08s" },
+    { prop: "opacity", time: "0.4s", easing: easing.quart, delay: "0.08s" },
+  ])}
+  ${ProjectItemContainer}.hover & {
+    transform: translateY(100%);
+    opacity: 0;
+  }
 `;
 
 export const ListBtnRole = styled.li`
-  ${flex({})}
+  ${flex({ std: "start" })}
   font-size: ${rem(24)};
   font-weight: 400;
   &:after {
@@ -103,20 +154,52 @@ export const ListBtnRole = styled.li`
       display: none;
     }
   }
+  ${transition([
+    { prop: "transform", time: "0.4s", easing: easing.quart },
+    { prop: "opacity", time: "0.4s", easing: easing.quart },
+  ])}
+  &:nth-child(1) {
+    transition-delay: 0.12s;
+  }
+  &:nth-child(2) {
+    transition-delay: 0.16s;
+  }
+  &:nth-child(3) {
+    transition-delay: 0.2s;
+  }
+  ${ProjectItemContainer}.hover & {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  @media only screen and (min-width: 1024px) {
+    justify-content: flex-end;
+  }
 `;
 
 export const HoverSlideTitle = styled.h3`
   ${position({ type: "absolute", top: "100%" })}
   ${flex({ std: "start" })}
   width: 100%;
+  color: ${({ theme }) => theme.projectList.slideTitle};
   text-align: left;
-  text-decoration: underline;
   white-space: nowrap;
+  opacity: 0;
+  ${transition([
+    { prop: "transform", time: "0.4s", easing: easing.quart },
+    { prop: "opacity", time: "0.4s", easing: easing.quart },
+  ])}
+  ${ProjectItemContainer}.hover & {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
 `;
 
 export const TitleSpan = styled.span`
-  font-size: 240px;
+  font-size: ${rem(240)};
   font-weight: 700;
+  line-height: 1em;
+  text-decoration: underline;
+  text-decoration-thickness: 0.05em;
   animation: slideText 2s linear 0s infinite;
   @keyframes slideText {
     from {
@@ -125,5 +208,27 @@ export const TitleSpan = styled.span`
     to {
       transform: translateX(-100%);
     }
+  }
+`;
+
+export const ProjectOpenIcon = styled.figure`
+  ${size({ width: rem(160), height: rem(160) })}
+  ${position({ type: "absolute", top: 80, right: 80 })}
+  transform:translate(-100%,100%);
+  opacity: 0;
+  ${transition([
+    { prop: "opacity", time: "0.4s" },
+    { prop: "transform", time: "0.4s" },
+  ])}
+  svg {
+    ${img({})}
+  }
+  ${SvgFill("#fff")}
+  @media only screen and (min-width:1024px) {
+    ${size({ width: rem(120), height: rem(120) })}
+  }
+  ${ProjectItemContainer}.hover & {
+    transform: translate(0, 0);
+    opacity: 1;
   }
 `;

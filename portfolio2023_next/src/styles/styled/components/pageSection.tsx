@@ -1,21 +1,32 @@
 "use client";
 
 import { rem } from "@/util/unit";
-import { styled } from "styled-components";
-import { position } from "../preset/mixins";
+import styled from "styled-components";
 
 export const PageSectionContainer = styled.section`
   position: relative;
   width: 100%;
-  &:not(.no-padding) {
-    padding: ${rem(160)} ${rem(80)};
+  &.side-h-padding {
+    padding-left: ${rem(80)};
+    padding-right: ${rem(80)};
+  }
+  &.side-v-padding {
+    padding-top: ${rem(160)};
+    padding-bottom: ${rem(160)};
+  }
+  @media only screen and (min-width: 1024px) {
+    &.side-v-padding {
+      padding-top: ${rem(240)};
+      padding-bottom: ${rem(240)};
+    }
   }
 `;
 
 export const SectionHeaderContainer = styled.header`
-  width: 50%;
+  margin-bottom: ${rem(120)};
   @media only screen and (min-width: 1024px) {
-    ${position({ type: "sticky", top: rem(80 * 2 + 32) })}
+    margin-bottom: ${rem(160)};
+    top: ${rem(80 * 2 + 32)};
   }
 `;
 

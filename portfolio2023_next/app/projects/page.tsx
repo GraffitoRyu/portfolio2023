@@ -10,7 +10,7 @@ import ProjectList from "@/components/projects/List";
 export default function Projects() {
   return (
     <>
-      <PageSection className="intro-section no-padding" isVisual={true}>
+      <PageSection className="side-h-padding" isVisual={true}>
         <PageVisual title={["Selected", "projects"]} />
         <SectionHeader empty={true} />
         <SectionContents>
@@ -25,7 +25,7 @@ export default function Projects() {
           />
         </SectionContents>
       </PageSection>
-      <PageSection className="no-padding">
+      <PageSection className="side-v-padding">
         <SectionContents full={true}>
           {/* @ts-expect-error Async Server Component */}
           <ProjectList />

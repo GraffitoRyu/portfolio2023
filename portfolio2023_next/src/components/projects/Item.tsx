@@ -4,11 +4,12 @@ import React, { useState } from "react";
 
 // components
 import { ProjectItemContainer } from "@/styles/styled/components/projectList";
-import SlideTitle from "./item/SlideTitle";
-import ProjectButton from "./item/Button";
+import SlideTitle from "@/components/projects/item/SlideTitle";
+import ProjectSummary from "@/components/projects/item/Summary";
 
 // type
 import { SummaryType } from "@/types/projects";
+import BtnIcon from "./item/BtnIcon";
 
 export default function ProjectItem({
   code,
@@ -21,12 +22,13 @@ export default function ProjectItem({
 
   return (
     <ProjectItemContainer
-      className={`${hover}`}
+      className={hover}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
     >
-      <ProjectButton code={code} summary={summary} />
+      <ProjectSummary code={code} summary={summary} />
       <SlideTitle text={summary.title} />
+      <BtnIcon />
     </ProjectItemContainer>
   );
 }
