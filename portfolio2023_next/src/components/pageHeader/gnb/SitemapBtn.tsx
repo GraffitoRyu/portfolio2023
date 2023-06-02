@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { usePathname } from "next/navigation";
