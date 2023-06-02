@@ -1,7 +1,15 @@
+"use client";
+
 import { styled } from "styled-components";
-import { flex, position, size } from "../preset/mixins";
-import { rem } from "@/util/unit";
+
+// components
 import Period from "@/components/period/Period";
+
+// style
+import { flex, position, size } from "../preset/mixins";
+
+// util
+import { rem } from "@/util/unit";
 
 export const ProjectListContainer = styled.ul`
   width: 100%;

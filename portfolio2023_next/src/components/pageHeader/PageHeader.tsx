@@ -1,25 +1,9 @@
-"use client";
-
-import { styled } from "styled-components";
-
 // components
 import Gnb from "./Gnb";
 import TimeDisplay from "./TimeDisplay";
 
-// util
-import { rem } from "@/util/unit";
-import { flex, position } from "@/styles/styled/preset/mixins";
-
-const HeaderContainer = styled.header`
-  ${position({ type: "sticky", top: 0, left: 0 })}
-  ${flex({ std: "start" })}
-  width:100%;
-  padding: ${rem(80)};
-  font-size: ${rem(20)};
-  z-index: 2000;
-  pointer-events: none;
-  transform: translateY(0px);
-`;
+// style components
+import { HeaderContainer } from "@/styles/styled/components/pageHeader";
 
 export default function PageHeader() {
   return (

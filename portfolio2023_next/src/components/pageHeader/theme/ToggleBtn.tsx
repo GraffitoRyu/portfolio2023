@@ -1,36 +1,14 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { styled } from "styled-components";
+
+// style components
+import { ToggleBtn, ToggleIcon } from "@/styles/styled/components/themeMenu";
 
 // state
 import { ThemeStateTypes, themeState } from "@/states/theme";
 
 // svg
 import * as ThemeSvg from "./BtnIcons";
-
-// style
-import { SvgFill, position } from "@/styles/styled/preset/mixins";
-
-const ToggleBtn = styled.button`
-  ${({ theme }) => SvgFill(theme.gnbUtilBtn.svg)};
-  &.hover {
-    background-color: ${({ theme }) => theme.gnbUtilBtn.bg};
-    ${({ theme }) => SvgFill(theme.gnbUtilBtn.svgHover)};
-  }
-  &:active {
-    ${({ theme }) => SvgFill(theme.gnbUtilBtn.svgActive)};
-  }
-`;
-
-const ToggleIcon = styled.figure`
-  svg {
-    ${position({ type: "absolute", center: true })}
-    opacity:0;
-    &.on {
-      opacity: 1;
-    }
-  }
-`;
 
 export default function ThemeToggleBtn() {
   const [theme, setTheme] = useRecoilState<ThemeStateTypes>(themeState);

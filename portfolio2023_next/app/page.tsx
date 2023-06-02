@@ -1,8 +1,8 @@
 import React from "react";
 
 import PageSection from "@/components/pageSection/PageSection";
-import PageVisual from "@/components/pageSection/Visual";
-import PageIntro from "@/components/pageSection/Intro";
+import PageVisual from "@/components/pageSection/pageVisual/Visual";
+import PageIntro from "@/components/pageSection/pageVisual/Intro";
 import SectionHeader from "@/components/pageSection/Header";
 import SectionContents from "@/components/pageSection/Contents";
 import Career from "@/components/profile/Career";

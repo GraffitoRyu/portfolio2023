@@ -2,9 +2,9 @@ import React from "react";
 
 import SectionContents from "@/components/pageSection/Contents";
 import SectionHeader from "@/components/pageSection/Header";
-import PageIntro from "@/components/pageSection/Intro";
 import PageSection from "@/components/pageSection/PageSection";
-import PageVisual from "@/components/pageSection/Visual";
+import PageIntro from "@/components/pageSection/pageVisual/Intro";
+import PageVisual from "@/components/pageSection/pageVisual/Visual";
 import ProjectList from "@/components/projects/List";
 
 export default function Projects() {

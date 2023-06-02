@@ -1,28 +1,15 @@
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useSetRecoilState } from "recoil";
 import { usePathname } from "next/navigation";
-import { styled } from "styled-components";
+
+// style components
+import { SitemapLink } from "@/styles/styled/components/gnb";
 
 // data
 import { SitemapType } from "@/data/sitemap";
 
 // util
-import { rem } from "@/util/unit";
-import { useSetRecoilState } from "recoil";
 import { pageState, pageStateTypes } from "@/states/page";
-
-const SitemapLink = styled(Link)`
-  margin-right: ${rem(64)};
-  font-size: ${rem(24)};
-  font-weight: 500;
-  color: ${({ theme }) => theme.gnbSitemapBtn.basic};
-  &:not(.now).hover {
-    color: ${({ theme }) => theme.gnbSitemapBtn.hover};
-  }
-  &.now {
-    color: ${({ theme }) => theme.gnbSitemapBtn.selected};
-  }
-`;
 
 export default function SitemapBtn({ code, path, name }: SitemapType) {
   const curPath = usePathname();

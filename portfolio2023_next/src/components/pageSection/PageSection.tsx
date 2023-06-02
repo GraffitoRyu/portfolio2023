@@ -1,18 +1,7 @@
-"use client";
-
 import React from "react";
-import { styled } from "styled-components";
 
-// util
-import { rem } from "@/util/unit";
-
-const Section = styled.section`
-  position: relative;
-  width: 100%;
-  &:not(.no-padding) {
-    padding: ${rem(160)} ${rem(80)};
-  }
-`;
+// style components
+import { PageSectionContainer } from "@/styles/styled/components/pageSection";
 
 export default function PageSection({
   children,
@@ -27,5 +16,9 @@ export default function PageSection({
     `page-section flex ${isVisual ? "flex-wrap" : "items-start"}`,
   ];
   if (className) sectionClass.push(className);
-  return <Section className={sectionClass.join(" ")}>{children}</Section>;
+  return (
+    <PageSectionContainer className={sectionClass.join(" ")}>
+      {children}
+    </PageSectionContainer>
+  );
 }

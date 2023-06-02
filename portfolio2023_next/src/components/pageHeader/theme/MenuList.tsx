@@ -1,24 +1,20 @@
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { styled } from "styled-components";
 
+// components
 import ThemeMenuBtn from "./MenuBtn";
+
+// style components
+import {
+  ThemeListItem,
+  ThemeMenuContainer,
+} from "@/styles/styled/components/themeMenu";
 
 // state
 import { ThemeStateTypes, themeState } from "@/states/theme";
 
 // util
-import { rem } from "@/util/unit";
 import { applyTheme } from "@/util/changeTheme";
-
-const ThemeMenuContainer = styled.div`
-  width: ${rem(160)};
-  transform: ${`translateY(${rem(16)})`};
-  background: ${({ theme }) => theme.gnbThemeMenu.container};
-`;
-const ThemeListItem = styled.li`
-  height: ${rem(56)};
-`;
 
 export default function ThemeMenuList() {
   const themeList: string[] = ["light", "dark", "system"];

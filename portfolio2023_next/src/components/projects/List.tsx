@@ -1,7 +1,7 @@
-"use client";
-
 // components
 import ProjectItem from "./Item";
+
+// style components
 import { ProjectListContainer } from "@/styles/styled/components/projectList";
 
 // type

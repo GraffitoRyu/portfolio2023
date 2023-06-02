@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { styled } from "styled-components";
+
+// style components
+import { ThemeMenuButton } from "@/styles/styled/components/themeMenu";
 
 // state
 import { ThemeStateTypes, themeState } from "@/states/theme";
 
-// style
-import { img } from "@/styles/styled/preset/img";
-import { SvgFill, flex, size } from "@/styles/styled/preset/mixins";
-
 // util
 import { getSystemTheme } from "@/util/changeTheme";
-import { rem } from "@/util/unit";
 
 // SVG
 import * as ThemeSvg from "./BtnIcons";
@@ -25,40 +22,6 @@ function ThemeIcon(theme: string) {
       return <ThemeSvg.System />;
   }
 }
-
-const ThemeMenuButton = styled.button`
-  figure {
-    ${size({ width: rem(56) })}
-    font-size:0;
-    ${flex({})}
-    ${({ theme }) => SvgFill(theme.gnbThemeMenu.menu)}
-    svg {
-      ${img({ width: 24, height: 24 })}
-    }
-  }
-  span {
-    font-size: ${rem(16)};
-    color: ${({ theme }) => theme.gnbThemeMenu.menu};
-    line-height: 1em;
-    margin-top: ${rem(-2)};
-  }
-  &:not(.selected).hover {
-    figure {
-      ${({ theme }) => SvgFill(theme.gnbThemeMenu.hover)}
-    }
-    span {
-      color: ${({ theme }) => theme.gnbThemeMenu.hover};
-    }
-  }
-  &.selected {
-    figure {
-      ${({ theme }) => SvgFill(theme.gnbThemeMenu.selected)}
-    }
-    span {
-      color: ${({ theme }) => theme.gnbThemeMenu.selected};
-    }
-  }
-`;
 
 export default function ThemeMenuBtn({ code }: { code: string }) {
   const [theme, setTheme] = useRecoilState<ThemeStateTypes>(themeState);
