@@ -1,22 +1,12 @@
+"use client";
+
 import { css } from "styled-components";
 
 // util
 import { getUnit } from "@/util/unit";
 
-type SizeTypes = {
-  width?: string | number;
-  height?: string | number;
-  margin?: string | number | Array<string | number>; // length: 1 ~ 4
-  padding?: string | number | Array<string | number>; // length: 1 ~ 4
-  mt?: string | number; // margin-top
-  mr?: string | number; // margin-right
-  mb?: string | number; // margin-bottom
-  ml?: string | number; // margin-left
-  pt?: string | number; // padding-top
-  pr?: string | number; // padding-right
-  pb?: string | number; // padding-bottom
-  pl?: string | number; // padding-left
-};
+// types
+import { FlexTypes, PositionTypes, SizeTypes } from "@/types/preset";
 
 // margin, padding 배열 변환
 const convertSpacing = (v: string | number | Array<string | number>) => {
@@ -77,12 +67,6 @@ export const maxSize = ({ width, height }: SizeTypes) => css`
   max-height: ${typeof height !== "undefined" ? getUnit(height) : "auto"};
 `;
 
-type FlexTypes = {
-  dir?: string | undefined;
-  std?: string | undefined;
-  cross?: string | undefined;
-  wrap?: string | undefined;
-};
 /**
  * @property {string | undefined} [dir] : row, column
  * @property {string | undefined} [std] : justify-content (기준 축 정렬)
@@ -97,15 +81,6 @@ export const flex = ({ dir, std, cross, wrap }: FlexTypes) => css`
   ${wrap && `flex-wrap:${wrap};`}
 `;
 
-type PositionTypes = {
-  type?: string | undefined;
-  top?: string | number;
-  left?: string | number;
-  bottom?: string | number;
-  right?: string | number;
-  z?: number | undefined;
-  center?: boolean | undefined;
-};
 /**
  * @property {string | undefined} [type] : absolute(default), relative, fixed, sticky, static, ...
  * @property {string | number} [top] : px, rem 단위를 붙인 string 형태 필요

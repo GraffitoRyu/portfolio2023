@@ -1,11 +1,12 @@
-import { getUnit } from "@/util/unit";
+"use client";
+
 import { css } from "styled-components";
 
-type ImageTypes = {
-  width?: number | string;
-  height?: number | string;
-  fit?: string;
-};
+// types
+import { ImageTypes } from "@/types/preset";
+
+// util
+import { getUnit } from "@/util/unit";
 
 export const img = ({ width, height, fit }: ImageTypes) => css`
   width: ${typeof width !== "undefined" ? getUnit(width) : "100%"};
