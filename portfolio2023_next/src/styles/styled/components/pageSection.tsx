@@ -2,6 +2,7 @@
 
 import { rem } from "@/util/unit";
 import styled from "styled-components";
+import { position } from "../preset/mixins";
 
 export const PageSectionContainer = styled.section`
   position: relative;
@@ -25,8 +26,8 @@ export const PageSectionContainer = styled.section`
 export const SectionHeaderContainer = styled.header`
   margin-bottom: ${rem(120)};
   @media only screen and (min-width: 1024px) {
+    ${position({ type: "sticky", top: rem(80 * 2 + 32) })}
     margin-bottom: ${rem(160)};
-    top: ${rem(80 * 2 + 32)};
   }
 `;
 

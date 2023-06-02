@@ -12,6 +12,7 @@ import { SvgFill, flex, position, size, transition } from "../preset/mixins";
 
 // util
 import { rem } from "@/util/unit";
+import { keyframes } from "styled-components";
 
 export const ProjectListContainer = styled.ul`
   width: 100%;
@@ -193,6 +194,14 @@ export const HoverSlideTitle = styled.h3`
     opacity: 1;
   }
 `;
+const textSlideAnimation = keyframes`
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+`;
 
 export const TitleSpan = styled.span`
   font-size: ${rem(240)};
@@ -200,15 +209,7 @@ export const TitleSpan = styled.span`
   line-height: 1em;
   text-decoration: underline;
   text-decoration-thickness: 0.05em;
-  animation: slideText 2s linear 0s infinite;
-  @keyframes slideText {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-  }
+  animation: ${textSlideAnimation} 2s linear 0s infinite;
 `;
 
 export const ProjectOpenIcon = styled.figure`
