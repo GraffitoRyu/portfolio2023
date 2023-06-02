@@ -1,14 +1,5 @@
 // 현재 시간 표시기
-export interface TimerColorTypes {
-  bar: string;
-  text: string;
-}
-
-export interface ModeTypes {
-  [key: string]: TimerColorTypes;
-  light: TimerColorTypes;
-  dark: TimerColorTypes;
-}
+import { ModeTypes } from "@/types/colors/pageHeader";
 
 export const timer: ModeTypes = {
   light: {

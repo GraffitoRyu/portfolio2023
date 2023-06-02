@@ -1,16 +1,6 @@
-export interface PageColorTypes {
-  bg: string;
-  selectionBg: string;
-  selectionText: string;
-}
+import { PageModeTypes } from "@/types/colors/common";
 
-export interface PageModeTypes {
-  [key: string]: PageColorTypes;
-  light: PageColorTypes;
-  dark: PageColorTypes;
-}
-
-export const page = {
+export const page: PageModeTypes = {
   light: {
     bg: "#fff",
     selectionBg: "#44e588",

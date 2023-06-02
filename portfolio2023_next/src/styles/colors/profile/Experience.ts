@@ -1,15 +1,6 @@
-export interface ExpColorTypes {
-  title: string;
-  desc: string;
-}
+import { ExpModeTypes } from "@/types/colors/profile";
 
-export interface ExpModeTypes {
-  [key: string]: ExpColorTypes;
-  light: ExpColorTypes;
-  dark: ExpColorTypes;
-}
-
-export const experience = {
+export const experience: ExpModeTypes = {
   light: {
     title: "#5a5a5a",
     desc: "#a0a0a0",

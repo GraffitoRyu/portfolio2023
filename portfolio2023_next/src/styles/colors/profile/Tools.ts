@@ -1,14 +1,6 @@
-export interface ToolsColorTypes {
-  text: string;
-}
+import { ToolsModeType } from "@/types/colors/profile";
 
-export interface ToolsModeType {
-  [key: string]: ToolsColorTypes;
-  light: ToolsColorTypes;
-  dark: ToolsColorTypes;
-}
-
-export const tools = {
+export const tools: ToolsModeType = {
   light: {
     text: "#ccc",
   },

@@ -1,13 +1,4 @@
-export interface CursorColorTypes {
-  basic: string;
-  hover: string;
-}
-
-export interface CursorModeTypes {
-  [key: string]: CursorColorTypes;
-  light: CursorColorTypes;
-  dark: CursorColorTypes;
-}
+import { CursorModeTypes } from "@/types/colors/common";
 
 export const cursor: CursorModeTypes = {
   light: {

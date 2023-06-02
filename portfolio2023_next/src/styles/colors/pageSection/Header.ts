@@ -1,15 +1,6 @@
-export interface SectionHeaderTypes {
-  title: string;
-  desc: string;
-}
+import { SectionHeaderModeTypes } from "@/types/colors/pageSection";
 
-export interface SectionHeaderModeTypes {
-  [key: string]: SectionHeaderTypes;
-  light: SectionHeaderTypes;
-  dark: SectionHeaderTypes;
-}
-
-export const sectionHeader = {
+export const sectionHeader: SectionHeaderModeTypes = {
   light: {
     title: "#3a3a3a",
     desc: "#a0a0a0",

@@ -1,19 +1,6 @@
-export interface ListColorTypes {
-  border: string;
-  bgHover: string;
-  title: string;
-  period: string;
-  desc: string;
-  slideTitle: string;
-}
+import { ListModeTypes } from "@/types/colors/projectsList";
 
-export interface ListModeTypes {
-  [key: string]: ListColorTypes;
-  light: ListColorTypes;
-  dark: ListColorTypes;
-}
-
-export const list = {
+export const list: ListModeTypes = {
   light: {
     border: "#ccc",
     bgHover: "#efefef",

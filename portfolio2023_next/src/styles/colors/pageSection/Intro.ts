@@ -1,18 +1,6 @@
-export interface IntroTypes {
-  bgFrom: string;
-  bgTo: string;
-  title: string;
-  strong: string;
-  desc: string;
-}
+import { IntroModeTypes } from "@/types/colors/pageSection";
 
-export interface IntroModeTypes {
-  [key: string]: IntroTypes;
-  light: IntroTypes;
-  dark: IntroTypes;
-}
-
-export const intro = {
+export const intro: IntroModeTypes = {
   light: {
     bgFrom: "rgb(255, 255, 255)",
     bgTo: "rgba(255, 255, 255, 0)",

@@ -1,23 +1,6 @@
-export interface FooterTypes {
-  bg: string;
-  titleBorder: string;
-  titleFill: string;
-  divideLine: string;
-  infoDesc: string;
-  infoTitle: string;
-  btn: string;
-  btnHover: string;
-  icon: string;
-  iconHover: string;
-}
+import { FooterModeTypes } from "@/types/colors/pageFooter";
 
-export interface FooterModeTypes {
-  [key: string]: FooterTypes;
-  light: FooterTypes;
-  dark: FooterTypes;
-}
-
-export const footer = {
+export const footer: FooterModeTypes = {
   light: {
     bg: "#efefef",
     titleBorder: "#a0a0a0",

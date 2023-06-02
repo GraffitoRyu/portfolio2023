@@ -1,15 +1,6 @@
-export interface VisualTypes {
-  border: string;
-  fill: string;
-}
+import { VisualModeTypes } from "@/types/colors/pageSection";
 
-export interface VisualModeTypes {
-  [key: string]: VisualTypes;
-  light: VisualTypes;
-  dark: VisualTypes;
-}
-
-export const visual = {
+export const visual: VisualModeTypes = {
   light: {
     border: "#a0a0a0",
     fill: "#3a3a3a",

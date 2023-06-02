@@ -1,12 +1,4 @@
-export interface ScrollBarColorTypes {
-  thumb: string;
-}
-
-export interface ScrollBarModeTypes {
-  [key: string]: ScrollBarColorTypes;
-  light: ScrollBarColorTypes;
-  dark: ScrollBarColorTypes;
-}
+import { ScrollBarModeTypes } from "@/types/colors/common";
 
 export const scrollbar: ScrollBarModeTypes = {
   light: {

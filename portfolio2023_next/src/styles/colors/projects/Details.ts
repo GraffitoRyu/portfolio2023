@@ -1,24 +1,6 @@
-export interface DetailsColorTypes {
-  bg: string;
-  visualBg: string;
-  visualTitle: string;
-  visualSubtitle: string;
-  infoTitle: string;
-  infoDesc: string;
-  stackBg: string;
-  stackBorder: string;
-  stackText: string;
-  captionTitle: string;
-  captionDesc: string;
-}
+import { DetailModeTypes } from "@/types/colors/projectDetail";
 
-export interface DetailsModeTypes {
-  [key: string]: DetailsColorTypes;
-  light: DetailsColorTypes;
-  dark: DetailsColorTypes;
-}
-
-export const details = {
+export const details: DetailModeTypes = {
   light: {
     bg: "rgb(202, 208, 215)",
     visualBg: `linear-gradient(

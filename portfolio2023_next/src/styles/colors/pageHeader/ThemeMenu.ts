@@ -1,16 +1,5 @@
 // 테마 메뉴 컬러
-export interface ThemeMenuTypes {
-  container: string;
-  menu: string;
-  hover: string;
-  selected: string;
-}
-
-export interface ThemeMenuModeTypes {
-  [index: string]: ThemeMenuTypes;
-  light: ThemeMenuTypes;
-  dark: ThemeMenuTypes;
-}
+import { ThemeMenuModeTypes } from "@/types/colors/pageHeader";
 
 export const GnbThemeMenu: ThemeMenuModeTypes = {
   light: {

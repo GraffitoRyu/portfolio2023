@@ -1,5 +1,11 @@
 import { DescDepthTypes } from "./parseDesc";
 
+export type SectionHeaderTypes = {
+  empty?: boolean;
+  title?: string;
+  desc?: string[];
+};
+
 export type CareerTypes = {
   [index: string]: string | string[] | undefined;
   code: string;

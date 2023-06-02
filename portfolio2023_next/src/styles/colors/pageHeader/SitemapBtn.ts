@@ -1,15 +1,5 @@
 // GNB 버튼 컬러
-export interface GnbSitemapBtnTypes {
-  basic: string;
-  hover: string;
-  selected: string;
-}
-
-export interface SitemapBtnModeTypes {
-  [index: string]: GnbSitemapBtnTypes;
-  light: GnbSitemapBtnTypes;
-  dark: GnbSitemapBtnTypes;
-}
+import { SitemapBtnModeTypes } from "@/types/colors/pageHeader";
 
 export const gnbSitemapBtn: SitemapBtnModeTypes = {
   light: {

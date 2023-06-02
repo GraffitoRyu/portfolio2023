@@ -1,17 +1,5 @@
 // 유틸 버튼 컬러
-export interface GnbUtilTypes {
-  bg: string;
-  bgHover?: string;
-  svg: string;
-  svgHover: string;
-  svgActive: string;
-}
-
-export interface GnbUtilModeTypes {
-  [index: string]: GnbUtilTypes;
-  light: GnbUtilTypes;
-  dark: GnbUtilTypes;
-}
+import { GnbUtilModeTypes } from "@/types/colors/pageHeader";
 
 export const gnbUtilBtn: GnbUtilModeTypes = {
   light: {

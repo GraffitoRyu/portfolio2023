@@ -1,17 +1,6 @@
-export interface CareerColorTypes {
-  period: string;
-  role: string;
-  company: string;
-  desc: string;
-}
+import { CareerModeTypes } from "@/types/colors/profile";
 
-export interface CareerModeTypes {
-  [key: string]: CareerColorTypes;
-  light: CareerColorTypes;
-  dark: CareerColorTypes;
-}
-
-export const career = {
+export const career: CareerModeTypes = {
   light: {
     period: "#a0a0a0",
     role: "#5a5a5a",
