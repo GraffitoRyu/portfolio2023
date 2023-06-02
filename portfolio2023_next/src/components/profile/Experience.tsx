@@ -36,9 +36,12 @@ export default async function Experience() {
 }
 
 async function getExp() {
-  const res = await fetch("http://localhost:3000/json/experience.json", {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/experience.json`,
+    {
+      cache: "no-store",
+    }
+  );
   // if (!res.ok) throw new Error("Failed to fetch Experience Data");
   const data = await res.json();
   return data;

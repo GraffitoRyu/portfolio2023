@@ -25,9 +25,12 @@ export default async function ProjectList() {
 }
 
 async function getProjectsList() {
-  const res = await fetch("http://localhost:3000/json/projects.json", {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/projects.json`,
+    {
+      cache: "no-store",
+    }
+  );
   const data = await res.json();
   return (
     data?.map((d: ProjectsType) => ({

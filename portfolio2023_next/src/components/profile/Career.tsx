@@ -38,9 +38,12 @@ export default async function Career() {
 }
 
 async function getCareer() {
-  const res = await fetch("http://localhost:3000/json/career.json", {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/career.json`,
+    {
+      cache: "no-store",
+    }
+  );
   if (!res.ok) throw new Error("Failed to fetch Career Data");
   const data = await res.json();
   return data;
