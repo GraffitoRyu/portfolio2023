@@ -1,6 +1,6 @@
 "use client";
 
-import { createGlobalStyle, styled } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalBodyStyle = createGlobalStyle`
   html {

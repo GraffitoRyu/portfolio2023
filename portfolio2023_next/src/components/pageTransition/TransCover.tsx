@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 // style
 import { flex, position } from "@/styles/styled/preset/mixins";

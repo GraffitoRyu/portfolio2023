@@ -1,6 +1,6 @@
 "use client";
 
-import { styled } from "styled-components";
+import styled from "styled-components";
 import { SvgFill, flex, position, size } from "../preset/mixins";
 import { rem } from "@/util/unit";
 import { img } from "../preset/img";

@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 // components
 import ContactBtn from "./footerBtn/ContactBtn";

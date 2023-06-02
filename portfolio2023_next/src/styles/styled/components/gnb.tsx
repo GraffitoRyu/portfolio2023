@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { createGlobalStyle, styled } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 // util
 import { rem } from "@/util/unit";

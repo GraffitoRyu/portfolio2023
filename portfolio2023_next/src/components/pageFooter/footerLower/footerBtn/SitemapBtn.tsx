@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 // svg
 import ExternalIcon from "@/svg/common/external_icon.svg";

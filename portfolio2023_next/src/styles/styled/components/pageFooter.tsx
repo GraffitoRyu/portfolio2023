@@ -1,6 +1,6 @@
 "use client";
 
-import { css, styled } from "styled-components";
+import styled, { css } from "styled-components";
 
 // style
 import { img } from "@/styles/styled/preset/img";
