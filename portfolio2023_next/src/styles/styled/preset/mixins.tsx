@@ -8,6 +8,17 @@ import { getUnit } from "@/util/unit";
 // types
 import { FlexTypes, PositionTypes, SizeTypes } from "@/types/preset";
 
+/**
+ * styled-components - mixin
+ * 1. size : width, height, margin(top, right, bottom, left), padding(top, right, bottom, left)
+ * 2. maxSize: max-width, max-height
+ * 3. flex: dir(row, column), std(justify-content), cross(align-items), wrap(flex-wrap)
+ * 4. position: type(static, absolute, relative, fixed, sticky, ...), top, right, bottom, left, center(boolean), z(z-index)
+ * 5. transition: { { property, duration, timing function, delay }, ...}
+ * 6. svgFill: rect, circle, path { fill: props }
+ * 7. svgStroke: rect, circle, path { stroke-width: props1, stroke: props2 }
+ */
+
 // margin, padding 배열 변환
 const convertSpacing = (v: string | number | Array<string | number>) => {
   if (Array.isArray(v))
@@ -112,6 +123,23 @@ export const position = ({
     transform:translate(-50%,-50%);
   `
     : ""}
+`;
+
+type TransitionTypes = {
+  prop: string;
+  time: string;
+  easing?: string;
+  delay?: string;
+};
+export const transition = ([...setArray]: TransitionTypes[]) => css`
+  transition: ${setArray
+    .map(
+      d =>
+        `${d.prop} ${d.time}${d.easing ? ` ${d.easing}` : ""}${
+          d.delay ? ` ${d.delay}` : ""
+        }`
+    )
+    .join(",")};
 `;
 
 export const SvgFill = (color: string) => css`

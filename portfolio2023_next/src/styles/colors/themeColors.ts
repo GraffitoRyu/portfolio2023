@@ -1,0 +1,16 @@
+export { page } from "@/styles/colors/common/Page";
+export { cursor } from "@/styles/colors/common/Cursor";
+export { scrollbar } from "@/styles/colors/common/Scrollbar";
+export { timer } from "@/styles/colors/pageHeader/Timer";
+export { gnbSitemapBtn } from "@/styles/colors/pageHeader/SitemapBtn";
+export { gnbUtilBtn } from "@/styles/colors/pageHeader/UtilBtn";
+export { gnbThemeMenu } from "@/styles/colors/pageHeader/ThemeMenu";
+export { sectionHeader } from "@/styles/colors/pageSection/Header";
+export { visual } from "@/styles/colors/pageSection/Visual";
+export { intro } from "@/styles/colors/pageSection/Intro";
+export { footer } from "@/styles/colors/pageFooter/Footer";
+export { career } from "@/styles/colors/profile/Career";
+export { experience } from "@/styles/colors/profile/Experience";
+export { tools } from "@/styles/colors/profile/Tools";
+export { list } from "@/styles/colors/projects/List";
+export { details } from "@/styles/colors/projects/Details";

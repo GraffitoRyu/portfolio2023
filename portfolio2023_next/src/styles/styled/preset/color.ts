@@ -11,52 +11,26 @@
  * }
  */
 
-import { page, PageColorTypes } from "@/styles/colors/common/Page";
-import { cursor, CursorColorTypes } from "@/styles/colors/common/Cursor";
-import {
-  scrollbar,
-  ScrollBarColorTypes,
-} from "@/styles/colors/common/Scrollbar";
-import { timer, TimerColorTypes } from "@/styles/colors/pageHeader/Timer";
-import {
-  gnbSitemapBtn,
-  GnbSitemapBtnTypes,
-} from "@/styles/colors/pageHeader/SitemapBtn";
-import { gnbUtilBtn, GnbUtilTypes } from "@/styles/colors/pageHeader/UtilBtn";
-import {
-  GnbThemeMenu,
-  ThemeMenuTypes,
-} from "@/styles/colors/pageHeader/ThemeMenu";
-import {
-  sectionHeader,
-  SectionHeaderTypes,
-} from "@/styles/colors/pageSection/Header";
-import { visual, VisualTypes } from "@/styles/colors/pageSection/Visual";
-import { intro, IntroTypes } from "@/styles/colors/pageSection/Intro";
-import { footer, FooterTypes } from "@/styles/colors/pageFooter/Footer";
-import { career, CareerColorTypes } from "@/styles/colors/profile/Career";
-import { experience, ExpColorTypes } from "@/styles/colors/profile/Experience";
-import { tools, ToolsColorTypes } from "@/styles/colors/profile/Tools";
-import { list, ListColorTypes } from "@/styles/colors/projects/List";
-import { details, DetailsColorTypes } from "@/styles/colors/projects/Details";
+import * as color from "@/styles/colors/themeColors";
+import type * as ColorTypes from "@/types/colors/colorTypes";
 
 export interface CustomThemeTypes {
-  page: PageColorTypes;
-  cursor: CursorColorTypes;
-  scrollbar: ScrollBarColorTypes;
-  timer: TimerColorTypes;
-  gnbSitemapBtn: GnbSitemapBtnTypes;
-  gnbUtilBtn: GnbUtilTypes;
-  gnbThemeMenu: ThemeMenuTypes;
-  sectionHeader: SectionHeaderTypes;
-  visualSection: VisualTypes;
-  introSection: IntroTypes;
-  footer: FooterTypes;
-  career: CareerColorTypes;
-  exp: ExpColorTypes;
-  tools: ToolsColorTypes;
-  projectList: ListColorTypes;
-  projectDetails: DetailsColorTypes;
+  page: ColorTypes.common.PageColorTypes;
+  cursor: ColorTypes.common.CursorColorTypes;
+  scrollbar: ColorTypes.common.ScrollBarColorTypes;
+  timer: ColorTypes.pageHeader.TimerColorTypes;
+  gnbSitemapBtn: ColorTypes.pageHeader.GnbSitemapBtnTypes;
+  gnbUtilBtn: ColorTypes.pageHeader.GnbUtilTypes;
+  gnbThemeMenu: ColorTypes.pageHeader.ThemeMenuTypes;
+  sectionHeader: ColorTypes.pageSection.SectionHeaderTypes;
+  visualSection: ColorTypes.pageSection.VisualTypes;
+  introSection: ColorTypes.pageSection.IntroTypes;
+  footer: ColorTypes.pageFooter.FooterTypes;
+  career: ColorTypes.profile.CareerColorTypes;
+  exp: ColorTypes.profile.ExpColorTypes;
+  tools: ColorTypes.profile.ToolsColorTypes;
+  projectList: ColorTypes.projectsList.ListColorTypes;
+  projectDetails: ColorTypes.projectDetail.DetailColorTypes;
 }
 
 export interface CustomThemeModeTypes {
@@ -67,39 +41,39 @@ export interface CustomThemeModeTypes {
 
 export const customThemes: CustomThemeModeTypes = {
   light: {
-    page: page.light,
-    cursor: cursor.light,
-    scrollbar: scrollbar.light,
-    timer: timer.light,
-    gnbSitemapBtn: gnbSitemapBtn.light,
-    gnbUtilBtn: gnbUtilBtn.light,
-    gnbThemeMenu: GnbThemeMenu.light,
-    sectionHeader: sectionHeader.light,
-    visualSection: visual.light,
-    introSection: intro.light,
-    footer: footer.light,
-    career: career.light,
-    exp: experience.light,
-    tools: tools.light,
-    projectList: list.light,
-    projectDetails: details.light,
+    page: color.page.light,
+    cursor: color.cursor.light,
+    scrollbar: color.scrollbar.light,
+    timer: color.timer.light,
+    gnbSitemapBtn: color.gnbSitemapBtn.light,
+    gnbUtilBtn: color.gnbUtilBtn.light,
+    gnbThemeMenu: color.gnbThemeMenu.light,
+    sectionHeader: color.sectionHeader.light,
+    visualSection: color.visual.light,
+    introSection: color.intro.light,
+    footer: color.footer.light,
+    career: color.career.light,
+    exp: color.experience.light,
+    tools: color.tools.light,
+    projectList: color.list.light,
+    projectDetails: color.details.light,
   },
   dark: {
-    page: page.dark,
-    cursor: cursor.dark,
-    scrollbar: scrollbar.dark,
-    timer: timer.dark,
-    gnbSitemapBtn: gnbSitemapBtn.dark,
-    gnbUtilBtn: gnbUtilBtn.dark,
-    gnbThemeMenu: GnbThemeMenu.dark,
-    sectionHeader: sectionHeader.dark,
-    visualSection: visual.dark,
-    introSection: intro.dark,
-    footer: footer.dark,
-    career: career.dark,
-    exp: experience.dark,
-    tools: tools.dark,
-    projectList: list.dark,
-    projectDetails: details.dark,
+    page: color.page.dark,
+    cursor: color.cursor.dark,
+    scrollbar: color.scrollbar.dark,
+    timer: color.timer.dark,
+    gnbSitemapBtn: color.gnbSitemapBtn.dark,
+    gnbUtilBtn: color.gnbUtilBtn.dark,
+    gnbThemeMenu: color.gnbThemeMenu.dark,
+    sectionHeader: color.sectionHeader.dark,
+    visualSection: color.visual.dark,
+    introSection: color.intro.dark,
+    footer: color.footer.dark,
+    career: color.career.dark,
+    exp: color.experience.dark,
+    tools: color.tools.dark,
+    projectList: color.list.dark,
+    projectDetails: color.details.dark,
   },
 };
