@@ -1,9 +1,13 @@
 "use client";
 
 import styled from "styled-components";
-import { SvgFill, flex, position, size } from "../preset/mixins";
-import { rem } from "@/util/unit";
+
+// style
 import { img } from "../preset/img";
+import { SvgFill, flex, position, size } from "../preset/mixins";
+
+// util
+import { rem } from "@/util/unit";
 
 export const ToggleBtn = styled.button`
   ${({ theme }) => SvgFill(theme.gnbUtilBtn.svg)};
