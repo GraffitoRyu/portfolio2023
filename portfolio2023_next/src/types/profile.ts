@@ -3,11 +3,11 @@ import { DescDepthTypes } from "./parseDesc";
 export type SectionHeaderTypes = {
   empty?: boolean;
   title?: string;
-  desc?: string[];
+  desc?: Array<string | JSX.Element>;
 };
 
 export type CareerTypes = {
-  [index: string]: string | string[] | undefined;
+  [index: string]: string | string[];
   code: string;
   period: string[];
   role: string;
@@ -16,7 +16,7 @@ export type CareerTypes = {
 };
 
 export type ExperienceTypes = {
-  [index: string]: string | string[] | Array<string | DescDepthTypes>;
+  [index: string]: string | Array<string | DescDepthTypes>;
   code: string;
-  desc: string[] | Array<string | DescDepthTypes>;
+  desc: Array<string | DescDepthTypes>;
 };

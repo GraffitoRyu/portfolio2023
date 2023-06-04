@@ -11,7 +11,7 @@ export default function Projects() {
   return (
     <>
       <PageSection className="side-h-padding" isVisual={true}>
-        <PageVisual title={["Selected", "projects"]} />
+        <PageVisual title={["Selected ", "projects"]} />
         <SectionHeader empty={true} />
         <SectionContents>
           <PageIntro

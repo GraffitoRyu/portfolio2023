@@ -11,14 +11,14 @@ export default function ParseDescNewLine({
 }: DescNewLineTypes): JSX.Element {
   return (
     <>
-      {data.map((desc: string | JSX.Element, i: number) => (
+      {data?.map((desc: string | JSX.Element, i: number) => (
         <React.Fragment
           key={`parseDescNewLine_${Math.floor(Math.random() * 100000000)}_${i}`}
         >
           <span>{desc}</span>
           {i < data.length - 1 && <ResponsiveBr />}
         </React.Fragment>
-      ))}
+      )) ?? ""}
     </>
   );
 }

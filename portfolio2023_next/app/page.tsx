@@ -14,12 +14,12 @@ export default function Profile() {
   return (
     <>
       <PageSection className="side-h-padding" isVisual={true}>
-        <PageVisual title={["Ready for", "interaction"]} />
+        <PageVisual title={["Ready for ", "interaction"]} />
         <SectionHeader empty={true} />
         <SectionContents>
           <PageIntro
             title={[
-              "인터랙션 이벤트 구현에 관심이 많은",
+              "인터랙션 이벤트 구현에 관심이 많은 ",
               <React.Fragment key="strongLine">
                 프론트엔드 개발자 <strong>류대현</strong>입니다.
               </React.Fragment>,

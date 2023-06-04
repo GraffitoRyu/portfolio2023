@@ -37,10 +37,11 @@ export const SectionHeaderContainer = styled.header`
 
 export const HeaderTitle = styled.h2`
   margin-bottom: ${rem(32)};
+  color: ${({ theme }) => theme.sectionHeader.title};
   font-size: ${rem(48)};
   line-height: 1em;
   font-weight: 700;
-  color: ${({ theme }) => theme.sectionHeader.title};
+  text-transform: capitalize;
   @media only screen and (min-width: 1024px) {
     margin-bottom: ${rem(80)};
     font-size: ${rem(32)};

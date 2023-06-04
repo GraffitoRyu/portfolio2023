@@ -5,9 +5,9 @@ export type DescDepthTypes = {
 };
 
 export type DescTypes = {
-  data: string | DescDepthTypes;
+  data: string | DescDepthTypes | undefined;
 };
 
 export type DescNewLineTypes = {
-  data: Array<string | JSX.Element>;
+  data: Array<string | JSX.Element> | undefined;
 };

@@ -10,6 +10,9 @@ import {
 // type
 import { SectionHeaderTypes } from "@/types/profile";
 
+// util components
+import ParseDescNewLine from "@/hooks/ParseDescNewLine";
+
 export default function SectionHeader({
   empty,
   title,
@@ -21,18 +24,9 @@ export default function SectionHeader({
         ""
       ) : (
         <>
-          <HeaderTitle className="capitalize">{title}</HeaderTitle>
+          <HeaderTitle>{title}</HeaderTitle>
           <HeaderDesc>
-            {desc?.map((d, i) => (
-              <React.Fragment
-                key={`sectionHeaderDesc_${Math.floor(
-                  Math.random() * 100000
-                )}_${i}`}
-              >
-                <span>{d}</span>
-                {i < desc.length - 1 ? <br /> : ""}
-              </React.Fragment>
-            ))}
+            <ParseDescNewLine data={desc} />
           </HeaderDesc>
         </>
       )}
