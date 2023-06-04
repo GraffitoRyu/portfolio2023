@@ -1,4 +1,4 @@
-import { DescDepthTypes } from "./parseDesc";
+import { DescDepthTypes } from "./util/parseDesc";
 
 export type SectionHeaderTypes = {
   empty?: boolean;
