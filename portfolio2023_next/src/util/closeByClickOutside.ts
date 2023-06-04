@@ -9,7 +9,6 @@ export default function closeByClickOutSide(
     e?.target instanceof Element &&
     ref?.current instanceof Element
   ) {
-    console.log(e.target);
     const isOverRef = ref.current.contains(e.target);
     if (!isOverRef) callback();
   }
