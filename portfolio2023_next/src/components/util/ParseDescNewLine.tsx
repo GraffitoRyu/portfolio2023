@@ -1,7 +1,7 @@
 import React from "react";
 
 // type
-import { DescNewLineTypes } from "@/types/parseDesc";
+import { DescNewLineTypes } from "@/types/util/parseDesc";
 
 // style components
 import { ResponsiveBr } from "@/styles/styled/components/hooks";

@@ -7,7 +7,7 @@ import {
 
 // type
 import { ExperienceTypes } from "@/types/profile";
-import { DescDepthTypes } from "@/types/parseDesc";
+import { DescDepthTypes } from "@/types/util/parseDesc";
 
 // util components
 import ParseDescDepth from "@/components/util/ParseDescDepth";

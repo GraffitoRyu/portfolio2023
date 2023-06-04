@@ -2,7 +2,7 @@
 import { DepthItem } from "@/styles/styled/components/hooks";
 
 // type
-import { DescTypes } from "@/types/parseDesc";
+import { DescTypes } from "@/types/util/parseDesc";
 
 export default function ParseDescDepth({ data }: DescTypes) {
   return (
