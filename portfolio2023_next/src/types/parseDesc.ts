@@ -9,5 +9,5 @@ export type DescTypes = {
 };
 
 export type DescNewLineTypes = {
-  data: string[] | Array<string | JSX.Element>;
+  data: Array<string | JSX.Element>;
 };

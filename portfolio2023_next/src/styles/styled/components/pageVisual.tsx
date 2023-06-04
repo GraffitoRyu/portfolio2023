@@ -2,8 +2,10 @@
 
 import styled from "styled-components";
 
-// util
+// style
 import { flex } from "../preset/mixins";
+
+// util
 import { rem } from "@/util/unit";
 
 export const VisualContainer = styled.div`
