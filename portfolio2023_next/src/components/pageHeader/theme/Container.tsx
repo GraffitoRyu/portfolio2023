@@ -10,27 +10,22 @@ import ThemeToggleBtn from "./ToggleBtn";
 // state
 import { ThemeStateTypes, themeState } from "@/states/theme";
 
+// util
+import closeByClickOutSide from "@/util/closeByClickOutside";
+
 export default function ThemeContainer() {
-  const themeRef = useRef<HTMLDivElement>(null);
+  const themeRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const setTheme = useSetRecoilState<ThemeStateTypes>(themeState);
   const { isOpen } = useRecoilValue<ThemeStateTypes>(themeState);
 
   const closeThemeMenu = useCallback(
-    (e: PointerEvent | MouseEvent | TouchEvent) => {
-      if (
-        isOpen == true &&
-        e?.target instanceof Element &&
-        themeRef?.current instanceof Element
-      ) {
-        const isTargetContainsRef = themeRef.current.contains(e.target);
-        if (!isTargetContainsRef) {
-          setTheme(prev => ({
-            ...prev,
-            isOpen: false,
-          }));
-        }
-      }
-    },
+    (e: PointerEvent | MouseEvent) =>
+      closeByClickOutSide(e, isOpen, themeRef, () =>
+        setTheme(prev => ({
+          ...prev,
+          isOpen: false,
+        }))
+      ),
     [isOpen, setTheme]
   );
 
