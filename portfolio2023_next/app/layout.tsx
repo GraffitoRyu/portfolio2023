@@ -3,24 +3,22 @@ import { Suspense } from "react";
 // meta data
 export { metadata } from "@/data/meta";
 
-// common template
-import PageTemplate from "@/components/roots/PageTemplate";
-
-// components
+// root components
 import Recoil from "@/components/roots/Recoil";
 import ReactQuery from "@/components/roots/ReactQuery";
 import ThemeColors from "@/components/roots/ThemeColor";
+
+// components
+import PageTemplate from "@/components/roots/PageTemplate";
 import Cursor from "@/components/cursor/Cursor";
 
 // styles
-// import { sans, serif } from "@/styles/fonts/fonts";
 import "@/styles/scss/globals.scss";
 import StyledComponentsRegistry from "./lib/registry";
 import { GlobalBodyStyle } from "@/styles/styled/components/page";
 
-// util components
+// hooks
 import { PageLoadEvents } from "@/hooks/PageLoadEvents";
-// import TransCover from "@/components/pageTransition/TransCover";
 
 export default function RootLayout({
   children,
@@ -45,10 +43,10 @@ export default function RootLayout({
                 <GlobalBodyStyle />
                 <main className="page-container w-full h-full relative">
                   <PageTemplate>{children}</PageTemplate>
+                  <Cursor />
                   <Suspense fallback={null}>
                     <PageLoadEvents />
                   </Suspense>
-                  <Cursor />
                 </main>
               </ThemeColors>
             </ReactQuery>

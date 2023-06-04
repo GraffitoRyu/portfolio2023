@@ -5,11 +5,11 @@ import styled from "styled-components";
 // svg
 import ExternalIcon from "@/svg/common/external_icon.svg";
 
+// type
+import { SitemapType } from "@/types/sitemap";
+
 // style
 import { FooterBtn } from "@/styles/styled/components/pageFooter";
-
-// data
-import { SitemapType } from "@/data/sitemap";
 
 const FooterMenuBtn = styled(FooterBtn)``;
 

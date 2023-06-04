@@ -3,11 +3,11 @@ import { useState } from "react";
 // svg
 import ExternalIcon from "@/svg/common/external_icon.svg";
 
+// type
+import { SitemapType } from "@/types/sitemap";
+
 // style
 import { FooterBtn } from "@/styles/styled/components/pageFooter";
-
-// data
-import { SitemapType } from "@/data/sitemap";
 
 export default function ContactBtn({ path, name }: SitemapType): JSX.Element {
   const [hover, setHover] = useState<string>("");

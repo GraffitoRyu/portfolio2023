@@ -7,8 +7,8 @@ import { usePathname } from "next/navigation";
 // style components
 import { SitemapLink } from "@/styles/styled/components/gnb";
 
-// data
-import { SitemapType } from "@/data/sitemap";
+// type
+import { SitemapType } from "@/types/sitemap";
 
 // util
 import { pageState, pageStateTypes } from "@/states/page";

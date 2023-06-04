@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 // type
-import { SitemapType } from "@/data/sitemap";
+import { SitemapType } from "@/types/sitemap";
 
 // style components
 import { ExtBtn, Tooltip } from "@/styles/styled/components/gnb";

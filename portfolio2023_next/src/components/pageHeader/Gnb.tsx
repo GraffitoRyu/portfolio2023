@@ -3,8 +3,11 @@ import SitemapBtn from "./gnb/SitemapBtn";
 import ExternalBtn from "./gnb/ExternalBtn";
 import ThemeContainer from "./theme/Container";
 
+//type
+import { SitemapType } from "@/types/sitemap";
+
 // data
-import { SitemapType, sitemapData } from "@/data/sitemap";
+import { sitemapData } from "@/data/sitemap";
 
 // style
 import { GnbCommonStyle } from "@/styles/styled/components/gnb";

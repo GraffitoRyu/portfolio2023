@@ -4,14 +4,17 @@ import styled from "styled-components";
 import ContactBtn from "./footerBtn/ContactBtn";
 import SitemapBtn from "./footerBtn/SitemapBtn";
 
-// style
+// type
+import { SitemapType } from "@/types/sitemap";
+
+// style components
 import {
   FooterInfoItem,
   FooterInfoTitle,
 } from "@/styles/styled/components/pageFooter";
 
 // data
-import { SitemapType, sitemapData } from "@/data/sitemap";
+import { sitemapData } from "@/data/sitemap";
 
 const FooterMenu = styled.dl`
   width: 25%;
