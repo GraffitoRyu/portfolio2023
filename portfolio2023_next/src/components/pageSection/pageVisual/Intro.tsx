@@ -7,7 +7,7 @@ import { IntroTypes } from "@/types/section";
 import { IntroDesc, IntroTitle } from "@/styles/styled/components/pageVisual";
 
 // util components
-import ParseDescNewLine from "@/hooks/ParseDescNewLine";
+import ParseDescNewLine from "@/components/util/ParseDescNewLine";
 
 export default function PageIntro({ title, desc }: IntroTypes) {
   return (

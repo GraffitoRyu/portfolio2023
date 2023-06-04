@@ -10,7 +10,7 @@ import { ExperienceTypes } from "@/types/profile";
 import { DescDepthTypes } from "@/types/parseDesc";
 
 // util components
-import ParseDescDepth from "@/hooks/ParseDescDepth";
+import ParseDescDepth from "@/components/util/ParseDescDepth";
 
 export default async function Experience() {
   const expData: ExperienceTypes[] | undefined = (await getExp()) ?? undefined;

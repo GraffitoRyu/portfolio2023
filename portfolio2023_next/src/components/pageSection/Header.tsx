@@ -11,7 +11,7 @@ import {
 import { SectionHeaderTypes } from "@/types/profile";
 
 // util components
-import ParseDescNewLine from "@/hooks/ParseDescNewLine";
+import ParseDescNewLine from "@/components/util/ParseDescNewLine";
 
 export default function SectionHeader({
   empty,
