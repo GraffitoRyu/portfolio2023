@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 // style components
 import { SitemapLink } from "@/styles/styled/components/gnb";
@@ -12,21 +12,30 @@ import { SitemapType } from "@/types/sitemap";
 
 // util
 import { pageState, pageStateTypes } from "@/states/page";
+import { pathExceptParams } from "@/hooks/PageLoadEvents";
 
 export default function SitemapBtn({ code, path, name }: SitemapType) {
-  const curPath = usePathname();
+  const pathname = usePathname();
+  const { category } = useParams();
   const setPageAtom = useSetRecoilState<pageStateTypes>(pageState);
-  const [curPage, setCurPage] = useState<string>(path == curPath ? "now" : "");
-  const [hover, setHover] = useState("");
+  const [curPath, setCurPath] = useState<string>(
+    pathExceptParams(pathname, category)
+  );
+  const [now, setNow] = useState<string>(curPath == path ? "now" : "");
+  const [hover, setHover] = useState<string>("");
 
   useEffect(() => {
-    setCurPage(path == curPath ? "now" : "");
+    setCurPath(pathExceptParams(curPath, category));
+  }, [category, curPath]);
+
+  useEffect(() => {
+    setNow(path == curPath ? "now" : "");
   }, [curPath, path]);
 
   return (
     <SitemapLink
       href={path}
-      className={`${curPage} ${hover}`}
+      className={`${now} ${hover}`}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
       onClick={() => {
