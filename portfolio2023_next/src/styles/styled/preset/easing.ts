@@ -1,4 +1,4 @@
-import { EasingTypes } from "@/types/easing";
+import { EasingTypes } from "@/types/preset";
 
 export const easing: EasingTypes = {
   quad: " cubic-bezier(0.5, 1, 0.89, 1)",

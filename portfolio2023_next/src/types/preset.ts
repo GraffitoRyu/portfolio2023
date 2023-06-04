@@ -35,3 +35,19 @@ export type PositionTypes = {
   z?: number | undefined;
   center?: boolean | undefined;
 };
+
+export type BtnTypes = {
+  width?: number | string;
+  height: number | string;
+  radius?: number | string;
+  borderWidth?: number;
+  color?: string;
+};
+
+export type EasingTypes = {
+  [index: string]: string;
+  quad: string;
+  quart: string;
+  expo: string;
+  back: string;
+};

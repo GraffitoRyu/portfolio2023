@@ -3,7 +3,7 @@
 import { css } from "styled-components";
 
 // type
-import { BtnTypes } from "@/types/button";
+import { BtnTypes } from "@/types/preset";
 
 // mixin
 import { SvgFill, SvgStroke, flex } from "./mixins";
