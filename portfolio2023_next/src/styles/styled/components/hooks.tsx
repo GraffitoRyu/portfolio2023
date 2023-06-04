@@ -18,3 +18,10 @@ export const DepthItem = styled.li`
     margin: ${rem(8)} ${rem(16)} 0;
   }
 `;
+
+export const ResponsiveBr = styled.br`
+  display: none;
+  @media only screen and (min-width: 1024px) {
+    display: inline;
+  }
+`;

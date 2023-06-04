@@ -1,8 +1,12 @@
 "use client";
 
-import { rem } from "@/util/unit";
 import styled from "styled-components";
+
+// style
 import { position } from "../preset/mixins";
+
+// util
+import { rem } from "@/util/unit";
 
 export const PageSectionContainer = styled.section`
   position: relative;
@@ -47,18 +51,12 @@ export const HeaderDesc = styled.p`
   font-size: ${rem(32)};
   line-height: 1.5em;
   color: ${({ theme }) => theme.sectionHeader.desc};
-  br {
-    display: none;
-  }
   span {
     word-break: break-all;
   }
   @media only screen and (min-width: 1024px) {
     font-size: ${rem(64)};
     font-weight: 300;
-    br {
-      display: inline;
-    }
   }
 `;
 

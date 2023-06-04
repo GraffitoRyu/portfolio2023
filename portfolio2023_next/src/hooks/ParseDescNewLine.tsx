@@ -1,5 +1,10 @@
-import { DescNewLineTypes } from "@/types/parseDesc";
 import React from "react";
+
+// type
+import { DescNewLineTypes } from "@/types/parseDesc";
+
+// style components
+import { ResponsiveBr } from "@/styles/styled/components/hooks";
 
 export default function ParseDescNewLine({
   data,
@@ -11,7 +16,7 @@ export default function ParseDescNewLine({
           key={`parseDescNewLine_${Math.floor(Math.random() * 100000000)}_${i}`}
         >
           <span>{desc}</span>
-          {i < data.length - 1 && <br />}
+          {i < data.length - 1 && <ResponsiveBr />}
         </React.Fragment>
       ))}
     </>
