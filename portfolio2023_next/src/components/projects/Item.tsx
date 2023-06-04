@@ -22,6 +22,7 @@ export default function ProjectItem({
 
   return (
     <ProjectItemContainer
+      href={`/projects/${code}`}
       className={hover}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
