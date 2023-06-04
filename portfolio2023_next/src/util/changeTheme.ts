@@ -4,7 +4,9 @@ export const getSystemTheme: () => string = () => {
     : "light";
 };
 
-export const applyTheme: (theme: string | undefined | null) => void = theme => {
+export const applyTheme: (theme: string | undefined | null) => void = (
+  theme
+) => {
   const rootClassList = document.querySelector("html")?.classList;
   // reset
   rootClassList?.remove("dark-theme", "light-theme");

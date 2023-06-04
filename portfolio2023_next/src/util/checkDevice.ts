@@ -41,11 +41,11 @@ export const conditions: ConditionsType = {
 const _user = navigator.userAgent;
 
 export const checkDevice: ChecksType = {
-  apple: () => conditions.apple.some(d => _user.includes(d)),
-  mobile: () => conditions.mobile.some(d => _user.includes(d)),
+  apple: () => conditions.apple.some((d) => _user.includes(d)),
+  mobile: () => conditions.mobile.some((d) => _user.includes(d)),
   tablet: () =>
-    conditions.mobile.some(d => _user.includes(d)) &&
-    conditions.tablet.some(d => _user.includes(d)) &&
+    conditions.mobile.some((d) => _user.includes(d)) &&
+    conditions.tablet.some((d) => _user.includes(d)) &&
     window.innerWidth > 768,
   orientation: () =>
     window.innerWidth < window.innerHeight ? "portrait" : "landscape",
