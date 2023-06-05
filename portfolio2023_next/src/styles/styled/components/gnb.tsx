@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import styled, { createGlobalStyle } from "styled-components";
 
 // util
@@ -36,7 +35,7 @@ export const GnbCommonStyle = createGlobalStyle`
   }
 `;
 
-export const SitemapLink = styled(Link)`
+export const SitemapLink = styled.button`
   margin-right: ${rem(64)};
   font-size: ${rem(24)};
   font-weight: 500;

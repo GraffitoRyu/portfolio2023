@@ -13,12 +13,14 @@ import PageTemplate from "@/components/roots/PageTemplate";
 import Cursor from "@/components/cursor/Cursor";
 
 // styles
+import { sans, serif } from "@/styles/fonts/fonts";
 import "@/styles/scss/globals.scss";
 import StyledComponentsRegistry from "./lib/registry";
 import { GlobalBodyStyle } from "@/styles/styled/components/page";
 
 // hooks
 import { PageLoadEvents } from "@/hooks/PageLoadEvents";
+import TransCover from "@/components/pageTransition/TransCover";
 
 export default function RootLayout({
   children,
@@ -26,33 +28,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <StyledComponentsRegistry>
-      <html lang="ko">
-        {/* <html lang="ko" className={`${sans.variable} ${serif.variable}`}> */}
-        <head>
-          {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-          <link
+    <html lang="ko" className={`${sans.variable} ${serif.variable}`}>
+      {/* <html lang="ko" className={`${sans.variable} ${serif.variable}`}> */}
+      {/* <head> */}
+      {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+      {/* <link
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;500;700&display=swap"
             rel="stylesheet"
-          />
-        </head>
-        <body>
-          <Recoil>
-            <ReactQuery>
+          /> */}
+      {/* </head> */}
+      <body>
+        <Recoil>
+          <ReactQuery>
+            <StyledComponentsRegistry>
               <ThemeColors>
                 <GlobalBodyStyle />
                 <main className="page-container w-full h-full relative">
                   <PageTemplate>{children}</PageTemplate>
+                  <TransCover />
                   <Cursor />
                   <Suspense fallback={null}>
                     <PageLoadEvents />
                   </Suspense>
                 </main>
               </ThemeColors>
-            </ReactQuery>
-          </Recoil>
-        </body>
-      </html>
-    </StyledComponentsRegistry>
+            </StyledComponentsRegistry>
+          </ReactQuery>
+        </Recoil>
+      </body>
+    </html>
   );
 }
