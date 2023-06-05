@@ -1,13 +1,22 @@
 "use client";
 
-import { ProjectDetailContainer } from "@/components/roots/ProjectDetailContainer";
 import { useParams } from "next/navigation";
+import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 
-export default function DetailProject() {
+// state
+import { pageState, pageStateTypes } from "@/states/page";
+
+export default function OpenDetail() {
   const { category } = useParams();
-  return (
-    <ProjectDetailContainer>
-      <h1 style={{ color: "#fff" }}>{category} detail</h1>
-    </ProjectDetailContainer>
-  );
+  const setBottomSheetOpen = useSetRecoilState<pageStateTypes>(pageState);
+
+  useEffect(() => {
+    setBottomSheetOpen(prev => ({
+      ...prev,
+      bottomSheetOpen: category ? true : false,
+    }));
+  }, [category, setBottomSheetOpen]);
+
+  return <></>;
 }
