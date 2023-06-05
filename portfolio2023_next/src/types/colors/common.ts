@@ -43,3 +43,15 @@ export interface BtnModeTypes {
   light: BtnColorTypes;
   dark: BtnColorTypes;
 }
+
+export interface TransCoverColorTypes {
+  [index: string]: string;
+  bg: string;
+  title: string;
+}
+
+export interface TransCoverModeTypes {
+  [index: string]: TransCoverColorTypes;
+  light: TransCoverColorTypes;
+  dark: TransCoverColorTypes;
+}
