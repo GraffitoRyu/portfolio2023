@@ -1,6 +1,7 @@
 export { page } from "@/styles/colors/common/Page";
 export { cursor } from "@/styles/colors/common/Cursor";
 export { scrollbar } from "@/styles/colors/common/Scrollbar";
+export { buttons } from "@/styles/colors/common/buttons";
 export { timer } from "@/styles/colors/pageHeader/Timer";
 export { gnbSitemapBtn } from "@/styles/colors/pageHeader/SitemapBtn";
 export { gnbUtilBtn } from "@/styles/colors/pageHeader/UtilBtn";

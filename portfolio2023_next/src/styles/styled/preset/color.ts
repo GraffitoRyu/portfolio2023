@@ -18,6 +18,7 @@ export interface CustomThemeTypes {
   page: ColorTypes.common.PageColorTypes;
   cursor: ColorTypes.common.CursorColorTypes;
   scrollbar: ColorTypes.common.ScrollBarColorTypes;
+  buttons: ColorTypes.common.BtnColorTypes;
   timer: ColorTypes.pageHeader.TimerColorTypes;
   gnbSitemapBtn: ColorTypes.pageHeader.GnbSitemapBtnTypes;
   gnbUtilBtn: ColorTypes.pageHeader.GnbUtilTypes;
@@ -44,6 +45,7 @@ export const customThemes: CustomThemeModeTypes = {
     page: color.page.light,
     cursor: color.cursor.light,
     scrollbar: color.scrollbar.light,
+    buttons: color.buttons.light,
     timer: color.timer.light,
     gnbSitemapBtn: color.gnbSitemapBtn.light,
     gnbUtilBtn: color.gnbUtilBtn.light,
@@ -62,6 +64,7 @@ export const customThemes: CustomThemeModeTypes = {
     page: color.page.dark,
     cursor: color.cursor.dark,
     scrollbar: color.scrollbar.dark,
+    buttons: color.buttons.dark,
     timer: color.timer.dark,
     gnbSitemapBtn: color.gnbSitemapBtn.dark,
     gnbUtilBtn: color.gnbUtilBtn.dark,

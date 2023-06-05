@@ -4,7 +4,7 @@ export interface CursorColorTypes {
 }
 
 export interface CursorModeTypes {
-  [key: string]: CursorColorTypes;
+  [index: string]: CursorColorTypes;
   light: CursorColorTypes;
   dark: CursorColorTypes;
 }
@@ -16,7 +16,7 @@ export interface PageColorTypes {
 }
 
 export interface PageModeTypes {
-  [key: string]: PageColorTypes;
+  [index: string]: PageColorTypes;
   light: PageColorTypes;
   dark: PageColorTypes;
 }
@@ -26,7 +26,20 @@ export interface ScrollBarColorTypes {
 }
 
 export interface ScrollBarModeTypes {
-  [key: string]: ScrollBarColorTypes;
+  [index: string]: ScrollBarColorTypes;
   light: ScrollBarColorTypes;
   dark: ScrollBarColorTypes;
+}
+
+export interface BtnColorTypes {
+  [index: string]: string;
+  basic: string;
+  hoverBg: string;
+  hoverContents: string;
+}
+
+export interface BtnModeTypes {
+  [index: string]: BtnColorTypes;
+  light: BtnColorTypes;
+  dark: BtnColorTypes;
 }
