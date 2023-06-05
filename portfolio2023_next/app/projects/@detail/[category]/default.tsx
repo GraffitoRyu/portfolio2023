@@ -7,14 +7,14 @@ import { useSetRecoilState } from "recoil";
 
 export default function OpenDetail() {
   const { category } = useParams();
-  const setBottomSheetOpen = useSetRecoilState<pageStateTypes>(pageState);
+  const setPage = useSetRecoilState<pageStateTypes>(pageState);
 
   useEffect(() => {
-    setBottomSheetOpen(prev => ({
+    setPage(prev => ({
       ...prev,
       bottomSheetOpen: category ? true : false,
     }));
-  }, [category, setBottomSheetOpen]);
+  }, [category, setPage]);
 
-  return <></>;
+  return null;
 }

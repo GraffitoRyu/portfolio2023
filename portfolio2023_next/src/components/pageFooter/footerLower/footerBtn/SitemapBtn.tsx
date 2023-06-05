@@ -1,5 +1,5 @@
 import { SyntheticEvent, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
@@ -27,6 +27,7 @@ export default function SitemapBtn({
   external,
 }: SitemapType): JSX.Element {
   const router = useRouter();
+  const { category } = useParams();
   const setPageAtom = useSetRecoilState<pageStateTypes>(pageState);
   const [hover, setHover] = useState<string>("");
 
@@ -51,11 +52,14 @@ export default function SitemapBtn({
       onMouseLeave={() => setHover("")}
       onClick={(e: SyntheticEvent) =>
         navDelay({
-          delay: 1000,
+          delay: category ? 0 : 1000,
           e,
           clickEvent: () => {
             console.log("페이지 변경 시작: ", code);
-            setPageAtom(prev => ({ ...prev, cover: code, loaded: false }));
+            const updatePage = category
+              ? { bottomSheetOpen: false }
+              : { cover: code, loaded: false };
+            setPageAtom(prev => ({ ...prev, ...updatePage }));
           },
           navEvent: () => router.push(path),
         })

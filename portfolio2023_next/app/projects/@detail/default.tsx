@@ -7,14 +7,14 @@ import { useSetRecoilState } from "recoil";
 import { pageState, pageStateTypes } from "@/states/page";
 
 export default function Default() {
-  const setBottomSheetOpen = useSetRecoilState<pageStateTypes>(pageState);
+  const setPage = useSetRecoilState<pageStateTypes>(pageState);
 
   useEffect(() => {
-    setBottomSheetOpen(prev => ({
+    setPage(prev => ({
       ...prev,
       bottomSheetOpen: false,
     }));
-  }, [setBottomSheetOpen]);
+  }, [setPage]);
 
-  return <></>;
+  return null;
 }
