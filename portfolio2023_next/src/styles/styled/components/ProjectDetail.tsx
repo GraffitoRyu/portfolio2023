@@ -12,7 +12,7 @@ import {
 } from "@/styles/styled/preset/mixins";
 
 export const ProjectDetailContainer = styled.article`
-  ${size({ width: "100%", height: "60vh" })}
+  ${size({ width: "100%", height: "100%" })}
   ${position({ type: "fixed", left: 0, bottom: 0, z: 2000 })}
   overflow-x: hidden;
   overflow-y: auto;
@@ -24,7 +24,7 @@ export const ProjectDetailContainer = styled.article`
     rgba(42, 55, 64, 1) 0%,
     rgba(66, 110, 94, 0.6643907563025211) 100%
   );
-  ${transition([{ prop: "transform", time: "0.8s", easing: easing.quart }])}
+  ${transition([{ prop: "transform", time: "0.8s", easing: easing.expo }])}
   transform: translateY(100%);
   &.open {
     transform: translateY(0);
@@ -33,7 +33,7 @@ export const ProjectDetailContainer = styled.article`
 
 export const ProjectDetailHeader = styled.header`
   ${position({ type: "sticky", top: 0, left: 0 })}
-  ${flex({ std: "start" })}
+  ${flex({ std: "space-between" })}
   ${size({ width: "100%", padding: 80 })}
 `;
 
