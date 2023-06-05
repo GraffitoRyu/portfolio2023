@@ -8,7 +8,7 @@ import ThemeMenuBtn from "./MenuBtn";
 import {
   ThemeListItem,
   ThemeMenuContainer,
-} from "@/styles/styled/components/themeMenu";
+} from "@/styles/styled/components/ThemeMenu";
 
 // state
 import { ThemeStateTypes, themeState } from "@/states/theme";

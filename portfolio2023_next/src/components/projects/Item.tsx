@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 
 // components
-import { ProjectItemContainer } from "@/styles/styled/components/projectList";
+import { ProjectItemContainer } from "@/styles/styled/components/ProjectList";
 import SlideTitle from "@/components/projects/item/SlideTitle";
 import ProjectSummary from "@/components/projects/item/Summary";
 

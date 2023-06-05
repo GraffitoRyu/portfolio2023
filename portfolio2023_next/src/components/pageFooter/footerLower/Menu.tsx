@@ -11,7 +11,7 @@ import { SitemapType } from "@/types/sitemap";
 import {
   FooterInfoItem,
   FooterInfoTitle,
-} from "@/styles/styled/components/pageFooter";
+} from "@/styles/styled/components/PageFooter";
 
 // data
 import { sitemapData } from "@/data/sitemap";

@@ -3,7 +3,7 @@ import {
   FooterInfoTitle,
   FooterSummary,
   FooterSummaryDesc,
-} from "@/styles/styled/components/pageFooter";
+} from "@/styles/styled/components/PageFooter";
 
 export default function FooterSummaryContainer() {
   return (

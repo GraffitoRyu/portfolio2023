@@ -3,7 +3,7 @@ import FooterMenuContainer from "./footerLower/Menu";
 import FooterSummaryContainer from "./footerLower/Summary";
 
 // styled components
-import { FooterContents } from "@/styles/styled/components/pageFooter";
+import { FooterContents } from "@/styles/styled/components/PageFooter";
 
 export default function FooterLowerContainer() {
   return (

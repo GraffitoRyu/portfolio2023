@@ -1,5 +1,5 @@
 // style components
-import { ToolsItem, ToolsList } from "@/styles/styled/components/tools";
+import { ToolsItem, ToolsList } from "@/styles/styled/components/Tools";
 
 const toolList = [
   "Next.js",

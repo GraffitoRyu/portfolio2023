@@ -10,7 +10,7 @@ import ExternalIcon from "@/svg/common/external_icon.svg";
 import { SitemapType } from "@/types/sitemap";
 
 // style component
-import { FooterBtn } from "@/styles/styled/components/pageFooter";
+import { FooterBtn } from "@/styles/styled/components/PageFooter";
 
 // util
 import navDelay from "@/util/navDelay";

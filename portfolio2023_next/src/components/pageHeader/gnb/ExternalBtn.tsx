@@ -6,7 +6,7 @@ import { useState } from "react";
 import { SitemapType } from "@/types/sitemap";
 
 // style components
-import { ExtBtn, Tooltip } from "@/styles/styled/components/gnb";
+import { ExtBtn, Tooltip } from "@/styles/styled/components/Gnb";
 
 // SVG
 import * as ExtSvg from "./BtnIcons";

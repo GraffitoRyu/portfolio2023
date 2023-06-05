@@ -10,7 +10,7 @@ import { SitemapType } from "@/types/sitemap";
 import { sitemapData } from "@/data/sitemap";
 
 // style
-import { GnbCommonStyle } from "@/styles/styled/components/gnb";
+import { GnbCommonStyle } from "@/styles/styled/components/Gnb";
 
 const gnbData: SitemapType[] | undefined = sitemapData.filter(
   (d: SitemapType) => d.header && !d.external

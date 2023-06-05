@@ -7,7 +7,7 @@ import { useRecoilState } from "recoil";
 import { CursorTypes, cursorState } from "@/states/cursor";
 
 // styled components
-import { CursorStyle } from "@/styles/styled/components/cursor";
+import { CursorStyle } from "@/styles/styled/components/Cursor";
 
 export default function Cursor() {
   const [cursor, setCursor] = useRecoilState<CursorTypes>(cursorState);

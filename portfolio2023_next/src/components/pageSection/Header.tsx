@@ -5,7 +5,7 @@ import {
   SectionHeaderContainer,
   HeaderDesc,
   HeaderTitle,
-} from "@/styles/styled/components/pageSection";
+} from "@/styles/styled/components/PageSection";
 
 // type
 import { SectionHeaderTypes } from "@/types/profile";

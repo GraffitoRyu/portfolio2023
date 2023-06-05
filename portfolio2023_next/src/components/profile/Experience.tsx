@@ -3,7 +3,7 @@ import {
   ExpDesc,
   ExpItem,
   ExpTitle,
-} from "@/styles/styled/components/experience";
+} from "@/styles/styled/components/Experience";
 
 // type
 import { ExperienceTypes } from "@/types/profile";

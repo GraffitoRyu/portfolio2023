@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRecoilState } from "recoil";
 
 // style components
-import { ToggleBtn, ToggleIcon } from "@/styles/styled/components/themeMenu";
+import { ToggleBtn, ToggleIcon } from "@/styles/styled/components/ThemeMenu";
 
 // state
 import { ThemeStateTypes, themeState } from "@/states/theme";

@@ -16,7 +16,7 @@ import Cursor from "@/components/cursor/Cursor";
 import { sans, serif } from "@/styles/fonts/fonts";
 import "@/styles/scss/globals.scss";
 import StyledComponentsRegistry from "./lib/registry";
-import { GlobalBodyStyle } from "@/styles/styled/components/page";
+import { GlobalBodyStyle } from "@/styles/styled/components/Page";
 
 // hooks
 import { PageLoadEvents } from "@/hooks/PageLoadEvents";

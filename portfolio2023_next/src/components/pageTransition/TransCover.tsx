@@ -8,7 +8,7 @@ import {
   TransBox,
   TransTitle,
   TransitionCover,
-} from "@/styles/styled/components/transCover";
+} from "@/styles/styled/components/TransCover";
 
 // state
 import { pageState, pageStateTypes } from "@/states/page";

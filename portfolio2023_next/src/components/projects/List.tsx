@@ -2,7 +2,7 @@
 import ProjectItem from "./Item";
 
 // style components
-import { ProjectListContainer } from "@/styles/styled/components/projectList";
+import { ProjectListContainer } from "@/styles/styled/components/ProjectList";
 
 // type
 import { ProjectsType } from "@/types/projects";

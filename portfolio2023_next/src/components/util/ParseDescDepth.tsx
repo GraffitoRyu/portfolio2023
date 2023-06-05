@@ -1,5 +1,5 @@
 // style components
-import { DepthItem } from "@/styles/styled/components/hooks";
+import { DepthItem } from "@/styles/styled/components/Hooks";
 
 // type
 import { DescTypes } from "@/types/util/parseDesc";

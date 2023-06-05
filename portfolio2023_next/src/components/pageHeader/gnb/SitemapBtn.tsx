@@ -5,7 +5,7 @@ import { useSetRecoilState } from "recoil";
 import { useParams, usePathname, useRouter } from "next/navigation";
 
 // style components
-import { SitemapLink } from "@/styles/styled/components/gnb";
+import { SitemapLink } from "@/styles/styled/components/Gnb";
 
 // type
 import { SitemapType } from "@/types/sitemap";

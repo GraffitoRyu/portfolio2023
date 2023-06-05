@@ -8,7 +8,7 @@ import FooterLowerContainer from "./FooterLower";
 import {
   FooterContainer,
   FooterWrap,
-} from "@/styles/styled/components/pageFooter";
+} from "@/styles/styled/components/PageFooter";
 
 export default function PageFooter() {
   return (

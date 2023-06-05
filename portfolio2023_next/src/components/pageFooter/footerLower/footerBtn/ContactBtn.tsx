@@ -7,7 +7,7 @@ import ExternalIcon from "@/svg/common/external_icon.svg";
 import { SitemapType } from "@/types/sitemap";
 
 // style
-import { FooterBtn } from "@/styles/styled/components/pageFooter";
+import { FooterBtn } from "@/styles/styled/components/PageFooter";
 
 export default function ContactBtn({ path, name }: SitemapType): JSX.Element {
   const [hover, setHover] = useState<string>("");

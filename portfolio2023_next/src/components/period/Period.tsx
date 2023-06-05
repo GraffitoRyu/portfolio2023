@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 
 // style components
-import { Bar, PeriodContainer } from "@/styles/styled/components/period";
+import { Bar, PeriodContainer } from "@/styles/styled/components/Period";
 
 export default function Period({
   className,

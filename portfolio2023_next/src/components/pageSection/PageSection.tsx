@@ -1,7 +1,7 @@
 import React from "react";
 
 // style components
-import { PageSectionContainer } from "@/styles/styled/components/pageSection";
+import { PageSectionContainer } from "@/styles/styled/components/PageSection";
 
 export default function PageSection({
   children,

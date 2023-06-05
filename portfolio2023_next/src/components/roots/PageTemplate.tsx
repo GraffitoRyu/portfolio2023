@@ -8,7 +8,7 @@ import PageFooter from "@/components/pageFooter/PageFooter";
 import {
   ScrollContainer,
   StickyContainer,
-} from "@/styles/styled/components/page";
+} from "@/styles/styled/components/Page";
 
 export default function PageTemplate({ children }: { children: ReactNode }) {
   return (

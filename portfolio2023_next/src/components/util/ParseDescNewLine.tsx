@@ -4,7 +4,7 @@ import React from "react";
 import { DescNewLineTypes } from "@/types/util/parseDesc";
 
 // style components
-import { ResponsiveBr } from "@/styles/styled/components/hooks";
+import { ResponsiveBr } from "@/styles/styled/components/Hooks";
 
 export default function ParseDescNewLine({
   data,

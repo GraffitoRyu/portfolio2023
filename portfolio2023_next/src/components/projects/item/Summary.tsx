@@ -10,7 +10,7 @@ import {
   ListBtnRole,
   ListBtnTitle,
   ListBtnWrap,
-} from "@/styles/styled/components/projectList";
+} from "@/styles/styled/components/ProjectList";
 
 // type
 import { SummaryType } from "@/types/projects";

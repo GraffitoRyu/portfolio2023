@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 // style components
-import { TimerContainer } from "@/styles/styled/components/pageHeader";
+import { TimerContainer } from "@/styles/styled/components/PageHeader";
 
 export default function TimeDisplay() {
   const [curTime, setCurTime] = useState<Date | undefined>(undefined);

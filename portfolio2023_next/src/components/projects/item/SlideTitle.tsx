@@ -4,7 +4,7 @@ import { HTMLAttributes, useEffect, useRef, useState } from "react";
 import {
   HoverSlideTitle,
   TitleSpan,
-} from "@/styles/styled/components/projectList";
+} from "@/styles/styled/components/ProjectList";
 
 export default function SlideTitle({
   className,

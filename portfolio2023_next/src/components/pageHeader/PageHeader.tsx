@@ -3,7 +3,7 @@ import Gnb from "./Gnb";
 import TimeDisplay from "./TimeDisplay";
 
 // style components
-import { HeaderContainer } from "@/styles/styled/components/pageHeader";
+import { HeaderContainer } from "@/styles/styled/components/PageHeader";
 
 export default function PageHeader() {
   return (

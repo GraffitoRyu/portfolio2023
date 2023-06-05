@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRecoilState } from "recoil";
 
 // style components
-import { ThemeMenuButton } from "@/styles/styled/components/themeMenu";
+import { ThemeMenuButton } from "@/styles/styled/components/ThemeMenu";
 
 // state
 import { ThemeStateTypes, themeState } from "@/states/theme";

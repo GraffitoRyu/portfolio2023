@@ -1,7 +1,7 @@
 import React from "react";
 
 // style components
-import { Contents } from "@/styles/styled/components/pageSection";
+import { Contents } from "@/styles/styled/components/PageSection";
 
 export default function SectionContents({
   children,

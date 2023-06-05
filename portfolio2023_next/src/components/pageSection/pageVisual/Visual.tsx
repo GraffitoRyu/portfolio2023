@@ -3,7 +3,7 @@ import {
   VisualContainer,
   VisualTitle,
   VisualTitleLine,
-} from "@/styles/styled/components/pageVisual";
+} from "@/styles/styled/components/PageVisual";
 
 export default function PageVisual({ title }: { title: string[] }) {
   return (

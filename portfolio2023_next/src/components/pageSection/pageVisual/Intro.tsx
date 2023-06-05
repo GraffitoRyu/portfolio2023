@@ -4,7 +4,7 @@ import React from "react";
 import { IntroTypes } from "@/types/section";
 
 // style components
-import { IntroDesc, IntroTitle } from "@/styles/styled/components/pageVisual";
+import { IntroDesc, IntroTitle } from "@/styles/styled/components/PageVisual";
 
 // util components
 import ParseDescNewLine from "@/components/util/ParseDescNewLine";
