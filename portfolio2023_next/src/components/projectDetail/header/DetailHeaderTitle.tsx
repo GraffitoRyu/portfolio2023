@@ -1,5 +1,10 @@
+import { Suspense } from "react";
 import DetailTitle from "../DetailTitle";
 
 export default function DetailHeaderTitle() {
-  return <DetailTitle title={["lorem ipsum"]} />;
+  return (
+    <Suspense fallback={<div>Title loading...</div>}>
+      <DetailTitle />
+    </Suspense>
+  );
 }

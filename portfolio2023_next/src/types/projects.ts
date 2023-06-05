@@ -1,5 +1,5 @@
 export type SummaryType = {
-  title: string;
+  title: string | string[];
   desc: string;
   role: string[];
   period: string[];
@@ -41,4 +41,8 @@ export type ProjectsType = {
   service: ServiceType;
   experience: ExpType;
   media: MediaType;
+};
+
+export type DetailTypes = {
+  [index: string]: ProjectsType | object;
 };

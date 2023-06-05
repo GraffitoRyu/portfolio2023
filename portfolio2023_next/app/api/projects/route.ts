@@ -16,13 +16,13 @@ export async function GET(req: Request) {
       code: d.code,
       summary: d.summary,
     }));
-    return NextResponse.json({ listData });
+    return NextResponse.json({ ...listData });
   }
 
   // 프로젝트 상세를 위한 데이터
   if (typeof detail === "string") {
-    const detailData = res.filter((d: ProjectsType) => d.code === detail);
-    return NextResponse.json({ detailData });
+    const detailData = res.filter((d: ProjectsType) => d.code === detail)[0];
+    return NextResponse.json({ ...detailData });
   }
 
   return NextResponse.json({ res });
