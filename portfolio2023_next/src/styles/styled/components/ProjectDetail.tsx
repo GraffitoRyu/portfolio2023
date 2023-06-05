@@ -13,7 +13,7 @@ import {
 
 export const ProjectDetailContainer = styled.article`
   ${size({ width: "100%", height: "60vh" })}
-  ${position({ type: "fixed", left: 0, bottom: 0, z: 4000 })}
+  ${position({ type: "fixed", left: 0, bottom: 0, z: 2000 })}
   overflow-x: hidden;
   overflow-y: auto;
   &::-webkit-scrollbar {
