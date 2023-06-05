@@ -30,7 +30,7 @@ export default function TransCover() {
 
   useEffect(() => {
     if (init) {
-      if (loaded) setTimeout(() => setLoading(""), 3000);
+      if (loaded) setTimeout(() => setLoading(""), 1600);
       else setLoading("loading");
     }
   }, [init, loaded]);
