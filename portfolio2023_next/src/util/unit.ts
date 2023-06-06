@@ -1,3 +1,5 @@
+import { sizePreset } from "@/styles/styled/preset/size";
+
 // px값을 rem으로 변환
 // 시안 기준을 2560px너비 100%로 함
 /**
@@ -5,7 +7,28 @@
  * @return {string} rem 변환된 단위 값
  */
 export function rem(px: number): string {
-  return `${px / 25.6}rem`;
+  return `${px / sizePreset.common.remStd}rem`;
+}
+
+export function remToPx(px: number): number {
+  if (typeof px === "number")
+    return (px / sizePreset.common.remStd) * getRootFontSize();
+  return px;
+}
+
+export function getRootFontSize(): number {
+  if (typeof window !== "undefined") {
+    const _html = document.querySelector("html");
+    if (_html) {
+      return parseFloat(
+        window
+          .getComputedStyle(_html)
+          .getPropertyValue("font-size")
+          .replace("px", "")
+      );
+    }
+  }
+  return 25.6;
 }
 
 /**

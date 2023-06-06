@@ -1,5 +1,6 @@
 export const sizePreset = {
   common: {
+    remStd: 25.6,
     padding: 80,
   },
   icon: {
