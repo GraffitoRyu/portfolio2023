@@ -8,7 +8,7 @@ export const GlobalBodyStyle = createGlobalStyle`
   }
 `;
 
-export const ScrollContainer = styled.div`
+export const StyledScrollContainer = styled.div`
   width: 100%;
   height: 100%;
   overflow-x: hidden;
