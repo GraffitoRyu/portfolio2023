@@ -8,6 +8,7 @@ import { ResponsiveBr } from "@/styles/styled/components/Hooks";
 
 export default function ParseDescNewLine({
   data,
+  breakLine = true,
 }: DescNewLineTypes): JSX.Element {
   return (
     <>
@@ -15,8 +16,8 @@ export default function ParseDescNewLine({
         <React.Fragment
           key={`parseDescNewLine_${Math.floor(Math.random() * 100000000)}_${i}`}
         >
-          <span>{desc}</span>
-          {i < data.length - 1 && <ResponsiveBr />}
+          <span>{desc} </span>
+          {breakLine && i < data.length - 1 && <ResponsiveBr />}
         </React.Fragment>
       )) ?? ""}
     </>

@@ -10,4 +10,5 @@ export type DescTypes = {
 
 export type DescNewLineTypes = {
   data: Array<string | JSX.Element> | undefined;
+  breakLine?: boolean;
 };

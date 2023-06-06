@@ -29,7 +29,7 @@ export default function ProjectSummary({
       <ListBtnWrap>
         <ListBtnPeriod className="period" date={summary.period} />
         <FadeContainer>
-          <ListBtnTitle>{summary.title}</ListBtnTitle>
+          <ListBtnTitle>{summary.title.join(" ")}</ListBtnTitle>
         </FadeContainer>
         <FadeContainer>
           <ListBtnDesc>{summary.desc}</ListBtnDesc>
