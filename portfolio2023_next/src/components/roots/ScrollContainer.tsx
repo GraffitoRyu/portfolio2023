@@ -15,7 +15,6 @@ export default function ScrollContainer({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (scrollContainerRef.current && loaded) {
-      console.log(scrollContainerRef.current);
       scrollContainerRef.current.scrollTop = 0;
     }
   }, [loaded, scrollContainerRef]);
