@@ -13,7 +13,7 @@ import { pageState, pageStateTypes } from "@/states/page";
 import { detailData } from "@/states/detail";
 
 // util
-import { getDetailData } from "@/util/getDetailData";
+import { getDetailData } from "@/util/getData";
 
 export default function OpenDetail() {
   const { category } = useParams();
