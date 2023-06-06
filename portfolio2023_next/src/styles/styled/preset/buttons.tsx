@@ -5,12 +5,13 @@ import { css, styled } from "styled-components";
 // type
 import { BtnTypes } from "@/types/preset";
 
-// mixin
+// style preset
 import { SvgFill, SvgStroke, flex, size } from "./mixins";
+import { img } from "./img";
+import { sizePreset } from "./size";
 
 // util
 import { getUnit, rem } from "@/util/unit";
-import { img } from "./img";
 
 export const btnStyle = ({
   width,
@@ -39,14 +40,14 @@ export const colorSet = (color: string) =>
 export const CommonBtn = styled.button`
   ${({ theme }) =>
     btnStyle({
-      height: 80,
+      height: sizePreset.btn.mobile,
       radius: 16,
       borderWidth: 2,
       color: theme.buttons.basic,
     })}
 
   figure {
-    ${size({ width: 24, height: 24 })}
+    ${size({ width: sizePreset.icon.mobile, height: sizePreset.icon.mobile })}
     svg {
       ${img({})}
     }
@@ -61,10 +62,10 @@ export const CommonBtn = styled.button`
   }
 
   @media only screen and (min-width: 1024px) {
-    ${size({ width: 48, height: 48 })}
+    ${size({ width: sizePreset.btn.pc, height: sizePreset.btn.pc })}
     border-radius: ${rem(8)};
     figure {
-      ${size({ width: 16, height: 16 })}
+      ${size({ width: sizePreset.icon.pc, height: sizePreset.icon.pc })}
     }
 
     &.w-auto {
