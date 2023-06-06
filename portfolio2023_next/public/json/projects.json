@@ -2,7 +2,7 @@
   {
     "code": "teamsolution",
     "summary": {
-      "title": "TeamSolution",
+      "title": ["TeamSolution"],
       "desc": "실시간 텔레메트리 데이터 모니터링 및 실시간 주행 관제 솔루션",
       "role": ["프론트엔드 개발", "웹 퍼블리싱", "유지보수"],
       "period": ["2019-11-01T00:00:00", "2022-11-01T00:00:00"]
@@ -98,7 +98,7 @@
   {
     "code": "racesolution",
     "summary": {
-      "title": "RaceSolution\n & HUD for broadcast",
+      "title": ["RaceSolution", "& HUD for broadcast"],
       "desc": "국내 최대 모터스포츠 경기 SUPERRACE의 관제 솔루션 및 방송 중계 오버레이 HUD",
       "role": ["프론트엔드 개발", "웹 퍼블리싱", "유지보수"],
       "period": ["2022-04-01T00:00:00", "2022-10-01T00:00:00"]
@@ -148,7 +148,7 @@
         "git"
       ],
       "desc": [
-        "기존의 TeamSoluton과 동일한 기술을 활용하여, 기능을 확장",
+        "기존의 TeamSolution과 동일한 기술을 활용하여, 기능을 확장",
         "Ajax를 통해 엔트리를 조회하여 jQuery로 관제할 엔트리 테이블을 재생성",
         "재생성된 이벤트에 대한 이벤트 재부여 및 다중 선택항목에 대해 일괄 API 호출 등 기능 구현",
         "방송 화면의 오버레이될 HUD 컨트롤 페이지 개발",
@@ -180,7 +180,7 @@
   {
     "code": "solutionmaster",
     "summary": {
-      "title": "SolutionMaster",
+      "title": ["SolutionMaster"],
       "desc": "기관 및 R&D 목적으로 다수의 주행 차량을 관리 및 관제하기 위한 종합 관리 솔루션",
       "role": ["프론트엔드 개발", "웹 퍼블리싱", "유지보수"],
       "period": ["2021-02-01T00:00:00", "2022-12-01T00:00:00"]
@@ -244,7 +244,7 @@
   {
     "code": "lapvslap",
     "summary": {
-      "title": "Session Report;\n Lap vs Lap",
+      "title": ["Session Report;", "Lap vs Lap"],
       "desc": "주행 세션 데이터 분석 서비스",
       "role": ["프론트엔드 개발", "웹 퍼블리싱", "유지보수"],
       "period": ["2021-07-01T00:00:00", "2022-12-01T00:00:00"]
