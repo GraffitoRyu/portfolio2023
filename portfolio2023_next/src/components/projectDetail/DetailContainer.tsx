@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 // components
-import DetailHeader from "@/components/projectDetail/DetailHeader";
+import DetailHeader from "@/components/projectDetail/header/DetailHeader";
 import DetailSection from "@/components/projectDetail/section/DetailSection";
 import DetailVisual from "@/components/projectDetail/section/DetailVisual";
 import DetailDescription from "@/components/projectDetail/section/DetailDescription";
 import DetailMedia from "@/components/projectDetail/section/DetailMedia";
 
 // style components
-import { ProjectDetailContainer } from "@/styles/styled/components/ProjectDetail";
+import { PDContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
 import { pageState, pageStateTypes } from "@/states/page";
@@ -25,7 +25,7 @@ export default function ProjectDetail() {
   }, [bottomSheetOpen]);
 
   return (
-    <ProjectDetailContainer className={`${open}`}>
+    <PDContainer className={`${open}`}>
       <DetailHeader />
       <DetailSection>
         <DetailVisual />
@@ -36,6 +36,6 @@ export default function ProjectDetail() {
       <DetailSection>
         <DetailMedia />
       </DetailSection>
-    </ProjectDetailContainer>
+    </PDContainer>
   );
 }

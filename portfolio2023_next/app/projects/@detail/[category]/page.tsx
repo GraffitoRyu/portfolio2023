@@ -25,6 +25,7 @@ export default function OpenDetail() {
     queryFn: () => getDetailData(category),
   });
 
+  // 프로젝트 상세 데이터 React-query로 가져오기
   useEffect(() => {
     console.log(`[ReactQuery] status: ${status}`);
     if (status === "success") {
@@ -33,6 +34,7 @@ export default function OpenDetail() {
     }
   }, [data, setDetails, status]);
 
+  // 상세 bottom sheet 열기
   useEffect(() => {
     setBottomSheetOpen(prev => ({
       ...prev,

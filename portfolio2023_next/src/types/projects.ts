@@ -1,17 +1,20 @@
 export type SummaryType = {
-  title: string | string[];
+  [index: string]: string | string[];
+  title: string[];
   desc: string;
   role: string[];
   period: string[];
 };
 
 export type LinkType = {
+  [index: string]: string | string[] | undefined;
   code: string;
   name: string;
   url: string;
   hide: undefined | string[];
 };
 export type ServiceType = {
+  [index: string]: string | string[] | LinkType[];
   provider: string;
   platform: string;
   desc: string[];
@@ -19,15 +22,18 @@ export type ServiceType = {
 };
 
 export type ExpDepthType = {
+  [index: string]: string | string[];
   depth1: string;
   depth2: string[];
 };
 export type ExpType = {
+  [index: string]: Array<string | ExpDepthType>;
   stacks: string[];
   desc: Array<string | ExpDepthType>;
 };
 
 export type MediaType = {
+  [index: string]: string;
   referType: string;
   src: string;
   title: string;
@@ -44,5 +50,5 @@ export type ProjectsType = {
 };
 
 export type DetailTypes = {
-  [index: string]: ProjectsType | object;
+  [index: string]: ProjectsType;
 };
