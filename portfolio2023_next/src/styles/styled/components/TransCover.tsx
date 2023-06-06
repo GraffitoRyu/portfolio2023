@@ -3,6 +3,7 @@
 import { styled } from "styled-components";
 
 // style
+import { easing } from "../preset/easing";
 import { flex, position } from "../preset/mixins";
 
 // util
@@ -14,7 +15,7 @@ export const TransitionCover = styled.div`
   height: 0;
   background-color: gray;
   overflow: clip;
-  transition: height 0.3s;
+  transition: height 0.3s ${easing.quart};
   &.loading {
     height: 100%;
     top: auto;
