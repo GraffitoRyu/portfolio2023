@@ -6,10 +6,8 @@ import CloseButton from "@/components/buttons/Close";
 import DetailHeaderTitleContainer from "@/components/projectDetail/header/DetailHeaderTitleContainer";
 
 // style components
-import {
-  PDHeaderContainer,
-  PDHeader,
-} from "@/styles/styled/components/ProjectDetail";
+import { PDHeader } from "@/styles/styled/components/ProjectDetail";
+import { StyledHeaderWrap } from "@/styles/styled/components/PageHeader";
 
 // state
 import { pageState, pageStateTypes } from "@/states/page";
@@ -30,10 +28,10 @@ export default function DetailHeader() {
   };
   return (
     <PDHeader>
-      <PDHeaderContainer>
+      <StyledHeaderWrap>
         <DetailHeaderTitleContainer />
         <CloseButton clickEvent={closeDetail} />
-      </PDHeaderContainer>
+      </StyledHeaderWrap>
     </PDHeader>
   );
 }

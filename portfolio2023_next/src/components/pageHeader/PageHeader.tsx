@@ -3,13 +3,18 @@ import Gnb from "./Gnb";
 import TimeDisplay from "./TimeDisplay";
 
 // style components
-import { HeaderContainer } from "@/styles/styled/components/PageHeader";
+import {
+  HeaderContainer,
+  StyledHeaderWrap,
+} from "@/styles/styled/components/PageHeader";
 
 export default function PageHeader() {
   return (
     <HeaderContainer>
-      <TimeDisplay />
-      <Gnb />
+      <StyledHeaderWrap>
+        <TimeDisplay />
+        <Gnb />
+      </StyledHeaderWrap>
     </HeaderContainer>
   );
 }

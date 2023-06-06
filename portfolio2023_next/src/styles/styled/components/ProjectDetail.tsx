@@ -3,7 +3,7 @@
 import { styled } from "styled-components";
 
 // util
-import { rem } from "@/util/unit";
+import { rem, remToPx } from "@/util/unit";
 
 // style
 import {
@@ -74,13 +74,15 @@ export const PDHeader = styled.header`
   width:100%;
   height: 0;
 `;
-export const PDHeaderContainer = styled.div`
-  ${flex({ std: "start" })}
-  ${size({ width: "100%", height: sizePreset.btn.mobile, padding: 80 })}
-  @media only screen and (min-width:1024px) {
-    height: ${rem(sizePreset.btn.pc + 80 * 2)};
-  }
-`;
+
+export const detailTitlePos = () => {
+  if (typeof window === "undefined")
+    return `100vh - ${rem(sizePreset.common.padding * 2)}`;
+
+  const _vh = window.innerHeight;
+  const _pd = remToPx(sizePreset.common.padding * 2);
+  return `${_vh - _pd}px`;
+};
 
 export const PDHeaderTitleContainer = styled.div`
   position: relative;
@@ -88,7 +90,7 @@ export const PDHeaderTitleContainer = styled.div`
   margin-right: auto;
   ${PDTitle} {
     ${position({ type: "absolute", top: 0, left: 0 })}
-    transform:${`translate(0, calc(100vh - ${rem(80 * 2)} - 100%))`};
+    transform:${`translate(0, calc(${detailTitlePos()} - 100%))`};
   }
 `;
 export const PDHeaderPageName = styled.h1`

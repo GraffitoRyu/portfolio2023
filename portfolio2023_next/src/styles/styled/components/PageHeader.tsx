@@ -3,20 +3,30 @@
 import styled from "styled-components";
 
 // style
-import { flex, position } from "../preset/mixins";
+import { sizePreset } from "../preset/size";
+import { flex, position, size } from "../preset/mixins";
 
 // util
 import { rem } from "@/util/unit";
 
 export const HeaderContainer = styled.header`
   ${position({ type: "sticky", top: 0, left: 0 })}
-  ${flex({ std: "start" })}
   width:100%;
-  padding: ${rem(80)};
   font-size: ${rem(20)};
   z-index: 2000;
   pointer-events: none;
-  transform: translateY(0px);
+`;
+
+export const StyledHeaderWrap = styled.div`
+  ${flex({ std: "start" })}
+  ${size({
+    width: "100%",
+    height: sizePreset.btn.mobile,
+    padding: sizePreset.common.padding,
+  })}
+  @media only screen and (min-width:1024px) {
+    height: ${rem(sizePreset.btn.pc + sizePreset.common.padding * 2)};
+  }
 `;
 
 export const TimerContainer = styled.div`
