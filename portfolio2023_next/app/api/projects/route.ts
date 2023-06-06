@@ -21,8 +21,9 @@ export async function GET(req: Request) {
 
   // 프로젝트 상세를 위한 데이터
   if (typeof detail === "string") {
-    const detailData = res.filter((d: ProjectsType) => d.code === detail)[0];
-    return NextResponse.json({ ...detailData });
+    const arr = res.filter((d: ProjectsType) => d.code === detail);
+    const validData = arr[0];
+    return NextResponse.json({ ...validData });
   }
 
   return NextResponse.json({ res });
