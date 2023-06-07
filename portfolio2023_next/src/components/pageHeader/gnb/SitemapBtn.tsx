@@ -9,9 +9,10 @@ import { SitemapLink } from "@/styles/styled/components/Gnb";
 
 // type
 import { SitemapType } from "@/types/sitemap";
+import { pageStateTypes } from "@/types/state";
 
 // state
-import { pageState, pageStateTypes } from "@/states/page";
+import { pageState } from "@/states/page";
 
 // hooks
 import { pathExceptParams } from "@/hooks/PageLoadEvents";

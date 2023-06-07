@@ -11,12 +11,13 @@ import {
 } from "@/styles/styled/components/TransCover";
 
 // state
-import { pageState, pageStateTypes } from "@/states/page";
+import { pageState } from "@/states/page";
 
 // data
 import { transCoverData } from "@/data/transCover";
 
 // types
+import { pageStateTypes } from "@/types/state";
 import { transCoverTypes } from "@/types/transCover";
 
 export default function TransCover() {

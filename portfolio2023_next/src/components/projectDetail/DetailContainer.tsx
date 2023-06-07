@@ -13,8 +13,11 @@ import DetailMedia from "@/components/projectDetail/section/DetailMedia";
 // style components
 import { PDContainer } from "@/styles/styled/components/ProjectDetail";
 
+// types
+import { pageStateTypes } from "@/types/state";
+
 // state
-import { pageState, pageStateTypes } from "@/states/page";
+import { pageState } from "@/states/page";
 
 export default function ProjectDetail() {
   const { bottomSheetOpen } = useRecoilValue<pageStateTypes>(pageState);

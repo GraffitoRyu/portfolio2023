@@ -4,8 +4,11 @@ import { ReactNode, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { ThemeProvider } from "styled-components";
 
+// types
+import { ThemeStateTypes } from "@/types/state";
+
 // state
-import { ThemeStateTypes, themeState } from "@/states/theme";
+import { themeState } from "@/states/theme";
 
 // style
 import { customThemes } from "@/styles/styled/preset/color";

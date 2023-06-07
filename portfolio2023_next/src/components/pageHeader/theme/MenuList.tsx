@@ -10,8 +10,11 @@ import {
   ThemeMenuContainer,
 } from "@/styles/styled/components/ThemeMenu";
 
+// types
+import { ThemeStateTypes } from "@/types/state";
+
 // state
-import { ThemeStateTypes, themeState } from "@/states/theme";
+import { themeState } from "@/states/theme";
 
 // util
 import { applyTheme } from "@/util/changeTheme";

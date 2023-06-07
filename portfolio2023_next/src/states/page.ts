@@ -1,13 +1,5 @@
 import { atom } from "recoil";
-
-export type pageStateTypes = {
-  init: boolean;
-  cur: string;
-  cover: string;
-  bottomSheetOpen: boolean;
-  loaded: boolean;
-  notFound: boolean;
-};
+import { pageStateTypes } from "@/types/state";
 
 export const pageState = atom<pageStateTypes>({
   key: "pageStateAtom",

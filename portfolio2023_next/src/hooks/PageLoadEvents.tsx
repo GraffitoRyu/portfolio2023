@@ -5,10 +5,11 @@ import { useParams, usePathname } from "next/navigation";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 // state
-import { pageState, pageStateTypes } from "@/states/page";
+import { pageState } from "@/states/page";
 
 // type
 import { SitemapType } from "@/types/sitemap";
+import { pageStateTypes } from "@/types/state";
 
 // data
 import { sitemapData } from "@/data/sitemap";

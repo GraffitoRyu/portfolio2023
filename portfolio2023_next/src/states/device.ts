@@ -1,12 +1,6 @@
 import { atom, selector } from "recoil";
 import { checkDevice } from "@/util/checkDevice";
-
-export type DeviceTypes = {
-  apple: boolean;
-  mobile: boolean;
-  tablet: boolean;
-  orientation: string;
-};
+import { DeviceTypes } from "@/types/state";
 
 export const deviceState = atom<DeviceTypes>({
   key: "deviceState",

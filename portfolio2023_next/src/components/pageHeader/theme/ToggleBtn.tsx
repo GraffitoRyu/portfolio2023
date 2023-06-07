@@ -4,8 +4,11 @@ import { useRecoilState } from "recoil";
 // style components
 import { ToggleBtn, ToggleIcon } from "@/styles/styled/components/ThemeMenu";
 
+// types
+import { ThemeStateTypes } from "@/types/state";
+
 // state
-import { ThemeStateTypes, themeState } from "@/states/theme";
+import { themeState } from "@/states/theme";
 
 // svg
 import * as ThemeSvg from "./BtnIcons";

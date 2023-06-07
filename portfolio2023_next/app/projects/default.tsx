@@ -6,8 +6,11 @@ import { useSetRecoilState } from "recoil";
 // components
 import Projects from "./page";
 
+// types
+import { pageStateTypes } from "@/types/state";
+
 // state
-import { pageState, pageStateTypes } from "@/states/page";
+import { pageState } from "@/states/page";
 
 export default function Default() {
   const setPage = useSetRecoilState<pageStateTypes>(pageState);

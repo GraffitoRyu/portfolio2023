@@ -6,10 +6,11 @@ import { useSetRecoilState } from "recoil";
 import { useQuery } from "@tanstack/react-query";
 
 // type
+import { pageStateTypes } from "@/types/state";
 import { DetailTypes } from "@/types/projects";
 
 // state
-import { pageState, pageStateTypes } from "@/states/page";
+import { pageState } from "@/states/page";
 import { detailData } from "@/states/detail";
 
 // util

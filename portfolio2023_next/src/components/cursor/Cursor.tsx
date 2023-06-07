@@ -3,8 +3,11 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { useRecoilState } from "recoil";
 
+// types
+import { CursorTypes } from "@/types/state";
+
 // state
-import { CursorTypes, cursorState } from "@/states/cursor";
+import { cursorState } from "@/states/cursor";
 
 // styled components
 import { CursorStyle } from "@/styles/styled/components/Cursor";

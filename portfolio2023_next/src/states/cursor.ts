@@ -1,10 +1,5 @@
+import { CursorTypes } from "@/types/state";
 import { atom } from "recoil";
-
-export type CursorTypes = {
-  x: number;
-  y: number;
-  hover: string;
-};
 
 export const cursorState = atom<CursorTypes>({
   key: "cursorState",

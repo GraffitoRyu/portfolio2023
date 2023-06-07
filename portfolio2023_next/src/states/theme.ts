@@ -1,10 +1,5 @@
+import { ThemeStateTypes } from "@/types/state";
 import { atom } from "recoil";
-
-export type ThemeStateTypes = {
-  isOpen: boolean;
-  isSystem: boolean;
-  theme: string;
-};
 
 export const themeState = atom<ThemeStateTypes>({
   key: "themeStateAtom",
