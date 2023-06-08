@@ -1,5 +1,7 @@
-import { DetailTypes } from "@/types/projects";
 import { atom } from "recoil";
+
+// types
+import { DetailTypes } from "@/types/projectDetails";
 
 export const detailData = atom<DetailTypes>({
   key: "projectDetailData",

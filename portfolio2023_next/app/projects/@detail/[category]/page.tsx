@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 
 // type
 import { pageStateTypes } from "@/types/state";
-import { DetailTypes } from "@/types/projects";
+import { DetailTypes } from "@/types/projectDetails";
 
 // state
 import { pageState } from "@/states/page";

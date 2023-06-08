@@ -29,6 +29,7 @@ export default function DetailHeader() {
       router.back();
     }, transTime.detail.sheetSlideTime);
   };
+
   return (
     <PDHeader>
       <StyledHeaderWrap>
