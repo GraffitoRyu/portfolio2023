@@ -3,7 +3,7 @@
 import { css } from "styled-components";
 
 // util
-import { getUnit } from "@/util/unit";
+import { getUnit, rem } from "@/util/unit";
 
 // types
 import { FlexTypes, PositionTypes, SizeTypes } from "@/types/preset";
@@ -55,18 +55,18 @@ export const size = ({
   pb,
   pl,
 }: SizeTypes) => css`
-  ${width && `width:${getUnit(width)};`}
-  ${height && `height:${getUnit(height)};`}
-  ${margin && `margin: ${convertSpacing(margin)};`}
-  ${padding && `padding: ${convertSpacing(padding)};`}
-  ${mt && `margin-top:${getUnit(mt)};`}
-  ${mr && `margin-right:${getUnit(mr)};`}
-  ${mb && `margin-bottom:${getUnit(mb)};`}
-  ${ml && `margin-left:${getUnit(ml)};`}
-  ${pt && `padding-top:${getUnit(pt)};`}
-  ${pr && `padding-right:${getUnit(pr)};`}
-  ${pb && `padding-bottom:${getUnit(pb)};`}
-  ${pl && `padding-left:${getUnit(pl)};`}
+  ${typeof width !== "undefined" && `width:${getUnit(width)};`}
+  ${typeof height !== "undefined" && `height:${getUnit(height)};`}
+  ${typeof margin !== "undefined" && `margin: ${convertSpacing(margin)};`}
+  ${typeof padding !== "undefined" && `padding: ${convertSpacing(padding)};`}
+  ${typeof mt !== "undefined" && `margin-top:${getUnit(mt)};`}
+  ${typeof mr !== "undefined" && `margin-right:${getUnit(mr)};`}
+  ${typeof mb !== "undefined" && `margin-bottom:${getUnit(mb)};`}
+  ${typeof ml !== "undefined" && `margin-left:${getUnit(ml)};`}
+  ${typeof pt !== "undefined" && `padding-top:${getUnit(pt)};`}
+  ${typeof pr !== "undefined" && `padding-right:${getUnit(pr)};`}
+  ${typeof pb !== "undefined" && `padding-bottom:${getUnit(pb)};`}
+  ${typeof pl !== "undefined" && `padding-left:${getUnit(pl)};`}
 `;
 
 /**
@@ -122,6 +122,42 @@ export const position = ({
     left:50%;
     transform:translate(-50%,-50%);
   `
+    : ""}
+`;
+
+export const font = ({
+  size,
+  weight,
+  height,
+  spacing,
+  family,
+}: {
+  size?: number | string;
+  weight?: number | string;
+  height?: number | string;
+  spacing: number | string;
+  family?: string | string[];
+}) => css`
+  ${typeof size === "number"
+    ? `font-size:${rem(size)};`
+    : typeof size === "string"
+    ? `font-size:${size};`
+    : ""}
+  ${typeof weight !== "undefined" && `font-weight:${size};`}
+  ${typeof height === "number"
+    ? `line-height:${rem(height)};`
+    : typeof height === "string"
+    ? `line-height:${height};`
+    : ""}
+  ${typeof spacing === "number"
+    ? `letter-spacing:${rem(spacing)};`
+    : typeof spacing === "string"
+    ? `letter-spacing:${spacing};`
+    : ""}
+  ${Array.isArray(family)
+    ? `font-family:${family.join(",")};`
+    : typeof family === "string"
+    ? `font-family:${family};`
     : ""}
 `;
 
