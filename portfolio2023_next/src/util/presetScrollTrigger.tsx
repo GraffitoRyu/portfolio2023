@@ -1,11 +1,12 @@
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { HookScrollTriggerProps } from "@/types/hooks";
 
 export default function ctxScrollTrigger({
   container,
   target,
   options,
+  direction,
 }: HookScrollTriggerProps) {
   return gsap.context(() => {
     if (container && target) {
@@ -17,7 +18,10 @@ export default function ctxScrollTrigger({
         scroller: container,
       });
 
-      gsap.to(target, options);
+      if (typeof direction === "undefined" || direction === "to")
+        gsap.to(target, options);
+
+      if (direction === "from") gsap.from(target, options);
     }
   });
 }
