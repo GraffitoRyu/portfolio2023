@@ -1,15 +1,34 @@
-// components
-import DetailTitleWrap from "@/components/projectDetail/title/DetailTitleWrap";
-import DetailHeaderPageName from "@/components/projectDetail/header/DetailHeaderPageName";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 
 // style components
-import { PDHeaderTitleContainer } from "@/styles/styled/components/ProjectDetail";
+import {
+  PDHeaderPageName,
+  PDHeaderProjectName,
+  PDHeaderTitleContainer,
+} from "@/styles/styled/components/ProjectDetail";
+
+// types
+import { DetailTypes } from "@/types/projectDetails";
+
+// state
+import { detailData } from "@/states/detail";
 
 export default function DetailHeaderTitleContainer() {
+  const { category } = useParams();
+  const data = useRecoilValue<DetailTypes>(detailData);
+  const [title, setTitle] = useState<string>("");
+
+  useEffect(() => {
+    const d = data[category];
+    if (d?.summary?.title) setTitle(d.summary.title.join(" "));
+  }, [category, data]);
+
   return (
     <PDHeaderTitleContainer>
-      <DetailHeaderPageName />
-      <DetailTitleWrap />
+      <PDHeaderPageName>프로젝트</PDHeaderPageName>
+      <PDHeaderProjectName>{title}</PDHeaderProjectName>
     </PDHeaderTitleContainer>
   );
 }

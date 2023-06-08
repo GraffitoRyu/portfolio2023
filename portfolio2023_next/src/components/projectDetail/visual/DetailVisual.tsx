@@ -2,8 +2,12 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 
+//components
+import DetailTitleWrap from "./TitleWrap";
+
 // style components
 import {
+  PDVisualCover,
   PDVisualEmpty,
   PDVisualImage,
 } from "@/styles/styled/components/ProjectDetail";
@@ -27,6 +31,9 @@ export default function DetailVisual() {
           <PDVisualEmpty />
         )}
       </PDVisualImage>
+      <PDVisualCover>
+        <DetailTitleWrap />
+      </PDVisualCover>
     </>
   );
 }

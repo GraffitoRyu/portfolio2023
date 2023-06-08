@@ -9,22 +9,23 @@ import ParseDescNewLine from "@/components/util/ParseDescNewLine";
 import { PDTitle } from "@/styles/styled/components/ProjectDetail";
 
 // types
-import { DetailTypes } from "@/types/projects";
+import { DetailTypes } from "@/types/projectDetails";
 
 // state
 import { detailData } from "@/states/detail";
 
 export default function DetailTitleWrap() {
   const { category } = useParams();
-  const detail = useRecoilValue<DetailTypes>(detailData);
+  const data = useRecoilValue<DetailTypes>(detailData);
+
   const [title, setTitle] = useState<string[]>([]);
   const [subtitle, setSubtitle] = useState<string>("");
 
   useEffect(() => {
-    const d = detail[category];
+    const d = data[category];
     if (d?.summary?.title) setTitle(d.summary.title);
     if (d?.summary?.desc) setSubtitle(d.summary.desc);
-  }, [category, detail]);
+  }, [category, data]);
 
   return (
     <PDTitle>

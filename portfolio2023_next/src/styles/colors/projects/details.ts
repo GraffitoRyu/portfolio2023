@@ -5,7 +5,7 @@ export const details: DetailModeTypes = {
     bg: "rgb(202, 208, 215)",
     visualBg: `linear-gradient(
       0deg,
-      rgba(202, 208, 215, 1) 40%,
+      rgba(202, 208, 215, 1) 5%,
       rgba(202, 208, 215, 0.6) 100%
     )`,
     visualTitle: "#3a3a3a",
@@ -22,7 +22,7 @@ export const details: DetailModeTypes = {
     bg: "rgb(26,26,26)",
     visualBg: `linear-gradient(
       0deg,
-      rgba(26, 26, 26, 1) 40%,
+      rgba(26, 26, 26, 1) 5%,
       rgba(26, 26, 26, 0.6) 100%
     )`,
     visualTitle: "#fff",
