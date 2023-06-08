@@ -35,7 +35,7 @@ export default function RootLayout({
             <StyledComponentsRegistry>
               <ThemeColors>
                 <GlobalBodyStyle />
-                <main className="page-container w-full h-full relative">
+                <main className="page-container w-full h-full fixed">
                   <PageTemplate>{children}</PageTemplate>
                   <TransCover />
                   <Cursor />

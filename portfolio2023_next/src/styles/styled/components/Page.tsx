@@ -2,6 +2,9 @@
 
 import styled, { createGlobalStyle } from "styled-components";
 
+// style
+import { position } from "../preset/mixins";
+
 export const GlobalBodyStyle = createGlobalStyle`
   html {
     background-color:${({ theme }) => theme.page.bg};
@@ -9,6 +12,7 @@ export const GlobalBodyStyle = createGlobalStyle`
 `;
 
 export const StyledScrollContainer = styled.div`
+  ${position({ type: "fixed", top: 0, left: 0, z: 0 })}
   width: 100%;
   height: 100%;
   overflow-x: hidden;
