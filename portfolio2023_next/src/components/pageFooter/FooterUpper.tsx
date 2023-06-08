@@ -8,14 +8,15 @@ import {
 } from "@/styles/styled/components/PageFooter";
 
 // types
-import { ScrollStateTypes } from "@/types/state";
+import { ScrollRefStateTypes } from "@/types/state";
 
 // state
-import { scrollState } from "@/states/scroll";
+import { scrollRefState } from "@/states/scroll";
 import ctxScrollTrigger from "@/util/presetScrollTrigger";
 
 export default function FooterUpperContainer() {
-  const { container, footer } = useRecoilValue<ScrollStateTypes>(scrollState);
+  const { container, footer } =
+    useRecoilValue<ScrollRefStateTypes>(scrollRefState);
   const footerHeaderRef = useRef<HTMLElement>(null);
   const footerTitleRef = useRef<HTMLHeadingElement>(null);
 

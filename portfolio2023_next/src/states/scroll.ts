@@ -1,10 +1,16 @@
 import { atom } from "recoil";
-import { ScrollStateTypes } from "@/types/state";
+import { ScrollRefStateTypes } from "@/types/state";
 
-export const scrollState = atom<ScrollStateTypes>({
-  key: "scrollStateAtom",
+export const scrollRefState = atom<ScrollRefStateTypes>({
+  key: "scrollRefStateAtom",
   default: {
     container: null,
     footer: null,
+    detail: null,
   },
+});
+
+export const detailScrollState = atom({
+  key: "detailScrollState",
+  default: {},
 });

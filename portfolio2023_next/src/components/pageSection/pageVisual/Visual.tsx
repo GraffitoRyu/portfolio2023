@@ -11,16 +11,16 @@ import {
 } from "@/styles/styled/components/PageVisual";
 
 // type
-import { ScrollStateTypes } from "@/types/state";
+import { ScrollRefStateTypes } from "@/types/state";
 
 // state
-import { scrollState } from "@/states/scroll";
+import { scrollRefState } from "@/states/scroll";
 
 // hooks
 import ctxScrollTrigger from "@/util/presetScrollTrigger";
 
 export default function PageVisual({ title }: { title: string[] }) {
-  const { container } = useRecoilValue<ScrollStateTypes>(scrollState);
+  const { container } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
   const visualRef = useRef<HTMLDivElement>(null);
   const visualTitleRef = useRef<HTMLHeadingElement>(null);
   const [areaStart, setAreaStart] = useState<string | number>("center");

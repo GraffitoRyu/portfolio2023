@@ -4,24 +4,24 @@ import { ReactNode, useEffect, useRef } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 // types
-import { ScrollStateTypes, pageStateTypes } from "@/types/state";
+import { ScrollRefStateTypes, pageStateTypes } from "@/types/state";
 
 // state
 import { pageState } from "@/states/page";
 
 // style components
 import { StyledScrollContainer } from "@/styles/styled/components/Page";
-import { scrollState } from "@/states/scroll";
+import { scrollRefState } from "@/states/scroll";
 
 export default function ScrollContainer({ children }: { children: ReactNode }) {
   const { loaded } = useRecoilValue<pageStateTypes>(pageState);
-  const setScroll = useSetRecoilState<ScrollStateTypes>(scrollState);
+  const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (scrollContainerRef.current)
-      setScroll(prev => ({ ...prev, container: scrollContainerRef }));
-  }, [setScroll]);
+      setScrollRef(prev => ({ ...prev, container: scrollContainerRef }));
+  }, [setScrollRef]);
 
   useEffect(() => {
     if (scrollContainerRef.current && loaded) {

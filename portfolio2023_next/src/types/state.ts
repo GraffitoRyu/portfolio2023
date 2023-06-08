@@ -26,7 +26,8 @@ export type ThemeStateTypes = {
   theme: string;
 };
 
-export interface ScrollStateTypes {
+export interface ScrollRefStateTypes {
   container: React.MutableRefObject<HTMLDivElement | null> | null;
   footer: React.MutableRefObject<HTMLElement | null> | null;
+  detail: React.MutableRefObject<HTMLElement | null> | null;
 }
