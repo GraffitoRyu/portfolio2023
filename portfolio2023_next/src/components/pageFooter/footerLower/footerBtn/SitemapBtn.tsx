@@ -8,6 +8,7 @@ import ExternalIcon from "@/svg/common/external_icon.svg";
 
 // type
 import { SitemapType } from "@/types/sitemap";
+import { pageStateTypes } from "@/types/state";
 
 // style component
 import { FooterBtn } from "@/styles/styled/components/PageFooter";
@@ -16,7 +17,7 @@ import { FooterBtn } from "@/styles/styled/components/PageFooter";
 import navDelay from "@/util/navDelay";
 
 // state
-import { pageState, pageStateTypes } from "@/states/page";
+import { pageState } from "@/states/page";
 
 const FooterMenuBtn = styled(FooterBtn)``;
 
