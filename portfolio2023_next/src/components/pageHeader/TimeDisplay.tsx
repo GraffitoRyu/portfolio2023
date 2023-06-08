@@ -8,6 +8,10 @@ import { TimerContainer } from "@/styles/styled/components/PageHeader";
 export default function TimeDisplay() {
   const [curTime, setCurTime] = useState<Date | undefined>(undefined);
 
+  useEffect(() => {
+    setCurTime(new Date());
+  }, []);
+
   // update real time
   useEffect(() => {
     setTimeout(() => {
