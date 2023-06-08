@@ -48,7 +48,3 @@ export type ProjectsType = {
   experience: ExpType;
   media: MediaType;
 };
-
-export type DetailTypes = {
-  [index: string]: ProjectsType;
-};
