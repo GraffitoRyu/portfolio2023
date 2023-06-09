@@ -26,14 +26,13 @@ export default function FooterUpperContainer() {
     const foot_top = footerHeaderRef.current
       ? footerHeaderRef.current.offsetTop
       : "top";
-    const init_pos = "-100%";
 
     const ctx = ctxScrollTrigger({
       direction: "from",
       container: container?.current,
       target: footerTitleRef.current,
       options: {
-        y: init_pos, // transform translate
+        y: "-100%", // transform translate
         scrollTrigger: {
           trigger: footer.current,
           start: "top bottom", // target, trigger
