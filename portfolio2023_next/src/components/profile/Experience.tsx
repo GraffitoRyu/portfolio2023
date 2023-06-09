@@ -13,24 +13,22 @@ import { DescDepthTypes } from "@/types/util/parseDesc";
 import ParseDescDepth from "@/components/util/ParseDescDepth";
 
 export default async function Experience() {
-  const expData: ExperienceTypes[] | undefined = (await getExp()) ?? undefined;
+  const expData: ExperienceTypes[] = await getExp();
 
   return (
     <ul className="experience-list w-full">
-      {expData
-        ? expData.map((ex: ExperienceTypes, i: number) => (
-            <ExpItem className="w-full" key={`exp_${ex.code}_${i}`}>
-              <dl>
-                <ExpTitle className="Capitalize">{ex.code}</ExpTitle>
-                {ex.desc?.map((desc: string | DescDepthTypes, i) => (
-                  <ExpDesc key={`exp_${ex.code}_depth1_${i}`}>
-                    <ParseDescDepth data={desc} />
-                  </ExpDesc>
-                ))}
-              </dl>
-            </ExpItem>
-          ))
-        : ""}
+      {expData.map((ex: ExperienceTypes, i: number) => (
+        <ExpItem className="w-full" key={`exp_${ex.code}_${i}`}>
+          <dl>
+            <ExpTitle className="Capitalize">{ex.code}</ExpTitle>
+            {ex.desc?.map((desc: string | DescDepthTypes, i) => (
+              <ExpDesc key={`exp_${ex.code}_depth1_${i}`}>
+                <ParseDescDepth data={desc} />
+              </ExpDesc>
+            ))}
+          </dl>
+        </ExpItem>
+      ))}
     </ul>
   );
 }
