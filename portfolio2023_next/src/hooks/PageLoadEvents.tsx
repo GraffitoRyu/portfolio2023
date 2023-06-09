@@ -27,6 +27,8 @@ export function PageLoadEvents() {
 
   // 루트 업데이트
   useEffect(() => {
+    if (!category) return;
+
     if (savedPathNameRef.current !== pathExceptParams(pathname, category)) {
       // 동적 경로 제외한 실 페이지 경로
       const curPath = pathExceptParams(pathname, category);
@@ -54,7 +56,7 @@ export function PageLoadEvents() {
       console.log(`페이지 최초 로드 완료: `, savedPathNameRef);
       setPage(prev => ({ ...prev, init: true, loaded: true }));
     }
-  }, [category, page.init, pathname, setPage]);
+  }, [category, pathname, page.init, setPage]);
 
   return null;
 }

@@ -34,6 +34,8 @@ export default function DetailInfoContainer() {
   const [desc, setDesc] = useState<DetailInfoDescTypes[]>([]);
 
   useEffect(() => {
+    if (!category) return;
+
     const d = data[category];
     if (d) {
       const summaryData = getSummaryData(d);

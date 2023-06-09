@@ -21,6 +21,8 @@ export default function DetailHeaderTitleContainer() {
   const [title, setTitle] = useState<string>("");
 
   useEffect(() => {
+    if (!category) return;
+
     const d = data[category];
     if (d?.summary?.title) setTitle(d.summary.title.join(" "));
   }, [category, data]);
@@ -28,7 +30,7 @@ export default function DetailHeaderTitleContainer() {
   return (
     <PDHeaderTitleContainer>
       <PDHeaderPageName>프로젝트</PDHeaderPageName>
-      <PDHeaderProjectName>{title}</PDHeaderProjectName>
+      <PDHeaderProjectName>{category ? title : ""}</PDHeaderProjectName>
     </PDHeaderTitleContainer>
   );
 }

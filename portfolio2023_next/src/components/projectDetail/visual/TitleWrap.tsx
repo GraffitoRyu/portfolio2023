@@ -22,6 +22,8 @@ export default function DetailTitleWrap() {
   const [subtitle, setSubtitle] = useState<string>("");
 
   useEffect(() => {
+    if (!category) return;
+
     const d = data[category];
     if (d?.summary?.title) setTitle(d.summary.title);
     if (d?.summary?.desc) setSubtitle(d.summary.desc);
