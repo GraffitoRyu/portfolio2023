@@ -13,7 +13,7 @@ import PageTemplate from "@/components/roots/PageTemplate";
 import Cursor from "@/components/cursor/Cursor";
 
 // styles
-import { sans, serif } from "@/styles/fonts/fonts";
+// import { sans, serif } from "@/styles/fonts/fonts"; // error로 사용할 수 없다
 import "@/styles/scss/globals.scss";
 import StyledComponentsRegistry from "./lib/registry";
 import { GlobalBodyStyle } from "@/styles/styled/components/Page";
@@ -28,7 +28,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={`${sans.variable} ${serif.variable}`}>
+    // <html lang="ko" className={`${sans.variable} ${serif.variable}`}> // error로 사용할 수 없다
+    <html lang="ko">
+      <head>
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <Recoil>
           <ReactQuery>
