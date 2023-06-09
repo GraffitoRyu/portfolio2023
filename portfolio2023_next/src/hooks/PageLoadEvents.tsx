@@ -35,18 +35,13 @@ export function PageLoadEvents() {
     const newPageName: string = getCurPageName(newPathName, routeData);
 
     if (savedPathName !== newPathName) {
-      // 페이지 상태 업데이트 내용
-      const updatePageAtom = { loaded: true }; // 페이지 로딩 완료
-
-      // 현재 페이지와 저장된 페이지 상태값이 다른 경우, 현재 페이지 정보 업데이트
-      if (newPageName !== page.cur) {
-        Object.assign(updatePageAtom, { cur: newPageName });
-      }
-
       console.log(`페이지 변경: `, newPageName);
 
+      // 현재 페이지와 저장된 페이지 상태값이 다른 경우, 현재 페이지 정보 업데이트
+      const cur = newPageName !== page.cur ? newPageName : page.cur;
+
       // 페이지 상태 업데이트
-      setPage(prev => ({ ...prev, ...updatePageAtom }));
+      setPage(prev => ({ ...prev, loaded: true, cur }));
       setPathname(newPathName);
     }
   }, [category, page.cur, pathname, savedPathName, setPage]);
