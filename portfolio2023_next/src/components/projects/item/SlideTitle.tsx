@@ -20,7 +20,7 @@ export default function SlideTitle({
   const [duration, setDuration] = useState<number>(0);
 
   useEffect(() => {
-    const { current: el } = slideRef;
+    const el = slideRef.current;
     if (el) {
       const width: number = (el.children[0] as HTMLElement).offsetWidth;
       setSlideWidth(width);
