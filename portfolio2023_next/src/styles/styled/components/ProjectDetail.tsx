@@ -8,6 +8,7 @@ import { rem } from "@/util/unit";
 // style
 import {
   flex,
+  font,
   position,
   size,
   transition,
@@ -15,6 +16,8 @@ import {
 import { easing } from "@/styles/styled/preset/easing";
 import { transTime } from "@/styles/styled/preset/transTime";
 import { btnStyle } from "@/styles/styled//preset/buttons";
+import { img } from "../preset/img";
+import Period from "@/components/period/Period";
 
 export const PDContainer = styled.article`
   ${size({ width: "100%", height: "100%" })}
@@ -74,8 +77,15 @@ export const PDHeaderProjectName = styled.span`
 
 export const PDSection = styled.section`
   width: 100%;
-  height: 100vh;
   position: relative;
+  &:not(.detail-visual) {
+    padding: ${rem(80)};
+  }
+  &.detail-visual {
+    height: ${typeof window === "undefined"
+      ? "100vh"
+      : `${window.innerHeight}px`};
+  }
   &.detail-info {
     font-size: 0;
     @media only screen and (min-width: 1024px) {
@@ -110,28 +120,28 @@ export const PDVisualImage = styled.figure`
 `;
 
 export const PDVisualCover = styled.div`
-  ${position({ type: "absolute", top: 0, left: 0, z: 10 })}
+  ${position({ type: "relative", top: 0, left: 0, z: 10 })}
   ${size({ width: "100%", height: "100%", padding: 80 })}
   ${flex({ dir: "column", std: "end", cross: "start" })}
+  @media only screen and (min-width:1024px) {
+    position: absolute;
+  }
 `;
 
 export const PDTitle = styled.div`
   h2 {
     color: ${({ theme }) => theme.projectDetails.visualTitle};
-    font-size: ${rem(80)};
-    font-weight: 700;
-    line-height: 1em;
+    ${font({ size: 80, weight: 700, height: "1em" })}
     span {
+      display: block;
       white-space: nowrap;
     }
   }
   p {
+    max-width: 100%;
     margin-top: ${rem(40)};
     color: ${({ theme }) => theme.projectDetails.visualSubtitle};
-    font-size: ${rem(40)};
-    font-weight: 400;
-    line-height: 1.6em;
-    white-space: nowrap;
+    ${font({ size: 40, weight: 400, height: "1.6em" })}
   }
   @media only screen and (min-width: 1024px) {
     h2 {
@@ -139,6 +149,10 @@ export const PDTitle = styled.div`
       span {
         display: block;
       }
+    }
+    p {
+      white-space: nowrap;
+      ${font({ size: 32, weight: 400 })}
     }
   }
 `;
@@ -148,17 +162,14 @@ export const PDVisualEmpty = styled.div`
 `;
 
 export const PDInfoItem = styled.dl`
-  width: 50%;
   dt {
     margin-bottom: ${rem(40)};
     color: ${({ theme }) => theme.projectDetails.infoTitle};
-    line-height: 1em;
+    ${font({ size: 32, weight: 500, height: "1em" })}
   }
   dd {
     color: ${({ theme }) => theme.projectDetails.infoDesc};
-    font-size: ${rem(32)};
-    font-weight: 500;
-    line-height: 2em;
+    ${font({ size: 32, weight: 500, height: "2em" })}
   }
   @media only screen and (min-width: 1024px) {
     dt {
@@ -201,31 +212,60 @@ export const PCDescContainer = styled(PDInfoBox)`
   }
 `;
 
-export const PDStacks = styled.figure`
+export const PDPeriod = styled(Period)`
+  display: block;
+  span {
+    display: block;
+    margin: ${rem(16)} 0;
+    background-color: ${({ theme }) => theme.projectDetails.infoDesc};
+  }
+  @media only screen and (min-width: 1024px) {
+    display: flex;
+    span {
+      margin: 0 ${rem(16)};
+    }
+  }
+`;
+
+export const PDStackList = styled.ul`
+  ${flex({ std: "start", wrap: "wrap" })}
+`;
+
+export const PDStacks = styled.li`
   ${flex({})}
   ${btnStyle({ width: "auto", height: 64, radius: 32 })}
   ${size({ margin: [0, 8, 16], padding: [0, 32] })}
   border:1px solid ${({ theme }) => theme.projectDetails.stackBorder};
   background-color: ${({ theme }) => theme.projectDetails.stackBg};
-  img {
-    ${size({ width: 32, height: 32, ml: 16 })}
-  }
-  figcaption {
-    color: ${({ theme }) => theme.projectDetails.stackText};
-    font-size: ${rem(32)};
-    font-weight: 400;
-    line-height: 1em;
-    letter-spacing: 0;
-  }
   @media only screen and (min-width: 1024px) {
     ${btnStyle({ width: "auto", height: 48, radius: 24 })}
     ${size({ margin: [0, 4, 8], padding: [0, 16] })}
-    img {
-      ${size({ width: 24, height: 24, ml: 8 })}
-    }
-    figcaption {
-      font-size: ${rem(16)};
-      font-weight: 500;
-    }
+  }
+`;
+
+export const PDStackImg = styled.figure`
+  ${size({ width: 32, height: 32, mr: 16 })}
+  position:relative;
+  img {
+    ${img({})}
+  }
+  @media only screen and (min-width: 1024px) {
+    ${size({ width: 24, height: 24, mr: 8 })}
+  }
+`;
+
+export const PDStackName = styled.span`
+  margin-top: ${rem(2)};
+  color: ${({ theme }) => theme.projectDetails.stackText};
+  ${font({
+    size: 32,
+    weight: 400,
+    height: "1em",
+    spacing: 0,
+    whitespace: "nowrap",
+    transform: "uppercase",
+  })}
+  @media only screen and (min-width: 1024px) {
+    ${font({ size: 16, weight: 500 })}
   }
 `;

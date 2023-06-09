@@ -131,19 +131,25 @@ export const font = ({
   height,
   spacing,
   family,
+  whitespace,
+  transform,
+  deco,
 }: {
   size?: number | string;
   weight?: number | string;
   height?: number | string;
-  spacing: number | string;
+  spacing?: number | string;
   family?: string | string[];
+  whitespace?: string;
+  transform?: string;
+  deco?: string;
 }) => css`
   ${typeof size === "number"
     ? `font-size:${rem(size)};`
     : typeof size === "string"
     ? `font-size:${size};`
     : ""}
-  ${typeof weight !== "undefined" && `font-weight:${size};`}
+  ${typeof weight !== "undefined" && `font-weight:${weight};`}
   ${typeof height === "number"
     ? `line-height:${rem(height)};`
     : typeof height === "string"
@@ -159,6 +165,9 @@ export const font = ({
     : typeof family === "string"
     ? `font-family:${family};`
     : ""}
+  ${whitespace && `white-space:${whitespace};`}
+  ${transform && `text-transform:${transform};`}
+  ${deco && `text-decoration:${deco};`}
 `;
 
 type TransitionTypes = {

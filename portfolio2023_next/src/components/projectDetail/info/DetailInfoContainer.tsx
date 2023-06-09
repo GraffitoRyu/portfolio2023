@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 
 // components
 import DetailInfoItem from "./DetailInfoItem";
+import DetailInfoContents from "./DetailInfoContents";
 
 // style components
 import {
@@ -15,20 +16,30 @@ import {
 import { detailData } from "@/states/detail";
 
 // types
-import { DetailInfoSummaryTypes, DetailTypes } from "@/types/projectDetails";
-import { ProjectsType } from "@/types/projects";
-import DetailInfoContents from "./DetailInfoContents";
+import {
+  DetailInfoDescTypes,
+  DetailInfoSummaryTypes,
+  DetailTypes,
+} from "@/types/projectDetails";
+
+// util
+import { getSummaryData } from "./util/getSummaryData";
+import { getDescData } from "./util/getDescData";
+import { ExpDepthType } from "@/types/projects";
 
 export default function DetailInfoContainer() {
   const { category } = useParams();
   const data = useRecoilValue<DetailTypes>(detailData);
   const [summary, setSummary] = useState<DetailInfoSummaryTypes[]>([]);
+  const [desc, setDesc] = useState<DetailInfoDescTypes[]>([]);
 
   useEffect(() => {
     const d = data[category];
     if (d) {
       const summaryData = getSummaryData(d);
+      const descData = getDescData(d);
       setSummary(summaryData);
+      setDesc(descData);
     }
   }, [category, data]);
 
@@ -36,8 +47,12 @@ export default function DetailInfoContainer() {
     <>
       <PDSummaryContainer>
         {summary.map((s: DetailInfoSummaryTypes, si: number) => (
-          <DetailInfoItem key={`summary_${si}`} title={s.title}>
-            <DetailInfoContents
+          <DetailInfoItem
+            key={`summary_${s.code}_${si}`}
+            title={s.title}
+            className={s.code !== "stacks" ? "w-1/2" : "w-full"}
+          >
+            <DetailInfoContents<string | string[]>
               code={s.code}
               type={s.type}
               contents={s.contents}
@@ -45,61 +60,21 @@ export default function DetailInfoContainer() {
           </DetailInfoItem>
         )) ?? ""}
       </PDSummaryContainer>
-      <PCDescContainer></PCDescContainer>
+      <PCDescContainer>
+        {desc.map((d: DetailInfoDescTypes, di: number) => (
+          <DetailInfoItem
+            key={`desc_${d.code}_${di}`}
+            title={d.title}
+            className="w-full"
+          >
+            <DetailInfoContents<(ExpDepthType | string)[]>
+              code={d.code}
+              type="list"
+              contents={d.contents}
+            />
+          </DetailInfoItem>
+        ))}
+      </PCDescContainer>
     </>
   );
-}
-
-/**
- * @desc summary 데이터 가공
- * @return [role, period, provider, platform, stacks] : 각
- */
-function getSummaryData(data: ProjectsType): DetailInfoSummaryTypes[] {
-  const { summary, service, experience } = data;
-  const role = new SummaryItems("role", "담당 업무", summary.role, "list");
-  const period = new SummaryItems(
-    "period",
-    "작업/담당 기간",
-    summary.period,
-    "period"
-  );
-  const provider = new SummaryItems(
-    "provider",
-    "서비스 제공",
-    service.provider,
-    "string"
-  );
-  const platform = new SummaryItems(
-    "platform",
-    "서비스 형태",
-    service.platform,
-    "string"
-  );
-  const stacks = new SummaryItems(
-    "stacks",
-    "활용 기술",
-    experience.stacks,
-    "stacks"
-  );
-
-  return [role, period, provider, platform, stacks];
-}
-
-class SummaryItems implements DetailInfoSummaryTypes {
-  code: string;
-  title: string;
-  contents: string | string[];
-  type: string;
-
-  constructor(
-    code: string,
-    title: string,
-    contents: string | string[],
-    type: string
-  ) {
-    this.code = code;
-    this.title = title;
-    this.contents = contents;
-    this.type = type;
-  }
 }
