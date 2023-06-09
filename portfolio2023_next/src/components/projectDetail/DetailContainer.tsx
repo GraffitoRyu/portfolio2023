@@ -19,6 +19,7 @@ import { ScrollRefStateTypes, pageStateTypes } from "@/types/state";
 // state
 import { pageState } from "@/states/page";
 import { scrollRefState } from "@/states/scroll";
+import DetailBackground from "./visual/DetailBackground";
 
 export default function ProjectDetail() {
   const { bottomSheetOpen } = useRecoilValue<pageStateTypes>(pageState);
@@ -38,17 +39,20 @@ export default function ProjectDetail() {
   }, [bottomSheetOpen]);
 
   return (
-    <PDContainer className={`${open}`} ref={detailRef}>
-      <DetailHeader />
-      <DetailSection className="detail-visual">
-        <DetailVisual />
-      </DetailSection>
-      <DetailSection className="detail-info">
-        <DetailInfoContainer />
-      </DetailSection>
-      <DetailSection className="detail-media">
-        <DetailMedia />
-      </DetailSection>
-    </PDContainer>
+    <>
+      <PDContainer className={`${open}`} ref={detailRef}>
+        <DetailHeader />
+        <DetailBackground />
+        <DetailSection className="detail-visual">
+          <DetailVisual />
+        </DetailSection>
+        <DetailSection className="detail-info">
+          <DetailInfoContainer />
+        </DetailSection>
+        <DetailSection className="detail-media">
+          <DetailMedia />
+        </DetailSection>
+      </PDContainer>
+    </>
   );
 }

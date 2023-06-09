@@ -80,6 +80,7 @@ export const PDSection = styled.section`
   position: relative;
   &:not(.detail-visual) {
     padding: ${rem(80)};
+    background: ${({ theme }) => theme.projectDetails.visualBg};
   }
   &.detail-visual {
     height: ${typeof window === "undefined"
@@ -96,35 +97,34 @@ export const PDSection = styled.section`
 
 export const PDVisualImage = styled.figure`
   ${size({ width: "100%", height: "100%" })}
-  ${position({ type: "relative", z: 0 })}
+  ${position({ type: "fixed", top: 0, left: 0, z: -2 })}
   overflow:hidden;
   img {
     filter: blur(4px);
     object-fit: cover;
     ${transition([{ prop: "opacity", time: "0.6s" }])}
   }
+`;
+
+export const PDVisualCover = styled.div`
+  ${size({ width: "100%", padding: 80 })}
+  ${flex({ dir: "column", std: "end", cross: "start" })}
   &:after {
     content: "";
     display: block;
-    ${position({ type: "absolute", top: 0, left: 0, z: 1 })}
+    ${position({ type: "absolute", top: 0, left: 0, z: -1 })}
     ${size({ width: "100%", height: "100%" })}
     background-color: ${({ theme }) => theme.projectDetails.bg};
     background: ${({ theme }) => theme.projectDetails.visualBg};
     /* opacity: 0.9; */
   }
   @media only screen and (min-width: 1024px) {
+    height: ${typeof window === "undefined"
+      ? "100vh"
+      : `${window.innerHeight}px`};
     &:after {
       /* opacity: 0.8; */
     }
-  }
-`;
-
-export const PDVisualCover = styled.div`
-  ${position({ type: "relative", top: 0, left: 0, z: 10 })}
-  ${size({ width: "100%", height: "100%", padding: 80 })}
-  ${flex({ dir: "column", std: "end", cross: "start" })}
-  @media only screen and (min-width:1024px) {
-    position: absolute;
   }
 `;
 
