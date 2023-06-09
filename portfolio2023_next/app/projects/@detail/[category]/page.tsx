@@ -18,13 +18,14 @@ import { getDetailData } from "@/util/getData";
 
 export default function OpenDetail() {
   const { category } = useParams();
-  const setBottomSheetOpen = useSetRecoilState<pageStateTypes>(pageState);
 
-  const setDetails = useSetRecoilState<DetailTypes>(detailData);
-  const { status, data } = useQuery({
+  const { isLoading, status, data } = useQuery({
     queryKey: ["details", category],
     queryFn: () => getDetailData(category),
   });
+
+  const setBottomSheetOpen = useSetRecoilState<pageStateTypes>(pageState);
+  const setDetails = useSetRecoilState<DetailTypes>(detailData);
 
   // 프로젝트 상세 데이터 React-query로 가져오기
   useEffect(() => {
@@ -42,6 +43,8 @@ export default function OpenDetail() {
       bottomSheetOpen: category ? true : false,
     }));
   }, [category, setBottomSheetOpen]);
+
+  if (!category || isLoading) return;
 
   return <></>;
 }
