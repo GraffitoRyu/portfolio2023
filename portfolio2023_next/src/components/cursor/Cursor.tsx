@@ -14,7 +14,6 @@ import { CursorStyle } from "@/styles/styled/components/Cursor";
 
 export default function Cursor() {
   const [cursor, setCursor] = useRecoilState<CursorTypes>(cursorState);
-  // const cursorRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
   const updateCursor = useCallback(
     (e: MouseEvent | PointerEvent) => {
@@ -48,7 +47,6 @@ export default function Cursor() {
   return (
     <CursorStyle
       className={`cursor-container ${cursor.hover}`}
-      // ref={cursorRef}
       style={{ left: cursor.x, top: cursor.y }}
     >
       <figure className="cursor"></figure>

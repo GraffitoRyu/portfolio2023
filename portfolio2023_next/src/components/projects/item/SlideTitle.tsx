@@ -14,7 +14,7 @@ export default function SlideTitle({
   text: string[];
 }) {
   const titleArr: string[] = new Array(3).fill(text.join(" "));
-  const slideRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const slideRef = useRef<HTMLDivElement | null>(null);
 
   const [slideWidth, setSlideWidth] = useState<number>(0);
   const [duration, setDuration] = useState<number>(0);

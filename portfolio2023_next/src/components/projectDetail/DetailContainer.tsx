@@ -25,7 +25,7 @@ export default function ProjectDetail() {
   const { bottomSheetOpen } = useRecoilValue<pageStateTypes>(pageState);
   const [scrollRef, setScrollRef] =
     useRecoilState<ScrollRefStateTypes>(scrollRefState);
-  const detailRef = useRef<HTMLElement>(null);
+  const detailRef = useRef<HTMLElement | null>(null);
   const [open, setOpen] = useState<string>("");
 
   useEffect(() => {

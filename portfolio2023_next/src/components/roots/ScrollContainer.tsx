@@ -17,7 +17,7 @@ export default function ScrollContainer({ children }: { children: ReactNode }) {
   const { loaded } = useRecoilValue<pageStateTypes>(pageState);
   const [scrollRef, setScrollRef] =
     useRecoilState<ScrollRefStateTypes>(scrollRefState);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (
@@ -29,8 +29,9 @@ export default function ScrollContainer({ children }: { children: ReactNode }) {
   }, [scrollRef.container, setScrollRef]);
 
   useEffect(() => {
-    if (scrollContainerRef.current && loaded) {
-      scrollContainerRef.current.scrollTop = 0;
+    const scrollContainer = scrollContainerRef.current;
+    if (scrollContainer && loaded) {
+      scrollContainer.scrollTo(0, 0);
     }
   }, [loaded, scrollContainerRef]);
 

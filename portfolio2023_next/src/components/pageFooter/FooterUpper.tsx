@@ -17,8 +17,8 @@ import ctxScrollTrigger from "@/util/presetScrollTrigger";
 export default function FooterUpperContainer() {
   const { container, footer } =
     useRecoilValue<ScrollRefStateTypes>(scrollRefState);
-  const footerHeaderRef = useRef<HTMLElement>(null);
-  const footerTitleRef = useRef<HTMLHeadingElement>(null);
+  const footerHeaderRef = useRef<HTMLElement | null>(null);
+  const footerTitleRef = useRef<HTMLHeadingElement | null>(null);
 
   useEffect(() => {
     const scrollTrigger = footer?.current;

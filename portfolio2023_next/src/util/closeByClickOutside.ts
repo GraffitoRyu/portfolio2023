@@ -1,7 +1,7 @@
 export default function closeByClickOutSide(
   e: PointerEvent | MouseEvent | TouchEvent,
   openState: boolean,
-  ref: React.MutableRefObject<HTMLElement>,
+  ref: React.MutableRefObject<HTMLElement | null>,
   callback: () => void
 ): void {
   if (
@@ -9,7 +9,8 @@ export default function closeByClickOutSide(
     e?.target instanceof Element &&
     ref?.current instanceof Element
   ) {
-    const isOverRef = ref.current.contains(e.target);
+    const el = ref.current;
+    const isOverRef = el && el.contains(e.target);
     if (!isOverRef) callback();
   }
 }

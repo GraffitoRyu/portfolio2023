@@ -16,7 +16,7 @@ import { scrollRefState } from "@/states/scroll";
 import { ScrollRefStateTypes } from "@/types/state";
 
 export default function PageFooter() {
-  const footerRef = useRef<HTMLElement>(null);
+  const footerRef = useRef<HTMLElement | null>(null);
   const [scrollRef, setScrollRef] =
     useRecoilState<ScrollRefStateTypes>(scrollRefState);
 

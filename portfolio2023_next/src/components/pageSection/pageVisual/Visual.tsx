@@ -21,8 +21,8 @@ import ctxScrollTrigger from "@/util/presetScrollTrigger";
 
 export default function PageVisual({ title }: { title: string[] }) {
   const { container } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
-  const visualRef = useRef<HTMLDivElement>(null);
-  const visualTitleRef = useRef<HTMLHeadingElement>(null);
+  const visualRef = useRef<HTMLDivElement | null>(null);
+  const visualTitleRef = useRef<HTMLHeadingElement | null>(null);
   const [areaStart, setAreaStart] = useState<string | number>("center");
   const [targetEnd, setTargetEnd] = useState<string | number>("bottom");
 

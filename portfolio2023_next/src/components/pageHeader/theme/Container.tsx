@@ -17,7 +17,7 @@ import { themeState } from "@/states/theme";
 import closeByClickOutSide from "@/util/closeByClickOutside";
 
 export default function ThemeContainer() {
-  const themeRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const themeRef = useRef<HTMLDivElement | null>(null);
   const setTheme = useSetRecoilState<ThemeStateTypes>(themeState);
   const { isOpen } = useRecoilValue<ThemeStateTypes>(themeState);
 
