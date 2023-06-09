@@ -4,18 +4,15 @@ import { styled } from "styled-components";
 
 // style
 import { easing } from "../preset/easing";
-import { flex, position } from "../preset/mixins";
-
-// util
-import { rem } from "@/util/unit";
+import { flex, font, position, size } from "../preset/mixins";
 
 export const TransitionCover = styled.div`
-  ${position({ type: "fixed", left: "0rem", top: "0rem", z: 3000 })}
+  ${position({ type: "fixed", left: 0, top: 0, z: 3000 })}
   width:100%;
   height: 0;
-  background-color: gray;
+  background-color: ${({ theme }) => theme.transCover.bg};
   overflow: clip;
-  transition: height 0.3s ${easing.quart};
+  transition: height 0.8s ${easing.expo};
   &.loading {
     height: 100%;
     top: auto;
@@ -24,20 +21,28 @@ export const TransitionCover = styled.div`
 `;
 
 export const TransBox = styled.div`
-  ${position({ bottom: "0rem", left: "0rem" })}
+  ${position({ top: 0, left: 0 })}
   ${flex({ std: "start" })}
-  width: 100%;
-  height: ${typeof window !== "undefined"
-    ? `${window.innerHeight}px`
-    : "100vh"};
-  padding: 0 ${rem(80)};
+  ${size({
+    width: "100%",
+    height: typeof window !== "undefined" ? `${window.innerHeight}px` : "100vh",
+    padding: [0, 80],
+  })}
+
+  ${TransitionCover}.loading & {
+    top: auto;
+    bottom: 0;
+  }
 `;
 
 export const TransTitle = styled.h1`
-  font-size: ${rem(160)};
-  font-weight: 400;
-  font-family: var(--serif-kr);
-  letter-spacing: 0.1em;
-  color: #333;
-  text-transform: capitalize;
+  color: ${({ theme }) => theme.transCover.title};
+  ${font({
+    size: 160,
+    weight: 400,
+    family: `var(--serif-kr)`,
+    height: "1em",
+    spacing: 0,
+    transform: "capitalize",
+  })}
 `;
