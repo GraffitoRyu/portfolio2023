@@ -1,5 +1,5 @@
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 // style components
@@ -20,7 +20,7 @@ export default function DetailHeaderTitleContainer() {
   const data = useRecoilValue<DetailTypes>(detailData);
   const [title, setTitle] = useState<string>("");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!category) return;
 
     const d = data[category];

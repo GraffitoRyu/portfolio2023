@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { useQuery } from "@tanstack/react-query";
 
@@ -28,7 +28,7 @@ export default function OpenDetail() {
   const setDetails = useSetRecoilState<DetailTypes>(detailData);
 
   // 프로젝트 상세 데이터 React-query로 가져오기
-  useEffect(() => {
+  useLayoutEffect(() => {
     console.log(`[ReactQuery] status: ${status}`);
     if (status === "success") {
       console.log(`[ReactQuery] details: `, data);

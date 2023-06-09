@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useParams, usePathname } from "next/navigation";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
@@ -26,9 +26,7 @@ export function PageLoadEvents() {
   const page = useRecoilValue(pageState);
 
   // 루트 업데이트
-  useEffect(() => {
-    if (!category) return;
-
+  useLayoutEffect(() => {
     if (savedPathNameRef.current !== pathExceptParams(pathname, category)) {
       // 동적 경로 제외한 실 페이지 경로
       const curPath = pathExceptParams(pathname, category);
@@ -51,7 +49,7 @@ export function PageLoadEvents() {
   }, [category, page.cur, pathname, setPage]);
 
   // 페이지 새로고침 또는 첫 진입 체크
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!page.init) {
       console.log(`페이지 최초 로드 완료: `, savedPathNameRef);
       setPage(prev => ({ ...prev, init: true, loaded: true }));

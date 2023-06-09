@@ -1,5 +1,5 @@
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 // components
@@ -33,7 +33,7 @@ export default function DetailInfoContainer() {
   const [summary, setSummary] = useState<DetailInfoSummaryTypes[]>([]);
   const [desc, setDesc] = useState<DetailInfoDescTypes[]>([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!category) return;
 
     const d = data[category];
