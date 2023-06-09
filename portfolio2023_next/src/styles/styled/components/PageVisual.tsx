@@ -31,7 +31,7 @@ export const VisualTitleLine = styled.span`
   line-height: 1em;
   white-space: nowrap;
   &:nth-child(1) {
-    -webkit-text-stroke: ${rem(1)} ${({ theme }) => theme.visualSection.border};
+    -webkit-text-stroke: ${rem(2)} ${({ theme }) => theme.visualSection.border};
     font-family: var(--serif-kr);
   }
   &:nth-child(2) {
