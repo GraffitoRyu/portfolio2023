@@ -3,5 +3,6 @@ export const getProjectList = () => {
 };
 
 export const getDetailData = async (code: string) => {
+  if (!code) return {};
   return await (await fetch(`/api/projects?detail=${code}`)).json();
 };

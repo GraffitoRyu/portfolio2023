@@ -28,7 +28,6 @@ export default function Projects() {
       </PageSection>
       <PageSection className="side-v-padding">
         <SectionContents full={true}>
-          {/* @ts-expect-error Async Server Component */}
           <ProjectList />
         </SectionContents>
       </PageSection>

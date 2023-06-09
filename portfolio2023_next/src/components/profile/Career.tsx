@@ -16,20 +16,24 @@ export default async function Career() {
 
   return (
     <ul className="career-list w-full">
-      {careerData.map((c: CareerTypes, i: number) => {
-        return (
-          <CareerItem className="w-full" key={`career_${c.code}_${i}`}>
-            <CareerPeriod date={c.period} />
-            <CareerTitle className="flex items-center">
-              <CareerRole className="role">{c.role}</CareerRole>
-              <CareerCompany className="company flex items-center">
-                {c.company}
-              </CareerCompany>
-            </CareerTitle>
-            <CareerDesc>{c.desc}</CareerDesc>
-          </CareerItem>
-        );
-      })}
+      {careerData && Object.keys(careerData)?.length > 0 ? (
+        careerData.map((c: CareerTypes, i: number) => {
+          return (
+            <CareerItem className="w-full" key={`career_${c.code}_${i}`}>
+              <CareerPeriod date={c.period} />
+              <CareerTitle className="flex items-center">
+                <CareerRole className="role">{c.role}</CareerRole>
+                <CareerCompany className="company flex items-center">
+                  {c.company}
+                </CareerCompany>
+              </CareerTitle>
+              <CareerDesc>{c.desc}</CareerDesc>
+            </CareerItem>
+          );
+        })
+      ) : (
+        <li>Loading...</li>
+      )}
     </ul>
   );
 }
