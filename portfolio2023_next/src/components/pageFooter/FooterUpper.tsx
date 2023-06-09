@@ -21,22 +21,26 @@ export default function FooterUpperContainer() {
   const footerTitleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    if (!footer?.current) return;
+    const scrollTrigger = footer?.current;
+    if (!scrollTrigger) return;
 
-    const foot_top = footerHeaderRef.current
-      ? footerHeaderRef.current.offsetTop
-      : "top";
+    const scrollContainer = container?.current;
+    const scrollTarget = footerTitleRef.current;
+    if (!scrollContainer || !scrollTarget) return;
+
+    const ftHeader = footerHeaderRef.current;
+    const triggerEnd = ftHeader ? ftHeader.offsetTop : "top";
 
     const ctx = ctxScrollTrigger({
       direction: "from",
-      container: container?.current,
-      target: footerTitleRef.current,
+      container: scrollContainer,
+      target: scrollTarget,
       options: {
         y: "-100%", // transform translate
         scrollTrigger: {
-          trigger: footer.current,
+          trigger: scrollTrigger,
           start: "top bottom", // target, trigger
-          end: `top ${foot_top}`, // target, trigger
+          end: `top ${triggerEnd}`, // target, trigger
           scrub: true,
           // markers: true,
         },

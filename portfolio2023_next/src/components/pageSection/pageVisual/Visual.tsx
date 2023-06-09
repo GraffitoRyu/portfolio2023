@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import { useRecoilValue } from "recoil";
 
 // style components
@@ -42,15 +42,19 @@ export default function PageVisual({ title }: { title: string[] }) {
     }
   }, [visualTitleRef]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const scrollContainer = container?.current;
+    const scrollTarget = visualTitleRef.current;
+    if (!scrollContainer || !scrollTarget) return;
+
     const ctx = ctxScrollTrigger({
-      container: container?.current,
-      target: visualTitleRef.current,
+      container: scrollContainer,
+      target: scrollTarget,
       options: {
         opacity: 0,
         y: "+=500",
         scrollTrigger: {
-          trigger: visualTitleRef.current,
+          trigger: scrollTarget,
           start: `top ${areaStart}`, // 움직일 요소의 시작, 트리거 영역의 시작
           end: `${targetEnd} center`, // 움직일 요소의 끝, 트리거 영역의 끝
           scrub: true, // 스크롤 위치에 따라 실시간으로 대응하여 변하도록 설정

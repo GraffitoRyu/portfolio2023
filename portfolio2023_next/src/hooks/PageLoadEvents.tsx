@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useParams, usePathname } from "next/navigation";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
@@ -19,7 +19,9 @@ const routeData: SitemapType[] = sitemapData.filter(route => !route.external);
 export function PageLoadEvents() {
   const { category } = useParams();
   const pathname = usePathname(); // 현재 루트 수신
-  const savedPathNameRef = useRef<string>(pathExceptParams(pathname, category)); // 현재 루트 저장
+  const [savedPathName, setPathname] = useState<string>(
+    pathExceptParams(pathname, category)
+  ); // 현재 루트 저장
   const setPage = useSetRecoilState<pageStateTypes>(pageState);
 
   // debug
@@ -27,45 +29,49 @@ export function PageLoadEvents() {
 
   // 루트 업데이트
   useLayoutEffect(() => {
-    if (savedPathNameRef.current !== pathExceptParams(pathname, category)) {
-      // 동적 경로 제외한 실 페이지 경로
-      const curPath = pathExceptParams(pathname, category);
-      // 현재 페이지의 코드(페이지 이름) 값
-      const curPage = getCurPageName(curPath, routeData);
+    // 동적 경로 제외한 실 페이지 경로
+    const newPathName: string = pathExceptParams(pathname, category);
+    // 현재 페이지의 코드(페이지 이름) 값
+    const newPageName: string = getCurPageName(newPathName, routeData);
+
+    if (savedPathName !== newPathName) {
       // 페이지 상태 업데이트 내용
       const updatePageAtom = { loaded: true }; // 페이지 로딩 완료
 
       // 현재 페이지와 저장된 페이지 상태값이 다른 경우, 현재 페이지 정보 업데이트
-      if (curPage !== page.cur) {
-        Object.assign(updatePageAtom, { cur: curPage });
+      if (newPageName !== page.cur) {
+        Object.assign(updatePageAtom, { cur: newPageName });
       }
 
-      console.log(`페이지 변경: `, curPage);
+      console.log(`페이지 변경: `, newPageName);
 
       // 페이지 상태 업데이트
       setPage(prev => ({ ...prev, ...updatePageAtom }));
-      savedPathNameRef.current = curPath;
+      setPathname(newPathName);
     }
-  }, [category, page.cur, pathname, setPage]);
+  }, [category, page.cur, pathname, savedPathName, setPage]);
 
   // 페이지 새로고침 또는 첫 진입 체크
   useLayoutEffect(() => {
     if (!page.init) {
-      console.log(`페이지 최초 로드 완료: `, savedPathNameRef);
+      console.log(`페이지 최초 로드 완료: `, savedPathName);
       setPage(prev => ({ ...prev, init: true, loaded: true }));
     }
-  }, [category, pathname, page.init, setPage]);
+  }, [page.init, savedPathName, setPage]);
 
   return null;
 }
 
 // 경로에서 페이지 이름 찾기
-export function getCurPageName(curPath: string, data: SitemapType[]) {
+export function getCurPageName(curPath: string, data: SitemapType[]): string {
   return data.filter(d => d.path === curPath)[0]?.code;
 }
 
 // 파라미터를 제외한 페이지 경로 추출
-export function pathExceptParams(path: string, category: string | null) {
+export function pathExceptParams(
+  path: string,
+  category: string | null
+): string {
   if (category)
     return path.includes(category) ? path.replace(`/${category}`, "") : path;
   return path;
