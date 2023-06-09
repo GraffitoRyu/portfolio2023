@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 // components
 import DetailHeader from "@/components/projectDetail/header/DetailHeader";
@@ -22,13 +22,16 @@ import { scrollRefState } from "@/states/scroll";
 
 export default function ProjectDetail() {
   const { bottomSheetOpen } = useRecoilValue<pageStateTypes>(pageState);
-  const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
+  const [scrollRef, setScrollRef] =
+    useRecoilState<ScrollRefStateTypes>(scrollRefState);
   const detailRef = useRef<HTMLElement>(null);
   const [open, setOpen] = useState<string>("");
 
   useEffect(() => {
-    setScrollRef(prev => ({ ...prev, detail: detailRef }));
-  }, [setScrollRef]);
+    if (detailRef.current && detailRef.current != scrollRef.detail?.current) {
+      setScrollRef(prev => ({ ...prev, detail: detailRef }));
+    }
+  }, [scrollRef.detail, setScrollRef]);
 
   useEffect(() => {
     setOpen(bottomSheetOpen ? "open" : "");

@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useEffect, useRef } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 // types
 import { ScrollRefStateTypes, pageStateTypes } from "@/types/state";
@@ -15,13 +15,18 @@ import { scrollRefState } from "@/states/scroll";
 
 export default function ScrollContainer({ children }: { children: ReactNode }) {
   const { loaded } = useRecoilValue<pageStateTypes>(pageState);
-  const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
+  const [scrollRef, setScrollRef] =
+    useRecoilState<ScrollRefStateTypes>(scrollRefState);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (scrollContainerRef.current)
+    if (
+      scrollContainerRef.current &&
+      scrollContainerRef.current !== scrollRef.container?.current
+    ) {
       setScrollRef(prev => ({ ...prev, container: scrollContainerRef }));
-  }, [setScrollRef]);
+    }
+  }, [scrollRef.container, setScrollRef]);
 
   useEffect(() => {
     if (scrollContainerRef.current && loaded) {
