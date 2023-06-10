@@ -8,6 +8,7 @@ import PageVisual from "@/components/pageSection/pageVisual/Visual";
 import ProjectList from "@/components/projects/List";
 
 export default function Projects() {
+  console.log(`projects/page`);
   return (
     <>
       <PageSection className="side-h-padding" isVisual={true}>

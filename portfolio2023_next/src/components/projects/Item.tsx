@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { SyntheticEvent, useState } from "react";
-import { useSetRecoilState } from "recoil";
+// import { useSetRecoilState } from "recoil";
 
 // components
 import { ProjectItemContainer } from "@/styles/styled/components/ProjectList";
@@ -12,10 +12,10 @@ import BtnIcon from "@/components/projects/item/BtnIcon";
 
 // type
 import { SummaryType } from "@/types/projects";
-import { DetailLayoutStateTypes } from "@/types/state";
+// import { DetailLayoutStateTypes } from "@/types/state";
 
 // state
-import { detailLayoutState } from "@/states/detail";
+// import { detailLayoutState } from "@/states/detail";
 
 export default function ProjectItem({
   code,
@@ -26,8 +26,8 @@ export default function ProjectItem({
 }): JSX.Element {
   const router = useRouter();
   const [hover, setHover] = useState<string>("");
-  const setDetailLayout =
-    useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
+  // const setDetailLayout =
+  //   useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
 
   return (
     <ProjectItemContainer
@@ -37,7 +37,7 @@ export default function ProjectItem({
       onMouseLeave={() => setHover("")}
       onClick={(e: SyntheticEvent) => {
         e.preventDefault();
-        setDetailLayout(prev => ({ ...prev, open: true }));
+        // setDetailLayout(prev => ({ ...prev, open: true }));
         router.push(`/projects/${code}`);
       }}
     >

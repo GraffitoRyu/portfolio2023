@@ -15,8 +15,9 @@ import { detailData } from "@/states/detail";
 import { getDetailData } from "@/util/getData";
 import ProjectDetail from "@/components/projectDetail/DetailContainer";
 
-export default function OpenDetail() {
+export default function DetailCategory() {
   const { category } = useParams();
+  console.log(`@detail/[category]/page :: category:`, category);
 
   const { isLoading, status, data } = useQuery({
     queryKey: ["details", category],
@@ -34,7 +35,7 @@ export default function OpenDetail() {
     }
   }, [data, setDetails, status]);
 
-  if (!category || isLoading) return;
+  if (!category || isLoading) return null;
 
   return <ProjectDetail />;
 }
