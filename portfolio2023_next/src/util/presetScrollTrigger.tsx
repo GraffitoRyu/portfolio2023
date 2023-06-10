@@ -12,7 +12,6 @@ export default function ctxScrollTrigger({
     if (container && target) {
       // Scroll Trigger 플러그인 사용 시작
       gsap.registerPlugin(ScrollTrigger);
-      ScrollTrigger.clearScrollMemory();
 
       // 스크롤 영역 설정
       ScrollTrigger.defaults({
@@ -23,6 +22,9 @@ export default function ctxScrollTrigger({
         gsap.to(target, options);
 
       if (direction === "from") gsap.from(target, options);
+
+      ScrollTrigger.clearScrollMemory();
+      ScrollTrigger.refresh();
     }
   });
 }
