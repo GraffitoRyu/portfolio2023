@@ -15,6 +15,7 @@ import { detailData } from "@/states/detail";
 
 // util
 import { getDetailData } from "@/util/getData";
+import ProjectDetail from "@/components/projectDetail/DetailContainer";
 
 export default function OpenDetail() {
   const { category } = useParams();
@@ -46,5 +47,5 @@ export default function OpenDetail() {
 
   if (!category || isLoading) return;
 
-  return <></>;
+  return <ProjectDetail />;
 }
