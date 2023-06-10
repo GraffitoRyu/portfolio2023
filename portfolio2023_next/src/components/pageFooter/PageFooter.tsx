@@ -11,20 +11,19 @@ import {
   FooterContainer,
   FooterWrap,
 } from "@/styles/styled/components/PageFooter";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { scrollRefState } from "@/states/scroll";
 import { ScrollRefStateTypes } from "@/types/state";
 
 export default function PageFooter() {
   const footerRef = useRef<HTMLElement | null>(null);
-  const [scrollRef, setScrollRef] =
-    useRecoilState<ScrollRefStateTypes>(scrollRefState);
+  const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
 
   useEffect(() => {
-    if (footerRef.current && footerRef.current !== scrollRef.footer?.current) {
+    if (footerRef.current) {
       setScrollRef(prev => ({ ...prev, footer: footerRef }));
     }
-  }, [scrollRef.footer, setScrollRef]);
+  }, [setScrollRef, footerRef]);
 
   return (
     <FooterContainer className="pager-footer" ref={footerRef}>

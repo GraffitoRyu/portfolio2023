@@ -10,22 +10,22 @@ export default function SlideTitle({
   className,
   text,
 }: {
-  className?: string | HTMLAttributes<HTMLDivElement>;
+  className?: string | HTMLAttributes<HTMLElement>;
   text: string[];
 }) {
   const titleArr: string[] = new Array(3).fill(text.join(" "));
-  const slideRef = useRef<HTMLDivElement | null>(null);
+  const slideRef = useRef<HTMLHeadingElement | null>(null);
 
   const [slideWidth, setSlideWidth] = useState<number>(0);
   const [duration, setDuration] = useState<number>(0);
 
   useEffect(() => {
-    const el = slideRef.current;
+    const el: HTMLHeadingElement | null = slideRef.current;
     if (el) {
-      const width: number = (el.children[0] as HTMLElement).offsetWidth;
+      const width: number = (el.children[0] as HTMLSpanElement).offsetWidth;
       setSlideWidth(width);
     }
-  }, []);
+  }, [slideRef]);
 
   useEffect(() => {
     setDuration((slideWidth / 1000) * 3.2);
