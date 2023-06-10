@@ -15,10 +15,13 @@ import DetailMedia from "@/components/projectDetail/media/DetailMedia";
 import { PDContainer } from "@/styles/styled/components/ProjectDetail";
 
 // types
-import { DetailLayoutStateTypes, ScrollRefStateTypes } from "@/types/state";
+import {
+  DetailLayoutStateTypes,
+  DetailScrollRefStateTypes,
+} from "@/types/state";
 
 // state
-import { scrollRefState } from "@/states/scroll";
+import { detailScrollRefState } from "@/states/scroll";
 import { detailLayoutState } from "@/states/detail";
 
 // style
@@ -27,19 +30,23 @@ import { transTime } from "@/styles/styled/preset/transTime";
 export default function ProjectDetail() {
   const [layoutState, setLayoutState] =
     useRecoilState<DetailLayoutStateTypes>(detailLayoutState);
-  const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
+  const setDetailScrollRef =
+    useSetRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
+
   const detailRef = useRef<HTMLElement | null>(null);
   const [open, setOpen] = useState<string>("");
 
+  // 스크롤 참조 데이터 업데이트
   useEffect(() => {
     if (detailRef.current) {
-      setScrollRef(prev => ({ ...prev, detail: detailRef }));
+      setDetailScrollRef(prev => ({ ...prev, container: detailRef }));
     }
     return () => {
-      setScrollRef(prev => ({ ...prev, detail: null }));
+      setDetailScrollRef(prev => ({ ...prev, container: null }));
     };
-  }, [setScrollRef]);
+  }, [setDetailScrollRef]);
 
+  // 프로젝트 상세 오픈
   useEffect(() => {
     // 열림 상태 클래스명으로 컨트롤
     setOpen(layoutState.open ? "open" : "");
@@ -50,7 +57,7 @@ export default function ProjectDetail() {
       }, transTime.detail.sheetSlideTime);
       return () => clearTimeout(timer);
     }
-  }, [layoutState, setLayoutState]);
+  }, [layoutState.open, setLayoutState]);
 
   return (
     <PDContainer className={`${open}`} ref={detailRef}>

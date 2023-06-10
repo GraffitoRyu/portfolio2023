@@ -127,6 +127,7 @@ export const PDTitle = styled.div`
   h2 {
     color: ${({ theme }) => theme.projectDetails.visualTitle};
     ${font({ size: 80, weight: 700, height: "1em" })}
+    transition: transform 0.6s, opacity 0.6s;
     span {
       display: block;
       white-space: nowrap;
@@ -137,6 +138,17 @@ export const PDTitle = styled.div`
     margin-top: ${rem(40)};
     color: ${({ theme }) => theme.projectDetails.visualSubtitle};
     ${font({ size: 40, weight: 400, height: "1.6em" })}
+    transition: transform 0.6s, opacity 0.6s;
+  }
+  &.ready {
+    h2 {
+      transform: translateY(50%);
+      opacity: 0;
+    }
+    p {
+      transform: translateY(100%);
+      opacity: 0;
+    }
   }
   @media only screen and (min-width: 1024px) {
     h2 {

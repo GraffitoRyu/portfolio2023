@@ -14,6 +14,6 @@ export const detailLayoutState = atom<DetailLayoutStateTypes>({
   key: "projectDetailLayoutState",
   default: {
     open: false, // 열림 상태
-    openComplete: false,
+    openComplete: false, // 열림 트랜지션 후 완료
   },
 });

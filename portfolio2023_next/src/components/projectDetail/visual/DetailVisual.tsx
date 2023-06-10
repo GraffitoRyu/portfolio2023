@@ -20,13 +20,14 @@ export default function DetailVisual() {
 
   useEffect(() => {
     setDetailScrollRef(prev => ({ ...prev, visual: visualRef }));
+    return () => {
+      setDetailScrollRef(prev => ({ ...prev, visual: null }));
+    };
   }, [setDetailScrollRef, visualRef]);
 
   return (
     <PDVisualCover ref={visualRef}>
-      <Suspense fallback={<h2>Loading...</h2>}>
-        <DetailTitleWrap />
-      </Suspense>
+      <DetailTitleWrap />
     </PDVisualCover>
   );
 }
