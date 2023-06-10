@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-// components
+// style components
 import {
   PDPeriod,
   PDStackImg,
@@ -10,9 +10,14 @@ import {
   PDStacks,
 } from "@/styles/styled/components/ProjectDetail";
 
+// util components
+import ParseDescDepth from "@/components/util/ParseDescDepth";
+
+// icons
+import toolIcons from "./icon";
+
 // type
 import { ExpDepthType } from "@/types/projects";
-import ParseDescDepth from "@/components/util/ParseDescDepth";
 
 export default function DetailInfoContents<T>({
   code,
@@ -84,18 +89,19 @@ function StackContents({
     </dd>
   );
 }
+
 function StackIcons({ code }: { code: string }) {
   const [hide, setHide] = useState("");
-  return (
+  const icon = toolIcons?.[code.replace(".", "")];
+  return icon ? (
     <PDStackImg className={`${hide}`}>
       <Image
-        src={`/img/tools/${code.replace(".", "")}.png`}
+        src={icon}
         alt={code}
         width={32}
         height={32}
-        // fill={true}
         onError={() => setHide("hidden")}
       />
     </PDStackImg>
-  );
+  ) : null;
 }

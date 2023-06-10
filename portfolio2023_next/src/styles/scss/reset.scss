@@ -23,7 +23,8 @@ blockquote, q {quotes:none;}
 blockquote:before, blockquote:after, q:before, q:after {content:''; content:none;}
 
 /* Media */
-img, svg {perspective: 1; max-width:100%; object-fit: contain; overflow:unset;}
+img, svg {perspective: 1; max-width:100%; object-fit: contain;}
+svg { overflow:unset;}
 
 /* List */
 ul, ol, dl, li, dt, dd {list-style:none;}
