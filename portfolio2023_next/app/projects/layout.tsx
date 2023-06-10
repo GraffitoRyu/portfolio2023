@@ -11,7 +11,6 @@ export default function ProjectsLayout({
   detail: ReactNode;
 }) {
   const { category } = useParams();
-
   return (
     <>
       {children}

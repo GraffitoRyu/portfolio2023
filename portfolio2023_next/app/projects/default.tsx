@@ -14,6 +14,7 @@ import { detailLayoutState } from "@/states/detail";
 import { useParams } from "next/navigation";
 
 export default function Default() {
+  console.log("projects/default");
   const { category } = useParams();
   const setDetailLayout =
     useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);

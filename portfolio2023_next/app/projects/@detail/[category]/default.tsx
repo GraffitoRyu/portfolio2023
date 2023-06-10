@@ -1,4 +1,4 @@
 export default function Default() {
-  console.log("@detail/default");
+  console.log("@details/[category]/default");
   return null;
 }
