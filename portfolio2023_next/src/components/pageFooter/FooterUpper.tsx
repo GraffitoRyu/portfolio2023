@@ -12,6 +12,8 @@ import { ScrollRefStateTypes } from "@/types/state";
 
 // state
 import { scrollRefState } from "@/states/scroll";
+
+// util
 import ctxScrollTrigger from "@/util/presetScrollTrigger";
 
 export default function FooterUpperContainer() {
