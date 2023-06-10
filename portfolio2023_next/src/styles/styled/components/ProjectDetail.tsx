@@ -28,11 +28,6 @@ export const PDContainer = styled.article`
     width: 0;
   }
   background: ${({ theme }) => theme.projectDetails.bg};
-  /* background: linear-gradient(
-    0deg,
-    rgba(42, 55, 64, 1) 0%,
-    rgba(66, 110, 94, 0.6643907563025211) 100%
-  ); */
   ${transition([
     {
       prop: "transform",
@@ -162,6 +157,7 @@ export const PDVisualEmpty = styled.div`
 `;
 
 export const PDInfoItem = styled.dl`
+  margin-bottom: ${rem(240)};
   dt {
     margin-bottom: ${rem(40)};
     color: ${({ theme }) => theme.projectDetails.infoTitle};
@@ -196,7 +192,6 @@ export const PDSummaryContainer = styled(PDInfoBox)`
   }
   dl {
     display: inline-block;
-    margin-bottom: ${rem(240)};
     vertical-align: top;
     @media only screen and (min-width: 1024px) {
       margin-bottom: 0;

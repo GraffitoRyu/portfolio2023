@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import { keyframes } from "styled-components";
 
 // components
 import Period from "@/components/period/Period";
@@ -12,15 +13,13 @@ import { SvgFill, flex, position, size, transition } from "../preset/mixins";
 
 // util
 import { rem } from "@/util/unit";
-import { keyframes } from "styled-components";
-import Link from "next/link";
 
 export const ProjectListContainer = styled.ul`
   width: 100%;
   border-top: 1px solid ${({ theme }) => theme.projectList.border};
 `;
 
-export const ProjectItemContainer = styled(Link)`
+export const ProjectItemContainer = styled.button`
   width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.projectList.border};
   user-select: none;
