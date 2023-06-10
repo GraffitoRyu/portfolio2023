@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef, useLayoutEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRecoilValue } from "recoil";
 
 // style components
@@ -42,7 +42,7 @@ export default function PageVisual({ title }: { title: string[] }) {
     }
   }, [visualTitleRef]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const scrollContainer = container?.current;
     const scrollTarget = visualTitleRef.current;
     if (!scrollContainer || !scrollTarget) return;
