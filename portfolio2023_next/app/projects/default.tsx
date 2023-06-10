@@ -7,17 +7,20 @@ import { useSetRecoilState } from "recoil";
 import Projects from "./page";
 
 // types
-import { pageStateTypes } from "@/types/state";
+import { DetailLayoutStateTypes } from "@/types/state";
 
 // state
-import { pageState } from "@/states/page";
+import { detailLayoutState } from "@/states/detail";
+import { useParams } from "next/navigation";
 
 export default function Default() {
-  const setPage = useSetRecoilState<pageStateTypes>(pageState);
+  const { category } = useParams();
+  const setDetailLayout =
+    useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
 
   useEffect(() => {
-    setPage(prev => ({ ...prev, bottomSheetOpen: false }));
-  }, [setPage]);
+    setDetailLayout(prev => ({ ...prev, open: category ? true : false }));
+  }, [category, setDetailLayout]);
 
   return <Projects />;
 }

@@ -4,20 +4,18 @@ import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
 // types
-import { pageStateTypes } from "@/types/state";
+import { DetailLayoutStateTypes } from "@/types/state";
 
 // state
-import { pageState } from "@/states/page";
+import { detailLayoutState } from "@/states/detail";
 
 export default function Default() {
-  const setPage = useSetRecoilState<pageStateTypes>(pageState);
+  const setDetailLayout =
+    useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
 
   useEffect(() => {
-    setPage(prev => ({
-      ...prev,
-      bottomSheetOpen: false,
-    }));
-  }, [setPage]);
+    setDetailLayout(prev => ({ ...prev, open: false }));
+  }, [setDetailLayout]);
 
   return null;
 }

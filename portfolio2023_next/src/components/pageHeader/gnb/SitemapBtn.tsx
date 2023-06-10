@@ -9,10 +9,11 @@ import { SitemapLink } from "@/styles/styled/components/Gnb";
 
 // type
 import { SitemapType } from "@/types/sitemap";
-import { pageStateTypes } from "@/types/state";
+import { DetailLayoutStateTypes, pageStateTypes } from "@/types/state";
 
 // state
 import { pageState } from "@/states/page";
+import { detailLayoutState } from "@/states/detail";
 
 // hooks
 import { pathExceptParams } from "@/hooks/PageLoadEvents";
@@ -28,6 +29,8 @@ export default function SitemapBtn({ code, path, name }: SitemapType) {
 
   // 현재 페이지 상태
   const setPageAtom = useSetRecoilState<pageStateTypes>(pageState);
+  const setDetailLayout =
+    useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
 
   // 파라미터 제외한 실제 경로 추출 및 상태 관리
   const [curPath, setCurPath] = useState<string>(
@@ -61,10 +64,20 @@ export default function SitemapBtn({ code, path, name }: SitemapType) {
           e,
           clickEvent: () => {
             console.log("페이지 변경 시작: ", code);
-            const updatePage = category
-              ? { bottomSheetOpen: false }
-              : { cover: code, loaded: false };
-            setPageAtom(prev => ({ ...prev, ...updatePage }));
+
+            if (category) {
+              setDetailLayout(prev => ({
+                ...prev,
+                open: false,
+                openComplete: false,
+              }));
+            } else {
+              setPageAtom(prev => ({
+                ...prev,
+                cover: code,
+                loaded: false,
+              }));
+            }
           },
           navEvent: () => router.push(path),
         })

@@ -15,7 +15,6 @@ export type pageStateTypes = {
   init: boolean;
   cur: string;
   cover: string;
-  bottomSheetOpen: boolean;
   loaded: boolean;
   notFound: boolean;
 };
@@ -29,5 +28,14 @@ export type ThemeStateTypes = {
 export interface ScrollRefStateTypes {
   container: React.MutableRefObject<HTMLDivElement | null> | null;
   footer: React.MutableRefObject<HTMLElement | null> | null;
-  detail: React.MutableRefObject<HTMLElement | null> | null;
+}
+
+export interface DetailScrollRefStateTypes {
+  container: React.MutableRefObject<HTMLDivElement | null> | null; // <ProjectDetail />
+  visual: React.MutableRefObject<HTMLDivElement | null> | null;
+}
+
+export interface DetailLayoutStateTypes {
+  open: boolean;
+  openComplete: boolean;
 }

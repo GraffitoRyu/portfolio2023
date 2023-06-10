@@ -8,7 +8,7 @@ import ExternalIcon from "@/svg/common/external_icon.svg";
 
 // type
 import { SitemapType } from "@/types/sitemap";
-import { pageStateTypes } from "@/types/state";
+import { DetailLayoutStateTypes, pageStateTypes } from "@/types/state";
 
 // style component
 import { FooterBtn } from "@/styles/styled/components/PageFooter";
@@ -18,6 +18,7 @@ import navDelay from "@/util/navDelay";
 
 // state
 import { pageState } from "@/states/page";
+import { detailLayoutState } from "@/states/detail";
 
 const FooterMenuBtn = styled(FooterBtn)``;
 
@@ -30,6 +31,9 @@ export default function SitemapBtn({
   const router = useRouter();
   const { category } = useParams();
   const setPageAtom = useSetRecoilState<pageStateTypes>(pageState);
+  const setDetailLayout =
+    useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
+
   const [hover, setHover] = useState<string>("");
 
   return external ? (
@@ -57,10 +61,20 @@ export default function SitemapBtn({
           e,
           clickEvent: () => {
             console.log("페이지 변경 시작: ", code);
-            const updatePage = category
-              ? { bottomSheetOpen: false }
-              : { cover: code, loaded: false };
-            setPageAtom(prev => ({ ...prev, ...updatePage }));
+
+            if (category) {
+              setDetailLayout(prev => ({
+                ...prev,
+                open: false,
+                openComplete: false,
+              }));
+            } else {
+              setPageAtom(prev => ({
+                ...prev,
+                cover: code,
+                loaded: false,
+              }));
+            }
           },
           navEvent: () => router.push(path),
         })

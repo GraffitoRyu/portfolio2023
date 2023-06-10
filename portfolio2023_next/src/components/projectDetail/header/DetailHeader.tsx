@@ -10,19 +10,21 @@ import { PDHeader } from "@/styles/styled/components/ProjectDetail";
 import { StyledHeaderWrap } from "@/styles/styled/components/PageHeader";
 
 // types
-import { pageStateTypes } from "@/types/state";
+import { DetailLayoutStateTypes } from "@/types/state";
 
 // state
-import { pageState } from "@/states/page";
+import { detailLayoutState } from "@/states/detail";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 
 export default function DetailHeader() {
   const router = useRouter();
-  const setPage = useSetRecoilState<pageStateTypes>(pageState);
+  const setDetailLayout =
+    useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
+
   const closeDetail = () => {
-    setPage(prev => ({ ...prev, bottomSheetOpen: false }));
+    setDetailLayout(prev => ({ ...prev, open: false, openComplete: false }));
 
     // bottom sheet가 모두 들어 간 뒤 경로 이동
     setTimeout(() => {
