@@ -28,14 +28,16 @@ export default function DetailCategory() {
 
   // 프로젝트 상세 데이터 React-query로 가져오기
   useLayoutEffect(() => {
+    if (!category) return;
+
     console.log(`[ReactQuery] status: ${status}`);
     if (status === "success") {
       console.log(`[ReactQuery] details: `, data);
       setDetails(prev => ({ ...prev, [data.code]: data }));
     }
-  }, [data, setDetails, status]);
+  }, [category, data, setDetails, status]);
 
   if (!category || isLoading) return null;
 
-  return <ProjectDetail />;
+  return isLoading ? null : <ProjectDetail />;
 }
