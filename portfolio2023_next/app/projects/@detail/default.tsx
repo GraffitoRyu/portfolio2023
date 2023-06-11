@@ -1,4 +1,4 @@
 export default function Default() {
-  console.log("@detail/default");
-  return <div>@detail default</div>;
+  console.log("projects/@detail/default");
+  return null;
 }

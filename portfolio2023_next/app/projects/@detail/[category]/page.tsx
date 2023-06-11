@@ -3,7 +3,9 @@
 import { useParams } from "next/navigation";
 import { useLayoutEffect } from "react";
 import { useSetRecoilState } from "recoil";
-import { useQuery } from "@tanstack/react-query";
+
+// components
+import ProjectDetail from "@/components/projectDetail/DetailContainer";
 
 // type
 import { DetailTypes } from "@/types/projectDetails";
@@ -12,17 +14,14 @@ import { DetailTypes } from "@/types/projectDetails";
 import { detailData } from "@/states/detail";
 
 // util
-import { getDetailData } from "@/util/getData";
-import ProjectDetail from "@/components/projectDetail/DetailContainer";
+import useGetDetailByCategoryQuery from "@/hooks/useGetDetailQuery";
 
 export default function DetailCategory() {
   const { category } = useParams();
-  console.log(`@detail/[category]/page :: category:`, category);
+  console.log(`projects/@detail/[category]/page :: category:`, category);
 
-  const { isLoading, status, data } = useQuery({
-    queryKey: ["details", category],
-    queryFn: () => getDetailData(category),
-  });
+  const { isLoading, isError, status, data } =
+    useGetDetailByCategoryQuery(category);
 
   const setDetails = useSetRecoilState<DetailTypes>(detailData);
 
@@ -37,7 +36,7 @@ export default function DetailCategory() {
     }
   }, [category, data, setDetails, status]);
 
-  if (!category || isLoading) return null;
+  if (!category || isLoading || isError) return null;
 
   return isLoading ? null : <ProjectDetail />;
 }
