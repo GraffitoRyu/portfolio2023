@@ -1,5 +1,4 @@
-import { SyntheticEvent, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
@@ -8,17 +7,13 @@ import ExternalIcon from "@/svg/common/external_icon.svg";
 
 // type
 import { SitemapType } from "@/types/sitemap";
-import { DetailLayoutStateTypes, pageStateTypes } from "@/types/state";
+import { pageStateTypes } from "@/types/state";
 
 // style component
 import { FooterBtn } from "@/styles/styled/components/PageFooter";
 
-// util
-import navDelay from "@/util/navDelay";
-
 // state
 import { pageState } from "@/states/page";
-import { detailLayoutState } from "@/states/detail";
 
 const FooterMenuBtn = styled(FooterBtn)``;
 
@@ -28,16 +23,13 @@ export default function SitemapBtn({
   name,
   external,
 }: SitemapType): JSX.Element {
-  const router = useRouter();
-  const { category } = useParams();
   const setPageAtom = useSetRecoilState<pageStateTypes>(pageState);
-  const setDetailLayout =
-    useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
 
   const [hover, setHover] = useState<string>("");
 
   return external ? (
     <FooterMenuBtn
+      as="a"
       href={path}
       target="_blank"
       className={`${hover}`}
@@ -51,34 +43,17 @@ export default function SitemapBtn({
     </FooterMenuBtn>
   ) : (
     <FooterMenuBtn
-      as="button"
+      href={path}
       className={`${hover}`}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
-      onClick={(e: SyntheticEvent) =>
-        navDelay({
-          delay: category ? 0 : 1000,
-          e,
-          clickEvent: () => {
-            console.log("페이지 변경 시작: ", code);
-
-            if (category) {
-              setDetailLayout(prev => ({
-                ...prev,
-                open: false,
-                openComplete: false,
-              }));
-            } else {
-              setPageAtom(prev => ({
-                ...prev,
-                cover: code,
-                loaded: false,
-              }));
-            }
-          },
-          navEvent: () => router.push(path),
-        })
-      }
+      onClick={() => {
+        setPageAtom(prev => ({
+          ...prev,
+          cover: code,
+          loaded: false,
+        }));
+      }}
     >
       <span>{name}</span>
     </FooterMenuBtn>

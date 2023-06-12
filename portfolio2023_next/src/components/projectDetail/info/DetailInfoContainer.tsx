@@ -1,4 +1,4 @@
-import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
@@ -28,22 +28,23 @@ import { getDescData } from "./util/getDescData";
 import { ExpDepthType } from "@/types/projects";
 
 export default function DetailInfoContainer() {
-  const { category } = useParams();
+  const params = useSearchParams();
+  const code = params.get("code");
   const data = useRecoilValue<DetailTypes>(detailData);
   const [summary, setSummary] = useState<DetailInfoSummaryTypes[]>([]);
   const [desc, setDesc] = useState<DetailInfoDescTypes[]>([]);
 
   useLayoutEffect(() => {
-    if (!category) return;
+    if (!code) return;
 
-    const d = data[category];
+    const d = data[code];
     if (d) {
       const summaryData = getSummaryData(d);
       const descData = getDescData(d);
       setSummary(summaryData);
       setDesc(descData);
     }
-  }, [category, data]);
+  }, [code, data]);
 
   return (
     <>

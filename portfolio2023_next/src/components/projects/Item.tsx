@@ -1,8 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { SyntheticEvent, useState } from "react";
-// import { useSetRecoilState } from "recoil";
+import { useEffect, useState } from "react";
 
 // components
 import { ProjectItemContainer } from "@/styles/styled/components/ProjectList";
@@ -12,10 +10,7 @@ import BtnIcon from "@/components/projects/item/BtnIcon";
 
 // type
 import { SummaryType } from "@/types/projects";
-// import { DetailLayoutStateTypes } from "@/types/state";
-
-// state
-// import { detailLayoutState } from "@/states/detail";
+import { useSearchParams } from "next/navigation";
 
 export default function ProjectItem({
   code,
@@ -24,22 +19,20 @@ export default function ProjectItem({
   code: string;
   summary: SummaryType;
 }): JSX.Element {
-  const router = useRouter();
   const [hover, setHover] = useState<string>("");
-  // const setDetailLayout =
-  //   useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
+  const params = useSearchParams();
+  const viewCode = params.get("code");
+
+  useEffect(() => {
+    if (viewCode) setHover("");
+  }, [viewCode]);
 
   return (
     <ProjectItemContainer
-      type="button"
+      href={`/projects?code=${code}`}
       className={hover}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
-      onClick={(e: SyntheticEvent) => {
-        e.preventDefault();
-        // setDetailLayout(prev => ({ ...prev, open: true }));
-        router.push(`/projects/${code}`);
-      }}
     >
       <ProjectSummary code={code} summary={summary} />
       <SlideTitle text={summary.title} />

@@ -1,6 +1,3 @@
-// import { useEffect } from "react";
-// import { useSetRecoilState } from "recoil";
-
 // components
 import SectionContents from "@/components/pageSection/Contents";
 import SectionHeader from "@/components/pageSection/Header";
@@ -8,30 +5,10 @@ import PageSection from "@/components/pageSection/PageSection";
 import PageIntro from "@/components/pageSection/pageVisual/Intro";
 import PageVisual from "@/components/pageSection/pageVisual/Visual";
 import ProjectList from "@/components/projects/List";
-
-// types
-// import { DetailLayoutStateTypes } from "@/types/state";
-
-// // state
-// import { detailLayoutState } from "@/states/detail";
-// import { useParams } from "next/navigation";
+import ProjectDetail from "@/components/projectDetail/DetailContainer";
 
 export default function Projects() {
   console.log(`projects/page`);
-  // const { category } = useParams();
-
-  // const setDetailOpen =
-  //   useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
-
-  // useEffect(() => {
-  // console.log(`projects/layout :: isOpen - `, category ? true : false);
-
-  //   setDetailOpen(prev => ({
-  //     ...prev,
-  //     open: category ? true : false,
-  //   }));
-  // }, [category, setDetailOpen]);
-
   return (
     <>
       <PageSection className="side-h-padding" isVisual={true}>
@@ -54,6 +31,7 @@ export default function Projects() {
           <ProjectList />
         </SectionContents>
       </PageSection>
+      <ProjectDetail />
     </>
   );
 }

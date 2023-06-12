@@ -1,8 +1,8 @@
 import { getDetailData } from "@/util/getData";
 import { useQuery } from "@tanstack/react-query";
 
-export default function useGetDetailByCategoryQuery(category: string) {
-  return useQuery(["detail"], () => getDetailData(category), {
-    enabled: typeof category === "string",
+export default function useGetDetailByCodeQuery(code: string | null) {
+  return useQuery(["detail"], () => getDetailData(code), {
+    enabled: typeof code === "string",
   });
 }

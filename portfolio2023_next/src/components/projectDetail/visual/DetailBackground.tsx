@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 // import { useState } from "react";
 
 // style components
@@ -9,17 +9,18 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 export default function DetailBackground() {
-  const { category } = useParams();
-  const imgURL = `/img/details/intro_${category}.jpg`;
+  const params = useSearchParams();
+  const code = params.get("code");
+  const imgURL = `/img/details/intro_${code}.jpg`;
   // const [hide, setHide] = useState<string>("opacity-0");
 
   return (
     <PDVisualImage>
-      {category ? (
+      {code ? (
         <Image
           // className={`${hide}`}
           src={imgURL}
-          alt={category}
+          alt={code}
           fill={true}
           placeholder="blur"
           blurDataURL={imgURL}

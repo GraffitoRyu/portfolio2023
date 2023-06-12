@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import styled from "styled-components";
 import { keyframes } from "styled-components";
 
@@ -19,7 +20,7 @@ export const ProjectListContainer = styled.ul`
   border-top: 1px solid ${({ theme }) => theme.projectList.border};
 `;
 
-export const ProjectItemContainer = styled.button`
+export const ProjectItemContainer = styled(Link)`
   width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.projectList.border};
   user-select: none;

@@ -1,4 +1,4 @@
-import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
@@ -16,21 +16,22 @@ import { DetailTypes } from "@/types/projectDetails";
 import { detailData } from "@/states/detail";
 
 export default function DetailHeaderTitleContainer() {
-  const { category } = useParams();
+  const params = useSearchParams();
+  const code = params.get("code");
   const data = useRecoilValue<DetailTypes>(detailData);
   const [title, setTitle] = useState<string>("");
 
   useLayoutEffect(() => {
-    if (!category) return;
+    if (!code) return;
 
-    const d = data[category];
+    const d = data[code];
     if (d?.summary?.title) setTitle(d.summary.title.join(" "));
-  }, [category, data]);
+  }, [code, data]);
 
   return (
     <PDHeaderTitleContainer>
       <PDHeaderPageName>프로젝트</PDHeaderPageName>
-      <PDHeaderProjectName>{category ? title : ""}</PDHeaderProjectName>
+      <PDHeaderProjectName>{title}</PDHeaderProjectName>
     </PDHeaderTitleContainer>
   );
 }
