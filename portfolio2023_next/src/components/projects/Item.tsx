@@ -11,6 +11,9 @@ import BtnIcon from "@/components/projects/item/BtnIcon";
 // type
 import { SummaryType } from "@/types/projects";
 import { useSearchParams } from "next/navigation";
+import { useSetRecoilState } from "recoil";
+import { detailLayoutState } from "@/states/detail";
+import { DetailLayoutStateTypes } from "@/types/state";
 
 export default function ProjectItem({
   code,
@@ -22,6 +25,7 @@ export default function ProjectItem({
   const [hover, setHover] = useState<string>("");
   const params = useSearchParams();
   const viewCode = params.get("code");
+  const setOpen = useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
 
   useEffect(() => {
     if (viewCode) setHover("");
@@ -33,6 +37,7 @@ export default function ProjectItem({
       className={hover}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
+      onClick={() => setOpen(prev => ({ ...prev, open: true }))}
     >
       <ProjectSummary code={code} summary={summary} />
       <SlideTitle text={summary.title} />

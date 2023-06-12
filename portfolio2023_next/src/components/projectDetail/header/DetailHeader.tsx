@@ -24,10 +24,10 @@ export default function DetailHeader() {
     useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
 
   const closeDetail = () => {
-    setDetailLayout(prev => ({ ...prev, open: false, openComplete: false }));
-
+    setDetailLayout(prev => ({ ...prev, open: false }));
     // bottom sheet가 모두 들어 간 뒤 경로 이동
     const timer = setTimeout(() => {
+      setDetailLayout(prev => ({ ...prev, openComplete: false }));
       router.back();
       clearTimeout(timer);
     }, transTime.detail.sheetSlideTime);
@@ -37,7 +37,7 @@ export default function DetailHeader() {
     <PDHeader>
       <StyledHeaderWrap>
         <DetailHeaderTitleContainer />
-        <CloseButton clickEvent={closeDetail} />
+        <CloseButton clickEvent={() => closeDetail()} />
       </StyledHeaderWrap>
     </PDHeader>
   );

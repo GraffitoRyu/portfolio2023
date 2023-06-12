@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import {
   PDVisualEmpty,
   PDVisualImage,
+  PDVisualImageContainer,
 } from "@/styles/styled/components/ProjectDetail";
 
 export default function DetailBackground() {
@@ -15,20 +16,22 @@ export default function DetailBackground() {
   // const [hide, setHide] = useState<string>("opacity-0");
 
   return (
-    <PDVisualImage>
-      {code ? (
-        <Image
-          // className={`${hide}`}
-          src={imgURL}
-          alt={code}
-          fill={true}
-          placeholder="blur"
-          blurDataURL={imgURL}
-          // onLoadingComplete={() => setHide("")}
-        />
-      ) : (
-        <PDVisualEmpty />
-      )}
-    </PDVisualImage>
+    <PDVisualImageContainer>
+      <PDVisualImage>
+        {code ? (
+          <Image
+            // className={`${hide}`}
+            src={imgURL}
+            alt={code}
+            fill={true}
+            placeholder="blur"
+            blurDataURL={imgURL}
+            // onLoadingComplete={() => setHide("")}
+          />
+        ) : (
+          <PDVisualEmpty />
+        )}
+      </PDVisualImage>
+    </PDVisualImageContainer>
   );
 }

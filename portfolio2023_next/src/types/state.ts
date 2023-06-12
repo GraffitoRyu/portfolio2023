@@ -33,6 +33,7 @@ export interface ScrollRefStateTypes {
 export interface DetailScrollRefStateTypes {
   container: React.MutableRefObject<HTMLElement | null> | null; // <article />
   visual: React.MutableRefObject<HTMLDivElement | null> | null;
+  visualTitle: React.MutableRefObject<HTMLDivElement | null> | null;
 }
 
 export interface DetailLayoutStateTypes {

@@ -14,5 +14,6 @@ export const detailScrollRefState = atom<DetailScrollRefStateTypes>({
   default: {
     container: null,
     visual: null,
+    visualTitle: null,
   },
 });

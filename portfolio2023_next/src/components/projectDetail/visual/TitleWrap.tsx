@@ -1,6 +1,6 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 // components
 import ParseDescNewLine from "@/components/util/ParseDescNewLine";
@@ -43,6 +43,9 @@ export default function DetailTitleWrap() {
   const scrollUpRef = useRef<HTMLDivElement | null>(null);
   const { container, visual } =
     useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
+  const setDetailScrollRef =
+    useSetRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
+
   // 데이터 세팅
   useEffect(() => {
     if (!code) return;
@@ -56,6 +59,10 @@ export default function DetailTitleWrap() {
   useEffect(() => {
     if (openComplete && title?.length > 0 && subtitle) setInitTitle("");
   }, [openComplete, subtitle, title?.length]);
+
+  useEffect(() => {
+    setDetailScrollRef(prev => ({ ...prev, visualTitle: scrollUpRef }));
+  }, [setDetailScrollRef]);
 
   // 스크롤 인터렉션 이벤트 선언
   useEffect(() => {

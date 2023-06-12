@@ -28,16 +28,16 @@ export function PageLoadEvents() {
 
   // 루트 업데이트
   useLayoutEffect(() => {
-    console.log(
-      `[PageLoadEvent : 루트 업데이트] pathname: ${pathname} / detail code: ${queryCode}`
-    );
+    // console.log(
+    //   `[PageLoadEvent : 루트 업데이트] pathname: ${pathname} / detail code: ${queryCode}`
+    // );
     // 동적 경로 제외한 실 페이지 경로
     const newPathName: string = pathname;
     // 현재 페이지의 코드(페이지 이름) 값
     const newPageName: string = getCurPageName(newPathName, routeData);
 
     if (savedPathName !== newPathName) {
-      console.log(`[PageLoadEvent : 페이지 변경] `, newPageName);
+      // console.log(`[PageLoadEvent : 페이지 변경] `, newPageName);
 
       // 현재 페이지와 저장된 페이지 상태값이 다른 경우, 현재 페이지 정보 업데이트
       const cur = newPageName !== page.cur ? newPageName : page.cur;
@@ -51,7 +51,7 @@ export function PageLoadEvents() {
   // 페이지 새로고침 또는 첫 진입 체크
   useLayoutEffect(() => {
     if (!page.init) {
-      console.log(`[PageLoadEvent : 페이지 최초 로드 완료] `, savedPathName);
+      // console.log(`[PageLoadEvent : 페이지 최초 로드 완료] `, savedPathName);
       setPage(prev => ({ ...prev, init: true, loaded: true }));
     }
   }, [page.init, savedPathName, setPage]);

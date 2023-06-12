@@ -61,8 +61,9 @@ export const PDHeaderPageName = styled.span`
 `;
 
 export const PDHeaderProjectName = styled.span`
-  /* opacity: 0; */
+  opacity: 0;
   letter-spacing: 0;
+  transition: opacity 0.24s;
   &:before {
     content: "/";
     font-weight: 500;
@@ -73,9 +74,12 @@ export const PDHeaderProjectName = styled.span`
 export const PDSection = styled.section`
   width: 100%;
   position: relative;
+  z-index: 100;
   &:not(.detail-visual) {
+    background: ${({ theme }) => theme.projectDetails.bg};
+  }
+  &.side-padding {
     padding: ${rem(80)};
-    background: ${({ theme }) => theme.projectDetails.visualBg};
   }
   &.detail-visual {
     height: ${typeof window === "undefined"
@@ -90,9 +94,16 @@ export const PDSection = styled.section`
   }
 `;
 
+export const PDVisualImageContainer = styled.div`
+  ${position({ type: "sticky", top: 0, left: 0, z: -100 })}
+`;
+
 export const PDVisualImage = styled.figure`
-  ${size({ width: "100%", height: "100%" })}
-  ${position({ type: "fixed", top: 0, left: 0, z: -2 })}
+  ${size({
+    width: "100%",
+    height: typeof window === "undefined" ? "100vh" : `${window.innerHeight}px`,
+  })}
+  ${position({ type: "absolute", top: 0, left: 0, z: -2 })}
   overflow:hidden;
   img {
     filter: blur(4px);
@@ -274,5 +285,58 @@ export const PDStackName = styled.span`
   })}
   @media only screen and (min-width: 1024px) {
     ${font({ size: 16, weight: 500 })}
+  }
+`;
+
+export const PDMediaContainer = styled.ul`
+  width: 100%;
+`;
+
+export const PDMediaItem = styled.li`
+  ${size({ width: "100%", pb: 240 })}
+`;
+
+export const PDMediaFigure = styled.figure`
+  width: 100%;
+  font-size: 0;
+  position: relative;
+  img {
+    position: static !important;
+  }
+`;
+
+export const PDMediaInfo = styled.div`
+  padding: 0 ${rem(160)};
+  text-align: center;
+  @media only screen and (min-width: 1024px) {
+    padding: 0 ${rem(80)};
+  }
+`;
+
+export const PDMediaName = styled.h4`
+  margin-top: ${rem(80)};
+  color: ${({ theme }) => theme.projectDetails.captionTitle};
+  ${font({
+    size: 40,
+    weight: 500,
+    height: "1em",
+  })}
+  @media only screen and (min-width:1024px) {
+    margin-top: ${rem(120)};
+    font-size: ${rem(32)};
+  }
+`;
+
+export const PDMediaDesc = styled.p`
+  margin-top: ${rem(32)};
+  color: ${({ theme }) => theme.projectDetails.captionDesc};
+  ${font({
+    size: 32,
+    weight: 400,
+    height: "1.5em",
+  })}
+  @media only screen and (min-width:1024px) {
+    margin-top: ${rem(32)};
+    font-size: ${rem(24)};
   }
 `;

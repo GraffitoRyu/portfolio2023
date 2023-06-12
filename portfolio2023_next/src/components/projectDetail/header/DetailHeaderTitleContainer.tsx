@@ -1,5 +1,5 @@
 import { useSearchParams } from "next/navigation";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 // style components
@@ -13,13 +13,25 @@ import {
 import { DetailTypes } from "@/types/projectDetails";
 
 // state
-import { detailData } from "@/states/detail";
+import { detailData, detailLayoutState } from "@/states/detail";
+import {
+  DetailLayoutStateTypes,
+  DetailScrollRefStateTypes,
+} from "@/types/state";
+import { detailScrollRefState } from "@/states/scroll";
+import ctxScrollTrigger from "@/util/presetScrollTrigger";
 
 export default function DetailHeaderTitleContainer() {
   const params = useSearchParams();
   const code = params.get("code");
   const data = useRecoilValue<DetailTypes>(detailData);
   const [title, setTitle] = useState<string>("");
+
+  const { openComplete } =
+    useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
+  const { container, visual, visualTitle } =
+    useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
+  const titleRef = useRef<HTMLSpanElement>(null);
 
   useLayoutEffect(() => {
     if (!code) return;
@@ -28,10 +40,41 @@ export default function DetailHeaderTitleContainer() {
     if (d?.summary?.title) setTitle(d.summary.title.join(" "));
   }, [code, data]);
 
+  useEffect(() => {
+    if (openComplete && code) {
+      const scrollContainer = container?.current;
+      const scrollTrigger = visual?.current;
+      const visualTitleRef = visualTitle?.current;
+
+      if (!scrollContainer || !scrollTrigger || !visualTitleRef) return;
+
+      const scrollTarget = titleRef.current;
+      if (!scrollTarget) return;
+
+      const ctx = ctxScrollTrigger({
+        container: scrollContainer,
+        target: scrollTarget,
+        options: {
+          opacity: 1,
+          scrollTrigger: {
+            trigger: scrollTrigger,
+            start: `${visualTitleRef.offsetTop} ${scrollTarget.offsetTop}`, // trigger, target
+            end: `${visualTitleRef.offsetTop + scrollTarget.clientHeight} ${
+              scrollTarget.offsetTop
+            }`, // trigger, target
+            scrub: true,
+            // markers: true,
+          },
+        },
+      });
+      return () => ctx.revert();
+    }
+  }, [code, container, openComplete, visual, visualTitle]);
+
   return (
     <PDHeaderTitleContainer>
       <PDHeaderPageName>프로젝트</PDHeaderPageName>
-      <PDHeaderProjectName>{title}</PDHeaderProjectName>
+      <PDHeaderProjectName ref={titleRef}>{title}</PDHeaderProjectName>
     </PDHeaderTitleContainer>
   );
 }
