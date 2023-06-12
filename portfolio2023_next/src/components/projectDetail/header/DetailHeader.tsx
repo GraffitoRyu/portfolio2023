@@ -26,10 +26,9 @@ export default function DetailHeader() {
   const closeDetail = () => {
     setDetailLayout(prev => ({ ...prev, open: false }));
     // bottom sheet가 모두 들어 간 뒤 경로 이동
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       setDetailLayout(prev => ({ ...prev, openComplete: false }));
       router.back();
-      clearTimeout(timer);
     }, transTime.detail.sheetSlideTime);
   };
 

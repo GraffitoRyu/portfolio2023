@@ -55,12 +55,12 @@ export default function ProjectDetail() {
   // 프로젝트 상세 오픈 ; 열림 상태 클래스명으로 컨트롤
   useEffect(() => {
     // 프로젝트 클릭 선택으로 여는 경우
-    if (layoutState.open) setOpen(layoutState.open ? "open" : "");
+    setOpen(layoutState.open ? "open" : "");
 
     // url로 직접 접근할 때
     if (!layoutState.open && code) {
       setLayoutState(prev => ({ ...prev, open: true }));
-      setOpen(layoutState.open ? "open" : "");
+      setOpen("open");
     }
   }, [code, layoutState, setLayoutState]);
 
