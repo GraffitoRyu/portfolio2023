@@ -1,6 +1,9 @@
 export const transTime = {
+  common: {
+    transCover: 1000,
+  },
   detail: {
-    sheetSlideTime: 800,
+    sheetSlide: 800,
   },
 };
 
