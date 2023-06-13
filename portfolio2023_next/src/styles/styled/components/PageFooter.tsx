@@ -21,9 +21,9 @@ const FooterFontSize = css`
 export const FooterContainer = styled.footer`
   ${position({ type: "relative", z: 600 })}
   ${size({
-    width: "100%",
-    height: typeof window === "undefined" ? "100vh" : `${window.innerHeight}px`,
-    padding: rem(80),
+    w: "100%",
+    h: typeof window === "undefined" ? "100vh" : `${window.innerHeight}px`,
+    p: rem(80),
   })}
   background-color: ${({ theme }) => theme.footer.bg};
   overflow: hidden;
@@ -31,7 +31,7 @@ export const FooterContainer = styled.footer`
 
 export const FooterWrap = styled.div`
   ${flex({ dir: "column", std: "start", cross: "start" })}
-  ${size({ width: "100%", height: "100%" })}
+  ${size({ w: "100%", h: "100%" })}
 `;
 
 export const FooterHeader = styled.header`
@@ -48,7 +48,7 @@ export const FooterHeader = styled.header`
 
 export const FooterContents = styled.div`
   ${flex({ std: "start", cross: "start" })}
-  ${size({ width: "100%", pt: rem(80), mt: "auto" })}
+  ${size({ w: "100%", pt: rem(80), mt: "auto" })}
   border-top: 1px solid ${({ theme }) => theme.footer.divideLine};
 `;
 
@@ -108,7 +108,7 @@ export const FooterInfoItem = styled.dd`
 
 export const FooterBtn = styled.button`
   ${flex({ std: "start" })}
-  ${size({ width: "fit-content", height: "2em" })}
+  ${size({ w: "fit-content", h: "2em" })}
   font-weight: 400;
   span {
     color: ${({ theme }) => theme.footer.btn};
@@ -116,7 +116,7 @@ export const FooterBtn = styled.button`
     margin-top: ${rem(-4)};
   }
   figure {
-    ${size({ width: rem(iconSize(32)), height: rem(iconSize(32)) })}
+    ${size({ w: rem(iconSize(32)), h: rem(iconSize(32)) })}
     svg {
       display: block;
       ${img({})}
@@ -131,7 +131,7 @@ export const FooterBtn = styled.button`
   }
   @media only screen and (min-width: 768px) {
     figure {
-      ${size({ width: rem(iconSize(24)), height: rem(iconSize(24)) })}
+      ${size({ w: rem(iconSize(24)), h: rem(iconSize(24)) })}
     }
   }
   ${FooterFontSize}

@@ -1,14 +1,14 @@
 export type ImageTypes = {
-  width?: number | string;
-  height?: number | string;
+  w?: number | string;
+  h?: number | string;
   fit?: string;
 };
 
 export type SizeTypes = {
-  width?: string | number;
-  height?: string | number;
-  margin?: string | number | Array<string | number>; // length: 1 ~ 4
-  padding?: string | number | Array<string | number>; // length: 1 ~ 4
+  w?: string | number;
+  h?: string | number;
+  m?: string | number | Array<string | number>; // length: 1 ~ 4
+  p?: string | number | Array<string | number>; // length: 1 ~ 4
   mt?: string | number; // margin-top
   mr?: string | number; // margin-right
   mb?: string | number; // margin-bottom
@@ -37,10 +37,10 @@ export type PositionTypes = {
 };
 
 export type BtnTypes = {
-  width?: number | string;
-  height: number | string;
-  radius?: number | string;
-  borderWidth?: number;
+  w?: number | string;
+  h: number | string;
+  r?: number | string;
+  bw?: number;
   color?: string;
 };
 

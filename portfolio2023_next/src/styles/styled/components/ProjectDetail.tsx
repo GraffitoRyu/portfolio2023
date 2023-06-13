@@ -20,7 +20,7 @@ import { img } from "../preset/img";
 import Period from "@/components/period/Period";
 
 export const PDContainer = styled.article`
-  ${size({ width: "100%", height: "100%" })}
+  ${size({ w: "100%", h: "100%" })}
   ${position({ type: "fixed", left: 0, bottom: 0, z: 2000 })}
   overflow-x: hidden;
   overflow-y: auto;
@@ -100,8 +100,8 @@ export const PDVisualImageContainer = styled.div`
 
 export const PDVisualImage = styled.figure`
   ${size({
-    width: "100%",
-    height: typeof window === "undefined" ? "100vh" : `${window.innerHeight}px`,
+    w: "100%",
+    h: typeof window === "undefined" ? "100vh" : `${window.innerHeight}px`,
   })}
   ${position({ type: "absolute", top: 0, left: 0, z: -2 })}
   overflow:hidden;
@@ -113,13 +113,13 @@ export const PDVisualImage = styled.figure`
 `;
 
 export const PDVisualCover = styled.div`
-  ${size({ width: "100%", padding: 80 })}
+  ${size({ w: "100%", p: 80 })}
   ${flex({ dir: "column", std: "end", cross: "start" })}
   &:after {
     content: "";
     display: block;
     ${position({ type: "absolute", top: 0, left: 0, z: -1 })}
-    ${size({ width: "100%", height: "100%" })}
+    ${size({ w: "100%", h: "100%" })}
     background-color: ${({ theme }) => theme.projectDetails.bg};
     background: ${({ theme }) => theme.projectDetails.visualBg};
     /* opacity: 0.9; */
@@ -176,7 +176,7 @@ export const PDTitle = styled.div`
 `;
 
 export const PDVisualEmpty = styled.div`
-  ${size({ width: "100%", height: "100%" })}
+  ${size({ w: "100%", h: "100%" })}
 `;
 
 export const PDInfoItem = styled.dl`
@@ -251,24 +251,24 @@ export const PDStackList = styled.ul`
 
 export const PDStacks = styled.li`
   ${flex({})}
-  ${btnStyle({ width: "auto", height: 64, radius: 32 })}
-  ${size({ margin: [0, 8, 16], padding: [0, 32] })}
+  ${btnStyle({ w: "auto", h: 64, r: 32 })}
+  ${size({ m: [0, 8, 16], p: [0, 32] })}
   border:1px solid ${({ theme }) => theme.projectDetails.stackBorder};
   background-color: ${({ theme }) => theme.projectDetails.stackBg};
   @media only screen and (min-width: 1024px) {
-    ${btnStyle({ width: "auto", height: 48, radius: 24 })}
-    ${size({ margin: [0, 4, 8], padding: [0, 16] })}
+    ${btnStyle({ w: "auto", h: 48, r: 24 })}
+    ${size({ m: [0, 4, 8], p: [0, 16] })}
   }
 `;
 
 export const PDStackImg = styled.figure`
-  ${size({ width: 32, height: 32, mr: 16 })}
+  ${size({ w: 32, h: 32, mr: 16 })}
   position:relative;
   img {
     ${img({})}
   }
   @media only screen and (min-width: 1024px) {
-    ${size({ width: 24, height: 24, mr: 8 })}
+    ${size({ w: 24, h: 24, mr: 8 })}
   }
 `;
 
@@ -293,7 +293,7 @@ export const PDMediaContainer = styled.ul`
 `;
 
 export const PDMediaItem = styled.li`
-  ${size({ width: "100%", pb: 240 })}
+  ${size({ w: "100%", pb: 240 })}
 `;
 
 export const PDMediaFigure = styled.figure`

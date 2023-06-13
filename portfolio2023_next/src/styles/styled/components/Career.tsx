@@ -53,7 +53,7 @@ export const CareerCompany = styled.span`
   &:before {
     content: "";
     display: block;
-    ${size({ width: rem(2), height: rem(24) })}
+    ${size({ w: rem(2), h: rem(24) })}
     margin: 0 ${rem(16)} 0 ${rem(24)};
     background-color: ${({ theme }) => theme.career.company};
   }

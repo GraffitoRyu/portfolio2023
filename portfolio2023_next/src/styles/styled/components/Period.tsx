@@ -30,7 +30,7 @@ export const Bar = styled.span`
     height: 100%;
   }
   @media only screen and (min-width: 1024px) {
-    ${size({ width: rem(56), height: rem(2) })}
+    ${size({ w: rem(56), h: rem(2) })}
     margin:0 ${rem(16)};
   }
 `;

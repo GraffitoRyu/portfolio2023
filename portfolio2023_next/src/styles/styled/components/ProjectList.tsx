@@ -40,7 +40,7 @@ export const ListBtnContainer = styled.div`
 `;
 
 export const ListBtnWrap = styled.div`
-  ${size({ width: "100%", padding: rem(80) })}
+  ${size({ w: "100%", p: rem(80) })}
   color:${({ theme }) => theme.projectList.desc};
   position: relative;
   @media only screen and (min-width: 1024px) {
@@ -147,7 +147,7 @@ export const ListBtnRole = styled.li`
   &:after {
     content: "";
     display: block;
-    ${size({ width: rem(2), height: rem(20), margin: [0, rem(24)] })}
+    ${size({ w: rem(2), h: rem(20), m: [0, rem(24)] })}
     background-color:${({ theme }) => theme.projectList.desc};
   }
   &:last-child {
@@ -213,7 +213,7 @@ export const TitleSpan = styled.span`
 `;
 
 export const ProjectOpenIcon = styled.figure`
-  ${size({ width: rem(160), height: rem(160) })}
+  ${size({ w: rem(160), h: rem(160) })}
   ${position({ type: "absolute", top: 80, right: 80 })}
   transform:translate(-100%,100%);
   opacity: 0;
@@ -226,7 +226,7 @@ export const ProjectOpenIcon = styled.figure`
   }
   ${SvgFill("#fff")}
   @media only screen and (min-width:1024px) {
-    ${size({ width: rem(120), height: rem(120) })}
+    ${size({ w: rem(120), h: rem(120) })}
   }
   ${ProjectItemContainer}.hover & {
     transform: translate(0, 0);

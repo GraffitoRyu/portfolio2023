@@ -13,7 +13,7 @@ export const DepthItem = styled.li`
   &:before {
     content: "";
     display: inline-block;
-    ${size({ width: rem(8), height: rem(8) })}
+    ${size({ w: rem(8), h: rem(8) })}
     border-radius:50%;
     margin: ${rem(8)} ${rem(16)} 0;
   }

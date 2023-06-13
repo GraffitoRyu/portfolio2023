@@ -13,21 +13,15 @@ import { sizePreset } from "./size";
 // util
 import { getUnit, rem } from "@/util/unit";
 
-export const btnStyle = ({
-  width,
-  height,
-  radius = 0,
-  borderWidth = 2,
-  color,
-}: BtnTypes) => css`
+export const btnStyle = ({ w, h, r = 0, bw = 2, color }: BtnTypes) => css`
   ${flex({})}
 
-  width: ${typeof width === "undefined" ? getUnit(height) : getUnit(width)};
-  height: ${getUnit(height)};
-  border-radius: ${getUnit(radius)};
+  width: ${typeof w === "undefined" ? getUnit(h) : getUnit(w)};
+  height: ${getUnit(h)};
+  border-radius: ${getUnit(r)};
 
   ${color ? colorSet(color) : ""}
-  border:${rem(borderWidth)} solid ${color ?? "transparent"};
+  border:${rem(bw)} solid ${color ?? "transparent"};
 `;
 
 export const colorSet = (color: string) =>
@@ -40,21 +34,21 @@ export const colorSet = (color: string) =>
 export const CommonBtn = styled.button`
   ${({ theme }) =>
     btnStyle({
-      height: sizePreset.btn.mobile,
-      radius: 16,
-      borderWidth: 2,
+      h: sizePreset.btn.mobile,
+      r: 16,
+      bw: 2,
       color: theme.buttons.basic,
     })}
 
   figure {
-    ${size({ width: sizePreset.icon.mobile, height: sizePreset.icon.mobile })}
+    ${size({ w: sizePreset.icon.mobile, h: sizePreset.icon.mobile })}
     svg {
       ${img({})}
     }
   }
 
   &.w-auto {
-    ${size({ width: "auto", padding: [0, 32] })}
+    ${size({ w: "auto", p: [0, 32] })}
   }
   &.hover {
     background-color: ${({ theme }) => theme.buttons.hoverBg};
@@ -62,14 +56,14 @@ export const CommonBtn = styled.button`
   }
 
   @media only screen and (min-width: 1024px) {
-    ${size({ width: sizePreset.btn.pc, height: sizePreset.btn.pc })}
+    ${size({ w: sizePreset.btn.pc, h: sizePreset.btn.pc })}
     border-radius: ${rem(8)};
     figure {
-      ${size({ width: sizePreset.icon.pc, height: sizePreset.icon.pc })}
+      ${size({ w: sizePreset.icon.pc, h: sizePreset.icon.pc })}
     }
 
     &.w-auto {
-      ${size({ width: "auto", padding: [0, 16] })}
+      ${size({ w: "auto", p: [0, 16] })}
     }
   }
 `;

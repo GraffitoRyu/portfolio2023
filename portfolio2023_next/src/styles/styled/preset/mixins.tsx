@@ -28,10 +28,10 @@ const convertSpacing = (v: string | number | Array<string | number>) => {
 
 /**
  * @desc 각 값은 auto(default), string(%, px, rem 등 단위가 있는 것으로 간주), number는 rem 변환
- * @property {string | number} [width]
- * @property {string | number} [height]
- * @property {string | number | Array<string | number>} [padding] : 단일 값은 모든 방향 적용, 배열의 경우 [상하, 좌우]/[상, 좌우, 하]/[상, 우, 하, 좌]
- * @property {string | number | Array<string | number>} [margin] : 단일 값은 모든 방향 적용, 배열의 경우 [상하, 좌우]/[상, 좌우, 하]/[상, 우, 하, 좌]
+ * @property {string | number} [w]
+ * @property {string | number} [h]
+ * @property {string | number | Array<string | number>} [p] : 단일 값은 모든 방향 적용, 배열의 경우 [상하, 좌우]/[상, 좌우, 하]/[상, 우, 하, 좌]
+ * @property {string | number | Array<string | number>} [m] : 단일 값은 모든 방향 적용, 배열의 경우 [상하, 좌우]/[상, 좌우, 하]/[상, 우, 하, 좌]
  * @property {string | number} [mt] : margin-top
  * @property {string | number} [mr] : margin-right
  * @property {string | number} [mb] : margin-bottom
@@ -42,10 +42,10 @@ const convertSpacing = (v: string | number | Array<string | number>) => {
  * @property {string | number} [pl] : padding-left
  */
 export const size = ({
-  width,
-  height,
-  margin,
-  padding,
+  w,
+  h,
+  m,
+  p,
   mt,
   mr,
   mb,
@@ -55,10 +55,10 @@ export const size = ({
   pb,
   pl,
 }: SizeTypes) => css`
-  ${typeof width !== "undefined" && `width:${getUnit(width)};`}
-  ${typeof height !== "undefined" && `height:${getUnit(height)};`}
-  ${typeof margin !== "undefined" && `margin: ${convertSpacing(margin)};`}
-  ${typeof padding !== "undefined" && `padding: ${convertSpacing(padding)};`}
+  ${typeof w !== "undefined" && `width:${getUnit(w)};`}
+  ${typeof h !== "undefined" && `height:${getUnit(h)};`}
+  ${typeof m !== "undefined" && `margin: ${convertSpacing(m)};`}
+  ${typeof p !== "undefined" && `padding: ${convertSpacing(p)};`}
   ${typeof mt !== "undefined" && `margin-top:${getUnit(mt)};`}
   ${typeof mr !== "undefined" && `margin-right:${getUnit(mr)};`}
   ${typeof mb !== "undefined" && `margin-bottom:${getUnit(mb)};`}
@@ -70,12 +70,12 @@ export const size = ({
 `;
 
 /**
- * @property {number | string} [width] : auto(default), string(%, px, rem 등 단위가 있는 것으로 간주), number는 rem 변환
- * @property {number | string} [height] : auto(default), string(%, px, rem 등 단위가 있는 것으로 간주), number는 rem 변환
+ * @property {number | string} [w] : auto(default), string(%, px, rem 등 단위가 있는 것으로 간주), number는 rem 변환
+ * @property {number | string} [h] : auto(default), string(%, px, rem 등 단위가 있는 것으로 간주), number는 rem 변환
  */
-export const maxSize = ({ width, height }: SizeTypes) => css`
-  max-width: ${typeof width !== "undefined" ? getUnit(width) : "auto"};
-  max-height: ${typeof height !== "undefined" ? getUnit(height) : "auto"};
+export const maxSize = ({ w, h }: SizeTypes) => css`
+  max-width: ${typeof w !== "undefined" ? getUnit(w) : "auto"};
+  max-height: ${typeof h !== "undefined" ? getUnit(h) : "auto"};
 `;
 
 /**

@@ -9,12 +9,12 @@ import { position, size } from "../preset/mixins";
 import { rem } from "@/util/unit";
 
 export const CursorStyle = styled.div`
-  ${size({ width: "1px", height: "1px" })};
+  ${size({ w: "1px", h: "1px" })};
   ${position({ type: "fixed", top: "0rem", left: "0rem", z: 9999 })}
   pointer-events: none;
   backface-visibility: visible;
   .cursor {
-    ${size({ width: rem(8), height: rem(8) })};
+    ${size({ w: rem(8), h: rem(8) })};
     ${position({ center: true })}
     border-radius: 50%;
     border: 1px solid ${({ theme }) => theme.cursor.basic};
@@ -23,14 +23,14 @@ export const CursorStyle = styled.div`
   }
   &.link {
     .cursor {
-      ${size({ width: rem(64), height: rem(64) })}
+      ${size({ w: rem(64), h: rem(64) })}
       background: ${({ theme }) => theme.cursor.hover};
     }
   }
   &.text {
     mix-blend-mode: difference;
     .cursor {
-      ${size({ width: rem(4), height: rem(40) })}
+      ${size({ w: rem(4), h: rem(40) })}
       border-radius: 2px;
     }
   }

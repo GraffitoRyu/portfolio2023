@@ -22,14 +22,14 @@ export const GnbCommonStyle = createGlobalStyle`
     }
   }
   .util-btn {
-    ${btnStyle({ width: 48, height: 48, radius: 8 })}
+    ${btnStyle({ w: 48, h: 48, r: 8 })}
     position:relative;
     figure {
-      ${size({ width: 24, height: 24 })}
+      ${size({ w: 24, h: 24 })}
       font-size:0;
       svg {
         ${img({})}
-        ${maxSize({ width: 24, height: 24 })}
+        ${maxSize({ w: 24, h: 24 })}
       }
     }
   }

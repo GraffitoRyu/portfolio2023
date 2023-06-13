@@ -42,12 +42,12 @@ export const ThemeListItem = styled.li`
 
 export const ThemeMenuButton = styled.button`
   figure {
-    ${size({ width: rem(56) })}
+    ${size({ w: rem(56) })}
     font-size:0;
     ${flex({})}
     ${({ theme }) => SvgFill(theme.gnbThemeMenu.menu)}
     svg {
-      ${img({ width: 24, height: 24 })}
+      ${img({ w: 24, h: 24 })}
     }
   }
   span {

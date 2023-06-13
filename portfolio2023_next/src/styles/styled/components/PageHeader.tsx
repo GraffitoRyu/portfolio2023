@@ -20,9 +20,9 @@ export const HeaderContainer = styled.header`
 export const StyledHeaderWrap = styled.div`
   ${flex({ std: "start" })}
   ${size({
-    width: "100%",
-    height: sizePreset.btn.mobile,
-    padding: sizePreset.common.padding,
+    w: "100%",
+    h: sizePreset.btn.mobile,
+    p: sizePreset.common.padding,
   })}
   @media only screen and (min-width:1024px) {
     height: ${rem(sizePreset.btn.pc + sizePreset.common.padding * 2)};
