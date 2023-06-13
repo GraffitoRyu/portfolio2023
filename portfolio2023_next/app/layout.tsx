@@ -10,6 +10,8 @@ import ThemeColors from "@/components/roots/ThemeColor";
 
 // components
 import PageTemplate from "@/components/roots/PageTemplate";
+import TransCover from "@/components/pageTransition/TransCover";
+import InitPageCover from "@/components/pageTransition/InitPageCover";
 import Cursor from "@/components/cursor/Cursor";
 
 // styles
@@ -20,7 +22,6 @@ import { GlobalBodyStyle } from "@/styles/styled/components/Page";
 
 // hooks
 import { PageLoadEvents } from "@/hooks/PageLoadEvents";
-import TransCover from "@/components/pageTransition/TransCover";
 
 export default function RootLayout({
   children,
@@ -38,6 +39,7 @@ export default function RootLayout({
                 <main className="page-container w-full h-full fixed">
                   <PageTemplate>{children}</PageTemplate>
                   <TransCover />
+                  <InitPageCover />
                   <Cursor />
                   <Suspense fallback={null}>
                     <PageLoadEvents />
