@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { usePathname, useRouter } from "next/navigation";
 
 // style components
@@ -9,10 +9,11 @@ import { SitemapLink } from "@/styles/styled/components/Gnb";
 
 // type
 import { SitemapType } from "@/types/sitemap";
-import { pageStateTypes } from "@/types/state";
+import { ScrollRefStateTypes, pageStateTypes } from "@/types/state";
 
 // state
 import { pageState } from "@/states/page";
+import { scrollRefState } from "@/states/scroll";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
@@ -24,6 +25,7 @@ export default function SitemapBtn({ code, path, name }: SitemapType) {
 
   // 페이지 상태 관리
   const setPageAtom = useSetRecoilState<pageStateTypes>(pageState);
+  const { container } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
 
   // 경로 상태 관리
   const [curPath, setCurPath] = useState<string>("/");
@@ -51,6 +53,7 @@ export default function SitemapBtn({ code, path, name }: SitemapType) {
       onMouseLeave={() => setHover("")}
       onClick={() => {
         // 페이지 전환 커버 동작 후 이동 시작
+        if (pathname === path) return;
         console.log("페이지 변경 시작: ", code);
 
         setPageAtom(prev => ({
@@ -60,6 +63,7 @@ export default function SitemapBtn({ code, path, name }: SitemapType) {
         }));
 
         setTimeout(() => {
+          if (container?.current) container.current.scrollTo(0, 0);
           router.push(path);
         }, transTime.common.transCover);
       }}
