@@ -29,14 +29,14 @@ export default function DetailHeader() {
     setTimeout(() => {
       setDetailLayout(prev => ({ ...prev, openComplete: false }));
       router.back();
-    }, transTime.detail.sheetSlideTime);
+    }, transTime.detail.sheetSlide);
   };
 
   return (
     <PDHeader>
       <StyledHeaderWrap>
         <DetailHeaderTitleContainer />
-        <CloseButton clickEvent={() => closeDetail()} />
+        <CloseButton clickEvent={closeDetail} />
       </StyledHeaderWrap>
     </PDHeader>
   );

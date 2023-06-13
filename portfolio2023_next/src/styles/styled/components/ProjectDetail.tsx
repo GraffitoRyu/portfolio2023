@@ -31,7 +31,7 @@ export const PDContainer = styled.article`
   ${transition([
     {
       prop: "transform",
-      time: `${transTime.detail.sheetSlideTime / 1000}s`,
+      time: `${transTime.detail.sheetSlide / 1000}s`,
       easing: easing.expo,
     },
   ])}
