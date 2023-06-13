@@ -2,7 +2,8 @@ import { useCallback, useRef } from "react";
 import { useSetRecoilState } from "recoil";
 
 //components
-import DetailTitleWrap from "./TitleWrap";
+import DetailTitleWrap from "./DetailTitleWrap";
+import DetailLinkContainer from "./linkMenu/DetailLinkContainer";
 
 // style components
 import { PDVisualCover } from "@/styles/styled/components/ProjectDetail";
@@ -30,6 +31,7 @@ export default function DetailVisual() {
   return (
     <PDVisualCover ref={setRef}>
       <DetailTitleWrap />
+      <DetailLinkContainer />
     </PDVisualCover>
   );
 }

@@ -15,7 +15,7 @@ import {
 } from "@/styles/styled/preset/mixins";
 import { easing } from "@/styles/styled/preset/easing";
 import { transTime } from "@/styles/styled/preset/transTime";
-import { btnStyle } from "@/styles/styled//preset/buttons";
+import { CommonBtn, btnStyle } from "@/styles/styled//preset/buttons";
 import { img } from "../preset/img";
 import Period from "@/components/period/Period";
 
@@ -114,7 +114,7 @@ export const PDVisualImage = styled.figure`
 
 export const PDVisualCover = styled.div`
   ${size({ w: "100%", p: 80 })}
-  ${flex({ dir: "column", std: "end", cross: "start" })}
+  ${flex({ std: "flex-start", cross: "flex-end" })}
   &:after {
     content: "";
     display: block;
@@ -135,6 +135,7 @@ export const PDVisualCover = styled.div`
 `;
 
 export const PDTitle = styled.div`
+  margin-right: auto;
   h2 {
     color: ${({ theme }) => theme.projectDetails.visualTitle};
     ${font({ size: 80, weight: 700, height: "1em" })}
@@ -177,6 +178,31 @@ export const PDTitle = styled.div`
 
 export const PDVisualEmpty = styled.div`
   ${size({ w: "100%", h: "100%" })}
+`;
+
+export const PDLinkContainer = styled.ul`
+  ${flex({ std: "flex-end", wrap: "wrap" })}
+`;
+
+export const PDLinkItem = styled.li`
+  ${size({ m: [40, 40, 0, 0] })}
+  @media only screen and (min-width:1024px) {
+    ${size({ m: [0, 0, 0, 24] })}
+  }
+`;
+
+export const PDLinkBtn = styled(CommonBtn)``;
+
+export const PDLinkName = styled.span`
+  margin-right: ${rem(16)};
+  ${font({
+    size: 32,
+    weight: 500,
+    height: "1em",
+  })}
+  @media only screen and (min-width:1024px) {
+    font-size: ${rem(16)};
+  }
 `;
 
 export const PDInfoItem = styled.dl`
