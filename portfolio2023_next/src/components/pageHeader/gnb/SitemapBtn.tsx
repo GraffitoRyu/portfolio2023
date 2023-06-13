@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 // style components
 import { SitemapLink } from "@/styles/styled/components/Gnb";
@@ -14,11 +14,15 @@ import { pageStateTypes } from "@/types/state";
 // state
 import { pageState } from "@/states/page";
 
+// style
+import { transTime } from "@/styles/styled/preset/transTime";
+
 export default function SitemapBtn({ code, path, name }: SitemapType) {
+  const router = useRouter();
   // 현재 페이지 경로
   const pathname = usePathname();
 
-  // 현재 페이지 상태
+  // 페이지 상태 관리
   const setPageAtom = useSetRecoilState<pageStateTypes>(pageState);
 
   // 경로 상태 관리
@@ -41,17 +45,23 @@ export default function SitemapBtn({ code, path, name }: SitemapType) {
 
   return (
     <SitemapLink
-      href={path}
+      type="button"
       className={`${now} ${hover}`}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
       onClick={() => {
+        // 페이지 전환 커버 동작 후 이동 시작
         console.log("페이지 변경 시작: ", code);
+
         setPageAtom(prev => ({
           ...prev,
           cover: code,
           loaded: false,
         }));
+
+        setTimeout(() => {
+          router.push(path);
+        }, transTime.common.transCover);
       }}
     >
       <span>{name}</span>

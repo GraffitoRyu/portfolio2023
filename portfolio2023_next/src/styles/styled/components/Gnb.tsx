@@ -9,7 +9,6 @@ import { rem } from "@/util/unit";
 import { img } from "@/styles/styled/preset/img";
 import { btnStyle } from "@/styles/styled/preset/buttons";
 import { SvgFill, maxSize, size } from "@/styles/styled/preset/mixins";
-import Link from "next/link";
 
 // GNB 공통 스타일
 export const GnbCommonStyle = createGlobalStyle`
@@ -36,7 +35,7 @@ export const GnbCommonStyle = createGlobalStyle`
   }
 `;
 
-export const SitemapLink = styled(Link)`
+export const SitemapLink = styled.button`
   margin-right: ${rem(64)};
   font-size: ${rem(24)};
   font-weight: 500;

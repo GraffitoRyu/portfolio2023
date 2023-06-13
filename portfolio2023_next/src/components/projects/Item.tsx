@@ -10,7 +10,7 @@ import BtnIcon from "@/components/projects/item/BtnIcon";
 
 // type
 import { SummaryType } from "@/types/projects";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useSetRecoilState } from "recoil";
 import { detailLayoutState } from "@/states/detail";
 import { DetailLayoutStateTypes } from "@/types/state";
@@ -22,10 +22,11 @@ export default function ProjectItem({
   code: string;
   summary: SummaryType;
 }): JSX.Element {
-  const [hover, setHover] = useState<string>("");
+  const router = useRouter();
   const params = useSearchParams();
   const viewCode = params.get("code");
   const setOpen = useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
+  const [hover, setHover] = useState<string>("");
 
   useEffect(() => {
     if (viewCode) setHover("");
@@ -33,11 +34,14 @@ export default function ProjectItem({
 
   return (
     <ProjectItemContainer
-      href={`/projects?code=${code}`}
+      type="button"
       className={hover}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
-      onClick={() => setOpen(prev => ({ ...prev, open: true }))}
+      onClick={() => {
+        setOpen(prev => ({ ...prev, open: true }));
+        router.push(`/projects?code=${code}`);
+      }}
     >
       <ProjectSummary code={code} summary={summary} />
       <SlideTitle text={summary.title} />

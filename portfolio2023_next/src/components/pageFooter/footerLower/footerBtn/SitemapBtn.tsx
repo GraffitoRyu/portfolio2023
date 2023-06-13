@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
@@ -14,6 +17,7 @@ import { FooterBtn } from "@/styles/styled/components/PageFooter";
 
 // state
 import { pageState } from "@/states/page";
+import { transTime } from "@/styles/styled/preset/transTime";
 
 const FooterMenuBtn = styled(FooterBtn)``;
 
@@ -23,6 +27,9 @@ export default function SitemapBtn({
   name,
   external,
 }: SitemapType): JSX.Element {
+  const router = useRouter();
+
+  // 페이지 상태 관리
   const setPageAtom = useSetRecoilState<pageStateTypes>(pageState);
 
   const [hover, setHover] = useState<string>("");
@@ -43,16 +50,23 @@ export default function SitemapBtn({
     </FooterMenuBtn>
   ) : (
     <FooterMenuBtn
-      href={path}
+      type="button"
       className={`${hover}`}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
       onClick={() => {
+        // 페이지 전환 커버 동작 후 이동 시작
+        console.log("페이지 변경 시작: ", code);
+
         setPageAtom(prev => ({
           ...prev,
           cover: code,
           loaded: false,
         }));
+
+        setTimeout(() => {
+          router.push(path);
+        }, transTime.common.transCover);
       }}
     >
       <span>{name}</span>

@@ -8,7 +8,6 @@ import { SvgFill, flex, position, size } from "@/styles/styled/preset/mixins";
 
 // util
 import { rem } from "@/util/unit";
-import Link from "next/link";
 
 const iconSize = (fs: number) => (fs * 2) / 3;
 
@@ -107,7 +106,7 @@ export const FooterInfoItem = styled.dd`
   ${FooterFontSize}
 `;
 
-export const FooterBtn = styled(Link)`
+export const FooterBtn = styled.button`
   ${flex({ std: "start" })}
   ${size({ width: "fit-content", height: "2em" })}
   font-weight: 400;
