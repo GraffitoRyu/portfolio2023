@@ -8,6 +8,10 @@ import { position } from "../preset/mixins";
 export const GlobalBodyStyle = createGlobalStyle`
   html {
     background-color:${({ theme }) => theme.page.bg};
+    *::selection {
+      color:${({ theme }) => theme.page.selectionText};
+      background-color: ${({ theme }) => theme.page.selectionBg};
+    }
   }
 `;
 
