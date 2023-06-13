@@ -14,6 +14,7 @@ export default function ContactBtn({ path, name }: SitemapType): JSX.Element {
 
   return (
     <FooterBtn
+      as="a"
       href={path}
       target="_blank"
       className={`${hover}`}
