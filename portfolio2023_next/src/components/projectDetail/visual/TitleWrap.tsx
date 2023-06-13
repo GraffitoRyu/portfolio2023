@@ -1,5 +1,5 @@
 import { useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 // components
@@ -33,7 +33,7 @@ export default function DetailTitleWrap() {
   const [subtitle, setSubtitle] = useState<string>("");
 
   // 레이아웃 준비 상태
-  const { open, openComplete } =
+  const { openComplete } =
     useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
 
   // 초기화 인터렉션
@@ -41,10 +41,19 @@ export default function DetailTitleWrap() {
 
   // 스크롤 효과 세팅
   const scrollUpRef = useRef<HTMLDivElement | null>(null);
-  const { container, visual } =
+  const { container: scrollContainer, visual: scrollArea } =
     useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
   const setDetailScrollRef =
     useSetRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
+
+  // 스크롤 참조 데이터 업데이트
+  const setRef = useCallback(
+    (node: HTMLDivElement) => {
+      scrollUpRef.current = node;
+      setDetailScrollRef(prev => ({ ...prev, visualTitle: node }));
+    },
+    [setDetailScrollRef]
+  );
 
   // 데이터 세팅
   useEffect(() => {
@@ -60,17 +69,9 @@ export default function DetailTitleWrap() {
     if (openComplete && title?.length > 0 && subtitle) setInitTitle("");
   }, [openComplete, subtitle, title?.length]);
 
-  useEffect(() => {
-    if (scrollUpRef.current) {
-      setDetailScrollRef(prev => ({ ...prev, visualTitle: scrollUpRef }));
-    }
-  }, [scrollUpRef, setDetailScrollRef]);
-
   // 스크롤 인터렉션 이벤트 선언
   useEffect(() => {
     if (openComplete && code && data && title?.length > 0 && subtitle) {
-      const scrollContainer = container?.current;
-      const scrollArea = visual?.current;
       if (!scrollContainer || !scrollArea) return;
 
       const scrollTarget = scrollUpRef.current;
@@ -93,19 +94,10 @@ export default function DetailTitleWrap() {
 
       return () => ctx.revert();
     }
-  }, [code, container, data, openComplete, subtitle, title, visual]);
-
-  // 페이지 이동 시, 참조 데이터 초기화
-  useEffect(() => {
-    if (!open) {
-      return () => {
-        setDetailScrollRef(prev => ({ ...prev, visualTitle: null }));
-      };
-    }
-  }, [open, setDetailScrollRef]);
+  }, [code, data, openComplete, scrollArea, scrollContainer, subtitle, title]);
 
   return (
-    <PDTitle className={`${initTitle}`} ref={scrollUpRef}>
+    <PDTitle className={`${initTitle}`} ref={setRef}>
       <h2>
         <ParseDescNewLine data={title} breakLine={false} />
       </h2>

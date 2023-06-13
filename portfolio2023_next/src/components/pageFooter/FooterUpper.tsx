@@ -17,16 +17,14 @@ import { scrollRefState } from "@/states/scroll";
 import ctxScrollTrigger from "@/util/presetScrollTrigger";
 
 export default function FooterUpperContainer() {
-  const { container, footer } =
+  const { container: scrollContainer, footer: scrollTrigger } =
     useRecoilValue<ScrollRefStateTypes>(scrollRefState);
   const footerHeaderRef = useRef<HTMLElement | null>(null);
   const footerTitleRef = useRef<HTMLHeadingElement | null>(null);
 
   useEffect(() => {
-    const scrollTrigger = footer?.current;
     if (!scrollTrigger) return;
 
-    const scrollContainer = container?.current;
     const scrollTarget = footerTitleRef.current;
     if (!scrollContainer || !scrollTarget) return;
 
@@ -50,7 +48,7 @@ export default function FooterUpperContainer() {
     });
 
     return () => ctx.revert();
-  }, [container, footer, footerHeaderRef, footerTitleRef]);
+  }, [footerHeaderRef, footerTitleRef, scrollContainer, scrollTrigger]);
 
   return (
     <FooterHeader ref={footerHeaderRef}>

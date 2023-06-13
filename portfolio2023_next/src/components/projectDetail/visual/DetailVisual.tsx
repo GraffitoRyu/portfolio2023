@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useCallback, useRef } from "react";
+import { useSetRecoilState } from "recoil";
 
 //components
 import DetailTitleWrap from "./TitleWrap";
@@ -8,39 +8,27 @@ import DetailTitleWrap from "./TitleWrap";
 import { PDVisualCover } from "@/styles/styled/components/ProjectDetail";
 
 // types
-import {
-  DetailLayoutStateTypes,
-  DetailScrollRefStateTypes,
-} from "@/types/state";
+import { DetailScrollRefStateTypes } from "@/types/state";
 
 // state
 import { detailScrollRefState } from "@/states/scroll";
-import { detailLayoutState } from "@/states/detail";
 
 export default function DetailVisual() {
-  const { open } = useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
-
   const visualRef = useRef<HTMLDivElement | null>(null);
   const setDetailScrollRef =
     useSetRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
 
-  useEffect(() => {
-    if (visualRef.current) {
-      setDetailScrollRef(prev => ({ ...prev, visual: visualRef }));
-    }
-  }, [setDetailScrollRef, visualRef]);
-
-  // 페이지 이동 시, 참조 데이터 초기화
-  useEffect(() => {
-    if (!open) {
-      return () => {
-        setDetailScrollRef(prev => ({ ...prev, visual: null }));
-      };
-    }
-  }, [open, setDetailScrollRef]);
+  // 스크롤 참조 데이터 업데이트
+  const setRef = useCallback(
+    (node: HTMLDivElement) => {
+      visualRef.current = node;
+      setDetailScrollRef(prev => ({ ...prev, visual: node }));
+    },
+    [setDetailScrollRef]
+  );
 
   return (
-    <PDVisualCover ref={visualRef}>
+    <PDVisualCover ref={setRef}>
       <DetailTitleWrap />
     </PDVisualCover>
   );

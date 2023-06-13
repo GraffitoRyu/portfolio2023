@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, useCallback, useRef } from "react";
 import { useSetRecoilState } from "recoil";
 
 // types
@@ -16,15 +16,13 @@ export default function ScrollContainer({ children }: { children: ReactNode }) {
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (scrollContainerRef.current) {
-      setScrollRef(prev => ({ ...prev, container: scrollContainerRef }));
-    }
-  }, [scrollContainerRef, setScrollRef]);
-
-  return (
-    <StyledScrollContainer ref={scrollContainerRef}>
-      {children}
-    </StyledScrollContainer>
+  const setRef = useCallback(
+    (node: HTMLDivElement) => {
+      scrollContainerRef.current = node;
+      setScrollRef(prev => ({ ...prev, container: node }));
+    },
+    [setScrollRef]
   );
+
+  return <StyledScrollContainer ref={setRef}>{children}</StyledScrollContainer>;
 }

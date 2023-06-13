@@ -29,8 +29,11 @@ export default function DetailHeaderTitleContainer() {
 
   const { openComplete } =
     useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
-  const detailScrollRef =
-    useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
+  const {
+    container: scrollContainer,
+    visual: scrollTrigger,
+    visualTitle: visualTitleRef,
+  } = useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
   const titleRef = useRef<HTMLSpanElement>(null);
 
   useLayoutEffect(() => {
@@ -42,10 +45,6 @@ export default function DetailHeaderTitleContainer() {
 
   useEffect(() => {
     if (openComplete && code) {
-      const scrollContainer = detailScrollRef.container?.current;
-      const scrollTrigger = detailScrollRef.visual?.current;
-      const visualTitleRef = detailScrollRef.visualTitle?.current;
-
       if (!scrollContainer || !scrollTrigger || !visualTitleRef) return;
 
       const scrollTarget = titleRef.current;
@@ -69,13 +68,7 @@ export default function DetailHeaderTitleContainer() {
       });
       return () => ctx.revert();
     }
-  }, [
-    code,
-    detailScrollRef.container,
-    detailScrollRef.visual,
-    detailScrollRef.visualTitle,
-    openComplete,
-  ]);
+  }, [code, openComplete, scrollContainer, scrollTrigger, visualTitleRef]);
 
   return (
     <PDHeaderTitleContainer>

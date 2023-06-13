@@ -20,12 +20,12 @@ import { scrollRefState } from "@/states/scroll";
 import ctxScrollTrigger from "@/util/presetScrollTrigger";
 
 export default function PageVisual({ title }: { title: string[] }) {
-  const { container } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const { container: scrollContainer } =
+    useRecoilValue<ScrollRefStateTypes>(scrollRefState);
   const visualRef = useRef<HTMLDivElement | null>(null);
   const visualTitleRef = useRef<HTMLHeadingElement | null>(null);
 
   useEffect(() => {
-    const scrollContainer = container?.current;
     const scrollTarget = visualTitleRef.current;
     if (!scrollContainer || !scrollTarget) return;
 
@@ -55,7 +55,7 @@ export default function PageVisual({ title }: { title: string[] }) {
       },
     });
     return () => ctx.revert();
-  }, [container, visualRef, visualTitleRef]);
+  }, [scrollContainer, visualRef, visualTitleRef]);
 
   return (
     <VisualContainer ref={visualRef}>

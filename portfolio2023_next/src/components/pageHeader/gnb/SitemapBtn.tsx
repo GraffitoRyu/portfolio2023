@@ -63,7 +63,7 @@ export default function SitemapBtn({ code, path, name }: SitemapType) {
         }));
 
         setTimeout(() => {
-          if (container?.current) container.current.scrollTo(0, 0);
+          if (container) container.scrollTo(0, 0);
           router.push(path);
         }, transTime.common.transCover);
       }}

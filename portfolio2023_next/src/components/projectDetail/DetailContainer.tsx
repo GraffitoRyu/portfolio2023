@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
 // components
@@ -51,6 +51,15 @@ export default function ProjectDetail() {
   const setDetailData = useSetRecoilState<DetailTypes>(detailData);
   const { status, data } = useGetDetailByCodeQuery(code);
 
+  // 스크롤 참조 데이터 업데이트
+  const setRef = useCallback(
+    (node: HTMLElement) => {
+      detailRef.current = node;
+      setDetailScrollRef(prev => ({ ...prev, container: node }));
+    },
+    [setDetailScrollRef]
+  );
+
   // 데이터 조회 상태
   useEffect(() => {
     if (code) {
@@ -83,24 +92,8 @@ export default function ProjectDetail() {
     }
   }, [code, open, setLayoutState]);
 
-  // 스크롤 참조 데이터 업데이트
-  useEffect(() => {
-    if (detailRef.current) {
-      setDetailScrollRef(prev => ({ ...prev, container: detailRef }));
-    }
-  }, [detailRef, setDetailScrollRef]);
-
-  // 페이지 이동 시, 참조 데이터 초기화
-  useEffect(() => {
-    if (!layoutState.open) {
-      return () => {
-        setDetailScrollRef(prev => ({ ...prev, container: null }));
-      };
-    }
-  }, [layoutState.open, setDetailScrollRef]);
-
   return (
-    <PDContainer className={`${open}`} ref={detailRef}>
+    <PDContainer className={`${open}`} ref={setRef}>
       <DetailHeader />
       <DetailBackground />
       <DetailSection className="detail-visual">

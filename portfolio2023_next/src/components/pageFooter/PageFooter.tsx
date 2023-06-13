@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useRef } from "react";
 
 // components
 import FooterUpperContainer from "./FooterUpper";
@@ -19,14 +19,16 @@ export default function PageFooter() {
   const footerRef = useRef<HTMLElement | null>(null);
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
 
-  useEffect(() => {
-    if (footerRef.current) {
-      setScrollRef(prev => ({ ...prev, footer: footerRef }));
-    }
-  }, [setScrollRef, footerRef]);
+  const setRef = useCallback(
+    (node: HTMLElement) => {
+      footerRef.current = node;
+      setScrollRef(prev => ({ ...prev, footer: node }));
+    },
+    [setScrollRef, footerRef]
+  );
 
   return (
-    <FooterContainer className="pager-footer" ref={footerRef}>
+    <FooterContainer className="pager-footer" ref={setRef}>
       <FooterWrap>
         <FooterUpperContainer />
         <FooterLowerContainer />

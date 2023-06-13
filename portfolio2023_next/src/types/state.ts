@@ -26,14 +26,14 @@ export type ThemeStateTypes = {
 };
 
 export interface ScrollRefStateTypes {
-  container: React.MutableRefObject<HTMLDivElement | null> | null;
-  footer: React.MutableRefObject<HTMLElement | null> | null; // <footer />
+  container: HTMLDivElement | null;
+  footer: HTMLElement | null; // <footer />
 }
 
 export interface DetailScrollRefStateTypes {
-  container: React.MutableRefObject<HTMLElement | null> | null; // <article />
-  visual: React.MutableRefObject<HTMLDivElement | null> | null;
-  visualTitle: React.MutableRefObject<HTMLDivElement | null> | null;
+  container: HTMLElement | null; // <article />
+  visual: HTMLDivElement | null;
+  visualTitle: HTMLDivElement | null;
 }
 
 export interface DetailLayoutStateTypes {
