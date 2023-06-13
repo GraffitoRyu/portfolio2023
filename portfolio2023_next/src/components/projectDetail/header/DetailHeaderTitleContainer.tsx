@@ -1,6 +1,6 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 // style components
 import {
@@ -27,10 +27,10 @@ export default function DetailHeaderTitleContainer() {
   const data = useRecoilValue<DetailTypes>(detailData);
   const [title, setTitle] = useState<string>("");
 
-  const { openComplete } =
+  const { open, openComplete } =
     useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
-  const { container, visual, visualTitle } =
-    useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
+  const [detailScrollRef, setDetailScrollRef] =
+    useRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
   const titleRef = useRef<HTMLSpanElement>(null);
 
   useLayoutEffect(() => {
@@ -42,9 +42,9 @@ export default function DetailHeaderTitleContainer() {
 
   useEffect(() => {
     if (openComplete && code) {
-      const scrollContainer = container?.current;
-      const scrollTrigger = visual?.current;
-      const visualTitleRef = visualTitle?.current;
+      const scrollContainer = detailScrollRef.container?.current;
+      const scrollTrigger = detailScrollRef.visual?.current;
+      const visualTitleRef = detailScrollRef.visualTitle?.current;
 
       if (!scrollContainer || !scrollTrigger || !visualTitleRef) return;
 
@@ -69,7 +69,22 @@ export default function DetailHeaderTitleContainer() {
       });
       return () => ctx.revert();
     }
-  }, [code, container, openComplete, visual, visualTitle]);
+  }, [
+    code,
+    detailScrollRef.container,
+    detailScrollRef.visual,
+    detailScrollRef.visualTitle,
+    openComplete,
+  ]);
+
+  // 페이지 이동 시, 참조 데이터 초기화
+  useEffect(() => {
+    if (!code && !open) {
+      return () => {
+        setDetailScrollRef(prev => ({ ...prev, visualTitle: null }));
+      };
+    }
+  }, [code, open, setDetailScrollRef]);
 
   return (
     <PDHeaderTitleContainer>
