@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useRecoilValue } from "recoil";
 
 // style components
@@ -23,29 +23,21 @@ export default function PageVisual({ title }: { title: string[] }) {
   const { container } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
   const visualRef = useRef<HTMLDivElement | null>(null);
   const visualTitleRef = useRef<HTMLHeadingElement | null>(null);
-  const [areaStart, setAreaStart] = useState<string | number>("center");
-  const [targetEnd, setTargetEnd] = useState<string | number>("bottom");
-
-  useEffect(() => {
-    if (visualRef.current) {
-      const v = visualRef.current;
-      const v_btm = v.getBoundingClientRect().bottom;
-      setTargetEnd(v_btm);
-    }
-  }, [visualRef]);
-
-  useEffect(() => {
-    if (visualTitleRef.current) {
-      const t = visualTitleRef.current;
-      const t_top = t.getBoundingClientRect().top;
-      setAreaStart(t_top);
-    }
-  }, [visualTitleRef]);
 
   useEffect(() => {
     const scrollContainer = container?.current;
     const scrollTarget = visualTitleRef.current;
     if (!scrollContainer || !scrollTarget) return;
+
+    const visualEl = visualRef.current;
+    const visualTitleEl = visualTitleRef.current;
+
+    const triggerStart = visualTitleEl
+      ? visualTitleEl.getBoundingClientRect().top
+      : "center";
+    const targetEnd = visualEl
+      ? visualEl.getBoundingClientRect().bottom
+      : "bottom";
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
@@ -55,7 +47,7 @@ export default function PageVisual({ title }: { title: string[] }) {
         y: "+=500",
         scrollTrigger: {
           trigger: scrollTarget,
-          start: `top ${areaStart}`, // 움직일 요소의 시작, 트리거 영역의 시작
+          start: `top ${triggerStart}`, // 움직일 요소의 시작, 트리거 영역의 시작
           end: `${targetEnd} center`, // 움직일 요소의 끝, 트리거 영역의 끝
           scrub: true, // 스크롤 위치에 따라 실시간으로 대응하여 변하도록 설정
           // markers: true, // 개발용 가이드라인
@@ -63,7 +55,7 @@ export default function PageVisual({ title }: { title: string[] }) {
       },
     });
     return () => ctx.revert();
-  }, [container, visualRef, visualTitleRef, areaStart, targetEnd]);
+  }, [container, visualRef, visualTitleRef]);
 
   return (
     <VisualContainer ref={visualRef}>

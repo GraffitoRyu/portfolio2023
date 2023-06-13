@@ -22,20 +22,25 @@ export default function ThemeContainer() {
   const { isOpen } = useRecoilValue<ThemeStateTypes>(themeState);
 
   const closeThemeMenu = useCallback(
-    (e: PointerEvent | MouseEvent) =>
-      closeByClickOutSide(e, isOpen, themeRef, () =>
+    (e: PointerEvent | MouseEvent) => {
+      if (!themeRef.current) return false;
+      return closeByClickOutSide(e, isOpen, themeRef, () =>
         setTheme(prev => ({
           ...prev,
           isOpen: false,
         }))
-      ),
-    [isOpen, setTheme]
+      );
+    },
+    [isOpen, themeRef, setTheme]
   );
 
   useEffect(() => {
-    document.addEventListener("click", e => closeThemeMenu(e));
-    return () => document.removeEventListener("click", e => closeThemeMenu(e));
-  }, [closeThemeMenu]);
+    if (themeRef.current) {
+      document.addEventListener("click", e => closeThemeMenu(e));
+      return () =>
+        document.removeEventListener("click", e => closeThemeMenu(e));
+    }
+  }, [themeRef, closeThemeMenu]);
 
   return (
     <div className="util-item theme-item relative" ref={themeRef}>

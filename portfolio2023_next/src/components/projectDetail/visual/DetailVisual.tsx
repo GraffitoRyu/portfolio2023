@@ -15,12 +15,9 @@ import {
 
 // state
 import { detailScrollRefState } from "@/states/scroll";
-import { useSearchParams } from "next/navigation";
 import { detailLayoutState } from "@/states/detail";
 
 export default function DetailVisual() {
-  const params = useSearchParams();
-  const code = params.get("code");
   const { open } = useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
 
   const visualRef = useRef<HTMLDivElement | null>(null);
@@ -28,17 +25,19 @@ export default function DetailVisual() {
     useSetRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
 
   useEffect(() => {
-    setDetailScrollRef(prev => ({ ...prev, visual: visualRef }));
+    if (visualRef.current) {
+      setDetailScrollRef(prev => ({ ...prev, visual: visualRef }));
+    }
   }, [setDetailScrollRef, visualRef]);
 
   // 페이지 이동 시, 참조 데이터 초기화
   useEffect(() => {
-    if (!code && !open) {
+    if (!open) {
       return () => {
         setDetailScrollRef(prev => ({ ...prev, visual: null }));
       };
     }
-  }, [code, open, setDetailScrollRef]);
+  }, [open, setDetailScrollRef]);
 
   return (
     <PDVisualCover ref={visualRef}>

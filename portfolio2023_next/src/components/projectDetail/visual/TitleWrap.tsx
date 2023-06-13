@@ -33,7 +33,7 @@ export default function DetailTitleWrap() {
   const [subtitle, setSubtitle] = useState<string>("");
 
   // 레이아웃 준비 상태
-  const { openComplete } =
+  const { open, openComplete } =
     useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
 
   // 초기화 인터렉션
@@ -61,8 +61,10 @@ export default function DetailTitleWrap() {
   }, [openComplete, subtitle, title?.length]);
 
   useEffect(() => {
-    setDetailScrollRef(prev => ({ ...prev, visualTitle: scrollUpRef }));
-  }, [setDetailScrollRef]);
+    if (scrollUpRef.current) {
+      setDetailScrollRef(prev => ({ ...prev, visualTitle: scrollUpRef }));
+    }
+  }, [scrollUpRef, setDetailScrollRef]);
 
   // 스크롤 인터렉션 이벤트 선언
   useEffect(() => {
@@ -92,6 +94,15 @@ export default function DetailTitleWrap() {
       return () => ctx.revert();
     }
   }, [code, container, data, openComplete, subtitle, title, visual]);
+
+  // 페이지 이동 시, 참조 데이터 초기화
+  useEffect(() => {
+    if (!open) {
+      return () => {
+        setDetailScrollRef(prev => ({ ...prev, visualTitle: null }));
+      };
+    }
+  }, [open, setDetailScrollRef]);
 
   return (
     <PDTitle className={`${initTitle}`} ref={scrollUpRef}>

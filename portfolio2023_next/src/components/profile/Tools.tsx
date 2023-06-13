@@ -21,6 +21,7 @@ const toolList = [
 ];
 
 export default function Tools() {
+  console.log("profile/tools");
   return (
     <ToolsList className="tools-list">
       {toolList.map((d: string) => (

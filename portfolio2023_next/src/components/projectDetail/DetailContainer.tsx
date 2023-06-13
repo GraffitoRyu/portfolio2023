@@ -88,16 +88,16 @@ export default function ProjectDetail() {
     if (detailRef.current) {
       setDetailScrollRef(prev => ({ ...prev, container: detailRef }));
     }
-  }, [setDetailScrollRef]);
+  }, [detailRef, setDetailScrollRef]);
 
   // 페이지 이동 시, 참조 데이터 초기화
   useEffect(() => {
-    if (!code && !layoutState.open) {
+    if (!layoutState.open) {
       return () => {
         setDetailScrollRef(prev => ({ ...prev, container: null }));
       };
     }
-  }, [code, layoutState.open, setDetailScrollRef]);
+  }, [layoutState.open, setDetailScrollRef]);
 
   return (
     <PDContainer className={`${open}`} ref={detailRef}>

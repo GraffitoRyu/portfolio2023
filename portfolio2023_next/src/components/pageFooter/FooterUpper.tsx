@@ -31,7 +31,7 @@ export default function FooterUpperContainer() {
     if (!scrollContainer || !scrollTarget) return;
 
     const ftHeader = footerHeaderRef.current;
-    const triggerEnd = ftHeader ? ftHeader.offsetTop : "top";
+    if (!ftHeader) return;
 
     const ctx = ctxScrollTrigger({
       direction: "from",
@@ -42,7 +42,7 @@ export default function FooterUpperContainer() {
         scrollTrigger: {
           trigger: scrollTrigger,
           start: "top bottom", // target, trigger
-          end: `top ${triggerEnd}`, // target, trigger
+          end: `top ${ftHeader.offsetTop}`, // target, trigger
           scrub: true,
           // markers: true,
         },

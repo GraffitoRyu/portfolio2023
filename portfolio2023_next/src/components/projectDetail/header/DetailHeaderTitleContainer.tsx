@@ -1,6 +1,6 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 
 // style components
 import {
@@ -27,10 +27,10 @@ export default function DetailHeaderTitleContainer() {
   const data = useRecoilValue<DetailTypes>(detailData);
   const [title, setTitle] = useState<string>("");
 
-  const { open, openComplete } =
+  const { openComplete } =
     useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
-  const [detailScrollRef, setDetailScrollRef] =
-    useRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
+  const detailScrollRef =
+    useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
   const titleRef = useRef<HTMLSpanElement>(null);
 
   useLayoutEffect(() => {
@@ -76,15 +76,6 @@ export default function DetailHeaderTitleContainer() {
     detailScrollRef.visualTitle,
     openComplete,
   ]);
-
-  // 페이지 이동 시, 참조 데이터 초기화
-  useEffect(() => {
-    if (!code && !open) {
-      return () => {
-        setDetailScrollRef(prev => ({ ...prev, visualTitle: null }));
-      };
-    }
-  }, [code, open, setDetailScrollRef]);
 
   return (
     <PDHeaderTitleContainer>
