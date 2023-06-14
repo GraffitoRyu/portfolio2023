@@ -3,18 +3,21 @@
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
-// types
-import { pageStateTypes } from "@/types/state";
-
-// state
-import { pageState } from "@/states/page";
+// components
+import InitIcon from "./InitCoverIcon";
+import InitTitle from "./InitCoverTitle";
 
 // style components
 import {
   InitCoverBox,
   InitCoverContainer,
-  InitCoverTItle,
 } from "@/styles/styled/components/InitPageCover";
+
+// types
+import { pageStateTypes } from "@/types/state";
+
+// state
+import { pageState } from "@/states/page";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
@@ -33,7 +36,8 @@ export default function InitPageCover() {
   return (
     <InitCoverContainer className={`${initiating}`}>
       <InitCoverBox>
-        <InitCoverTItle>LOADING</InitCoverTItle>
+        <InitIcon />
+        <InitTitle />
       </InitCoverBox>
     </InitCoverContainer>
   );

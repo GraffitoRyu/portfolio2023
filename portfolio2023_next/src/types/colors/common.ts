@@ -55,3 +55,16 @@ export interface TransCoverModeTypes {
   light: TransCoverColorTypes;
   dark: TransCoverColorTypes;
 }
+
+export interface InitCoverColorTypes {
+  [index: string]: string;
+  bg: string;
+  icon: string;
+  text: string;
+}
+
+export interface InitCoverModeTypes {
+  [index: string]: InitCoverColorTypes;
+  light: InitCoverColorTypes;
+  dark: InitCoverColorTypes;
+}

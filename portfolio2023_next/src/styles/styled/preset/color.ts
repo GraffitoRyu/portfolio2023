@@ -20,6 +20,7 @@ export interface CustomThemeTypes {
   scrollbar: ColorTypes.common.ScrollBarColorTypes;
   buttons: ColorTypes.common.BtnColorTypes;
   transCover: ColorTypes.common.TransCoverColorTypes;
+  initCover: ColorTypes.common.InitCoverColorTypes;
   timer: ColorTypes.pageHeader.TimerColorTypes;
   gnbSitemapBtn: ColorTypes.pageHeader.GnbSitemapBtnTypes;
   gnbUtilBtn: ColorTypes.pageHeader.GnbUtilTypes;
@@ -48,6 +49,7 @@ export const customThemes: CustomThemeModeTypes = {
     scrollbar: color.scrollbar.light,
     buttons: color.buttons.light,
     transCover: color.transCover.light,
+    initCover: color.initCover.light,
     timer: color.timer.light,
     gnbSitemapBtn: color.gnbSitemapBtn.light,
     gnbUtilBtn: color.gnbUtilBtn.light,
@@ -68,6 +70,7 @@ export const customThemes: CustomThemeModeTypes = {
     scrollbar: color.scrollbar.dark,
     buttons: color.buttons.dark,
     transCover: color.transCover.dark,
+    initCover: color.initCover.dark,
     timer: color.timer.dark,
     gnbSitemapBtn: color.gnbSitemapBtn.dark,
     gnbUtilBtn: color.gnbUtilBtn.dark,

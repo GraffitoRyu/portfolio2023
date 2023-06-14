@@ -13,6 +13,7 @@ import { pageStateTypes } from "@/types/state";
 
 // data
 import { sitemapData } from "@/data/sitemap";
+import { transTime } from "@/styles/styled/preset/transTime";
 
 const routeData: SitemapType[] = sitemapData.filter(route => !route.external);
 
@@ -56,7 +57,9 @@ export function PageLoadEvents() {
   useLayoutEffect(() => {
     if (!page.init) {
       console.log(`[PageLoadEvent : 페이지 최초 로드 완료] `, savedPathName);
-      setPage(prev => ({ ...prev, init: true, loaded: true }));
+      setTimeout(() => {
+        setPage(prev => ({ ...prev, init: true, loaded: true }));
+      }, transTime.common.initComplete);
     }
   }, [page.init, savedPathName, setPage]);
 

@@ -3,6 +3,7 @@ export { cursor } from "@/styles/colors/common/cursor";
 export { scrollbar } from "@/styles/colors/common/scrollbar";
 export { buttons } from "@/styles/colors/common/buttons";
 export { transCover } from "@/styles/colors/common/transCover";
+export { initCover } from "@/styles/colors/common/initCover";
 export { timer } from "@/styles/colors/pageHeader/timer";
 export { gnbSitemapBtn } from "@/styles/colors/pageHeader/sitemapBtn";
 export { gnbUtilBtn } from "@/styles/colors/pageHeader/utilBtn";

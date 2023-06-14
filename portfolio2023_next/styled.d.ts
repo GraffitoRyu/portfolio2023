@@ -10,6 +10,7 @@ declare module "styled-components" {
     scrollbar: ColorTypes.common.ScrollBarColorTypes;
     buttons: ColorTypes.common.BtnColorTypes;
     transCover: ColorTypes.common.TransCoverColorTypes;
+    initCover: ColorTypes.common.InitCoverColorTypes;
     timer: ColorTypes.pageHeader.TimerColorTypes;
     gnbSitemapBtn: ColorTypes.pageHeader.GnbSitemapBtnTypes;
     gnbUtilBtn: ColorTypes.pageHeader.GnbUtilTypes;

@@ -11,7 +11,7 @@ import ThemeColors from "@/components/roots/ThemeColor";
 // components
 import PageTemplate from "@/components/roots/PageTemplate";
 import TransCover from "@/components/pageTransition/TransCover";
-import InitPageCover from "@/components/pageTransition/InitPageCover";
+import InitPageCover from "@/components/pageInitialize/InitPageCover";
 import Cursor from "@/components/cursor/Cursor";
 
 // styles
