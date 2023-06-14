@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 // style components
@@ -11,19 +11,26 @@ import {
 } from "@/styles/styled/components/PageVisual";
 
 // type
-import { ScrollRefStateTypes } from "@/types/state";
+import { ScrollRefStateTypes, pageStateTypes } from "@/types/state";
 
 // state
+import { pageState } from "@/states/page";
 import { scrollRefState } from "@/states/scroll";
 
 // hooks
 import ctxScrollTrigger from "@/util/presetScrollTrigger";
+
+// style
+import { transTime } from "@/styles/styled/preset/transTime";
 
 export default function PageVisual({ title }: { title: string[] }) {
   const { container: scrollContainer } =
     useRecoilValue<ScrollRefStateTypes>(scrollRefState);
   const visualRef = useRef<HTMLDivElement | null>(null);
   const visualTitleRef = useRef<HTMLHeadingElement | null>(null);
+
+  const { loadComplete } = useRecoilValue<pageStateTypes>(pageState);
+  const [loaded, setLoaded] = useState<string>("loading");
 
   useEffect(() => {
     const scrollTarget = visualTitleRef.current;
@@ -57,16 +64,24 @@ export default function PageVisual({ title }: { title: string[] }) {
     return () => ctx.revert();
   }, [scrollContainer, visualRef, visualTitleRef]);
 
+  useEffect(() => {
+    if (loadComplete) {
+      setLoaded("");
+      console.log("visual title fadeUp");
+    } else {
+      setLoaded("loading");
+    }
+  }, [loadComplete]);
+
   return (
     <VisualContainer ref={visualRef}>
-      <VisualTitle ref={visualTitleRef}>
-        {title.map((t: string) => (
-          <VisualTitleLine
-            key={`visualTitle_${Math.floor(Math.random() * 1000)}_${t}`}
-          >
-            {t}
-          </VisualTitleLine>
-        ))}
+      <VisualTitle ref={visualTitleRef} className={`${loaded}`}>
+        <VisualTitleLine className="visual-title stroke-title">
+          {title[0]}
+        </VisualTitleLine>
+        <VisualTitleLine className="visual-title filled-title">
+          {title[1]}
+        </VisualTitleLine>
       </VisualTitle>
     </VisualContainer>
   );

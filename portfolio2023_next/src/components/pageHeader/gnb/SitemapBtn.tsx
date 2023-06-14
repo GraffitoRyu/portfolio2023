@@ -64,8 +64,9 @@ export default function SitemapBtn({ code, path, name }: SitemapType) {
 
         setTimeout(() => {
           if (container) container.scrollTo(0, 0);
+          setPageAtom(prev => ({ ...prev, loadComplete: false }));
           router.push(path);
-        }, transTime.common.transCover);
+        }, transTime.common.coverUp);
       }}
     >
       <span>{name}</span>

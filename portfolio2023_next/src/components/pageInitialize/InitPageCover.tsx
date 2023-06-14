@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 
 // components
 import InitIcon from "./InitCoverIcon";
@@ -24,14 +24,25 @@ import { transTime } from "@/styles/styled/preset/transTime";
 
 export default function InitPageCover() {
   const [initiating, setInit] = useState<string>("initiating");
-  const page = useRecoilValue<pageStateTypes>(pageState);
+  const [{ init, loaded }, setPage] = useRecoilState<pageStateTypes>(pageState);
 
   useEffect(() => {
-    if (page.init)
+    if (init && loaded) {
+      // 페이지 로드가 완료되면, 완료 애니메이션 후 커버를 비활성화한다.
       setTimeout(() => {
         setInit("");
-      }, transTime.common.initCover);
-  }, [page.init]);
+
+        // 커버 비활성화 후, loadComplete 처리한다.
+        setTimeout(() => {
+          setPage(prev => ({
+            ...prev,
+            loadComplete: true,
+            initComplete: true,
+          }));
+        }, transTime.common.loadComplete);
+      }, transTime.common.initComplete);
+    }
+  }, [init, loaded, setPage]);
 
   return (
     <InitCoverContainer className={`${initiating}`}>

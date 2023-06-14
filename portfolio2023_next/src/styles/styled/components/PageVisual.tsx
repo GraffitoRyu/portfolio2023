@@ -3,10 +3,11 @@
 import styled from "styled-components";
 
 // style
-import { flex } from "../preset/mixins";
+import { flex, transition } from "../preset/mixins";
 
 // util
 import { rem } from "@/util/unit";
+import { transTime } from "../preset/transTime";
 
 export const VisualContainer = styled.div`
   ${flex({ dir: "column", cross: "start" })}
@@ -22,21 +23,43 @@ export const VisualContainer = styled.div`
 export const VisualTitle = styled.h1`
   ${flex({ dir: "column", cross: "start" })}
   font-size: 0;
+  &.loading {
+    .visual-title {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
 `;
 
 export const VisualTitleLine = styled.span`
-  color: transparent;
+  display: block;
   font-size: ${rem(144)};
   font-weight: 500;
   line-height: 1em;
   white-space: nowrap;
-  &:nth-child(1) {
+  ${transition([
+    {
+      prop: "transform",
+      time: `${transTime.visual.fadeInUp / 1000}s`,
+    },
+    {
+      prop: "opacity",
+      time: `${transTime.visual.fadeInUp / 1000}s`,
+    },
+    {
+      prop: "color",
+      time: `${transTime.color}s`,
+    },
+  ])}
+  &.stroke-title {
+    color: transparent;
     -webkit-text-stroke: ${rem(2)} ${({ theme }) => theme.visualSection.border};
     font-family: var(--serif-kr);
   }
-  &:nth-child(2) {
-    font-weight: 700;
+  &.filled-title {
     color: ${({ theme }) => theme.visualSection.fill};
+    font-weight: 700;
+    transition-delay: 0.16s;
   }
   @media only screen and (min-width: 1024px) {
     font-size: ${rem(240)};

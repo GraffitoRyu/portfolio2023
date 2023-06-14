@@ -13,9 +13,11 @@ export type DeviceTypes = {
 
 export type pageStateTypes = {
   init: boolean;
+  initComplete: boolean;
   cur: string;
   cover: string;
   loaded: boolean;
+  loadComplete: boolean;
   notFound: boolean;
 };
 
