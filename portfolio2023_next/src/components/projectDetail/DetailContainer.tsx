@@ -78,6 +78,11 @@ export default function ProjectDetail() {
     );
     // URL 또는 프로젝트 선택 클릭 모두 적용하여 열기/닫기
     if (code) setLayoutState(prev => ({ ...prev, open: true }));
+
+    // 열기 전 스크롤 초기화
+    if (code) detailRef.current?.scrollTo(0, 0);
+
+    // 열림 상태 적용
     setOpen(layoutState.open && code ? "open" : "");
   }, [code, layoutState.open, open, setLayoutState]);
 

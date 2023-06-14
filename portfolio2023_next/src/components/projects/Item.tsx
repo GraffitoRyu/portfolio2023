@@ -40,7 +40,7 @@ export default function ProjectItem({
       onMouseLeave={() => setHover("")}
       onClick={() => {
         setOpen(prev => ({ ...prev, open: true }));
-        router.push(`/projects?code=${code}`);
+        router.replace(`/projects?code=${code}`);
       }}
     >
       <ProjectSummary code={code} summary={summary} />
