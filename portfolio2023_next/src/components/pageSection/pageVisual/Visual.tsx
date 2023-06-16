@@ -20,9 +20,6 @@ import { scrollRefState } from "@/states/scroll";
 // hooks
 import ctxScrollTrigger from "@/util/presetScrollTrigger";
 
-// style
-import { transTime } from "@/styles/styled/preset/transTime";
-
 export default function PageVisual({ title }: { title: string[] }) {
   const { container: scrollContainer } =
     useRecoilValue<ScrollRefStateTypes>(scrollRefState);
