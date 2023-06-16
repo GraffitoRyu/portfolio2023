@@ -1,25 +1,10 @@
-import { HTMLAttributes } from "react";
+import { ForwardedRef, forwardRef } from "react";
 
 // style components
 import { Bar, PeriodContainer } from "@/styles/styled/components/Period";
+import { PeriodProps } from "@/types/period";
 
-export default function Period({
-  className,
-  date,
-}: {
-  className?: string | HTMLAttributes<HTMLDivElement>;
-  date: string[];
-}): JSX.Element {
-  return (
-    <PeriodContainer className={`period ${className ? className : ""}`}>
-      <PeriodTime date={date[0]} />
-      <Bar />
-      <PeriodTime date={date[1]} />
-    </PeriodContainer>
-  );
-}
-
-function PeriodTime({ date }: { date: string }): JSX.Element {
+function PeriodTime({ date }: { date: string }) {
   const d = new Date(date);
   return (
     <time>
@@ -30,3 +15,23 @@ function PeriodTime({ date }: { date: string }): JSX.Element {
     </time>
   );
 }
+
+function Period(
+  { className, date }: PeriodProps,
+  ref: ForwardedRef<HTMLDivElement>
+) {
+  return (
+    <PeriodContainer
+      className={`period ${className ? className : ""}`}
+      ref={ref}
+    >
+      <PeriodTime date={date[0]} />
+      <Bar />
+      <PeriodTime date={date[1]} />
+    </PeriodContainer>
+  );
+}
+
+const PeriodForward = forwardRef(Period);
+
+export default PeriodForward;

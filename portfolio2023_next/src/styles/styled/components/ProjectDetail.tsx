@@ -2,6 +2,9 @@
 
 import { styled } from "styled-components";
 
+// components
+import PeriodForward from "@/components/period/Period";
+
 // util
 import { rem } from "@/util/unit";
 
@@ -17,7 +20,6 @@ import { easing } from "@/styles/styled/preset/easing";
 import { transTime } from "@/styles/styled/preset/transTime";
 import { CommonBtn, btnStyle } from "@/styles/styled//preset/buttons";
 import { img } from "../preset/img";
-import Period from "@/components/period/Period";
 
 export const PDContainer = styled.article`
   ${size({ w: "100%", h: "100%" })}
@@ -256,7 +258,7 @@ export const PCDescContainer = styled(PDInfoBox)`
   }
 `;
 
-export const PDPeriod = styled(Period)`
+export const PDPeriod = styled(PeriodForward)`
   display: block;
   span {
     display: block;

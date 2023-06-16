@@ -15,7 +15,7 @@ import { ScrollRefStateTypes } from "@/types/state";
 import { scrollRefState } from "@/states/scroll";
 
 // util
-import ctxScrollTrigger from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function FooterUpperContainer() {
   const { container: scrollContainer, footer: scrollTrigger } =

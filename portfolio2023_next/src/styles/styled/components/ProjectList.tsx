@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { keyframes } from "styled-components";
 
 // components
-import Period from "@/components/period/Period";
+import PeriodForward from "@/components/period/Period";
 
 // style
 import { img } from "../preset/img";
@@ -48,7 +48,7 @@ export const ListBtnWrap = styled.div`
   }
 `;
 
-export const ListBtnPeriod = styled(Period)`
+export const ListBtnPeriod = styled(PeriodForward)`
   height: auto;
   margin-bottom: ${rem(24)};
   color: ${({ theme }) => theme.projectList.period};

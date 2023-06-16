@@ -10,16 +10,18 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // types
-import { DetailTypes } from "@/types/projectDetails";
-
-// state
-import { detailData, detailLayoutState } from "@/states/detail";
 import {
   DetailLayoutStateTypes,
   DetailScrollRefStateTypes,
 } from "@/types/state";
+import { DetailTypes } from "@/types/projectDetails";
+
+// state
+import { detailData, detailLayoutState } from "@/states/detail";
 import { detailScrollRefState } from "@/states/scroll";
-import ctxScrollTrigger from "@/util/presetScrollTrigger";
+
+// util
+import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function DetailHeaderTitleContainer() {
   const params = useSearchParams();

@@ -18,7 +18,7 @@ import { pageState } from "@/states/page";
 import { scrollRefState } from "@/states/scroll";
 
 // hooks
-import ctxScrollTrigger from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function PageVisual({ title }: { title: string[] }) {
   const { container: scrollContainer } =
@@ -62,12 +62,8 @@ export default function PageVisual({ title }: { title: string[] }) {
   }, [scrollContainer, visualRef, visualTitleRef]);
 
   useEffect(() => {
-    if (loadComplete) {
-      setLoaded("");
-      console.log("visual title fadeUp");
-    } else {
-      setLoaded("loading");
-    }
+    if (loadComplete) setLoaded("");
+    else setLoaded("loading");
   }, [loadComplete]);
 
   return (

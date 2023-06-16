@@ -20,7 +20,7 @@ import { detailData, detailLayoutState } from "@/states/detail";
 import { detailScrollRefState } from "@/states/scroll";
 
 // util
-import ctxScrollTrigger from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function DetailTitleWrap() {
   // 프로젝트 상세 데이터

@@ -8,6 +8,7 @@ export const transTime = {
   visual: {
     fadeInUp: 800,
   },
+  career: 800,
   detail: {
     sheetSlide: 800,
   },

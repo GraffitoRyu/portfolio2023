@@ -5,6 +5,9 @@ export const scrollRefState = atom<ScrollRefStateTypes>({
   key: "scrollRefStateAtom",
   default: {
     container: null,
+    career: null,
+    experience: null,
+    tools: null,
     footer: null,
   },
 });

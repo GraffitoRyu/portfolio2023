@@ -6,7 +6,7 @@ import PageVisual from "@/components/pageSection/pageVisual/Visual";
 import PageIntro from "@/components/pageSection/pageVisual/Intro";
 import SectionHeader from "@/components/pageSection/Header";
 import SectionContents from "@/components/pageSection/Contents";
-import Career from "@/components/profile/Career";
+import Career from "@/components/profile/career/Career";
 import Experience from "@/components/profile/Experience";
 import Tools from "@/components/profile/Tools";
 
