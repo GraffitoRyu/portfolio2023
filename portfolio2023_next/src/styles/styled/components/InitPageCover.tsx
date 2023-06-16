@@ -1,6 +1,6 @@
 "use client";
 
-import { styled } from "styled-components";
+import { keyframes, styled } from "styled-components";
 
 import { easing } from "../preset/easing";
 import { transTime } from "../preset/transTime";
@@ -28,12 +28,21 @@ export const InitCoverBox = styled.div`
   ${flex({ dir: "column" })}
 `;
 
+const loadingRotate = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
 export const InitIconContainer = styled.div`
   position: relative;
   ${size({ w: 80, h: 80, mb: 40 })}
 
   .loading-icon {
-    animation: loadingIcon 1.6s infinite linear;
+    animation: ${loadingRotate} 1.6s infinite linear;
   }
 
   &.loading {
@@ -47,15 +56,6 @@ export const InitIconContainer = styled.div`
     }
     .complete-icon {
       transition-delay: 0.2s;
-    }
-  }
-
-  @keyframes loadingIcon {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
     }
   }
 `;
