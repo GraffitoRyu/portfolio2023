@@ -8,6 +8,7 @@ import { flex, transition } from "../preset/mixins";
 // util
 import { rem } from "@/util/unit";
 import { transTime } from "../preset/transTime";
+import { PageTitle } from "./PageTitle";
 
 export const VisualContainer = styled.div`
   ${flex({ dir: "column", cross: "start" })}
@@ -31,12 +32,7 @@ export const VisualTitle = styled.h1`
   }
 `;
 
-export const VisualTitleLine = styled.span`
-  display: block;
-  font-size: ${rem(144)};
-  font-weight: 500;
-  line-height: 1em;
-  white-space: nowrap;
+export const VisualTitleLine = styled(PageTitle)`
   ${transition([
     {
       prop: "transform",
@@ -52,13 +48,10 @@ export const VisualTitleLine = styled.span`
     },
   ])}
   &.stroke-title {
-    color: transparent;
-    -webkit-text-stroke: ${rem(2)} ${({ theme }) => theme.visualSection.border};
-    font-family: var(--serif-kr);
+    -webkit-text-stroke-color: ${({ theme }) => theme.visualSection.border};
   }
   &.filled-title {
     color: ${({ theme }) => theme.visualSection.fill};
-    font-weight: 700;
     transition-delay: 0.16s;
   }
   @media only screen and (min-width: 1024px) {

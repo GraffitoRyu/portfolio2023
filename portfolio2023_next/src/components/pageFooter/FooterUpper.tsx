@@ -5,6 +5,7 @@ import { useRecoilValue } from "recoil";
 import {
   FooterHeader,
   FooterTitle,
+  FooterTitleLine,
 } from "@/styles/styled/components/PageFooter";
 
 // types
@@ -53,8 +54,8 @@ export default function FooterUpperContainer() {
   return (
     <FooterHeader ref={footerHeaderRef}>
       <FooterTitle ref={footerTitleRef}>
-        <span>{`Let's work`}</span>
-        <span>together</span>
+        <FooterTitleLine className="stroke-title">{`Let's work`}</FooterTitleLine>
+        <FooterTitleLine className="filled-title">together</FooterTitleLine>
       </FooterTitle>
     </FooterHeader>
   );

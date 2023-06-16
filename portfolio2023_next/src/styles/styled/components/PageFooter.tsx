@@ -8,6 +8,7 @@ import { SvgFill, flex, position, size } from "@/styles/styled/preset/mixins";
 
 // util
 import { rem } from "@/util/unit";
+import { PageTitle } from "./PageTitle";
 
 const iconSize = (fs: number) => (fs * 2) / 3;
 
@@ -55,30 +56,21 @@ export const FooterContents = styled.div`
 export const FooterTitle = styled.h2`
   ${flex({ dir: "column", cross: "start" })}
   font-size:0;
-  font-weight: 700;
+`;
 
-  span {
-    font-size: ${rem(160)};
-    line-height: 1em;
-    &:nth-child(1) {
-      color: transparent;
-      -webkit-text-stroke: ${rem(1)} ${({ theme }) => theme.footer.titleBorder};
-    }
-    &:nth-child(2) {
-      color: ${({ theme }) => theme.footer.titleFill};
-    }
+export const FooterTitleLine = styled(PageTitle)`
+  font-size: ${rem(160)};
+  &.stroke-title {
+    -webkit-text-stroke: ${rem(2)} ${({ theme }) => theme.footer.titleBorder};
   }
-  @media only screen and (min-width: 768px) {
+  &.filled-title {
+    color: ${({ theme }) => theme.footer.titleFill};
   }
   @media only screen and (min-width: 960px) {
-    span {
-      font-size: ${rem(114)};
-    }
+    font-size: ${rem(114)};
   }
   @media only screen and (min-width: 1280px) {
-    span {
-      font-size: ${rem(240)};
-    }
+    font-size: ${rem(240)};
   }
 `;
 
