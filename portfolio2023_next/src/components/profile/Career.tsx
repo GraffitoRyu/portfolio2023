@@ -6,7 +6,7 @@ import {
   CareerPeriod,
   CareerRole,
   CareerTitle,
-} from "@/styles/styled/components/Career";
+} from "@/styles/styled/components/ProfileCareer";
 
 // type
 import { CareerTypes } from "@/types/profile";
