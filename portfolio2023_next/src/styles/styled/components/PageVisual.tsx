@@ -33,26 +33,41 @@ export const VisualTitle = styled.h1`
 `;
 
 export const VisualTitleLine = styled(PageTitle)`
-  ${transition([
-    {
-      prop: "transform",
-      time: `${transTime.visual.fadeInUp / 1000}s`,
-    },
-    {
-      prop: "opacity",
-      time: `${transTime.visual.fadeInUp / 1000}s`,
-    },
-    {
-      prop: "color",
-      time: `${transTime.color}s`,
-    },
-  ])}
   &.stroke-title {
     -webkit-text-stroke-color: ${({ theme }) => theme.visualSection.border};
+    ${transition([
+      {
+        prop: "transform",
+        time: `${transTime.visual.fadeInUp / 1000}s`,
+      },
+      {
+        prop: "opacity",
+        time: `${transTime.visual.fadeInUp / 1000}s`,
+      },
+      {
+        prop: "color",
+        time: `${transTime.color / 1000}s`,
+      },
+    ])}
   }
   &.filled-title {
     color: ${({ theme }) => theme.visualSection.fill};
-    transition-delay: 0.16s;
+    ${transition([
+      {
+        prop: "transform",
+        time: `${transTime.visual.fadeInUp / 1000}s`,
+        delay: "0.16s",
+      },
+      {
+        prop: "opacity",
+        time: `${transTime.visual.fadeInUp / 1000}s`,
+        delay: "0.16s",
+      },
+      {
+        prop: "color",
+        time: `${transTime.color / 1000}s`,
+      },
+    ])}
   }
   @media only screen and (min-width: 1024px) {
     font-size: ${rem(240)};

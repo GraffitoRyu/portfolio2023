@@ -13,7 +13,7 @@ export const InitCoverContainer = styled.div`
   ${size({ w: "100%", h: 0 })}
   background-color:${({ theme }) => theme.initCover.bg};
   overflow: clip;
-  transition: height ${transTime.common.coverUp / 1000 + "s"} ${easing.expo};
+  transition: height ${transTime.common.coverUp / 1000}s ${easing.expo};
   &.initiating {
     height: 100%;
   }

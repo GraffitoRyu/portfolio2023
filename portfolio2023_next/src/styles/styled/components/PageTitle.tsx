@@ -3,6 +3,7 @@ import { font } from "../preset/mixins";
 import { rem } from "@/util/unit";
 
 export const PageTitle = styled.span`
+  color: transparent;
   display: block;
   ${font({
     size: 144,
@@ -11,7 +12,6 @@ export const PageTitle = styled.span`
     whitespace: "nowrap",
   })}
   &.stroke-title {
-    color: transparent;
     -webkit-text-stroke: ${rem(2)} gray;
     font-family: var(--serif-kr);
   }
