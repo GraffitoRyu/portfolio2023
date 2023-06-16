@@ -53,8 +53,8 @@ export default function TransCover() {
   }, [initComplete, loaded, setPage]);
 
   return (
-    <TransitionCover className={`${loading}`}>
-      <TransBox>
+    <TransitionCover className={`transCover ${loading}`}>
+      <TransBox className="transCoverBox">
         <TransTitle>{data.title}</TransTitle>
       </TransBox>
     </TransitionCover>

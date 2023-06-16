@@ -18,8 +18,13 @@ export const TransitionCover = styled.div`
     height: 100%;
     top: auto;
     bottom: 0;
+    .transCoverBox {
+      top: auto;
+      bottom: 0;
+    }
   }
 `;
+
 export const TransBox = styled.div`
   ${position({ top: 0, left: 0 })}
   ${flex({ std: "start" })}
@@ -28,11 +33,6 @@ export const TransBox = styled.div`
     h: typeof window !== "undefined" ? `${window.innerHeight}px` : "100vh",
     p: [0, 80],
   })}
-
-  ${TransitionCover}.loading & {
-    top: auto;
-    bottom: 0;
-  }
 `;
 
 export const TransTitle = styled.h1`
