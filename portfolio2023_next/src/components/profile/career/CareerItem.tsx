@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { gsap } from "gsap/dist/gsap";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // style components
 import {
@@ -25,9 +26,6 @@ import { ScrollRefStateTypes } from "@/types/state";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
-
-// util
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 export default function CareerItem({
   period,
@@ -91,23 +89,22 @@ export default function CareerItem({
         end: `bottom 90%`, // target, trigger
       };
 
-      gsap
-        .timeline({ scrollTrigger: stOptions })
-        .from(periodTarget, {
-          opacity: 0,
-          ...timing,
-          onStart: () => setPeriodActive("on"),
-        })
-        .from(
-          roleTarget,
-          {
-            ...slideUp,
-            onStart: () => setDivideActive("on"),
-          },
-          0.16
-        )
-        .from(companyTarget, slideRight, 0.16)
-        .from(descTarget, slideUp, 0.16);
+      const tl = gsap.timeline({ scrollTrigger: stOptions });
+      tl.from(periodTarget, {
+        opacity: 0,
+        ...timing,
+        onStart: () => setPeriodActive("on"),
+      });
+      tl.from(
+        roleTarget,
+        {
+          ...slideUp,
+          onStart: () => setDivideActive("on"),
+        },
+        0.16
+      );
+      tl.from(companyTarget, { ...slideRight }, 0.16);
+      tl.from(descTarget, { ...slideUp }, 0.16);
     });
 
     return () => ctx.revert();

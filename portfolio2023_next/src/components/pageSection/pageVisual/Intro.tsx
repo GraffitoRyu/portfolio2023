@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useRecoilValue } from "recoil";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // style components
 import { IntroDesc, IntroTitle } from "@/styles/styled/components/PageVisual";
@@ -10,11 +13,10 @@ import ParseDescNewLine from "@/components/util/ParseDescNewLine";
 
 // type
 import { IntroTypes } from "@/types/section";
-import { gsap } from "gsap/dist/gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useRecoilValue } from "recoil";
-import { scrollRefState } from "@/states/scroll";
 import { ScrollRefStateTypes } from "@/types/state";
+
+// state
+import { scrollRefState } from "@/states/scroll";
 
 export default function PageIntro({ title, desc }: IntroTypes) {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
@@ -39,22 +41,19 @@ export default function PageIntro({ title, desc }: IntroTypes) {
         scroller: scrollContainer,
       });
 
-      const stOptions = (
-        target: HTMLHeadingElement | HTMLParagraphElement
-      ) => ({
-        trigger: target,
+      const stOptions = {
         start: `top 90%`, // target, trigger
         end: `top 90%`, // target, trigger
-      });
+      };
 
       gsap.from(titleTarget, {
         opacity: 0,
-        scrollTrigger: stOptions(titleTarget),
+        scrollTrigger: { ...stOptions, trigger: titleTarget },
       });
       gsap.from(descTarget, {
         opacity: 0,
         delay: 0.16,
-        scrollTrigger: stOptions(descTarget),
+        scrollTrigger: { ...stOptions, trigger: descTarget },
       });
     });
 
