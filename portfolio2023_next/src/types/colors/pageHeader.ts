@@ -4,7 +4,7 @@ export interface TimerColorTypes {
 }
 
 export interface ModeTypes {
-  [key: string]: TimerColorTypes;
+  [index: string]: TimerColorTypes;
   light: TimerColorTypes;
   dark: TimerColorTypes;
 }

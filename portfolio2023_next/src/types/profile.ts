@@ -20,3 +20,27 @@ export interface ExperienceTypes {
   code: string;
   desc: Array<string | DescDepthTypes>;
 }
+
+export interface StackTypes {
+  [index: string]: string | number;
+  code: string;
+  name: string;
+  category: string;
+  level: number;
+}
+
+export interface StackKeyTypes {
+  [index: string]: string;
+  code: string;
+  name: string;
+}
+
+export interface StackDataTypes {
+  [index: string]: StackTypes[];
+}
+
+export interface StackLegendTypes {
+  [index: string]: string | number;
+  label: string;
+  level: number;
+}

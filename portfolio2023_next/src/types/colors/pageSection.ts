@@ -4,7 +4,7 @@ export interface SectionHeaderTypes {
 }
 
 export interface SectionHeaderModeTypes {
-  [key: string]: SectionHeaderTypes;
+  [index: string]: SectionHeaderTypes;
   light: SectionHeaderTypes;
   dark: SectionHeaderTypes;
 }
@@ -18,7 +18,7 @@ export interface IntroTypes {
 }
 
 export interface IntroModeTypes {
-  [key: string]: IntroTypes;
+  [index: string]: IntroTypes;
   light: IntroTypes;
   dark: IntroTypes;
 }
@@ -29,7 +29,7 @@ export interface VisualTypes {
 }
 
 export interface VisualModeTypes {
-  [key: string]: VisualTypes;
+  [index: string]: VisualTypes;
   light: VisualTypes;
   dark: VisualTypes;
 }

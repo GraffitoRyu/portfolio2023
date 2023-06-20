@@ -8,7 +8,7 @@ export interface ListColorTypes {
 }
 
 export interface ListModeTypes {
-  [key: string]: ListColorTypes;
+  [index: string]: ListColorTypes;
   light: ListColorTypes;
   dark: ListColorTypes;
 }

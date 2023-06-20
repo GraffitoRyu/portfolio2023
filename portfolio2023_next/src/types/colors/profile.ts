@@ -6,7 +6,7 @@ export interface CareerColorTypes {
 }
 
 export interface CareerModeTypes {
-  [key: string]: CareerColorTypes;
+  [index: string]: CareerColorTypes;
   light: CareerColorTypes;
   dark: CareerColorTypes;
 }
@@ -17,17 +17,25 @@ export interface ExpColorTypes {
 }
 
 export interface ExpModeTypes {
-  [key: string]: ExpColorTypes;
+  [index: string]: ExpColorTypes;
   light: ExpColorTypes;
   dark: ExpColorTypes;
 }
 
-export interface ToolsColorTypes {
-  text: string;
+export interface StacksColorTypes {
+  [index: string]: string;
+  legendTitle: string;
+  legendLabel: string;
+  border: string;
+  category: string;
+  stackName: string;
+  levelFill: string;
+  levelEmpty: string;
+  levelFull: string;
 }
 
-export interface ToolsModeType {
-  [key: string]: ToolsColorTypes;
-  light: ToolsColorTypes;
-  dark: ToolsColorTypes;
+export interface StacksModeType {
+  [index: string]: StacksColorTypes;
+  light: StacksColorTypes;
+  dark: StacksColorTypes;
 }

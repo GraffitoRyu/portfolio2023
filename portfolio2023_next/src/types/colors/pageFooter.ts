@@ -12,7 +12,7 @@ export interface FooterTypes {
 }
 
 export interface FooterModeTypes {
-  [key: string]: FooterTypes;
+  [index: string]: FooterTypes;
   light: FooterTypes;
   dark: FooterTypes;
 }

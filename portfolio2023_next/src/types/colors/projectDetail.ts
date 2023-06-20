@@ -13,7 +13,7 @@ export interface DetailColorTypes {
 }
 
 export interface DetailModeTypes {
-  [key: string]: DetailColorTypes;
+  [index: string]: DetailColorTypes;
   light: DetailColorTypes;
   dark: DetailColorTypes;
 }

@@ -31,13 +31,13 @@ export interface CustomThemeTypes {
   footer: ColorTypes.pageFooter.FooterTypes;
   career: ColorTypes.profile.CareerColorTypes;
   exp: ColorTypes.profile.ExpColorTypes;
-  tools: ColorTypes.profile.ToolsColorTypes;
+  stacks: ColorTypes.profile.StacksColorTypes;
   projectList: ColorTypes.projectsList.ListColorTypes;
   projectDetails: ColorTypes.projectDetail.DetailColorTypes;
 }
 
 export interface CustomThemeModeTypes {
-  [key: string]: CustomThemeTypes;
+  [index: string]: CustomThemeTypes;
   light: CustomThemeTypes;
   dark: CustomThemeTypes;
 }
@@ -60,7 +60,7 @@ export const customThemes: CustomThemeModeTypes = {
     footer: color.footer.light,
     career: color.career.light,
     exp: color.experience.light,
-    tools: color.tools.light,
+    stacks: color.stacks.light,
     projectList: color.list.light,
     projectDetails: color.details.light,
   },
@@ -81,7 +81,7 @@ export const customThemes: CustomThemeModeTypes = {
     footer: color.footer.dark,
     career: color.career.dark,
     exp: color.experience.dark,
-    tools: color.tools.dark,
+    stacks: color.stacks.dark,
     projectList: color.list.dark,
     projectDetails: color.details.dark,
   },
