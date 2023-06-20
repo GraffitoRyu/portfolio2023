@@ -3,7 +3,10 @@
 import { useEffect, useState } from "react";
 
 // style components
-import { TimerContainer } from "@/styles/styled/components/PageHeader";
+import {
+  TimeRegion,
+  TimerContainer,
+} from "@/styles/styled/components/PageHeader";
 
 export default function TimeDisplay() {
   const [curTime, setCurTime] = useState<Date | undefined>(undefined);
@@ -21,6 +24,7 @@ export default function TimeDisplay() {
 
   return (
     <TimerContainer>
+      <TimeRegion>Daejeon, KR</TimeRegion>
       <time>
         {curTime instanceof Date
           ? curTime.toLocaleString("ko-KR", {
