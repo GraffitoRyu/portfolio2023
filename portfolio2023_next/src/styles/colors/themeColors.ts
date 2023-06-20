@@ -14,6 +14,6 @@ export { intro } from "@/styles/colors/pageSection/intro";
 export { footer } from "@/styles/colors/pageFooter/footer";
 export { career } from "@/styles/colors/profile/career";
 export { experience } from "@/styles/colors/profile/experience";
-export { tools } from "@/styles/colors/profile/tools";
+export { stacks } from "@/styles/colors/profile/stacks";
 export { list } from "@/styles/colors/projects/list";
 export { details } from "@/styles/colors/projects/details";
