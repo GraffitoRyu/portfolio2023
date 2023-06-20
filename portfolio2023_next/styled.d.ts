@@ -21,7 +21,7 @@ declare module "styled-components" {
     footer: ColorTypes.pageFooter.FooterTypes;
     career: ColorTypes.profile.CareerColorTypes;
     exp: ColorTypes.profile.ExpColorTypes;
-    tools: ColorTypes.profile.StacksColorTypes;
+    stacks: ColorTypes.profile.StacksColorTypes;
     projectList: ColorTypes.projectsList.ListColorTypes;
     projectDetails: ColorTypes.projectDetail.DetailColorTypes;
   }
