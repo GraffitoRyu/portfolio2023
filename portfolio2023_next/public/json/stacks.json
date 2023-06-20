@@ -1,0 +1,236 @@
+[
+  {
+    "code": "html",
+    "name": "HTML",
+    "category": "languages",
+    "level": 4
+  },
+  {
+    "code": "ejs",
+    "name": "EJS",
+    "category": "languages",
+    "level": 3
+  },
+  {
+    "code": "css",
+    "name": "CSS",
+    "category": "languages",
+    "level": 4
+  },
+  {
+    "code": "scss",
+    "name": "SCSS",
+    "category": "languages",
+    "level": 4
+  },
+  {
+    "code": "javascript",
+    "name": "JavaScript",
+    "category": "languages",
+    "level": 4
+  },
+  {
+    "code": "typescript",
+    "name": "TypeScript",
+    "category": "languages",
+    "level": 0
+  },
+  {
+    "code": "nextjs",
+    "name": "Next.js",
+    "category": "webapp",
+    "level": 0
+  },
+  {
+    "code": "react",
+    "name": "React",
+    "category": "webapp",
+    "level": 1
+  },
+  {
+    "code": "recoil",
+    "name": "Recoil",
+    "category": "webapp",
+    "level": 0
+  },
+  {
+    "code": "react_router",
+    "name": "React Router",
+    "category": "webapp",
+    "level": 1
+  },
+  {
+    "code": "react_query",
+    "name": "React Query",
+    "category": "webapp",
+    "level": 0
+  },
+  {
+    "code": "jquery",
+    "name": "jQuery",
+    "category": "library",
+    "level": 4
+  },
+  {
+    "code": "d3",
+    "name": "D3.js",
+    "category": "library",
+    "level": 3
+  },
+  {
+    "code": "gsap",
+    "name": "GSAP",
+    "category": "library",
+    "level": 1
+  },
+  {
+    "code": "swiper",
+    "name": "Swiper",
+    "category": "library",
+    "level": 2
+  },
+  {
+    "code": "google_maps_api",
+    "name": "Google Maps API",
+    "category": "map_api",
+    "level": 3
+  },
+  {
+    "code": "kakao_maps_api",
+    "name": "Kakao Maps API",
+    "category": "map_api",
+    "level": 1
+  },
+  {
+    "code": "mapbox",
+    "name": "Mapbox GL",
+    "category": "map_api",
+    "level": 1
+  },
+  {
+    "code": "styled_components",
+    "name": "Styled-components",
+    "category": "style",
+    "level": 0
+  },
+  {
+    "code": "tailwind",
+    "name": "Tailwind",
+    "category": "style",
+    "level": 0
+  },
+  {
+    "code": "ajax",
+    "name": "Ajax",
+    "category": "data",
+    "level": 3
+  },
+  {
+    "code": "websocket",
+    "name": "WebSocket",
+    "category": "data",
+    "level": 3
+  },
+  {
+    "code": "json",
+    "name": "JSON",
+    "category": "data",
+    "level": 3
+  },
+  {
+    "code": "geojson",
+    "name": "GeoJSON",
+    "category": "data",
+    "level": 1
+  },
+  {
+    "code": "vite",
+    "name": "Vite",
+    "category": "build",
+    "level": 2
+  },
+  {
+    "code": "vercel",
+    "name": "Vercel",
+    "category": "deploy",
+    "level": 0
+  },
+  {
+    "code": "s3",
+    "name": "S3",
+    "category": "aws",
+    "level": 2
+  },
+  {
+    "code": "cloudfront",
+    "name": "CloudFront",
+    "category": "aws",
+    "level": 2
+  },
+  {
+    "code": "git",
+    "name": "Git/Github",
+    "category": "collaboration",
+    "level": 3
+  },
+  {
+    "code": "confluence",
+    "name": "Confluence",
+    "category": "collaboration",
+    "level": 2
+  },
+  {
+    "code": "jira",
+    "name": "Jira",
+    "category": "collaboration",
+    "level": 2
+  },
+  {
+    "code": "slack",
+    "name": "Slack",
+    "category": "collaboration",
+    "level": 4
+  },
+  {
+    "code": "eslint",
+    "name": "ESlint",
+    "category": "convention",
+    "level": 0
+  },
+  {
+    "code": "prettier",
+    "name": "Prettier",
+    "category": "convention",
+    "level": 0
+  },
+  {
+    "code": "zeplin",
+    "name": "Zeplin",
+    "category": "design",
+    "level": 3
+  },
+  {
+    "code": "figma",
+    "name": "Figma",
+    "category": "design",
+    "level": 3
+  },
+  {
+    "code": "xd",
+    "name": "XD",
+    "category": "design",
+    "level": 1
+  },
+  {
+    "code": "photoshop",
+    "name": "Photoshop",
+    "category": "design",
+    "level": 2
+  },
+  {
+    "code": "illustrator",
+    "name": "Illustrator",
+    "category": "design",
+    "level": 2
+  }
+]

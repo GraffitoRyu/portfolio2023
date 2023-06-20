@@ -7,8 +7,8 @@ import PageIntro from "@/components/pageSection/pageVisual/Intro";
 import SectionHeader from "@/components/pageSection/Header";
 import SectionContents from "@/components/pageSection/Contents";
 import Career from "@/components/profile/career/Career";
-import Experience from "@/components/profile/Experience";
-import Tools from "@/components/profile/Tools";
+import Experience from "@/components/profile/experience/Experience";
+import TechStacks from "@/components/profile/techStacks/Stacks";
 
 export default function Profile() {
   return (
@@ -63,7 +63,7 @@ export default function Profile() {
           desc={["경험을 쌓으며 다루게된 ", "활용 가능한 기술 스택입니다."]}
         />
         <SectionContents>
-          <Tools />
+          <TechStacks />
         </SectionContents>
       </PageSection>
     </>

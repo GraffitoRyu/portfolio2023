@@ -1,0 +1,50 @@
+[
+  {
+    "code": "languages",
+    "name": "언어"
+  },
+  {
+    "code": "webapp",
+    "name": "웹앱 프레임워크 & 라이브러리"
+  },
+  {
+    "code": "library",
+    "name": "자바스크립트 라이브러리"
+  },
+  {
+    "code": "map_api",
+    "name": "지도 API 라이브러리"
+  },
+  {
+    "code": "style",
+    "name": "스타일링 프레임워크 & 라이브러리"
+  },
+  {
+    "code": "data",
+    "name": "데이터 기술"
+  },
+  {
+    "code": "build",
+    "name": "빌드 도구"
+  },
+  {
+    "code": "deploy",
+    "name": "배포 플랫폼"
+  },
+  {
+    "code": "aws",
+    "name": "AWS"
+  },
+  {
+    "code": "collaboration",
+    "name": "협업 도구"
+  },
+  {
+    "code": "convention",
+    "name": "컨벤션"
+  },
+  {
+    "code": "design",
+    "name": "디자인 & 프로토타이핑"
+  }
+]
