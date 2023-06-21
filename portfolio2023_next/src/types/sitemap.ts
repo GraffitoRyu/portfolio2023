@@ -3,9 +3,13 @@ export type SitemapType = {
   code: string;
   name: string;
   path: string;
-  header: boolean;
-  contact: boolean;
   external: boolean;
+  copy: boolean;
+  download: boolean;
+  header: boolean;
+  recruit: boolean;
+  contact: boolean;
+  resume: boolean;
 };
 
 export type SitemapStateTypes = {
