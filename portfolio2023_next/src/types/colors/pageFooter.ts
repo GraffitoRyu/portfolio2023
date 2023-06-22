@@ -2,13 +2,14 @@ export interface FooterTypes {
   bg: string;
   titleBorder: string;
   titleFill: string;
-  divideLine: string;
-  infoDesc: string;
-  infoTitle: string;
-  btn: string;
-  btnHover: string;
-  icon: string;
-  iconHover: string;
+  summary: string;
+  copyright: string;
+  linkCategory: string;
+  link: string;
+  linkIcon: string;
+  linkHover: string;
+  tooltipBox: string;
+  tooltipText: string;
 }
 
 export interface FooterModeTypes {
