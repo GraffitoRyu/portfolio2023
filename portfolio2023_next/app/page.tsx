@@ -46,11 +46,8 @@ export default function Profile() {
         <SectionHeader
           title="experience"
           desc={[
-            "현업에서는 다음의 경험으로 ",
-            "스펙트럼을 넓혔습니다. ",
-            "여기에 더해, 보편적인 트렌드에 ",
-            "발맞춰 가기 위한 연구를 ",
-            "진행중입니다.",
+            "개인적인 작업부터 협업에 이르기 까지 ",
+            "프로젝트에 참여하면서 경험한 것들입니다.",
           ]}
         />
         <SectionContents>
@@ -59,8 +56,12 @@ export default function Profile() {
       </PageSection>
       <PageSection className="side-h-padding side-v-padding">
         <SectionHeader
-          title="tools"
-          desc={["경험을 쌓으며 다루게된 ", "활용 가능한 기술 스택입니다."]}
+          title="tech Stacks"
+          desc={[
+            "지난 5년 간 경험한 기술들입니다. ",
+            "항상 새로운 기술을 받아들이고 익히기 위해",
+            "지속적으로 노력하고 있습니다.",
+          ]}
         />
         <SectionContents>
           <TechStacks />
