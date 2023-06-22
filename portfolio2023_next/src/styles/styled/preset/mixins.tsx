@@ -28,10 +28,11 @@ const convertSpacing = (v: string | number | Array<string | number>) => {
 
 /**
  * @desc 각 값은 auto(default), string(%, px, rem 등 단위가 있는 것으로 간주), number는 rem 변환
- * @property {string | number} [w]
- * @property {string | number} [h]
- * @property {string | number | Array<string | number>} [p] : 단일 값은 모든 방향 적용, 배열의 경우 [상하, 좌우]/[상, 좌우, 하]/[상, 우, 하, 좌]
- * @property {string | number | Array<string | number>} [m] : 단일 값은 모든 방향 적용, 배열의 경우 [상하, 좌우]/[상, 좌우, 하]/[상, 우, 하, 좌]
+ * @property {string | number} [w] : width
+ * @property {string | number} [h] : height
+ * @property {string | number | Array<string | number>} [p] : padding 단일 값은 모든 방향 적용, 배열의 경우 [상하, 좌우]/[상, 좌우, 하]/[상, 우, 하, 좌]
+ * @property {string | number | Array<string | number>} [m] : margin 단일 값은 모든 방향 적용, 배열의 경우 [상하, 좌우]/[상, 좌우, 하]/[상, 우, 하, 좌]
+ * @property {string | number | Array<string | number>} [r] : radius 단일 값은 모든 방향 적용, 배열의 경우 [상하, 좌우]/[상, 좌우, 하]/[상, 우, 하, 좌]
  * @property {string | number} [mt] : margin-top
  * @property {string | number} [mr] : margin-right
  * @property {string | number} [mb] : margin-bottom
@@ -46,6 +47,7 @@ export const size = ({
   h,
   m,
   p,
+  r,
   mt,
   mr,
   mb,
@@ -59,6 +61,7 @@ export const size = ({
   ${typeof h !== "undefined" && `height:${getUnit(h)};`}
   ${typeof m !== "undefined" && `margin: ${convertSpacing(m)};`}
   ${typeof p !== "undefined" && `padding: ${convertSpacing(p)};`}
+  ${typeof r !== "undefined" && `border-radius: ${convertSpacing(r)};`}
   ${typeof mt !== "undefined" && `margin-top:${getUnit(mt)};`}
   ${typeof mr !== "undefined" && `margin-right:${getUnit(mr)};`}
   ${typeof mb !== "undefined" && `margin-bottom:${getUnit(mb)};`}
@@ -99,7 +102,7 @@ export const flex = ({ dir, std, cross, wrap }: FlexTypes) => css`
  * @property {string | number} [bottom] : px, rem 단위를 붙인 string 형태 필요
  * @property {string | number} [right] : px, rem 단위를 붙인 string 형태 필요
  * @property {number | undefined} [z] : z-index
- * @property {boolean | undefined} [center] : px, rem 단위를 붙인 string 형태 필요
+ * @property {boolean | string | undefined} [center] : px, rem 단위를 붙인 string 형태 필요
  */
 export const position = ({
   type,
@@ -116,11 +119,17 @@ export const position = ({
   ${typeof bottom !== "undefined" ? `bottom:${getUnit(bottom)};` : ""};
   ${typeof right !== "undefined" ? `right:${getUnit(right)};` : ""};
   ${z !== undefined ? `z-index:${z};` : ""}
-  ${center
+  ${typeof center === "boolean"
     ? `
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
+  `
+    : ""}
+  ${typeof center === "string" && ["x", "y"].includes(center)
+    ? `
+    ${center === "x" ? "left" : "top"}:50%;
+    transform:translate${center.toUpperCase()}(-50%);
   `
     : ""}
 `;

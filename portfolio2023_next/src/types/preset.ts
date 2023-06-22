@@ -9,6 +9,7 @@ export type SizeTypes = {
   h?: string | number;
   m?: string | number | Array<string | number>; // length: 1 ~ 4
   p?: string | number | Array<string | number>; // length: 1 ~ 4
+  r?: string | number | Array<string | number>; // length: 1 ~ 4
   mt?: string | number; // margin-top
   mr?: string | number; // margin-right
   mb?: string | number; // margin-bottom
@@ -33,7 +34,7 @@ export type PositionTypes = {
   bottom?: string | number;
   right?: string | number;
   z?: number | undefined;
-  center?: boolean | undefined;
+  center?: boolean | string | undefined;
 };
 
 export type BtnTypes = {
