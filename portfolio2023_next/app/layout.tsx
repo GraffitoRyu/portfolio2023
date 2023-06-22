@@ -18,7 +18,7 @@ import Cursor from "@/components/cursor/Cursor";
 import { sans, serif } from "@/styles/fonts/fonts"; // error로 사용할 수 없다
 import "@/styles/scss/globals.scss";
 import StyledComponentsRegistry from "./lib/registry";
-import { GlobalBodyStyle } from "@/styles/styled/components/Page";
+import { HTMLThemeStyle } from "@/styles/styled/components/Page";
 
 // hooks
 import { PageLoadEvents } from "@/hooks/PageLoadEvents";
@@ -35,7 +35,7 @@ export default function RootLayout({
           <ReactQuery>
             <StyledComponentsRegistry>
               <ThemeColors>
-                <GlobalBodyStyle />
+                <HTMLThemeStyle />
                 <main className="page-container w-full h-full fixed">
                   <PageTemplate>{children}</PageTemplate>
                   <TransCover />

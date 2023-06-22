@@ -1,15 +1,15 @@
 "use client";
 
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 
 // style
 import { position } from "../preset/mixins";
 
-export const GlobalBodyStyle = createGlobalStyle`
+export const HTMLThemeStyle = styled.html`
   html {
-    background-color:${({ theme }) => theme.page.bg};
+    background-color: ${({ theme }) => theme.page.bg};
     *::selection {
-      color:${({ theme }) => theme.page.selectionText};
+      color: ${({ theme }) => theme.page.selectionText};
       background-color: ${({ theme }) => theme.page.selectionBg};
     }
   }
