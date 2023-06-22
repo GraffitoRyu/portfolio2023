@@ -17,10 +17,11 @@ export default function Cursor() {
 
   const updateCursor = useCallback(
     (e: MouseEvent | PointerEvent) => {
-      if (e?.target instanceof HTMLElement) {
+      if (e?.target instanceof HTMLElement || e?.target instanceof SVGElement) {
         let targetElement = "";
         if (e.target.closest("a,button")) targetElement = "link";
         else if (
+          e?.target instanceof HTMLElement &&
           e.target.innerText &&
           e.target.closest("h1,h2,h3,h4,h5,h6,p,dt,dd,time")
         )
