@@ -24,11 +24,11 @@ export default function PageFooter() {
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
 
   const setRef = useCallback(
-    (node: HTMLElement) => {
+    (node: HTMLElement | null) => {
       footerRef.current = node;
       setScrollRef(prev => ({ ...prev, footer: node }));
     },
-    [setScrollRef, footerRef]
+    [setScrollRef]
   );
 
   return (

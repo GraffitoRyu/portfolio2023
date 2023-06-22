@@ -21,7 +21,7 @@ export default function DetailVisual() {
 
   // 스크롤 참조 데이터 업데이트
   const setRef = useCallback(
-    (node: HTMLDivElement) => {
+    (node: HTMLDivElement | null) => {
       visualRef.current = node;
       setDetailScrollRef(prev => ({ ...prev, visual: node }));
     },

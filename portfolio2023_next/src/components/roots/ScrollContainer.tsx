@@ -17,7 +17,7 @@ export default function ScrollContainer({ children }: { children: ReactNode }) {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   const setRef = useCallback(
-    (node: HTMLDivElement) => {
+    (node: HTMLDivElement | null) => {
       scrollContainerRef.current = node;
       setScrollRef(prev => ({ ...prev, container: node }));
     },

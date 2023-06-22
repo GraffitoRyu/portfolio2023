@@ -53,7 +53,7 @@ export default function ProjectDetail() {
 
   // 스크롤 참조 데이터 업데이트
   const setRef = useCallback(
-    (node: HTMLElement) => {
+    (node: HTMLElement | null) => {
       detailRef.current = node;
       setDetailScrollRef(prev => ({ ...prev, container: node }));
     },

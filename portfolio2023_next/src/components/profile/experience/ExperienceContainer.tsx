@@ -18,7 +18,7 @@ export default function ExperienceContainer({
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
 
   const updateScrollRef = useCallback(
-    (node: HTMLUListElement) => {
+    (node: HTMLUListElement | null) => {
       setScrollRef(prev => ({ ...prev, experience: node }));
     },
     [setScrollRef]

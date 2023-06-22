@@ -48,7 +48,7 @@ export default function DetailTitleWrap() {
 
   // 스크롤 참조 데이터 업데이트
   const setRef = useCallback(
-    (node: HTMLDivElement) => {
+    (node: HTMLDivElement | null) => {
       scrollUpRef.current = node;
       setDetailScrollRef(prev => ({ ...prev, visualTitle: node }));
     },

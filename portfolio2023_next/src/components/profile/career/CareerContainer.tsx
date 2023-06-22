@@ -16,7 +16,7 @@ export default function CareerContainer({ children }: { children: ReactNode }) {
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
 
   const updateScrollRef = useCallback(
-    (node: HTMLUListElement) => {
+    (node: HTMLUListElement | null) => {
       setScrollRef(prev => ({ ...prev, career: node }));
     },
     [setScrollRef]
