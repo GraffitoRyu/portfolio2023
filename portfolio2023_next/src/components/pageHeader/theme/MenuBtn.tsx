@@ -23,6 +23,8 @@ function ThemeIcon(theme: string) {
       return <ThemeSvg.Dark />;
     case "system":
       return <ThemeSvg.System />;
+    default:
+      return null;
   }
 }
 
