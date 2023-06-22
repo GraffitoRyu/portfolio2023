@@ -9,6 +9,7 @@ export const transTime = {
     fadeInUp: 800,
   },
   career: 800,
+  tooltip: 400,
   detail: {
     sheetSlide: 800,
   },
