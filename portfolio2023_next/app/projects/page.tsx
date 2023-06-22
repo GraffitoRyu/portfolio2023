@@ -6,9 +6,9 @@ import PageIntro from "@/components/pageSection/pageVisual/Intro";
 import PageVisual from "@/components/pageSection/pageVisual/Visual";
 import ProjectList from "@/components/projects/List";
 import ProjectDetail from "@/components/projectDetail/DetailContainer";
+import { Suspense } from "react";
 
 export default function Projects() {
-  console.log(`projects/page`);
   return (
     <>
       <PageSection className="side-h-padding" isVisual={true}>
@@ -31,7 +31,9 @@ export default function Projects() {
           <ProjectList />
         </SectionContents>
       </PageSection>
-      <ProjectDetail />
+      <Suspense fallback={<></>}>
+        <ProjectDetail />
+      </Suspense>
     </>
   );
 }
