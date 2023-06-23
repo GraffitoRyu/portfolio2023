@@ -24,16 +24,17 @@ import { transTime } from "@/styles/styled/preset/transTime";
 
 export default function InitPageCover() {
   const [initiating, setInit] = useState<string>("initiating");
+  const [show, setShow] = useState<string>("show");
   const [{ init, loaded }, setPage] = useRecoilState<pageStateTypes>(pageState);
 
   useEffect(() => {
     if (init && loaded) {
       // 페이지 로드가 완료되면, 완료 애니메이션 후 커버를 비활성화한다.
       setTimeout(() => {
-        setInit("");
-
+        setShow("");
         // 커버 비활성화 후, loadComplete 처리한다.
         setTimeout(() => {
+          setInit("");
           setPage(prev => ({
             ...prev,
             loadComplete: true,
@@ -45,10 +46,10 @@ export default function InitPageCover() {
   }, [init, loaded, setPage]);
 
   return (
-    <InitCoverContainer className={`${initiating}`}>
+    <InitCoverContainer className={`${initiating} ${show}`}>
       <InitCoverBox>
-        <InitIcon />
         <InitTitle />
+        <InitIcon />
       </InitCoverBox>
     </InitCoverContainer>
   );

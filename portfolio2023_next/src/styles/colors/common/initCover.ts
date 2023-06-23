@@ -2,13 +2,13 @@ import { InitCoverModeTypes } from "@/types/colors/common";
 
 export const initCover: InitCoverModeTypes = {
   light: {
-    bg: "#efefef",
+    // bg: "#fff",
     icon: "#1a1a1a",
-    text: "#1a1a1a",
+    text: "#dfdfdf",
   },
   dark: {
-    bg: "#20242b",
+    // bg: "transparent", //"#141414",
     icon: "#dfdfdf",
-    text: "#dfdfdf",
+    text: "#707070", //"#3a3a3a",
   },
 };

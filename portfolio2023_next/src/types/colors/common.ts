@@ -58,7 +58,7 @@ export interface TransCoverModeTypes {
 
 export interface InitCoverColorTypes {
   [index: string]: string;
-  bg: string;
+  // bg: string;
   icon: string;
   text: string;
 }
