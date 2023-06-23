@@ -19,9 +19,13 @@ export function ctxScrollTrigger({
       });
 
       if (typeof direction === "undefined" || direction === "to")
-        gsap.to(target, options);
+        gsap.to(target, Object.assign(options, { invalidateOnRefresh: true }));
 
-      if (direction === "from") gsap.from(target, options);
+      if (direction === "from")
+        gsap.from(
+          target,
+          Object.assign(options, { invalidateOnRefresh: true })
+        );
 
       ScrollTrigger.clearScrollMemory();
       ScrollTrigger.refresh();
