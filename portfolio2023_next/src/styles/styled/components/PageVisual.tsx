@@ -49,7 +49,6 @@ const transVisualTitle = (delay: number | null) => {
 export const VisualTitle = styled.h1`
   ${flex({ dir: "column", cross: "start" })}
   font-size: 0;
-  will-change: transform, opacity;
   &.loading {
     .visual-title {
       transform: translateY(100%);
