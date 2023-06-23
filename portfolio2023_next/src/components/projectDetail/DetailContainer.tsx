@@ -37,6 +37,8 @@ export default function ProjectDetail() {
   const params = useSearchParams();
   const code = params.get("code");
 
+  const [wh, setWh] = useState<number>(0);
+
   // 프로젝트 상세 열림 상태 관리
   const [layoutState, setLayoutState] =
     useRecoilState<DetailLayoutStateTypes>(detailLayoutState);
@@ -59,6 +61,10 @@ export default function ProjectDetail() {
     },
     [setDetailScrollRef]
   );
+
+  useEffect(() => {
+    if (typeof window !== "undefined") setWh(window.innerHeight);
+  }, []);
 
   // 데이터 조회 상태
   useEffect(() => {
@@ -100,9 +106,9 @@ export default function ProjectDetail() {
   return (
     <PDContainer className={`${open}`} ref={setRef}>
       <DetailHeader />
-      <DetailBackground />
-      <DetailSection className="detail-visual">
-        <DetailVisual />
+      <DetailBackground $windowHeight={wh} />
+      <DetailSection className="detail-visual" $windowHeight={wh}>
+        <DetailVisual $windowHeight={wh} />
       </DetailSection>
       <DetailSection className="detail-info side-padding">
         <DetailInfoContainer />

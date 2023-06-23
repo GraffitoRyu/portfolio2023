@@ -29,6 +29,12 @@ export default function TransCover() {
   const [loading, setLoading] = useState("");
   const [data, setData] = useState<transCoverTypes>(transCoverData[cover]);
 
+  const [wh, setWh] = useState<number>(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") setWh(window.innerHeight);
+  }, []);
+
   useEffect(() => {
     setData(transCoverData[cover]);
   }, [cover]);
@@ -54,7 +60,7 @@ export default function TransCover() {
 
   return (
     <TransitionCover className={`transCover ${loading}`}>
-      <TransBox className="transCoverBox">
+      <TransBox className="transCoverBox" $wh={wh}>
         <TransTitle>{data.title}</TransTitle>
       </TransBox>
     </TransitionCover>

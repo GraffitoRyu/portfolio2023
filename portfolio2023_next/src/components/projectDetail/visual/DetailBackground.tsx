@@ -9,7 +9,11 @@ import {
   PDVisualImageContainer,
 } from "@/styles/styled/components/ProjectDetail";
 
-export default function DetailBackground() {
+export default function DetailBackground({
+  $windowHeight,
+}: {
+  $windowHeight: number;
+}) {
   const params = useSearchParams();
   const code = params.get("code");
   const imgURL = `/img/details/intro_${code}.jpg`;
@@ -17,7 +21,7 @@ export default function DetailBackground() {
 
   return (
     <PDVisualImageContainer>
-      <PDVisualImage>
+      <PDVisualImage $wh={$windowHeight}>
         {code ? (
           <Image
             // className={`${hide}`}

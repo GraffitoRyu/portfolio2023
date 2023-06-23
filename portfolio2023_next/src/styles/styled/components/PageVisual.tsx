@@ -10,14 +10,15 @@ import { rem } from "@/util/unit";
 import { transTime } from "../preset/transTime";
 import { PageTitle } from "./PageTitle";
 
-export const VisualContainer = styled.div`
+export const VisualContainer = styled.div<{ $wh: number }>`
   ${flex({ dir: "column", cross: "start" })}
-  height: 50%;
+  height: ${({ $wh }: { $wh: number }): string =>
+    $wh !== 0 ? `${$wh / 2}px` : "50vh"};
+  background-color: rgba(0, 0, 255, 0.1);
   @media only screen and (min-width: 1024px) {
     width: 100%;
-    height: ${typeof window !== "undefined"
-      ? `calc(${window.innerHeight}px - ${rem(80 * 2 + 32)})`
-      : "100vh"};
+    height: ${({ $wh }: { $wh: number }): string =>
+      $wh !== 0 ? `calc(${$wh}px - ${rem(80 * 2 + 32)})` : "100vh"};
   }
 `;
 
@@ -49,6 +50,7 @@ const transVisualTitle = (delay: number | null) => {
 export const VisualTitle = styled.h1`
   ${flex({ dir: "column", cross: "start" })}
   font-size: 0;
+  transition: none;
   &.loading {
     .visual-title {
       transform: translateY(100%);

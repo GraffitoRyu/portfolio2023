@@ -32,6 +32,12 @@ export default function PageVisual({ title }: { title: string[] }) {
   const { loadComplete } = useRecoilValue<pageStateTypes>(pageState);
   const [loaded, setLoaded] = useState<string>("loading");
 
+  const [wh, setWh] = useState<number>(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") setWh(window.innerHeight);
+  }, []);
+
   useEffect(() => {
     const scrollTarget = visualTitleRef.current;
     if (!scrollContainer || !scrollTarget) return;
@@ -57,7 +63,7 @@ export default function PageVisual({ title }: { title: string[] }) {
           start: `top ${triggerStart}`, // 움직일 요소의 시작, 트리거 영역의 시작
           end: `${targetEnd} center`, // 움직일 요소의 끝, 트리거 영역의 끝
           scrub: true, // 스크롤 위치에 따라 실시간으로 대응하여 변하도록 설정
-          // markers: true, // 개발용 가이드라인
+          markers: true, // 개발용 가이드라인
         },
       },
     });
@@ -74,8 +80,12 @@ export default function PageVisual({ title }: { title: string[] }) {
   }, [loadComplete]);
 
   return (
-    <VisualContainer ref={visualRef}>
-      <VisualTitle ref={visualTitleRef} className={`${loaded}`}>
+    <VisualContainer ref={visualRef} $wh={wh}>
+      <VisualTitle
+        ref={visualTitleRef}
+        className={`${loaded}`}
+        style={{ backgroundColor: "rgba(255,255,255,0.2)" }}
+      >
         <VisualTitleLine className="visual-title stroke-title">
           {title[0]}
         </VisualTitleLine>

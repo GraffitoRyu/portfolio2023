@@ -19,13 +19,14 @@ import { transTime } from "../preset/transTime";
 // util
 import { rem } from "@/util/unit";
 
-export const FooterContainer = styled.footer`
+export const FooterContainer = styled.footer<{ $wh: number }>`
   ${position({ type: "relative", z: 600 })}
-  ${size({
-    w: "100%",
-    h: typeof window === "undefined" ? "100vh" : `${window.innerHeight}px`,
-    p: 80,
-  })}
+  ${({ $wh }: { $wh: number }) =>
+    size({
+      w: "100%",
+      h: $wh !== 0 ? "100vh" : `${$wh}px`,
+      p: 80,
+    })}
   background-color: ${({ theme }) => theme.footer.bg};
   overflow: hidden;
   @media only screen and (min-width: 1024px) {

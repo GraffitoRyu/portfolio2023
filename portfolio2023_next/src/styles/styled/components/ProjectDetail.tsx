@@ -73,7 +73,7 @@ export const PDHeaderProjectName = styled.span`
   }
 `;
 
-export const PDSection = styled.section`
+export const PDSection = styled.section<{ $wh?: number }>`
   width: 100%;
   position: relative;
   z-index: 100;
@@ -84,9 +84,8 @@ export const PDSection = styled.section`
     padding: ${rem(80)};
   }
   &.detail-visual {
-    height: ${typeof window === "undefined"
-      ? "100vh"
-      : `${window.innerHeight}px`};
+    height: ${({ $wh }: { $wh?: number }) =>
+      $wh !== 0 ? "100vh" : `${$wh}px`};
   }
   &.detail-info {
     font-size: 0;
@@ -100,11 +99,12 @@ export const PDVisualImageContainer = styled.div`
   ${position({ type: "sticky", top: 0, left: 0, z: -100 })}
 `;
 
-export const PDVisualImage = styled.figure`
-  ${size({
-    w: "100%",
-    h: typeof window === "undefined" ? "100vh" : `${window.innerHeight}px`,
-  })}
+export const PDVisualImage = styled.figure<{ $wh: number }>`
+  ${({ $wh }: { $wh: number }) =>
+    size({
+      w: "100%",
+      h: $wh !== 0 ? "100vh" : `${$wh}px`,
+    })}
   ${position({ type: "absolute", top: 0, left: 0, z: -2 })}
   overflow:hidden;
   img {
@@ -114,7 +114,7 @@ export const PDVisualImage = styled.figure`
   }
 `;
 
-export const PDVisualCover = styled.div`
+export const PDVisualCover = styled.div<{ $wh: number }>`
   ${size({ w: "100%", p: 80 })}
   ${flex({ std: "flex-start", cross: "flex-end" })}
   &:after {
@@ -124,15 +124,9 @@ export const PDVisualCover = styled.div`
     ${size({ w: "100%", h: "100%" })}
     background-color: ${({ theme }) => theme.projectDetails.bg};
     background: ${({ theme }) => theme.projectDetails.visualBg};
-    /* opacity: 0.9; */
   }
   @media only screen and (min-width: 1024px) {
-    height: ${typeof window === "undefined"
-      ? "100vh"
-      : `${window.innerHeight}px`};
-    &:after {
-      /* opacity: 0.8; */
-    }
+    height: ${({ $wh }: { $wh: number }) => ($wh !== 0 ? "100vh" : `${$wh}px`)};
   }
 `;
 

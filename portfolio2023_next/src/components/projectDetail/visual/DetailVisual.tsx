@@ -14,7 +14,11 @@ import { DetailScrollRefStateTypes } from "@/types/state";
 // state
 import { detailScrollRefState } from "@/states/scroll";
 
-export default function DetailVisual() {
+export default function DetailVisual({
+  $windowHeight,
+}: {
+  $windowHeight: number;
+}) {
   const visualRef = useRef<HTMLDivElement | null>(null);
   const setDetailScrollRef =
     useSetRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
@@ -29,7 +33,7 @@ export default function DetailVisual() {
   );
 
   return (
-    <PDVisualCover ref={setRef}>
+    <PDVisualCover ref={setRef} $wh={$windowHeight}>
       <DetailTitleWrap />
       <DetailLinkContainer />
     </PDVisualCover>

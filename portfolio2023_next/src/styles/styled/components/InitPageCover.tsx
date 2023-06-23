@@ -24,13 +24,14 @@ export const InitCoverContainer = styled.div`
   }
 `;
 
-export const InitCoverBox = styled.div`
+export const InitCoverBox = styled.div<{ $wh: number }>`
   position: relative;
-  ${size({
-    w: "100%",
-    h: typeof window != "undefined" ? `${window.innerHeight}px` : "100vh",
-    p: [0, 80],
-  })}
+  ${({ $wh }: { $wh: number }) =>
+    size({
+      w: "100%",
+      h: $wh !== 0 ? `${$wh}px` : "100vh",
+      p: [0, 80],
+    })}
   ${flex({ dir: "column" })}
 `;
 

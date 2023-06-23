@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
 
 // components
@@ -22,6 +22,11 @@ import { scrollRefState } from "@/states/scroll";
 export default function PageFooter() {
   const footerRef = useRef<HTMLElement | null>(null);
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
+  const [wh, setWh] = useState<number>(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") setWh(window.innerHeight);
+  }, []);
 
   const setRef = useCallback(
     (node: HTMLElement | null) => {
@@ -32,7 +37,7 @@ export default function PageFooter() {
   );
 
   return (
-    <FooterContainer className="pager-footer" ref={setRef}>
+    <FooterContainer className="pager-footer" ref={setRef} $wh={wh}>
       <FooterWrap>
         <FooterUpperContainer />
         <FooterLower />

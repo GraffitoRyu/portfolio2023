@@ -26,6 +26,11 @@ export default function InitPageCover() {
   const [initiating, setInit] = useState<string>("initiating");
   const [show, setShow] = useState<string>("show");
   const [{ init, loaded }, setPage] = useRecoilState<pageStateTypes>(pageState);
+  const [wh, setWh] = useState<number>(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") setWh(window.innerHeight);
+  }, []);
 
   useEffect(() => {
     if (init && loaded) {
@@ -47,7 +52,7 @@ export default function InitPageCover() {
 
   return (
     <InitCoverContainer className={`${initiating} ${show}`}>
-      <InitCoverBox>
+      <InitCoverBox $wh={wh}>
         <InitTitle />
         <InitIcon />
       </InitCoverBox>
