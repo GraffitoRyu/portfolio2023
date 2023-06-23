@@ -14,7 +14,6 @@ export const VisualContainer = styled.div<{ $wh: number }>`
   ${flex({ dir: "column", cross: "start" })}
   height: ${({ $wh }: { $wh: number }): string =>
     $wh !== 0 ? `${$wh / 2}px` : "50vh"};
-  background-color: rgba(0, 0, 255, 0.1);
   @media only screen and (min-width: 1024px) {
     width: 100%;
     height: ${({ $wh }: { $wh: number }): string =>

@@ -81,11 +81,7 @@ export default function PageVisual({ title }: { title: string[] }) {
 
   return (
     <VisualContainer ref={visualRef} $wh={wh}>
-      <VisualTitle
-        ref={visualTitleRef}
-        className={`${loaded}`}
-        style={{ backgroundColor: "rgba(255,255,255,0.2)" }}
-      >
+      <VisualTitle ref={visualTitleRef} className={`${loaded}`}>
         <VisualTitleLine className="visual-title stroke-title">
           {title[0]}
         </VisualTitleLine>
