@@ -16,7 +16,7 @@ export const InitCoverContainer = styled.div`
   opacity:0;
   transition: opacity ${transTime.common.initFade / 1000}s;
   display: none;
-  &.initiating {
+  &.initializing {
     display: block;
   }
   &.show {

@@ -23,13 +23,16 @@ import { pageState } from "@/states/page";
 import { transTime } from "@/styles/styled/preset/transTime";
 
 export default function InitPageCover() {
-  const [initiating, setInit] = useState<string>("initiating");
+  const [initializing, setInit] = useState<string>("");
   const [show, setShow] = useState<string>("show");
   const [{ init, loaded }, setPage] = useRecoilState<pageStateTypes>(pageState);
   const [wh, setWh] = useState<number>(0);
 
   useEffect(() => {
-    if (typeof window !== "undefined") setWh(window.innerHeight);
+    if (typeof window !== "undefined") {
+      setWh(window.innerHeight);
+      setInit("initializing");
+    }
   }, []);
 
   useEffect(() => {
@@ -51,7 +54,7 @@ export default function InitPageCover() {
   }, [init, loaded, setPage]);
 
   return (
-    <InitCoverContainer className={`${initiating} ${show}`}>
+    <InitCoverContainer className={`${initializing} ${show}`}>
       <InitCoverBox $wh={wh}>
         <InitTitle />
         <InitIcon />
