@@ -5,6 +5,7 @@ import { rem } from "@/util/unit";
 export const PageTitle = styled.span`
   color: transparent;
   display: block;
+  will-change: transform, opacity, color;
   ${font({
     size: 144,
     weight: 500,

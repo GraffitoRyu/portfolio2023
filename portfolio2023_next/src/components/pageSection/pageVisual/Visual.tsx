@@ -10,6 +10,9 @@ import {
   VisualTitleLine,
 } from "@/styles/styled/components/PageVisual";
 
+// style
+import { transTime } from "@/styles/styled/preset/transTime";
+
 // type
 import { ScrollRefStateTypes, pageStateTypes } from "@/types/state";
 
@@ -62,8 +65,12 @@ export default function PageVisual({ title }: { title: string[] }) {
   }, [scrollContainer, visualRef, visualTitleRef]);
 
   useEffect(() => {
-    if (loadComplete) setLoaded("");
-    else setLoaded("loading");
+    if (loadComplete) {
+      setLoaded("trans-title loaded");
+      setTimeout(() => {
+        setLoaded("");
+      }, transTime.visual.fadeInUp);
+    } else setLoaded("trans-title loading");
   }, [loadComplete]);
 
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import { css, styled } from "styled-components";
 
 // style
 import { flex, transition } from "../preset/mixins";
@@ -21,13 +21,47 @@ export const VisualContainer = styled.div`
   }
 `;
 
+const timeOption = { time: `${transTime.visual.fadeInUp / 1000}s` };
+
+const transVisualTitle = (delay: number | null) => {
+  const option =
+    typeof delay === "number"
+      ? { ...timeOption, delay: `${delay}s` }
+      : timeOption;
+  return css`
+    ${transition([
+      {
+        prop: "transform",
+        ...option,
+      },
+      {
+        prop: "opacity",
+        ...option,
+      },
+      {
+        prop: "color",
+        time: `${transTime.color / 1000}s`,
+      },
+    ])}
+  `;
+};
+
 export const VisualTitle = styled.h1`
   ${flex({ dir: "column", cross: "start" })}
   font-size: 0;
+  will-change: transform, opacity;
   &.loading {
     .visual-title {
       transform: translateY(100%);
       opacity: 0;
+    }
+  }
+  &.trans-title {
+    .stroke-title {
+      ${transVisualTitle(null)}
+    }
+    .filled-title {
+      ${transVisualTitle(0.16)}
     }
   }
 `;
@@ -35,39 +69,9 @@ export const VisualTitle = styled.h1`
 export const VisualTitleLine = styled(PageTitle)`
   &.stroke-title {
     -webkit-text-stroke-color: ${({ theme }) => theme.visualSection.border};
-    ${transition([
-      {
-        prop: "transform",
-        time: `${transTime.visual.fadeInUp / 1000}s`,
-      },
-      {
-        prop: "opacity",
-        time: `${transTime.visual.fadeInUp / 1000}s`,
-      },
-      {
-        prop: "color",
-        time: `${transTime.color / 1000}s`,
-      },
-    ])}
   }
   &.filled-title {
     color: ${({ theme }) => theme.visualSection.fill};
-    ${transition([
-      {
-        prop: "transform",
-        time: `${transTime.visual.fadeInUp / 1000}s`,
-        delay: "0.16s",
-      },
-      {
-        prop: "opacity",
-        time: `${transTime.visual.fadeInUp / 1000}s`,
-        delay: "0.16s",
-      },
-      {
-        prop: "color",
-        time: `${transTime.color / 1000}s`,
-      },
-    ])}
   }
   @media only screen and (min-width: 1024px) {
     font-size: ${rem(240)};
