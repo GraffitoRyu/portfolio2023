@@ -8,12 +8,18 @@ import { flex, font, position, size } from "../preset/mixins";
 
 // util
 import { rem } from "@/util/unit";
+import { easing } from "../preset/easing";
 
 export const HeaderContainer = styled.header`
   ${position({ type: "sticky", top: 0, left: 0 })}
   width:100%;
   z-index: 2000;
   pointer-events: none;
+  transition: opacity 0.8s ${easing.quart}, transform 0.8s ${easing.quart};
+  &.hide {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
 `;
 
 export const StyledHeaderWrap = styled.div`
