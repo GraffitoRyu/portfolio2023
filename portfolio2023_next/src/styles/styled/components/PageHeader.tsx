@@ -15,7 +15,9 @@ export const HeaderContainer = styled.header`
   width:100%;
   z-index: 2000;
   pointer-events: none;
-  transition: opacity 0.8s ${easing.quart}, transform 0.8s ${easing.quart};
+  &.init-hide {
+    transition: opacity 0.8s ${easing.quart}, transform 0.8s ${easing.quart};
+  }
   &.hide {
     opacity: 0;
     transform: translateY(-100%);
