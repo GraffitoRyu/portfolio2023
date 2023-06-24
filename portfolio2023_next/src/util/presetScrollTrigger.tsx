@@ -5,6 +5,7 @@ import { HookScrollTriggerProps } from "@/types/hooks";
 export function ctxScrollTrigger({
   container,
   target,
+  normalize,
   options,
   direction,
 }: HookScrollTriggerProps) {
@@ -17,15 +18,15 @@ export function ctxScrollTrigger({
       ScrollTrigger.defaults({
         scroller: container,
       });
+      if (typeof normalize === "boolean")
+        ScrollTrigger.normalizeScroll({
+          allowNestedScroll: true,
+        });
 
       if (typeof direction === "undefined" || direction === "to")
-        gsap.to(target, Object.assign(options, { invalidateOnRefresh: true }));
+        gsap.to(target, options);
 
-      if (direction === "from")
-        gsap.from(
-          target,
-          Object.assign(options, { invalidateOnRefresh: true })
-        );
+      if (direction === "from") gsap.from(target, options);
 
       ScrollTrigger.clearScrollMemory();
       ScrollTrigger.refresh();

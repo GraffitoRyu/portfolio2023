@@ -43,32 +43,30 @@ export default function PageVisual({ title }: { title: string[] }) {
     if (!scrollContainer || !scrollTarget) return;
 
     const visualEl = visualRef.current;
-    const visualTitleEl = visualTitleRef.current;
+    if (!visualEl) return;
 
-    const triggerStart = visualTitleEl
-      ? visualTitleEl.getBoundingClientRect().top
-      : "center";
-    const targetEnd = visualEl
-      ? visualEl.getBoundingClientRect().bottom
-      : "bottom";
+    const triggerStart = scrollTarget.getBoundingClientRect().top;
+    const targetEnd = visualEl.getBoundingClientRect().bottom;
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
       target: scrollTarget,
+      normalize: true,
       options: {
         opacity: 0,
-        y: "+=500",
+        y: `+=${scrollTarget.clientHeight * 2}`,
         scrollTrigger: {
           trigger: scrollTarget,
           start: `top ${triggerStart}`, // 움직일 요소의 시작, 트리거 영역의 시작
           end: `${targetEnd} center`, // 움직일 요소의 끝, 트리거 영역의 끝
           scrub: true, // 스크롤 위치에 따라 실시간으로 대응하여 변하도록 설정
+          invalidateOnRefresh: true,
           markers: true, // 개발용 가이드라인
         },
       },
     });
     return () => ctx.revert();
-  }, [scrollContainer, visualRef, visualTitleRef]);
+  }, [scrollContainer]);
 
   useEffect(() => {
     if (loadComplete) {
