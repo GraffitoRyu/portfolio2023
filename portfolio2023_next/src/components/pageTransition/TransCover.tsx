@@ -17,19 +17,19 @@ import { pageState } from "@/states/page";
 import { transCoverData } from "@/data/transCover";
 
 // types
-import { ScreenTypes, pageStateTypes } from "@/types/state";
+import { ScreenSizeTypes, pageStateTypes } from "@/types/state";
 import { transCoverTypes } from "@/types/transCover";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
-import { screenState } from "@/states/screen";
+import { screenSizeState } from "@/states/screen";
 
 export default function TransCover() {
   const [{ initComplete, cover, loaded }, setPage] =
     useRecoilState<pageStateTypes>(pageState);
   const [loading, setLoading] = useState("");
   const [data, setData] = useState<transCoverTypes>(transCoverData[cover]);
-  const { windowHeight } = useRecoilValue<ScreenTypes>(screenState);
+  const { windowHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
 
   useEffect(() => {
     setData(transCoverData[cover]);

@@ -14,16 +14,16 @@ import {
 } from "@/styles/styled/components/PageFooter";
 
 // types
-import { ScreenTypes, ScrollRefStateTypes } from "@/types/state";
+import { ScreenSizeTypes, ScrollRefStateTypes } from "@/types/state";
 
 // state
 import { scrollRefState } from "@/states/scroll";
-import { screenState } from "@/states/screen";
+import { screenSizeState } from "@/states/screen";
 
 export default function PageFooter() {
   const footerRef = useRef<HTMLElement | null>(null);
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
-  const { windowHeight } = useRecoilValue<ScreenTypes>(screenState);
+  const { windowHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
 
   const setRef = useCallback(
     (node: HTMLElement | null) => {

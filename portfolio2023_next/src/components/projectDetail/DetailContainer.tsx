@@ -19,7 +19,7 @@ import { PDContainer } from "@/styles/styled/components/ProjectDetail";
 import {
   DetailLayoutStateTypes,
   DetailScrollRefStateTypes,
-  ScreenTypes,
+  ScreenSizeTypes,
 } from "@/types/state";
 import { DetailTypes } from "@/types/projectDetails";
 
@@ -32,14 +32,14 @@ import { transTime } from "@/styles/styled/preset/transTime";
 
 // hooks
 import useGetDetailByCodeQuery from "@/hooks/useGetDetailQuery";
-import { screenState } from "@/states/screen";
+import { screenSizeState } from "@/states/screen";
 
 export default function ProjectDetail() {
   // 프로젝트 코드
   const params = useSearchParams();
   const code = params.get("code");
 
-  const { windowHeight } = useRecoilValue<ScreenTypes>(screenState);
+  const { windowHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
 
   // 프로젝트 상세 열림 상태 관리
   const [layoutState, setLayoutState] =

@@ -14,20 +14,20 @@ import {
 } from "@/styles/styled/components/InitPageCover";
 
 // types
-import { ScreenTypes, pageStateTypes } from "@/types/state";
+import { ScreenSizeTypes, pageStateTypes } from "@/types/state";
 
 // state
 import { pageState } from "@/states/page";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
-import { screenState } from "@/states/screen";
+import { screenSizeState } from "@/states/screen";
 
 export default function InitPageCover() {
   const [initializing, setInit] = useState<string>("");
   const [show, setShow] = useState<string>("show");
   const [{ init, loaded }, setPage] = useRecoilState<pageStateTypes>(pageState);
-  const { windowHeight } = useRecoilValue<ScreenTypes>(screenState);
+  const { windowHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
