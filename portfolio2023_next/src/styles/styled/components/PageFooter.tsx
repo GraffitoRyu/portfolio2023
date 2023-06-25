@@ -87,8 +87,13 @@ export const FooterLowerContainer = styled.div`
 `;
 
 export const PortfolioSummaryContainer = styled.div`
-  ${size({ w: "100%", mt: 160, pr: "33.3333%" })}
-  @media only screen and (min-width:768px) {
+  ${size({ w: "100%", mt: 160 })}
+  max-width:300px;
+  @media only screen and (min-width: 580px) {
+    ${size({ mt: 80, pr: "50%" })}
+    max-width:100%;
+  }
+  @media only screen and (min-width: 768px) {
     ${size({ mt: 80, pr: "66.6667%" })}
   }
   @media only screen and (min-width: 1024px) {
@@ -104,17 +109,14 @@ export const PortfolioSummaryContainer = styled.div`
 
 const FooterDescFont = css`
   ${font({
-    size: 24,
+    size: 32,
     weight: 400,
     height: "1em",
   })}
   @media only screen and (min-width: 580px) {
-    font-size: ${rem(16)};
+    font-size: ${rem(18)};
   }
   @media only screen and (min-width: 1024px) {
-    font-size: ${rem(32)};
-  }
-  @media only screen and (min-width: 1280px) {
     font-size: ${rem(24)};
   }
   @media only screen and (min-width: 1680px) {
@@ -153,6 +155,9 @@ export const FooterMenuColumn = styled.div`
 
 export const FooterMenuItem = styled.dl`
   ${size({ w: "100%", mb: 80 })}
+  @media only screen and (min-width: 560px) {
+    ${size({ mb: 24 })}
+  }
   @media only screen and (min-width: 768px) {
     ${size({ mb: 24 })}
   }
@@ -220,7 +225,7 @@ export const FooterLinkBtn = styled.a`
   }
 
   ${font({
-    size: 40,
+    size: 32,
     weight: 400,
     height: "1em",
   })}
