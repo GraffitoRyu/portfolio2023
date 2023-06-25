@@ -25,10 +25,10 @@ export const HeaderContainer = styled.header`
 `;
 
 export const StyledHeaderWrap = styled.div`
-  ${flex({ std: "start" })}
+  ${flex({ std: "flex-start" })}
   ${size({
     w: "100%",
-    h: sizePreset.btn.mobile,
+    h: sizePreset.btn.mobile + sizePreset.common.padding * 2,
     p: sizePreset.common.padding,
   })}
   @media only screen and (min-width:1024px) {
@@ -38,7 +38,7 @@ export const StyledHeaderWrap = styled.div`
 
 export const TimerContainer = styled.div`
   ${flex({})}
-  ${size({ h: "100%", p: [0, 40, 0, 2] })}
+  ${size({ w: "fit-content", h: 48, p: [0, 40, 0, 2] })}
   border-top: ${rem(4)} solid ${({ theme }) => theme.timer.bar};
   border-bottom: ${rem(4)} solid transparent;
   color: ${({ theme }) => theme.timer.text};
@@ -47,14 +47,18 @@ export const TimerContainer = styled.div`
     height: "1em",
     weight: 500,
   })}
-  time {
+  @media only screen and (min-width:1024px) {
+    height: 100%;
   }
 `;
 
 export const TimeRegion = styled.strong`
-  ${flex({})}
+  display: none;
   &:after {
     content: "/";
     margin: 0 ${rem(16)};
+  }
+  @media only screen and (min-width: 1024px) {
+    ${flex({})}
   }
 `;
