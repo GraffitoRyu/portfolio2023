@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState, useRef, useCallback } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 // components
 import DetailHeader from "@/components/projectDetail/header/DetailHeader";
@@ -19,6 +19,7 @@ import { PDContainer } from "@/styles/styled/components/ProjectDetail";
 import {
   DetailLayoutStateTypes,
   DetailScrollRefStateTypes,
+  ScreenTypes,
 } from "@/types/state";
 import { DetailTypes } from "@/types/projectDetails";
 
@@ -31,13 +32,14 @@ import { transTime } from "@/styles/styled/preset/transTime";
 
 // hooks
 import useGetDetailByCodeQuery from "@/hooks/useGetDetailQuery";
+import { screenState } from "@/states/screen";
 
 export default function ProjectDetail() {
   // 프로젝트 코드
   const params = useSearchParams();
   const code = params.get("code");
 
-  const [wh, setWh] = useState<number>(0);
+  const { windowHeight } = useRecoilValue<ScreenTypes>(screenState);
 
   // 프로젝트 상세 열림 상태 관리
   const [layoutState, setLayoutState] =
@@ -61,10 +63,6 @@ export default function ProjectDetail() {
     },
     [setDetailScrollRef]
   );
-
-  useEffect(() => {
-    if (typeof window !== "undefined") setWh(window.innerHeight);
-  }, []);
 
   // 데이터 조회 상태
   useEffect(() => {
@@ -106,9 +104,9 @@ export default function ProjectDetail() {
   return (
     <PDContainer className={`${open}`} ref={setRef}>
       <DetailHeader />
-      <DetailBackground $windowHeight={wh} />
-      <DetailSection className="detail-visual" $windowHeight={wh}>
-        <DetailVisual $windowHeight={wh} />
+      <DetailBackground $windowHeight={windowHeight} />
+      <DetailSection className="detail-visual" $windowHeight={windowHeight}>
+        <DetailVisual $windowHeight={windowHeight} />
       </DetailSection>
       <DetailSection className="detail-info side-padding">
         <DetailInfoContainer />

@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useSetRecoilState } from "recoil";
+import { useCallback, useRef } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 // components
 import FooterUpperContainer from "./FooterUpper";
@@ -14,19 +14,16 @@ import {
 } from "@/styles/styled/components/PageFooter";
 
 // types
-import { ScrollRefStateTypes } from "@/types/state";
+import { ScreenTypes, ScrollRefStateTypes } from "@/types/state";
 
 // state
 import { scrollRefState } from "@/states/scroll";
+import { screenState } from "@/states/screen";
 
 export default function PageFooter() {
   const footerRef = useRef<HTMLElement | null>(null);
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
-  const [wh, setWh] = useState<number>(0);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") setWh(window.innerHeight);
-  }, []);
+  const { windowHeight } = useRecoilValue<ScreenTypes>(screenState);
 
   const setRef = useCallback(
     (node: HTMLElement | null) => {
@@ -37,7 +34,7 @@ export default function PageFooter() {
   );
 
   return (
-    <FooterContainer className="pager-footer" ref={setRef} $wh={wh}>
+    <FooterContainer className="pager-footer" ref={setRef} $wh={windowHeight}>
       <FooterWrap>
         <FooterUpperContainer />
         <FooterLower />

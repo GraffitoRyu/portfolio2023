@@ -11,6 +11,10 @@ export type DeviceTypes = {
   orientation: string;
 };
 
+export type ScreenTypes = {
+  windowHeight: number;
+};
+
 export type pageStateTypes = {
   init: boolean;
   initComplete: boolean;

@@ -9,23 +9,31 @@ import { deviceState } from "@/states/device";
 // util
 import debounce from "@/util/debounceEvent";
 import { checkDevice } from "@/util/checkDevice";
-import { DeviceTypes } from "@/types/state";
+import { DeviceTypes, ScreenTypes } from "@/types/state";
+import { screenState } from "@/states/screen";
 
-export default function UpdateDeviceState() {
+export default function UpdateStateByResize() {
   const setDevice = useSetRecoilState<DeviceTypes>(deviceState);
+  const setScreen = useSetRecoilState<ScreenTypes>(screenState);
 
-  // 접속 디바이스 업데이트
+  // resize update
   const resizeCallback = debounce(() => {
+    // 접속 디바이스 업데이트
     setDevice(checkDeviceState());
+    // 화면 사이즈 값 업데이트
+    setScreen(prev => ({ ...prev, windowHeight: window.innerHeight }));
   }, 500);
 
   // 최초의 디바이스 세팅
   useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
     setDevice(checkDeviceState());
-  }, [setDevice]);
+    setScreen(prev => ({ ...prev, windowHeight: window.innerHeight }));
+  }, [setDevice, setScreen]);
 
   // 리사이징 후 디바이스 세팅
   useEffect(() => {
+    if (typeof window === "undefined") return;
     window.addEventListener("resize", resizeCallback);
     return () => window.removeEventListener("resize", resizeCallback);
   }, [resizeCallback]);

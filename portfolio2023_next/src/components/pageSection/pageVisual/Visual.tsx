@@ -14,7 +14,11 @@ import {
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // type
-import { ScrollRefStateTypes, pageStateTypes } from "@/types/state";
+import {
+  ScreenTypes,
+  ScrollRefStateTypes,
+  pageStateTypes,
+} from "@/types/state";
 
 // state
 import { pageState } from "@/states/page";
@@ -22,6 +26,7 @@ import { scrollRefState } from "@/states/scroll";
 
 // hooks
 import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { screenState } from "@/states/screen";
 
 export default function PageVisual({ title }: { title: string[] }) {
   const { container: scrollContainer } =
@@ -29,14 +34,9 @@ export default function PageVisual({ title }: { title: string[] }) {
   const visualRef = useRef<HTMLDivElement | null>(null);
   const visualTitleRef = useRef<HTMLHeadingElement | null>(null);
 
+  const { windowHeight } = useRecoilValue<ScreenTypes>(screenState);
   const { loadComplete } = useRecoilValue<pageStateTypes>(pageState);
   const [loaded, setLoaded] = useState<string>("loading");
-
-  const [wh, setWh] = useState<number>(0);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") setWh(window.innerHeight);
-  }, []);
 
   useEffect(() => {
     const scrollTarget = visualTitleRef.current;
@@ -78,7 +78,7 @@ export default function PageVisual({ title }: { title: string[] }) {
   }, [loadComplete]);
 
   return (
-    <VisualContainer ref={visualRef} $wh={wh}>
+    <VisualContainer ref={visualRef} $wh={windowHeight}>
       <VisualTitle ref={visualTitleRef} className={`${loaded}`}>
         <VisualTitleLine className="visual-title stroke-title">
           {title[0]}

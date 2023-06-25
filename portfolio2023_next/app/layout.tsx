@@ -22,7 +22,7 @@ import { HTMLThemeStyle } from "@/styles/styled/components/Page";
 
 // hooks
 import { PageLoadEvents } from "@/hooks/PageLoadEvents";
-import UpdateDeviceState from "@/hooks/UpdateDeviceState";
+import UpdateStateByResize from "@/hooks/UpdateStateByResize";
 
 export default function RootLayout({
   children,
@@ -37,7 +37,7 @@ export default function RootLayout({
             <StyledComponentsRegistry>
               <ThemeColors>
                 <HTMLThemeStyle />
-                <UpdateDeviceState />
+                <UpdateStateByResize />
                 <main className="page-container w-full h-full fixed">
                   <PageTemplate>{children}</PageTemplate>
                   <TransCover />
