@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 
 // types
@@ -13,6 +13,7 @@ import { cursorState } from "@/states/cursor";
 import { CursorStyle } from "@/styles/styled/components/Cursor";
 
 export default function Cursor() {
+  const [hide, setHide] = useState<string>("hide");
   const [cursor, setCursor] = useRecoilState<CursorTypes>(cursorState);
 
   const updateCursor = useCallback(
@@ -39,15 +40,20 @@ export default function Cursor() {
   );
 
   useEffect(() => {
-    if (matchMedia("(pointer:fine)").matches) {
-      window.addEventListener("mousemove", updateCursor);
-      return () => window.removeEventListener("mousemove", updateCursor);
-    }
+    if (typeof window === "undefined") return;
+    setHide(matchMedia("(pointer:fine)").matches ? "" : "hide");
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !matchMedia("(pointer:fine)").matches)
+      return;
+    window.addEventListener("mousemove", updateCursor, false);
+    return () => window.removeEventListener("mousemove", updateCursor, false);
   }, [updateCursor]);
 
   return (
     <CursorStyle
-      className={`cursor-container ${cursor.hover}`}
+      className={`cursor-container ${hide} ${cursor.hover}`}
       style={{ left: cursor.x, top: cursor.y }}
     >
       <figure className="cursor"></figure>

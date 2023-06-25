@@ -13,6 +13,9 @@ export const CursorStyle = styled.div`
   ${position({ type: "fixed", top: "0rem", left: "0rem", z: 9999 })}
   pointer-events: none;
   backface-visibility: visible;
+  &.hide {
+    display: none;
+  }
   .cursor {
     ${size({ w: rem(8), h: rem(8) })};
     ${position({ center: true })}
