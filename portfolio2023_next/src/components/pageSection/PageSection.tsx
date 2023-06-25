@@ -1,21 +1,33 @@
+"use client";
+
 import React from "react";
+import { useRecoilValue } from "recoil";
 
 // style components
 import { PageSectionContainer } from "@/styles/styled/components/PageSection";
 
+// state
+import { screenSizeState } from "@/states/screen";
+
+// types
+import { ScreenSizeTypes } from "@/types/state";
+
 export default function PageSection({
   children,
   className,
-  isVisual,
 }: {
   children: React.ReactNode;
   className?: string;
-  isVisual?: boolean;
 }) {
-  const sectionClass = [`lg:flex ${isVisual ? "flex-wrap" : "items-start"}`];
-  if (className) sectionClass.push(className);
+  const { windowHeight, headerHeight } =
+    useRecoilValue<ScreenSizeTypes>(screenSizeState);
+
   return (
-    <PageSectionContainer className={sectionClass.join(" ")}>
+    <PageSectionContainer
+      className={className ? className : ""}
+      $wh={windowHeight}
+      $headerHeight={headerHeight}
+    >
       {children}
     </PageSectionContainer>
   );

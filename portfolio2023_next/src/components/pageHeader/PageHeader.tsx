@@ -15,16 +15,32 @@ import {
 
 // state
 import { pageState } from "@/states/page";
+import { scrollRefState } from "@/states/scroll";
+import { screenSizeState } from "@/states/screen";
 
 // types
-import { ScrollRefStateTypes, pageStateTypes } from "@/types/state";
-import { scrollRefState } from "@/states/scroll";
+import {
+  ScreenSizeTypes,
+  ScrollRefStateTypes,
+  pageStateTypes,
+} from "@/types/state";
 
 export default function PageHeader() {
   const headerRef = useRef<HTMLElement | null>(null);
+  const setScreenSize = useSetRecoilState<ScreenSizeTypes>(screenSizeState);
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
   const [hide, setHide] = useState<string>("init-hide hide");
   const { init, initComplete } = useRecoilValue<pageStateTypes>(pageState);
+
+  const updateSize = useCallback(() => {
+    const header = headerRef?.current;
+    if (!header) return;
+
+    setScreenSize(prev => ({
+      ...prev,
+      headerHeight: header.clientHeight,
+    }));
+  }, [setScreenSize]);
 
   const updateRef = useCallback(
     (node: HTMLElement | null) => {
@@ -43,6 +59,14 @@ export default function PageHeader() {
   useEffect(() => {
     if (initComplete) setHide("");
   }, [initComplete]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    updateSize();
+
+    window.addEventListener("resize", updateSize, false);
+    return () => window.removeEventListener("resize", updateSize, false);
+  }, [updateSize]);
 
   return (
     <HeaderContainer className={`${hide}`} ref={updateRef}>

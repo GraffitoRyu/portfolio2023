@@ -11,8 +11,10 @@ export type DeviceTypes = {
   orientation: string;
 };
 
-export type ScreenTypes = {
+export type ScreenSizeTypes = {
+  windowWidth: number;
   windowHeight: number;
+  headerHeight: number;
 };
 
 export type pageStateTypes = {

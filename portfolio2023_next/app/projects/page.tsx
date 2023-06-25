@@ -11,7 +11,7 @@ import { Suspense } from "react";
 export default function Projects() {
   return (
     <>
-      <PageSection className="side-h-padding" isVisual={true}>
+      <PageSection className="side-h-padding visual-section">
         <PageVisual title={["Selected ", "projects"]} />
         <SectionHeader empty={true} />
         <SectionContents>

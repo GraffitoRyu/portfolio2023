@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useRecoilValue } from "recoil";
 
 // style components
 import {
@@ -7,19 +10,27 @@ import {
   HeaderTitle,
 } from "@/styles/styled/components/PageSection";
 
-// type
-import { SectionHeaderTypes } from "@/types/profile";
-
 // util components
 import ParseDescNewLine from "@/components/util/ParseDescNewLine";
+
+// type
+import { ScreenSizeTypes } from "@/types/state";
+import { SectionHeaderTypes } from "@/types/profile";
+
+// state
+import { screenSizeState } from "@/states/screen";
 
 export default function SectionHeader({
   empty,
   title,
   desc,
 }: SectionHeaderTypes) {
+  const { headerHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
   return (
-    <SectionHeaderContainer className="w-full lg:w-1/2">
+    <SectionHeaderContainer
+      className="section-header"
+      $headerHeight={headerHeight}
+    >
       {empty ? (
         ""
       ) : (

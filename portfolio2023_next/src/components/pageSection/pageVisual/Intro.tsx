@@ -13,12 +13,15 @@ import ParseDescNewLine from "@/components/util/ParseDescNewLine";
 
 // type
 import { IntroTypes } from "@/types/section";
-import { ScrollRefStateTypes } from "@/types/state";
+import { ScreenSizeTypes, ScrollRefStateTypes } from "@/types/state";
 
 // state
 import { scrollRefState } from "@/states/scroll";
+import { screenSizeState } from "@/states/screen";
 
 export default function PageIntro({ title, desc }: IntroTypes) {
+  const { windowWidth } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
+
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const descRef = useRef<HTMLParagraphElement | null>(null);
 
@@ -26,6 +29,8 @@ export default function PageIntro({ title, desc }: IntroTypes) {
     useRecoilValue<ScrollRefStateTypes>(scrollRefState);
 
   useEffect(() => {
+    if (windowWidth < 1024) return;
+
     if (!scrollContainer) return;
 
     const titleTarget = titleRef.current;
@@ -46,19 +51,17 @@ export default function PageIntro({ title, desc }: IntroTypes) {
         end: `top 90%`, // target, trigger
       };
 
-      gsap.from(titleTarget, {
+      const gsapOptions = {
         opacity: 0,
         scrollTrigger: { ...stOptions, trigger: titleTarget },
-      });
-      gsap.from(descTarget, {
-        opacity: 0,
-        delay: 0.16,
-        scrollTrigger: { ...stOptions, trigger: descTarget },
-      });
+      };
+
+      gsap.from(titleTarget, gsapOptions);
+      gsap.from(descTarget, Object.assign(gsapOptions, { delay: 0.16 }));
     });
 
     return () => ctx.revert();
-  }, [scrollContainer]);
+  }, [scrollContainer, windowWidth]);
 
   return (
     <>

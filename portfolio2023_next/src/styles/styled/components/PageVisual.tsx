@@ -3,7 +3,7 @@
 import { css, styled } from "styled-components";
 
 // style
-import { flex, transition } from "../preset/mixins";
+import { flex, font, size, transition } from "../preset/mixins";
 
 // util
 import { rem } from "@/util/unit";
@@ -15,14 +15,7 @@ export const VisualContainer = styled.div<{
   $headerHeight: number;
 }>`
   ${flex({ dir: "column", cross: "start" })}
-  height: ${({
-    $wh,
-    $headerHeight,
-  }: {
-    $wh: number;
-    $headerHeight: number;
-  }): string =>
-    $wh !== 0 ? `calc(${$wh / 2}px - ${$headerHeight}px)` : "50vh"};
+  height: 50%;
   @media only screen and (min-width: 1024px) {
     width: 100%;
     height: ${({
@@ -31,8 +24,7 @@ export const VisualContainer = styled.div<{
     }: {
       $wh: number;
       $headerHeight: number;
-    }): string =>
-      $wh !== 0 ? `calc(${$wh}px - ${$headerHeight}px)` : "100vh"};
+    }): string => ($wh !== 0 ? `${$wh - $headerHeight}px` : "100vh")};
   }
 `;
 
@@ -94,30 +86,32 @@ export const VisualTitleLine = styled(PageTitle)`
 `;
 
 export const IntroTitle = styled.h2`
-  margin-bottom: ${rem(160)};
+  ${size({ mb: 160 })}
   color: ${({ theme }) => theme.introSection.title};
-  font-size: ${rem(48)};
-  line-height: ${rem(64)};
-  font-weight: 300;
+  ${font({
+    size: 48,
+    weight: 300,
+    height: 64,
+  })}
   strong {
     color: ${({ theme }) => theme.introSection.strong};
     font-weight: 500;
   }
   @media only screen and (min-width: 1024px) {
-    font-size: ${rem(48)};
-    line-height: ${rem(64)};
-  }
-  @media only screen and (min-width: 1024px) {
-    font-size: ${rem(64)};
-    line-height: ${rem(80)};
+    ${font({
+      size: 64,
+      height: 80,
+    })}
   }
 `;
 
 export const IntroDesc = styled.p`
   color: ${({ theme }) => theme.introSection.desc};
-  font-size: ${rem(32)};
-  line-height: ${rem(56)};
-  font-weight: 400;
+  ${font({
+    size: 32,
+    weight: 400,
+    height: 56,
+  })}
   br {
     display: none;
   }
@@ -125,14 +119,18 @@ export const IntroDesc = styled.p`
     display: inline-block;
   }
   @media only screen and (min-width: 640px) {
-    font-size: ${rem(24)};
-    line-height: ${rem(40)};
+    ${font({
+      size: 24,
+      height: 40,
+    })}
     br {
       display: inline;
     }
   }
   @media only screen and (min-width: 1024px) {
-    font-size: ${rem(32)};
-    line-height: ${rem(56)};
+    ${font({
+      size: 32,
+      height: 56,
+    })}
   }
 `;

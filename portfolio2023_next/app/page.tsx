@@ -13,7 +13,7 @@ import TechStacks from "@/components/profile/techStacks/Stacks";
 export default function Profile() {
   return (
     <>
-      <PageSection className="side-h-padding" isVisual={true}>
+      <PageSection className="side-h-padding visual-section">
         <PageVisual title={["Ready for ", "interaction"]} />
         <SectionHeader empty={true} />
         <SectionContents>
