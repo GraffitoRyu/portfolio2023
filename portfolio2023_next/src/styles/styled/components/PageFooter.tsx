@@ -109,7 +109,7 @@ export const PortfolioSummaryContainer = styled.div`
 
 const FooterDescFont = css`
   ${font({
-    size: 32,
+    size: 24,
     weight: 400,
     height: "1em",
   })}
