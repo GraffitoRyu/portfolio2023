@@ -62,6 +62,12 @@ export const InitCoverTItle = styled.div`
   @media only screen and (min-width: 560px) {
     font-size: ${rem(24)};
   }
+  @media only screen and (min-width: 1024px) {
+    font-size: ${rem(32)};
+  }
+  @media only screen and (min-width: 1280px) {
+    font-size: ${rem(24)};
+  }
 `;
 
 const loadingRotate = keyframes`
