@@ -89,7 +89,7 @@ export const StackCategory = styled.div`
 `;
 
 export const StackList = styled.div`
-  ${flex({ std: "flex-start" })}
+  ${flex({ std: "flex-start", wrap: "wrap" })}
 `;
 
 export const StackFigure = styled.figure`
