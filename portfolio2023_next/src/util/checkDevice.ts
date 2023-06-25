@@ -39,12 +39,24 @@ export const conditions: ConditionsType = {
 };
 
 export const checkDevice: ChecksType = {
-  apple: () => conditions.apple.some((d) => navigator.userAgent.includes(d)),
-  mobile: () => conditions.mobile.some((d) => navigator.userAgent.includes(d)),
+  apple: () =>
+    typeof navigator !== "undefined"
+      ? conditions.apple.some((d) => navigator.userAgent.includes(d))
+      : false,
+  mobile: () =>
+    typeof navigator !== "undefined"
+      ? conditions.mobile.some((d) => navigator.userAgent.includes(d))
+      : false,
   tablet: () =>
-    conditions.mobile.some((d) => navigator.userAgent.includes(d)) &&
-    conditions.tablet.some((d) => navigator.userAgent.includes(d)) &&
-    window.innerWidth > 768,
+    typeof navigator !== "undefined"
+      ? conditions.mobile.some((d) => navigator.userAgent.includes(d)) &&
+        conditions.tablet.some((d) => navigator.userAgent.includes(d)) &&
+        window.innerWidth > 768
+      : false,
   orientation: () =>
-    window.innerWidth < window.innerHeight ? "portrait" : "landscape",
+    typeof window !== "undefined"
+      ? window.innerWidth < window.innerHeight
+        ? "portrait"
+        : "landscape"
+      : "landscape",
 };
