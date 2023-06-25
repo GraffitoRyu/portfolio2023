@@ -10,9 +10,5 @@ export default function SectionContents({
   children: ReactNode;
   full?: boolean;
 }) {
-  return (
-    <Contents className={`${full ? "w-full" : "w-full lg:w-1/2"}`}>
-      {children}
-    </Contents>
-  );
+  return <Contents className={`${full ? "full" : ""}`}>{children}</Contents>;
 }

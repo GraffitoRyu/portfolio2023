@@ -2,13 +2,16 @@
 
 import { css, styled } from "styled-components";
 
+// components
+import { PageTitle } from "./PageTitle";
+
 // style
 import { flex, font, size, transition } from "../preset/mixins";
+import { easing } from "../preset/easing";
+import { transTime } from "../preset/transTime";
 
 // util
 import { rem } from "@/util/unit";
-import { transTime } from "../preset/transTime";
-import { PageTitle } from "./PageTitle";
 
 export const VisualContainer = styled.div<{
   $wh: number;
@@ -85,6 +88,17 @@ export const VisualTitleLine = styled(PageTitle)`
   }
 `;
 
+const introFadeInUp = css`
+  &.init-hide {
+    transition: opacity ${transTime.visual.intro / 1000}s ${easing.quart},
+      transform ${transTime.visual.intro / 1000}s ${easing.quart};
+  }
+  &.hide {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+`;
+
 export const IntroTitle = styled.h2`
   ${size({ mb: 160 })}
   color: ${({ theme }) => theme.introSection.title};
@@ -97,11 +111,13 @@ export const IntroTitle = styled.h2`
     color: ${({ theme }) => theme.introSection.strong};
     font-weight: 500;
   }
+  ${introFadeInUp}
   @media only screen and (min-width: 1024px) {
     ${font({
       size: 64,
       height: 80,
     })}
+    opacity: 0;
   }
 `;
 
@@ -118,6 +134,7 @@ export const IntroDesc = styled.p`
   span {
     display: inline-block;
   }
+  ${introFadeInUp}
   @media only screen and (min-width: 640px) {
     ${font({
       size: 24,
@@ -132,5 +149,6 @@ export const IntroDesc = styled.p`
       size: 32,
       height: 56,
     })}
+    opacity: 0;
   }
 `;

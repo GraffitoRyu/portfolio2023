@@ -35,6 +35,9 @@ export const PageSectionContainer = styled.section<{
     &.visual-section {
       height: auto;
       flex-wrap: wrap;
+      .section-header {
+        display: block;
+      }
     }
   }
 `;
@@ -80,8 +83,11 @@ export const HeaderDesc = styled.p`
 `;
 
 export const Contents = styled.div`
-  padding-top: 0;
+  ${size({ w: "100%", pt: 0 })}
   @media only screen and (min-width: 1024px) {
-    ${size({ pt: 40 + 80 })}// (title line-height) + (title margin-bottom)
+    ${size({ pt: 40 + 80 })} // (title line-height) + (title margin-bottom)
+    &:not(.full) {
+      width: 50%;
+    }
   }
 `;

@@ -8,6 +8,7 @@ export const transTime = {
   color: 400,
   visual: {
     fadeInUp: 800,
+    intro: 800,
   },
   career: 800,
   tooltip: 400,
