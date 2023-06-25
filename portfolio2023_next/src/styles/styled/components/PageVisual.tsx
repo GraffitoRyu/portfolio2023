@@ -10,14 +10,29 @@ import { rem } from "@/util/unit";
 import { transTime } from "../preset/transTime";
 import { PageTitle } from "./PageTitle";
 
-export const VisualContainer = styled.div<{ $wh: number }>`
+export const VisualContainer = styled.div<{
+  $wh: number;
+  $headerHeight: number;
+}>`
   ${flex({ dir: "column", cross: "start" })}
-  height: ${({ $wh }: { $wh: number }): string =>
-    $wh !== 0 ? `${$wh / 2}px` : "50vh"};
+  height: ${({
+    $wh,
+    $headerHeight,
+  }: {
+    $wh: number;
+    $headerHeight: number;
+  }): string =>
+    $wh !== 0 ? `calc(${$wh / 2}px - ${$headerHeight}px)` : "50vh"};
   @media only screen and (min-width: 1024px) {
     width: 100%;
-    height: ${({ $wh }: { $wh: number }): string =>
-      $wh !== 0 ? `calc(${$wh}px - ${rem(80 * 2 + 32)})` : "100vh"};
+    height: ${({
+      $wh,
+      $headerHeight,
+    }: {
+      $wh: number;
+      $headerHeight: number;
+    }): string =>
+      $wh !== 0 ? `calc(${$wh}px - ${$headerHeight}px)` : "100vh"};
   }
 `;
 

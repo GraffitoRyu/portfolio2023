@@ -29,14 +29,20 @@ import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 import { screenState } from "@/states/screen";
 
 export default function PageVisual({ title }: { title: string[] }) {
-  const { container: scrollContainer } =
+  const { container: scrollContainer, header } =
     useRecoilValue<ScrollRefStateTypes>(scrollRefState);
   const visualRef = useRef<HTMLDivElement | null>(null);
   const visualTitleRef = useRef<HTMLHeadingElement | null>(null);
 
   const { windowHeight } = useRecoilValue<ScreenTypes>(screenState);
+  const [headerHeight, setHeaderHeight] = useState<number>(0);
+
   const { loadComplete } = useRecoilValue<pageStateTypes>(pageState);
   const [loaded, setLoaded] = useState<string>("loading");
+
+  useEffect(() => {
+    if (header) setHeaderHeight(header.clientHeight);
+  }, [header]);
 
   useEffect(() => {
     const scrollTarget = visualTitleRef.current;
@@ -78,7 +84,11 @@ export default function PageVisual({ title }: { title: string[] }) {
   }, [loadComplete]);
 
   return (
-    <VisualContainer ref={visualRef} $wh={windowHeight}>
+    <VisualContainer
+      ref={visualRef}
+      $wh={windowHeight}
+      $headerHeight={headerHeight}
+    >
       <VisualTitle ref={visualTitleRef} className={`${loaded}`}>
         <VisualTitleLine className="visual-title stroke-title">
           {title[0]}
