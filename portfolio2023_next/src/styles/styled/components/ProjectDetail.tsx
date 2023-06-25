@@ -53,9 +53,11 @@ export const PDHeaderTitleContainer = styled.h1`
   ${flex({ std: "start" })}
   margin-right: auto;
   color: ${({ theme }) => theme.projectDetails.visualTitle};
-  font-size: ${rem(24)};
-  line-height: 1em;
-  font-weight: 500;
+  ${font({
+    size: 24,
+    weight: 500,
+    height: "1em",
+  })}
 `;
 
 export const PDHeaderPageName = styled.span`
@@ -143,7 +145,7 @@ export const PDTitle = styled.div`
   }
   p {
     max-width: 100%;
-    margin-top: ${rem(40)};
+    ${size({ mt: 40 })}
     color: ${({ theme }) => theme.projectDetails.visualSubtitle};
     ${font({ size: 40, weight: 400, height: "1.6em" })}
     transition: transform 0.6s, opacity 0.6s;
@@ -190,7 +192,7 @@ export const PDLinkItem = styled.li`
 export const PDLinkBtn = styled(CommonBtn)``;
 
 export const PDLinkName = styled.span`
-  margin-right: ${rem(16)};
+  ${size({ mr: 16 })}
   ${font({
     size: 32,
     weight: 500,
@@ -202,9 +204,9 @@ export const PDLinkName = styled.span`
 `;
 
 export const PDInfoItem = styled.dl`
-  margin-bottom: ${rem(240)};
+  ${size({ mb: 240 })}
   dt {
-    margin-bottom: ${rem(40)};
+    ${size({ mb: 40 })}
     color: ${({ theme }) => theme.projectDetails.infoTitle};
     ${font({ size: 32, weight: 500, height: "1em" })}
   }
@@ -214,7 +216,7 @@ export const PDInfoItem = styled.dl`
   }
   @media only screen and (min-width: 1024px) {
     dt {
-      margin-bottom: ${rem(40)};
+      ${size({ mb: 40 })}
       font-size: ${rem(24)};
     }
     dd {
@@ -233,14 +235,13 @@ export const PDInfoBox = styled.div`
 export const PDSummaryContainer = styled(PDInfoBox)`
   padding-left: 0;
   @media only screen and (min-width: 1024px) {
-    padding-right: ${rem(240)};
+    ${size({ pr: 240 })}
   }
   dl {
     display: inline-block;
     vertical-align: top;
     @media only screen and (min-width: 1024px) {
-      margin-bottom: 0;
-      height: ${rem(320)};
+      ${size({ h: 320, mb: 0 })}
     }
   }
 `;
@@ -248,7 +249,7 @@ export const PDSummaryContainer = styled(PDInfoBox)`
 export const PCDescContainer = styled(PDInfoBox)`
   padding-right: 0;
   @media only screen and (min-width: 1024px) {
-    padding-right: ${rem(240)};
+    ${size({ pr: 240 })}
   }
 `;
 
@@ -295,7 +296,7 @@ export const PDStackImg = styled.figure`
 `;
 
 export const PDStackName = styled.span`
-  margin-top: ${rem(2)};
+  ${size({ mt: 2 })}
   color: ${({ theme }) => theme.projectDetails.stackText};
   ${font({
     size: 32,
@@ -336,7 +337,7 @@ export const PDMediaInfo = styled.div`
 `;
 
 export const PDMediaName = styled.h4`
-  margin-top: ${rem(80)};
+  ${size({ mt: 80 })}
   color: ${({ theme }) => theme.projectDetails.captionTitle};
   ${font({
     size: 40,
@@ -344,13 +345,13 @@ export const PDMediaName = styled.h4`
     height: "1em",
   })}
   @media only screen and (min-width:1024px) {
-    margin-top: ${rem(120)};
+    ${size({ mt: 120 })}
     font-size: ${rem(32)};
   }
 `;
 
 export const PDMediaDesc = styled.p`
-  margin-top: ${rem(32)};
+  ${size({ mt: 32 })}
   color: ${({ theme }) => theme.projectDetails.captionDesc};
   ${font({
     size: 32,
@@ -358,7 +359,6 @@ export const PDMediaDesc = styled.p`
     height: "1.5em",
   })}
   @media only screen and (min-width:1024px) {
-    margin-top: ${rem(32)};
     font-size: ${rem(24)};
   }
 `;

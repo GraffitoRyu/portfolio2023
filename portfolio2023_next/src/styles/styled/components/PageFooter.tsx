@@ -40,9 +40,9 @@ export const FooterWrap = styled.div`
 `;
 
 export const FooterHeader = styled.header`
-  margin-bottom: ${rem(80)};
+  ${size({ mb: 80 })}
   @media only screen and (min-width: 1024px) {
-    margin-bottom: ${rem(160)};
+    ${size({ mb: 160 })}
   }
 `;
 
@@ -131,7 +131,7 @@ export const PortfolioDescription = styled.p`
 `;
 
 export const PortfolioCopyright = styled.p`
-  margin-top: ${rem(24)};
+  ${size({ mt: 24 })}
   color: ${({ theme }) => theme.footer.copyright};
   ${FooterDescFont}
   line-height: 1em;
@@ -173,7 +173,7 @@ export const FooterMenuTitle = styled.dt`
   ${size({ w: "fit-content", mb: 16 })}
   color: ${({ theme }) => theme.footer.linkCategory};
   @media only screen and (min-width: 1024px) {
-    margin-bottom: ${rem(24)};
+    ${size({ mb: 24 })}
   }
   ${FooterDescFont}
   font-weight:700;
@@ -231,7 +231,7 @@ export const FooterLinkBtn = styled.a`
   })}
 
   figure {
-    margin-left: ${rem(8)};
+    ${size({ ml: 8 })}
     ${({ theme }) => SvgFill(theme.footer.linkIcon)}
   }
 
@@ -256,7 +256,7 @@ export const FooterLinkBtn = styled.a`
 
 export const FooterLinkCopyBtn = styled.button`
   position: relative;
-  margin-left: ${rem(8)};
+  ${size({ ml: 8 })}
   ${({ theme }) => SvgFill(theme.footer.linkIcon)}
   &.hover {
     ${({ theme }) => SvgFill(theme.footer.linkHover)}

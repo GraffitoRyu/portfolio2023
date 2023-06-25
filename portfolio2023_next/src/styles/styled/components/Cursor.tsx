@@ -5,9 +5,6 @@ import styled from "styled-components";
 // style
 import { position, size } from "../preset/mixins";
 
-// util
-import { rem } from "@/util/unit";
-
 export const CursorStyle = styled.div`
   ${size({ w: "1px", h: "1px" })};
   ${position({ type: "fixed", top: "0rem", left: "0rem", z: 9999 })}
@@ -17,24 +14,22 @@ export const CursorStyle = styled.div`
     display: none;
   }
   .cursor {
-    ${size({ w: rem(8), h: rem(8) })};
+    ${size({ w: 8, h: 8, r: "50%" })};
     ${position({ center: true })}
-    border-radius: 50%;
     border: 1px solid ${({ theme }) => theme.cursor.basic};
     background: ${({ theme }) => theme.cursor.basic};
     transition: width 0.4s, height 0.4s, background-color 0.4s;
   }
   &.link {
     .cursor {
-      ${size({ w: rem(64), h: rem(64) })}
+      ${size({ w: 64, h: 64 })}
       background: ${({ theme }) => theme.cursor.hover};
     }
   }
   &.text {
     mix-blend-mode: difference;
     .cursor {
-      ${size({ w: rem(4), h: rem(40) })}
-      border-radius: 2px;
+      ${size({ w: 4, h: 40, r: 2 })}
     }
   }
 `;

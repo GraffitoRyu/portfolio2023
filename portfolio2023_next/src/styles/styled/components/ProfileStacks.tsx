@@ -67,7 +67,7 @@ export const StackLegendLabel = styled.label`
 `;
 
 export const StackLegendFigure = styled.figure`
-  margin-top: ${rem(10)};
+  ${size({ mb: 10 })}
 `;
 
 export const StackRowContainer = styled.li`
@@ -76,8 +76,7 @@ export const StackRowContainer = styled.li`
 `;
 
 export const StackCategory = styled.div`
-  width: 100%;
-  margin-bottom: ${rem(40)};
+  ${size({ w: "100%", mb: 40 })}
   h4 {
     color: ${({ theme }) => theme.stacks.category};
     ${font({

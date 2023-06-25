@@ -2,9 +2,6 @@
 
 import styled, { createGlobalStyle } from "styled-components";
 
-// util
-import { rem } from "@/util/unit";
-
 // style
 import { img } from "@/styles/styled/preset/img";
 import { btnStyle } from "@/styles/styled/preset/buttons";
@@ -18,7 +15,7 @@ export const GnbCommonStyle = createGlobalStyle`
   .util-item {
     position:relative;
     &:not(.theme-item) {
-      margin-left: ${rem(32)};
+      ${size({ ml: 32 })}
     }
   }
   .util-btn {
@@ -36,7 +33,7 @@ export const GnbCommonStyle = createGlobalStyle`
 `;
 
 export const SitemapLink = styled.button`
-  margin-right: ${rem(64)};
+  ${size({ mr: 64 })}
   ${font({
     size: 24,
     weight: 500,

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 // style
 import { img } from "../preset/img";
-import { SvgFill, flex, position, size } from "../preset/mixins";
+import { SvgFill, flex, font, position, size } from "../preset/mixins";
 
 // util
 import { rem } from "@/util/unit";
@@ -42,19 +42,21 @@ export const ThemeListItem = styled.li`
 
 export const ThemeMenuButton = styled.button`
   figure {
-    ${size({ w: rem(56) })}
-    font-size:0;
+    ${size({ w: 56 })}
     ${flex({})}
     ${({ theme }) => SvgFill(theme.gnbThemeMenu.menu)}
+    font-size:0;
     svg {
       ${img({ w: 24, h: 24 })}
     }
   }
   span {
-    font-size: ${rem(16)};
+    ${size({ mt: -2 })}
     color: ${({ theme }) => theme.gnbThemeMenu.menu};
-    line-height: 1em;
-    margin-top: ${rem(-2)};
+    ${font({
+      size: 16,
+      height: "1em",
+    })}
   }
   &:not(.selected).hover {
     figure {

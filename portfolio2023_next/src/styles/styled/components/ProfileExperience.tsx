@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 // util
 import { rem } from "@/util/unit";
-import { font } from "../preset/mixins";
+import { font, size } from "../preset/mixins";
 import { transTime } from "../preset/transTime";
 
 export const ExpContainer = styled.ul`
@@ -12,10 +12,9 @@ export const ExpContainer = styled.ul`
 `;
 
 export const ExpItem = styled.li`
-  width: 100%;
-  margin-bottom: ${rem(120)};
+  ${size({ w: "100%", mb: 120 })}
   @media only screen and (min-width: 1024px) {
-    margin-bottom: ${rem(80)};
+    ${size({ mb: 80 })}
   }
 `;
 
@@ -24,7 +23,7 @@ export const ExpContents = styled.dl`
 `;
 
 export const ExpTitle = styled.dt`
-  margin-bottom: ${rem(16)};
+  ${size({ mb: 16 })}
   color: ${({ theme }) => theme.exp.title};
   ${font({
     size: 56,
@@ -33,7 +32,7 @@ export const ExpTitle = styled.dt`
     transform: "capitalize",
   })}
   @media only screen and (min-width: 1024px) {
-    margin-bottom: ${rem(40)};
+    ${size({ mb: 40 })}
     font-size: ${rem(40)};
   }
 `;

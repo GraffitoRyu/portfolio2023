@@ -9,7 +9,14 @@ import PeriodForward from "@/components/period/Period";
 // style
 import { img } from "../preset/img";
 import { easing } from "../preset/easing";
-import { SvgFill, flex, position, size, transition } from "../preset/mixins";
+import {
+  SvgFill,
+  flex,
+  font,
+  position,
+  size,
+  transition,
+} from "../preset/mixins";
 
 // util
 import { rem } from "@/util/unit";
@@ -40,7 +47,7 @@ export const ListBtnContainer = styled.div`
 `;
 
 export const ListBtnWrap = styled.div`
-  ${size({ w: "100%", p: rem(80) })}
+  ${size({ w: "100%", p: 80 })}
   color:${({ theme }) => theme.projectList.desc};
   position: relative;
   @media only screen and (min-width: 1024px) {
@@ -49,11 +56,12 @@ export const ListBtnWrap = styled.div`
 `;
 
 export const ListBtnPeriod = styled(PeriodForward)`
-  height: auto;
-  margin-bottom: ${rem(24)};
   color: ${({ theme }) => theme.projectList.period};
-  font-size: ${rem(24)};
-  font-weight: 500;
+  ${size({ h: "auto", mb: 24 })}
+  ${font({
+    size: 24,
+    weight: 500,
+  })}
   span {
     &:before {
       background-color: ${({ theme }) => theme.projectList.period};
@@ -65,8 +73,7 @@ export const ListBtnPeriod = styled(PeriodForward)`
   }
   @media only screen and (min-width: 1024px) {
     ${position({ type: "absolute", left: "100%" })}
-    height: ${rem(56)};
-    margin-bottom: 0;
+    ${size({ h: 56, mb: 0 })}
   }
   time {
     ${transition([
@@ -107,11 +114,13 @@ export const FadeListContainer = styled(FadeContainer)`
 `;
 
 export const ListBtnTitle = styled.h3`
-  margin-bottom: ${rem(24)};
+  ${size({ mb: 24 })}
   color: ${({ theme }) => theme.projectList.title};
-  font-size: ${rem(96)};
-  font-weight: 700;
-  line-height: 1em;
+  ${font({
+    size: 96,
+    weight: 700,
+    height: "1em",
+  })}
   @media only screen and (min-width: 640px) {
     font-size: ${rem(56)};
   }
@@ -126,10 +135,12 @@ export const ListBtnTitle = styled.h3`
 `;
 
 export const ListBtnDesc = styled.p`
-  margin-bottom: ${rem(48)};
-  font-size: ${rem(32)};
-  font-weight: 400;
-  line-height: 1em;
+  ${size({ mb: 48 })}
+  ${font({
+    size: 32,
+    weight: 400,
+    height: "1em",
+  })}
   ${transition([
     { prop: "transform", time: "0.4s", easing: easing.quart, delay: "0.08s" },
     { prop: "opacity", time: "0.4s", easing: easing.quart, delay: "0.08s" },
@@ -142,12 +153,14 @@ export const ListBtnDesc = styled.p`
 
 export const ListBtnRole = styled.li`
   ${flex({ std: "start" })}
-  font-size: ${rem(24)};
-  font-weight: 400;
+  ${font({
+    size: 24,
+    weight: 400,
+  })}
   &:after {
     content: "";
     display: block;
-    ${size({ w: rem(2), h: rem(20), m: [0, rem(24)] })}
+    ${size({ w: 2, h: 20, m: [0, 24] })}
     background-color:${({ theme }) => theme.projectList.desc};
   }
   &:last-child {
@@ -204,16 +217,18 @@ const textSlideAnimation = keyframes`
 `;
 
 export const TitleSpan = styled.span`
-  font-size: ${rem(240)};
-  font-weight: 700;
-  line-height: 1em;
-  text-decoration: underline;
+  ${font({
+    size: 240,
+    weight: 700,
+    height: "1em",
+    deco: "underline",
+  })}
   text-decoration-thickness: 0.05em;
   animation: ${textSlideAnimation} 2s linear 0s infinite;
 `;
 
 export const ProjectOpenIcon = styled.figure`
-  ${size({ w: rem(160), h: rem(160) })}
+  ${size({ w: 160, h: 160 })}
   ${position({ type: "absolute", top: 80, right: 80 })}
   transform:translate(-100%,100%);
   opacity: 0;
@@ -226,7 +241,7 @@ export const ProjectOpenIcon = styled.figure`
   }
   ${SvgFill("#fff")}
   @media only screen and (min-width:1024px) {
-    ${size({ w: rem(120), h: rem(120) })}
+    ${size({ w: 120, h: 120 })}
   }
   ${ProjectItemContainer}.hover & {
     transform: translate(0, 0);

@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 // components
 import PeriodForward from "@/components/period/Period";
@@ -9,7 +9,7 @@ import PeriodForward from "@/components/period/Period";
 import { rem } from "@/util/unit";
 
 // style
-import { flex, size } from "../preset/mixins";
+import { flex, font, size } from "../preset/mixins";
 import { transTime } from "../preset/transTime";
 import { easing } from "../preset/easing";
 
@@ -18,12 +18,11 @@ export const CareerContainerList = styled.ul`
 `;
 
 export const CareerItemContainer = styled.li`
-  width: 100%;
-  margin-bottom: ${rem(80)};
+  ${size({ w: "100%", mb: 80 })}
 `;
 
 export const CareerPeriod = styled(PeriodForward)`
-  margin-bottom: ${rem(32)};
+  ${size({ mb: 32 })}
   color: ${({ theme }) => theme.career.period};
 
   time {
@@ -55,21 +54,23 @@ export const CareerPeriod = styled(PeriodForward)`
   }
 
   @media only screen and (min-width: 1024px) {
-    margin-bottom: ${rem(24)};
+    ${size({ mb: 24 })}
   }
 `;
 
 export const CareerTitle = styled.h3`
   ${flex({ std: "flex-start" })}
-  margin-bottom: ${rem(32)};
+  ${size({ mb: 32 })}
   @media only screen and (min-width: 1024px) {
-    margin-bottom: ${rem(16)};
+    ${size({ mb: 16 })}
   }
 `;
 
 export const CareerTitleFadeBox = styled.span`
-  font-size: ${rem(40)};
-  line-height: 1.2em;
+  ${font({
+    size: 40,
+    height: "1.2em",
+  })}
   overflow: hidden;
   @media only screen and (min-width: 1024px) {
     font-size: ${rem(32)};
@@ -108,22 +109,23 @@ export const CareerCompanyDivideBar = styled.span`
   }
 `;
 
-export const CareerCompany = styled.span`
-  color: ${({ theme }) => theme.career.company};
-  font-size: ${rem(32)};
-  font-weight: 400;
-  line-height: 1em;
-  @media only screen and (min-width: 1024px) {
+const CareerFont = css`
+  ${font({
+    size: 32,
+    weight: 400,
+  })}
+  @media only screen and (min-width:1024px) {
     font-size: ${rem(24)};
   }
+`;
+export const CareerCompany = styled.span`
+  color: ${({ theme }) => theme.career.company};
+  line-height: 1em;
+  ${CareerFont}
 `;
 
 export const CareerDesc = styled.p`
   color: ${({ theme }) => theme.career.desc};
-  font-size: ${rem(32)};
-  font-weight: 400;
   line-height: 1.5em;
-  @media only screen and (min-width: 1024px) {
-    font-size: ${rem(24)};
-  }
+  ${CareerFont}
 `;

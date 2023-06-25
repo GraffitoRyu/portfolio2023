@@ -54,7 +54,7 @@ export const InitCoverTItle = styled.div`
     family: "var(--serif-kr)",
   })}
   span {
-    margin-top: ${rem(8)};
+    ${size({ mt: 8 })}
   }
   opacity: 0.2;
   animation: ${initTitleBreathing} 1.6s infinite linear;

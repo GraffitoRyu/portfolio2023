@@ -56,8 +56,7 @@ export const CommonBtn = styled.button`
   }
 
   @media only screen and (min-width: 1024px) {
-    ${size({ w: sizePreset.btn.pc, h: sizePreset.btn.pc })}
-    border-radius: ${rem(8)};
+    ${size({ w: sizePreset.btn.pc, h: sizePreset.btn.pc, r: 8 })}
     figure {
       ${size({ w: sizePreset.icon.pc, h: sizePreset.icon.pc })}
     }
