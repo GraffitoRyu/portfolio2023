@@ -27,6 +27,8 @@ export interface GnbUtilTypes {
   svg: string;
   svgHover: string;
   svgActive: string;
+  tooltipBox: string;
+  tooltipText: string;
 }
 
 export interface GnbUtilModeTypes {

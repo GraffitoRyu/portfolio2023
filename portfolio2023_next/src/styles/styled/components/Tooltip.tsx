@@ -62,12 +62,13 @@ export const TooltipBox = styled.div<{ $section: string; $pos: string[] }>`
   &:after {
     content: "";
     display: block;
-    ${position({ type: "absolute", top: "100%", center: "x" })}
+    ${({ $pos }) =>
+      position({ type: "absolute", [$pos[0]]: "100%", center: "x" })}
     ${size({ w: 0, h: 0 })}
-    border-top:${rem(8)} solid ${({ $section, theme }) =>
-      theme[$section].tooltipBox};
     border-left: ${rem(6)} solid transparent;
     border-right: ${rem(6)} solid transparent;
+    ${({ $section, $pos, theme }) =>
+      `border-${$pos[0]}:${rem(8)} solid ${theme[$section].tooltipBox};`}
   }
 `;
 

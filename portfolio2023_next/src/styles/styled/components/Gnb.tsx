@@ -8,7 +8,7 @@ import { rem } from "@/util/unit";
 // style
 import { img } from "@/styles/styled/preset/img";
 import { btnStyle } from "@/styles/styled/preset/buttons";
-import { SvgFill, maxSize, size } from "@/styles/styled/preset/mixins";
+import { SvgFill, font, maxSize, size } from "@/styles/styled/preset/mixins";
 
 // GNB 공통 스타일
 export const GnbCommonStyle = createGlobalStyle`
@@ -37,8 +37,10 @@ export const GnbCommonStyle = createGlobalStyle`
 
 export const SitemapLink = styled.button`
   margin-right: ${rem(64)};
-  font-size: ${rem(24)};
-  font-weight: 500;
+  ${font({
+    size: 24,
+    weight: 500,
+  })}
   color: ${({ theme }) => theme.gnbSitemapBtn.basic};
   &:not(.now).hover {
     color: ${({ theme }) => theme.gnbSitemapBtn.hover};
@@ -56,26 +58,5 @@ export const ExtBtn = styled.a`
   }
   &:active {
     ${({ theme }) => SvgFill(theme.gnbUtilBtn.svgActive)};
-  }
-`;
-
-export const Tooltip = styled.div`
-  padding: 0 ${rem(16)};
-  border-radius: ${rem(16)};
-  height: ${rem(32)};
-  background: #ccc;
-  left: 50%;
-  transform: translate(-50%, 100%);
-  opacity: 0;
-  transition: transform 0.4s, opacity 0.4s;
-  span {
-    font-size: ${rem(16)};
-    color: #3a3a3a;
-    font-weight: 500;
-    letter-spacing: 0;
-  }
-  &.hover {
-    transform: ${`translate(-50%, ${rem(10)})`};
-    opacity: 1;
   }
 `;

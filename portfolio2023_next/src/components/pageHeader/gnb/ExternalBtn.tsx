@@ -1,15 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // type
 import { SitemapType } from "@/types/sitemap";
 
 // style components
-import { ExtBtn, Tooltip } from "@/styles/styled/components/Gnb";
+import { ExtBtn } from "@/styles/styled/components/Gnb";
 
 // SVG
 import * as ExtSvg from "./BtnIcons";
+import Tooltip from "@/components/tooltip/Tooltip";
+import { transTime } from "@/styles/styled/preset/transTime";
 function ExtIcon(name: string) {
   switch (name) {
     case "Github":
@@ -23,20 +25,65 @@ function ExtIcon(name: string) {
 
 export default function ExternalBtn({ path, name }: SitemapType) {
   const [hover, setHover] = useState<string>("");
+  const [active, setActive] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(false);
+  const showTimer = useRef<NodeJS.Timeout | null>(null);
+  const activeTimer = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (hover !== "") {
+      setActive(true);
+    } else {
+      setShow(false);
+    }
+  }, [hover]);
+
+  useEffect(() => {
+    if (activeTimer.current !== null) {
+      clearTimeout(activeTimer.current);
+      activeTimer.current = null;
+    }
+    if (showTimer.current !== null) {
+      clearTimeout(showTimer.current);
+      showTimer.current = null;
+    }
+    if (hover) {
+      showTimer.current = setTimeout(() => {
+        if (showTimer.current !== null) {
+          clearTimeout(showTimer.current);
+          showTimer.current = null;
+        }
+        setShow(true);
+      }, 100);
+    } else {
+      activeTimer.current = setTimeout(() => {
+        if (activeTimer.current !== null) {
+          clearTimeout(activeTimer.current);
+          activeTimer.current = null;
+        }
+        setActive(false);
+      }, transTime.tooltip);
+    }
+  }, [hover]);
 
   return (
     <div className="util-item">
-      <ExtBtn
-        className={`util-btn ${hover}`}
-        href={path}
-        target="_blank"
-        onMouseEnter={() => setHover("hover")}
-        onMouseLeave={() => setHover("")}
+      <Tooltip
+        contents={name}
+        pos={["bottom", "center"]}
+        section="gnbUtilBtn"
+        active={active}
+        show={show}
       >
-        <figure>{ExtIcon(name)}</figure>
-      </ExtBtn>
-      <Tooltip className={`util-tooltip absolute top-full ${hover}`}>
-        <span>{name}</span>
+        <ExtBtn
+          className={`util-btn ${hover}`}
+          href={path}
+          target="_blank"
+          onMouseEnter={() => setHover("hover")}
+          onMouseLeave={() => setHover("")}
+        >
+          <figure>{ExtIcon(name)}</figure>
+        </ExtBtn>
       </Tooltip>
     </div>
   );
