@@ -45,7 +45,8 @@ export const PageSectionContainer = styled.section<{
 export const SectionHeaderContainer = styled.header<{ $headerHeight: number }>`
   ${size({ w: "100%", mb: 120 })}
   @media only screen and (min-width: 1024px) {
-    ${({ $headerHeight }) => position({ type: "sticky", top: $headerHeight })}
+    ${({ $headerHeight }) =>
+      position({ type: "sticky", top: `${$headerHeight}px` })}
     ${size({ w: "50%", mb: 160 })}
   }
 `;

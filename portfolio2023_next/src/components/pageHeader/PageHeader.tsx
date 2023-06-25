@@ -50,6 +50,15 @@ export default function PageHeader() {
     [setScrollRef]
   );
 
+  // 헤더 높이 상태 업데이트
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    updateSize();
+
+    window.addEventListener("resize", updateSize, false);
+    return () => window.removeEventListener("resize", updateSize, false);
+  }, [updateSize]);
+
   // 최초 로딩 시 등장
   useEffect(() => {
     if (init) setHide("init-hide");
@@ -59,14 +68,6 @@ export default function PageHeader() {
   useEffect(() => {
     if (initComplete) setHide("");
   }, [initComplete]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    updateSize();
-
-    window.addEventListener("resize", updateSize, false);
-    return () => window.removeEventListener("resize", updateSize, false);
-  }, [updateSize]);
 
   return (
     <HeaderContainer className={`${hide}`} ref={updateRef}>

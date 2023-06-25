@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 // style components
@@ -26,11 +26,15 @@ export default function SectionHeader({
   desc,
 }: SectionHeaderTypes) {
   const { headerHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
+  const [hdHeader, setHdHeight] = useState<number>(0);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    setHdHeight(headerHeight);
+  }, [headerHeight]);
+
   return (
-    <SectionHeaderContainer
-      className="section-header"
-      $headerHeight={headerHeight}
-    >
+    <SectionHeaderContainer className="section-header" $headerHeight={hdHeader}>
       {empty ? (
         ""
       ) : (
