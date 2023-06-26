@@ -1,20 +1,16 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useCallback, useEffect, useState } from "react";
 
 // types
 import { CursorTypes } from "@/types/state";
-
-// state
-import { cursorState } from "@/states/cursor";
 
 // styled components
 import { CursorStyle } from "@/styles/styled/components/Cursor";
 
 export default function Cursor() {
   const [hide, setHide] = useState<string>("hide");
-  const [cursor, setCursor] = useRecoilState<CursorTypes>(cursorState);
+  const [cursor, setCursor] = useState<CursorTypes>({ x: 0, y: 0, hover: "" });
 
   const updateCursor = useCallback(
     (e: MouseEvent | PointerEvent) => {
