@@ -31,7 +31,9 @@ export const StyledHeaderWrap = styled.div`
     h: sizePreset.btn.mobile + sizePreset.common.padding * 2,
     p: sizePreset.common.padding,
   })}
-  @media only screen and (min-width:1024px) {
+  pointer-events:none;
+  /* backdrop-filter: blur(8px); */
+  @media only screen and (min-width: 1024px) {
     height: ${rem(sizePreset.btn.pc + sizePreset.common.padding * 2)};
   }
 `;
