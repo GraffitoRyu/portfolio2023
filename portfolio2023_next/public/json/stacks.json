@@ -6,20 +6,8 @@
     "level": 4
   },
   {
-    "code": "ejs",
-    "name": "EJS",
-    "category": "languages",
-    "level": 3
-  },
-  {
     "code": "css",
     "name": "CSS",
-    "category": "languages",
-    "level": 4
-  },
-  {
-    "code": "scss",
-    "name": "SCSS",
     "category": "languages",
     "level": 4
   },
@@ -30,15 +18,21 @@
     "level": 4
   },
   {
+    "code": "scss",
+    "name": "SCSS",
+    "category": "languages",
+    "level": 4
+  },
+  {
+    "code": "ejs",
+    "name": "EJS",
+    "category": "languages",
+    "level": 3
+  },
+  {
     "code": "typescript",
     "name": "TypeScript",
     "category": "languages",
-    "level": 0
-  },
-  {
-    "code": "nextjs",
-    "name": "Next.js",
-    "category": "webapp",
     "level": 0
   },
   {
@@ -48,20 +42,20 @@
     "level": 1
   },
   {
-    "code": "recoil",
-    "name": "Recoil",
-    "category": "webapp",
-    "level": 0
-  },
-  {
     "code": "react_router",
     "name": "React Router",
     "category": "webapp",
     "level": 1
   },
   {
-    "code": "react_query",
-    "name": "React Query",
+    "code": "nextjs",
+    "name": "Next.js",
+    "category": "webapp",
+    "level": 0
+  },
+  {
+    "code": "recoil",
+    "name": "Recoil",
     "category": "webapp",
     "level": 0
   },
@@ -78,16 +72,16 @@
     "level": 3
   },
   {
-    "code": "gsap",
-    "name": "GSAP",
-    "category": "library",
-    "level": 1
-  },
-  {
     "code": "swiper",
     "name": "Swiper",
     "category": "library",
     "level": 2
+  },
+  {
+    "code": "gsap",
+    "name": "GSAP",
+    "category": "library",
+    "level": 1
   },
   {
     "code": "google_maps_api",
@@ -114,8 +108,8 @@
     "level": 0
   },
   {
-    "code": "tailwind",
-    "name": "Tailwind",
+    "code": "tailwindcss",
+    "name": "TailwindCSS",
     "category": "style",
     "level": 0
   },
@@ -142,6 +136,12 @@
     "name": "GeoJSON",
     "category": "data",
     "level": 1
+  },
+  {
+    "code": "react_query",
+    "name": "React Query",
+    "category": "webapp",
+    "level": 0
   },
   {
     "code": "vite",
@@ -204,22 +204,16 @@
     "level": 0
   },
   {
-    "code": "zeplin",
-    "name": "Zeplin",
-    "category": "design",
-    "level": 3
-  },
-  {
     "code": "figma",
     "name": "Figma",
     "category": "design",
     "level": 3
   },
   {
-    "code": "xd",
-    "name": "XD",
+    "code": "zeplin",
+    "name": "Zeplin",
     "category": "design",
-    "level": 1
+    "level": 3
   },
   {
     "code": "photoshop",
@@ -230,6 +224,12 @@
   {
     "code": "illustrator",
     "name": "Illustrator",
+    "category": "design",
+    "level": 1
+  },
+  {
+    "code": "xd",
+    "name": "XD",
     "category": "design",
     "level": 1
   }
