@@ -16,7 +16,7 @@ export async function GET(req: Request) {
       code: d.code,
       summary: d.summary,
     }));
-    return NextResponse.json({ ...listData });
+    return NextResponse.json({ res: listData });
   }
 
   // 프로젝트 상세를 위한 데이터

@@ -5,8 +5,15 @@ import ExperienceItem from "./ExperienceItem";
 // type
 import { ExperienceTypes } from "@/types/profile";
 
+// util
+import { getSSRData } from "@/util/getData";
+
 export default async function Experience() {
-  const expData: ExperienceTypes[] = await getExp();
+  const expData: ExperienceTypes[] = await getSSRData({
+    page: "profile",
+    queryName: "item",
+    queryValue: "experience",
+  });
 
   return (
     <ExperienceContainer>
@@ -19,13 +26,4 @@ export default async function Experience() {
       )}
     </ExperienceContainer>
   );
-}
-
-async function getExp() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/experience.json`
-  );
-  if (!res.ok) throw new Error("Failed to fetch Experience Data");
-  const data = await res.json();
-  return data;
 }

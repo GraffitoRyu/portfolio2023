@@ -7,8 +7,15 @@ import { ProjectListContainer } from "@/styles/styled/components/ProjectList";
 // type
 import { ProjectsType } from "@/types/projects";
 
+// data
+import { getSSRData } from "@/util/getData";
+
 export default async function ProjectList() {
-  const listData: ProjectsType[] = await getProjectsList();
+  const listData: ProjectsType[] = await getSSRData({
+    page: "projects",
+    queryName: "type",
+    queryValue: "list",
+  });
 
   return (
     <ProjectListContainer>
@@ -19,16 +26,4 @@ export default async function ProjectList() {
       ))}
     </ProjectListContainer>
   );
-}
-
-async function getProjectsList() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL}/projects.json`
-  );
-  if (!res.ok) throw new Error("Failed to fetch project list Data");
-  const data = await res.json();
-  return data?.map((d: ProjectsType) => ({
-    code: d.code,
-    summary: d.summary,
-  }));
 }

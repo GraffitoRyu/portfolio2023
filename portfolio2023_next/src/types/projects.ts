@@ -41,10 +41,16 @@ export interface MediaType {
 }
 
 export interface ProjectsType {
-  [index: string]: string | SummaryType | ServiceType | ExpType | MediaType[];
+  [index: string]:
+    | string
+    | SummaryType
+    | ServiceType
+    | ExpType
+    | MediaType[]
+    | undefined;
   code: string;
   summary: SummaryType;
-  service: ServiceType;
-  experience: ExpType;
-  media: MediaType[];
+  service?: ServiceType;
+  experience?: ExpType;
+  media?: MediaType[];
 }
