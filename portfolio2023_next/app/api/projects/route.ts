@@ -1,9 +1,9 @@
 import { ProjectsType } from "@/types/projects";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const db = process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL;
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   // 프로젝트 페이지를 위한 데이터 조회
   const { searchParams } = new URL(req.url);
   const type = searchParams.get("type");

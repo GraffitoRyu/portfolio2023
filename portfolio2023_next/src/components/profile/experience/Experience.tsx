@@ -1,4 +1,5 @@
 // components
+import { Suspense } from "react";
 import ExperienceContainer from "./ExperienceContainer";
 import ExperienceItem from "./ExperienceItem";
 
@@ -17,13 +18,11 @@ export default async function Experience() {
 
   return (
     <ExperienceContainer>
-      {expData && Object.keys(expData)?.length > 0 ? (
-        expData.map((ex: ExperienceTypes, i: number) => (
+      <Suspense fallback={<li>Loading...</li>}>
+        {expData.map((ex: ExperienceTypes, i: number) => (
           <ExperienceItem key={`exp_${ex.code}_${i}`} {...ex} />
-        ))
-      ) : (
-        <li>Loading...</li>
-      )}
+        ))}
+      </Suspense>
     </ExperienceContainer>
   );
 }
