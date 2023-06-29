@@ -20,7 +20,6 @@ export const getSSRData = async ({
   const res = await fetch(`${__domain}api/${page}?${queryName}=${queryValue}`);
   if (!res.ok) throw new Error(`${page} 데이터 가져오기 실패 - ${queryValue}`);
   const json = await res.json();
-  console.log(json);
   return json.res;
 };
 

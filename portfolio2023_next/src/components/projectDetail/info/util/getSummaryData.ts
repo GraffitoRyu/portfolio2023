@@ -19,19 +19,19 @@ export function getSummaryData(data: ProjectsType): DetailInfoSummaryTypes[] {
   const provider = new SummaryItems(
     "provider",
     "서비스 제공",
-    service.provider,
+    service ? service.provider : "",
     "string"
   );
   const platform = new SummaryItems(
     "platform",
     "서비스 형태",
-    service.platform,
+    service ? service.platform : "",
     "string"
   );
   const stacks = new SummaryItems(
     "stacks",
     "활용 기술",
-    experience.stacks,
+    experience ? experience.stacks : "",
     "stacks"
   );
 

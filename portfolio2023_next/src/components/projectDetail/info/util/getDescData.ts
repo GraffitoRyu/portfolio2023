@@ -11,12 +11,12 @@ export function getDescData(data: ProjectsType): DetailInfoDescTypes[] {
   const introduceData = new DescriptionItems(
     "introduce",
     "프로젝트 소개",
-    service.desc
+    service ? service.desc : [""]
   );
   const expData = new DescriptionItems(
     "experience",
     "작업 경험",
-    experience.desc
+    experience ? experience.desc : [""]
   );
   return [introduceData, expData];
 }
@@ -24,11 +24,11 @@ export function getDescData(data: ProjectsType): DetailInfoDescTypes[] {
 export class DescriptionItems implements DetailInfoDescTypes {
   code: string;
   title: string;
-  contents: Array<ExpDepthType | string>;
+  contents: Array<ExpDepthType | string> | undefined;
   constructor(
     code: string,
     title: string,
-    contents: Array<ExpDepthType | string>
+    contents: Array<ExpDepthType | string> | undefined
   ) {
     this.code = code;
     this.title = title;

@@ -14,5 +14,5 @@ export interface DetailInfoSummaryTypes {
 export interface DetailInfoDescTypes {
   code: string;
   title: string;
-  contents: Array<ExpDepthType | string>;
+  contents: Array<ExpDepthType | string> | undefined;
 }

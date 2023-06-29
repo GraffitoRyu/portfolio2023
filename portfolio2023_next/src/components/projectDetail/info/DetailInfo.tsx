@@ -70,7 +70,7 @@ export default function DetailInfoContainer() {
             title={d.title}
             className="w-full"
           >
-            <DetailInfoContents<(ExpDepthType | string)[]>
+            <DetailInfoContents<(ExpDepthType | string)[] | undefined>
               code={d.code}
               type="list"
               contents={d.contents}
