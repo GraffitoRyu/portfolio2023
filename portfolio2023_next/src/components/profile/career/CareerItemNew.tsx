@@ -1,6 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import {
+  SyntheticEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import {
   CareerBorder,
@@ -32,17 +38,55 @@ export default function CareerItemNew({
   details,
   last,
 }: CareerItemProps) {
+  const [open, setOpen] = useState<string>("");
   const [hover, setHover] = useState<string>("");
+  const detailsContainerRef = useRef<HTMLDetailsElement | null>(null);
+  const detailRef = useRef<HTMLDivElement | null>(null);
+  const [detailHeight, setDetailHeight] = useState<number>(0);
+
+  const updateDetailHeight = useCallback(() => {
+    if (detailRef?.current) setDetailHeight(detailRef.current.offsetHeight);
+  }, []);
+
+  const openDetails = useCallback((e: SyntheticEvent) => {
+    if (!detailsContainerRef.current) return;
+    e.preventDefault();
+    const isOpen = detailsContainerRef.current.open;
+
+    if (isOpen) {
+      setOpen("");
+      setTimeout(() => {
+        if (detailsContainerRef?.current)
+          detailsContainerRef.current.open = false;
+      }, 400);
+    } else {
+      detailsContainerRef.current.open = true;
+      setOpen("open");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (detailRef?.current) setDetailHeight(detailRef.current.offsetHeight);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    window.addEventListener("resize", updateDetailHeight);
+    return () => window.addEventListener("resize", updateDetailHeight);
+  }, [updateDetailHeight]);
 
   return (
     <CareerItemContainer>
       <CareerBorder className="top" />
       <CareerWrap
-        className={`${hover}`}
+        ref={detailsContainerRef}
+        className={`${hover} ${open}`}
         onMouseEnter={() => setHover("hover")}
         onMouseLeave={() => setHover("")}
+        $height={detailHeight}
       >
-        <CareerSummaryContainer>
+        <CareerSummaryContainer onClick={openDetails}>
           <CareerPeriod>
             <span>{period(summary.period[0])}</span>
           </CareerPeriod>
@@ -60,7 +104,7 @@ export default function CareerItemNew({
           </CareerExpandCell>
         </CareerSummaryContainer>
         <CareerDetailContainer>
-          <CareerDetailList>
+          <CareerDetailList ref={detailRef}>
             <CareerDetailItem>
               <CareerDetailItemTitle>
                 <span>담당 업무</span>

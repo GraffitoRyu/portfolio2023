@@ -27,6 +27,7 @@ export const CareerSummaryContainer = styled.summary`
   ${size({ w: `calc(100% + ${rem(40)})`, h: 120, m: [0, -20] })}
   ${flex({ std: "flex-start" })}
   ${position({ type: "relative", z: 10 })}
+  cursor:pointer;
   &:before {
     content: "";
     ${size({ w: `calc(100% - ${rem(40)})`, h: "100%" })}
@@ -75,8 +76,9 @@ export const CareerExpandCell = styled.div`
 export const CareerExpandIcon = styled.figure`
   ${size({ w: 24, h: 24 })}
   ${position({ center: true })}
-    transform: translate(-50%,-50%) rotate(45deg);
+  transform: translate(-50%,-50%) rotate(45deg);
   transform-origin: center;
+  transition: transform 0.4s;
   &:before,
   &:after {
     content: "";
@@ -85,7 +87,7 @@ export const CareerExpandIcon = styled.figure`
     ${size({ w: 24, h: 2, r: 1 })}
       background-color:${({ theme }) => theme.career.icon};
     transform-origin: center;
-    transition: transform 0.4s, background-color 0.4s;
+    transition: transform 0.4s, opacity 0.4s, background-color 0.4s;
   }
   &:before {
     transform: translate(-50%, -50%) rotate(45deg);
@@ -96,11 +98,16 @@ export const CareerExpandIcon = styled.figure`
 `;
 
 export const CareerDetailContainer = styled.div`
-  ${size({ w: "100%", p: [0, 20, 0, `${widthRatio(7, 2)}%`] })}
+  ${size({ w: "100%", h: 0, p: [0, 20, 0, `${widthRatio(7, 2)}%`] })}
+  /* background-color: #1a1a1a; */
+  overflow:clip;
+  transition: height 0.4s;
 `;
 
 export const CareerDetailList = styled.div`
   ${size({ w: "100%", p: [40, 0, 80, 10] })}
+  opacity:0;
+  transition: opacity 0.4s;
 `;
 
 export const CareerDetailItem = styled.dl`
@@ -133,7 +140,7 @@ export const CareerDetailItemDesc = styled.dd`
   }
 `;
 
-export const CareerWrap = styled.details`
+export const CareerWrap = styled.details<{ $height: number }>`
   width: 100%;
   &:not([open]).hover {
     ${CareerSummaryContainer}:before {
@@ -155,13 +162,22 @@ export const CareerWrap = styled.details`
       }
     }
   }
-  &[open] {
+  &.open {
     ${CareerExpandIcon} {
-      transform: translate(-50%, -50%);
-      &:before,
-      &:after {
-        transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) rotate(180deg);
+      &:before {
+        transform: translate(-50%, -50%) rotate(-180deg);
       }
+      &:after {
+        transform: translate(-50%, -50%) rotate(180deg);
+        opacity: 0;
+      }
+    }
+    ${CareerDetailContainer} {
+      height: ${({ $height }) => `${$height}px`};
+    }
+    ${CareerDetailList} {
+      opacity: 1;
     }
   }
 `;

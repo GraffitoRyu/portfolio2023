@@ -50,8 +50,6 @@ export const SectionHeaderContainer = styled.header<{
     margin: 0;
   }
   @media only screen and (min-width: 1024px) {
-    ${({ $headerHeight }) =>
-      position({ type: "sticky", top: `${$headerHeight}px`, z: 0 })}
     ${({ $wh, $headerHeight }) =>
       size({ h: `${$wh / 2 - $headerHeight}px`, mb: 0 })}
   }
@@ -63,7 +61,7 @@ export const HeaderTitle = styled.h2`
   ${font({
     size: 48,
     weight: 500,
-    spacing: "0.02em",
+    spacing: 0,
     height: "1em",
     transform: "capitalize",
     family: `var(--serif-kr)`,
