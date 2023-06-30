@@ -87,6 +87,7 @@ export default function DetailTitleWrap() {
             start: `${scrollTarget.offsetTop} ${scrollTarget.offsetTop}`, // target, trigger
             end: `${scrollTarget.offsetTop} start`, // target, trigger
             scrub: true,
+            invalidateOnRefresh: true,
             // markers: true,
           },
         },

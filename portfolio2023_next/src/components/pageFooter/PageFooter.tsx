@@ -34,7 +34,7 @@ export default function PageFooter() {
   );
 
   return (
-    <FooterContainer className="pager-footer" ref={setRef} $wh={windowHeight}>
+    <FooterContainer className="page-footer" ref={setRef} $wh={windowHeight}>
       <FooterWrap>
         <FooterUpperContainer />
         <FooterLower />

@@ -50,8 +50,10 @@ export const SectionHeaderContainer = styled.header<{
     margin: 0;
   }
   @media only screen and (min-width: 1024px) {
-    ${({ $wh, $headerHeight }) =>
-      size({ h: `${$wh / 2 - $headerHeight}px`, mb: 0 })}
+    &:not(.empty) {
+      ${({ $wh, $headerHeight }) =>
+        size({ h: `${$wh / 2 - $headerHeight}px`, mb: 0 })}
+    }
   }
 `;
 
