@@ -42,7 +42,7 @@ export default function SectionHeader({
 
   return (
     <SectionHeaderContainer
-      className="section-header"
+      className={`section-header ${empty ? "empty" : ""}`}
       $headerHeight={hdHeight}
       $wh={wh}
     >

@@ -46,9 +46,12 @@ export const SectionHeaderContainer = styled.header<{
   $headerHeight: number;
 }>`
   ${size({ w: "100%", mb: 120 })}
+  &.empty {
+    margin: 0;
+  }
   @media only screen and (min-width: 1024px) {
     ${({ $headerHeight }) =>
-      position({ type: "sticky", top: `${$headerHeight}px` })}
+      position({ type: "sticky", top: `${$headerHeight}px`, z: 0 })}
     ${({ $wh, $headerHeight }) =>
       size({ h: `${$wh / 2 - $headerHeight}px`, mb: 0 })}
   }
@@ -91,6 +94,7 @@ export const HeaderDesc = styled.p`
 export const Contents = styled.div`
   ${size({ w: "100%" })}
   @media only screen and (min-width: 1024px) {
+    ${position({ type: "relative", z: 10 })}
     ${flex({ std: "flex-start", cross: "flex-start" })}
     &:not(.full) {
       ${size({ w: `calc(100% + ${rem(40)})`, m: [0, -20] })}
