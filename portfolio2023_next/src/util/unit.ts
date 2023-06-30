@@ -37,3 +37,12 @@ export function getRootFontSize(): number {
  */
 export const getUnit: (v: number | string) => number | string = (v) =>
   typeof v === "string" ? v : rem(v);
+
+/**
+ * @property {number} total : 레이아웃 그리드 컬럼의 총 개수
+ * @property {number} col : 할당할 컬럼 수
+ * @return {number} 컬럼 수에 대응하는 너비 값 (%)
+ */
+export const widthRatio = (total: number, col: number) => {
+  return Math.floor((100 / total) * col * 10000) / 10000;
+};
