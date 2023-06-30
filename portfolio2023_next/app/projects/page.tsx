@@ -14,7 +14,7 @@ export default function Projects() {
       <PageSection className="side-h-padding visual-section">
         <PageVisual title={["Selected ", "projects"]} />
         <SectionHeader empty={true} />
-        <SectionContents>
+        <SectionContents sectionClassName="intro" sideClassName="intro">
           <PageIntro
             title={["최근 참여한 프로젝트를 소개합니다."]}
             desc={[
@@ -27,7 +27,7 @@ export default function Projects() {
         </SectionContents>
       </PageSection>
       <PageSection className="side-v-padding">
-        <SectionContents full={true}>
+        <SectionContents sectionClassName="full" sideClassName="full">
           <ProjectList />
         </SectionContents>
       </PageSection>

@@ -9,6 +9,7 @@ import SectionContents from "@/components/pageSection/Contents";
 import Career from "@/components/profile/career/Career";
 import Experience from "@/components/profile/experience/Experience";
 import TechStacks from "@/components/profile/techStacks/Stacks";
+import StackLegend from "@/components/profile/techStacks/StackLegend";
 
 export default function Profile() {
   return (
@@ -16,7 +17,7 @@ export default function Profile() {
       <PageSection className="side-h-padding visual-section">
         <PageVisual title={["Ready for ", "interaction"]} />
         <SectionHeader empty={true} />
-        <SectionContents>
+        <SectionContents sectionClassName="intro" sideClassName="intro">
           <PageIntro
             title={[
               "인터랙션 이벤트 구현에 관심이 많은 ",
@@ -35,35 +36,38 @@ export default function Profile() {
       </PageSection>
       <PageSection className="side-h-padding side-v-padding">
         <SectionHeader
-          title="career"
+          title="Career"
           desc={["지난 5년간 실무 경험을 쌓은 ", "근무 경력입니다."]}
         />
-        <SectionContents>
+        <SectionContents sectionClassName="career">
           <Career />
         </SectionContents>
       </PageSection>
       <PageSection className="side-h-padding side-v-padding">
         <SectionHeader
-          title="experience"
+          title="Experience"
           desc={[
             "개인적인 작업부터 협업에 이르기 까지 ",
             "프로젝트에 참여하면서 경험한 것들입니다.",
           ]}
         />
-        <SectionContents>
+        <SectionContents sectionClassName="experience">
           <Experience />
         </SectionContents>
       </PageSection>
       <PageSection className="side-h-padding side-v-padding">
         <SectionHeader
-          title="tech Stacks"
+          title="Tech Stacks"
           desc={[
             "지난 5년 간 경험한 기술들입니다. ",
             "항상 새로운 기술을 받아들이고 익히기 위해",
             "지속적으로 노력하고 있습니다.",
           ]}
         />
-        <SectionContents>
+        <SectionContents
+          sectionClassName="stacks"
+          sideContents={<StackLegend />}
+        >
           <TechStacks />
         </SectionContents>
       </PageSection>
