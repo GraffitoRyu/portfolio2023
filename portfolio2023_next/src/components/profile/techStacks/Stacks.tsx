@@ -1,6 +1,6 @@
 // components
 import { Suspense } from "react";
-import StackLegend from "./StackLegend";
+
 import StackRow from "./StackRow";
 
 // types
@@ -25,7 +25,6 @@ export default async function TechStacks() {
 
   return stackData ? (
     <div className="stack-container">
-      <StackLegend />
       <ul className="stack-table">
         <Suspense fallback={<li>Loading...</li>}>
           {index.map(({ name, code }: StackKeyTypes, i: number) => (

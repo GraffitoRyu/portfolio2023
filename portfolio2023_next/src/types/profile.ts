@@ -1,24 +1,41 @@
-import { DescDepthTypes } from "./util/parseDesc";
-
 export interface SectionHeaderTypes {
   empty?: boolean;
   title?: string;
   desc?: Array<string | JSX.Element>;
+  className?: string;
 }
 
-export interface CareerTypes {
+export interface CareerSummaryTypes {
   [index: string]: string | string[];
-  code: string;
   period: string[];
   role: string;
   company: string;
-  desc: string;
+}
+
+export interface CareerDetailsTypes {
+  [index: string]: string[];
+  task: string[];
+  stacks: string[];
+  projects: string[];
+}
+
+export interface CareerTypes {
+  [index: string]:
+    | string
+    | CareerSummaryTypes
+    | CareerDetailsTypes
+    | boolean
+    | undefined;
+  code: string;
+  summary: CareerSummaryTypes;
+  details: CareerDetailsTypes;
 }
 
 export interface ExperienceTypes {
-  [index: string]: string | Array<string | DescDepthTypes>;
+  [index: string]: string | string[] | number | undefined;
   code: string;
-  desc: Array<string | DescDepthTypes>;
+  title?: string;
+  desc: string[];
 }
 
 export interface StackTypes {

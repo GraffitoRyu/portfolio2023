@@ -12,7 +12,9 @@ import { StackLegendTypes } from "@/types/profile";
 export default function StackLegend() {
   return (
     <StackLegendContainer>
-      <StackLegendTitle>경험 단계</StackLegendTitle>
+      <StackLegendTitle>
+        <span>경험 단계</span>
+      </StackLegendTitle>
       {legendData.map(({ label, level }: StackLegendTypes) => (
         <StackLegendItem key={`stackLegend_${level}`}>
           <StackLegendLabel>{label}</StackLegendLabel>

@@ -64,6 +64,7 @@ export default function DetailHeaderTitleContainer() {
               scrollTarget.offsetTop
             }`, // trigger, target
             scrub: true,
+            invalidateOnRefresh: true,
             // markers: true,
           },
         },

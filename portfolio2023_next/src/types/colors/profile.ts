@@ -1,8 +1,17 @@
 export interface CareerColorTypes {
+  border: string;
+  borderHover: string;
+  bgHover: string;
   period: string;
+  periodHover: string;
   role: string;
+  roleHover: string;
   company: string;
-  desc: string;
+  companyHover: string;
+  detailTitle: string;
+  detailContents: string;
+  icon: string;
+  iconHover: string;
 }
 
 export interface CareerModeTypes {

@@ -6,7 +6,7 @@ export const sectionHeader: SectionHeaderModeTypes = {
     desc: "#a0a0a0",
   },
   dark: {
-    title: "#fff",
+    title: "#dfdfdf",
     desc: "#707070",
   },
 };

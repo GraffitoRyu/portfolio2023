@@ -8,19 +8,25 @@ import {
 
 // types
 import { ExperienceTypes } from "@/types/profile";
-import { DescDepthTypes } from "@/types/util/parseDesc";
 
-// util components
-import ParseDescDepth from "@/components/util/ParseDescDepth";
+interface ExpItemProps extends ExperienceTypes {
+  $totalLength: number;
+}
 
-export default function ExperienceItem({ code, desc }: ExperienceTypes) {
+export default function ExperienceItem({
+  code,
+  desc,
+  $totalLength,
+}: ExpItemProps) {
   return (
-    <ExpItem>
+    <ExpItem $totalLength={$totalLength}>
       <ExpContents>
-        <ExpTitle>{code}</ExpTitle>
-        {desc?.map((p: string | DescDepthTypes, i: number) => (
+        <ExpTitle>
+          <span>{code}</span>
+        </ExpTitle>
+        {desc?.map((p: string, i: number) => (
           <ExpDesc key={`exp_${code}_depth1_${i}`}>
-            <ParseDescDepth data={p} />
+            <span>{p}</span>
           </ExpDesc>
         ))}
       </ExpContents>

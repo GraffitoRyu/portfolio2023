@@ -16,7 +16,11 @@ export default function Cursor() {
     (e: MouseEvent | PointerEvent) => {
       if (e?.target instanceof HTMLElement || e?.target instanceof SVGElement) {
         let targetElement = "";
-        if (e.target.closest("a,button")) targetElement = "link";
+        if (
+          e.target.closest("a,button") ||
+          getComputedStyle(e.target)["cursor"] === "pointer"
+        )
+          targetElement = "link";
         else if (
           e?.target instanceof HTMLElement &&
           e.target.innerText &&

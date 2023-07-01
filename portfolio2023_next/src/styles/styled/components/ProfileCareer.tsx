@@ -2,130 +2,185 @@
 
 import styled, { css } from "styled-components";
 
-// components
-import PeriodForward from "@/components/period/Period";
-
 // util
-import { rem } from "@/util/unit";
+import { rem, widthRatio } from "@/util/unit";
 
 // style
-import { flex, font, size } from "../preset/mixins";
+import { flex, font, position, size } from "../preset/mixins";
 import { transTime } from "../preset/transTime";
-import { easing } from "../preset/easing";
 
 export const CareerContainerList = styled.ul`
   width: 100%;
 `;
 
 export const CareerItemContainer = styled.li`
-  ${size({ w: "100%", mb: 80 })}
+  ${size({ w: "100%" })}
+  position: relative;
 `;
 
-export const CareerPeriod = styled(PeriodForward)`
-  ${size({ mb: 32 })}
-  color: ${({ theme }) => theme.career.period};
-
-  time {
-    transform: translateY(100%);
-    opacity: 0;
-    transition: transform ${transTime.career / 1000}s ${easing.expo},
-      opacity ${transTime.career / 1000}s ${easing.expo},
-      color ${transTime.color / 1000}s;
-  }
-
-  span {
-    ${flex({})}
-    font-size:0;
-    &:before {
-      ${size({ w: 0, h: "100%" })}
-      background-color: ${({ theme }) => theme.career.period};
-      transition: width ${transTime.career / 1000}s ${easing.expo} 0.16s;
-    }
-  }
-
-  &.on {
-    time {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    span:before {
-      width: 100%;
-    }
-  }
-
-  @media only screen and (min-width: 1024px) {
-    ${size({ mb: 24 })}
-  }
+export const CareerBorder = styled.div`
+  ${size({ w: "100%", h: "1px" })}
+  background-color:${({ theme }) => theme.career.border};
 `;
 
-export const CareerTitle = styled.h3`
+const careerSummaryCell = (col: number) => css`
   ${flex({ std: "flex-start" })}
-  ${size({ mb: 32 })}
-  @media only screen and (min-width: 1024px) {
-    ${size({ mb: 16 })}
-  }
+  ${size({ w: `${widthRatio(7, col)}%`, h: "100%", p: [0, 20] })}
 `;
 
-export const CareerTitleFadeBox = styled.span`
+const careerFont = css`
   ${font({
-    size: 40,
-    height: "1.2em",
+    size: 24,
+    weight: 400,
+    height: "1em",
   })}
-  overflow: hidden;
-  @media only screen and (min-width: 1024px) {
-    font-size: ${rem(32)};
-  }
 `;
 
-export const CareerRole = styled.strong`
-  display: block;
-  font-weight: 500;
+export const CareerPeriod = styled.time`
+  ${careerSummaryCell(1)}
+  ${careerFont}
+  color:${({ theme }) => theme.career.period};
+`;
+
+export const CareerRole = styled.h3`
+  ${careerSummaryCell(2)}
   color: ${({ theme }) => theme.career.role};
 `;
 
-export const CareerCompanyDivideBar = styled.span`
-  ${flex({})}
-  ${size({ w: 2, h: 32, m: [8, 16, 0, 24] })}
-  opacity: 0;
-  transition: opacity ${`${transTime.career / 1000}s`};
+export const CareerCompany = styled.div`
+  ${careerSummaryCell(2)}
+  ${careerFont}
+  color: ${({ theme }) => theme.career.company};
+`;
 
-  &:before {
+export const CareerExpandCell = styled.div`
+  ${careerSummaryCell(1)}
+  justify-content:center;
+  font-size: 0;
+  position: relative;
+`;
+
+export const CareerExpandIcon = styled.figure`
+  ${size({ w: 24, h: 24 })}
+  ${position({ center: true })}
+  transform: translate(-50%,-50%) rotate(45deg);
+  transform-origin: center;
+  transition: transform 0.2s;
+  &:before,
+  &:after {
     content: "";
     display: block;
-    ${size({ w: "100%", h: 0 })}
-    background-color: ${({ theme }) => theme.career.company};
-    transition: height ${`${transTime.career / 1000}s`};
+    ${position({ center: true })}
+    ${size({ w: 24, h: 2, r: 1 })}
+      background-color:${({ theme }) => theme.career.icon};
+    transform-origin: center;
+    transition: transform 0.4s, opacity 0.4s, background-color 0.4s;
   }
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+`;
 
-  &.on {
-    opacity: 1;
+export const CareerDetailContainer = styled.div`
+  ${size({ w: "100%", h: 0, p: [0, 20, 0, `${widthRatio(7, 2)}%`] })}
+  background-color: #1a1a1a;
+  overflow: clip;
+  transition: height 0.4s;
+`;
+
+export const CareerDetailList = styled.div`
+  ${size({ w: "100%", p: [40, 0, 80, 10] })}
+  opacity:0;
+  transition: opacity 0.4s;
+`;
+
+export const CareerDetailItem = styled.dl`
+  ${size({ w: "100%", mb: 40 })}
+  &:last-child {
+    ${size({ mb: 0 })}
+  }
+`;
+
+export const CareerDetailItemTitle = styled.dt`
+  ${careerFont}
+  font-weight:500;
+  ${size({ mb: 10 })}
+  color:${({ theme }) => theme.career.detailTitle};
+`;
+
+export const CareerDetailItemDesc = styled.dd`
+  ${flex({ std: "flex-start", cross: "flex-start" })}
+  ${careerFont}
+  line-height:1.6em;
+  color: ${({ theme }) => theme.career.detailContents};
+
+  &:before {
+    content: "\\00B7";
+    ${flex({ std: "flex-start" })}
+    ${size({ w: 20, h: 40 })}
+    line-height:1em;
+  }
+  span {
+    flex: 1;
+  }
+`;
+
+export const CareerSummaryContainer = styled.summary`
+  ${size({ w: `calc(100% + ${rem(40)})`, h: 120, m: [0, -20] })}
+  ${flex({ std: "flex-start" })}
+  ${position({ type: "relative", z: 10 })}
+  cursor:pointer;
+  &:before {
+    content: "";
+    ${size({ w: `calc(100% - ${rem(40)})`, h: "100%" })}
+    ${position({ type: "absolute", top: 0, left: 20, z: -5 })}
+    transition: background-color ${transTime.color / 1000}s;
+  }
+  &.hover {
     &:before {
-      height: 100%;
+      background-color: ${({ theme }) => theme.career.bgHover};
+    }
+    ${CareerPeriod} {
+      color: ${({ theme }) => theme.career.periodHover};
+    }
+    ${CareerRole} {
+      color: ${({ theme }) => theme.career.roleHover};
+    }
+    ${CareerCompany} {
+      color: ${({ theme }) => theme.career.companyHover};
+    }
+    ${CareerExpandIcon} {
+      &:before,
+      &:after {
+        background-color: ${({ theme }) => theme.career.iconHover};
+      }
     }
   }
+`;
 
-  @media only screen and (min-width: 1024px) {
-    height: ${rem(24)};
+export const CareerWrap = styled.details<{ $height: number }>`
+  width: 100%;
+  &.open {
+    ${CareerExpandIcon} {
+      transform: translate(-50%, -50%) rotate(180deg);
+      &:before {
+        transform: translate(-50%, -50%) rotate(180deg);
+      }
+      &:after {
+        transform: translate(-50%, -50%) rotate(-180deg);
+        opacity: 0;
+        transition: transform 0.6s, opacity 0.8s linear 0.2s,
+          background-color 0.4s;
+      }
+    }
+    ${CareerDetailContainer} {
+      height: ${({ $height }) => `${$height}px`};
+    }
+    ${CareerDetailList} {
+      opacity: 1;
+    }
   }
-`;
-
-const CareerFont = css`
-  ${font({
-    size: 32,
-    weight: 400,
-  })}
-  @media only screen and (min-width:1024px) {
-    font-size: ${rem(24)};
-  }
-`;
-export const CareerCompany = styled.span`
-  color: ${({ theme }) => theme.career.company};
-  line-height: 1em;
-  ${CareerFont}
-`;
-
-export const CareerDesc = styled.p`
-  color: ${({ theme }) => theme.career.desc};
-  line-height: 1.5em;
-  ${CareerFont}
 `;

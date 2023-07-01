@@ -8,21 +8,30 @@ import { scrollRefState } from "@/states/scroll";
 
 // types
 import { ScrollRefStateTypes } from "@/types/state";
-import { ExpContainer } from "@/styles/styled/components/ProfileExperience";
+import {
+  ExpList,
+  ExpScrollContainer,
+} from "@/styles/styled/components/ProfileExperience";
 
 export default function ExperienceContainer({
   children,
+  $length,
 }: {
   children: ReactNode;
+  $length: number;
 }) {
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
 
   const updateScrollRef = useCallback(
-    (node: HTMLUListElement | null) => {
+    (node: HTMLDivElement | null) => {
       setScrollRef(prev => ({ ...prev, experience: node }));
     },
     [setScrollRef]
   );
 
-  return <ExpContainer ref={updateScrollRef}>{children}</ExpContainer>;
+  return (
+    <ExpScrollContainer ref={updateScrollRef}>
+      <ExpList $length={$length}>{children}</ExpList>
+    </ExpScrollContainer>
+  );
 }

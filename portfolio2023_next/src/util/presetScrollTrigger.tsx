@@ -1,4 +1,4 @@
-import gsap from "gsap";
+import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { HookScrollTriggerProps } from "@/types/hooks";
 
@@ -17,6 +17,7 @@ export function ctxScrollTrigger({
       // 스크롤 영역 설정
       ScrollTrigger.defaults({
         scroller: container,
+        invalidateOnRefresh: true,
       });
       if (typeof normalize === "boolean")
         ScrollTrigger.normalizeScroll({
