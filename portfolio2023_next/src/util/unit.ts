@@ -33,9 +33,9 @@ export function getRootFontSize(): number {
 
 /**
  * @property {number | string} v : number인 경우 rem 변환, string인 경우 단위가 붙은 것으로 간주하고 그대로 return
- * @return {string} 단위 변환 값
+ * @return {number | string} 단위 변환 값
  */
-export const getUnit: (v: number | string) => number | string = (v) =>
+export const getUnit = (v: number | string): number | string =>
   typeof v === "string" ? v : rem(v);
 
 /**
@@ -43,6 +43,6 @@ export const getUnit: (v: number | string) => number | string = (v) =>
  * @property {number} col : 할당할 컬럼 수
  * @return {number} 컬럼 수에 대응하는 너비 값 (%)
  */
-export const widthRatio = (total: number, col: number) => {
+export const widthRatio = (total: number, col: number): number => {
   return Math.floor((100 / total) * col * 10000) / 10000;
 };
