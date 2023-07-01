@@ -17,10 +17,14 @@ export default async function Experience() {
   });
 
   return (
-    <ExperienceContainer>
+    <ExperienceContainer $length={expData.length}>
       <Suspense fallback={<li>Loading...</li>}>
         {expData.map((ex: ExperienceTypes, i: number) => (
-          <ExperienceItem key={`exp_${ex.code}_${i}`} {...ex} />
+          <ExperienceItem
+            key={`exp_${ex.code}_${i}`}
+            {...ex}
+            $totalLength={expData.length}
+          />
         ))}
       </Suspense>
     </ExperienceContainer>

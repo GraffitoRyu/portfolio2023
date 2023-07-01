@@ -37,7 +37,7 @@ export interface ScrollRefStateTypes {
   container: HTMLDivElement | null;
   header: HTMLElement | null; // <header />
   career: HTMLUListElement | null; // <ul>
-  experience: HTMLUListElement | null; // <ul>
+  experience: HTMLDivElement | null; // <div>
   tools: HTMLUListElement | null; // <ul>
   footer: HTMLElement | null; // <footer />
 }

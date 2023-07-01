@@ -3,60 +3,66 @@
 import styled from "styled-components";
 
 // util
-import { rem } from "@/util/unit";
-import { font, size } from "../preset/mixins";
-import { transTime } from "../preset/transTime";
+import { rem, widthRatio } from "@/util/unit";
+import { flex, font, size } from "../preset/mixins";
 
-export const ExpContainer = styled.ul`
-  width: 100%;
+export const ExpScrollContainer = styled.div`
+  ${size({ w: "100%", h: "100%" })}
 `;
 
-export const ExpItem = styled.li`
-  ${size({ w: "100%", mb: 120 })}
-  @media only screen and (min-width: 1024px) {
-    ${size({ mb: 80 })}
+export const ExpList = styled.ul<{ $length: number }>`
+  ${flex({ std: "flex-start", cross: "flex-start" })}
+  ${({ $length }) =>
+    size({
+      w: `calc(${widthRatio(7, 5) * $length}% + ${rem(40)})`,
+      h: "100%",
+      m: [0, -20],
+    })}
+`;
+
+export const ExpItem = styled.li<{ $totalLength: number }>`
+  ${({ $totalLength }) =>
+    size({ w: `${widthRatio(5 * $totalLength, 5)}%`, h: "100%", p: [0, 20] })}
+
+  opacity: 0.4;
+  transition: opacity 0.4s;
+  &.on,
+  &:hover {
+    opacity: 1;
   }
 `;
 
 export const ExpContents = styled.dl`
-  width: auto;
+  ${size({ w: "100%" })}
 `;
 
 export const ExpTitle = styled.dt`
-  ${size({ mb: 16 })}
+  ${size({ mb: 80 })}
   color: ${({ theme }) => theme.exp.title};
   ${font({
-    size: 56,
+    size: 24,
     weight: 500,
     height: "1em",
     transform: "capitalize",
+    spacing: 0,
   })}
-  @media only screen and (min-width: 1024px) {
-    ${size({ mb: 40 })}
-    font-size: ${rem(40)};
-  }
 `;
 
 export const ExpDesc = styled.dd`
-  p,
+  ${flex({ std: "flex-start", cross: "flex-start" })}
+  color: ${({ theme }) => theme.exp.desc};
+  ${font({
+    size: 24,
+    weight: 400,
+    height: "1.6em",
+  })}
+  &:before {
+    content: "\\00B7";
+    ${flex({ std: "flex-start" })}
+    ${size({ w: 20, h: 40 })}
+    line-height:1em;
+  }
   span {
-    color: ${({ theme }) => theme.exp.desc};
-    ${font({
-      size: 32,
-      weight: 400,
-      height: "2em",
-    })}
-  }
-  .depth-desc {
-    li:before {
-      background-color: ${({ theme }) => theme.exp.desc};
-      transition: background-color ${transTime.color / 1000}s;
-    }
-  }
-  @media only screen and (min-width: 1024px) {
-    p,
-    span {
-      font-size: ${rem(24)};
-    }
+    flex: 1;
   }
 `;

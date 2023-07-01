@@ -2,6 +2,7 @@ export interface SectionHeaderTypes {
   empty?: boolean;
   title?: string;
   desc?: Array<string | JSX.Element>;
+  className?: string;
 }
 
 export interface CareerSummaryTypes {
@@ -31,7 +32,7 @@ export interface CareerTypes {
 }
 
 export interface ExperienceTypes {
-  [index: string]: string | string[] | undefined;
+  [index: string]: string | string[] | number | undefined;
   code: string;
   title?: string;
   desc: string[];

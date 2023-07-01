@@ -6,7 +6,7 @@ export const experience: ExpModeTypes = {
     desc: "#a0a0a0",
   },
   dark: {
-    title: "#fff",
-    desc: "#a0a0a0",
+    title: "#dfdfdf",
+    desc: "#909090",
   },
 };
