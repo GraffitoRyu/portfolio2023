@@ -91,8 +91,8 @@ export default function PageIntro({ title, desc }: IntroTypes) {
       });
 
       const stOptions = {
-        start: `top 85%`, // target, trigger
-        end: `top 50%`, // target, trigger
+        start: `top 80%`, // target, trigger
+        end: `top 30%`, // target, trigger
         invalidateOnRefresh: true,
         scrub: true,
       };
