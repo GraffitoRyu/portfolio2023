@@ -23,17 +23,17 @@ export default function SectionContents({
   sectionClassName?: string;
   sideClassName?: string;
 }) {
-  const { windowHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
-  const [wh, setWh] = useState<number>(0);
+  const { headerHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
+  const [hdHeight, setHdHeight] = useState<number>(0);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    setWh(windowHeight);
-  }, [windowHeight]);
+    setHdHeight(headerHeight);
+  }, [headerHeight]);
 
   return (
     <Contents className={`${sectionClassName ?? ""}`}>
-      <SideContents className={`${sideClassName ?? ""}`} $wh={wh}>
+      <SideContents className={`${sideClassName ?? ""}`} $hdHeight={hdHeight}>
         {sideContents ?? null}
       </SideContents>
       <ContentsMain className={`${sideClassName ?? ""}`}>
