@@ -38,11 +38,13 @@ export default function CareerItemNew({
   details,
   last,
 }: CareerItemProps) {
-  const [open, setOpen] = useState<string>("");
-  const [hover, setHover] = useState<string>("");
   const detailsContainerRef = useRef<HTMLDetailsElement | null>(null);
   const detailRef = useRef<HTMLDivElement | null>(null);
+
   const [detailHeight, setDetailHeight] = useState<number>(0);
+
+  const [open, setOpen] = useState<string>("");
+  const [hover, setHover] = useState<string>("");
 
   const updateDetailHeight = useCallback(() => {
     if (detailRef?.current) setDetailHeight(detailRef.current.offsetHeight);
@@ -81,12 +83,15 @@ export default function CareerItemNew({
       <CareerBorder className="top" />
       <CareerWrap
         ref={detailsContainerRef}
-        className={`${hover} ${open}`}
-        onMouseEnter={() => setHover("hover")}
-        onMouseLeave={() => setHover("")}
+        className={`${open}`}
         $height={detailHeight}
       >
-        <CareerSummaryContainer onClick={openDetails}>
+        <CareerSummaryContainer
+          className={`${hover}`}
+          onClick={openDetails}
+          onMouseEnter={() => setHover("hover")}
+          onMouseLeave={() => setHover("")}
+        >
           <CareerPeriod>
             <span>{period(summary.period[0])}</span>
           </CareerPeriod>

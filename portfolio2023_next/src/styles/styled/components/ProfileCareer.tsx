@@ -23,19 +23,6 @@ export const CareerBorder = styled.div`
   background-color:${({ theme }) => theme.career.border};
 `;
 
-export const CareerSummaryContainer = styled.summary`
-  ${size({ w: `calc(100% + ${rem(40)})`, h: 120, m: [0, -20] })}
-  ${flex({ std: "flex-start" })}
-  ${position({ type: "relative", z: 10 })}
-  cursor:pointer;
-  &:before {
-    content: "";
-    ${size({ w: `calc(100% - ${rem(40)})`, h: "100%" })}
-    ${position({ type: "absolute", top: 0, left: 20, z: -5 })}
-    transition: background-color ${transTime.color / 1000}s;
-  }
-`;
-
 const careerSummaryCell = (col: number) => css`
   ${flex({ std: "flex-start" })}
   ${size({ w: `${widthRatio(7, col)}%`, h: "100%", p: [0, 20] })}
@@ -78,7 +65,7 @@ export const CareerExpandIcon = styled.figure`
   ${position({ center: true })}
   transform: translate(-50%,-50%) rotate(45deg);
   transform-origin: center;
-  transition: transform 0.4s;
+  transition: transform 0.2s;
   &:before,
   &:after {
     content: "";
@@ -99,8 +86,8 @@ export const CareerExpandIcon = styled.figure`
 
 export const CareerDetailContainer = styled.div`
   ${size({ w: "100%", h: 0, p: [0, 20, 0, `${widthRatio(7, 2)}%`] })}
-  /* background-color: #1a1a1a; */
-  overflow:clip;
+  background-color: #1a1a1a;
+  overflow: clip;
   transition: height 0.4s;
 `;
 
@@ -125,25 +112,35 @@ export const CareerDetailItemTitle = styled.dt`
 `;
 
 export const CareerDetailItemDesc = styled.dd`
-  ${flex({ std: "flex-start", cross: "flex-start", wrap: "wrap" })}
+  ${flex({ std: "flex-start", cross: "flex-start" })}
   ${careerFont}
   line-height:1.6em;
   color: ${({ theme }) => theme.career.detailContents};
 
   &:before {
     content: "\\00B7";
-    ${flex({})}
-    ${size({ w: 40, h: 40 })}
+    ${flex({ std: "flex-start" })}
+    ${size({ w: 20, h: 40 })}
+    line-height:1em;
   }
   span {
     flex: 1;
   }
 `;
 
-export const CareerWrap = styled.details<{ $height: number }>`
-  width: 100%;
-  &:not([open]).hover {
-    ${CareerSummaryContainer}:before {
+export const CareerSummaryContainer = styled.summary`
+  ${size({ w: `calc(100% + ${rem(40)})`, h: 120, m: [0, -20] })}
+  ${flex({ std: "flex-start" })}
+  ${position({ type: "relative", z: 10 })}
+  cursor:pointer;
+  &:before {
+    content: "";
+    ${size({ w: `calc(100% - ${rem(40)})`, h: "100%" })}
+    ${position({ type: "absolute", top: 0, left: 20, z: -5 })}
+    transition: background-color ${transTime.color / 1000}s;
+  }
+  &.hover {
+    &:before {
       background-color: ${({ theme }) => theme.career.bgHover};
     }
     ${CareerPeriod} {
@@ -162,15 +159,21 @@ export const CareerWrap = styled.details<{ $height: number }>`
       }
     }
   }
+`;
+
+export const CareerWrap = styled.details<{ $height: number }>`
+  width: 100%;
   &.open {
     ${CareerExpandIcon} {
       transform: translate(-50%, -50%) rotate(180deg);
       &:before {
-        transform: translate(-50%, -50%) rotate(-180deg);
+        transform: translate(-50%, -50%) rotate(180deg);
       }
       &:after {
-        transform: translate(-50%, -50%) rotate(180deg);
+        transform: translate(-50%, -50%) rotate(-180deg);
         opacity: 0;
+        transition: transform 0.6s, opacity 0.8s linear 0.2s,
+          background-color 0.4s;
       }
     }
     ${CareerDetailContainer} {
