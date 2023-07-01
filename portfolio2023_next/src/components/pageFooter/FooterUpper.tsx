@@ -20,7 +20,6 @@ import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 export default function FooterUpperContainer() {
   const { container: scrollContainer, footer: scrollTrigger } =
     useRecoilValue<ScrollRefStateTypes>(scrollRefState);
-  const footerHeaderRef = useRef<HTMLElement | null>(null);
   const footerTitleRef = useRef<HTMLHeadingElement | null>(null);
   const [footerPos, setFooterPos] = useState<number>(0);
 
@@ -36,9 +35,6 @@ export default function FooterUpperContainer() {
     const scrollTarget = footerTitleRef.current;
     if (!scrollContainer || !scrollTarget) return;
 
-    const ftHeader = footerHeaderRef.current;
-    if (!ftHeader) return;
-
     const ctx = ctxScrollTrigger({
       direction: "from",
       container: scrollContainer,
@@ -48,7 +44,7 @@ export default function FooterUpperContainer() {
         scrollTrigger: {
           trigger: scrollTrigger,
           start: `top bottom`, // target, trigger
-          end: `top ${ftHeader.offsetTop}`, // target, trigger
+          end: `top top`, // target, trigger
           scrub: true,
           invalidateOnRefresh: true,
         },
@@ -56,16 +52,10 @@ export default function FooterUpperContainer() {
     });
 
     return () => ctx.revert();
-  }, [
-    footerHeaderRef,
-    footerPos,
-    footerTitleRef,
-    scrollContainer,
-    scrollTrigger,
-  ]);
+  }, [footerPos, footerTitleRef, scrollContainer, scrollTrigger]);
 
   return (
-    <FooterHeader ref={footerHeaderRef}>
+    <FooterHeader>
       <FooterTitle ref={footerTitleRef}>
         <FooterTitleLine className="stroke-title">{`Let's work`}</FooterTitleLine>
         <FooterTitleLine className="filled-title">together</FooterTitleLine>
