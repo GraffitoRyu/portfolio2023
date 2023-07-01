@@ -13,12 +13,13 @@ export const PageSectionContainer = styled.section<{
   $headerHeight: number;
 }>`
   position: relative;
-  width: 100%;
+  ${size({ w: "100%" })}
+  min-height:${({ $wh, $headerHeight }) => `${$wh - $headerHeight}px`};
   &.side-h-padding {
     ${size({ pl: 80, pr: 80 })}
   }
   &.side-v-padding {
-    ${size({ pt: 160, pb: 160 })}
+    ${size({ pt: 80, pb: 80 })}
   }
   &.visual-section {
     height: ${({ $wh, $headerHeight }) =>
@@ -29,7 +30,7 @@ export const PageSectionContainer = styled.section<{
   }
   @media only screen and (min-width: 1024px) {
     &.side-v-padding {
-      ${size({ pt: 240, pb: 240 })}
+      ${({ $wh }) => size({ pt: 120, pb: `${$wh / 4}px` })}
     }
     &.visual-section {
       height: auto;
@@ -41,18 +42,13 @@ export const PageSectionContainer = styled.section<{
   }
 `;
 
-export const SectionHeaderContainer = styled.header<{
-  $wh: number;
-  $headerHeight: number;
-}>`
+export const SectionHeaderContainer = styled.header`
   ${size({ w: "100%", mb: 120 })}
   &.empty {
     margin: 0;
   }
   @media only screen and (min-width: 1024px) {
     &:not(.empty) {
-      ${({ $wh, $headerHeight }) =>
-        size({ h: `${$wh / 2 - $headerHeight}px`, mb: 0 })}
     }
   }
 `;
@@ -63,11 +59,12 @@ export const HeaderTitle = styled.h2`
   ${font({
     size: 48,
     weight: 500,
-    spacing: 0,
+    spacing: `-0.02em`,
     height: "1em",
     transform: "capitalize",
     family: `var(--serif-kr)`,
   })}
+  opacity:0;
   @media only screen and (min-width: 1024px) {
     ${size({ mb: 80 })}
     font-size: ${rem(120)};
@@ -78,11 +75,13 @@ export const HeaderDesc = styled.p`
   color: ${({ theme }) => theme.sectionHeader.desc};
   ${font({
     size: 32,
-    height: "1.25em",
+    height: "1.5em",
   })}
   span {
+    display: block;
     word-break: break-all;
   }
+  opacity: 0;
   @media only screen and (min-width: 1024px) {
     ${font({
       size: 32,
@@ -102,11 +101,11 @@ export const Contents = styled.div`
   }
 `;
 
-export const SideContents = styled.aside<{ $wh: number }>`
+export const SideContents = styled.aside<{ $hdHeight: number }>`
   width: 100%;
   min-height: 1px;
   @media only screen and (min-width: 1024px) {
-    ${({ $wh }) => position({ type: "sticky", top: `${$wh / 2}px` })}
+    ${({ $hdHeight }) => position({ type: "sticky", top: `${$hdHeight}px` })}
     ${size({ w: `41.6667%`, p: [0, 20] })}
     &.intro {
       width: 50%;
@@ -122,7 +121,7 @@ export const ContentsMain = styled.div`
   @media only screen and (min-width: 1024px) {
     ${size({ w: `58.3333%`, p: [0, 20] })}
     &.intro {
-      width: 50%;
+      ${size({ w: "50%", pb: 240 })}
     }
     &.full {
       ${size({ w: `100%`, p: 0 })}
