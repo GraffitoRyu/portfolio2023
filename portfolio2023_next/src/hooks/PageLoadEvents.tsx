@@ -13,6 +13,8 @@ import { pageStateTypes } from "@/types/state";
 
 // data
 import { sitemapData } from "@/data/sitemap";
+
+// style
 import { transTime } from "@/styles/styled/preset/transTime";
 
 const routeData: SitemapType[] = sitemapData.filter(route => !route.external);
