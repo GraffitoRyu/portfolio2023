@@ -19,7 +19,8 @@ export const PageSectionContainer = styled.section<{
     ${size({ pl: 80, pr: 80 })}
   }
   &.side-v-padding {
-    ${size({ pt: 80, pb: 80 })}
+    ${({ $headerHeight }) =>
+      size({ pt: $headerHeight !== 0 ? `${$headerHeight}px` : 240, pb: 80 })}
   }
   &.visual-section {
     height: ${({ $wh, $headerHeight }) =>
@@ -30,7 +31,7 @@ export const PageSectionContainer = styled.section<{
   }
   @media only screen and (min-width: 1024px) {
     &.side-v-padding {
-      ${({ $wh }) => size({ pt: 120, pb: `${$wh / 4}px` })}
+      ${({ $wh }) => size({ pb: `${$wh / 4}px` })}
     }
     &.visual-section {
       height: auto;

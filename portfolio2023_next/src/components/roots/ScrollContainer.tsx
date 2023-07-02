@@ -11,7 +11,6 @@ import { StyledScrollContainer } from "@/styles/styled/components/Page";
 
 // style
 import { scrollRefState } from "@/states/scroll";
-import useResizeObserver from "@/hooks/useResizeObserver";
 
 export default function ScrollContainer({ children }: { children: ReactNode }) {
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
@@ -21,16 +20,10 @@ export default function ScrollContainer({ children }: { children: ReactNode }) {
       setScrollRef(prev => ({
         ...prev,
         container: node,
-        height: node ? node.scrollHeight : 0,
       }));
     },
     [setScrollRef]
   );
-  const scrollContainerRef = useResizeObserver(setRef);
 
-  return (
-    <StyledScrollContainer ref={scrollContainerRef}>
-      {children}
-    </StyledScrollContainer>
-  );
+  return <StyledScrollContainer ref={setRef}>{children}</StyledScrollContainer>;
 }

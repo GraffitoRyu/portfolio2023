@@ -35,7 +35,7 @@ export type ThemeStateTypes = {
 
 export interface ScrollRefStateTypes {
   container: HTMLDivElement | null;
-  height: number;
+  stickyHeight: number;
   header: HTMLElement | null; // <header />
   visual: HTMLElement | null; // <section />
   career: HTMLElement | null; // <section />
