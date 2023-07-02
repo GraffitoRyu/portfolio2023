@@ -35,10 +35,13 @@ export type ThemeStateTypes = {
 
 export interface ScrollRefStateTypes {
   container: HTMLDivElement | null;
+  height: number;
   header: HTMLElement | null; // <header />
-  career: HTMLUListElement | null; // <ul>
-  experience: HTMLDivElement | null; // <div>
-  tools: HTMLUListElement | null; // <ul>
+  visual: HTMLElement | null; // <section />
+  career: HTMLElement | null; // <section />
+  experience: HTMLElement | null; // <section />
+  stacks: HTMLElement | null; // <section />
+  projectList: HTMLElement | null; // <section />
   footer: HTMLElement | null; // <footer />
 }
 

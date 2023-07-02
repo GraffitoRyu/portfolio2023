@@ -14,7 +14,7 @@ import StackLegend from "@/components/profile/techStacks/StackLegend";
 export default function Profile() {
   return (
     <>
-      <PageSection className="side-h-padding visual-section">
+      <PageSection code="visual" className="side-h-padding visual-section">
         <PageVisual title={["Ready for ", "interaction"]} />
         <SectionHeader empty={true} />
         <SectionContents sectionClassName="intro" sideClassName="intro">
@@ -34,7 +34,7 @@ export default function Profile() {
           />
         </SectionContents>
       </PageSection>
-      <PageSection className="side-h-padding side-v-padding">
+      <PageSection code="career" className="side-h-padding side-v-padding">
         <SectionHeader
           title="Career"
           desc={["지난 5년간 실무 경험을 쌓은 ", "근무 경력입니다."]}
@@ -43,7 +43,7 @@ export default function Profile() {
           <Career />
         </SectionContents>
       </PageSection>
-      <PageSection className="side-h-padding side-v-padding">
+      <PageSection code="experience" className="side-h-padding side-v-padding">
         <SectionHeader
           title="Experience"
           desc={[
@@ -55,7 +55,7 @@ export default function Profile() {
           <Experience />
         </SectionContents>
       </PageSection>
-      <PageSection className="side-h-padding side-v-padding">
+      <PageSection code="stacks" className="side-h-padding side-v-padding">
         <SectionHeader
           title="Tech Stacks"
           desc={[
