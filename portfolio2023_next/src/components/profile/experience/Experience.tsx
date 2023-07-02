@@ -1,9 +1,5 @@
 // components
-import { Suspense } from "react";
-
-// components
 import ExperienceContainer from "./ExperienceContainer";
-import ExperienceItem from "./ExperienceItem";
 
 // type
 import { ExperienceTypes } from "@/types/profile";
@@ -18,17 +14,5 @@ export default async function Experience() {
     queryValue: "experience",
   });
 
-  return (
-    <ExperienceContainer $length={expData.length}>
-      <Suspense fallback={<li>Loading...</li>}>
-        {expData.map((ex: ExperienceTypes, i: number) => (
-          <ExperienceItem
-            key={`exp_${ex.code}_${i}`}
-            {...ex}
-            $totalLength={expData.length}
-          />
-        ))}
-      </Suspense>
-    </ExperienceContainer>
-  );
+  return <ExperienceContainer data={expData} />;
 }

@@ -40,6 +40,7 @@ export interface ScrollRefStateTypes {
   visual: HTMLElement | null; // <section />
   career: HTMLElement | null; // <section />
   experience: HTMLElement | null; // <section />
+  expActiveIndex: number;
   stacks: HTMLElement | null; // <section />
   projectList: HTMLElement | null; // <section />
   footer: HTMLElement | null; // <footer />

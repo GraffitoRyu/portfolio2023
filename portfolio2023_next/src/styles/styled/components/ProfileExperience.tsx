@@ -26,8 +26,7 @@ export const ExpItem = styled.li<{ $totalLength: number }>`
 
   opacity: 0.4;
   transition: opacity 0.4s;
-  &.on,
-  &:hover {
+  &.on {
     opacity: 1;
   }
 `;

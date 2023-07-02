@@ -11,7 +11,7 @@ export function ctxScrollTrigger({
   if (typeof window === "undefined") return;
 
   return gsap.context(() => {
-    if (container) {
+    if (container instanceof Element) {
       // Scroll Trigger 플러그인 사용 시작
       gsap.registerPlugin(ScrollTrigger);
 
