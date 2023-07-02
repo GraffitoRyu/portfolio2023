@@ -79,21 +79,27 @@ export default function DetailTitleWrap() {
 
       const ctx = ctxScrollTrigger({
         container: scrollContainer,
-        target: scrollTarget,
-        options: {
-          opacity: 0,
-          scrollTrigger: {
-            trigger: scrollArea,
-            start: `${scrollTarget.offsetTop} ${scrollTarget.offsetTop}`, // target, trigger
-            end: `${scrollTarget.offsetTop} start`, // target, trigger
-            scrub: true,
-            invalidateOnRefresh: true,
-            // markers: true,
+        tweenArr: [
+          {
+            target: scrollTarget,
+            options: [
+              {
+                opacity: 0,
+                scrollTrigger: {
+                  trigger: scrollArea,
+                  start: `${scrollTarget.offsetTop} ${scrollTarget.offsetTop}`, // target, trigger
+                  end: `${scrollTarget.offsetTop} start`, // target, trigger
+                  scrub: true,
+                  invalidateOnRefresh: true,
+                  // markers: true,
+                },
+              },
+            ],
           },
-        },
+        ],
       });
 
-      return () => ctx.revert();
+      return () => ctx?.revert();
     }
   }, [code, data, openComplete, scrollArea, scrollContainer, subtitle, title]);
 

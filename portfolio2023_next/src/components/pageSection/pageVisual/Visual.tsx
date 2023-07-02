@@ -71,11 +71,15 @@ export default function PageVisual({ title }: { title: string[] }) {
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
-      target: scrollTarget,
       normalize: true,
-      options: options,
+      tweenArr: [
+        {
+          target: scrollTarget,
+          options: [options],
+        },
+      ],
     });
-    return () => ctx.revert();
+    return () => ctx?.revert();
   }, [scrollContainer, windowWidth]);
 
   useEffect(() => {

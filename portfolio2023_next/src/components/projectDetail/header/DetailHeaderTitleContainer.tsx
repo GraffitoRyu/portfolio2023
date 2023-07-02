@@ -54,22 +54,28 @@ export default function DetailHeaderTitleContainer() {
 
       const ctx = ctxScrollTrigger({
         container: scrollContainer,
-        target: scrollTarget,
-        options: {
-          opacity: 1,
-          scrollTrigger: {
-            trigger: scrollTrigger,
-            start: `${visualTitleRef.offsetTop} ${scrollTarget.offsetTop}`, // trigger, target
-            end: `${visualTitleRef.offsetTop + scrollTarget.clientHeight} ${
-              scrollTarget.offsetTop
-            }`, // trigger, target
-            scrub: true,
-            invalidateOnRefresh: true,
-            // markers: true,
+        tweenArr: [
+          {
+            target: scrollTarget,
+            options: [
+              {
+                opacity: 1,
+                scrollTrigger: {
+                  trigger: scrollTrigger,
+                  start: `${visualTitleRef.offsetTop} ${scrollTarget.offsetTop}`, // trigger, target
+                  end: `${
+                    visualTitleRef.offsetTop + scrollTarget.clientHeight
+                  } ${scrollTarget.offsetTop}`, // trigger, target
+                  scrub: true,
+                  invalidateOnRefresh: true,
+                  // markers: true,
+                },
+              },
+            ],
           },
-        },
+        ],
       });
-      return () => ctx.revert();
+      return () => ctx?.revert();
     }
   }, [code, openComplete, scrollContainer, scrollTrigger, visualTitleRef]);
 

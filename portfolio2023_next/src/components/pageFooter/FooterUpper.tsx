@@ -36,22 +36,28 @@ export default function FooterUpperContainer() {
     if (!scrollContainer || !scrollTarget) return;
 
     const ctx = ctxScrollTrigger({
-      direction: "from",
       container: scrollContainer,
-      target: scrollTarget,
-      options: {
-        y: "-100%", // transform translate
-        scrollTrigger: {
-          trigger: scrollTrigger,
-          start: `top bottom`, // target, trigger
-          end: `top top`, // target, trigger
-          scrub: true,
-          invalidateOnRefresh: true,
+      tweenArr: [
+        {
+          direction: "from",
+          target: scrollTarget,
+          options: [
+            {
+              y: "-100%", // transform translate
+              scrollTrigger: {
+                trigger: scrollTrigger,
+                start: `top bottom`, // target, trigger
+                end: `top top`, // target, trigger
+                scrub: true,
+                invalidateOnRefresh: true,
+              },
+            },
+          ],
         },
-      },
+      ],
     });
 
-    return () => ctx.revert();
+    return () => ctx?.revert();
   }, [footerPos, footerTitleRef, scrollContainer, scrollTrigger]);
 
   return (
