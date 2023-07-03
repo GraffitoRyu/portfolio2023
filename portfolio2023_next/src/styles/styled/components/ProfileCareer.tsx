@@ -177,7 +177,7 @@ export const CareerWrap = styled.details<{ $height: number }>`
       }
     }
     ${CareerDetailContainer} {
-      height: ${({ $height }) => `${$height}px`};
+      height: ${({ $height }) => ($height !== 0 ? `${$height}px` : 360)};
     }
     ${CareerDetailList} {
       opacity: 1;

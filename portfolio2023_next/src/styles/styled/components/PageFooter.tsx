@@ -21,7 +21,7 @@ import { rem } from "@/util/unit";
 
 export const FooterContainer = styled.footer<{ $wh: number }>`
   ${position({ type: "relative", z: 600 })}
-  ${({ $wh }: { $wh: number }) =>
+  ${({ $wh }) =>
     size({
       w: "100%",
       h: $wh !== 0 ? "100vh" : `${$wh}px`,

@@ -21,13 +21,10 @@ export const VisualContainer = styled.div<{
   height: 50%;
   @media only screen and (min-width: 1024px) {
     width: 100%;
-    height: ${({
-      $wh,
-      $headerHeight,
-    }: {
-      $wh: number;
-      $headerHeight: number;
-    }): string => ($wh !== 0 ? `${$wh - $headerHeight}px` : "100vh")};
+    height: ${({ $wh, $headerHeight }): string =>
+      $wh !== 0 && $headerHeight !== 0
+        ? `${$wh - $headerHeight}px`
+        : `calc(100vh - ${rem(240)})`};
   }
 `;
 

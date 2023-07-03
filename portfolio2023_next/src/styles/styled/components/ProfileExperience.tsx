@@ -14,7 +14,9 @@ export const ExpList = styled.ul<{ $length: number }>`
   ${flex({ std: "flex-start", cross: "flex-start" })}
   ${({ $length }) =>
     size({
-      w: `calc(${widthRatio(7, 5) * $length}% + ${rem(40)})`,
+      w: `calc(${widthRatio(7, 5) * ($length !== 0 ? $length : 5)}% + ${rem(
+        40
+      )})`,
       h: "100%",
       m: [0, -20],
     })}
@@ -22,7 +24,11 @@ export const ExpList = styled.ul<{ $length: number }>`
 
 export const ExpItem = styled.li<{ $totalLength: number }>`
   ${({ $totalLength }) =>
-    size({ w: `${widthRatio(5 * $totalLength, 5)}%`, h: "100%", p: [0, 20] })}
+    size({
+      w: `${widthRatio(5 * ($totalLength !== 0 ? $totalLength : 25), 5)}%`,
+      h: "100%",
+      p: [0, 20],
+    })}
 
   opacity: 0.4;
   transition: opacity 0.4s;

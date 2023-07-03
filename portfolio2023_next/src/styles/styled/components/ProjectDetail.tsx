@@ -86,8 +86,7 @@ export const PDSection = styled.section<{ $wh?: number }>`
     padding: ${rem(80)};
   }
   &.detail-visual {
-    height: ${({ $wh }: { $wh?: number }) =>
-      $wh !== 0 ? "100vh" : `${$wh}px`};
+    height: ${({ $wh }) => ($wh !== 0 ? "100vh" : `${$wh}px`)};
   }
   &.detail-info {
     font-size: 0;
@@ -102,7 +101,7 @@ export const PDVisualImageContainer = styled.div`
 `;
 
 export const PDVisualImage = styled.figure<{ $wh: number }>`
-  ${({ $wh }: { $wh: number }) =>
+  ${({ $wh }) =>
     size({
       w: "100%",
       h: $wh !== 0 ? "100vh" : `${$wh}px`,
@@ -128,7 +127,7 @@ export const PDVisualCover = styled.div<{ $wh: number }>`
     background: ${({ theme }) => theme.projectDetails.visualBg};
   }
   @media only screen and (min-width: 1024px) {
-    height: ${({ $wh }: { $wh: number }) => ($wh !== 0 ? "100vh" : `${$wh}px`)};
+    height: ${({ $wh }) => ($wh !== 0 ? "100vh" : `${$wh}px`)};
   }
 `;
 

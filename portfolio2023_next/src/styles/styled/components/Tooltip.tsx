@@ -12,7 +12,7 @@ export const TooltipContainer = styled.div`
 
 export const TooltipPositionBox = styled.div<{ $pos: string[] }>`
   ${position({ type: "absolute", z: 100 })}
-  ${({ $pos }: { $pos: string[] }) => {
+  ${({ $pos }) => {
     let direction = "";
     let centerPos = "";
     if ($pos[0] == "top") direction += `bottom:calc(100% + ${rem(16)});`;

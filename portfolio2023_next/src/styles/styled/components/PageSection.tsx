@@ -14,7 +14,10 @@ export const PageSectionContainer = styled.section<{
 }>`
   position: relative;
   ${size({ w: "100%" })}
-  min-height:${({ $wh, $headerHeight }) => `${$wh - $headerHeight}px`};
+  min-height:${({ $wh, $headerHeight }) =>
+    $wh !== 0 && $headerHeight !== 0
+      ? `${$wh - $headerHeight}px`
+      : `calc(100vh - ${rem(240)})`};
   &.side-h-padding {
     ${size({ pl: 80, pr: 80 })}
   }
@@ -31,7 +34,7 @@ export const PageSectionContainer = styled.section<{
   }
   @media only screen and (min-width: 1024px) {
     &.side-v-padding {
-      ${({ $wh }) => size({ pb: `${$wh / 4}px` })}
+      ${({ $wh }) => size({ pb: $wh !== 0 ? `${$wh / 4}px` : "25vh" })}
     }
     &.visual-section {
       height: auto;
@@ -106,7 +109,11 @@ export const SideContents = styled.aside<{ $hdHeight: number }>`
   width: 100%;
   min-height: 1px;
   @media only screen and (min-width: 1024px) {
-    ${({ $hdHeight }) => position({ type: "sticky", top: `${$hdHeight}px` })}
+    ${({ $hdHeight }) =>
+      position({
+        type: "sticky",
+        top: $hdHeight !== 0 ? `${$hdHeight}px` : 240,
+      })}
     ${size({ w: `41.6667%`, p: [0, 20] })}
     &.intro {
       width: 50%;

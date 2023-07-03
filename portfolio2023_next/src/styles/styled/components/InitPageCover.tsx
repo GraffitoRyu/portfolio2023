@@ -26,7 +26,7 @@ export const InitCoverContainer = styled.div`
 
 export const InitCoverBox = styled.div<{ $wh: number }>`
   position: relative;
-  ${({ $wh }: { $wh: number }) =>
+  ${({ $wh }) =>
     size({
       w: "100%",
       h: $wh !== 0 ? `${$wh}px` : "100vh",
