@@ -15,15 +15,16 @@ import { scrollRefState } from "@/states/scroll";
 export default function ScrollContainer({ children }: { children: ReactNode }) {
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
 
-  const setRef = useCallback(
+  const updateScrollRef = useCallback(
     (node: HTMLDivElement | null) => {
-      setScrollRef(prev => ({
-        ...prev,
-        container: node,
-      }));
+      setScrollRef(prev => ({ ...prev, container: node }));
     },
     [setScrollRef]
   );
 
-  return <StyledScrollContainer ref={setRef}>{children}</StyledScrollContainer>;
+  return (
+    <StyledScrollContainer ref={updateScrollRef}>
+      {children}
+    </StyledScrollContainer>
+  );
 }

@@ -42,7 +42,7 @@ export default function PageHeader() {
     }));
   }, [setScreenSize]);
 
-  const updateRef = useCallback(
+  const updateScrollRef = useCallback(
     (node: HTMLElement | null) => {
       headerRef.current = node;
       setScrollRef(prev => ({ ...prev, header: node }));
@@ -70,7 +70,7 @@ export default function PageHeader() {
   }, [initComplete]);
 
   return (
-    <HeaderContainer className={`${hide}`} ref={updateRef}>
+    <HeaderContainer className={`${hide}`} ref={updateScrollRef}>
       <StyledHeaderWrap>
         <TimeDisplay />
         <Gnb />

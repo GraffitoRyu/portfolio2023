@@ -2,6 +2,8 @@
 
 import React, { useLayoutEffect, useRef } from "react";
 import { useRecoilValue } from "recoil";
+import { gsap } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // style components
 import {
@@ -16,8 +18,6 @@ import { SectionHeaderTypes } from "@/types/profile";
 
 // state
 import { scrollRefState } from "@/states/scroll";
-import { gsap } from "gsap/dist/gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 export default function SectionHeader({
   empty,
