@@ -18,8 +18,11 @@ import { scrollRefState } from "@/states/scroll";
 import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function FooterUpperContainer() {
-  const { container: scrollContainer, footer: scrollTrigger } =
-    useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const {
+    container: scrollContainer,
+    footer: scrollTrigger,
+    stickyHeight,
+  } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
   const footerTitleRef = useRef<HTMLHeadingElement | null>(null);
   const [footerPos, setFooterPos] = useState<number>(0);
 
@@ -30,10 +33,10 @@ export default function FooterUpperContainer() {
   }, [footerPos, scrollTrigger]);
 
   useEffect(() => {
-    if (!scrollTrigger) return;
+    if (!scrollContainer || !scrollTrigger) return;
 
     const scrollTarget = footerTitleRef.current;
-    if (!scrollContainer || !scrollTarget) return;
+    if (!scrollTarget) return;
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
@@ -58,7 +61,7 @@ export default function FooterUpperContainer() {
     });
 
     return () => ctx?.revert();
-  }, [footerPos, footerTitleRef, scrollContainer, scrollTrigger]);
+  }, [footerPos, footerTitleRef, scrollContainer, scrollTrigger, stickyHeight]);
 
   return (
     <FooterHeader>
