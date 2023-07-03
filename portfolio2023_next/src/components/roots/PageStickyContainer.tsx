@@ -26,14 +26,16 @@ export default function PageStickyContainer({
 
     const ob = new ResizeObserver(
       debounce((entries: ResizeObserverEntry[]) => {
-        const ctx = entries[0].contentRect;
-        setScrollRef(prev => ({ ...prev, stickyHeight: ctx.height }));
+        const ctx = entries?.[0]?.contentRect;
+        setScrollRef(prev => ({ ...prev, stickyHeight: ctx ? ctx.height : 0 }));
       }, 400)
     );
 
     ob.observe(container);
 
-    return () => ob.disconnect();
+    return () => {
+      ob.disconnect();
+    };
   }, [setScrollRef]);
 
   return (
