@@ -8,7 +8,7 @@ export function ctxScrollTrigger({
   tweenArr,
   custom,
 }: HookScrollTriggerProps) {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined") return gsap.context();
 
   return gsap.context(() => {
     if (container instanceof Element) {

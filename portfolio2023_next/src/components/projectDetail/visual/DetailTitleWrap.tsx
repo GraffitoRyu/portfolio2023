@@ -99,7 +99,7 @@ export default function DetailTitleWrap() {
         ],
       });
 
-      return () => ctx?.revert();
+      return () => ctx.revert();
     }
   }, [code, data, openComplete, scrollArea, scrollContainer, subtitle, title]);
 

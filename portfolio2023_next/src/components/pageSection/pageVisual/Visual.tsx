@@ -79,7 +79,7 @@ export default function PageVisual({ title }: { title: string[] }) {
         },
       ],
     });
-    return () => ctx?.revert();
+    return () => ctx.revert();
   }, [scrollContainer, windowWidth]);
 
   useEffect(() => {

@@ -116,7 +116,7 @@ export default function CareerItem({
       }
     });
 
-    return () => ctx?.revert();
+    return () => ctx.revert();
   }, [scrollContainer, stickyHeight]);
 
   return (

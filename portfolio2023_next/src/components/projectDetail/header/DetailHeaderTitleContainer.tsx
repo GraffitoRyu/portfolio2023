@@ -75,7 +75,7 @@ export default function DetailHeaderTitleContainer() {
           },
         ],
       });
-      return () => ctx?.revert();
+      return () => ctx.revert();
     }
   }, [code, openComplete, scrollContainer, scrollTrigger, visualTitleRef]);
 

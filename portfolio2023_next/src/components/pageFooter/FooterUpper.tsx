@@ -60,7 +60,7 @@ export default function FooterUpperContainer() {
       ],
     });
 
-    return () => ctx?.revert();
+    return () => ctx.revert();
   }, [footerPos, footerTitleRef, scrollContainer, scrollTrigger, stickyHeight]);
 
   return (
