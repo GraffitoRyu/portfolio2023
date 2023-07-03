@@ -11,11 +11,16 @@ export type DeviceTypes = {
   orientation: string;
 };
 
+export type CareerDetailHeight = {
+  [code: string]: number;
+};
+
 export type ScreenSizeTypes = {
   windowWidth: number;
   windowHeight: number;
   headerHeight: number;
   columnWidth: number;
+  careerExpandHeight: CareerDetailHeight;
 };
 
 export type pageStateTypes = {
@@ -34,12 +39,22 @@ export type ThemeStateTypes = {
   theme: string;
 };
 
+export interface CareerItemsRefTypes {
+  [index: string]: HTMLDetailsElement | null;
+}
+
+export interface CareerOpenTypes {
+  [index: string]: boolean;
+}
+
 export interface ScrollRefStateTypes {
   container: HTMLDivElement | null;
   stickyHeight: number;
   header: HTMLElement | null; // <header />
   visual: HTMLElement | null; // <section />
   career: HTMLElement | null; // <section />
+  careerItems: CareerItemsRefTypes; // <details />
+  careerOpen: CareerOpenTypes;
   experience: HTMLElement | null; // <section />
   stacks: HTMLElement | null; // <section />
   projectList: HTMLElement | null; // <section />
