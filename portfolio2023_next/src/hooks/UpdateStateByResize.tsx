@@ -3,14 +3,17 @@
 import { useEffect, useLayoutEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
+// types
+import { DeviceTypes, ScreenSizeTypes } from "@/types/state";
+
 // state
 import { deviceState } from "@/states/device";
+import { screenSizeState } from "@/states/screen";
 
 // util
 import debounce from "@/util/debounceEvent";
 import { checkDevice } from "@/util/checkDevice";
-import { DeviceTypes, ScreenSizeTypes } from "@/types/state";
-import { screenSizeState } from "@/states/screen";
+import { remToPx } from "@/util/unit";
 
 export default function UpdateStateByResize() {
   const setDevice = useSetRecoilState<DeviceTypes>(deviceState);
@@ -18,6 +21,8 @@ export default function UpdateStateByResize() {
 
   // resize update
   const resizeCallback = debounce(() => {
+    const sectionPadding = remToPx(80);
+    const columnPadding = remToPx(20);
     // 접속 디바이스 업데이트
     setDevice(checkDeviceState());
     // 화면 사이즈 값 업데이트
@@ -25,17 +30,25 @@ export default function UpdateStateByResize() {
       ...prev,
       windowWidth: window.innerWidth,
       windowHeight: window.innerHeight,
+      columnWidth:
+        (window.innerWidth - sectionPadding * 2 - columnPadding * 2) / 12,
     }));
   }, 500);
 
   // 최초의 디바이스 세팅
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
+
+    const sectionPadding = remToPx(80);
+    const columnPadding = remToPx(20);
+
     setDevice(checkDeviceState());
     setScreen(prev => ({
       ...prev,
       windowWidth: window.innerWidth,
       windowHeight: window.innerHeight,
+      columnWidth:
+        (window.innerWidth - sectionPadding * 2 - columnPadding * 2) / 12,
     }));
   }, [setDevice, setScreen]);
 
