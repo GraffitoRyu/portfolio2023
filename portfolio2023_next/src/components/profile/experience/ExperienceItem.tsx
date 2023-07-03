@@ -11,15 +11,22 @@ import { ExperienceTypes } from "@/types/profile";
 
 interface ExpItemProps extends ExperienceTypes {
   $totalLength: number;
+  $itemIndex: number;
+  $activeIndex: number;
 }
 
 export default function ExperienceItem({
   code,
   desc,
   $totalLength,
+  $itemIndex,
+  $activeIndex,
 }: ExpItemProps) {
   return (
-    <ExpItem $totalLength={$totalLength}>
+    <ExpItem
+      className={$activeIndex === $itemIndex ? "on" : ""}
+      $totalLength={$totalLength}
+    >
       <ExpContents>
         <ExpTitle>
           <span>{code}</span>
