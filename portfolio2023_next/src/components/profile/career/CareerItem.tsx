@@ -1,138 +1,136 @@
-// "use client";
+"use client";
 
-// import { useEffect, useRef, useState } from "react";
-// import { useRecoilValue } from "recoil";
-// import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { gsap } from "gsap/dist/gsap";
 
-// // style components
-// import {
-//   CareerCompany,
-//   CareerCompanyDivideBar,
-//   CareerDesc,
-//   CareerItemContainer,
-//   CareerPeriod,
-//   CareerRole,
-//   CareerTitle,
-//   CareerTitleFadeBox,
-// } from "@/styles/styled/components/ProfileCareer";
+// components
+import CareerSummary from "./details/CareerSummary";
+import CareerDetail from "./details/CareerDetail";
 
-// // state
-// import { scrollRefState } from "@/states/scroll";
+// style components
+import {
+  CareerBorder,
+  CareerItemContainer,
+  CareerWrap,
+} from "@/styles/styled/components/ProfileCareer";
 
-// // type
-// import { CareerTypes } from "@/types/profile";
-// import { ScrollRefStateTypes } from "@/types/state";
+// type
+import { CareerTypes } from "@/types/profile";
+import { ScreenSizeTypes, ScrollRefStateTypes } from "@/types/state";
 
-// // style
-// import { transTime } from "@/styles/styled/preset/transTime";
+// state
+import { scrollRefState } from "@/states/scroll";
+import { screenSizeState } from "@/states/screen";
 
-// export default function CareerItem({
-//   period,
-//   role,
-//   company,
-//   desc,
-// }: CareerTypes) {
-//   const careerRef = useRef<HTMLLIElement | null>(null);
-//   const periodRef = useRef<HTMLDivElement | null>(null);
-//   const roleRef = useRef<HTMLElement | null>(null);
-//   const companyRef = useRef<HTMLSpanElement | null>(null);
-//   const descRef = useRef<HTMLParagraphElement | null>(null);
+interface CareerItemProps extends CareerTypes {
+  last?: boolean;
+}
 
-//   const [divideActive, setDivideActive] = useState<string>("");
-//   const [periodActive, setPeriodActive] = useState<string>("");
+export default function CareerItem({
+  code,
+  summary,
+  details,
+  last,
+}: CareerItemProps) {
+  const [
+    { container: scrollContainer, stickyHeight, careerOpen },
+    setScrollRef,
+  ] = useRecoilState<ScrollRefStateTypes>(scrollRefState);
+  const itemRef = useRef<HTMLLIElement | null>(null);
+  const [hide, setHide] = useState<string>("hide");
 
-//   const { container: scrollContainer } =
-//     useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const detailsRef = useRef<HTMLDetailsElement | null>(null);
+  const [open, setOpen] = useState<string>("");
 
-//   useEffect(() => {
-//     if (!scrollContainer) return;
+  const { careerExpandHeight } =
+    useRecoilValue<ScreenSizeTypes>(screenSizeState);
+  const [expandHeight, setExpandHeight] = useState<number>(0);
 
-//     const scrollTrigger = careerRef.current;
-//     if (!scrollTrigger) return;
+  // 확장 영역 요소 업데이트
+  const updateExpendRef = useCallback(
+    (node: HTMLDetailsElement | null) => {
+      detailsRef.current = node;
+      setScrollRef(prev => ({
+        ...prev,
+        careerItems: {
+          ...prev.careerItems,
+          [code]: node,
+        },
+      }));
+    },
+    [code, setScrollRef]
+  );
 
-//     const periodTarget = periodRef.current;
-//     const roleTarget = roleRef.current;
-//     const companyTarget = companyRef.current;
-//     const descTarget = descRef.current;
-//     if (!periodTarget || !roleTarget || !companyTarget || !descTarget) return;
+  // 확장 영역 업데이트
+  useEffect(() => {
+    if (careerExpandHeight[code] !== 0)
+      setExpandHeight(careerExpandHeight[code]);
+  }, [careerExpandHeight, code]);
 
-//     const ctx = gsap.context(() => {
-//       // Scroll Trigger 플러그인 사용 시작
-//       gsap.registerPlugin(ScrollTrigger);
+  // 열림 상태 업데이트
+  useEffect(() => {
+    // 확장 모션을 위해, 내장 기능이 아닌 별도 클릭 이벤트 생성 후 상태 업데이트
+    if (typeof careerOpen[code] === "boolean")
+      setOpen(careerOpen[code] ? "open" : "");
+  }, [careerOpen, code]);
 
-//       // 스크롤 영역 설정
-//       ScrollTrigger.defaults({
-//         scroller: scrollContainer,
-//       });
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!scrollContainer) return;
 
-//       const timing = {
-//         ease: "expo-out",
-//         duration: transTime.career / 1000,
-//       };
+    const careerItemContainer = itemRef.current;
+    if (!careerItemContainer) return;
 
-//       const slideUp = {
-//         y: "100%",
-//         opacity: 0,
-//         ...timing,
-//       };
+    const ctx = gsap.context(() => {
+      if (scrollContainer instanceof Element) {
+        // Scroll Trigger 플러그인 사용 시작
+        gsap.registerPlugin(ScrollTrigger);
 
-//       const slideRight = {
-//         x: "-100%",
-//         opacity: 0,
-//         ...timing,
-//       };
+        // 스크롤 영역 설정
+        ScrollTrigger.defaults({
+          scroller: scrollContainer,
+          invalidateOnRefresh: true,
+        });
 
-//       const stOptions = {
-//         trigger: scrollTrigger,
-//         start: `bottom 90%`, // target, trigger
-//         end: `bottom 90%`, // target, trigger
-//       };
+        ScrollTrigger.create({
+          trigger: careerItemContainer,
+          start: `top 80%`,
+          end: `top top`,
+          invalidateOnRefresh: true,
+          // markers: true,
+          onEnter: () => {
+            setHide("");
+          },
+          onLeaveBack: () => {
+            setHide("hide");
+          },
+        });
+      }
+    });
 
-//       const tl = gsap.timeline({ scrollTrigger: stOptions });
-//       tl.from(periodTarget, {
-//         opacity: 0,
-//         ...timing,
-//         onStart: () => setPeriodActive("on"),
-//       });
-//       tl.from(
-//         roleTarget,
-//         {
-//           ...slideUp,
-//           onStart: () => setDivideActive("on"),
-//         },
-//         0.16
-//       );
-//       tl.from(companyTarget, { ...slideRight }, 0.16);
-//       tl.from(descTarget, { ...slideUp }, 0.16);
-//     });
+    return () => ctx?.revert();
+  }, [scrollContainer, stickyHeight]);
 
-//     return () => ctx.revert();
-//   }, [scrollContainer]);
-
-//   return (
-//     <CareerItemContainer className={`career-item`} ref={careerRef}>
-//       <CareerPeriod
-//         className={`career-period ${periodActive}`}
-//         date={period}
-//         ref={periodRef}
-//       />
-//       <CareerTitle className="career-title">
-//         <CareerTitleFadeBox>
-//           <CareerRole className="career-role" ref={roleRef}>
-//             {role}
-//           </CareerRole>
-//         </CareerTitleFadeBox>
-//         <CareerCompanyDivideBar className={`divide-bar ${divideActive}`} />
-//         <CareerTitleFadeBox>
-//           <CareerCompany className="career-company" ref={companyRef}>
-//             {company}
-//           </CareerCompany>
-//         </CareerTitleFadeBox>
-//       </CareerTitle>
-//       <CareerDesc className="career-desc" ref={descRef}>
-//         {desc}
-//       </CareerDesc>
-//     </CareerItemContainer>
-//   );
-// }
+  return (
+    <CareerItemContainer className={`${hide}`} ref={itemRef}>
+      <CareerBorder className="top" />
+      <CareerWrap
+        ref={updateExpendRef}
+        className={`${open}`}
+        $height={expandHeight}
+      >
+        <CareerSummary code={code} {...summary} />
+        <CareerDetail code={code} {...details} />
+      </CareerWrap>
+      {last ? <CareerBorder className="bottom" /> : null}
+    </CareerItemContainer>
+  );
+}

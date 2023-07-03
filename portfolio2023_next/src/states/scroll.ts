@@ -9,6 +9,8 @@ export const scrollRefState = atom<ScrollRefStateTypes>({
     header: null,
     visual: null,
     career: null,
+    careerItems: {},
+    careerOpen: {},
     experience: null,
     stacks: null,
     projectList: null,

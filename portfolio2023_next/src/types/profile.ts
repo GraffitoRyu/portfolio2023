@@ -13,7 +13,7 @@ export interface CareerSummaryTypes {
 }
 
 export interface CareerDetailsTypes {
-  [index: string]: string[];
+  [index: string]: string | string[];
   task: string[];
   stacks: string[];
   projects: string[];

@@ -8,6 +8,7 @@ import { rem, widthRatio } from "@/util/unit";
 // style
 import { flex, font, position, size } from "../preset/mixins";
 import { transTime } from "../preset/transTime";
+import { easing } from "../preset/easing";
 
 export const CareerContainerList = styled.ul`
   width: 100%;
@@ -20,7 +21,31 @@ export const CareerItemContainer = styled.li`
 
 export const CareerBorder = styled.div`
   ${size({ w: "100%", h: "1px" })}
-  background-color:${({ theme }) => theme.career.border};
+
+  &:before {
+    content: "";
+    display: block;
+    ${size({ w: "100%", h: "100%" })}
+    background-color: ${({ theme }) => theme.career.border};
+    transition: background-color 0.4s, width 0.8s ${easing.quart},
+      opacity 0.8s ${easing.quart};
+  }
+
+  &.bottom:before {
+    transition: background-color 0.4s, width 0.8s ${easing.quart} 0.2s,
+      opacity 0.8s ${easing.quart} 0.2s;
+  }
+
+  ${CareerItemContainer}.hide &:before {
+    width: 0;
+    opacity: 0;
+    transition: background-color 0.4s, width 0.8s ${easing.quart},
+      opacity 0.8s ${easing.quart};
+    &.top:before {
+      transition: background-color 0.4s, width 0.8s ${easing.quart} 0.2s,
+        opacity 0.8s ${easing.quart} 0.2s;
+    }
+  }
 `;
 
 const careerSummaryCell = (col: number) => css`
@@ -36,21 +61,52 @@ const careerFont = css`
   })}
 `;
 
+const fadeInUp_before = css`
+  opacity: 0;
+  transform: translateY(20%);
+`;
+
+const fadeInUp_after = css`
+  opacity: 1;
+  transform: translateY(0);
+`;
+
+const summaryTransition = css`
+  transition: color ${transTime.color / 1000}s,
+    background-color ${transTime.color / 1000}s, transform 0.8s ${easing.quart},
+    opacity 0.8s ${easing.quart};
+`;
+
 export const CareerPeriod = styled.time`
   ${careerSummaryCell(1)}
   ${careerFont}
   color:${({ theme }) => theme.career.period};
+  ${fadeInUp_after}
+  ${summaryTransition}
+  ${CareerItemContainer}.hide & {
+    ${fadeInUp_before}
+  }
 `;
 
 export const CareerRole = styled.h3`
   ${careerSummaryCell(2)}
   color: ${({ theme }) => theme.career.role};
+  ${fadeInUp_after}
+  ${summaryTransition}
+  ${CareerItemContainer}.hide & {
+    ${fadeInUp_before}
+  }
 `;
 
 export const CareerCompany = styled.div`
   ${careerSummaryCell(2)}
   ${careerFont}
   color: ${({ theme }) => theme.career.company};
+  ${fadeInUp_after}
+  ${summaryTransition}
+  ${CareerItemContainer}.hide & {
+    ${fadeInUp_before}
+  }
 `;
 
 export const CareerExpandCell = styled.div`
@@ -58,6 +114,11 @@ export const CareerExpandCell = styled.div`
   justify-content:center;
   font-size: 0;
   position: relative;
+  ${fadeInUp_after}
+  ${summaryTransition}
+  ${CareerItemContainer}.hide & {
+    ${fadeInUp_before}
+  }
 `;
 
 export const CareerExpandIcon = styled.figure`
