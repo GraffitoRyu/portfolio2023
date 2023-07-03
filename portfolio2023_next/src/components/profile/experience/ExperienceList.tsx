@@ -2,14 +2,13 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { gsap } from "gsap/dist/gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // components
 import ExperienceItem from "./ExperienceItem";
 
 // state
 import { scrollRefState } from "@/states/scroll";
+import { screenSizeState } from "@/states/screen";
 
 // types
 import { ScreenSizeTypes, ScrollRefStateTypes } from "@/types/state";
@@ -20,7 +19,7 @@ import { ExpList } from "@/styles/styled/components/ProfileExperience";
 
 // util
 import debounce from "@/util/debounceEvent";
-import { screenSizeState } from "@/states/screen";
+import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
   const [expData, setExpData] = useState<ExperienceTypes[]>([]);
@@ -74,7 +73,7 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
     };
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof window === "undefined") return;
 
     if (!scrollContainer || !scrollTrigger) return;
@@ -84,42 +83,35 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
 
     const scrollRange = listWidth * ((length - 1) / length);
 
-    const ctx = gsap.context(() => {
-      // Scroll Trigger 플러그인 사용 시작
-      gsap.registerPlugin(ScrollTrigger);
-
-      // 스크롤 영역 설정
-      ScrollTrigger.defaults({
-        scroller: scrollContainer,
-        invalidateOnRefresh: true,
-      });
-
-      // const items = gsap.utils.toArray(".exp-item");
-
-      gsap.to(scrollTarget, {
-        x: -scrollRange,
-        ease: "none",
-        scrollTrigger: {
-          trigger: scrollTrigger,
-          start: `top top`, // trigger, view
-          end: () => `+=${scrollRange}`,
-          scrub: true,
-          pin: scrollTrigger,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          // markers: true,
-          onUpdate: ({ progress }) => {
-            // console.log(`activeIndex:`, activeIndex);
-            setOnIndex(getActiveIndex(progress, length));
-          },
+    const ctx = ctxScrollTrigger({
+      container: scrollContainer,
+      tweenArr: [
+        {
+          target: scrollTarget,
+          options: [
+            {
+              x: -scrollRange,
+              ease: "none",
+              scrollTrigger: {
+                trigger: scrollTrigger,
+                start: `top top`, // trigger, view
+                end: () => `+=${scrollRange}`,
+                scrub: true,
+                pin: scrollTrigger,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+                // markers: true,
+                onUpdate: ({ progress }: { progress: number }) => {
+                  setOnIndex(getActiveIndex(progress, length));
+                },
+              },
+            },
+          ],
         },
-      });
-
-      ScrollTrigger.clearScrollMemory();
-      ScrollTrigger.refresh();
+      ],
     });
 
-    return () => ctx?.revert();
+    return () => ctx.revert();
   }, [
     length,
     listWidth,
