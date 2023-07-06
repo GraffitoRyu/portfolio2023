@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { gsap } from "gsap";
+import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // style components
@@ -41,7 +41,7 @@ export default function PageIntro({ title, desc }: IntroTypes) {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const descRef = useRef<HTMLParagraphElement | null>(null);
 
-  const { container: scrollContainer } =
+  const { container: scrollContainer, stickyHeight } =
     useRecoilValue<ScrollRefStateTypes>(scrollRefState);
 
   useEffect(() => {
@@ -88,18 +88,18 @@ export default function PageIntro({ title, desc }: IntroTypes) {
       // 스크롤 영역 설정
       ScrollTrigger.defaults({
         scroller: scrollContainer,
+        invalidateOnRefresh: true,
       });
 
       const stOptions = {
         start: `top 80%`, // target, trigger
         end: `top 30%`, // target, trigger
-        invalidateOnRefresh: true,
         scrub: true,
       };
 
       const gsapOptions = (target: HTMLElement) => ({
         opacity: 1,
-        scrollTrigger: { ...stOptions, trigger: target },
+        scrollTrigger: Object.assign(stOptions, { trigger: target }),
       });
 
       gsap.to(titleTarget, gsapOptions(titleTarget));
@@ -107,7 +107,7 @@ export default function PageIntro({ title, desc }: IntroTypes) {
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, windowWidth]);
+  }, [scrollContainer, windowWidth, stickyHeight]);
 
   return (
     <>
