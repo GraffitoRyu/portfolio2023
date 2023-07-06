@@ -122,7 +122,7 @@ export const StackFigure = styled.figure<{ $index: number }>`
 
   @media only screen and (min-width: 1024px) {
     &:nth-child(${({ $index }) => $index + 1}) {
-      transition: opacity 0.4s linear ${({ $index }) => `${$index * 0.2}s`};
+      transition: opacity 0.4s linear ${({ $index }) => `${$index * 0.12}s`};
     }
   }
 `;
@@ -139,7 +139,7 @@ export const StackList = styled.div`
   &.hide-back {
     ${StackFigure} {
       opacity: 0;
-      transition-delay: 0s;
+      transition: opacity 0.4s !important;
     }
   }
 `;
