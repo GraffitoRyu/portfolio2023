@@ -45,6 +45,7 @@ export const StackLegendContainer = styled.dl`
   ${size({ w: "100%", mb: 40 })}
   @media only screen and (min-width:1024px) {
     display: block;
+    opacity: 0;
     ${size({
       w: `calc(${widthRatio(5, 2)}% + ${rem(40)})`,
       p: [0, 20],
@@ -98,6 +99,9 @@ export const StackCategory = styled.div`
       height: "1em",
     })};
   }
+  @media only screen and (min-width: 1024px) {
+    opacity: 0;
+  }
 `;
 
 export const StackList = styled.div`
@@ -105,7 +109,7 @@ export const StackList = styled.div`
   ${size({ w: "100%" })}
 `;
 
-export const StackFigure = styled.figure`
+export const StackFigure = styled.figure<{ $index: number }>`
   ${size({ m: [0, 80, 40, 0] })}
   &:last-child {
     margin-right: 0;
@@ -119,5 +123,18 @@ export const StackFigure = styled.figure`
       height: "1em",
       spacing: 0,
     })}
+  }
+
+  @media only screen and (min-width: 1024px) {
+    transition: opacity 0.4s;
+    ${({ $index }) =>
+      `&:nth-child(${$index + 1}) { transition-delay: ${0.2 * $index}s; }`}
+    ${StackList}.hide & {
+      opacity: 0;
+    }
+    ${StackList}.hide-back & {
+      opacity: 0;
+      transition-delay: 0s;
+    }
   }
 `;
