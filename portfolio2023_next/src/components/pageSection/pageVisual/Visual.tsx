@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // style components
 import {
@@ -27,6 +28,7 @@ import { screenSizeState } from "@/states/screen";
 
 // hooks
 import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { gsap } from "gsap/dist/gsap";
 
 export default function PageVisual({ title }: { title: string[] }) {
   const { windowWidth, windowHeight, headerHeight } =
@@ -42,6 +44,8 @@ export default function PageVisual({ title }: { title: string[] }) {
   const [loaded, setLoaded] = useState<string>("loading");
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const scrollTarget = visualTitleRef.current;
     if (!scrollContainer || !scrollTarget) return;
 
@@ -50,6 +54,8 @@ export default function PageVisual({ title }: { title: string[] }) {
 
     const triggerStart = scrollTarget.getBoundingClientRect().top;
     const targetEnd = visualEl.getBoundingClientRect().bottom;
+
+    gsap.registerPlugin(ScrollTrigger);
 
     const options = {
       opacity: 0,
@@ -66,7 +72,7 @@ export default function PageVisual({ title }: { title: string[] }) {
 
     if (windowWidth > 1024)
       Object.assign(options, {
-        y: `+=${scrollTarget.clientHeight * 2}`,
+        y: () => 0.05 * ScrollTrigger.maxScroll(scrollContainer),
       });
 
     const ctx = ctxScrollTrigger({
