@@ -104,11 +104,6 @@ export const StackCategory = styled.div`
   }
 `;
 
-export const StackList = styled.div`
-  ${flex({ std: "flex-start", wrap: "wrap" })}
-  ${size({ w: "100%" })}
-`;
-
 export const StackFigure = styled.figure<{ $index: number }>`
   ${size({ m: [0, 80, 40, 0] })}
   &:last-child {
@@ -126,13 +121,23 @@ export const StackFigure = styled.figure<{ $index: number }>`
   }
 
   @media only screen and (min-width: 1024px) {
-    transition: opacity 0.4s;
-    ${({ $index }) =>
-      `&:nth-child(${$index + 1}) { transition-delay: ${0.2 * $index}s; }`}
-    ${StackList}.hide & {
+    &:nth-child(${({ $index }) => $index + 1}) {
+      transition: opacity 0.4s linear ${({ $index }) => `${$index * 0.2}s`};
+    }
+  }
+`;
+
+export const StackList = styled.div`
+  ${flex({ std: "flex-start", wrap: "wrap" })}
+  ${size({ w: "100%" })}
+
+  &.hide {
+    ${StackFigure} {
       opacity: 0;
     }
-    ${StackList}.hide-back & {
+  }
+  &.hide-back {
+    ${StackFigure} {
       opacity: 0;
       transition-delay: 0s;
     }

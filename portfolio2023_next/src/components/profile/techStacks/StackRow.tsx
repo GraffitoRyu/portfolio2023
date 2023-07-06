@@ -36,10 +36,17 @@ export default function StackRow({
   const triggerRef = useRef<HTMLLIElement | null>(null);
   const categoryRef = useRef<HTMLDivElement | null>(null);
   const stacksRef = useRef<HTMLDivElement | null>(null);
+  const stackTimer = useRef<NodeJS.Timeout | null>(null);
 
   const [stackHide, setStackHide] = useState<string>("hide");
 
   useEffect(() => {
+    if (stackTimer.current) {
+      clearTimeout(stackTimer.current);
+      stackTimer.current = null;
+      setStackHide("hide");
+    }
+
     if (!scrollContainer) return;
 
     const trigger = triggerRef.current;
@@ -61,24 +68,30 @@ export default function StackRow({
         trigger,
         start: `top 80%`,
         end: `top 50%`,
-        // scrub: true,
+        scrub: true,
       };
 
-      const timeline = gsap.timeline({
-        scrollTrigger,
-      });
+      const timeline = gsap.timeline();
       timeline.to(category, {
         opacity: 1,
-        scrollTrigger: Object.assign(scrollTrigger, { scrub: true }),
+        scrollTrigger,
       });
       timeline.to(stacks, {
         opacity: 1,
         scrollTrigger: Object.assign(scrollTrigger, {
           onEnter: () => {
+            if (stackTimer.current) {
+              clearTimeout(stackTimer.current);
+              stackTimer.current = null;
+              setStackHide("hide");
+            }
             setStackHide("");
           },
           onLeaveBack: () => {
             setStackHide("hide-back");
+            stackTimer.current = setTimeout(() => {
+              setStackHide("hide");
+            }, 400);
           },
         }),
       });
