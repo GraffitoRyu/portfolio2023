@@ -49,7 +49,7 @@ export const PDHeader = styled.header`
   height: 0;
 `;
 
-export const PDHeaderTitleContainer = styled.h1`
+export const PDHeaderTitleContainer = styled.h3`
   ${flex({ std: "start" })}
   margin-right: auto;
   color: ${({ theme }) => theme.projectDetails.visualTitle};
