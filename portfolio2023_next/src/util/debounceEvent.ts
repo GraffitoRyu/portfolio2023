@@ -2,7 +2,7 @@ const debounce = <F extends (...args: Parameters<F>) => ReturnType<F>>(
   func: F,
   waitFor: number
 ) => {
-  let timeout: ReturnType<typeof setTimeout> | null = null;
+  let timeout: ReturnType<typeof setTimeout> | NodeJS.Timeout | null = null;
   const debounced = (...args: Parameters<F>) => {
     if (timeout !== null) {
       clearTimeout(timeout);
