@@ -25,7 +25,7 @@ export default function SectionHeader({
   desc,
   className,
 }: SectionHeaderTypes) {
-  const { container: scrollContainer } =
+  const { container: scrollContainer, stickyHeight } =
     useRecoilValue<ScrollRefStateTypes>(scrollRefState);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const descRef = useRef<HTMLParagraphElement | null>(null);
@@ -63,7 +63,7 @@ export default function SectionHeader({
     });
 
     return () => ctx.revert();
-  }, [scrollContainer]);
+  }, [scrollContainer, stickyHeight]);
 
   return (
     <SectionHeaderContainer

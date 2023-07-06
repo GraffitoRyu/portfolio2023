@@ -34,7 +34,7 @@ export default function PageVisual({ title }: { title: string[] }) {
   const { windowWidth, windowHeight, headerHeight } =
     useRecoilValue<ScreenSizeTypes>(screenSizeState);
 
-  const { container: scrollContainer } =
+  const { container: scrollContainer, stickyHeight } =
     useRecoilValue<ScrollRefStateTypes>(scrollRefState);
 
   const visualRef = useRef<HTMLDivElement | null>(null);
@@ -86,7 +86,7 @@ export default function PageVisual({ title }: { title: string[] }) {
       ],
     });
     return () => ctx.revert();
-  }, [scrollContainer, windowWidth]);
+  }, [scrollContainer, windowWidth, stickyHeight]);
 
   useEffect(() => {
     if (loadComplete) {
