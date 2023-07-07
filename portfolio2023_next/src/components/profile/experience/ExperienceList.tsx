@@ -19,7 +19,7 @@ import { ExpList } from "@/styles/styled/components/ProfileExperience";
 
 // util
 import debounce from "@/util/debounceEvent";
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { ctxScrollTimeline } from "@/util/presetScrollTrigger";
 
 export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
   const [expData, setExpData] = useState<ExperienceTypes[]>([]);
@@ -83,9 +83,27 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
 
     const scrollRange = listWidth * ((length - 1) / length);
 
-    const ctx = ctxScrollTrigger({
+    const ctx = ctxScrollTimeline({
       container: scrollContainer,
       tweenArr: [
+        {
+          target: scrollTarget,
+          direction: "fromTo",
+          options: [
+            {
+              opacity: 0,
+            },
+            {
+              opacity: 1,
+              scrollTrigger: {
+                trigger: scrollTarget,
+                start: "top 80%",
+                end: "top 50%",
+                scrub: true,
+              },
+            },
+          ],
+        },
         {
           target: scrollTarget,
           options: [
