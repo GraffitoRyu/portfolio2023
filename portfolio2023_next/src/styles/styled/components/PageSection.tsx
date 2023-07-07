@@ -12,18 +12,20 @@ export const PageSectionContainer = styled.section<{
   $wh: number;
   $headerHeight: number;
 }>`
-  position: relative;
+  position: sticky;
+  transition: none !important;
   ${size({ w: "100%" })}
-  min-height:${({ $wh, $headerHeight }) =>
-    $wh !== 0 && $headerHeight !== 0
-      ? `${$wh - $headerHeight}px`
-      : `calc(100vh - ${rem(240)})`};
+  /* min-height:${({ $wh }) =>
+    $wh !== 0 ? `${$wh}px` : `calc(100vh - ${rem(240)})`}; */
   &.side-h-padding {
     ${size({ pl: 80, pr: 80 })}
   }
   &.side-v-padding {
-    ${({ $headerHeight }) =>
-      size({ pt: $headerHeight !== 0 ? `${$headerHeight}px` : 240, pb: 80 })}
+    ${({ $wh }) =>
+      size({
+        pt: $wh !== 0 ? `${$wh / 4}px` : "25vh",
+        pb: $wh !== 0 ? `${$wh / 4}px` : "25vh",
+      })}
   }
   &.visual-section {
     height: ${({ $wh, $headerHeight }) =>
@@ -32,9 +34,16 @@ export const PageSectionContainer = styled.section<{
       display: none;
     }
   }
+  &:not(.visual-section) {
+    min-height: ${({ $wh }) => ($wh !== 0 ? `${$wh}px` : "100vh")};
+    ${flex({ dir: "column", cross: "flex-start" })};
+  }
   @media only screen and (min-width: 1024px) {
     &.side-v-padding {
-      ${({ $wh }) => size({ pb: $wh !== 0 ? `${$wh / 4}px` : "25vh" })}
+      ${({ $headerHeight }) =>
+        size({
+          pt: $headerHeight !== 0 ? `${$headerHeight}px` : 240,
+        })}
     }
     &.visual-section {
       height: auto;
@@ -43,25 +52,30 @@ export const PageSectionContainer = styled.section<{
         display: block;
       }
     }
+    &:not(.visual-section) {
+      min-height: 0;
+      display: block;
+    }
   }
 `;
 
 export const SectionHeaderContainer = styled.header`
-  ${size({ w: "100%", mb: 120 })}
+  ${size({ w: "100%", mb: 200 })}
   &.empty {
     margin: 0;
   }
   @media only screen and (min-width: 1024px) {
     &:not(.empty) {
+      ${size({ mb: 120 })}
     }
   }
 `;
 
 export const HeaderTitle = styled.h2`
-  ${size({ mb: 32 })}
+  ${size({ mb: 64 })}
   color: ${({ theme }) => theme.sectionHeader.title};
   ${font({
-    size: 48,
+    size: 120,
     weight: 500,
     spacing: `-0.02em`,
     height: "1em",

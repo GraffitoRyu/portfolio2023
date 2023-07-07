@@ -42,10 +42,9 @@ export const StackLevelContainer = styled.ul<{ level: number }>`
 
 export const StackLegendContainer = styled.dl`
   ${flex({ std: "flex-start", wrap: "wrap" })}
-  ${size({ w: "100%", mb: 40 })}
-  @media only screen and (min-width:1024px) {
-    display: block;
-    opacity: 0;
+  ${size({ w: "100%", mb: 80 })}
+  opacity: 0;
+  @media only screen and (min-width: 1024px) {
     ${size({
       w: `calc(${widthRatio(5, 2)}% + ${rem(40)})`,
       p: [0, 20],
@@ -57,29 +56,41 @@ export const StackLegendContainer = styled.dl`
 export const StackLegendTitle = styled.dt`
   ${size({ w: "100%", mb: 40 })};
   color: ${({ theme }) => theme.stacks.legendTitle};
+  ${font({
+    size: 24,
+    weight: 700,
+    height: "1em",
+  })}
+  @media only screen and (min-width: 1024px) {
+    ${size({ mb: 40 })}
+    ${font({ size: 24 })}
+  }
 `;
 
 export const StackLegendItem = styled.dd`
-  ${size({ mr: 40 })}
+  ${size({ w: "fit-content", mr: 64, pb: 40 })}
   &:last-child {
     margin: 0;
   }
   @media only screen and (min-width: 1024px) {
-    ${size({ m: [0, 0, 40] })}
+    ${size({ w: "100%", m: [0, 0, 40] })}
   }
 `;
 
 export const StackLegendLabel = styled.label`
   color: ${({ theme }) => theme.stacks.legendLabel};
   ${font({
-    size: 24,
+    size: 28,
     weight: 500,
     height: "1em",
   })};
+  @media only screen and (min-width: 1024px) {
+    ${font({ size: 24 })}
+  }
 `;
 
 export const StackLegendFigure = styled.figure`
-  ${size({ mb: 10 })}
+  ${size({ mb: 10, p: [0, 4] })}
 `;
 
 export const StackRowContainer = styled.li`
@@ -87,42 +98,56 @@ export const StackRowContainer = styled.li`
   &:last-child {
     ${size({ pb: 0 })}
   }
+
+  @media only screen and (min-width: 1024px) {
+    ${size({ pb: 80 })}
+  }
 `;
 
 export const StackCategory = styled.div`
-  ${size({ w: "100%", mb: 24 })}
+  ${size({ w: "100%", mb: 40 })}
   h4 {
     color: ${({ theme }) => theme.stacks.category};
     ${font({
-      size: 24,
+      size: 32,
       weight: 500,
       height: "1em",
     })};
   }
+  opacity: 0;
+
   @media only screen and (min-width: 1024px) {
-    opacity: 0;
+    ${size({ mb: 24 })}
+    h4 {
+      ${font({ size: 24 })}
+    }
   }
 `;
 
 export const StackFigure = styled.figure<{ $index: number }>`
-  ${size({ m: [0, 80, 40, 0] })}
+  ${size({ m: [0, 64, 40, 0] })}
   &:last-child {
     margin-right: 0;
   }
   figcaption {
-    ${size({ mb: 10 })}
+    ${size({ mb: 16 })}
     color: ${({ theme }) => theme.stacks.stackName};
     ${font({
-      size: 32,
+      size: 28,
       weight: 500,
       height: "1em",
       spacing: 0,
     })}
   }
+  &:nth-child(${({ $index }) => $index + 1}) {
+    transition: opacity 0.4s linear ${({ $index }) => `${$index * 0.12}s`};
+  }
 
   @media only screen and (min-width: 1024px) {
-    &:nth-child(${({ $index }) => $index + 1}) {
-      transition: opacity 0.4s linear ${({ $index }) => `${$index * 0.12}s`};
+    ${size({ m: [0, 80, 40, 0] })}
+    figcaption {
+      ${size({ mb: 10 })}
+      ${font({ size: 32 })}
     }
   }
 `;
