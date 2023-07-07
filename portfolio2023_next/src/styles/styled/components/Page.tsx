@@ -19,8 +19,8 @@ export const StyledScrollContainer = styled.div`
   ${position({ type: "fixed", top: 0, left: 0, z: 0 })}
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
   &::-webkit-scrollbar {
     width: 0;
   }

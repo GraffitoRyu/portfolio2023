@@ -50,11 +50,11 @@ export const InitCoverTItle = styled.div`
     size: 40,
     weight: 500,
     height: "1em",
-    spacing: 0,
     family: "var(--serif-kr)",
   })}
   span {
     ${size({ mt: 8 })}
+    ${font({ spacing: 0 })}
   }
   opacity: 0.2;
   animation: ${initTitleBreathing} 1.6s infinite linear;
