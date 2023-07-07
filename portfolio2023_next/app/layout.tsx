@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { ReactNode, Suspense } from "react";
 
 // meta data
 export { metadata } from "@/data/meta";
@@ -15,7 +15,7 @@ import InitPageCover from "@/components/pageInitialize/InitPageCover";
 import Cursor from "@/components/cursor/Cursor";
 
 // styles
-import { sans, serif } from "@/styles/fonts/fonts"; // error로 사용할 수 없다
+// import { sans, serif } from "@/styles/fonts/fonts"; // error로 사용할 수 없다
 import "@/styles/scss/globals.scss";
 import StyledComponentsRegistry from "./lib/registry";
 import { HTMLThemeStyle } from "@/styles/styled/components/Page";
@@ -24,13 +24,17 @@ import { HTMLThemeStyle } from "@/styles/styled/components/Page";
 import { PageLoadEvents } from "@/hooks/PageLoadEvents";
 import UpdateStateByResize from "@/hooks/UpdateStateByResize";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
+  // <html lang="ko" className={`${sans.variable} ${serif.variable}`}>
   return (
-    <html lang="ko" className={`${sans.variable} ${serif.variable}`}>
+    <html lang="ko">
+      <head>
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <Recoil>
           <ReactQuery>
