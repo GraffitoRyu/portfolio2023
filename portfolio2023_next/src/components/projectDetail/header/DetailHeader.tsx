@@ -24,14 +24,14 @@ export default function DetailHeader() {
     useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
 
   const closeDetail = () => {
-    router.replace("/projects");
+    setDetailLayout(prev => ({
+      ...prev,
+      open: false,
+      openComplete: false,
+    }));
     // bottom sheet가 모두 들어 간 뒤 경로 이동
     setTimeout(() => {
-      setDetailLayout(prev => ({
-        ...prev,
-        open: false,
-        openComplete: false,
-      }));
+      router.back();
     }, transTime.detail.sheetSlide);
   };
 

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 // import { useState } from "react";
 
 // style components
@@ -14,19 +14,18 @@ export default function DetailBackground({
 }: {
   $windowHeight: number;
 }) {
-  const params = useSearchParams();
-  const code = params.get("code");
-  const imgURL = `/img/details/intro_${code}.jpg`;
+  const { category } = useParams();
+  const imgURL = `/img/details/intro_${category}.jpg`;
   // const [hide, setHide] = useState<string>("opacity-0");
 
   return (
     <PDVisualImageContainer>
       <PDVisualImage $wh={$windowHeight}>
-        {code ? (
+        {category ? (
           <Image
             // className={`${hide}`}
             src={imgURL}
-            alt={code}
+            alt={category}
             fill={true}
             placeholder="blur"
             blurDataURL={imgURL}

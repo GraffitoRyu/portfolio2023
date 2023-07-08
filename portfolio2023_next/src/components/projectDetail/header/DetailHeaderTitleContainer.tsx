@@ -1,4 +1,4 @@
-import { useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 
@@ -24,8 +24,7 @@ import { detailScrollRefState } from "@/states/scroll";
 import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function DetailHeaderTitleContainer() {
-  const params = useSearchParams();
-  const code = params.get("code");
+  const { category } = useParams();
   const data = useRecoilValue<DetailTypes>(detailData);
   const [title, setTitle] = useState<string>("");
 
@@ -39,14 +38,14 @@ export default function DetailHeaderTitleContainer() {
   const titleRef = useRef<HTMLSpanElement>(null);
 
   useLayoutEffect(() => {
-    if (!code) return;
+    if (!category) return;
 
-    const d = data[code];
+    const d = data[category];
     if (d?.summary?.title) setTitle(d.summary.title.join(" "));
-  }, [code, data]);
+  }, [category, data]);
 
   useEffect(() => {
-    if (openComplete && code) {
+    if (openComplete && category) {
       if (!scrollContainer || !scrollTrigger || !visualTitleRef) return;
 
       const scrollTarget = titleRef.current;
@@ -77,7 +76,7 @@ export default function DetailHeaderTitleContainer() {
       });
       return () => ctx.revert();
     }
-  }, [code, openComplete, scrollContainer, scrollTrigger, visualTitleRef]);
+  }, [category, openComplete, scrollContainer, scrollTrigger, visualTitleRef]);
 
   return (
     <PDHeaderTitleContainer>

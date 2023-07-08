@@ -1,37 +1,44 @@
 "use client";
 
 import { useLayoutEffect, useState } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRecoilState } from "recoil";
+import { usePathname, useParams } from "next/navigation";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 // state
 import { pageState } from "@/states/page";
 
 // type
 import { SitemapType } from "@/types/sitemap";
-import { pageStateTypes } from "@/types/state";
+import { DetailLayoutStateTypes, pageStateTypes } from "@/types/state";
 
 // data
 import { sitemapData } from "@/data/sitemap";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
+import { detailData, detailLayoutState } from "@/states/detail";
+import { DetailTypes } from "@/types/projectDetails";
 
 const routeData: SitemapType[] = sitemapData.filter(route => !route.external);
 
 export function PageLoadEvents() {
   const pathname: string = usePathname(); // 현재 루트 수신
-  const params = useSearchParams();
-  const queryCode = params.get("code");
+  const { category } = useParams();
   const [savedPathName, setPathname] = useState<string>("/"); // 현재 루트 저장
-  const [{ init, cur }, setPage] = useRecoilState<pageStateTypes>(pageState);
+  const [{ init, initComplete, cur }, setPage] =
+    useRecoilState<pageStateTypes>(pageState);
+
+  // 프로젝트 상세에 대한 열림/닫힘 상태 업데이트
+  const setDetailState =
+    useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
+  const savedData = useRecoilValue<DetailTypes>(detailData);
 
   useLayoutEffect(() => {
     if (init)
       console.log(
-        `[PageLoadEvent : 루트 업데이트] pathname: ${pathname} / detail code: ${queryCode}`
+        `[PageLoadEvent : 루트 업데이트] pathname: ${pathname} / detail code: ${category}`
       );
-  }, [init, pathname, queryCode]);
+  }, [init, pathname, category]);
 
   // 루트 업데이트
   useLayoutEffect(() => {
@@ -64,6 +71,18 @@ export function PageLoadEvents() {
       }, transTime.common.initComplete);
     }
   }, [init, savedPathName, setPage]);
+
+  // 프로젝트 상세 카테고리 업데이트
+  useLayoutEffect(() => {
+    if (initComplete) {
+      setDetailState(prev => ({ ...prev, category: category ? category : "" }));
+      if (category && savedData[category]) {
+        setDetailState(prev => ({ ...prev, open: true }));
+      } else {
+        setDetailState(prev => ({ ...prev, open: false }));
+      }
+    }
+  }, [category, initComplete, savedData, setDetailState]);
 
   return null;
 }

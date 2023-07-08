@@ -1,5 +1,6 @@
 "use client";
 
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 // components
@@ -10,10 +11,6 @@ import BtnIcon from "@/components/projects/item/BtnIcon";
 
 // type
 import { SummaryType } from "@/types/projects";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useSetRecoilState } from "recoil";
-import { detailLayoutState } from "@/states/detail";
-import { DetailLayoutStateTypes } from "@/types/state";
 
 export default function ProjectItem({
   code,
@@ -23,14 +20,14 @@ export default function ProjectItem({
   summary: SummaryType;
 }): JSX.Element {
   const router = useRouter();
-  const params = useSearchParams();
-  const viewCode = params.get("code");
-  const setOpen = useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
+  const { category } = useParams();
+
   const [hover, setHover] = useState<string>("");
 
+  // 프로젝트 상세 열 때, 호버 상태 초기화
   useEffect(() => {
-    if (viewCode) setHover("");
-  }, [viewCode]);
+    if (category) setHover("");
+  }, [category]);
 
   return (
     <ProjectItemContainer
@@ -39,8 +36,7 @@ export default function ProjectItem({
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
       onClick={() => {
-        setOpen(prev => ({ ...prev, open: true }));
-        router.push(`/projects?code=${code}`);
+        router.push(`/projects/${code}`);
       }}
     >
       <ProjectSummary code={code} summary={summary} />
