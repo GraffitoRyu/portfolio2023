@@ -19,7 +19,7 @@ import { ExpList } from "@/styles/styled/components/ProfileExperience";
 
 // util
 import debounce from "@/util/debounceEvent";
-import { ctxScrollTimeline } from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
   const [expData, setExpData] = useState<ExperienceTypes[]>([]);
@@ -85,8 +85,9 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
     const isPhone = windowWidth < 640;
     const scrollRange = listWidth * ((length - 1) / length);
 
-    const ctx = ctxScrollTimeline({
+    const ctx = ctxScrollTrigger({
       container: scrollContainer,
+      timeline: true,
       tweenArr: [
         {
           target: scrollTarget,
