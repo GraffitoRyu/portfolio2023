@@ -36,11 +36,11 @@ export const InitCoverBox = styled.div<{ $wh: number }>`
 `;
 
 const initTitleBreathing = keyframes`
-  0% {opacity:0.2}
+  0% {opacity:1}
   23% {opacity:0.7}
-  50% {opacity:1}
+  50% {opacity:0.2}
   73% {opacity:0.7}
-  100% {opacity:0.2}
+  100% {opacity:1}
 `;
 
 export const InitCoverTItle = styled.div`
@@ -56,9 +56,10 @@ export const InitCoverTItle = styled.div`
     ${size({ mt: 8 })}
     ${font({ spacing: 0 })}
   }
-  opacity: 0.2;
+  opacity: 1;
   animation: ${initTitleBreathing} 1.6s infinite linear;
   transition: none;
+
   @media only screen and (min-width: 560px) {
     font-size: ${rem(24)};
   }
