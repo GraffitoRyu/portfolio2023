@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-
 // components
 import ProjectItem from "./Item";
 
@@ -21,13 +19,11 @@ export default async function ProjectList() {
 
   return (
     <ProjectListContainer>
-      <Suspense fallback={<li>Loading...</li>}>
-        {listData.map(({ code, summary }: ProjectsType) => (
-          <li className="w-full" key={`projectList_${code}`}>
-            <ProjectItem code={code} summary={summary} />
-          </li>
-        ))}
-      </Suspense>
+      {listData.map(({ code, summary }: ProjectsType) => (
+        <li className="w-full" key={`projectList_${code}`}>
+          <ProjectItem code={code} summary={summary} />
+        </li>
+      ))}
     </ProjectListContainer>
   );
 }

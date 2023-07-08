@@ -5,7 +5,7 @@ export const getProfileData = (section: string) => {
 };
 
 export const getProjectList = () => {
-  return fetch(`${__domain}/api/projects?type=list`);
+  return fetch(`${__domain}api/projects?type=list`);
 };
 
 export async function getSSRData({

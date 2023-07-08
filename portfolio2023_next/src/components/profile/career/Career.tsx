@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-
 // components
 import CareerContainer from "./CareerContainer";
 import CareerItem from "./CareerItem";
@@ -19,15 +17,13 @@ export default async function Career() {
 
   return (
     <CareerContainer>
-      <Suspense fallback={<li>Loading...</li>}>
-        {careerData.map((c: CareerTypes, i: number) => (
-          <CareerItem
-            key={`career_${c.code}_${i}`}
-            {...c}
-            last={i === careerData.length - 1}
-          />
-        ))}
-      </Suspense>
+      {careerData.map((c: CareerTypes, i: number) => (
+        <CareerItem
+          key={`career_${c.code}_${i}`}
+          {...c}
+          last={i === careerData.length - 1}
+        />
+      ))}
     </CareerContainer>
   );
 }
