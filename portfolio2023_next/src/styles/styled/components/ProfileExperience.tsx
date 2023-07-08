@@ -58,7 +58,7 @@ export const ExpTitle = styled.dt`
   ${size({ mb: 80 })}
   color: ${({ theme }) => theme.exp.title};
   ${font({
-    size: 48,
+    size: 40,
     weight: 500,
     height: "1em",
     transform: "capitalize",
@@ -73,14 +73,14 @@ export const ExpDesc = styled.dd`
   ${flex({ std: "flex-start", cross: "flex-start" })}
   color: ${({ theme }) => theme.exp.desc};
   ${font({
-    size: 32,
+    size: 28,
     weight: 400,
     height: "1.8em",
   })}
   &:before {
     content: "\\00B7";
     ${flex({ std: "flex-start" })}
-    ${size({ w: 20, h: 40 })}
+    ${size({ w: 20, h: 48 })}
     line-height:1em;
   }
   span {
@@ -89,5 +89,8 @@ export const ExpDesc = styled.dd`
   }
   @media only screen and (min-width: 1024px) {
     ${font({ size: 24, height: "1.6em" })}
+    &:before {
+      ${size({ h: 40 })}
+    }
   }
 `;

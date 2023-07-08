@@ -11,3 +11,9 @@ body {
   overflow: hidden;
   z-index: 0;
 }
+
+.pin-spacer {
+  display: block !important;
+  position: static !important;
+  padding: 0 !important;
+}

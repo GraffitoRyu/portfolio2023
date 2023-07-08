@@ -37,6 +37,12 @@ export const PageSectionContainer = styled.section<{
     ${flex({ dir: "column", cross: "flex-start" })};
   }
 
+  &.section-experience {
+    position: sticky;
+    top: 0;
+    transform: none !important;
+  }
+
   @media only screen and (min-width: 1024px) {
     &.side-v-padding {
       ${({ $headerHeight }) =>

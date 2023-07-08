@@ -34,7 +34,8 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
 
   const [listWidth, setListWidth] = useState<number>(0);
 
-  const { columnWidth } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
+  const { windowWidth, columnWidth } =
+    useRecoilValue<ScreenSizeTypes>(screenSizeState);
   const [offset, setOffset] = useState({ start: 0, end: 0 });
 
   const [onIndex, setOnIndex] = useState<number>(0);
@@ -81,6 +82,7 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
     const scrollTarget = expListRef.current;
     if (!scrollTarget) return;
 
+    const isPhone = windowWidth < 640;
     const scrollRange = listWidth * ((length - 1) / length);
 
     const ctx = ctxScrollTimeline({
@@ -113,7 +115,7 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
               scrollTrigger: {
                 trigger: scrollTrigger,
                 start: `top top`, // trigger, view
-                end: () => `+=${scrollRange}`,
+                end: () => `+=${scrollRange * (isPhone ? 2 : 1)} bottom`,
                 scrub: true,
                 pin: scrollTrigger,
                 anticipatePin: 1,
@@ -138,6 +140,7 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
     scrollContainer,
     scrollTrigger,
     stickyHeight,
+    windowWidth,
   ]);
 
   return (
