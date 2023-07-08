@@ -17,7 +17,7 @@ import { img } from "@/styles/styled/preset/img";
 import { transTime } from "../preset/transTime";
 
 // util
-import { rem } from "@/util/unit";
+import { rem, widthRatio } from "@/util/unit";
 
 export const FooterContainer = styled.footer<{ $wh: number }>`
   ${position({ type: "relative", z: 600 })}
@@ -68,9 +68,6 @@ export const FooterTitleLine = styled(PageTitle)`
   @media only screen and (min-width: 1280px) {
     font-size: ${rem(240)};
   }
-  @media only screen and (min-width: 1680px) {
-    font-size: ${rem(200)};
-  }
 `;
 
 export const FooterLowerContainer = styled.div`
@@ -100,10 +97,7 @@ export const PortfolioSummaryContainer = styled.div`
     ${size({ mt: 160, p: [0, `calc(66.6667% + ${rem(20)})`, 0, 20] })}
   }
   @media only screen and (min-width: 1280px) {
-    ${size({ w: "20%", mt: 0, mr: "auto", p: [0, 20] })}
-  }
-  @media only screen and (min-width: 1680px) {
-    width: 16.6667%;
+    ${size({ w: `${widthRatio(12, 4)}%`, mt: 0, p: [0, 20] })}
   }
 `;
 
@@ -119,6 +113,9 @@ const FooterDescFont = css`
   @media only screen and (min-width: 1024px) {
     font-size: ${rem(24)};
   }
+  @media only screen and (min-width: 1280px) {
+    font-size: ${rem(20)};
+  }
   @media only screen and (min-width: 1680px) {
     font-size: ${rem(16)};
   }
@@ -128,6 +125,12 @@ export const PortfolioDescription = styled.p`
   color: ${({ theme }) => theme.footer.summary};
   ${FooterDescFont}
   line-height: 1.5em;
+  @media only screen and (min-width: 1280px) {
+    max-width: ${rem(440)};
+  }
+  @media only screen and (min-width: 1680px) {
+    max-width: ${rem(340)};
+  }
 `;
 
 export const PortfolioCopyright = styled.p`
@@ -149,6 +152,14 @@ export const FooterMenuColumn = styled.div`
     ${size({ w: "41.6667%", p: [0, 20] })}
     &.none-page {
       width: 25%;
+    }
+  }
+  @media only screen and (min-width: 1280px) {
+    &.none-page {
+      ${size({ w: `${widthRatio(12, 3)}%` })}
+    }
+    &.link-page {
+      ${size({ w: `${widthRatio(12, 5)}%` })}
     }
   }
 `;
@@ -176,7 +187,7 @@ export const FooterMenuTitle = styled.dt`
     ${size({ mb: 24 })}
   }
   ${FooterDescFont}
-  font-weight:700;
+  font-weight: 700;
 `;
 
 export const FooterMenuContents = styled.dd`

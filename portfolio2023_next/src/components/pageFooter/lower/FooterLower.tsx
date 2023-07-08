@@ -22,7 +22,7 @@ const recruitData: SitemapType[] = sitemapData.filter(d => d.recruit);
 export default function FooterLower() {
   return (
     <FooterLowerContainer>
-      <FooterMenuColumn>
+      <FooterMenuColumn className="link-page">
         <FooterMenu title="Portfolio" category="nav" data={footerNavData} />
         <FooterMenu title="Recruitment" category="recruit" data={recruitData} />
       </FooterMenuColumn>
