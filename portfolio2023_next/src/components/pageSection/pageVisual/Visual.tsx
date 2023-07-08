@@ -42,6 +42,7 @@ export default function PageVisual({ title }: { title: string[] }) {
 
   const { loadComplete } = useRecoilValue<pageStateTypes>(pageState);
   const [loaded, setLoaded] = useState<string>("loading");
+  const [fixed, setFixed] = useState<string>("");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -52,28 +53,36 @@ export default function PageVisual({ title }: { title: string[] }) {
     const visualEl = visualRef.current;
     if (!visualEl) return;
 
-    const triggerStart = scrollTarget.getBoundingClientRect().top;
-    const targetEnd = visualEl.getBoundingClientRect().bottom;
+    const triggerStart = headerHeight + scrollTarget.offsetTop;
+    const targetEnd = headerHeight + visualEl.offsetHeight;
 
     gsap.registerPlugin(ScrollTrigger);
 
     const options = {
       opacity: 0,
-
+      ease: "none",
+      y: () =>
+        windowWidth < 1024
+          ? 0
+          : -0.05 * ScrollTrigger.maxScroll(scrollContainer),
       scrollTrigger: {
         trigger: scrollTarget,
         start: `top ${triggerStart}`, // 움직일 요소의 시작, 트리거 영역의 시작
         end: `${targetEnd} center`, // 움직일 요소의 끝, 트리거 영역의 끝
         scrub: true, // 스크롤 위치에 따라 실시간으로 대응하여 변하도록 설정
         invalidateOnRefresh: true,
-        // markers: true, // 개발용 가이드라인
+        markers: true, // 개발용 가이드라인
+        onEnter: () => {
+          setFixed("fixed-parallax");
+        },
+        onEnterBack: () => {
+          setFixed("fixed-parallax");
+        },
+        onLeave: () => {
+          setFixed("");
+        },
       },
     };
-
-    if (windowWidth > 1024)
-      Object.assign(options, {
-        y: () => 0.05 * ScrollTrigger.maxScroll(scrollContainer),
-      });
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
@@ -86,7 +95,7 @@ export default function PageVisual({ title }: { title: string[] }) {
       ],
     });
     return () => ctx.revert();
-  }, [scrollContainer, windowWidth, stickyHeight]);
+  }, [scrollContainer, windowWidth, stickyHeight, headerHeight]);
 
   useEffect(() => {
     if (loadComplete) {
@@ -103,7 +112,7 @@ export default function PageVisual({ title }: { title: string[] }) {
       $wh={windowHeight}
       $headerHeight={headerHeight}
     >
-      <VisualTitle ref={visualTitleRef} className={`${loaded}`}>
+      <VisualTitle ref={visualTitleRef} className={`${loaded} ${fixed}`}>
         <VisualTitleLine className="visual-title stroke-title">
           {title[0]}
         </VisualTitleLine>

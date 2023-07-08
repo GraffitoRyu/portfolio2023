@@ -71,6 +71,12 @@ export const VisualTitle = styled.h1`
       ${transVisualTitle(0.16)}
     }
   }
+  @media only screen and (min-width: 1024px) {
+    &.fixed-parallax {
+      position: fixed;
+      pointer-events: none;
+    }
+  }
 `;
 
 export const VisualTitleLine = styled(PageTitle)`
@@ -82,6 +88,7 @@ export const VisualTitleLine = styled(PageTitle)`
   }
   @media only screen and (min-width: 1024px) {
     font-size: ${rem(240)};
+    pointer-events: auto;
   }
 `;
 
