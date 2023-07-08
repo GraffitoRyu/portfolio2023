@@ -35,6 +35,9 @@ export const FooterContainer = styled.footer<{ $wh: number }>`
   @media only screen and (min-width: 1280px) {
     ${size({ p: [160, 80] })}
   }
+  @media only screen and (min-width: 1680px) {
+    ${size({ p: [120, 80] })}
+  }
 `;
 
 export const FooterWrap = styled.div`
@@ -63,13 +66,13 @@ export const FooterTitleLine = styled(PageTitle)`
     color: ${({ theme }) => theme.footer.titleFill};
   }
   @media only screen and (min-width: 560px) {
-    font-size: ${rem(160)};
+    font-size: 80px;
   }
   @media only screen and (min-width: 1024px) {
     font-size: ${rem(180)};
   }
-  @media only screen and (min-width: 1280px) {
-    font-size: ${rem(240)};
+  @media only screen and (min-width: 1920px) {
+    font-size: ${rem(180)};
   }
 `;
 
@@ -94,7 +97,7 @@ export const PortfolioSummaryContainer = styled.div`
     max-width:100%;
   }
   @media only screen and (min-width: 768px) {
-    ${size({ mt: 80, pr: "66.6667%" })}
+    ${size({ mt: 80, pr: "33.3333%" })}
   }
   @media only screen and (min-width: 1024px) {
     ${size({ mt: 40, p: [0, `calc(66.6667% + ${rem(20)})`, 0, 20] })}
@@ -186,6 +189,9 @@ export const FooterMenuItem = styled.dl`
 export const FooterMenuTitle = styled.dt`
   ${size({ w: "fit-content", mb: 16 })}
   color: ${({ theme }) => theme.footer.linkCategory};
+  @media only screen and (min-width: 560px) {
+    ${size({ mb: `10px` })}
+  }
   @media only screen and (min-width: 1024px) {
     ${size({ mb: 24 })}
   }
@@ -220,7 +226,7 @@ export const FooterLinkIcon = styled.figure`
     transition: fill ${transTime.color / 1000}s;
   }
   @media only screen and (min-width: 640px) {
-    ${size({ w: 20, h: 20 })};
+    ${size({ w: `14px`, h: `14px` })};
   }
   @media only screen and (min-width: 1024px) {
     ${size({ w: 28, h: 28 })};
@@ -258,7 +264,7 @@ export const FooterLinkBtn = styled.a`
     }
   }
   @media only screen and (min-width: 640px) {
-    font-size: ${rem(24)};
+    font-size: 14px;
   }
   @media only screen and (min-width: 1024px) {
     font-size: ${rem(32)};
