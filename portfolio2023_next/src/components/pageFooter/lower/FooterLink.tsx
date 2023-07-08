@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import ClipboardJS from "clipboard";
 
 // components
@@ -23,6 +23,10 @@ import { transTime } from "@/styles/styled/preset/transTime";
 
 // svg
 import * as LinkSvg from "./LinkIcon";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { ScrollRefStateTypes, pageStateTypes } from "@/types/state";
+import { pageState } from "@/states/page";
+import { scrollRefState } from "@/states/scroll";
 function LinkIcon({
   external,
   copy,
@@ -39,6 +43,7 @@ function LinkIcon({
 }
 
 export default function FooterLink({
+  code,
   name,
   path,
   copy,
@@ -47,6 +52,11 @@ export default function FooterLink({
   download,
 }: SitemapType) {
   const router = useRouter();
+  // 현재 페이지 경로
+  const pathname = usePathname();
+  // 페이지 상태 관리
+  const setPageAtom = useSetRecoilState<pageStateTypes>(pageState);
+  const { container } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
 
   const isNav: boolean = header && !external ? true : false;
 
@@ -95,7 +105,21 @@ export default function FooterLink({
           type="button"
           className={`${hoverText}`}
           onClick={() => {
-            router.push(path);
+            // 페이지 전환 커버 동작 후 이동 시작
+            if (pathname === path) return;
+            console.log("페이지 변경 시작: ", code);
+
+            setPageAtom(prev => ({
+              ...prev,
+              cover: code,
+              loaded: false,
+            }));
+
+            setTimeout(() => {
+              if (container) container.scrollTo(0, 0);
+              setPageAtom(prev => ({ ...prev, loadComplete: false }));
+              router.push(path);
+            }, transTime.common.coverUp);
           }}
           onMouseEnter={() => setHoverText("hover")}
           onMouseLeave={() => setHoverText("")}
