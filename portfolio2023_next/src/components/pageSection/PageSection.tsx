@@ -14,10 +14,12 @@ import { ScreenSizeTypes, ScrollRefStateTypes } from "@/types/state";
 import { scrollRefState } from "@/states/scroll";
 
 export default function PageSection({
+  page,
   code,
   children,
   className,
 }: {
+  page: string;
   code: string;
   children: React.ReactNode;
   className?: string;
@@ -35,7 +37,9 @@ export default function PageSection({
 
   return (
     <PageSectionContainer
-      className={className ? className : ""}
+      className={`section-${page} section-${code} ${
+        className ? className : ""
+      }`}
       $wh={windowHeight}
       $headerHeight={headerHeight}
       ref={updateScrollRef}

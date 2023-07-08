@@ -11,7 +11,7 @@ import { Suspense } from "react";
 export default function Projects() {
   return (
     <>
-      <PageSection code="visual" className="side-h-padding visual-section">
+      <PageSection page="projects" code="visual" className="side-h-padding">
         <PageVisual title={["Selected ", "projects"]} />
         <SectionHeader empty={true} />
         <SectionContents sectionClassName="intro" sideClassName="intro">
@@ -26,7 +26,11 @@ export default function Projects() {
           />
         </SectionContents>
       </PageSection>
-      <PageSection code="projectList" className="side-v-padding">
+      <PageSection
+        page="projects"
+        code="projectList"
+        className="side-v-padding"
+      >
         <SectionContents sectionClassName="full" sideClassName="full">
           <ProjectList />
         </SectionContents>

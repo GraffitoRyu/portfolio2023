@@ -13,10 +13,8 @@ export const PageSectionContainer = styled.section<{
   $headerHeight: number;
 }>`
   position: sticky;
-  transition: none !important;
+  transition: none;
   ${size({ w: "100%" })}
-  /* min-height:${({ $wh }) =>
-    $wh !== 0 ? `${$wh}px` : `calc(100vh - ${rem(240)})`}; */
   &.side-h-padding {
     ${size({ pl: 80, pr: 80 })}
   }
@@ -27,17 +25,18 @@ export const PageSectionContainer = styled.section<{
         pb: $wh !== 0 ? `${$wh / 4}px` : "25vh",
       })}
   }
-  &.visual-section {
+  &.section-visual {
     height: ${({ $wh, $headerHeight }) =>
       $wh !== 0 && $headerHeight !== 0 ? `${$wh - $headerHeight}px` : "100vh"};
     .section-header {
       display: none;
     }
   }
-  &:not(.visual-section) {
+  &:not(.section-visual) {
     min-height: ${({ $wh }) => ($wh !== 0 ? `${$wh}px` : "100vh")};
     ${flex({ dir: "column", cross: "flex-start" })};
   }
+
   @media only screen and (min-width: 1024px) {
     &.side-v-padding {
       ${({ $headerHeight }) =>
@@ -45,16 +44,12 @@ export const PageSectionContainer = styled.section<{
           pt: $headerHeight !== 0 ? `${$headerHeight}px` : 240,
         })}
     }
-    &.visual-section {
+    &.section-visual {
       height: auto;
       flex-wrap: wrap;
       .section-header {
         display: block;
       }
-    }
-    &:not(.visual-section) {
-      min-height: 0;
-      display: block;
     }
   }
 `;
