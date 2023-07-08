@@ -35,11 +35,12 @@ function gsapTimeline(timeline: GSAPTimeline, tweenArr: CustomTweenType[]) {
 export function ctxScrollTrigger({
   container,
   normalize,
+  timeline,
   tweenArr,
 }: HookScrollTriggerProps) {
   if (typeof window === "undefined") return gsap.context();
 
-  return gsap.context(() => {
+  const gsapCtx = gsap.context(() => {
     if (container instanceof Element) {
       // Scroll Trigger 플러그인 사용 시작
       gsap.registerPlugin(ScrollTrigger);
@@ -55,42 +56,17 @@ export function ctxScrollTrigger({
           allowNestedScroll: true,
         });
 
-      gsapTween(tweenArr);
+      if (typeof timeline === "boolean" && timeline === true) {
+        const timeline = gsap.timeline();
+        gsapTimeline(timeline, tweenArr);
+      } else gsapTween(tweenArr);
 
-      ScrollTrigger.clearScrollMemory();
-      ScrollTrigger.refresh();
+      return () => {
+        ScrollTrigger.clearScrollMemory();
+        ScrollTrigger.refresh();
+      };
     }
   });
-}
 
-export function ctxScrollTimeline({
-  container,
-  normalize,
-  tweenArr,
-}: HookScrollTriggerProps) {
-  if (typeof window === "undefined") return gsap.context();
-
-  return gsap.context(() => {
-    if (container instanceof Element) {
-      // Scroll Trigger 플러그인 사용 시작
-      gsap.registerPlugin(ScrollTrigger);
-
-      // 스크롤 영역 설정
-      ScrollTrigger.defaults({
-        scroller: container,
-        invalidateOnRefresh: true,
-      });
-
-      if (typeof normalize === "boolean")
-        ScrollTrigger.normalizeScroll({
-          allowNestedScroll: true,
-        });
-
-      const timeline = gsap.timeline();
-      gsapTimeline(timeline, tweenArr);
-
-      ScrollTrigger.clearScrollMemory();
-      ScrollTrigger.refresh();
-    }
-  });
+  return gsapCtx;
 }

@@ -6,5 +6,7 @@ export type CustomTweenType = {
 export type HookScrollTriggerProps = {
   container: Element | undefined | null;
   normalize?: boolean;
+  timeline?: boolean;
+  matchMediaOptions?: object;
   tweenArr: CustomTweenType[];
 };
