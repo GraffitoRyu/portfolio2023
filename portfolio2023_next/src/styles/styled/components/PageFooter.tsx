@@ -24,12 +24,15 @@ export const FooterContainer = styled.footer<{ $wh: number }>`
   ${({ $wh }) =>
     size({
       w: "100%",
-      h: $wh !== 0 ? "100vh" : `${$wh}px`,
+      h: $wh !== 0 ? `${$wh}px` : "100vh",
       p: 80,
     })}
   background-color: ${({ theme }) => theme.footer.bg};
   overflow: hidden;
   @media only screen and (min-width: 1024px) {
+    ${size({ p: [120, 80] })}
+  }
+  @media only screen and (min-width: 1280px) {
     ${size({ p: [160, 80] })}
   }
 `;
@@ -63,7 +66,7 @@ export const FooterTitleLine = styled(PageTitle)`
     font-size: ${rem(160)};
   }
   @media only screen and (min-width: 1024px) {
-    font-size: ${rem(200)};
+    font-size: ${rem(180)};
   }
   @media only screen and (min-width: 1280px) {
     font-size: ${rem(240)};
@@ -94,7 +97,7 @@ export const PortfolioSummaryContainer = styled.div`
     ${size({ mt: 80, pr: "66.6667%" })}
   }
   @media only screen and (min-width: 1024px) {
-    ${size({ mt: 160, p: [0, `calc(66.6667% + ${rem(20)})`, 0, 20] })}
+    ${size({ mt: 40, p: [0, `calc(66.6667% + ${rem(20)})`, 0, 20] })}
   }
   @media only screen and (min-width: 1280px) {
     ${size({ w: `${widthRatio(12, 4)}%`, mt: 0, p: [0, 20] })}
@@ -165,7 +168,7 @@ export const FooterMenuColumn = styled.div`
 `;
 
 export const FooterMenuItem = styled.dl`
-  ${size({ w: "100%", mb: 80 })}
+  ${size({ w: "100%", mb: 40 })}
   @media only screen and (min-width: 560px) {
     ${size({ mb: 24 })}
   }
@@ -173,7 +176,7 @@ export const FooterMenuItem = styled.dl`
     ${size({ mb: 24 })}
   }
   @media only screen and (min-width: 1024px) {
-    ${size({ h: 240, mb: 0 })}
+    ${size({ h: 200, mb: 0 })}
   }
   @media only screen and (min-width: 1280px) {
     height: ${rem(200)};

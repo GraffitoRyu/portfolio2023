@@ -86,7 +86,7 @@ export const PDSection = styled.section<{ $wh?: number }>`
     padding: ${rem(80)};
   }
   &.detail-visual {
-    height: ${({ $wh }) => ($wh !== 0 ? "100vh" : `${$wh}px`)};
+    height: ${({ $wh }) => ($wh !== 0 ? `${$wh}px` : "100vh")};
   }
   &.detail-info {
     font-size: 0;
@@ -104,7 +104,7 @@ export const PDVisualImage = styled.figure<{ $wh: number }>`
   ${({ $wh }) =>
     size({
       w: "100%",
-      h: $wh !== 0 ? "100vh" : `${$wh}px`,
+      h: $wh !== 0 ? `${$wh}px` : "100vh",
     })}
   ${position({ type: "absolute", top: 0, left: 0, z: -2 })}
   overflow:hidden;
@@ -127,7 +127,7 @@ export const PDVisualCover = styled.div<{ $wh: number }>`
     background: ${({ theme }) => theme.projectDetails.visualBg};
   }
   @media only screen and (min-width: 1024px) {
-    height: ${({ $wh }) => ($wh !== 0 ? "100vh" : `${$wh}px`)};
+    height: ${({ $wh }) => ($wh !== 0 ? `${$wh}px` : "100vh")};
   }
 `;
 
