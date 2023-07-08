@@ -71,7 +71,7 @@ export default function PageVisual({ title }: { title: string[] }) {
         end: `${targetEnd} center`, // 움직일 요소의 끝, 트리거 영역의 끝
         scrub: true, // 스크롤 위치에 따라 실시간으로 대응하여 변하도록 설정
         invalidateOnRefresh: true,
-        markers: true, // 개발용 가이드라인
+        // markers: true, // 개발용 가이드라인
         onEnter: () => {
           setFixed("fixed-parallax");
         },
