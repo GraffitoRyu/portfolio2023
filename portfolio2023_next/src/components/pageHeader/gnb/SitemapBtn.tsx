@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 
 // style components
 import { SitemapLink } from "@/styles/styled/components/Gnb";
@@ -20,8 +20,10 @@ import { transTime } from "@/styles/styled/preset/transTime";
 
 export default function SitemapBtn({ code, path, name }: SitemapType) {
   const router = useRouter();
+
   // 현재 페이지 경로
   const pathname = usePathname();
+  const { category } = useParams();
 
   // 페이지 상태 관리
   const setPageAtom = useSetRecoilState<pageStateTypes>(pageState);
@@ -37,8 +39,8 @@ export default function SitemapBtn({ code, path, name }: SitemapType) {
 
   // 현재 경로 상태 업데이트
   useEffect(() => {
-    setCurPath(pathname);
-  }, [pathname]);
+    setCurPath(pathname.replace(`/${category}`, ""));
+  }, [category, pathname]);
 
   // 현재 페이지에 맞는 메뉴 하이라이트 상태 업데이트
   useEffect(() => {

@@ -13,6 +13,7 @@ export const detailData = atom<DetailTypes>({
 export const detailLayoutState = atom<DetailLayoutStateTypes>({
   key: "projectDetailLayoutState",
   default: {
+    category: "", // 상세 아이템
     open: false, // 열림 상태
     openComplete: false, // 열림 트랜지션 후 완료
     dataStatus: "",

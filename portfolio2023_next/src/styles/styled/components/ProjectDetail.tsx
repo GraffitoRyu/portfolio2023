@@ -184,7 +184,7 @@ export const PDLinkContainer = styled.ul`
 export const PDLinkItem = styled.li`
   ${size({ m: [40, 40, 0, 0] })}
   @media only screen and (min-width:1024px) {
-    ${size({ m: [0, 0, 0, 24] })}
+    ${size({ m: [0, 24, 0, 0] })}
   }
 `;
 

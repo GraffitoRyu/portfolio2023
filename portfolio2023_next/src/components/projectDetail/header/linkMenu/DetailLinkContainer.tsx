@@ -1,4 +1,4 @@
-import { useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
@@ -16,16 +16,15 @@ import { LinkType } from "@/types/projects";
 import { detailData } from "@/states/detail";
 
 export default function DetailLinkContainer() {
-  const params = useSearchParams();
-  const code = params.get("code");
+  const { category } = useParams();
   const data = useRecoilValue<DetailTypes>(detailData);
   const [linkData, setLinkData] = useState<LinkType[] | []>([]);
 
   useEffect(() => {
-    if (!code) return;
-    const d = data[code];
+    if (!category) return;
+    const d = data[category];
     if (d?.service) setLinkData(d?.service.link);
-  }, [code, data]);
+  }, [category, data]);
 
   return (
     <PDLinkContainer>

@@ -87,8 +87,7 @@ export const VisualTitleLine = styled(PageTitle)`
     color: ${({ theme }) => theme.visualSection.fill};
   }
   @media only screen and (min-width: 1024px) {
-    font-size: ${rem(240)};
-    pointer-events: auto;
+    ${font({ size: 240 })}
   }
 `;
 

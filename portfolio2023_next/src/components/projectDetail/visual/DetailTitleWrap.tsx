@@ -1,4 +1,4 @@
-import { useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
@@ -24,8 +24,7 @@ import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function DetailTitleWrap() {
   // 프로젝트 상세 데이터
-  const params = useSearchParams();
-  const code = params.get("code");
+  const { category } = useParams();
   const data = useRecoilValue<DetailTypes>(detailData);
 
   // 내용 추출
@@ -57,12 +56,12 @@ export default function DetailTitleWrap() {
 
   // 데이터 세팅
   useEffect(() => {
-    if (!code) return;
+    if (!category) return;
 
-    const d = data[code];
+    const d = data[category];
     if (d?.summary?.title) setTitle(d.summary.title);
     if (d?.summary?.desc) setSubtitle(d.summary.desc);
-  }, [code, data]);
+  }, [category, data]);
 
   // 프로젝트 타이틀 등장 모션
   useEffect(() => {
@@ -71,7 +70,7 @@ export default function DetailTitleWrap() {
 
   // 스크롤 인터렉션 이벤트 선언
   useEffect(() => {
-    if (openComplete && code && data && title?.length > 0 && subtitle) {
+    if (openComplete && category && data && title?.length > 0 && subtitle) {
       if (!scrollContainer || !scrollArea) return;
 
       const scrollTarget = scrollUpRef.current;
@@ -101,7 +100,15 @@ export default function DetailTitleWrap() {
 
       return () => ctx.revert();
     }
-  }, [code, data, openComplete, scrollArea, scrollContainer, subtitle, title]);
+  }, [
+    category,
+    data,
+    openComplete,
+    scrollArea,
+    scrollContainer,
+    subtitle,
+    title,
+  ]);
 
   return (
     <PDTitle className={`${initTitle}`} ref={setRef}>

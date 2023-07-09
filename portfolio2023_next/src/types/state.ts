@@ -68,6 +68,7 @@ export interface DetailScrollRefStateTypes {
 }
 
 export interface DetailLayoutStateTypes {
+  category: string;
   open: boolean;
   openComplete: boolean;
   dataStatus: string;
