@@ -81,12 +81,13 @@ export const HeaderTitle = styled.h2`
     spacing: `-0.02em`,
     height: "1em",
     transform: "capitalize",
-    family: `var(--serif-kr)`,
+    family: `var(--serif-dm)`,
   })}
   opacity:0;
+  font-style: italic;
   @media only screen and (min-width: 1024px) {
     ${size({ mb: 80 })}
-    font-size: ${rem(120)};
+    ${font({ size: 160, weight: 500 })}
   }
 `;
 
