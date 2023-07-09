@@ -3,7 +3,6 @@ import { useSetRecoilState } from "recoil";
 
 //components
 import DetailTitleWrap from "./DetailTitleWrap";
-import DetailLinkContainer from "./linkMenu/DetailLinkContainer";
 
 // style components
 import { PDVisualCover } from "@/styles/styled/components/ProjectDetail";
@@ -35,7 +34,6 @@ export default function DetailVisual({
   return (
     <PDVisualCover ref={setRef} $wh={$windowHeight}>
       <DetailTitleWrap />
-      <DetailLinkContainer />
     </PDVisualCover>
   );
 }

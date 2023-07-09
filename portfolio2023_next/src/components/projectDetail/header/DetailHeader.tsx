@@ -2,8 +2,9 @@ import { useRouter } from "next/navigation";
 import { useSetRecoilState } from "recoil";
 
 // components
-import CloseButton from "@/components/buttons/Close";
 import DetailHeaderTitleContainer from "@/components/projectDetail/header/DetailHeaderTitleContainer";
+import DetailLinkContainer from "./linkMenu/DetailLinkContainer";
+import CloseButton from "@/components/buttons/Close";
 
 // style components
 import { PDHeader } from "@/styles/styled/components/ProjectDetail";
@@ -39,6 +40,7 @@ export default function DetailHeader() {
     <PDHeader>
       <StyledHeaderWrap>
         <DetailHeaderTitleContainer />
+        <DetailLinkContainer />
         <CloseButton clickEvent={closeDetail} />
       </StyledHeaderWrap>
     </PDHeader>
