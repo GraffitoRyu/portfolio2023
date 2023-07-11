@@ -1,15 +1,12 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 // components
-import DetailHeader from "@/components/projectDetail/header/DetailHeader";
-import DetailBackground from "@/components/projectDetail/visual/DetailBackground";
-import DetailSection from "@/components/projectDetail/section/DetailSection";
-import DetailVisual from "@/components/projectDetail/visual/DetailVisual";
-import DetailInfoContainer from "@/components/projectDetail/info/DetailInfo";
-import DetailMediaContainer from "@/components/projectDetail/media/DetailMedia";
+import DetailHeader from "./header/DetailHeader";
+import DetailVisualContainer from "./visual/DetailVisualContainer";
+import DetailExperience from "./exp/DetailExperience";
 
 // style components
 import { PDContainer } from "@/styles/styled/components/ProjectDetail";
@@ -18,7 +15,6 @@ import { PDContainer } from "@/styles/styled/components/ProjectDetail";
 import {
   DetailLayoutStateTypes,
   DetailScrollRefStateTypes,
-  ScreenSizeTypes,
 } from "@/types/state";
 import { DetailTypes } from "@/types/projectDetails";
 
@@ -31,11 +27,9 @@ import { transTime } from "@/styles/styled/preset/transTime";
 
 // hooks
 import useGetDetailByCodeQuery from "@/hooks/useGetDetailQuery";
-import { screenSizeState } from "@/states/screen";
+import debounce from "@/util/debounceEvent";
 
 export default function ProjectDetail() {
-  const { windowHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
-
   // 프로젝트 상세 열림 상태 관리
   const [{ category, open }, setLayoutState] =
     useRecoilState<DetailLayoutStateTypes>(detailLayoutState);
@@ -45,6 +39,7 @@ export default function ProjectDetail() {
   const setDetailScrollRef =
     useSetRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
   const detailRef = useRef<HTMLElement | null>(null);
+  const scrollWrapRef = useRef<HTMLDivElement | null>(null);
 
   // 프로젝트 데이터 상태관리
   const setDetailData = useSetRecoilState<DetailTypes>(detailData);
@@ -59,13 +54,35 @@ export default function ProjectDetail() {
     [setDetailScrollRef]
   );
 
+  // 프로젝트 상세 스크롤 높이 업데이트
+  useEffect(() => {
+    const scrollWrap = scrollWrapRef.current;
+    if (!scrollWrap) return;
+
+    const ob = new ResizeObserver(
+      debounce((entries: ResizeObserverEntry[]) => {
+        const ctx = entries?.[0]?.contentRect;
+        setDetailScrollRef(prev => ({
+          ...prev,
+          scrollHeight: ctx ? ctx.height : 0,
+        }));
+      }, 400)
+    );
+
+    ob.observe(scrollWrap);
+
+    return () => {
+      ob.disconnect();
+    };
+  }, [setDetailScrollRef]);
+
   // 데이터 조회 상태
   useEffect(() => {
     if (category) {
-      console.log(`get [${category}] data status: `, status);
+      // console.log(`get [${category}] data status: `, status);
       setLayoutState(prev => ({ ...prev, dataStatus: status }));
       if (status === "success") {
-        console.log(`[Detail Container :: React Query] Data is ready.`, data);
+        // console.log(`[Detail Container :: React Query] Data is ready.`, data);
         setDetailData(prev => ({ ...prev, [category]: data }));
       }
     }
@@ -89,17 +106,11 @@ export default function ProjectDetail() {
 
   return (
     <PDContainer className={`${openClass}`} ref={setRef}>
-      <DetailHeader />
-      <DetailBackground $windowHeight={windowHeight} />
-      <DetailSection className="detail-visual" $windowHeight={windowHeight}>
-        <DetailVisual $windowHeight={windowHeight} />
-      </DetailSection>
-      <DetailSection className="detail-info side-padding">
-        <DetailInfoContainer />
-      </DetailSection>
-      <DetailSection className="detail-media">
-        <DetailMediaContainer />
-      </DetailSection>
+      <div className="detail-scroll-wrap" ref={scrollWrapRef}>
+        <DetailHeader />
+        <DetailVisualContainer />
+        <DetailExperience />
+      </div>
     </PDContainer>
   );
 }

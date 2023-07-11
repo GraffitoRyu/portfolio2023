@@ -9,5 +9,6 @@ export const screenSizeState = atom<ScreenSizeTypes>({
     headerHeight: 0,
     columnWidth: 0,
     careerExpandHeight: {},
+    detailHeaderHeight: 0,
   },
 });

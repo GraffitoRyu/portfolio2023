@@ -5,6 +5,8 @@ export interface DetailColorTypes {
   visualSubtitle: string;
   infoTitle: string;
   infoDesc: string;
+  expTitle: string;
+  expDesc: string;
   stackBg: string;
   stackBorder: string;
   stackText: string;

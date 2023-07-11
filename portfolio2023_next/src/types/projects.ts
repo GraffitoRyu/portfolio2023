@@ -16,20 +16,23 @@ export interface LinkType {
 export interface ServiceType {
   [index: string]: string | string[] | LinkType[];
   provider: string;
-  platform: string;
+  serviceType: string;
   desc: string[];
   link: LinkType[];
 }
 
-export interface ExpDepthType {
-  [index: string]: string | string[];
-  depth1: string;
-  depth2: string[];
+export interface ExpStacksType {
+  [index: string]: string[];
+  languages: string[];
+  frameworks: string[];
+  data: string[];
+  collaboration: string[];
 }
+
 export interface ExpType {
-  [index: string]: Array<string | ExpDepthType>;
-  stacks: string[];
-  desc: Array<string | ExpDepthType>;
+  [index: string]: string[] | ExpStacksType;
+  stacks: ExpStacksType;
+  desc: string[];
 }
 
 export interface MediaType {

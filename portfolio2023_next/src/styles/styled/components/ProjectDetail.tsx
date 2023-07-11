@@ -2,11 +2,8 @@
 
 import { styled } from "styled-components";
 
-// components
-import PeriodForward from "@/components/period/Period";
-
 // util
-import { rem } from "@/util/unit";
+import { rem, widthRatio } from "@/util/unit";
 
 // style
 import {
@@ -18,14 +15,12 @@ import {
 } from "@/styles/styled/preset/mixins";
 import { easing } from "@/styles/styled/preset/easing";
 import { transTime } from "@/styles/styled/preset/transTime";
-import { CommonBtn, btnStyle } from "@/styles/styled//preset/buttons";
-import { img } from "../preset/img";
+import { CommonBtn } from "@/styles/styled//preset/buttons";
 
 export const PDContainer = styled.article`
   ${size({ w: "100%", h: "100%" })}
   ${position({ type: "fixed", left: 0, bottom: 0, z: 2000 })}
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
   &::-webkit-scrollbar {
     width: 0;
   }
@@ -50,7 +45,7 @@ export const PDHeader = styled.header`
 `;
 
 export const PDHeaderTitleContainer = styled.h3`
-  ${flex({ std: "start" })}
+  ${flex({ std: "flex-start" })}
   margin-right: auto;
   color: ${({ theme }) => theme.projectDetails.visualTitle};
   ${font({
@@ -61,7 +56,7 @@ export const PDHeaderTitleContainer = styled.h3`
 `;
 
 export const PDHeaderPageName = styled.span`
-  ${flex({ std: "start" })}
+  ${flex({ std: "flex-start" })}
 `;
 
 export const PDHeaderProjectName = styled.span`
@@ -75,110 +70,8 @@ export const PDHeaderProjectName = styled.span`
   }
 `;
 
-export const PDSection = styled.section<{ $wh?: number }>`
-  width: 100%;
-  position: relative;
-  z-index: 100;
-  &:not(.detail-visual) {
-    background: ${({ theme }) => theme.projectDetails.bg};
-  }
-  &.side-padding {
-    padding: ${rem(80)};
-  }
-  &.detail-visual {
-    height: ${({ $wh }) => ($wh !== 0 ? `${$wh}px` : "100vh")};
-  }
-  &.detail-info {
-    font-size: 0;
-    @media only screen and (min-width: 1024px) {
-      display: flex;
-    }
-  }
-`;
-
-export const PDVisualImageContainer = styled.div`
-  ${position({ type: "sticky", top: 0, left: 0, z: -100 })}
-`;
-
-export const PDVisualImage = styled.figure<{ $wh: number }>`
-  ${({ $wh }) =>
-    size({
-      w: "100%",
-      h: $wh !== 0 ? `${$wh}px` : "100vh",
-    })}
-  ${position({ type: "absolute", top: 0, left: 0, z: -2 })}
-  overflow:hidden;
-  img {
-    filter: blur(4px);
-    object-fit: cover;
-    ${transition([{ prop: "opacity", time: "0.6s" }])}
-  }
-`;
-
-export const PDVisualCover = styled.div<{ $wh: number }>`
-  ${size({ w: "100%", p: 80 })}
-  ${flex({ std: "flex-start", cross: "flex-end" })}
-  &:after {
-    content: "";
-    display: block;
-    ${position({ type: "absolute", top: 0, left: 0, z: -1 })}
-    ${size({ w: "100%", h: "100%" })}
-    background-color: ${({ theme }) => theme.projectDetails.bg};
-    background: ${({ theme }) => theme.projectDetails.visualBg};
-  }
-  @media only screen and (min-width: 1024px) {
-    height: ${({ $wh }) => ($wh !== 0 ? `${$wh}px` : "100vh")};
-  }
-`;
-
-export const PDTitle = styled.div`
-  margin-right: auto;
-  h2 {
-    color: ${({ theme }) => theme.projectDetails.visualTitle};
-    ${font({ size: 80, weight: 700, height: "1em" })}
-    transition: transform 0.6s, opacity 0.6s;
-    span {
-      display: block;
-      white-space: nowrap;
-    }
-  }
-  p {
-    max-width: 100%;
-    ${size({ mt: 40 })}
-    color: ${({ theme }) => theme.projectDetails.visualSubtitle};
-    ${font({ size: 40, weight: 400, height: "1.6em" })}
-    transition: transform 0.6s, opacity 0.6s;
-  }
-  &.ready {
-    h2 {
-      transform: translateY(50%);
-      opacity: 0;
-    }
-    p {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-  }
-  @media only screen and (min-width: 1024px) {
-    h2 {
-      font-size: ${rem(160)};
-      span {
-        display: block;
-      }
-    }
-    p {
-      white-space: nowrap;
-      ${font({ size: 32, weight: 400 })}
-    }
-  }
-`;
-
-export const PDVisualEmpty = styled.div`
-  ${size({ w: "100%", h: "100%" })}
-`;
-
 export const PDLinkContainer = styled.ul`
-  ${flex({ std: "flex-end", wrap: "wrap" })}
+  ${flex({ end: [true, false], wrap: "wrap" })}
 `;
 
 export const PDLinkItem = styled.li`
@@ -202,162 +95,271 @@ export const PDLinkName = styled.span`
   }
 `;
 
-export const PDInfoItem = styled.dl`
-  ${size({ mb: 240 })}
-  dt {
-    ${size({ mb: 40 })}
-    color: ${({ theme }) => theme.projectDetails.infoTitle};
-    ${font({ size: 32, weight: 500, height: "1em" })}
-  }
-  dd {
-    color: ${({ theme }) => theme.projectDetails.infoDesc};
-    ${font({ size: 32, weight: 500, height: "2em" })}
-  }
-  @media only screen and (min-width: 1024px) {
-    dt {
-      ${size({ mb: 40 })}
-      font-size: ${rem(24)};
-    }
-    dd {
-      font-size: ${rem(24)};
-    }
-  }
-`;
-
-export const PDInfoBox = styled.div`
+export const PDSection = styled.section<{ $wh?: number }>`
   width: 100%;
-  @media only screen and (min-width: 1024px) {
-    width: 50%;
+  position: relative;
+  z-index: 100;
+  &:not(.detail-section-visual) {
+    background: ${({ theme }) => theme.projectDetails.bg};
   }
 `;
 
-export const PDSummaryContainer = styled(PDInfoBox)`
-  padding-left: 0;
-  @media only screen and (min-width: 1024px) {
-    ${size({ pr: 240 })}
-  }
-  dl {
-    display: inline-block;
-    vertical-align: top;
-    @media only screen and (min-width: 1024px) {
-      ${size({ h: 320, mb: 0 })}
-    }
+export const PDVisualSection = styled(PDSection)`
+  ${({ $wh }) =>
+    size({
+      h: $wh === 0 ? "100vh" : `${$wh}px`,
+    })}
+  @media only screen and (min-width:1024px) {
+    ${size({ h: "100vw" })}
   }
 `;
 
-export const PCDescContainer = styled(PDInfoBox)`
-  padding-right: 0;
-  @media only screen and (min-width: 1024px) {
-    ${size({ pr: 240 })}
+export const PDExpSection = styled(PDSection)`
+  ${({ $wh }) => size({ h: $wh === 0 ? "100vh" : `${$wh}px`, p: [160, 80] })}
+`;
+
+export const PDVisualViewport = styled.div<{ $wh: number; $hdHeight: number }>`
+  ${flex({ dir: "column", std: "flex-end", cross: "flex-start" })}
+  ${({ $wh, $hdHeight }) =>
+    size({
+      w: "100%",
+      h: $wh !== 0 ? `${$wh}px` : `100vh`,
+      p: [$hdHeight !== 0 ? `${$hdHeight}px` : 240, 80, 200],
+    })}
+  @media only screen and (min-width:1024px) {
+    ${size({ pb: 160 })}
   }
 `;
 
-export const PDPeriod = styled(PeriodForward)`
-  display: block;
-  span {
-    display: block;
-    margin: ${rem(16)} 0;
-    background-color: ${({ theme }) => theme.projectDetails.infoDesc};
-  }
-  @media only screen and (min-width: 1024px) {
-    display: flex;
-    span {
-      margin: 0 ${rem(16)};
-    }
+export const PDVisualImageContainer = styled.div<{ $wh: number }>`
+  ${position({ type: "fixed", top: 0, left: 0, z: -100 })}
+  ${({ $wh }) => size({ w: "100%", h: $wh === 0 ? "100vh" : `${$wh}px` })}
+  @media only screen and (min-width:1024px) {
+    ${size({ h: "100vw" })}
   }
 `;
 
-export const PDStackList = styled.ul`
-  ${flex({ std: "start", wrap: "wrap" })}
-`;
-
-export const PDStacks = styled.li`
-  ${flex({})}
-  ${btnStyle({ w: "auto", h: 64, r: 32 })}
-  ${size({ m: [0, 8, 16], p: [0, 32] })}
-  border:1px solid ${({ theme }) => theme.projectDetails.stackBorder};
-  background-color: ${({ theme }) => theme.projectDetails.stackBg};
-  @media only screen and (min-width: 1024px) {
-    ${btnStyle({ w: "auto", h: 48, r: 24 })}
-    ${size({ m: [0, 4, 8], p: [0, 16] })}
-  }
-`;
-
-export const PDStackImg = styled.figure`
-  ${size({ w: 32, h: 32, mr: 16 })}
-  position:relative;
+export const PDVisualImage = styled.div`
+  ${position({ top: 0, left: 0 })}
+  ${size({ w: "100%", h: "100%" })}
   img {
-    ${img({})}
-  }
-  @media only screen and (min-width: 1024px) {
-    ${size({ w: 24, h: 24, mr: 8 })}
+    object-fit: cover;
+    object-position: bottom;
   }
 `;
 
-export const PDStackName = styled.span`
-  ${size({ mt: 2 })}
-  color: ${({ theme }) => theme.projectDetails.stackText};
+export const PDVisualImageCover = styled.div`
+  ${size({ w: "100%", h: "100%" })}
+  ${position({ type: "absolute", top: 0, left: 0 })}
+    background-color: ${({ theme }) => theme.projectDetails.bg};
+  background: ${({ theme }) => theme.projectDetails.visualBg};
+`;
+
+export const PDVisualTitleContainer = styled.div`
+  ${size({ w: "100%" })}
+`;
+
+export const PDVisualTitle = styled.h4`
+  color: ${({ theme }) => theme.projectDetails.visualTitle};
+  font-size: 0;
+  &.hide span {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+`;
+
+export const PDVisualTitleLine = styled.span<{ $index: number }>`
+  display: block;
+  ${font({
+    size: 88,
+    height: "1.2em",
+    spacing: 0,
+    weight: 400,
+    family: "var(--serif-dm)",
+  })}
+  transition:color ${transTime.color / 1000}s,
+    opacity 1.8s ${easing.quart} ${({ $index }: { $index: number }) =>
+    0.16 * $index}s,
+    transform 1.6s ${easing.quart} ${({ $index }: { $index: number }) =>
+    0.16 * $index}s;
+  @media only screen and (min-width: 1024px) {
+    ${font({ size: 184, height: "1em" })}
+  }
+`;
+
+export const PDVisualSubtitle = styled.p<{ $index: number }>`
+  ${size({ mt: 40 })}
+  color: ${({ theme }) => theme.projectDetails.visualSubtitle};
   ${font({
     size: 32,
     weight: 400,
-    height: "1em",
-    spacing: 0,
-    whitespace: "nowrap",
-    transform: "uppercase",
+    height: "1.6em",
   })}
+
+  transition:color ${transTime.color / 1000}s,
+    opacity 1.6s ${easing.quart} ${({ $index }: { $index: number }) =>
+    0.2 * $index}s,
+    transform 1.6s ${easing.quart} ${({ $index }: { $index: number }) =>
+    0.2 * $index}s;
+
+  &.hide {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
   @media only screen and (min-width: 1024px) {
-    ${font({ size: 16, weight: 500 })}
+    ${size({ mt: 80 })}
+    ${font({ height: "1em" })}
   }
 `;
 
-export const PDMediaContainer = styled.ul`
-  width: 100%;
-`;
+export const PDInfoItem = styled.dl<{
+  $itemIndex?: number;
+  $delayIndex?: number;
+}>`
+  ${size({ w: `100%`, mb: 80, p: [0, 20] })}
+  transition:opacity 0.4s linear ${({ $itemIndex, $delayIndex }) =>
+    typeof $delayIndex === "number" && typeof $itemIndex === "number"
+      ? `${Math.floor($delayIndex * 2) / 10 + Math.floor($itemIndex * 2) / 10}s`
+      : `0.6s`};
 
-export const PDMediaItem = styled.li`
-  ${size({ w: "100%", pb: 240 })}
-`;
-
-export const PDMediaFigure = styled.figure`
-  width: 100%;
-  font-size: 0;
-  position: relative;
-  img {
-    position: static !important;
-  }
-`;
-
-export const PDMediaInfo = styled.div`
-  padding: 0 ${rem(160)};
-  text-align: center;
   @media only screen and (min-width: 1024px) {
-    padding: 0 ${rem(80)};
+    ${size({ w: `${widthRatio(12, 2)}%` })}
   }
 `;
 
-export const PDMediaName = styled.h4`
-  ${size({ mt: 80 })}
-  color: ${({ theme }) => theme.projectDetails.captionTitle};
+export const PDStackItem = styled(PDInfoItem)`
+  ${flex({ start: true, wrap: "wrap" })}
+  @media only screen and (min-width: 1024px) {
+    display: block;
+    &.details-stack-title {
+      ${size({ w: `${widthRatio(12, 3)}%` })}
+    }
+  }
+`;
+
+export const PDSummaryItem = styled(PDInfoItem)``;
+
+export const PDInfoTitle = styled.dt`
+  ${size({ w: "fit-content", mb: 16 })}
+  color:${({ theme }) => theme.projectDetails.infoTitle};
   ${font({
-    size: 40,
+    size: 32,
     weight: 500,
     height: "1em",
+    family: "var(--serif-kr)",
+    spacing: 0,
   })}
-  @media only screen and (min-width:1024px) {
-    ${size({ mt: 120 })}
-    font-size: ${rem(32)};
+
+  @media only screen and (min-width: 1024px) {
+    ${size({ mb: 24 })}
+    ${font({ size: 24 })}
   }
 `;
 
-export const PDMediaDesc = styled.p`
-  ${size({ mt: 32 })}
-  color: ${({ theme }) => theme.projectDetails.captionDesc};
+export const PDStackTitle = styled(PDInfoTitle)`
+  ${size({ w: "100%" })}
+`;
+
+export const PDSummaryTitle = styled(PDInfoTitle)``;
+
+export const PDInfoContents = styled.dd`
+  color: ${({ theme }) => theme.projectDetails.infoDesc};
   ${font({
     size: 32,
-    weight: 400,
-    height: "1.5em",
+    height: "2em",
+    weight: 500,
   })}
+
+  @media only screen and (min-width: 1024px) {
+    ${font({ size: 24 })}
+  }
+`;
+
+export const PDStackContents = styled(PDInfoContents)`
+  ${size({ mr: 40 })}
+`;
+
+export const PDSummaryContents = styled(PDInfoContents)``;
+
+export const PDInfoContainer = styled.div`
+  ${size({ w: `calc(100% + ${rem(20)})`, m: [0, -20] })}
+`;
+
+export const PDSummaryContainer = styled(PDInfoContainer)`
+  ${flex({ start: true, wrap: "wrap" })}
+  ${size({ mb: 40 })}
+
+  &.hide {
+    dl {
+      opacity: 0;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    ${size({ mt: 120, mb: 0 })}
+  }
+`;
+
+export const PDStacksContainer = styled(PDInfoContainer)`
+  ${flex({ start: true, wrap: "wrap" })}
+  ${size({ p: [0, 80], mt: 320 })}
   @media only screen and (min-width:1024px) {
-    font-size: ${rem(24)};
+  }
+`;
+
+export const PDExpContainer = styled.div`
+  ${size({ w: "100%" })}
+  @media only screen and (min-width: 1024px) {
+    ${size({
+      w: `${widthRatio(12, 5)}%`,
+      p: [0, 20],
+      m: [0, `${widthRatio(12, 2)}%`, 0, `${widthRatio(12, 5)}%`],
+    })}
+  }
+`;
+
+export const PDExpTitle = styled.h5`
+  ${size({ mb: 160 })}
+  color: ${({ theme }) => theme.projectDetails.expTitle};
+  span {
+    ${font({
+      size: 96,
+      weight: 400,
+      spacing: `0.02em`,
+      height: "1em",
+      family: "var(--serif-dm)",
+      style: "italic",
+    })}
+  }
+  @media only screen and (min-width: 1024px) {
+    ${font({ size: 120 })}
+  }
+`;
+
+export const PDExpList = styled.ul`
+  ${size({ w: "100%" })}
+`;
+
+export const PDExpDesc = styled.li`
+  ${flex({ start: true })}
+  color:${({ theme }) => theme.projectDetails.expDesc};
+  ${font({
+    size: 32,
+    height: "2em",
+    weight: 400,
+  })}
+  &:before {
+    content: "\\00B7";
+    ${flex({ start: [true, false] })}
+    ${size({ w: 20, h: 48 })}
+    line-height:1em;
+  }
+  span {
+    flex: 1;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    ${font({ size: 24 })}
   }
 `;

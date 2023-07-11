@@ -21,6 +21,7 @@ export type ScreenSizeTypes = {
   headerHeight: number;
   columnWidth: number;
   careerExpandHeight: CareerDetailHeight;
+  detailHeaderHeight: number;
 };
 
 export type pageStateTypes = {
@@ -63,6 +64,8 @@ export interface ScrollRefStateTypes {
 
 export interface DetailScrollRefStateTypes {
   container: HTMLElement | null; // <article />
+  scrollHeight: number;
+  header: HTMLElement | null; // <header/>
   visual: HTMLDivElement | null;
   visualTitle: HTMLDivElement | null;
 }

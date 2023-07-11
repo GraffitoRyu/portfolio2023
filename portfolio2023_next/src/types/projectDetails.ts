@@ -1,4 +1,4 @@
-import { ExpDepthType, ProjectsType } from "./projects";
+import { ProjectsType } from "./projects";
 
 export type DetailTypes = {
   [index: string]: ProjectsType;
@@ -14,5 +14,5 @@ export interface DetailInfoSummaryTypes {
 export interface DetailInfoDescTypes {
   code: string;
   title: string;
-  contents: Array<ExpDepthType | string> | undefined;
+  contents: string[] | undefined;
 }
