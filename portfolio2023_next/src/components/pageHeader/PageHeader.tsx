@@ -25,6 +25,9 @@ import {
   pageStateTypes,
 } from "@/types/state";
 
+// util
+import debounce from "@/util/debounceEvent";
+
 export default function PageHeader() {
   const headerRef = useRef<HTMLElement | null>(null);
   const setScreenSize = useSetRecoilState<ScreenSizeTypes>(screenSizeState);
@@ -32,7 +35,7 @@ export default function PageHeader() {
   const [hide, setHide] = useState<string>("init-hide hide");
   const { init, initComplete } = useRecoilValue<pageStateTypes>(pageState);
 
-  const updateSize = useCallback(() => {
+  const updateHeaderHeight = useCallback(() => {
     const header = headerRef?.current;
     if (!header) return;
 
@@ -42,6 +45,10 @@ export default function PageHeader() {
     }));
   }, [setScreenSize]);
 
+  const updateDebounce = debounce(() => {
+    updateHeaderHeight();
+  }, 500);
+
   const updateScrollRef = useCallback(
     (node: HTMLElement | null) => {
       headerRef.current = node;
@@ -50,14 +57,19 @@ export default function PageHeader() {
     [setScrollRef]
   );
 
+  // 헤더 높이 최초 업데이트
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    updateHeaderHeight();
+  }, [updateHeaderHeight]);
+
   // 헤더 높이 상태 업데이트
   useEffect(() => {
     if (typeof window === "undefined") return;
-    updateSize();
 
-    window.addEventListener("resize", updateSize, false);
-    return () => window.removeEventListener("resize", updateSize, false);
-  }, [updateSize]);
+    window.addEventListener("resize", updateDebounce, false);
+    return () => window.removeEventListener("resize", updateDebounce, false);
+  }, [updateDebounce]);
 
   // 최초 로딩 시 등장
   useEffect(() => {
