@@ -48,7 +48,7 @@ export function PageLoadEvents() {
     const newPageName: string = getCurPageName(newPathName, routeData);
 
     if (savedPathName !== newPathName) {
-      console.log(`[PageLoadEvent : 페이지 변경] `, newPageName);
+      // console.log(`[PageLoadEvent : 페이지 변경] `, newPageName);
 
       // 현재 페이지와 저장된 페이지 상태값이 다른 경우, 현재 페이지 정보 업데이트
 
@@ -65,7 +65,7 @@ export function PageLoadEvents() {
   // 페이지 새로고침 또는 첫 진입 체크
   useLayoutEffect(() => {
     if (!init) {
-      console.log(`[PageLoadEvent : 페이지 최초 로드 완료] `, savedPathName);
+      // console.log(`[PageLoadEvent : 페이지 최초 로드 완료] `, savedPathName);
       setTimeout(() => {
         setPage(prev => ({ ...prev, init: true, loaded: true }));
       }, transTime.common.initComplete);
