@@ -21,10 +21,12 @@ export type SizeTypes = {
 };
 
 export type FlexTypes = {
-  dir?: string | undefined;
-  std?: string | undefined;
-  cross?: string | undefined;
-  wrap?: string | undefined;
+  dir?: string;
+  std?: string;
+  cross?: string;
+  wrap?: string;
+  start?: boolean | boolean[];
+  end?: boolean | boolean[];
 };
 
 export type PositionTypes = {

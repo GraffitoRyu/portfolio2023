@@ -27,7 +27,7 @@ export const TransitionCover = styled.div`
 
 export const TransBox = styled.div<{ $wh: number }>`
   ${position({ top: 0, left: 0 })}
-  ${flex({ std: "start" })}
+  ${flex({ std: "flex-start" })}
   ${({ $wh }) =>
     size({
       w: "100%",

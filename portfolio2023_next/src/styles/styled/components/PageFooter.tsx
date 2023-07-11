@@ -148,7 +148,7 @@ export const PortfolioCopyright = styled.p`
 
 export const FooterMenuContainer = styled.div`
   @media only screen and (min-width: 1024px) {
-    ${flex({ std: "flex-start", cross: "flex-start" })}
+    ${flex({ start: true })}
   }
 `;
 

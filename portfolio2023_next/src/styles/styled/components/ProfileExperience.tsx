@@ -11,7 +11,7 @@ export const ExpScrollContainer = styled.div`
 `;
 
 export const ExpList = styled.ul<{ $length: number }>`
-  ${flex({ std: "flex-start", cross: "flex-start" })}
+  ${flex({ start: true })}
   ${({ $length }) =>
     size({
       w: `calc(${widthRatio(12, 11) * ($length !== 0 ? $length : 5)}% + ${rem(
@@ -71,7 +71,7 @@ export const ExpTitle = styled.dt`
 `;
 
 export const ExpDesc = styled.dd`
-  ${flex({ std: "flex-start", cross: "flex-start" })}
+  ${flex({ start: true })}
   color: ${({ theme }) => theme.exp.desc};
   ${font({
     size: 28,

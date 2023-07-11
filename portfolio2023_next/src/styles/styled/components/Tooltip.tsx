@@ -83,7 +83,7 @@ export const TooltipTitle = styled.h6<{ $section: string }>`
 `;
 
 export const TooltipContents = styled.p<{ $section: string }>`
-  ${flex({ std: "flex-start" })}
+  ${flex({ start: [true, false] })}
   min-height:${rem(32)};
   color: ${({ $section, theme }) => theme[$section].tooltipText};
   ${font({

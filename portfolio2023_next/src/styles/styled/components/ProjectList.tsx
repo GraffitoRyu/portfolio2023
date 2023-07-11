@@ -107,7 +107,7 @@ export const FadeContainer = styled.div`
 `;
 
 export const FadeListContainer = styled(FadeContainer)`
-  ${flex({ std: "start" })}
+  ${flex({ std: "flex-start" })}
   @media only screen and (min-width: 1024px) {
     justify-content: flex-end;
   }
@@ -152,7 +152,7 @@ export const ListBtnDesc = styled.p`
 `;
 
 export const ListBtnRole = styled.li`
-  ${flex({ std: "start" })}
+  ${flex({ std: "flex-start" })}
   ${font({
     size: 24,
     weight: 400,
@@ -192,7 +192,7 @@ export const ListBtnRole = styled.li`
 
 export const HoverSlideTitle = styled.h3`
   ${position({ type: "absolute", top: "100%" })}
-  ${flex({ std: "start" })}
+  ${flex({ std: "flex-start" })}
   width: 100%;
   color: ${({ theme }) => theme.projectList.slideTitle};
   text-align: left;

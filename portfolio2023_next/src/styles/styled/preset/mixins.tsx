@@ -86,11 +86,53 @@ export const maxSize = ({ w, h }: SizeTypes) => css`
  * @property {string | undefined} [std] : justify-content (기준 축 정렬)
  * @property {string | undefined} [cross] : align-items (교차 축 정렬)
  * @property {string | undefined} [wrap] : flex-wrap
+ * @property {boolean | boolean[] | undefined} [start] : flex-start 설정 (true / [justify-content, align-items])
+ * @property {boolean | boolean[] | undefined} [end] : flex-end 설정 (true / [justify-content, align-items])
  */
-export const flex = ({ dir, std, cross, wrap }: FlexTypes) => css`
+export const flex = ({ dir, std, cross, wrap, start, end }: FlexTypes) => css`
   display: flex;
-  justify-content: ${std ?? "center"};
-  align-items: ${cross ?? "center"};
+  justify-content: ${!std &&
+  typeof start === "undefined" &&
+  typeof end === "undefined"
+    ? `center`
+    : std};
+  align-items: ${!cross &&
+  typeof start === "undefined" &&
+  typeof end === "undefined"
+    ? `center`
+    : cross};
+  ${!std &&
+  !cross &&
+  typeof end === "undefined" &&
+  typeof start === "boolean" &&
+  start === true
+    ? `
+        justify-content:flex-start;
+        align-items:flex-start;
+      `
+    : ""}
+  ${typeof end === "undefined" && Array.isArray(start) && start.length === 2
+    ? `
+        justify-content: ${!std && start[0] === true ? "flex-start" : "center"};
+        align-items: ${!cross && start[1] === true ? "flex-start" : "center"};
+      `
+    : ""}
+  ${!std &&
+  !cross &&
+  typeof start === "undefined" &&
+  typeof end === "boolean" &&
+  end === true
+    ? `
+        justify-content:flex-end;
+        align-items:flex-end;
+      `
+    : ""}
+  ${typeof start === "undefined" && Array.isArray(end) && end.length === 2
+    ? `
+        justify-content: ${!std && end[0] === true ? "flex-end" : "center"};
+        align-items: ${!cross && end[1] === true ? "flex-end" : "center"};
+      `
+    : ""}
   ${dir && `flex-direction: ${dir};`}
   ${wrap && `flex-wrap:${wrap};`}
 `;
@@ -143,6 +185,7 @@ export const font = ({
   whitespace,
   transform,
   deco,
+  style,
 }: {
   size?: number | string;
   weight?: number | string;
@@ -152,6 +195,7 @@ export const font = ({
   whitespace?: string;
   transform?: string;
   deco?: string;
+  style?: string;
 }) => css`
   ${typeof size === "number"
     ? `font-size:${rem(size)};`
@@ -177,6 +221,7 @@ export const font = ({
   ${whitespace && `white-space:${whitespace};`}
   ${transform && `text-transform:${transform};`}
   ${deco && `text-decoration:${deco};`}
+  ${style && `font-style:${style};`}
 `;
 
 type TransitionTypes = {

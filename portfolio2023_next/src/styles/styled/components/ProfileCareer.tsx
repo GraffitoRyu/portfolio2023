@@ -173,7 +173,7 @@ export const CareerDetailItemTitle = styled.dt`
 `;
 
 export const CareerDetailItemDesc = styled.dd`
-  ${flex({ std: "flex-start", cross: "flex-start" })}
+  ${flex({ start: true })}
   ${careerFont}
   line-height:1.6em;
   color: ${({ theme }) => theme.career.detailContents};

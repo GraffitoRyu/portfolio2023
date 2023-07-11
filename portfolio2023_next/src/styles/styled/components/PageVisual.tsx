@@ -17,7 +17,7 @@ export const VisualContainer = styled.div<{
   $wh: number;
   $headerHeight: number;
 }>`
-  ${flex({ dir: "column", cross: "start" })}
+  ${flex({ dir: "column", cross: "flex-start" })}
   height: 50%;
   @media only screen and (min-width: 1024px) {
     width: 100%;
@@ -54,7 +54,7 @@ const transVisualTitle = (delay: number | null) => {
 };
 
 export const VisualTitle = styled.h1`
-  ${flex({ dir: "column", cross: "start" })}
+  ${flex({ dir: "column", cross: "flex-start" })}
   font-size: 0;
   transition: none;
   &.loading {

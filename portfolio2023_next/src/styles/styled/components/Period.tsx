@@ -9,7 +9,7 @@ import { flex, font, size } from "../preset/mixins";
 import { rem } from "@/util/unit";
 
 export const PeriodContainer = styled.div`
-  ${flex({ std: "start" })}
+  ${flex({ std: "flex-start" })}
   ${font({
     size: 32,
     weight: 400,

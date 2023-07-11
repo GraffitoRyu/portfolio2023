@@ -114,7 +114,7 @@ export const Contents = styled.div`
   ${size({ w: "100%" })}
   @media only screen and (min-width: 1024px) {
     ${position({ type: "relative", z: 10 })}
-    ${flex({ std: "flex-start", cross: "flex-start" })}
+    ${flex({ start: true })}
     &:not(.full) {
       ${size({ w: `calc(100% + ${rem(40)})`, m: [0, -20] })}
     }
