@@ -12,13 +12,14 @@ import { DetailScrollRefStateTypes, ScreenSizeTypes } from "@/types/state";
 // state
 import { screenSizeState } from "@/states/screen";
 import { detailScrollRefState } from "@/states/scroll";
+import DetailLinkContainer from "../header/linkMenu/DetailLinkContainer";
 
 export default function DetailVisualViewport({
   children,
 }: {
   children: ReactNode;
 }) {
-  const { windowHeight, detailHeaderHeight } =
+  const { windowWidth, windowHeight, detailHeaderHeight } =
     useRecoilValue<ScreenSizeTypes>(screenSizeState);
   const setScrollRef =
     useSetRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
@@ -37,6 +38,7 @@ export default function DetailVisualViewport({
       ref={updateScrollRef}
     >
       {children}
+      {windowWidth < 1024 ? <DetailLinkContainer /> : null}
     </PDVisualViewport>
   );
 }
