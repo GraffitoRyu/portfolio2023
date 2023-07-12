@@ -44,6 +44,10 @@
         }
       ]
     },
+    "sub_visual": {
+      "referType": "image",
+      "src": "/img/details/subVisual_teamsolution.jpg"
+    },
     "experience": {
       "stacks": {
         "languages": ["HTML", "CSS", "JavaScript", "SCSS", "EJS"],
@@ -112,6 +116,10 @@
         }
       ]
     },
+    "sub_visual": {
+      "referType": "image",
+      "src": "/img/details/subVisual_racesolution.jpg"
+    },
     "experience": {
       "stacks": {
         "languages": ["HTML", "CSS", "JavaScript", "SCSS", "EJS"],
@@ -173,6 +181,10 @@
           "hide": ""
         }
       ]
+    },
+    "sub_visual": {
+      "referType": "image",
+      "src": "/img/details/subVisual_solutionmaster.jpg"
     },
     "experience": {
       "stacks": {
@@ -237,6 +249,10 @@
           "hide": ["tablet"]
         }
       ]
+    },
+    "sub_visual": {
+      "referType": "image",
+      "src": "/img/details/subVisual_lapvslap.jpg"
     },
     "experience": {
       "stacks": {
