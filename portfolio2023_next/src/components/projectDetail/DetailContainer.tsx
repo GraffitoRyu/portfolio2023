@@ -6,6 +6,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 // components
 import DetailHeader from "./header/DetailHeader";
 import DetailVisualContainer from "./visual/DetailVisualContainer";
+import DetailSubVisual from "./subVisual/DetailSubVisual";
 import DetailExperience from "./exp/DetailExperience";
 
 // style components
@@ -109,6 +110,7 @@ export default function ProjectDetail() {
       <div className="detail-scroll-wrap" ref={scrollWrapRef}>
         <DetailHeader />
         <DetailVisualContainer />
+        <DetailSubVisual />
         <DetailExperience />
       </div>
     </PDContainer>
