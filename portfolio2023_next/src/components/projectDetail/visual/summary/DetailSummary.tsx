@@ -3,9 +3,9 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 // components
-import DetailInfoItem from "../../common/DetailInfoItem";
-import DetailInfoTitle from "../../common/DetailInfoTitle";
-import DetailInfoContents from "../../common/DetailInfoContents";
+import DetailInfoItem from "../../common/info/DetailInfoItem";
+import DetailInfoTitle from "../../common/info/DetailInfoTitle";
+import DetailInfoContents from "../../common/info/DetailInfoContents";
 
 // style components
 import { PDSummaryContainer } from "@/styles/styled/components/ProjectDetail";

@@ -3,7 +3,7 @@
 import { useRecoilValue } from "recoil";
 
 // components
-import DetailLinkContainer from "../header/linkMenu/DetailLinkContainer";
+import DetailLinkContainer from "../common/linkMenu/DetailLinkContainer";
 import DetailStacks from "./stacks/DetailStacks";
 
 // style components

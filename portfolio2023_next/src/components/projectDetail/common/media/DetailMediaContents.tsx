@@ -20,7 +20,16 @@ export default function DetailMediaContents({
 }
 
 function DetailMediaImage({ src, alt }: { src: string; alt: string }) {
-  return <Image src={src} alt={alt} fill={true} />;
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill={true}
+      loading="eager"
+      placeholder="blur"
+      blurDataURL={src}
+    />
+  );
 }
 function DetailMediaVideo({ src }: { src: string }) {
   return (

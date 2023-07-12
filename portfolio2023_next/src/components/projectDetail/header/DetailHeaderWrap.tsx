@@ -6,7 +6,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 
 // components
 import DetailHeaderTitleContainer from "./DetailHeaderTitleContainer";
-import DetailLinkContainer from "./linkMenu/DetailLinkContainer";
+import DetailLinkContainer from "../common/linkMenu/DetailLinkContainer";
 import CloseButton from "@/components/buttons/Close";
 
 // style components
