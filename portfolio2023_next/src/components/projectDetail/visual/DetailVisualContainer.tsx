@@ -1,7 +1,7 @@
 // components
+import DetailVisualLower from "./DetailVisualLower";
 import DetailVisualViewport from "./DetailVisualViewport";
 import DetailVisualImage from "./bg/DetailsVisualImage";
-import DetailStacks from "./stacks/DetailStacks";
 import DetailSummary from "./summary/DetailSummary";
 import DetailVisualTitleContainer from "./title/DetailVisualTitleContainer";
 
@@ -16,7 +16,7 @@ export default function DetailVisualContainer() {
         <DetailSummary />
         <DetailVisualTitleContainer />
       </DetailVisualViewport>
-      <DetailStacks />
+      <DetailVisualLower />
     </PDVisualSection>
   );
 }

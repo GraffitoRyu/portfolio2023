@@ -19,11 +19,19 @@ export const sizePreset = {
   },
   icon: {
     mobile: 24,
-    pc: 16,
+    w768_landscape: 20,
+    w768: 12,
+    w1024: 20,
+    w1280: 20,
+    w1440: 16,
   },
   btn: {
     mobile: 80,
-    pc: 48,
+    w768_landscape: 56,
+    w768: 48,
+    w1024: 64,
+    w1280: 56,
+    w1440: 48,
   },
 };
 
