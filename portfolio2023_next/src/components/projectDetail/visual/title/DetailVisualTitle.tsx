@@ -1,8 +1,8 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useEffect, useLayoutEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 // style components
 import {
@@ -15,12 +15,26 @@ import { detailData, detailLayoutState } from "@/states/detail";
 
 // type
 import { DetailTypes } from "@/types/projectDetails";
-import { DetailLayoutStateTypes } from "@/types/state";
+import {
+  DetailLayoutStateTypes,
+  DetailScrollRefStateTypes,
+} from "@/types/state";
+import { detailScrollRefState } from "@/states/scroll";
 
 export default function DetailVisualTitle() {
   const { category } = useParams();
   const data = useRecoilValue<DetailTypes>(detailData);
   const [title, setTitle] = useState<string[]>([""]);
+
+  const setDetailScrollRef =
+    useSetRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
+
+  const updateScrollRef = useCallback(
+    (node: HTMLHeadingElement | null) => {
+      setDetailScrollRef(prev => ({ ...prev, visualTitle: node }));
+    },
+    [setDetailScrollRef]
+  );
 
   const { openComplete } =
     useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
@@ -39,7 +53,7 @@ export default function DetailVisualTitle() {
   }, [openComplete]);
 
   return (
-    <PDVisualTitle className={`${hide}`}>
+    <PDVisualTitle className={`${hide}`} ref={updateScrollRef}>
       {title.map((t: string, i: number) => (
         <PDVisualTitleLine key={`detailTitle_${t}_${i}`} $index={i}>
           {t}

@@ -51,6 +51,9 @@ export default function DetailHeaderTitleContainer() {
       const scrollTarget = titleRef.current;
       if (!scrollTarget) return;
 
+      const targetStart =
+        visualTitleRef.offsetTop + visualTitleRef.clientHeight;
+
       const ctx = ctxScrollTrigger({
         container: scrollContainer,
         tweenArr: [
@@ -61,10 +64,8 @@ export default function DetailHeaderTitleContainer() {
                 opacity: 1,
                 scrollTrigger: {
                   trigger: scrollTrigger,
-                  start: `${visualTitleRef.offsetTop} ${scrollTarget.offsetTop}`, // trigger, target
-                  end: `${
-                    visualTitleRef.offsetTop + scrollTarget.clientHeight
-                  } ${scrollTarget.offsetTop}`, // trigger, target
+                  start: `${targetStart} ${scrollTarget.offsetTop}`,
+                  end: `bottom ${scrollTarget.offsetTop}`,
                   scrub: true,
                   invalidateOnRefresh: true,
                   // markers: true,

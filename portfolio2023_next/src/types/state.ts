@@ -67,7 +67,7 @@ export interface DetailScrollRefStateTypes {
   scrollHeight: number;
   header: HTMLElement | null; // <header/>
   visual: HTMLDivElement | null;
-  visualTitle: HTMLDivElement | null;
+  visualTitle: HTMLHeadingElement | null;
 }
 
 export interface DetailLayoutStateTypes {
