@@ -69,14 +69,17 @@
       {
         "referType": "image",
         "src": "/img/details/media_teamsolution_promotion.jpg",
-        "title": "팀솔루션 프로모션 이미지",
-        "desc": "PC의 웹 솔루션 관제화면과 드라이버를 위한 레이스모니터 안드로이드 어플리케이션"
+        "alt": "팀솔루션 프로모션 이미지"
       },
       {
         "referType": "image",
-        "src": "/img/details/media_teamsolution_app_ex.jpg",
-        "title": "팀솔루션 드라이버 애플리케이션 (안드로이드)",
-        "desc": "웹뷰 화면의 퍼블리싱 및 프론트엔드 개발/유지보수 담당"
+        "src": "/img/details/media_teamsolution_app.jpg",
+        "alt": "팀솔루션 드라이버 애플리케이션 (안드로이드)"
+      },
+      {
+        "referType": "image",
+        "src": "/img/details/media_teamsolution_control.jpg",
+        "alt": "팀솔루션 레이스 컨트롤"
       }
     ]
   },
@@ -140,21 +143,18 @@
     "media": [
       {
         "referType": "image",
-        "src": "/img/details/media_racesolution_hud.jpg",
-        "title": "레이스솔루션 방송용 HUD 송출 화면 (출처: 슈퍼레이스 유튜브)",
-        "desc": "텔레메트리 데이터를 연결한 실시간 데이터를 HUD와 연동"
+        "src": "/img/details/media_racesolution_pc.jpg",
+        "title": "레이스솔루션 매니저 관제 화면"
       },
       {
         "referType": "image",
-        "src": "/img/details/media_racesolution_pc.jpg",
-        "title": "레이스솔루션 매니저 관제 화면",
-        "desc": "실시간 텔레메트리 데이터를 모니터링하며,\n 각 차량에 부착된 XYRO(텔레메트리 송신 하드웨어)를 제어"
+        "src": "/img/details/media_racesolution_hud.jpg",
+        "title": "레이스솔루션 방송용 HUD 송출 화면 (출처: 슈퍼레이스 유튜브)"
       },
       {
         "referType": "video",
         "src": "https://drive.google.com/uc?export=download&id=1ZHTDbWyW_mH80cObTIffcuNwa_20Ljxn",
-        "title": "레이스솔루션 리플레이",
-        "desc": "웹 솔루션 서비스 중 리플레이 기능 예시"
+        "title": "레이스솔루션 리플레이"
       }
     ]
   },
@@ -209,14 +209,17 @@
       {
         "referType": "image",
         "src": "/img/details/media_solutionmaster_manager.jpg",
-        "title": "솔루션마스터 매니저 페이지",
-        "desc": "드라이버, 하드웨어, 주행그룹, 주행세션데이터 관리 등 종합 관리 서비스"
+        "title": "솔루션마스터 매니저 페이지"
+      },
+      {
+        "referType": "image",
+        "src": "/img/details/media_solutionmaster_host_control.jpg",
+        "title": "솔루션마스터 매니저 페이지 - HOST CONTROL"
       },
       {
         "referType": "image",
         "src": "/img/details/media_solutionmaster_control.jpg",
-        "title": "솔루션마스터 관제화면",
-        "desc": "좌측 트랙맵에서 실시간 위치정보와 더불어 여러 위젯을 활용하고,\n 우측의 패널에서 여러가지 데이터 모니터링이 가능하다.\n 현재 선택된 패널 메뉴는 하드웨어를 제어하는 패널"
+        "title": "솔루션마스터 관제화면 - ENTRY CONTROL"
       }
     ]
   },
@@ -273,8 +276,17 @@
       {
         "referType": "image",
         "src": "/img/details/media_lapvslap.jpg",
-        "title": "랩대랩 사용 화면",
-        "desc": ""
+        "title": "랩대랩 사용 화면 - 라인차트"
+      },
+      {
+        "referType": "image",
+        "src": "/img/details/media_lapvslap_lapchart.jpg",
+        "title": "랩대랩 사용 화면 - 랩차트"
+      },
+      {
+        "referType": "image",
+        "src": "/img/details/media_lapvslap_comment.jpg",
+        "title": "랩대랩 사용 화면 - 코멘트"
       }
     ]
   }

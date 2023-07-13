@@ -29,6 +29,7 @@ import { transTime } from "@/styles/styled/preset/transTime";
 // hooks
 import useGetDetailByCodeQuery from "@/hooks/useGetDetailQuery";
 import debounce from "@/util/debounceEvent";
+import DetailMediaContainer from "./media/DetailMedia";
 
 export default function ProjectDetail() {
   // 프로젝트 상세 열림 상태 관리
@@ -112,6 +113,7 @@ export default function ProjectDetail() {
         <DetailVisualContainer />
         <DetailSubVisual />
         <DetailExperience />
+        <DetailMediaContainer />
       </div>
     </PDContainer>
   );

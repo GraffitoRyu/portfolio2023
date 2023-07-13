@@ -57,7 +57,7 @@ export default function DetailVisualImage() {
           target: scrollTarget_img,
           options: [
             {
-              y: () => 0.2 * ScrollTrigger.maxScroll(scrollContainer),
+              y: () => 0.05 * ScrollTrigger.maxScroll(scrollContainer),
               scrollTrigger: {
                 trigger: scrollTrigger,
                 start: `top top`,
@@ -72,7 +72,7 @@ export default function DetailVisualImage() {
           target: scrollTarget_cover,
           options: [
             {
-              y: () => 0.2 * ScrollTrigger.maxScroll(scrollContainer),
+              y: () => 0.05 * ScrollTrigger.maxScroll(scrollContainer),
               scrollTrigger: {
                 trigger: scrollTrigger,
                 start: `top top`,

@@ -140,10 +140,16 @@ export const PDSubVisualSection = styled(PDSection)`
 `;
 
 export const PDExpSection = styled(PDSection)`
-  ${({ $wh }) =>
-    size({ w: `100%`, h: $wh === 0 ? "100vh" : `${$wh}px`, p: [160, 80] })}
+  ${size({ w: `100%`, p: [240, 80, 400] })}
   @media only screen and (min-width:768px) {
-    ${size({ p: [240, 60] })}
+    ${size({ p: [240, 60, 400] })}
+  }
+`;
+
+export const PDMediaSection = styled(PDSection)`
+  ${size({ pb: 640 })}
+  @media only screen and (min-width:1024px) {
+    ${size({ pb: 0 })}
   }
 `;
 
@@ -469,6 +475,19 @@ export const PDSubVisual = styled.figure`
   ${size({ w: "100%" })}
   img {
     object-fit: cover;
+    ${position({ type: `static !important` })}
+  }
+`;
+
+export const PDMediaItem = styled.div`
+  ${size({ w: "100%", p: [0, 80], mb: 400 })}
+`;
+
+export const PDMediaFigure = styled.figure`
+  ${size({ w: "100%", r: 40 })}
+  position:relative;
+  overflow: hidden;
+  img {
     ${position({ type: `static !important` })}
   }
 `;

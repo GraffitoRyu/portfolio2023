@@ -35,15 +35,11 @@ export interface ExpType {
   desc: string[];
 }
 
-export interface SubVisualType {
+export interface MediaType {
   [index: string]: string;
   referType: string;
   src: string;
-}
-
-export interface MediaType extends SubVisualType {
-  title: string;
-  desc: string;
+  alt: string;
 }
 
 export interface ProjectsType {
@@ -51,14 +47,14 @@ export interface ProjectsType {
     | string
     | SummaryType
     | ServiceType
-    | SubVisualType
     | ExpType
+    | MediaType
     | MediaType[]
     | undefined;
   code: string;
   summary: SummaryType;
   service?: ServiceType;
-  sub_visual?: SubVisualType;
+  sub_visual?: MediaType;
   experience?: ExpType;
   media?: MediaType[];
 }
