@@ -2,7 +2,10 @@
 import ProjectItem from "./Item";
 
 // style components
-import { ProjectListContainer } from "@/styles/styled/components/ProjectList";
+import {
+  ProjectListContainer,
+  ProjectListItem,
+} from "@/styles/styled/components/ProjectList";
 
 // type
 import { ProjectsType } from "@/types/projects";
@@ -19,10 +22,14 @@ export default async function ProjectList() {
 
   return (
     <ProjectListContainer>
-      {listData.map(({ code, summary }: ProjectsType) => (
-        <li className="w-full" key={`projectList_${code}`}>
-          <ProjectItem code={code} summary={summary} />
-        </li>
+      {listData.map(({ code, summary }: ProjectsType, i: number) => (
+        <ProjectListItem key={`projectList_${code}_${i}`}>
+          <ProjectItem
+            code={code}
+            summary={summary}
+            $isLast={listData.length - 1 === i}
+          />
+        </ProjectListItem>
       ))}
     </ProjectListContainer>
   );

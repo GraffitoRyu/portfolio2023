@@ -20,6 +20,7 @@ import {
 
 // util
 import { rem } from "@/util/unit";
+import { transTime } from "../preset/transTime";
 
 export const ProjectLoadingProgress = styled.progress`
   ${position({ type: "fixed", top: 0, left: 0, z: 3000 })}
@@ -42,15 +43,28 @@ export const ProjectLoadingProgress = styled.progress`
 
 export const ProjectListContainer = styled.ul`
   width: 100%;
-  border-top: 1px solid ${({ theme }) => theme.projectList.border};
+`;
+
+export const ProjectListItem = styled.li`
+  width: 100%;
 `;
 
 export const ProjectItemContainer = styled.button`
   width: 100%;
-  border-bottom: 1px solid ${({ theme }) => theme.projectList.border};
   user-select: none;
   overflow: hidden;
   position: relative;
+`;
+
+export const ProjectItemBorder = styled.div<{ $pos: "top" | "bottom" }>`
+  ${({ $pos }) => position({ type: "absolute", [$pos]: 0 })}
+  ${size({ w: 0, h: "1px" })}
+  background-color:${({ theme }) => theme.projectList.border};
+  transition: width 0.6s ${easing.quart},
+    background-color ${transTime.color / 1000}s;
+  ${ProjectItemContainer}:not(.hide) & {
+    width: 100%;
+  }
 `;
 
 export const ListBtnContainer = styled.div`
@@ -108,7 +122,8 @@ export const ListBtnPeriod = styled(PeriodForward)`
   time:nth-of-type(2) {
     transition-delay: 0.08s;
   }
-  ${ProjectItemContainer}.hover & {
+  ${ProjectItemContainer}.hover &,
+  ${ProjectItemContainer}.hide & {
     time {
       transform: translateX(-50%);
       opacity: 0;
@@ -151,7 +166,8 @@ export const ListBtnTitle = styled.h3`
     { prop: "transform", time: "0.4s", easing: easing.quart },
     { prop: "opacity", time: "0.4s", easing: easing.quart },
   ])}
-  ${ProjectItemContainer}.hover & {
+  ${ProjectItemContainer}.hover &,
+  ${ProjectItemContainer}.hide & {
     transform: translateY(100%);
     opacity: 0;
   }
@@ -168,7 +184,8 @@ export const ListBtnDesc = styled.p`
     { prop: "transform", time: "0.4s", easing: easing.quart, delay: "0.08s" },
     { prop: "opacity", time: "0.4s", easing: easing.quart, delay: "0.08s" },
   ])}
-  ${ProjectItemContainer}.hover & {
+  ${ProjectItemContainer}.hover &,
+  ${ProjectItemContainer}.hide & {
     transform: translateY(100%);
     opacity: 0;
   }
@@ -207,7 +224,8 @@ export const ListBtnRole = styled.li`
   &:nth-child(3) {
     transition-delay: 0.2s;
   }
-  ${ProjectItemContainer}.hover & {
+  ${ProjectItemContainer}.hover &,
+  ${ProjectItemContainer}.hide & {
     transform: translateY(100%);
     opacity: 0;
   }
