@@ -3,6 +3,8 @@
 import { useParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
+import { gsap } from "gsap/dist/gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // components
 import DetailMediaContents from "../common/media/DetailMediaContents";
@@ -15,20 +17,20 @@ import {
 
 // state
 import { detailData } from "@/states/detail";
+import { detailScrollRefState } from "@/states/scroll";
 
 // type
+import { MediaType } from "@/types/projects";
 import { DetailTypes } from "@/types/projectDetails";
-import { SubVisualType } from "@/types/projects";
-import { detailScrollRefState } from "@/states/scroll";
 import { DetailScrollRefStateTypes } from "@/types/state";
+
+// util
 import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
-import { gsap } from "gsap/dist/gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 export default function DetailSubVisual() {
   const { category } = useParams();
   const data = useRecoilValue<DetailTypes>(detailData);
-  const [img, setImg] = useState<SubVisualType | null>(null);
+  const [img, setImg] = useState<MediaType | null>(null);
 
   const { container: scrollContainer, scrollHeight } =
     useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);

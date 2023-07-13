@@ -33,8 +33,22 @@ export const StyledHeaderWrap = styled.div`
   })}
   pointer-events:none;
   /* backdrop-filter: blur(8px); */
+  @media only screen and (max-width: 768px) and (orientation: landscape) {
+    ${size({
+      h: sizePreset.btn.w768_landscape + sizePreset.common.padding * 2,
+    })}
+  }
+  @media only screen and (min-width: 768px) {
+    ${size({ h: sizePreset.btn.w768 + sizePreset.common.padding * 2 })}
+  }
   @media only screen and (min-width: 1024px) {
-    height: ${rem(sizePreset.btn.pc + sizePreset.common.padding * 2)};
+    ${size({ h: sizePreset.btn.w1024 + sizePreset.common.padding * 2 })}
+  }
+  @media only screen and (min-width: 1280px) {
+    ${size({ h: sizePreset.btn.w1280 + sizePreset.common.padding * 2 })}
+  }
+  @media only screen and (min-width: 1440px) {
+    ${size({ h: sizePreset.btn.w1440 + sizePreset.common.padding * 2 })}
   }
 `;
 
@@ -58,7 +72,7 @@ export const TimeRegion = styled.strong`
   display: none;
   &:after {
     content: "/";
-    margin: 0 ${rem(16)};
+    ${size({ m: [0, 16] })}
   }
   @media only screen and (min-width: 1024px) {
     ${flex({})}
