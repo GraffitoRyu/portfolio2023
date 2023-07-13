@@ -5,6 +5,7 @@ import PageSection from "@/components/pageSection/PageSection";
 import PageIntro from "@/components/pageSection/pageVisual/Intro";
 import PageVisual from "@/components/pageSection/pageVisual/Visual";
 import ProjectList from "@/components/projects/List";
+import ProjectLoadingBar from "@/components/projects/loading/LoadingBar";
 
 export default function Projects() {
   return (
@@ -33,6 +34,7 @@ export default function Projects() {
           <ProjectList />
         </SectionContents>
       </PageSection>
+      <ProjectLoadingBar />
     </>
   );
 }
