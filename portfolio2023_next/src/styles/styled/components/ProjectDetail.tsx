@@ -140,16 +140,16 @@ export const PDSubVisualSection = styled(PDSection)`
 `;
 
 export const PDExpSection = styled(PDSection)`
-  ${size({ w: `100%`, p: [240, 80, 400] })}
+  ${size({ w: `100%`, p: [240, 80, 160] })}
   @media only screen and (min-width:768px) {
-    ${size({ p: [240, 60, 400] })}
+    ${size({ p: [240, 60, 0] })}
   }
 `;
 
 export const PDMediaSection = styled(PDSection)`
   ${size({ pb: 640 })}
   @media only screen and (min-width:1024px) {
-    ${size({ pb: 0 })}
+    ${size({ pb: 160 })}
   }
 `;
 
@@ -263,7 +263,7 @@ export const PDInfoItem = styled.dl<{
   $delayIndex?: number;
 }>`
   ${size({ w: "100%", mb: 80, p: [0, 20] })}
-  transition: opacity 0.4s linear
+  transition: opacity 0.6s linear
     ${({ $itemIndex, $delayIndex }) =>
     typeof $delayIndex === "number" && typeof $itemIndex === "number"
       ? `${Math.floor($delayIndex * 2) / 10 + Math.floor($itemIndex * 2) / 10}s`
@@ -482,13 +482,15 @@ export const PDSubVisual = styled.figure`
 `;
 
 export const PDMediaItem = styled.div`
-  ${size({ w: "100%", p: [0, 80], mb: 400 })}
+  ${size({ w: "100%", p: [0, 80], mt: 400 })}
 `;
 
 export const PDMediaFigure = styled.figure`
   ${size({ w: "100%", r: 40 })}
   position:relative;
   overflow: hidden;
+  opacity: 0;
+  transform: scale(0.8);
   img {
     ${position({ type: `static !important` })}
   }

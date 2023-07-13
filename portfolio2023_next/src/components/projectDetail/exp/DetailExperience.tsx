@@ -59,7 +59,7 @@ export default function DetailExperience() {
         target: scrollTitle,
         direction: "fromTo",
         options: [
-          { opacity: 0, xPercent: 40 },
+          { opacity: 0, xPercent: 20 },
           {
             opacity: 1,
             xPercent: 0,

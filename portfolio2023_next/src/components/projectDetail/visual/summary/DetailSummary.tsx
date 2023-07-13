@@ -31,17 +31,17 @@ export default function DetailSummary() {
 
   const { openComplete } =
     useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
-  const [delayIndex, setDelayIndex] = useState<number>(2);
+  const [delayIndex, setDelayIndex] = useState<number>(1);
   const [hide, setHide] = useState<string>("hide");
 
   useLayoutEffect(() => {
     if (category && data[category]) {
       setSummaryData(getSummaryData(data[category]));
       const d = data[category].summary;
-      if (d?.title?.length > 0 && d?.desc) setDelayIndex(d.title.length + 1);
+      if (d?.title?.length > 0 && d?.desc) setDelayIndex(d.title.length);
     } else {
       setSummaryData([]);
-      setDelayIndex(2);
+      setDelayIndex(1);
     }
   }, [category, data]);
 
