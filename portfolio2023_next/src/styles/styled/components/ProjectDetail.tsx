@@ -429,6 +429,7 @@ export const PDExpTitle = styled.h5`
       style: "italic",
     })}
   }
+  opacity: 0;
   @media only screen and (min-width: 1024px) {
     span {
       ${font({ size: 120 })}
@@ -442,7 +443,8 @@ export const PDExpList = styled.ul`
 
 export const PDExpDesc = styled.li`
   ${flex({ start: true })}
-  color:${({ theme }) => theme.projectDetails.expDesc};
+  opacity: 0;
+  color: ${({ theme }) => theme.projectDetails.expDesc};
   ${font({
     size: 32,
     height: "2em",

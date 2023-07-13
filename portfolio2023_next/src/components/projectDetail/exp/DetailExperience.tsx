@@ -1,5 +1,7 @@
 "use client";
 
+import { useParams } from "next/navigation";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 // style components
@@ -12,48 +14,114 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
+import { detailData } from "@/states/detail";
 import { screenSizeState } from "@/states/screen";
+import { detailScrollRefState } from "@/states/scroll";
 
 // type
-import { ScreenSizeTypes } from "@/types/state";
+import { CustomTweenType } from "@/types/hooks";
+import { DetailTypes } from "@/types/projectDetails";
+import { DetailScrollRefStateTypes, ScreenSizeTypes } from "@/types/state";
+
+// util
+import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function DetailExperience() {
   const { windowHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
 
+  const { container: scrollContainer, scrollHeight } =
+    useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const descRef = useRef<HTMLLIElement[]>([]);
+
+  const { category } = useParams();
+  const data = useRecoilValue<DetailTypes>(detailData);
+  const [expData, setExpData] = useState<string[]>([]);
+
+  useLayoutEffect(() => {
+    if (category && data[category]) {
+      const expDesc = data[category]?.experience?.desc;
+      if (expDesc && expDesc.length > 0) setExpData(expDesc);
+      else setExpData([]);
+    }
+  }, [category, data]);
+
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
+    if (!scrollContainer) return;
+
+    const scrollTitle = titleRef.current;
+    if (!scrollTitle) return;
+
+    const tweenOptions = [
+      {
+        target: scrollTitle,
+        direction: "fromTo",
+        options: [
+          { opacity: 0, xPercent: 40 },
+          {
+            opacity: 1,
+            xPercent: 0,
+            // duration: 1.6,
+            // ease: Expo.easeOut,
+            scrollTrigger: {
+              trigger: scrollTitle,
+              start: `top 90%`,
+              end: `bottom 50%`,
+              scrub: true,
+            },
+          },
+        ],
+      },
+    ];
+
+    const scrollDesc = descRef.current;
+    const descOptions: CustomTweenType[] = [];
+    if (scrollDesc?.length > 0) {
+      scrollDesc.forEach(descRef =>
+        descOptions.push({
+          target: descRef,
+          options: [
+            {
+              opacity: 1,
+              scrollTrigger: {
+                trigger: descRef,
+                start: `top 80%`,
+                end: `bottom 50%`,
+                scrub: true,
+              },
+            },
+          ],
+        })
+      );
+    }
+
+    const ctx = ctxScrollTrigger({
+      container: scrollContainer,
+      tweenArr: [...tweenOptions, ...descOptions],
+    });
+
+    return () => ctx.revert();
+  }, [scrollContainer, scrollHeight]);
+
   return (
     <PDExpSection className="detail-section-exp" $wh={windowHeight}>
       <PDExpContainer>
-        <PDExpTitle>
+        <PDExpTitle ref={titleRef}>
           <span>Experience</span>
         </PDExpTitle>
         <PDExpList>
-          <PDExpDesc>
-            <span>
-              이전 경력에서는 단순 마크업과 사용자 DOM 이벤트 구현에 대한 경험만
-              해오다가, 이 프로젝트를 통해 처음으로 프론트엔드 작업 경험
-            </span>
-          </PDExpDesc>
-          <PDExpDesc>
-            <span>AJAX를 통한 RESTful API 호출</span>
-          </PDExpDesc>
-          <PDExpDesc>
-            <span>AJAX를 통해 받은 JSON 데이터의 가공 및 업데이트 처리</span>
-          </PDExpDesc>
-          <PDExpDesc>
-            <span>WebSocket을 통한 실시간 양방향 데이터 송수신</span>
-          </PDExpDesc>
-          <PDExpDesc>
-            <span>D3.js를 활용한 SVG 그래픽 생성 및 업데이트</span>
-          </PDExpDesc>
-          <PDExpDesc>
-            <span>CSS를 활용하여 HUD 그래픽에 실시간 데이터 연동 처리</span>
-          </PDExpDesc>
-          <PDExpDesc>
-            <span>
-              컴포넌트 및 각 기능에 대한 모듈화 작업을 지속적으로 시도하였고,
-              49% 정도까지 진행까지 하였으나 내부 사정으로 완료하지 못함
-            </span>
-          </PDExpDesc>
+          {expData?.map((exp: string, i: number) => (
+            <PDExpDesc
+              key={`detailExp_${category}_${i}`}
+              ref={(node: HTMLLIElement) => {
+                descRef.current[i] = node;
+              }}
+            >
+              <span>{exp}</span>
+            </PDExpDesc>
+          ))}
         </PDExpList>
       </PDExpContainer>
     </PDExpSection>
