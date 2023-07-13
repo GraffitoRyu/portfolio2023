@@ -59,7 +59,7 @@ export default function DetailSubVisual() {
           target: scrollTarget,
           options: [
             {
-              scale: 0.9,
+              scale: 0.8,
               scrollTrigger: {
                 trigger: scrollTrigger,
                 start: `top 70%`,

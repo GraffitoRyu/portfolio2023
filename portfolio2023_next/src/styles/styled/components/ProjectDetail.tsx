@@ -128,6 +128,7 @@ export const PDVisualSection = styled(PDSection)`
   ${({ $wh }) =>
     size({
       h: $wh === 0 ? "100vh" : `${$wh}px`,
+      pb: 400,
     })}
   @media only screen and (min-width:1024px) {
     ${size({ h: "auto", pb: 600 })}

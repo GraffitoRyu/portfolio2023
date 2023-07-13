@@ -21,6 +21,25 @@ import {
 // util
 import { rem } from "@/util/unit";
 
+export const ProjectLoadingProgress = styled.progress`
+  ${position({ type: "fixed", top: 0, left: 0, z: 3000 })}
+  ${size({ w: "100%", h: 8 })}
+  border: 0;
+  background-color: transparent;
+  appearance: none;
+  transition: opacity 0.8s;
+  &.hide {
+    opacity: 0;
+  }
+  &::-webkit-progress-bar {
+    background-color: transparent;
+  }
+  &::-webkit-progress-value {
+    background-color: orange;
+    transition: inline-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+`;
+
 export const ProjectListContainer = styled.ul`
   width: 100%;
   border-top: 1px solid ${({ theme }) => theme.projectList.border};
@@ -57,7 +76,7 @@ export const ListBtnWrap = styled.div`
 
 export const ListBtnPeriod = styled(PeriodForward)`
   color: ${({ theme }) => theme.projectList.period};
-  ${size({ h: "auto", mb: 24 })}
+  ${size({ h: "auto", mb: 40 })}
   ${font({
     size: 24,
     weight: 500,
@@ -70,6 +89,9 @@ export const ListBtnPeriod = styled(PeriodForward)`
         { prop: "opacity", time: "0.4s" },
       ])}
     }
+  }
+  @media only screen and (min-width: 640px) {
+    ${size({ mb: 24 })}
   }
   @media only screen and (min-width: 1024px) {
     ${position({ type: "absolute", left: "100%" })}
@@ -114,15 +136,16 @@ export const FadeListContainer = styled(FadeContainer)`
 `;
 
 export const ListBtnTitle = styled.h3`
-  ${size({ mb: 24 })}
+  ${size({ mb: 40 })}
   color: ${({ theme }) => theme.projectList.title};
   ${font({
-    size: 96,
+    size: 80,
     weight: 700,
     height: "1em",
   })}
   @media only screen and (min-width: 640px) {
-    font-size: ${rem(56)};
+    ${size({ mb: 24 })}
+    ${font({ size: 56 })}
   }
   ${transition([
     { prop: "transform", time: "0.4s", easing: easing.quart },
@@ -139,7 +162,7 @@ export const ListBtnDesc = styled.p`
   ${font({
     size: 32,
     weight: 400,
-    height: "1em",
+    height: "1.4em",
   })}
   ${transition([
     { prop: "transform", time: "0.4s", easing: easing.quart, delay: "0.08s" },
@@ -149,12 +172,15 @@ export const ListBtnDesc = styled.p`
     transform: translateY(100%);
     opacity: 0;
   }
+  @media only screen and (min-width: 640px) {
+    ${font({ size: 32, height: "1em" })}
+  }
 `;
 
 export const ListBtnRole = styled.li`
   ${flex({ std: "flex-start" })}
   ${font({
-    size: 24,
+    size: 32,
     weight: 400,
   })}
   &:after {
@@ -184,6 +210,10 @@ export const ListBtnRole = styled.li`
   ${ProjectItemContainer}.hover & {
     transform: translateY(100%);
     opacity: 0;
+  }
+
+  @media only screen and (min-width: 640px) {
+    ${font({ size: 24 })}
   }
   @media only screen and (min-width: 1024px) {
     justify-content: flex-end;
