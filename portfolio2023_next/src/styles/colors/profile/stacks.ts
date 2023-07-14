@@ -2,11 +2,11 @@ import { StacksModeType } from "@/types/colors/profile";
 
 export const stacks: StacksModeType = {
   light: {
-    legendTitle: "#3a3a3a",
-    legendLabel: "#ccc",
+    legendTitle: "#5a5a5a",
+    legendLabel: "#a0a0a0",
     border: "#dfdfdf",
-    category: "#bfbfbf",
-    stackName: "#707070",
+    category: "#707070",
+    stackName: "#5a5a5a",
     levelFill: "#3a3a3a",
     levelEmpty: "#dfdfdf",
     levelFull: "#98e6cf",

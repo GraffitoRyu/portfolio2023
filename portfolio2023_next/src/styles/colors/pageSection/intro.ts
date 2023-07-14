@@ -4,9 +4,9 @@ export const intro: IntroModeTypes = {
   light: {
     bgFrom: "rgb(255, 255, 255)",
     bgTo: "rgba(255, 255, 255, 0)",
-    title: "#707070",
+    title: "#5a5a5a",
     strong: "#3a3a3a",
-    desc: "#909090",
+    desc: "#5a5a5a",
   },
   dark: {
     bgFrom: "rgb(26, 26, 26)",

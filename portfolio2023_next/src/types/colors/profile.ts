@@ -12,6 +12,7 @@ export interface CareerColorTypes {
   detailContents: string;
   icon: string;
   iconHover: string;
+  expandBg: string;
 }
 
 export interface CareerModeTypes {

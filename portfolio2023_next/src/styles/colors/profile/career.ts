@@ -2,19 +2,20 @@ import { CareerModeTypes } from "@/types/colors/profile";
 
 export const career: CareerModeTypes = {
   light: {
-    border: "#5a5a5a",
+    border: "#a0a0a0",
     borderHover: "#5a5a5a",
     bgHover: "#efefef",
-    period: "#a0a0a0",
-    periodHover: "#dfdfdf",
-    role: "#5a5a5a",
-    roleHover: "#dfdfdf",
-    company: "#b0b0b0",
-    companyHover: "#dfdfdf",
-    detailTitle: "#bfbfbf",
-    detailContents: "#a0a0a0",
+    period: "#707070",
+    periodHover: "#5a5a5a",
+    role: "#707070",
+    roleHover: "#3a3a3a",
+    company: "#707070",
+    companyHover: "#5a5a5a",
+    detailTitle: "#5a5a5a",
+    detailContents: "#909090",
     icon: "#707070",
-    iconHover: "#fff",
+    iconHover: "#5a5a5a",
+    expandBg: "#f4f4f4",
   },
   dark: {
     border: "#5a5a5a",
@@ -30,5 +31,6 @@ export const career: CareerModeTypes = {
     detailContents: "#a0a0a0",
     icon: "#707070",
     iconHover: "#fff",
+    expandBg: "#1a1a1a",
   },
 };

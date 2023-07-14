@@ -147,7 +147,7 @@ export const CareerExpandIcon = styled.figure`
 
 export const CareerDetailContainer = styled.div`
   ${size({ w: "100%", h: 0, p: [0, 20, 0, `${widthRatio(7, 2)}%`] })}
-  background-color: #1a1a1a;
+  background-color: ${({ theme }) => theme.career.expandBg};
   overflow: clip;
   transition: height 0.4s;
 `;

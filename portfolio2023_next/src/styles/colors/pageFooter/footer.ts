@@ -3,13 +3,13 @@ import { FooterModeTypes } from "@/types/colors/pageFooter";
 export const footer: FooterModeTypes = {
   light: {
     bg: "#efefef",
-    titleBorder: "#a0a0a0",
+    titleBorder: "#909090",
     titleFill: "#5a5a5a",
     summary: "#707070",
     copyright: "#707070",
-    linkCategory: "#909090",
-    link: "#a0a0a0",
-    linkIcon: "#a0a0a0",
+    linkCategory: "#707070",
+    link: "#909090",
+    linkIcon: "#909090",
     linkHover: "#3a3a3a",
     tooltipBox: "#5a5a5a",
     tooltipText: "#fff",
