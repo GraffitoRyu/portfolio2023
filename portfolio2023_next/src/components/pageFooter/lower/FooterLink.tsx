@@ -165,6 +165,8 @@ export default function FooterLink({
       </FooterLinkItem>
     );
 
+  const doc_code = code.replace("_doc", "");
+
   // 외부 링크 메뉴
   return (
     <FooterLinkItem>
@@ -174,6 +176,11 @@ export default function FooterLink({
         className={`${hoverText}`}
         onMouseEnter={() => setHoverText("hover")}
         onMouseLeave={() => setHoverText("")}
+        download={
+          download
+            ? path.replace(`/download/${doc_code}`, `류대현_${name}`)
+            : false
+        }
       >
         <span>{name}</span>
         <FooterLinkIcon>
