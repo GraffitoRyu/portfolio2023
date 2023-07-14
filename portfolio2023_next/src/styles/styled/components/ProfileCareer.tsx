@@ -20,7 +20,7 @@ export const CareerItemContainer = styled.li`
 `;
 
 export const CareerBorder = styled.div`
-  ${size({ w: "100%", h: "1px" })}
+  ${size({ w: "100%", h: 1 })}
 
   &:before {
     content: "";
