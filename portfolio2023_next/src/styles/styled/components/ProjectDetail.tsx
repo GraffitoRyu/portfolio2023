@@ -241,11 +241,15 @@ export const PDVisualSubtitle = styled.p<{ $index: number }>`
     height: "1.6em",
   })}
 
-  transition:color ${transTime.color / 1000}s,
-    opacity 1.6s ${easing.quart} ${({ $index }: { $index: number }) =>
-    0.2 * $index}s,
-    transform 1.6s ${easing.quart} ${({ $index }: { $index: number }) =>
-    0.2 * $index}s;
+  transition:color ${transTime.color / 1000}s;
+
+  &.init-hide {
+    transition: color ${transTime.color / 1000}s,
+      opacity 1.6s ${easing.quart}
+        ${({ $index }: { $index: number }) => 0.2 * $index}s,
+      transform 1.6s ${easing.quart}
+        ${({ $index }: { $index: number }) => 0.2 * $index}s;
+  }
 
   &.hide {
     opacity: 0;

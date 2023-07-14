@@ -1,5 +1,5 @@
 import { useParams } from "next/navigation";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 // components
@@ -12,11 +12,18 @@ import { PDSummaryContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
 import { detailData, detailLayoutState } from "@/states/detail";
+import { detailScrollRefState } from "@/states/scroll";
 
 // type
 import { DetailTypes } from "@/types/projectDetails";
 import { ProjectsType } from "@/types/projects";
-import { DetailLayoutStateTypes } from "@/types/state";
+import {
+  DetailLayoutStateTypes,
+  DetailScrollRefStateTypes,
+} from "@/types/state";
+
+// util
+import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 type SummaryProps = {
   itemType: string;
@@ -34,6 +41,10 @@ export default function DetailSummary() {
   const [delayIndex, setDelayIndex] = useState<number>(1);
   const [hide, setHide] = useState<string>("hide");
 
+  const { container: scrollContainer, scrollHeight } =
+    useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
+  const summaryRef = useRef<HTMLDivElement | null>(null);
+
   useLayoutEffect(() => {
     if (category && data[category]) {
       setSummaryData(getSummaryData(data[category]));
@@ -49,8 +60,39 @@ export default function DetailSummary() {
     setHide(openComplete ? "" : "hide");
   }, [openComplete]);
 
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
+    if (!scrollContainer) return;
+
+    const summaryContainer = summaryRef.current;
+    if (!summaryContainer) return;
+
+    const ctx = ctxScrollTrigger({
+      container: scrollContainer,
+      tweenArr: [
+        {
+          target: summaryContainer,
+          options: [
+            {
+              opacity: 0,
+              scrollTrigger: {
+                trigger: summaryContainer,
+                start: `top 30%`,
+                end: `top top`,
+                scrub: true,
+              },
+            },
+          ],
+        },
+      ],
+    });
+
+    return () => ctx.revert();
+  }, [scrollHeight]);
+
   return (
-    <PDSummaryContainer className={`${hide}`}>
+    <PDSummaryContainer className={`${hide}`} ref={summaryRef}>
       {summaryData?.map((d: SummaryProps, i: number) => (
         <DetailInfoItem
           code="summary"
