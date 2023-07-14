@@ -21,7 +21,7 @@ export default function DetailMediaContainer() {
   const [media, setMedia] = useState<MediaType[] | []>([]);
 
   useLayoutEffect(() => {
-    if (!category) return;
+    if (typeof category !== "string" || !data?.[category]) return;
 
     const d = data[category]?.media;
     if (d) setMedia(d);

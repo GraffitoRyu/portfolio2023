@@ -75,8 +75,11 @@ export function PageLoadEvents() {
   // 프로젝트 상세 카테고리 업데이트
   useLayoutEffect(() => {
     if (initComplete) {
-      setDetailState(prev => ({ ...prev, category: category ? category : "" }));
-      if (category && savedData[category]) {
+      setDetailState(prev => ({
+        ...prev,
+        category: typeof category === "string" ? category : "",
+      }));
+      if (typeof category === "string" && savedData?.[category]) {
         setDetailState(prev => ({ ...prev, open: true }));
       } else {
         setDetailState(prev => ({ ...prev, open: false }));

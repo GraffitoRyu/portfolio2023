@@ -36,7 +36,7 @@ export default function DetailVisualSubtitle() {
   const subtitleRef = useRef<HTMLParagraphElement | null>(null);
 
   useLayoutEffect(() => {
-    if (category && data[category]?.summary?.desc) {
+    if (typeof category === "string" && data?.[category]?.summary?.desc) {
       setDesc(data[category].summary.desc);
       const titleLength = data[category].summary.title?.length ?? 0;
       setDelayIndex(titleLength);
@@ -53,7 +53,7 @@ export default function DetailVisualSubtitle() {
         setHide("");
       }, delayIndex * 200 + 1600);
     } else setHide("init-hide hide");
-  }, [openComplete]);
+  }, [delayIndex, openComplete]);
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
@@ -84,7 +84,7 @@ export default function DetailVisualSubtitle() {
     });
 
     return () => ctx.revert();
-  }, [scrollHeight]);
+  }, [scrollContainer, scrollHeight]);
 
   return (
     <PDVisualSubtitle

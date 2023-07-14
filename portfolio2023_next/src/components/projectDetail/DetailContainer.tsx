@@ -80,13 +80,12 @@ export default function ProjectDetail() {
 
   // 데이터 조회 상태
   useEffect(() => {
-    if (category) {
-      // console.log(`get [${category}] data status: `, status);
-      setLayoutState(prev => ({ ...prev, dataStatus: status }));
-      if (status === "success") {
-        // console.log(`[Detail Container :: React Query] Data is ready.`, data);
-        setDetailData(prev => ({ ...prev, [category]: data }));
-      }
+    if (typeof category !== "string") return;
+    // console.log(`get [${category}] data status: `, status);
+    setLayoutState(prev => ({ ...prev, dataStatus: status }));
+    if (status === "success") {
+      // console.log(`[Detail Container :: React Query] Data is ready.`, data);
+      setDetailData(prev => ({ ...prev, [category]: data }));
     }
   }, [category, data, setDetailData, setLayoutState, status]);
 

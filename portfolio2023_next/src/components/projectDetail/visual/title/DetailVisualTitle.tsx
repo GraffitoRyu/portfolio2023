@@ -52,7 +52,10 @@ export default function DetailVisualTitle() {
   const [hide, setHide] = useState<string>("hide");
 
   useLayoutEffect(() => {
-    if (category && data[category]?.summary?.title?.length > 0) {
+    if (
+      typeof category === "string" &&
+      data?.[category]?.summary?.title?.length > 0
+    ) {
       setTitle(data[category].summary.title);
     } else {
       setTitle([]);
@@ -92,7 +95,7 @@ export default function DetailVisualTitle() {
     });
 
     return () => ctx.revert();
-  }, [scrollHeight]);
+  }, [scrollContainer, scrollHeight]);
 
   return (
     <PDVisualTitle className={`${hide}`} ref={updateScrollRef}>

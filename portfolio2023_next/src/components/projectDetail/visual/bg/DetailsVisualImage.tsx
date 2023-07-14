@@ -95,7 +95,7 @@ export default function DetailVisualImage() {
         <PDVisualImage ref={imgRef}>
           <Image
             src={`/img/details/intro_${category}.jpg`}
-            alt={category}
+            alt={typeof category === "string" ? category : "Detail Visual"}
             fill={true}
             placeholder="blur"
             blurDataURL={`/img/details/intro_${category}.jpg`}

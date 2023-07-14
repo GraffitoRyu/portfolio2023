@@ -38,7 +38,9 @@ export default function DetailSubVisual() {
   const subVisualRef = useRef<HTMLElement | null>(null);
 
   useLayoutEffect(() => {
-    const imgData = category ? data[category]?.sub_visual : undefined;
+    if (typeof category !== "string" || !data?.[category]) return;
+
+    const imgData = data[category]?.sub_visual;
     if (typeof imgData !== "undefined") setImg(imgData);
     else setImg(null);
   }, [category, data]);
@@ -85,7 +87,7 @@ export default function DetailSubVisual() {
           <DetailMediaContents
             referType={img.referType}
             src={img.src}
-            alt={category}
+            alt={typeof category === "string" ? category : "Detail SubVisual"}
           />
         ) : null}
       </PDSubVisual>

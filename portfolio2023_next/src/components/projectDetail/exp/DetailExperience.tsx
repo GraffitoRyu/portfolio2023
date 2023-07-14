@@ -39,11 +39,11 @@ export default function DetailExperience() {
   const [expData, setExpData] = useState<string[]>([]);
 
   useLayoutEffect(() => {
-    if (category && data[category]) {
-      const expDesc = data[category]?.experience?.desc;
-      if (expDesc && expDesc.length > 0) setExpData(expDesc);
-      else setExpData([]);
-    }
+    if (typeof category !== "string" || !data?.[category]) return;
+
+    const expDesc = data[category]?.experience?.desc;
+    if (expDesc && expDesc.length > 0) setExpData(expDesc);
+    else setExpData([]);
   }, [category, data]);
 
   useLayoutEffect(() => {

@@ -32,7 +32,9 @@ export default function DetailStacks() {
   const [stacks, setStacks] = useState<StackArrTypes>(stacksArr);
 
   useEffect(() => {
-    const expData = category ? data[category]?.experience?.stacks : undefined;
+    if (typeof category !== "string" || !data?.[category]) return;
+
+    const expData = data[category]?.experience?.stacks;
     if (typeof expData !== "undefined") setStacks(Object.entries(expData));
     else setStacks(stacksArr);
   }, [category, data]);

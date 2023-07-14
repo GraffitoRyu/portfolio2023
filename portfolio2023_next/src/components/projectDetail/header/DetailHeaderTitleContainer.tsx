@@ -38,7 +38,7 @@ export default function DetailHeaderTitleContainer() {
   const titleRef = useRef<HTMLSpanElement>(null);
 
   useLayoutEffect(() => {
-    if (!category) return;
+    if (typeof category !== "string" || !data?.[category]) return;
 
     const d = data[category];
     if (d?.summary?.title) setTitle(d.summary.title.join(" "));

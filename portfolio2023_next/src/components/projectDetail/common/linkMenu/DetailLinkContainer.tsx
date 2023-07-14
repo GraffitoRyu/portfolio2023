@@ -21,7 +21,8 @@ export default function DetailLinkContainer() {
   const [linkData, setLinkData] = useState<LinkType[] | []>([]);
 
   useEffect(() => {
-    if (!category) return;
+    if (typeof category !== "string" || !data?.[category]) return;
+
     const d = data[category];
     if (d?.service) setLinkData(d?.service.link);
   }, [category, data]);

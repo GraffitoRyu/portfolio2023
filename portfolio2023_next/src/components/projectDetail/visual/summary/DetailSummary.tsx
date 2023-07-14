@@ -46,7 +46,7 @@ export default function DetailSummary() {
   const summaryRef = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
-    if (category && data[category]) {
+    if (typeof category === "string" && data?.[category]) {
       setSummaryData(getSummaryData(data[category]));
       const d = data[category].summary;
       if (d?.title?.length > 0 && d?.desc) setDelayIndex(d.title.length);
@@ -89,7 +89,7 @@ export default function DetailSummary() {
     });
 
     return () => ctx.revert();
-  }, [scrollHeight]);
+  }, [scrollContainer, scrollHeight]);
 
   return (
     <PDSummaryContainer className={`${hide}`} ref={summaryRef}>
