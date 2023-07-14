@@ -15,10 +15,10 @@ export const HTMLThemeStyle = createGlobalStyle`
   }
 `;
 
-export const StyledScrollContainer = styled.div`
+export const StyledScrollContainer = styled.div<{ $wh: number }>`
   ${position({ type: "fixed", top: 0, left: 0, z: 0 })}
   width: 100%;
-  height: 100%;
+  height: ${({ $wh }) => ($wh !== 0 ? `${$wh}px` : `100%`)};
   overflow: hidden auto;
   overscroll-behavior-y: none;
   &::-webkit-scrollbar {
