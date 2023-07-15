@@ -1,3 +1,6 @@
+// components
+import ExternalLinkButton from "@/components/buttons/Link";
+
 // style components
 import {
   PDLinkBtn,
@@ -8,27 +11,11 @@ import {
 // types
 import { LinkType } from "@/types/projects";
 
-// svg
-import LinkIcon from "@/svg/btn/link.svg";
-import { useState } from "react";
-
 export default function DetailExternalBtn({ name, url }: LinkType) {
-  const [hover, setHover] = useState<string>("");
-
   return (
     <PDLinkItem>
-      <PDLinkBtn
-        as="a"
-        className={`w-auto ${hover}`}
-        href={url}
-        target="_blank"
-        onMouseEnter={() => setHover("hover")}
-        onMouseLeave={() => setHover("")}
-      >
+      <PDLinkBtn as={ExternalLinkButton} href={url}>
         <PDLinkName>{name}</PDLinkName>
-        <figure>
-          <LinkIcon />
-        </figure>
       </PDLinkBtn>
     </PDLinkItem>
   );
