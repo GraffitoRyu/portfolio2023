@@ -11,9 +11,9 @@ import { deviceState } from "@/states/device";
 import { screenSizeState } from "@/states/screen";
 
 // util
-import debounce from "@/util/debounceEvent";
-import { checkDevice } from "@/util/checkDevice";
 import { remToPx } from "@/util/unit";
+import { checkDevice } from "@/util/checkDevice";
+import debounce from "@/util/debounceEvent";
 
 export default function UpdateStateByResize() {
   const setDevice = useSetRecoilState<DeviceTypes>(deviceState);

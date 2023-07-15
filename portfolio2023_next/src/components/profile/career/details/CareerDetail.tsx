@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
+import { useSetRecoilState } from "recoil";
 
 // style components
 import {
@@ -12,14 +13,16 @@ import {
 } from "@/styles/styled/components/ProfileCareer";
 
 // types
-import { CareerDetailsTypes } from "@/types/profile";
-import { useSetRecoilState } from "recoil";
-import { screenSizeState } from "@/states/screen";
 import { ScreenSizeTypes } from "@/types/state";
+import { CareerDetailsTypes } from "@/types/profile";
+
+// state
+import { screenSizeState } from "@/states/screen";
 
 interface CareerDetailProps extends CareerDetailsTypes {
   code: string;
 }
+
 export default function CareerDetail({
   code,
   task,

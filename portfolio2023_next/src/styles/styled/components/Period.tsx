@@ -5,9 +5,6 @@ import styled from "styled-components";
 // style
 import { flex, font, size } from "../preset/mixins";
 
-// util
-import { rem } from "@/util/unit";
-
 export const PeriodContainer = styled.div`
   ${flex({ std: "flex-start" })}
   ${font({
@@ -17,7 +14,7 @@ export const PeriodContainer = styled.div`
     whitespace: "nowrap",
   })}
   @media only screen and (min-width: 1024px) {
-    font-size: ${rem(20)};
+    ${font({ size: 20 })}
   }
 `;
 

@@ -49,6 +49,7 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+
     setOffset({
       start: columnWidth * 10,
       end: columnWidth * 5,

@@ -4,20 +4,20 @@ import { useLayoutEffect, useState } from "react";
 import { usePathname, useParams } from "next/navigation";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
-// state
-import { pageState } from "@/states/page";
-
 // type
 import { SitemapType } from "@/types/sitemap";
+import { DetailTypes } from "@/types/projectDetails";
 import { DetailLayoutStateTypes, pageStateTypes } from "@/types/state";
+
+// state
+import { pageState } from "@/states/page";
+import { detailData, detailLayoutState } from "@/states/detail";
 
 // data
 import { sitemapData } from "@/data/sitemap";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
-import { detailData, detailLayoutState } from "@/states/detail";
-import { DetailTypes } from "@/types/projectDetails";
 
 const routeData: SitemapType[] = sitemapData.filter(route => !route.external);
 
@@ -33,12 +33,12 @@ export function PageLoadEvents() {
     useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
   const savedData = useRecoilValue<DetailTypes>(detailData);
 
-  useLayoutEffect(() => {
-    if (init)
-      console.log(
-        `[PageLoadEvent : 루트 업데이트] pathname: ${pathname} / detail code: ${category}`
-      );
-  }, [init, pathname, category]);
+  // useLayoutEffect(() => {
+  //   if (init)
+  //     console.log(
+  //       `[PageLoadEvent : 루트 업데이트] pathname: ${pathname} / detail code: ${category}`
+  //     );
+  // }, [init, pathname, category]);
 
   // 루트 업데이트
   useLayoutEffect(() => {

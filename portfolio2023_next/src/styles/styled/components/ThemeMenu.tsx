@@ -31,16 +31,27 @@ export const ToggleIcon = styled.figure`
 `;
 
 export const ThemeMenuContainer = styled.div`
-  width: ${rem(160)};
+  ${position({ type: "absolute", top: "100%", left: 0 })}
+  ${size({ w: 160 })}
   transform: ${`translateY(${rem(16)})`};
   background: ${({ theme }) => theme.gnbThemeMenu.container};
+
+  &.off {
+    display: none;
+  }
+`;
+
+export const ThemeList = styled.ul`
+  ${size({ w: "100%" })}
 `;
 
 export const ThemeListItem = styled.li`
-  height: ${rem(56)};
+  ${size({ w: "100%", h: 56 })}
 `;
 
 export const ThemeMenuButton = styled.button`
+  ${flex({ std: "flex-start" })}
+  ${size({ w: "100%", h: "100%" })}
   figure {
     ${size({ w: 56 })}
     ${flex({})}
@@ -56,6 +67,7 @@ export const ThemeMenuButton = styled.button`
     ${font({
       size: 16,
       height: "1em",
+      transform: "capitalize",
     })}
   }
   &:not(.selected).hover {

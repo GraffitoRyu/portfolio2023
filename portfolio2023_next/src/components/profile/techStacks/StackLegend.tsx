@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useRecoilValue } from "recoil";
 
 // components
@@ -33,7 +33,9 @@ export default function StackLegend() {
     useRecoilValue<ScrollRefStateTypes>(scrollRefState);
   const legendRef = useRef<HTMLDListElement | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
     if (!scrollContainer) return;
 
     const scrollTarget = legendRef.current;

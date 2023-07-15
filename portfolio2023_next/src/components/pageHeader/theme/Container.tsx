@@ -43,7 +43,7 @@ export default function ThemeContainer() {
   }, [themeRef, closeThemeMenu]);
 
   return (
-    <div className="util-item theme-item relative" ref={themeRef}>
+    <div className="util-item theme-item" ref={themeRef}>
       <ThemeToggleBtn />
       <ThemeMenuList />
     </div>

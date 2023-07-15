@@ -1,14 +1,16 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
+
+// style components
+import { ProjectLoadingProgress } from "@/styles/styled/components/ProjectList";
 
 // state
 import { detailLayoutState } from "@/states/detail";
 
 // type
 import { DetailLayoutStateTypes } from "@/types/state";
-import { useEffect, useState } from "react";
-import { ProjectLoadingProgress } from "@/styles/styled/components/ProjectList";
 
 export default function ProjectLoadingBar() {
   const [

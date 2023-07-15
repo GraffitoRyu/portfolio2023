@@ -37,6 +37,7 @@ export function ctxScrollTrigger({
   normalize,
   timeline,
   tweenArr,
+  create,
 }: HookScrollTriggerProps) {
   if (typeof window === "undefined") return gsap.context();
 
@@ -56,10 +57,16 @@ export function ctxScrollTrigger({
           allowNestedScroll: true,
         });
 
-      if (typeof timeline === "boolean" && timeline === true) {
-        const timeline = gsap.timeline();
-        gsapTimeline(timeline, tweenArr);
-      } else gsapTween(tweenArr);
+      if (tweenArr && tweenArr.length > 0) {
+        if (typeof timeline === "boolean" && timeline === true) {
+          const timeline = gsap.timeline();
+          gsapTimeline(timeline, tweenArr);
+        } else gsapTween(tweenArr);
+      }
+
+      if (create && Object.keys(create).length > 0) {
+        ScrollTrigger.create(create);
+      }
 
       return () => {
         ScrollTrigger.clearScrollMemory();

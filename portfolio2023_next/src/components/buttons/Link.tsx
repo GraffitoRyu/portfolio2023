@@ -20,7 +20,7 @@ export default function ExternalLinkButton({
   return (
     <CommonBtn
       as="a"
-      className={`w-auto ${hover}`}
+      className={`text-type ${hover}`}
       href={href}
       target="_blank"
       onMouseEnter={() => setHover("hover")}

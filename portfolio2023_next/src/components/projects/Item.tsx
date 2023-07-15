@@ -5,22 +5,26 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 // components
-import {
-  ProjectItemBorder,
-  ProjectItemContainer,
-} from "@/styles/styled/components/ProjectList";
 import SlideTitle from "@/components/projects/item/SlideTitle";
 import ProjectSummary from "@/components/projects/item/Summary";
 import BtnIcon from "@/components/projects/item/BtnIcon";
 
+// style components
+import {
+  ProjectItemBorder,
+  ProjectItemContainer,
+} from "@/styles/styled/components/ProjectList";
+
 // state
+import { scrollRefState } from "@/states/scroll";
 import { detailLayoutState } from "@/states/detail";
 
 // type
 import { SummaryType } from "@/types/projects";
 import { DetailLayoutStateTypes, ScrollRefStateTypes } from "@/types/state";
+
+// util
 import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
-import { scrollRefState } from "@/states/scroll";
 
 export default function ProjectItem({
   code,

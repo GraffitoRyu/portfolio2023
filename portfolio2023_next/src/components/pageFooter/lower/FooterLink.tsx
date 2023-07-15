@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import ClipboardJS from "clipboard";
 
 // components
@@ -17,16 +18,18 @@ import {
 
 // types
 import { SitemapType } from "@/types/sitemap";
+import { ScrollRefStateTypes, pageStateTypes } from "@/types/state";
+
+// state
+import { pageState } from "@/states/page";
+import { scrollRefState } from "@/states/scroll";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // svg
 import * as LinkSvg from "./LinkIcon";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { ScrollRefStateTypes, pageStateTypes } from "@/types/state";
-import { pageState } from "@/states/page";
-import { scrollRefState } from "@/states/scroll";
+
 function LinkIcon({
   external,
   copy,
@@ -107,7 +110,7 @@ export default function FooterLink({
           onClick={() => {
             // 페이지 전환 커버 동작 후 이동 시작
             if (pathname === path) return;
-            console.log("페이지 변경 시작: ", code);
+            // console.log("페이지 변경 시작: ", code);
 
             setPageAtom(prev => ({
               ...prev,

@@ -3,7 +3,7 @@
 import { createGlobalStyle, styled } from "styled-components";
 
 // style
-import { position } from "../preset/mixins";
+import { position, size } from "../preset/mixins";
 
 export const HTMLThemeStyle = createGlobalStyle`
   html {
@@ -15,10 +15,14 @@ export const HTMLThemeStyle = createGlobalStyle`
   }
 `;
 
+export const PageContainer = styled.main`
+  ${position({ type: "fixed", z: 10 })}
+  ${size({ w: "100%", h: "100%" })}
+`;
+
 export const StyledScrollContainer = styled.div<{ $wh: number }>`
   ${position({ type: "fixed", top: 0, left: 0, z: 0 })}
-  width: 100%;
-  height: ${({ $wh }) => ($wh !== 0 ? `${$wh}px` : `100%`)};
+  ${({ $wh }) => size({ w: "100%", h: $wh !== 0 ? `${$wh}px` : `100%` })}
   overflow: hidden auto;
   overscroll-behavior-y: none;
   &::-webkit-scrollbar {

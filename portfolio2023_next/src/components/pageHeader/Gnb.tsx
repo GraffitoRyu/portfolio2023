@@ -3,14 +3,14 @@ import SitemapBtn from "./gnb/SitemapBtn";
 import ExternalBtn from "./gnb/ExternalBtn";
 import ThemeContainer from "./theme/Container";
 
+// style components
+import { GnbCommonStyle, GnbContainer } from "@/styles/styled/components/Gnb";
+
 //type
 import { SitemapType } from "@/types/sitemap";
 
 // data
 import { sitemapData } from "@/data/sitemap";
-
-// style
-import { GnbCommonStyle } from "@/styles/styled/components/Gnb";
 
 const gnbData: SitemapType[] | undefined = sitemapData.filter(
   (d: SitemapType) => d.header && !d.external
@@ -21,7 +21,7 @@ const extData: SitemapType[] | undefined = sitemapData.filter(
 
 export default function Gnb() {
   return (
-    <nav className="gnb ml-auto flex items-center">
+    <GnbContainer className="gnb">
       <GnbCommonStyle />
       {gnbData?.map((d: SitemapType) => (
         <SitemapBtn
@@ -36,6 +36,6 @@ export default function Gnb() {
           {...d}
         />
       )) ?? ""}
-    </nav>
+    </GnbContainer>
   );
 }

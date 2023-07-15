@@ -5,7 +5,13 @@ import styled, { createGlobalStyle } from "styled-components";
 // style
 import { img } from "@/styles/styled/preset/img";
 import { btnStyle } from "@/styles/styled/preset/buttons";
-import { SvgFill, font, maxSize, size } from "@/styles/styled/preset/mixins";
+import {
+  SvgFill,
+  flex,
+  font,
+  maxSize,
+  size,
+} from "@/styles/styled/preset/mixins";
 
 // GNB 공통 스타일
 export const GnbCommonStyle = createGlobalStyle`
@@ -30,6 +36,11 @@ export const GnbCommonStyle = createGlobalStyle`
       }
     }
   }
+`;
+
+export const GnbContainer = styled.nav`
+  ${flex({ std: "flex-start" })}
+  ${size({ ml: "auto" })}
 `;
 
 export const SitemapLink = styled.button`

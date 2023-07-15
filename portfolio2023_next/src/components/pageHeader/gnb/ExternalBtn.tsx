@@ -2,16 +2,20 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// type
-import { SitemapType } from "@/types/sitemap";
+// components
+import Tooltip from "@/components/tooltip/Tooltip";
 
 // style components
 import { ExtBtn } from "@/styles/styled/components/Gnb";
 
+// type
+import { SitemapType } from "@/types/sitemap";
+
+// style
+import { transTime } from "@/styles/styled/preset/transTime";
+
 // SVG
 import * as ExtSvg from "./BtnIcons";
-import Tooltip from "@/components/tooltip/Tooltip";
-import { transTime } from "@/styles/styled/preset/transTime";
 function ExtIcon(name: string) {
   switch (name) {
     case "Github":

@@ -48,15 +48,13 @@ export default function ThemeMenuBtn({ code }: { code: string }) {
 
   return (
     <ThemeMenuButton
-      className={`w-full h-full flex items-center ${updateSelected(
-        code
-      )} ${hover}`}
+      className={`${updateSelected(code)} ${hover}`}
       onClick={() => changeTheme(code)}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
     >
       <figure>{ThemeIcon(code)}</figure>
-      <span className="capitalize">{code}</span>
+      <span>{code}</span>
     </ThemeMenuButton>
   );
 }

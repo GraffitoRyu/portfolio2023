@@ -6,6 +6,7 @@ import ThemeMenuBtn from "./MenuBtn";
 
 // style components
 import {
+  ThemeList,
   ThemeListItem,
   ThemeMenuContainer,
 } from "@/styles/styled/components/ThemeMenu";
@@ -22,11 +23,11 @@ import { applyTheme } from "@/util/changeTheme";
 export default function ThemeMenuList() {
   const themeList: string[] = ["light", "dark", "system"];
   const theme = useRecoilValue<ThemeStateTypes>(themeState);
-  const [openClass, setOpenClass] = useState<string>("hidden");
+  const [openClass, setOpenClass] = useState<string>("off");
   const [themeClass, setThemeClass] = useState<string>("system");
 
   useEffect(() => {
-    setOpenClass(theme.isOpen ? "" : "hidden");
+    setOpenClass(theme.isOpen ? "" : "off");
   }, [theme.isOpen]);
 
   useEffect(() => {
@@ -35,19 +36,16 @@ export default function ThemeMenuList() {
   }, [theme.theme, theme.isSystem]);
 
   return (
-    <ThemeMenuContainer
-      className={`theme-menu absolute top-full left-0 ${openClass} ${themeClass}`}
-    >
-      <ul className="w-full">
+    <ThemeMenuContainer className={`theme-menu ${openClass} ${themeClass}`}>
+      <ThemeList>
         {themeList.map((code: string, i: number) => (
           <ThemeListItem
             key={`themeMenu_${code}_${Math.floor(Math.random() * 100000)}_${i}`}
-            className="w-full"
           >
             <ThemeMenuBtn code={code} />
           </ThemeListItem>
         ))}
-      </ul>
+      </ThemeList>
     </ThemeMenuContainer>
   );
 }

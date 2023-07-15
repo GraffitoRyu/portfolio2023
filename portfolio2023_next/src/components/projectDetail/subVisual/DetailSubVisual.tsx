@@ -1,10 +1,8 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { gsap } from "gsap/dist/gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // components
 import DetailMediaContents from "../common/media/DetailMediaContents";
@@ -45,7 +43,7 @@ export default function DetailSubVisual() {
     else setImg(null);
   }, [category, data]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof window === "undefined") return;
 
     if (!scrollContainer) return;
@@ -53,8 +51,6 @@ export default function DetailSubVisual() {
     const scrollTarget = subVisualRef.current;
     const scrollTrigger = triggerRef.current;
     if (!scrollTarget || !scrollTrigger) return;
-
-    gsap.registerPlugin(ScrollTrigger);
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,

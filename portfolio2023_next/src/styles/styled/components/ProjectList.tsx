@@ -17,9 +17,6 @@ import {
   size,
   transition,
 } from "../preset/mixins";
-
-// util
-import { rem } from "@/util/unit";
 import { transTime } from "../preset/transTime";
 
 export const ProjectLoadingProgress = styled.progress`
@@ -84,7 +81,7 @@ export const ListBtnWrap = styled.div`
   color:${({ theme }) => theme.projectList.desc};
   position: relative;
   @media only screen and (min-width: 1024px) {
-    width: ${rem(1440)};
+    ${size({ w: 1440 })}
   }
 `;
 

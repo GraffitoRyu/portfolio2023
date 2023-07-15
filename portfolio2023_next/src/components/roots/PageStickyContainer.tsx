@@ -1,15 +1,21 @@
 "use client";
 
 import { ReactNode, useEffect, useRef } from "react";
+import { useSetRecoilState } from "recoil";
 
 // components
 import PageHeader from "../pageHeader/PageHeader";
 
 // style components
 import { StickyContainer } from "@/styles/styled/components/Page";
+
+// state
 import { scrollRefState } from "@/states/scroll";
+
+// type
 import { ScrollRefStateTypes } from "@/types/state";
-import { useSetRecoilState } from "recoil";
+
+// util
 import debounce from "@/util/debounceEvent";
 
 export default function PageStickyContainer({

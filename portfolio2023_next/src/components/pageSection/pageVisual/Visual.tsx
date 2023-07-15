@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
+import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // style components
@@ -28,7 +29,6 @@ import { screenSizeState } from "@/states/screen";
 
 // hooks
 import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
-import { gsap } from "gsap/dist/gsap";
 
 export default function PageVisual({ title }: { title: string[] }) {
   const { windowWidth, windowHeight, headerHeight } =
@@ -44,7 +44,7 @@ export default function PageVisual({ title }: { title: string[] }) {
   const [loaded, setLoaded] = useState<string>("loading");
   const [fixed, setFixed] = useState<string>("");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof window === "undefined") return;
 
     const scrollTarget = visualTitleRef.current;
@@ -67,8 +67,8 @@ export default function PageVisual({ title }: { title: string[] }) {
           : -0.05 * ScrollTrigger.maxScroll(scrollContainer),
       scrollTrigger: {
         trigger: scrollTarget,
-        start: `top ${triggerStart}`, // 움직일 요소의 시작, 트리거 영역의 시작
-        end: `${targetEnd} center`, // 움직일 요소의 끝, 트리거 영역의 끝
+        start: `top ${triggerStart}`, // target, viewport
+        end: `${targetEnd} center`, // target, viewport
         scrub: true, // 스크롤 위치에 따라 실시간으로 대응하여 변하도록 설정
         invalidateOnRefresh: true,
         // markers: true, // 개발용 가이드라인
@@ -110,7 +110,7 @@ export default function PageVisual({ title }: { title: string[] }) {
     <VisualContainer
       ref={visualRef}
       $wh={windowHeight}
-      $headerHeight={headerHeight}
+      $hdHeight={headerHeight}
     >
       <VisualTitle ref={visualTitleRef} className={`${loaded} ${fixed}`}>
         <VisualTitleLine className="visual-title stroke-title">

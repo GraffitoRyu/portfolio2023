@@ -25,7 +25,7 @@ export default function SlideTitle({
       const width: number = (el.children[0] as HTMLSpanElement).offsetWidth;
       setSlideWidth(width);
     }
-  }, [slideRef]);
+  }, []);
 
   useEffect(() => {
     setDuration((slideWidth / 1000) * 3.2);

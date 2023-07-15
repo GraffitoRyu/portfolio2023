@@ -41,7 +41,7 @@ export default function PageSection({
         className ? className : ""
       }`}
       $wh={windowHeight}
-      $headerHeight={headerHeight}
+      $hdHeight={headerHeight}
       ref={updateScrollRef}
     >
       {children}

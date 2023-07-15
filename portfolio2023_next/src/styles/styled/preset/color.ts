@@ -6,7 +6,7 @@
  *  pageHeader: { Timer, Sitemap, ThemeMenu, Util },
  *  pageSection: { Visual, Intro, SectionHeader, SectionContents, },
  *  pageFooter: { },
- *  Profile: { Career, Experience, Tools },
+ *  Profile: { Career, Experience, Stacks },
  *  Projects: { List, Details },
  * }
  */

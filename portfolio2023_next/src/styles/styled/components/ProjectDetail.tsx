@@ -40,13 +40,12 @@ export const PDContainer = styled.article`
 
 export const PDHeader = styled.header`
   ${position({ type: "sticky", top: 0, left: 0, z: 1000 })}
-  width:100%;
-  height: 0;
+  ${size({ w: "100%", h: 0 })}
 `;
 
 export const PDHeaderTitleContainer = styled.h3`
   ${flex({ std: "flex-start" })}
-  margin-right: auto;
+  ${size({ mr: "auto" })}
   color: ${({ theme }) => theme.projectDetails.visualTitle};
   ${font({
     size: 32,
@@ -75,7 +74,7 @@ export const PDHeaderProjectName = styled.span`
   &:before {
     content: "/";
     font-weight: 500;
-    margin: 0 ${rem(16)};
+    ${size({ m: [0, 16] })}
   }
 `;
 
@@ -267,11 +266,6 @@ export const PDInfoItem = styled.dl<{
   $delayIndex?: number;
 }>`
   ${size({ w: "100%", mb: 80, p: [0, 20] })}
-  transition: opacity 0.6s linear
-    ${({ $itemIndex, $delayIndex }) =>
-    typeof $delayIndex === "number" && typeof $itemIndex === "number"
-      ? `${Math.floor($delayIndex * 2) / 10 + Math.floor($itemIndex * 2) / 10}s`
-      : `0.6s`};
 
   @media only screen and (min-width: 1024px) {
     ${size({ w: `${widthRatio(12, 2)}%` })}
@@ -279,6 +273,20 @@ export const PDInfoItem = styled.dl<{
 `;
 
 export const PDSummaryItem = styled(PDInfoItem)`
+  &.init-hide {
+    transition: opacity 0.6s linear
+      ${({ $itemIndex, $delayIndex }) =>
+        typeof $delayIndex === "number" && typeof $itemIndex === "number"
+          ? `${
+              Math.floor($delayIndex * 2) / 10 + Math.floor($itemIndex * 2) / 10
+            }s`
+          : `0.6s`};
+  }
+
+  &.hide {
+    opacity: 0;
+  }
+
   @media only screen and (max-width: 768px) and (orientation: landscape) {
     ${size({ w: `${widthRatio(12, 6)}%` })}
   }
@@ -379,12 +387,6 @@ export const PDInfoContainer = styled.div`
 export const PDSummaryContainer = styled(PDInfoContainer)`
   ${flex({ start: true, wrap: "wrap" })}
   ${size({ mb: 40 })}
-
-  &.hide {
-    dl {
-      opacity: 0;
-    }
-  }
 
   @media only screen and (min-width: 1024px) {
     ${size({ mt: 120, mb: 0 })}

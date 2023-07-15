@@ -9,8 +9,7 @@ import { transTime } from "../preset/transTime";
 
 export const TransitionCover = styled.div`
   ${position({ type: "fixed", left: 0, top: 0, z: 3000 })}
-  width:100%;
-  height: 0;
+  ${size({ w: "100%", h: 0 })}
   background-color: ${({ theme }) => theme.transCover.bg};
   overflow: clip;
   transition: height ${transTime.common.coverUp / 1000}s ${easing.expo};

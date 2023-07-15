@@ -1,24 +1,30 @@
-import { ReactNode } from "react";
+import { ForwardedRef, ReactNode, forwardRef } from "react";
 
 import {
   PDStackItem,
   PDSummaryItem,
 } from "@/styles/styled/components/ProjectDetail";
 
-export default function DetailInfoItem({
-  code,
-  className,
-  children,
-  $itemIndex,
-  $delayIndex,
-}: {
-  code: string;
-  className?: string;
-  children: ReactNode;
-  $itemIndex?: number;
-  $delayIndex?: number;
-}) {
-  const customAttrs = { className: `details-${code}-item ${className ?? ""}` };
+function DetailInfoItemRef(
+  {
+    code,
+    className,
+    children,
+    $itemIndex,
+    $delayIndex,
+  }: {
+    code: string;
+    className?: string;
+    children: ReactNode;
+    $itemIndex?: number;
+    $delayIndex?: number;
+  },
+  ref: ForwardedRef<HTMLDListElement>
+) {
+  const customAttrs = {
+    className: `details-${code}-item ${className ?? ""}`,
+    ref,
+  };
   if (typeof $itemIndex === "number")
     Object.assign(customAttrs, { $itemIndex });
   if (typeof $delayIndex === "number")
@@ -33,3 +39,7 @@ export default function DetailInfoItem({
       return null;
   }
 }
+
+const DetailInfoItem = forwardRef(DetailInfoItemRef);
+
+export default DetailInfoItem;

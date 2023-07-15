@@ -16,7 +16,11 @@ const queryClient = new QueryClient({
   },
 });
 
-export default function ReactQuery({ children }: { children: ReactNode }) {
+export default function ReactQueryContainer({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
     <QueryClientProvider client={queryClient}>
       {children}

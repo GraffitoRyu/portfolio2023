@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 // style components
@@ -32,7 +32,9 @@ export default function FooterUpperContainer() {
       setFooterPos(scrollTrigger.offsetTop);
   }, [footerPos, scrollTrigger]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
     if (!scrollContainer || !scrollTrigger) return;
 
     const scrollTarget = footerTitleRef.current;
@@ -49,8 +51,8 @@ export default function FooterUpperContainer() {
               y: "-100%", // transform translate
               scrollTrigger: {
                 trigger: scrollTrigger,
-                start: `top bottom`, // target, trigger
-                end: `top top`, // target, trigger
+                start: `top bottom`, // target, view
+                end: `top top`, // target, view
                 scrub: true,
                 invalidateOnRefresh: true,
               },

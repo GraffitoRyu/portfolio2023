@@ -39,11 +39,11 @@ export default function DetailSummary() {
   const { openComplete } =
     useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
   const [delayIndex, setDelayIndex] = useState<number>(1);
-  const [hide, setHide] = useState<string>("hide");
+  const [hide, setHide] = useState<string>("init-hide hide");
 
   const { container: scrollContainer, scrollHeight } =
     useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
-  const summaryRef = useRef<HTMLDivElement | null>(null);
+  const summaryRef = useRef<HTMLDListElement[]>([]);
 
   useLayoutEffect(() => {
     if (typeof category === "string" && data?.[category]) {
@@ -57,48 +57,68 @@ export default function DetailSummary() {
   }, [category, data]);
 
   useEffect(() => {
-    setHide(openComplete ? "" : "hide");
+    if (openComplete) {
+      console.log(`openComplete true`);
+      setHide("init-hide");
+      setTimeout(() => {
+        setHide("");
+      }, 1600);
+    } else {
+      console.log(`openComplete false`);
+      setHide("init-hide hide");
+    }
   }, [openComplete]);
+
+  useEffect(() => {
+    console.log(`hide:`, hide);
+  }, [hide]);
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
 
+    if (!openComplete) return;
+
     if (!scrollContainer) return;
 
-    const summaryContainer = summaryRef.current;
-    if (!summaryContainer) return;
+    const summaryItems = summaryRef.current;
+    if (!summaryItems || summaryItems?.length == 0) return;
+
+    const tweenArr = summaryItems.map((target: HTMLDListElement) => ({
+      target,
+      options: [
+        {
+          opacity: 0,
+          scrollTrigger: {
+            trigger: target,
+            start: `top 30%`,
+            end: `top top`,
+            scrub: true,
+          },
+        },
+      ],
+    }));
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
-      tweenArr: [
-        {
-          target: summaryContainer,
-          options: [
-            {
-              opacity: 0,
-              scrollTrigger: {
-                trigger: summaryContainer,
-                start: `top 30%`,
-                end: `top top`,
-                scrub: true,
-              },
-            },
-          ],
-        },
-      ],
+      timeline: true,
+      tweenArr,
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, scrollHeight]);
+  }, [openComplete, scrollContainer, scrollHeight]);
 
   return (
-    <PDSummaryContainer className={`${hide}`} ref={summaryRef}>
+    <PDSummaryContainer>
       {summaryData?.map((d: SummaryProps, i: number) => (
         <DetailInfoItem
           code="summary"
+          className={`${hide}`}
           key={`detailSummaryItem_${d.itemType}_${i}`}
           $itemIndex={i + 1}
           $delayIndex={delayIndex}
+          ref={(node: HTMLDListElement) => {
+            summaryRef.current[i] = node;
+          }}
         >
           <DetailInfoTitle code="summary" title={d.title} />
           <DetailInfoContents

@@ -1,6 +1,8 @@
 "use client";
 
-import { detailScrollRefState } from "@/states/scroll";
+import { useLayoutEffect, useRef } from "react";
+import { useRecoilValue } from "recoil";
+
 // components
 import DetailMediaContents from "../common/media/DetailMediaContents";
 
@@ -12,11 +14,14 @@ import {
 
 // types
 import { MediaType } from "@/types/projects";
-import { useRecoilValue } from "recoil";
 import { DetailScrollRefStateTypes, ScreenSizeTypes } from "@/types/state";
-import { useLayoutEffect, useRef } from "react";
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+
+// state
 import { screenSizeState } from "@/states/screen";
+import { detailScrollRefState } from "@/states/scroll";
+
+// util
+import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function DetailMediaItem({ data }: { data: MediaType }) {
   const { windowWidth } = useRecoilValue<ScreenSizeTypes>(screenSizeState);

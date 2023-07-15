@@ -4,8 +4,8 @@ import { ReactNode, Suspense } from "react";
 export { metadata } from "@/data/meta";
 
 // root components
-import Recoil from "@/components/roots/Recoil";
-import ReactQuery from "@/components/roots/ReactQuery";
+import ReactQueryContainer from "@/components/roots/ReactQuery";
+import RecoilContainer from "@/components/roots/Recoil";
 import ThemeColors from "@/components/roots/ThemeColor";
 
 // components
@@ -18,7 +18,7 @@ import Cursor from "@/components/cursor/Cursor";
 // import { sans, serif } from "@/styles/fonts/fonts"; // error로 사용할 수 없다
 import "@/styles/scss/globals.scss";
 import StyledComponentsRegistry from "./lib/registry";
-import { HTMLThemeStyle } from "@/styles/styled/components/Page";
+import { HTMLThemeStyle, PageContainer } from "@/styles/styled/components/Page";
 
 // hooks
 import { PageLoadEvents } from "@/hooks/PageLoadEvents";
@@ -36,13 +36,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
       </head>
       <body>
-        <Recoil>
-          <ReactQuery>
+        <RecoilContainer>
+          <ReactQueryContainer>
             <StyledComponentsRegistry>
               <ThemeColors>
                 <HTMLThemeStyle />
                 <UpdateStateByResize />
-                <main className="page-container w-full h-full fixed">
+                <PageContainer>
                   <PageTemplate>{children}</PageTemplate>
                   <TransCover />
                   <InitPageCover />
@@ -50,11 +50,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   <Suspense fallback={null}>
                     <PageLoadEvents />
                   </Suspense>
-                </main>
+                </PageContainer>
               </ThemeColors>
             </StyledComponentsRegistry>
-          </ReactQuery>
-        </Recoil>
+          </ReactQueryContainer>
+        </RecoilContainer>
       </body>
     </html>
   );

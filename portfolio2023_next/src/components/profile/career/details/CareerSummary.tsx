@@ -41,7 +41,7 @@ export default function CareerSummary({
 
       e.preventDefault();
       const isOpen = careerOpen[code];
-      console.log(`[${code}] isOpen`, isOpen);
+      // console.log(`[${code}] isOpen`, isOpen);
       if (isOpen) {
         setScrollRef(prev => ({
           ...prev,

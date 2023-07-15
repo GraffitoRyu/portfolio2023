@@ -15,16 +15,19 @@ import { rem } from "@/util/unit";
 
 export const VisualContainer = styled.div<{
   $wh: number;
-  $headerHeight: number;
+  $hdHeight: number;
 }>`
   ${flex({ dir: "column", cross: "flex-start" })}
   height: 50%;
   @media only screen and (min-width: 1024px) {
-    width: 100%;
-    height: ${({ $wh, $headerHeight }): string =>
-      $wh !== 0 && $headerHeight !== 0
-        ? `${$wh - $headerHeight}px`
-        : `calc(100vh - ${rem(240)})`};
+    ${({ $wh, $hdHeight }) =>
+      size({
+        w: "100%",
+        h:
+          $wh !== 0 && $hdHeight !== 0
+            ? `${$wh - $hdHeight}px`
+            : `calc(100vh - ${rem(240)})`,
+      })}
   }
 `;
 

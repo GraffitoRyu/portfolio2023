@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { gsap } from "gsap/dist/gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // style components
 import { IntroDesc, IntroTitle } from "@/styles/styled/components/PageVisual";
@@ -26,6 +24,7 @@ import { screenSizeState } from "@/states/screen";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
+import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function PageIntro({ title, desc }: IntroTypes) {
   const { init, loadComplete } = useRecoilValue<pageStateTypes>(pageState);
@@ -68,7 +67,9 @@ export default function PageIntro({ title, desc }: IntroTypes) {
     }
   }, [init, loadComplete, windowWidth]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
     if (windowWidth < 1024) return;
 
     // 모바일 전용 텍스트 효과 제거
@@ -81,29 +82,24 @@ export default function PageIntro({ title, desc }: IntroTypes) {
     const descTarget = descRef.current;
     if (!titleTarget || !descTarget) return;
 
-    const ctx = gsap.context(() => {
-      // Scroll Trigger 플러그인 사용 시작
-      gsap.registerPlugin(ScrollTrigger);
+    const stOptions = {
+      start: `top 80%`, // target, trigger
+      end: `top 30%`, // target, trigger
+      scrub: true,
+    };
 
-      // 스크롤 영역 설정
-      ScrollTrigger.defaults({
-        scroller: scrollContainer,
-        invalidateOnRefresh: true,
-      });
+    const gsapOptions = (target: HTMLElement) => ({
+      opacity: 1,
+      scrollTrigger: { ...stOptions, trigger: target },
+    });
 
-      const stOptions = {
-        start: `top 80%`, // target, trigger
-        end: `top 30%`, // target, trigger
-        scrub: true,
-      };
-
-      const gsapOptions = (target: HTMLElement) => ({
-        opacity: 1,
-        scrollTrigger: Object.assign(stOptions, { trigger: target }),
-      });
-
-      gsap.to(titleTarget, gsapOptions(titleTarget));
-      gsap.to(descTarget, gsapOptions(descTarget));
+    const ctx = ctxScrollTrigger({
+      container: scrollContainer,
+      timeline: true,
+      tweenArr: [
+        { target: titleTarget, options: [{ ...gsapOptions(titleTarget) }] },
+        { target: descTarget, options: [{ ...gsapOptions(descTarget) }] },
+      ],
     });
 
     return () => ctx.revert();

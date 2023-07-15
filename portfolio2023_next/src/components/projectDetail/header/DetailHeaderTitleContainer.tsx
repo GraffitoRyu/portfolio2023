@@ -1,5 +1,5 @@
 import { useParams } from "next/navigation";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 // style components
@@ -44,7 +44,9 @@ export default function DetailHeaderTitleContainer() {
     if (d?.summary?.title) setTitle(d.summary.title.join(" "));
   }, [category, data]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
     if (openComplete && category) {
       if (!scrollContainer || !scrollTrigger || !visualTitleRef) return;
 

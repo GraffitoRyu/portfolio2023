@@ -20,12 +20,12 @@ import {
 } from "@/types/state";
 
 // state
+import { screenSizeState } from "@/states/screen";
 import { detailLayoutState } from "@/states/detail";
 import { detailScrollRefState } from "@/states/scroll";
 
 // util
 import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
-import { screenSizeState } from "@/states/screen";
 
 export default function DetailVisualImage() {
   const { category } = useParams();

@@ -2,8 +2,6 @@
 
 import React, { useLayoutEffect, useRef } from "react";
 import { useRecoilValue } from "recoil";
-import { gsap } from "gsap/dist/gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // style components
 import {
@@ -18,6 +16,7 @@ import { SectionHeaderTypes } from "@/types/profile";
 
 // state
 import { scrollRefState } from "@/states/scroll";
+import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function SectionHeader({
   empty,
@@ -31,37 +30,39 @@ export default function SectionHeader({
   const descRef = useRef<HTMLParagraphElement | null>(null);
 
   useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
     if (!scrollContainer) return;
 
     const titleTarget = titleRef.current;
     const descTarget = descRef.current;
     if (!titleTarget || !descTarget) return;
 
-    const ctx = gsap.context(() => {
-      // Scroll Trigger 플러그인 사용 시작
-      gsap.registerPlugin(ScrollTrigger);
+    const stOptions = {
+      start: `top 80%`,
+      end: `top 30%`,
+      invalidateOnRefresh: true,
+      scrub: true,
+    };
 
-      // 스크롤 영역 설정
-      ScrollTrigger.defaults({
-        scroller: scrollContainer,
-      });
-
-      const stOptions = {
-        start: `top 80%`,
-        end: `top 30%`,
-        invalidateOnRefresh: true,
-        scrub: true,
-      };
-
-      const gsapOptions = (target: HTMLElement) => ({
-        opacity: 1,
-        scrollTrigger: { ...stOptions, trigger: target },
-      });
-
-      gsap.to(titleTarget, gsapOptions(titleTarget));
-      gsap.to(descTarget, gsapOptions(descTarget));
+    const gsapOptions = (target: HTMLElement) => ({
+      opacity: 1,
+      scrollTrigger: { ...stOptions, trigger: target },
     });
 
+    const ctx = ctxScrollTrigger({
+      container: scrollContainer,
+      tweenArr: [
+        {
+          target: titleTarget,
+          options: [{ ...gsapOptions(titleTarget) }],
+        },
+        {
+          target: descTarget,
+          options: [{ ...gsapOptions(descTarget) }],
+        },
+      ],
+    });
     return () => ctx.revert();
   }, [scrollContainer, stickyHeight]);
 

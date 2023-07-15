@@ -8,8 +8,6 @@ import {
   useState,
 } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { gsap } from "gsap/dist/gsap";
 
 // components
 import CareerSummary from "./details/CareerSummary";
@@ -29,6 +27,7 @@ import { ScreenSizeTypes, ScrollRefStateTypes } from "@/types/state";
 // state
 import { scrollRefState } from "@/states/scroll";
 import { screenSizeState } from "@/states/screen";
+import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 interface CareerItemProps extends CareerTypes {
   last?: boolean;
@@ -84,36 +83,27 @@ export default function CareerItem({
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
+
     if (!scrollContainer) return;
 
     const careerItemContainer = itemRef.current;
     if (!careerItemContainer) return;
 
-    const ctx = gsap.context(() => {
-      if (scrollContainer instanceof Element) {
-        // Scroll Trigger 플러그인 사용 시작
-        gsap.registerPlugin(ScrollTrigger);
-
-        // 스크롤 영역 설정
-        ScrollTrigger.defaults({
-          scroller: scrollContainer,
-          invalidateOnRefresh: true,
-        });
-
-        ScrollTrigger.create({
-          trigger: careerItemContainer,
-          start: `top 80%`,
-          end: `top top`,
-          invalidateOnRefresh: true,
-          // markers: true,
-          onEnter: () => {
-            setHide("");
-          },
-          onLeaveBack: () => {
-            setHide("hide");
-          },
-        });
-      }
+    const ctx = ctxScrollTrigger({
+      container: scrollContainer,
+      create: {
+        trigger: careerItemContainer,
+        start: `top 80%`,
+        end: `top top`,
+        invalidateOnRefresh: true,
+        // markers: true,
+        onEnter: () => {
+          setHide("");
+        },
+        onLeaveBack: () => {
+          setHide("hide");
+        },
+      },
     });
 
     return () => ctx.revert();

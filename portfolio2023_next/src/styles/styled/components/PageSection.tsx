@@ -10,9 +10,8 @@ import { rem } from "@/util/unit";
 
 export const PageSectionContainer = styled.section<{
   $wh: number;
-  $headerHeight: number;
+  $hdHeight: number;
 }>`
-  position: sticky;
   transition: none;
   ${size({ w: "100%" })}
   &.side-h-padding {
@@ -26,8 +25,10 @@ export const PageSectionContainer = styled.section<{
       })}
   }
   &.section-visual {
-    height: ${({ $wh, $headerHeight }) =>
-      $wh !== 0 && $headerHeight !== 0 ? `${$wh - $headerHeight}px` : "100vh"};
+    ${({ $wh, $hdHeight }) =>
+      size({
+        h: $wh !== 0 && $hdHeight !== 0 ? `${$wh - $hdHeight}px` : "100vh",
+      })}
     .section-header {
       display: none;
     }
@@ -38,16 +39,15 @@ export const PageSectionContainer = styled.section<{
   }
 
   &.section-experience {
-    position: sticky;
-    top: 0;
+    ${position({ type: "sticky", top: 0 })}
     transform: none !important;
   }
 
   @media only screen and (min-width: 1024px) {
     &.side-v-padding {
-      ${({ $headerHeight }) =>
+      ${({ $hdHeight }) =>
         size({
-          pt: $headerHeight !== 0 ? `${$headerHeight}px` : 240,
+          pt: $hdHeight !== 0 ? `${$hdHeight}px` : 240,
         })}
     }
     &.section-visual {

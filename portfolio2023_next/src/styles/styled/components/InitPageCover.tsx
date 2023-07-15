@@ -7,9 +7,6 @@ import { img } from "../preset/img";
 import { transTime } from "../preset/transTime";
 import { flex, font, position, size } from "../preset/mixins";
 
-// util
-import { rem } from "@/util/unit";
-
 export const InitCoverContainer = styled.div`
   ${position({ type: "fixed", left: 0, top: 0, z: 4000 })}
   ${size({ w: "100%", h: "100%" })}
@@ -61,13 +58,13 @@ export const InitCoverTItle = styled.div`
   transition: none;
 
   @media only screen and (min-width: 560px) {
-    font-size: ${rem(24)};
+    ${font({ size: 24 })}
   }
   @media only screen and (min-width: 1024px) {
-    font-size: ${rem(32)};
+    ${font({ size: 32 })}
   }
   @media only screen and (min-width: 1280px) {
-    font-size: ${rem(24)};
+    ${font({ size: 24 })}
   }
 `;
 

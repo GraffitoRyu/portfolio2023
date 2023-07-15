@@ -10,6 +10,7 @@ import {
   SvgFill,
   flex,
   font,
+  maxSize,
   position,
   size,
 } from "@/styles/styled/preset/mixins";
@@ -58,7 +59,7 @@ export const FooterTitle = styled.h2`
 `;
 
 export const FooterTitleLine = styled(PageTitle)`
-  font-size: ${rem(160)};
+  ${font({ size: 160 })}
   &.stroke-title {
     -webkit-text-stroke: ${rem(2)} ${({ theme }) => theme.footer.titleBorder};
   }
@@ -66,13 +67,10 @@ export const FooterTitleLine = styled(PageTitle)`
     color: ${({ theme }) => theme.footer.titleFill};
   }
   @media only screen and (min-width: 560px) {
-    font-size: 80px;
+    ${font({ size: `80px` })}
   }
   @media only screen and (min-width: 1024px) {
-    font-size: ${rem(180)};
-  }
-  @media only screen and (min-width: 1920px) {
-    font-size: ${rem(180)};
+    ${font({ size: 180 })}
   }
 `;
 
@@ -114,16 +112,16 @@ const FooterDescFont = css`
     height: "1em",
   })}
   @media only screen and (min-width: 580px) {
-    font-size: ${rem(18)};
+    ${font({ size: 18 })}
   }
   @media only screen and (min-width: 1024px) {
-    font-size: ${rem(24)};
+    ${font({ size: 24 })}
   }
   @media only screen and (min-width: 1280px) {
-    font-size: ${rem(20)};
+    ${font({ size: 20 })}
   }
   @media only screen and (min-width: 1680px) {
-    font-size: ${rem(16)};
+    ${font({ size: 16 })}
   }
 `;
 
@@ -132,10 +130,10 @@ export const PortfolioDescription = styled.p`
   ${FooterDescFont}
   line-height: 1.5em;
   @media only screen and (min-width: 1280px) {
-    max-width: ${rem(440)};
+    ${maxSize({ w: 440 })}
   }
   @media only screen and (min-width: 1680px) {
-    max-width: ${rem(340)};
+    ${maxSize({ w: 340 })}
   }
 `;
 
@@ -182,7 +180,7 @@ export const FooterMenuItem = styled.dl`
     ${size({ h: 200, mb: 0 })}
   }
   @media only screen and (min-width: 1280px) {
-    height: ${rem(200)};
+    ${size({ h: 200 })}
   }
 `;
 
@@ -264,13 +262,13 @@ export const FooterLinkBtn = styled.a`
     }
   }
   @media only screen and (min-width: 640px) {
-    font-size: 14px;
+    ${font({ size: `14px` })}
   }
   @media only screen and (min-width: 1024px) {
-    font-size: ${rem(32)};
+    ${font({ size: 32 })}
   }
   @media only screen and (min-width: 1280px) {
-    font-size: ${rem(24)};
+    ${font({ size: 24 })}
   }
 `;
 

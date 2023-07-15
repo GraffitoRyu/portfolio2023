@@ -11,14 +11,15 @@ import { img } from "./img";
 import { sizePreset } from "./size";
 
 // util
-import { getUnit, rem } from "@/util/unit";
+import { rem } from "@/util/unit";
 
 export const btnStyle = ({ w, h, r = 0, bw = 2, color }: BtnTypes) => css`
   ${flex({})}
-
-  width: ${typeof w === "undefined" ? getUnit(h) : getUnit(w)};
-  height: ${getUnit(h)};
-  border-radius: ${getUnit(r)};
+  ${size({
+    w: typeof w === "undefined" ? h : w,
+    h,
+    r,
+  })}
 
   ${color ? colorSet(color) : ""}
   border:${rem(bw)} solid ${color ?? "transparent"};
@@ -47,7 +48,7 @@ export const CommonBtn = styled.button`
     }
   }
 
-  &.w-auto {
+  &.text-type {
     ${size({ w: "auto", p: [0, 32] })}
     span {
       ${font({
@@ -69,7 +70,7 @@ export const CommonBtn = styled.button`
       r: 8,
     })}
 
-    &:not(.w-auto) {
+    &:not(.text-type) {
       ${size({
         w: sizePreset.btn.w768_landscape,
       })}
@@ -82,7 +83,7 @@ export const CommonBtn = styled.button`
       })}
     }
 
-    &.w-auto {
+    &.text-type {
       ${size({ p: [0, 16] })}
       span {
         ${font({ size: 16 })}
@@ -93,7 +94,7 @@ export const CommonBtn = styled.button`
   @media only screen and (min-width: 768px) {
     ${size({ h: sizePreset.btn.w768, r: 8 })}
 
-    &:not(.w-auto) {
+    &:not(.text-type) {
       ${size({ w: sizePreset.btn.w768 })}
     }
 
@@ -101,7 +102,7 @@ export const CommonBtn = styled.button`
       ${size({ w: sizePreset.icon.w768, h: sizePreset.icon.w768 })}
     }
 
-    &.w-auto {
+    &.text-type {
       ${size({ p: [0, 16] })}
       span {
         ${font({ size: 16 })}
@@ -111,7 +112,7 @@ export const CommonBtn = styled.button`
   @media only screen and (min-width: 1024px) {
     ${size({ h: sizePreset.btn.w1024 })}
 
-    &:not(.w-auto) {
+    &:not(.text-type) {
       ${size({ w: sizePreset.btn.w1024 })}
     }
 
@@ -119,7 +120,7 @@ export const CommonBtn = styled.button`
       ${size({ w: sizePreset.icon.w1024, h: sizePreset.icon.w1024 })}
     }
 
-    &.w-auto {
+    &.text-type {
       ${size({ p: [0, 24] })}
       span {
         ${font({ size: 24 })}
@@ -129,7 +130,7 @@ export const CommonBtn = styled.button`
   @media only screen and (min-width: 1280px) {
     ${size({ h: sizePreset.btn.w1280 })}
 
-    &:not(.w-auto) {
+    &:not(.text-type) {
       ${size({ w: sizePreset.btn.w1280 })}
     }
 
@@ -140,7 +141,7 @@ export const CommonBtn = styled.button`
   @media only screen and (min-width: 1440px) {
     ${size({ h: sizePreset.btn.w1440 })}
 
-    &:not(.w-auto) {
+    &:not(.text-type) {
       ${size({ w: sizePreset.btn.w1440 })}
     }
 
@@ -148,7 +149,7 @@ export const CommonBtn = styled.button`
       ${size({ w: sizePreset.icon.w1440, h: sizePreset.icon.w1440 })}
     }
 
-    &.w-auto {
+    &.text-type {
       ${size({ p: [0, 16] })}
       span {
         ${font({ size: 16 })}

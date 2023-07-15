@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { gsap } from "gsap/dist/gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // components
 import StackLevelGauge from "./StackLevel";
@@ -23,6 +21,9 @@ import { ScrollRefStateTypes } from "@/types/state";
 // state
 import { scrollRefState } from "@/states/scroll";
 
+// util
+import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+
 export default function StackRow({
   title,
   data,
@@ -40,12 +41,14 @@ export default function StackRow({
 
   const [stackHide, setStackHide] = useState<string>("hide");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (stackTimer.current) {
       clearTimeout(stackTimer.current);
       stackTimer.current = null;
       setStackHide("hide");
     }
+
+    if (typeof window === "undefined") return;
 
     if (!scrollContainer) return;
 
@@ -54,47 +57,52 @@ export default function StackRow({
     const stacks = stacksRef.current;
     if (!trigger || !category || !stacks) return;
 
-    const ctx = gsap.context(() => {
-      // Scroll Trigger 플러그인 사용 시작
-      gsap.registerPlugin(ScrollTrigger);
+    const scrollTrigger = {
+      trigger,
+      start: `top 80%`,
+      end: `top 50%`,
+      scrub: true,
+    };
 
-      // 스크롤 영역 설정
-      ScrollTrigger.defaults({
-        scroller: scrollContainer,
-        invalidateOnRefresh: true,
-      });
-
-      const scrollTrigger = {
-        trigger,
-        start: `top 80%`,
-        end: `top 50%`,
-        scrub: true,
-      };
-
-      const timeline = gsap.timeline();
-      timeline.to(category, {
-        opacity: 1,
-        scrollTrigger,
-      });
-      timeline.to(stacks, {
-        opacity: 1,
-        scrollTrigger: Object.assign(scrollTrigger, {
-          onEnter: () => {
-            if (stackTimer.current) {
-              clearTimeout(stackTimer.current);
-              stackTimer.current = null;
-              setStackHide("hide");
-            }
-            setStackHide("");
-          },
-          onLeaveBack: () => {
-            setStackHide("hide-back");
-            stackTimer.current = setTimeout(() => {
-              setStackHide("hide");
-            }, 400);
-          },
-        }),
-      });
+    const ctx = ctxScrollTrigger({
+      container: scrollContainer,
+      timeline: true,
+      tweenArr: [
+        {
+          target: category,
+          options: [
+            {
+              opacity: 1,
+              scrollTrigger,
+            },
+          ],
+        },
+        {
+          target: stacks,
+          options: [
+            {
+              opacity: 1,
+              scrollTrigger: {
+                ...scrollTrigger,
+                onEnter: () => {
+                  if (stackTimer.current) {
+                    clearTimeout(stackTimer.current);
+                    stackTimer.current = null;
+                    setStackHide("hide");
+                  }
+                  setStackHide("");
+                },
+                onLeaveBack: () => {
+                  setStackHide("hide-back");
+                  stackTimer.current = setTimeout(() => {
+                    setStackHide("hide");
+                  }, 400);
+                },
+              },
+            },
+          ],
+        },
+      ],
     });
 
     return () => ctx.revert();

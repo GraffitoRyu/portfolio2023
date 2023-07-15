@@ -8,5 +8,6 @@ export type HookScrollTriggerProps = {
   normalize?: boolean;
   timeline?: boolean;
   matchMediaOptions?: object;
-  tweenArr: CustomTweenType[];
+  tweenArr?: CustomTweenType[];
+  create?: object;
 };

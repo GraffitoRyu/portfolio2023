@@ -3,11 +3,11 @@
 import { ReactNode, useCallback } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-// types
-import { ScreenSizeTypes, ScrollRefStateTypes } from "@/types/state";
-
 // style components
 import { StyledScrollContainer } from "@/styles/styled/components/Page";
+
+// types
+import { ScreenSizeTypes, ScrollRefStateTypes } from "@/types/state";
 
 // style
 import { scrollRefState } from "@/states/scroll";

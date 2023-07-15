@@ -6,10 +6,12 @@ import { css } from "styled-components";
 import { ImageTypes } from "@/types/preset";
 
 // util
-import { getUnit } from "@/util/unit";
+import { size } from "./mixins";
 
 export const img = ({ w, h, fit }: ImageTypes) => css`
-  width: ${typeof w !== "undefined" ? getUnit(w) : "100%"};
-  height: ${typeof h !== "undefined" ? getUnit(h) : "100%"};
+  ${size({
+    w: typeof w !== "undefined" ? w : "100%",
+    h: typeof h !== "undefined" ? h : "100%",
+  })}
   object-fit: ${fit ?? "contain"};
 `;

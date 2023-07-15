@@ -5,9 +5,9 @@ import { DeviceTypes } from "@/types/state";
 export const deviceState = atom<DeviceTypes>({
   key: "deviceState",
   default: {
-    apple: checkDevice.apple(),
-    mobile: checkDevice.mobile(),
-    tablet: checkDevice.tablet(),
-    orientation: checkDevice.orientation(),
+    apple: checkDevice.apple(), // iOS, iPadOS, MacOS
+    mobile: checkDevice.mobile(), // mobile & tablet
+    tablet: checkDevice.tablet(), // tablet only
+    orientation: checkDevice.orientation(), // portrait | landscape
   },
 });
