@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
+// components
+import LoadingIconComponent from "../loading/LoadingIcon";
+
 // style components
 import {
   TransBox,
@@ -58,6 +61,7 @@ export default function TransCover() {
     <TransitionCover className={`transCover ${loading}`}>
       <TransBox className="transCoverBox" $wh={windowHeight}>
         <TransTitle>{data.title}</TransTitle>
+        <LoadingIconComponent />
       </TransBox>
     </TransitionCover>
   );

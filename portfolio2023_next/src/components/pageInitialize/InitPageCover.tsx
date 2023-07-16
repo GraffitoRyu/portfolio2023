@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 // components
-import InitIcon from "./InitCoverIcon";
+import LoadingIconComponent from "../loading/LoadingIcon";
 import InitTitle from "./InitCoverTitle";
 
 // style components
@@ -18,10 +18,10 @@ import { ScreenSizeTypes, pageStateTypes } from "@/types/state";
 
 // state
 import { pageState } from "@/states/page";
+import { screenSizeState } from "@/states/screen";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
-import { screenSizeState } from "@/states/screen";
 
 export default function InitPageCover() {
   const [initializing, setInit] = useState<string>("");
@@ -56,7 +56,7 @@ export default function InitPageCover() {
     <InitCoverContainer className={`${initializing} ${show}`}>
       <InitCoverBox $wh={windowHeight}>
         <InitTitle />
-        <InitIcon />
+        <LoadingIconComponent />
       </InitCoverBox>
     </InitCoverContainer>
   );

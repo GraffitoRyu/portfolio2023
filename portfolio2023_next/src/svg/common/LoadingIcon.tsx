@@ -1,6 +1,6 @@
 import { ForwardedRef, forwardRef } from "react";
 
-function InitLoadingIcon(
+function LoadingIcon(
   { className }: { className?: string },
   ref: ForwardedRef<SVGSVGElement>
 ) {
@@ -17,4 +17,4 @@ function InitLoadingIcon(
   );
 }
 
-export default forwardRef(InitLoadingIcon);
+export default forwardRef(LoadingIcon);

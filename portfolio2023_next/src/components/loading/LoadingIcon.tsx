@@ -5,12 +5,12 @@ import { useRecoilValue } from "recoil";
 
 // style components
 import {
-  InitIconContainer,
-  InitIconFigure,
-} from "@/styles/styled/components/InitPageCover";
+  LoadingIconContainer,
+  LoadingIconFigure,
+} from "@/styles/styled/components/LoadingIcon";
 
 // svg components
-import InitLoadingIcon from "@/svg/common/InitLoadingIcon";
+import LoadingIcon from "@/svg/common/LoadingIcon";
 
 // types
 import { pageState } from "@/states/page";
@@ -18,7 +18,7 @@ import { pageState } from "@/states/page";
 // state
 import { pageStateTypes } from "@/types/state";
 
-export default function InitIcon() {
+export default function LoadingIconComponent() {
   const page = useRecoilValue<pageStateTypes>(pageState);
   const [loading, setLoading] = useState<string>("loading");
 
@@ -27,10 +27,10 @@ export default function InitIcon() {
   }, [page.init]);
 
   return (
-    <InitIconContainer className={`${loading}`}>
-      <InitIconFigure className="loading-icon">
-        <InitLoadingIcon />
-      </InitIconFigure>
-    </InitIconContainer>
+    <LoadingIconContainer className={`${loading}`}>
+      <LoadingIconFigure className="loading-icon">
+        <LoadingIcon />
+      </LoadingIconFigure>
+    </LoadingIconContainer>
   );
 }
