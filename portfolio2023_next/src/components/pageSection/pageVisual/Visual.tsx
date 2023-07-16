@@ -53,8 +53,13 @@ export default function PageVisual({ title }: { title: string[] }) {
     const visualEl = visualRef.current;
     if (!visualEl) return;
 
-    const triggerStart = headerHeight + scrollTarget.offsetTop;
-    const targetEnd = headerHeight + visualEl.offsetHeight;
+    const triggerStart =
+      (windowWidth < 1024 ? 0 : headerHeight) + scrollTarget.offsetTop;
+    const targetEnd =
+      windowWidth < 1024
+        ? scrollTarget.offsetHeight
+        : headerHeight + visualEl.offsetHeight;
+    const triggerEnd = windowWidth < 1024 ? headerHeight : "center";
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -68,7 +73,7 @@ export default function PageVisual({ title }: { title: string[] }) {
       scrollTrigger: {
         trigger: scrollTarget,
         start: `top ${triggerStart}`, // target, viewport
-        end: `${targetEnd} center`, // target, viewport
+        end: `${targetEnd} ${triggerEnd}`, // target, viewport
         scrub: true, // 스크롤 위치에 따라 실시간으로 대응하여 변하도록 설정
         invalidateOnRefresh: true,
         // markers: true, // 개발용 가이드라인
@@ -113,7 +118,8 @@ export default function PageVisual({ title }: { title: string[] }) {
       $hdHeight={headerHeight}
     >
       <VisualTitle ref={visualTitleRef} className={`${loaded} ${fixed}`}>
-        <VisualTitleLine className="visual-title stroke-title">
+        <VisualTitleLine className="visual-title filled-title">
+          {/* <VisualTitleLine className="visual-title stroke-title"> */}
           {title[0]}
         </VisualTitleLine>
         <VisualTitleLine className="visual-title filled-title">

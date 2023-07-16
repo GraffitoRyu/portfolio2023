@@ -2,8 +2,8 @@ import { ExpModeTypes } from "@/types/colors/profile";
 
 export const experience: ExpModeTypes = {
   light: {
-    title: "#5a5a5a",
-    desc: "#a0a0a0",
+    title: "#3a3a3a",
+    desc: "#707070",
   },
   dark: {
     title: "#dfdfdf",

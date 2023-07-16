@@ -63,7 +63,10 @@ export const TimerContainer = styled.div`
     height: "1em",
     weight: 500,
   })}
-  @media only screen and (min-width:1024px) {
+  time {
+    ${font({ spacing: 0 })}
+  }
+  @media only screen and (min-width: 1024px) {
     height: 100%;
   }
 `;

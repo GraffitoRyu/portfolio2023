@@ -118,6 +118,9 @@ export const IntroTitle = styled.h2`
     font-weight: 500;
   }
   ${introFadeInUp}
+  @media only screen and (min-width:768px) {
+    ${size({ mb: 80 })}
+  }
   @media only screen and (min-width: 1024px) {
     ${font({
       size: 64,

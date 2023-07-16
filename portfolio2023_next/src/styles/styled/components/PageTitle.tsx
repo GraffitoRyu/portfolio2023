@@ -16,6 +16,7 @@ export const PageTitle = styled.span`
     font-family: var(--serif-kr);
   }
   &.filled-title {
-    font-weight: 700;
+    font-weight: 600;
+    font-family: var(--serif-kr);
   }
 `;

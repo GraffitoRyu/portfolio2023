@@ -9,7 +9,7 @@ import SectionContents from "@/components/pageSection/Contents";
 import Career from "@/components/profile/career/Career";
 import Experience from "@/components/profile/experience/Experience";
 import TechStacks from "@/components/profile/techStacks/Stacks";
-import StackLegend from "@/components/profile/techStacks/StackLegend";
+// import StackLegend from "@/components/profile/techStacks/StackLegend";
 
 export default function Profile() {
   return (
@@ -78,7 +78,7 @@ export default function Profile() {
         />
         <SectionContents
           sectionClassName="stacks"
-          sideContents={<StackLegend />}
+          // sideContents={<StackLegend />}
         >
           <TechStacks />
         </SectionContents>

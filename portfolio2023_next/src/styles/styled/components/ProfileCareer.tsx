@@ -11,7 +11,10 @@ import { transTime } from "../preset/transTime";
 import { easing } from "../preset/easing";
 
 export const CareerContainerList = styled.ul`
-  width: 100%;
+  ${size({ w: `calc(100% + ${rem(160)})`, m: [0, -80] })}
+  @media only screen and (min-width: 768px) {
+    ${size({ w: "!00%" })}
+  }
 `;
 
 export const CareerItemContainer = styled.li`
@@ -50,12 +53,25 @@ export const CareerBorder = styled.div`
 
 const careerSummaryCell = (col: number) => css`
   ${flex({ std: "flex-start" })}
-  ${size({ w: `${widthRatio(7, col)}%`, h: "100%", p: [0, 20] })}
+  ${size({ w: `${widthRatio(12, col)}%`, h: "100%", p: [0, 20] })}
+  @media only screen and (min-width:768px) {
+    ${size({ w: `${widthRatio(7, col)}%` })}
+  }
 `;
 
 const careerFont = css`
   ${font({
-    size: 24,
+    size: 32,
+    weight: 400,
+    height: "1em",
+  })}
+  @media only screen and (min-width:768px) {
+    ${font({ size: 24 })}
+  }
+`;
+const careerSummaryFont = css`
+  ${font({
+    size: 32,
     weight: 400,
     height: "1em",
   })}
@@ -78,39 +94,53 @@ const summaryTransition = css`
 `;
 
 export const CareerPeriod = styled.time`
-  ${careerSummaryCell(1)}
-  ${careerFont}
+  ${careerSummaryCell(2)}
+  ${careerSummaryFont}
   color:${({ theme }) => theme.career.period};
   ${fadeInUp_after}
   ${summaryTransition}
   ${CareerItemContainer}.hide & {
     ${fadeInUp_before}
   }
+  @media only screen and (min-width: 768px) {
+    ${careerSummaryCell(1)}
+  }
 `;
 
 export const CareerRole = styled.h3`
-  ${careerSummaryCell(2)}
+  ${careerSummaryCell(4)}
   color: ${({ theme }) => theme.career.role};
+  ${careerSummaryFont}
+  ${font({ weight: 500 })}
   ${fadeInUp_after}
   ${summaryTransition}
   ${CareerItemContainer}.hide & {
     ${fadeInUp_before}
   }
+  @media only screen and (min-width: 768px) {
+    ${careerSummaryCell(2)}
+  }
 `;
 
 export const CareerCompany = styled.div`
-  ${careerSummaryCell(2)}
-  ${careerFont}
+  ${careerSummaryCell(3)}
+  ${careerSummaryFont}
+  span {
+    ${font({ spacing: `-0.02em` })}
+  }
   color: ${({ theme }) => theme.career.company};
   ${fadeInUp_after}
   ${summaryTransition}
   ${CareerItemContainer}.hide & {
     ${fadeInUp_before}
   }
+  @media only screen and (min-width: 768px) {
+    ${careerSummaryCell(2)}
+  }
 `;
 
 export const CareerExpandCell = styled.div`
-  ${careerSummaryCell(1)}
+  ${size({ w: "auto", m: [0, 40, 0, "auto"] })}
   justify-content:center;
   font-size: 0;
   position: relative;
@@ -118,6 +148,10 @@ export const CareerExpandCell = styled.div`
   ${summaryTransition}
   ${CareerItemContainer}.hide & {
     ${fadeInUp_before}
+  }
+  @media only screen and (min-width: 1024px) {
+    ${size({ m: 0 })}
+    ${careerSummaryCell(1)}
   }
 `;
 
@@ -146,52 +180,67 @@ export const CareerExpandIcon = styled.figure`
 `;
 
 export const CareerDetailContainer = styled.div`
-  ${size({ w: "100%", h: 0, p: [0, 20, 0, `${widthRatio(7, 2)}%`] })}
+  ${size({ w: "100%", h: 0, p: [0, 80] })}
   background-color: ${({ theme }) => theme.career.expandBg};
   overflow: clip;
   transition: height 0.4s;
+  @media only screen and (min-width: 1024px) {
+    ${size({ p: [0, 20, 0, `${widthRatio(7, 2)}%`] })}
+  }
 `;
 
 export const CareerDetailList = styled.div`
-  ${size({ w: "100%", p: [40, 0, 80, 10] })}
+  ${size({ w: "100%", p: [80, 0] })}
   opacity:0;
   transition: opacity 0.4s;
+  @media only screen and (min-width: 1024px) {
+    ${size({ p: [40, 0, 80, 10] })}
+  }
 `;
 
 export const CareerDetailItem = styled.dl`
-  ${size({ w: "100%", mb: 40 })}
+  ${size({ w: "100%", mb: 80 })}
   &:last-child {
     ${size({ mb: 0 })}
+  }
+  @media only screen and (min-width: 768px) {
+    ${size({ mb: 40 })}
   }
 `;
 
 export const CareerDetailItemTitle = styled.dt`
   ${careerFont}
   font-weight:500;
-  ${size({ mb: 10 })}
+  ${size({ mb: 24 })}
   color:${({ theme }) => theme.career.detailTitle};
 `;
 
 export const CareerDetailItemDesc = styled.dd`
   ${flex({ start: true })}
   ${careerFont}
-  line-height:1.6em;
+  ${font({ height: "1.6em" })}
   color: ${({ theme }) => theme.career.detailContents};
 
   &:before {
     content: "\\00B7";
     ${flex({ std: "flex-start" })}
-    ${size({ w: 20, h: 40 })}
+    ${size({ w: 20, h: 54 })}
     line-height:1em;
   }
   span {
     flex: 1;
+    ${font({ spacing: 0 })}
+  }
+  @media only screen and (min-width: 768px) {
+    &:before {
+      ${size({ h: 40 })}
+    }
   }
 `;
 
 export const CareerSummaryContainer = styled.summary`
-  ${size({ w: `calc(100% + ${rem(40)})`, h: 120, m: [0, -20] })}
-  ${flex({ std: "flex-start" })}
+  ${size({ w: `100%`, h: "auto", p: [64, 60] })}
+  ${flex({ std: "flex-start", wrap: "wrap" })}
   ${position({ type: "relative", z: 10 })}
   cursor:pointer;
   &:before {
@@ -219,6 +268,10 @@ export const CareerSummaryContainer = styled.summary`
         background-color: ${({ theme }) => theme.career.iconHover};
       }
     }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    ${size({ w: `calc(100% + ${rem(40)})`, h: 160, m: [0, -20], p: 0 })}
   }
 `;
 

@@ -87,6 +87,7 @@ export const ExpDesc = styled.dd`
   span {
     flex: 1;
     word-break: keep-all;
+    letter-spacing: -0.01em;
   }
   @media only screen and (min-width: 1024px) {
     ${font({ size: 24, height: "1.6em" })}

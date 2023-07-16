@@ -1,7 +1,7 @@
 "use client";
 
 import { SyntheticEvent, useCallback, useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import {
   CareerCompany,
@@ -14,10 +14,11 @@ import {
 
 // types
 import { CareerSummaryTypes } from "@/types/profile";
-import { ScrollRefStateTypes } from "@/types/state";
+import { ScreenSizeTypes, ScrollRefStateTypes } from "@/types/state";
 
 // state
 import { scrollRefState } from "@/states/scroll";
+import { screenSizeState } from "@/states/screen";
 
 interface CareerSummaryProps extends CareerSummaryTypes {
   code: string;
@@ -29,6 +30,7 @@ export default function CareerSummary({
   role,
   company,
 }: CareerSummaryProps) {
+  const { windowWidth } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
   const [{ careerItems, careerOpen }, setScrollRef] =
     useRecoilState<ScrollRefStateTypes>(scrollRefState);
 
@@ -87,10 +89,10 @@ export default function CareerSummary({
       onMouseLeave={() => setHover("")}
     >
       <CareerPeriod>
-        <span>{convertPeriod(period[0])}</span>
+        <span>{convertPeriod(period[0]).slice(windowWidth < 768 ? 2 : 0)}</span>
       </CareerPeriod>
       <CareerPeriod>
-        <span>{convertPeriod(period[1])}</span>
+        <span>{convertPeriod(period[1]).slice(windowWidth < 768 ? 2 : 0)}</span>
       </CareerPeriod>
       <CareerRole>
         <span>{role}</span>

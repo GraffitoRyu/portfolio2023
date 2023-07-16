@@ -5,7 +5,7 @@ export const transTime = {
     coverUp: 1200, // initCover 또는 transCover 슬라이드 시간
     loadComplete: 400, // initCover 또는 transCover 비활성화 완료 처리
   },
-  color: 400,
+  color: 200,
   visual: {
     fadeInUp: 800,
     intro: 800,

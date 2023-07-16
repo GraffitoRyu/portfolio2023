@@ -284,7 +284,7 @@ export const ProjectOpenIcon = styled.figure`
   svg {
     ${img({})}
   }
-  ${SvgFill("#fff")}
+  ${({ theme }) => SvgFill(theme.projectList.slideTitle)}
   @media only screen and (min-width:1024px) {
     ${size({ w: 120, h: 120 })}
   }

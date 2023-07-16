@@ -3,11 +3,11 @@ import { ModeTypes } from "@/types/colors/pageHeader";
 
 export const timer: ModeTypes = {
   light: {
-    bar: "#707070",
-    text: "#909090",
+    bar: "#bfbfbf",
+    text: "#bfbfbf",
   },
   dark: {
-    bar: "#909090",
-    text: "#909090",
+    bar: "#5a5a5a",
+    text: "#5a5a5a",
   },
 };
