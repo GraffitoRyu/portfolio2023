@@ -1,31 +1,40 @@
-import {
-  DM_Serif_Display,
-  Noto_Sans_KR,
-  Noto_Serif_KR,
-} from "next/font/google";
+import { DM_Serif_Display, Noto_Sans_KR } from "next/font/google";
 
-export const sans = Noto_Sans_KR({
+const sans = Noto_Sans_KR({
   weight: ["300", "400", "500", "700", "900"],
   subsets: ["latin"],
   variable: "--sans-kr",
   display: "swap",
-  adjustFontFallback: false,
+  fallback: [
+    "-apple-system",
+    "BlinkMacSystemFont",
+    "Apple SD Gothic Neo",
+    "Segoe UI",
+    "Roboto",
+    "Helvetica",
+    "Helvetica Neue",
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "맑은 고딕",
+    "Malgun Gothic",
+    "돋움",
+    "dotum",
+    "Oxygen",
+    "Oxygen-Sans",
+    "Ubuntu",
+    "Cantarell",
+    "sans-serif",
+  ],
 });
 
-export const serif = Noto_Serif_KR({
-  weight: ["400", "500", "700"],
-  subsets: ["latin"],
-  preload: true,
-  variable: "--serif-kr",
-  display: "swap",
-  adjustFontFallback: false,
-});
-
-export const serif_dm = DM_Serif_Display({
+const serif_dm = DM_Serif_Display({
   weight: ["400"],
-  style: "italic",
+  style: ["normal", "italic"],
   subsets: ["latin"],
   variable: "--serif-dm",
   display: "swap",
   adjustFontFallback: false,
 });
+
+export { sans, serif_dm };
