@@ -8,33 +8,23 @@ import { flex, font, position, size } from "../preset/mixins";
 // util
 import { rem, widthRatio } from "@/util/unit";
 
-export const PageSectionContainer = styled.section<{
-  $wh: number;
-  $hdHeight: number;
-}>`
+export const PageSectionContainer = styled.section`
   transition: none;
   ${size({ w: "100%" })}
   &.side-h-padding {
     ${size({ pl: 80, pr: 80 })}
   }
   &.side-v-padding {
-    ${({ $wh }) =>
-      size({
-        pt: $wh !== 0 ? `${$wh / 4}px` : "25vh",
-        pb: $wh !== 0 ? `${$wh / 4}px` : "25vh",
-      })}
+    ${size({ pt: `calc(var(--wh) / 4)`, pb: `calc(var(--wh) / 4)` })}
   }
   &.section-visual {
-    ${({ $wh, $hdHeight }) =>
-      size({
-        h: $wh !== 0 && $hdHeight !== 0 ? `${$wh - $hdHeight}px` : "100vh",
-      })}
+    ${size({ h: `calc(var(--wh) - var(--header-height))` })}
     .section-header {
       display: none;
     }
   }
   &:not(.section-visual) {
-    min-height: ${({ $wh }) => ($wh !== 0 ? `${$wh}px` : "100vh")};
+    min-height: var(--wh);
     ${flex({ dir: "column", cross: "flex-start" })};
   }
 
@@ -45,10 +35,7 @@ export const PageSectionContainer = styled.section<{
 
   @media only screen and (min-width: 1024px) {
     &.side-v-padding {
-      ${({ $hdHeight }) =>
-        size({
-          pt: $hdHeight !== 0 ? `${$hdHeight}px` : 240,
-        })}
+      ${size({ pt: `var(--header-height)` })}
     }
     &.section-visual {
       height: auto;
@@ -121,15 +108,11 @@ export const Contents = styled.div`
   }
 `;
 
-export const SideContents = styled.aside<{ $hdHeight: number }>`
+export const SideContents = styled.aside`
   width: 100%;
   min-height: 1px;
   @media only screen and (min-width: 1024px) {
-    ${({ $hdHeight }) =>
-      position({
-        type: "sticky",
-        top: $hdHeight !== 0 ? `${$hdHeight}px` : 240,
-      })}
+    ${position({ type: "sticky", top: `var(--header-height)` })}
     flex:1;
     ${size({ p: [0, 20] })}
     &.intro {

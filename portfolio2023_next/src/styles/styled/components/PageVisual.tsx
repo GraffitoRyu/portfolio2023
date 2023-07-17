@@ -10,24 +10,11 @@ import { flex, font, size, transition } from "../preset/mixins";
 import { easing } from "../preset/easing";
 import { transTime } from "../preset/transTime";
 
-// util
-import { rem } from "@/util/unit";
-
-export const VisualContainer = styled.div<{
-  $wh: number;
-  $hdHeight: number;
-}>`
+export const VisualContainer = styled.div`
   ${flex({ dir: "column", cross: "flex-start" })}
   height: 50%;
   @media only screen and (min-width: 1024px) {
-    ${({ $wh, $hdHeight }) =>
-      size({
-        w: "100%",
-        h:
-          $wh !== 0 && $hdHeight !== 0
-            ? `${$wh - $hdHeight}px`
-            : `calc(100vh - ${rem(240)})`,
-      })}
+    ${size({ w: "100%", h: `calc(var(--wh) - var(--header-height))` })}
   }
 `;
 

@@ -20,14 +20,9 @@ import { transTime } from "../preset/transTime";
 // util
 import { rem, widthRatio } from "@/util/unit";
 
-export const FooterContainer = styled.footer<{ $wh: number }>`
+export const FooterContainer = styled.footer`
   ${position({ type: "relative", z: 600 })}
-  ${({ $wh }) =>
-    size({
-      w: "100%",
-      h: $wh !== 0 ? `${$wh}px` : "100vh",
-      p: 80,
-    })}
+  ${size({ w: "100%", h: `var(--vh)`, p: 80 })}
   background-color: ${({ theme }) => theme.footer.bg};
   overflow: hidden;
   @media only screen and (min-width: 1024px) {

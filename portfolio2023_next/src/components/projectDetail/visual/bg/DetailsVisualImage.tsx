@@ -16,11 +16,9 @@ import {
 import {
   DetailLayoutStateTypes,
   DetailScrollRefStateTypes,
-  ScreenSizeTypes,
 } from "@/types/state";
 
 // state
-import { screenSizeState } from "@/states/screen";
 import { detailLayoutState } from "@/states/detail";
 import { detailScrollRefState } from "@/states/scroll";
 
@@ -29,7 +27,6 @@ import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function DetailVisualImage() {
   const { category } = useParams();
-  const { windowHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
   const { open } = useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
 
   const triggerRef = useRef<HTMLDivElement | null>(null);
@@ -90,7 +87,7 @@ export default function DetailVisualImage() {
   }, [scrollContainer, scrollHeight, open]);
 
   return (
-    <PDVisualImageContainer ref={triggerRef} $wh={windowHeight}>
+    <PDVisualImageContainer ref={triggerRef}>
       {category ? (
         <PDVisualImage ref={imgRef}>
           <Image

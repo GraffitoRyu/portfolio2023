@@ -21,11 +21,21 @@ export default function UpdateStateByResize() {
 
   // resize update
   const resizeCallback = debounce(() => {
+    if (typeof window === "undefined") return;
+
     const sectionPadding = remToPx(80);
     const columnPadding = remToPx(20);
     // 접속 디바이스 업데이트
     setDevice(checkDeviceState());
     // 화면 사이즈 값 업데이트
+    document.documentElement.style.setProperty(
+      `--vw`,
+      `${window.innerWidth}px`
+    );
+    document.documentElement.style.setProperty(
+      `--vh`,
+      `${window.innerHeight}px`
+    );
     setScreen(prev => ({
       ...prev,
       windowWidth: window.innerWidth,

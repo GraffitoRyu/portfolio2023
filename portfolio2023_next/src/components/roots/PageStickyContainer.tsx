@@ -33,6 +33,12 @@ export default function PageStickyContainer({
     const ob = new ResizeObserver(
       debounce((entries: ResizeObserverEntry[]) => {
         const ctx = entries?.[0]?.contentRect;
+
+        document.documentElement.style.setProperty(
+          `--sticky-height`,
+          `${ctx ? ctx.height : 0}px`
+        );
+
         setScrollRef(prev => ({ ...prev, stickyHeight: ctx ? ctx.height : 0 }));
       }, 400)
     );

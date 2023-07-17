@@ -1,17 +1,16 @@
 "use client";
 
 import { ReactNode, useCallback } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 // style components
 import { PageSectionContainer } from "@/styles/styled/components/PageSection";
 
 // state
 import { scrollRefState } from "@/states/scroll";
-import { screenSizeState } from "@/states/screen";
 
 // types
-import { ScreenSizeTypes, ScrollRefStateTypes } from "@/types/state";
+import { ScrollRefStateTypes } from "@/types/state";
 
 export default function PageSection({
   page,
@@ -24,8 +23,6 @@ export default function PageSection({
   children: ReactNode;
   className?: string;
 }) {
-  const { windowHeight, headerHeight } =
-    useRecoilValue<ScreenSizeTypes>(screenSizeState);
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
 
   const updateScrollRef = useCallback(
@@ -41,8 +38,6 @@ export default function PageSection({
       className={`section-${page} section-${code} ${
         className ? className : ""
       }`}
-      $wh={windowHeight}
-      $hdHeight={headerHeight}
       ref={updateScrollRef}
     >
       {children}

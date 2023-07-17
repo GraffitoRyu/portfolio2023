@@ -1,7 +1,7 @@
 "use client";
 
-import { ReactNode, useCallback, useEffect, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { ReactNode, useCallback } from "react";
+import { useSetRecoilState } from "recoil";
 
 // style components
 import {
@@ -12,10 +12,9 @@ import {
 
 // state
 import { scrollRefState } from "@/states/scroll";
-import { screenSizeState } from "@/states/screen";
 
 // type
-import { ScreenSizeTypes, ScrollRefStateTypes } from "@/types/state";
+import { ScrollRefStateTypes } from "@/types/state";
 
 export default function SectionContents({
   code,
@@ -30,9 +29,6 @@ export default function SectionContents({
   sectionClassName?: string;
   sideClassName?: string;
 }) {
-  const { headerHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
-  const [hdHeight, setHdHeight] = useState<number>(0);
-
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
 
   const updateScrollRef = useCallback(
@@ -43,14 +39,9 @@ export default function SectionContents({
     [code, setScrollRef]
   );
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    setHdHeight(headerHeight);
-  }, [headerHeight]);
-
   return (
     <Contents className={`${sectionClassName ?? ""}`} ref={updateScrollRef}>
-      <SideContents className={`${sideClassName ?? ""}`} $hdHeight={hdHeight}>
+      <SideContents className={`${sideClassName ?? ""}`}>
         {sideContents ?? null}
       </SideContents>
       <ContentsMain className={`${sideClassName ?? ""}`}>

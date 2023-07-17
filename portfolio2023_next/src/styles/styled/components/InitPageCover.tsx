@@ -20,14 +20,9 @@ export const InitCoverContainer = styled.div`
   }
 `;
 
-export const InitCoverBox = styled.div<{ $wh: number }>`
+export const InitCoverBox = styled.div`
   position: relative;
-  ${({ $wh }) =>
-    size({
-      w: "100%",
-      h: $wh !== 0 ? `${$wh}px` : "100vh",
-      p: [0, 80],
-    })}
+  ${size({ w: "100%", h: `var(--wh)`, p: [0, 80] })}
   ${flex({ dir: "column" })}
 `;
 

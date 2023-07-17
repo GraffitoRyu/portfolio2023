@@ -15,20 +15,17 @@ import {
 
 // state
 import { detailData } from "@/states/detail";
-import { screenSizeState } from "@/states/screen";
 import { detailScrollRefState } from "@/states/scroll";
 
 // type
 import { CustomTweenType } from "@/types/hooks";
 import { DetailTypes } from "@/types/projectDetails";
-import { DetailScrollRefStateTypes, ScreenSizeTypes } from "@/types/state";
+import { DetailScrollRefStateTypes } from "@/types/state";
 
 // util
 import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function DetailExperience() {
-  const { windowHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
-
   const { container: scrollContainer, scrollHeight } =
     useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
@@ -106,7 +103,7 @@ export default function DetailExperience() {
   }, [scrollContainer, scrollHeight]);
 
   return (
-    <PDExpSection className="detail-section-exp" $wh={windowHeight}>
+    <PDExpSection className="detail-section-exp">
       <PDExpContainer>
         <PDExpTitle ref={titleRef}>
           <span>Experience</span>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 
 // components
 import LoadingIconComponent from "../loading/LoadingIcon";
@@ -14,11 +14,10 @@ import {
 } from "@/styles/styled/components/InitPageCover";
 
 // types
-import { ScreenSizeTypes, pageStateTypes } from "@/types/state";
+import { pageStateTypes } from "@/types/state";
 
 // state
 import { pageState } from "@/states/page";
-import { screenSizeState } from "@/states/screen";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
@@ -27,7 +26,6 @@ export default function InitPageCover() {
   const [initializing, setInit] = useState<string>("");
   const [show, setShow] = useState<string>("show");
   const [{ init, loaded }, setPage] = useRecoilState<pageStateTypes>(pageState);
-  const { windowHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -54,7 +52,7 @@ export default function InitPageCover() {
 
   return (
     <InitCoverContainer className={`${initializing} ${show}`}>
-      <InitCoverBox $wh={windowHeight}>
+      <InitCoverBox>
         <InitTitle />
         <LoadingIconComponent />
       </InitCoverBox>

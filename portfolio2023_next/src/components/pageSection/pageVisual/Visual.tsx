@@ -31,7 +31,7 @@ import { screenSizeState } from "@/states/screen";
 import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function PageVisual({ title }: { title: string[] }) {
-  const { windowWidth, windowHeight, headerHeight } =
+  const { windowWidth, headerHeight } =
     useRecoilValue<ScreenSizeTypes>(screenSizeState);
 
   const { container: scrollContainer, stickyHeight } =
@@ -111,11 +111,7 @@ export default function PageVisual({ title }: { title: string[] }) {
   }, [loadComplete]);
 
   return (
-    <VisualContainer
-      ref={visualRef}
-      $wh={windowHeight}
-      $hdHeight={headerHeight}
-    >
+    <VisualContainer ref={visualRef}>
       <VisualTitle ref={visualTitleRef} className={`${loaded} ${fixed}`}>
         <VisualTitleLine className="visual-title stroke-title">
           {title[0]}

@@ -24,15 +24,10 @@ export const TransitionCover = styled.div`
   }
 `;
 
-export const TransBox = styled.div<{ $wh: number }>`
+export const TransBox = styled.div`
   ${position({ top: 0, left: 0 })}
   ${flex({ std: "flex-start" })}
-  ${({ $wh }) =>
-    size({
-      w: "100%",
-      h: $wh !== 0 ? `${$wh}px` : "100vh",
-      p: [0, 80],
-    })}
+  ${size({ w: "100%", h: `var(--wh)`, p: [0, 80] })}
 `;
 
 export const TransTitle = styled.h1`

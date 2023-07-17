@@ -114,7 +114,7 @@ export const PDLinkName = styled.span`
   }
 `;
 
-export const PDSection = styled.section<{ $wh?: number }>`
+export const PDSection = styled.section`
   width: 100%;
   position: relative;
   z-index: 100;
@@ -124,11 +124,7 @@ export const PDSection = styled.section<{ $wh?: number }>`
 `;
 
 export const PDVisualSection = styled(PDSection)`
-  ${({ $wh }) =>
-    size({
-      h: $wh === 0 ? "100vh" : `${$wh}px`,
-      pb: 400,
-    })}
+  ${size({ h: `var(--wh)`, pb: 400 })}
   @media only screen and (min-width:1024px) {
     ${size({ h: "auto", pb: 600 })}
   }
@@ -152,14 +148,9 @@ export const PDMediaSection = styled(PDSection)`
   }
 `;
 
-export const PDVisualViewport = styled.div<{ $wh: number; $hdHeight: number }>`
+export const PDVisualViewport = styled.div`
   ${flex({ dir: "column", std: "flex-end", cross: "flex-start" })}
-  ${({ $wh, $hdHeight }) =>
-    size({
-      w: "100%",
-      h: $wh !== 0 ? `${$wh}px` : `100vh`,
-      p: [$hdHeight !== 0 ? `${$hdHeight}px` : 240, 80, 200],
-    })}
+  ${size({ w: "100%", h: `var(--wh)`, p: [`var(--header-height)`, 80, 200] })}
   @media only screen and (max-width:768px) and (orientation:landscape) {
     ${size({ pb: 80 })}
   }
@@ -175,9 +166,9 @@ export const PDVisualLower = styled.div`
   ${size({ p: [0, 80] })}
 `;
 
-export const PDVisualImageContainer = styled.div<{ $wh: number }>`
+export const PDVisualImageContainer = styled.div`
   ${position({ type: "fixed", top: 0, left: 0, z: -100 })}
-  ${({ $wh }) => size({ w: "100%", h: $wh === 0 ? "100vh" : `${$wh}px` })}
+  ${size({ w: "100%", h: `var(--wh)` })}
   @media only screen and (min-width:1024px) {
     ${size({ h: "100vw" })}
   }

@@ -1,16 +1,15 @@
 "use client";
 
 import { ReactNode, useCallback } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 // style components
 import { PDVisualViewport } from "@/styles/styled/components/ProjectDetail";
 
 // type
-import { DetailScrollRefStateTypes, ScreenSizeTypes } from "@/types/state";
+import { DetailScrollRefStateTypes } from "@/types/state";
 
 // state
-import { screenSizeState } from "@/states/screen";
 import { detailScrollRefState } from "@/states/scroll";
 
 export default function DetailVisualViewport({
@@ -18,8 +17,6 @@ export default function DetailVisualViewport({
 }: {
   children: ReactNode;
 }) {
-  const { windowHeight, detailHeaderHeight } =
-    useRecoilValue<ScreenSizeTypes>(screenSizeState);
   const setScrollRef =
     useSetRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
 
@@ -30,13 +27,5 @@ export default function DetailVisualViewport({
     [setScrollRef]
   );
 
-  return (
-    <PDVisualViewport
-      $wh={windowHeight}
-      $hdHeight={detailHeaderHeight}
-      ref={updateScrollRef}
-    >
-      {children}
-    </PDVisualViewport>
-  );
+  return <PDVisualViewport ref={updateScrollRef}>{children}</PDVisualViewport>;
 }

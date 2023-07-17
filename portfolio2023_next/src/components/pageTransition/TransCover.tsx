@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 
 // components
 import LoadingIconComponent from "../loading/LoadingIcon";
@@ -20,19 +20,17 @@ import { pageState } from "@/states/page";
 import { transCoverData } from "@/data/transCover";
 
 // types
-import { ScreenSizeTypes, pageStateTypes } from "@/types/state";
+import { pageStateTypes } from "@/types/state";
 import { transCoverTypes } from "@/types/transCover";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
-import { screenSizeState } from "@/states/screen";
 
 export default function TransCover() {
   const [{ initComplete, cover, loaded }, setPage] =
     useRecoilState<pageStateTypes>(pageState);
   const [loading, setLoading] = useState("");
   const [data, setData] = useState<transCoverTypes>(transCoverData[cover]);
-  const { windowHeight } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
 
   useEffect(() => {
     setData(transCoverData[cover]);
@@ -59,7 +57,7 @@ export default function TransCover() {
 
   return (
     <TransitionCover className={`transCover ${loading}`}>
-      <TransBox className="transCoverBox" $wh={windowHeight}>
+      <TransBox className="transCoverBox">
         <TransTitle>{data.title}</TransTitle>
         <LoadingIconComponent />
       </TransBox>

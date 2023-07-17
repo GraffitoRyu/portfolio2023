@@ -39,6 +39,11 @@ export default function PageHeader() {
     const header = headerRef?.current;
     if (!header) return;
 
+    document.documentElement.style.setProperty(
+      `--header-height`,
+      `${header.clientHeight}px`
+    );
+
     setScreenSize(prev => ({
       ...prev,
       headerHeight: header.clientHeight,
