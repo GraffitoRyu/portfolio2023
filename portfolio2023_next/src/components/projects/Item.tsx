@@ -93,6 +93,7 @@ export default function ProjectItem({
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
+      normalize: true,
       create: {
         trigger: projectList,
         start: `top bottom`,

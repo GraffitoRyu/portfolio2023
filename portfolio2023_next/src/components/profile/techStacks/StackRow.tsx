@@ -62,6 +62,7 @@ export default function StackRow({
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
+      normalize: true,
       tweenArr: [
         {
           target: category,

@@ -43,6 +43,7 @@ export default function StackLegend() {
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
+      normalize: true,
       tweenArr: [
         {
           target: scrollTarget,

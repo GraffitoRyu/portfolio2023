@@ -114,6 +114,7 @@ export default function CareerItem({
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
+      normalize: true,
       create: {
         trigger: career,
         start: `top bottom`,

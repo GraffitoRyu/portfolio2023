@@ -52,6 +52,7 @@ export default function SectionHeader({
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
+      normalize: true,
       tweenArr: [
         {
           target: titleTarget,

@@ -42,6 +42,7 @@ export default function FooterUpperContainer() {
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
+      normalize: true,
       tweenArr: [
         {
           direction: "from",

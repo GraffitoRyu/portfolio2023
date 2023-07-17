@@ -88,6 +88,7 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
+      normalize: true,
       timeline: true,
       tweenArr: [
         {

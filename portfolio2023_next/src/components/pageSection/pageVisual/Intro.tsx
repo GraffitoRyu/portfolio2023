@@ -95,6 +95,7 @@ export default function PageIntro({ title, desc }: IntroTypes) {
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
+      normalize: true,
       timeline: true,
       tweenArr: [
         { target: titleTarget, options: [{ ...gsapOptions(titleTarget) }] },
