@@ -40,7 +40,7 @@ export default function CareerItem({
   last,
 }: CareerItemProps) {
   const [
-    { container: scrollContainer, stickyHeight, careerOpen },
+    { container: scrollContainer, stickyHeight, careerOpen, career },
     setScrollRef,
   ] = useRecoilState<ScrollRefStateTypes>(scrollRefState);
   const itemRef = useRef<HTMLLIElement | null>(null);
@@ -100,6 +100,25 @@ export default function CareerItem({
         onEnter: () => {
           setHide("");
         },
+      },
+    });
+
+    return () => ctx.revert();
+  }, [scrollContainer, stickyHeight]);
+
+  // 초기화; 섹션이 뷰포트 아래로 내려갔을 때
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
+    if (!scrollContainer || !career) return;
+
+    const ctx = ctxScrollTrigger({
+      container: scrollContainer,
+      create: {
+        trigger: career,
+        start: `top bottom`,
+        end: `top bottom`,
+        // markers: true,
         onLeaveBack: () => {
           setHide("hide");
         },
@@ -107,7 +126,7 @@ export default function CareerItem({
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, stickyHeight]);
+  }, [career, scrollContainer, stickyHeight]);
 
   return (
     <CareerItemContainer className={`${hide}`} ref={itemRef}>

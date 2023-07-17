@@ -71,7 +71,7 @@ export const ListBtnContainer = styled.div`
   overflow: hidden;
   user-select: auto;
   ${transition([{ prop: "background-color", time: "0.4s" }])}
-  ${ProjectItemContainer}.hover & {
+  ${ProjectItemContainer}:not(.hide).hover & {
     background-color: ${({ theme }) => theme.projectList.bgHover};
   }
 `;
@@ -119,7 +119,7 @@ export const ListBtnPeriod = styled(PeriodForward)`
   time:nth-of-type(2) {
     transition-delay: 0.08s;
   }
-  ${ProjectItemContainer}.hover &,
+  ${ProjectItemContainer}:not(.hide).hover &,
   ${ProjectItemContainer}.hide & {
     time {
       transform: translateX(-50%);
@@ -163,7 +163,7 @@ export const ListBtnTitle = styled.h3`
     { prop: "transform", time: "0.4s", easing: easing.quart },
     { prop: "opacity", time: "0.4s", easing: easing.quart },
   ])}
-  ${ProjectItemContainer}.hover &,
+  ${ProjectItemContainer}:not(.hide).hover &,
   ${ProjectItemContainer}.hide & {
     transform: translateY(100%);
     opacity: 0;
@@ -181,7 +181,7 @@ export const ListBtnDesc = styled.p`
     { prop: "transform", time: "0.4s", easing: easing.quart, delay: "0.08s" },
     { prop: "opacity", time: "0.4s", easing: easing.quart, delay: "0.08s" },
   ])}
-  ${ProjectItemContainer}.hover &,
+  ${ProjectItemContainer}:not(.hide).hover &,
   ${ProjectItemContainer}.hide & {
     transform: translateY(100%);
     opacity: 0;
@@ -221,7 +221,7 @@ export const ListBtnRole = styled.li`
   &:nth-child(3) {
     transition-delay: 0.2s;
   }
-  ${ProjectItemContainer}.hover &,
+  ${ProjectItemContainer}:not(.hide).hover &,
   ${ProjectItemContainer}.hide & {
     transform: translateY(100%);
     opacity: 0;
@@ -247,7 +247,7 @@ export const HoverSlideTitle = styled.h3`
     { prop: "transform", time: "0.4s", easing: easing.quart },
     { prop: "opacity", time: "0.4s", easing: easing.quart },
   ])}
-  ${ProjectItemContainer}.hover & {
+  ${ProjectItemContainer}:not(.hide).hover & {
     transform: translateY(-100%);
     opacity: 1;
   }
@@ -288,7 +288,7 @@ export const ProjectOpenIcon = styled.figure`
   @media only screen and (min-width:1024px) {
     ${size({ w: 120, h: 120 })}
   }
-  ${ProjectItemContainer}.hover & {
+  ${ProjectItemContainer}:not(.hide).hover & {
     transform: translate(0, 0);
     opacity: 1;
   }

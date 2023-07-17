@@ -17,7 +17,7 @@ function PeriodTime({ $date }: { $date: string }) {
 }
 
 function Period(
-  { className, $date }: PeriodProps,
+  { className, date }: PeriodProps,
   ref: ForwardedRef<HTMLDivElement>
 ) {
   return (
@@ -25,9 +25,9 @@ function Period(
       className={`period ${className ? className : ""}`}
       ref={ref}
     >
-      <PeriodTime $date={$date?.[0]} />
+      <PeriodTime $date={date[0]} />
       <Bar />
-      <PeriodTime $date={$date?.[1]} />
+      <PeriodTime $date={date[1]} />
     </PeriodContainer>
   );
 }

@@ -30,7 +30,11 @@ export default function Projects() {
         code="projectList"
         className="side-v-padding"
       >
-        <SectionContents sectionClassName="full" sideClassName="full">
+        <SectionContents
+          code="projectList"
+          sectionClassName="full"
+          sideClassName="full"
+        >
           <ProjectList />
         </SectionContents>
       </PageSection>

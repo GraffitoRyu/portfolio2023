@@ -31,23 +31,19 @@ export default function StackRow({
   title: string;
   data: StackTypes[];
 }) {
-  const { container: scrollContainer, stickyHeight } =
-    useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const {
+    container: scrollContainer,
+    stickyHeight,
+    stacks: stackSection,
+  } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
 
   const triggerRef = useRef<HTMLLIElement | null>(null);
   const categoryRef = useRef<HTMLDivElement | null>(null);
   const stacksRef = useRef<HTMLDivElement | null>(null);
-  const stackTimer = useRef<NodeJS.Timeout | null>(null);
 
   const [stackHide, setStackHide] = useState<string>("hide");
 
   useLayoutEffect(() => {
-    if (stackTimer.current) {
-      clearTimeout(stackTimer.current);
-      stackTimer.current = null;
-      setStackHide("hide");
-    }
-
     if (typeof window === "undefined") return;
 
     if (!scrollContainer) return;
@@ -59,14 +55,13 @@ export default function StackRow({
 
     const scrollTrigger = {
       trigger,
-      start: `top 80%`,
-      end: `top 50%`,
+      start: `top 100%`,
+      end: `top 60%`,
       scrub: true,
     };
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
-      timeline: true,
       tweenArr: [
         {
           target: category,
@@ -84,19 +79,8 @@ export default function StackRow({
               opacity: 1,
               scrollTrigger: {
                 ...scrollTrigger,
-                onEnter: () => {
-                  if (stackTimer.current) {
-                    clearTimeout(stackTimer.current);
-                    stackTimer.current = null;
-                    setStackHide("hide");
-                  }
+                onToggle: () => {
                   setStackHide("");
-                },
-                onLeaveBack: () => {
-                  setStackHide("hide-back");
-                  stackTimer.current = setTimeout(() => {
-                    setStackHide("hide");
-                  }, 400);
                 },
               },
             },
@@ -107,6 +91,27 @@ export default function StackRow({
 
     return () => ctx.revert();
   }, [scrollContainer, stickyHeight]);
+
+  // 초기화; 섹션이 뷰포트 아래로 내려갔을 때
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
+    if (!scrollContainer) return;
+
+    const ctx = ctxScrollTrigger({
+      container: scrollContainer,
+      create: {
+        trigger: stackSection,
+        start: `top bottom`,
+        end: `top bottom`,
+        onLeaveBack: () => {
+          setStackHide("hide");
+        },
+      },
+    });
+
+    return () => ctx.revert();
+  }, [scrollContainer, stackSection, stickyHeight]);
 
   return (
     <StackRowContainer ref={triggerRef}>

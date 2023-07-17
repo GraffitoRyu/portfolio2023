@@ -155,6 +155,7 @@ export const StackFigure = styled.figure<{ $index: number }>`
 export const StackList = styled.div`
   ${flex({ std: "flex-start", wrap: "wrap" })}
   ${size({ w: "100%" })}
+  opacity:0;
 
   &.hide {
     ${StackFigure} {

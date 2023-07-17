@@ -14,7 +14,7 @@ import { DetailLayoutStateTypes } from "@/types/state";
 
 export default function ProjectLoadingBar() {
   const [
-    { category, dataStatus, open, openComplete, loading },
+    { clicked, category, dataStatus, open, openComplete, loading },
     setDetailLayout,
   ] = useRecoilState<DetailLayoutStateTypes>(detailLayoutState);
   const [percent, setPercent] = useState<number>(0);
@@ -29,10 +29,11 @@ export default function ProjectLoadingBar() {
 
   useEffect(() => {
     const condition = {
-      category: category ? 25 : 0,
-      loading: dataStatus === "loading" ? 25 : 0,
-      success: dataStatus === "success" ? 50 : 0,
-      open: open ? 25 : 0,
+      click: clicked ? 20 : 0,
+      category: category ? 20 : 0,
+      loading: dataStatus === "loading" ? 20 : 0,
+      success: dataStatus === "success" ? 40 : 0,
+      open: open ? 20 : 0,
     };
 
     const curProgress = Object.values(condition).reduce(
@@ -40,10 +41,15 @@ export default function ProjectLoadingBar() {
       0
     );
     setPercent(curProgress);
-  }, [category, dataStatus, open]);
+  }, [clicked, category, dataStatus, open]);
 
   useEffect(() => {
-    if (openComplete) setDetailLayout(prev => ({ ...prev, loading: false }));
+    if (openComplete) {
+      setDetailLayout(prev => ({ ...prev, loading: false }));
+      setTimeout(() => {
+        setDetailLayout(prev => ({ ...prev, clicked: false }));
+      }, 800);
+    }
   }, [openComplete, setDetailLayout]);
 
   useEffect(() => {

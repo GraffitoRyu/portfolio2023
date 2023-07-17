@@ -43,7 +43,7 @@ export default function Profile() {
           title="Career"
           desc={["지난 5년간 실무 경험을 쌓은 ", "근무 경력입니다."]}
         />
-        <SectionContents sectionClassName="career">
+        <SectionContents code="career" sectionClassName="career">
           <Career />
         </SectionContents>
       </PageSection>
@@ -59,7 +59,7 @@ export default function Profile() {
             "프로젝트에 참여하면서 경험한 것들입니다.",
           ]}
         />
-        <SectionContents sectionClassName="experience">
+        <SectionContents code="experience" sectionClassName="experience">
           <Experience />
         </SectionContents>
       </PageSection>
@@ -77,6 +77,7 @@ export default function Profile() {
           ]}
         />
         <SectionContents
+          code="stacks"
           sectionClassName="stacks"
           // sideContents={<StackLegend />}
         >

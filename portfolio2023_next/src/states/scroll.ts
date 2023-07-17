@@ -8,13 +8,13 @@ export const scrollRefState = atom<ScrollRefStateTypes>({
     container: null, // scroll container
     stickyHeight: 0, // footer를 제외한 스크롤 높이값
     header: null, // page header
-    visual: null, // page visual
-    career: null, // profile career section
+    career: null, // profile career contents
     careerItems: {}, // profile career items
     careerOpen: {}, // profile career 각 아이템 오픈 여부
-    experience: null, // profile experience section
-    stacks: null, // profile tech stacks section
-    projectList: null, // project list section
+    experience: null, // profile experience contents
+    experienceSection: null, // profile experience section
+    stacks: null, // profile tech stacks contents
+    projectList: null, // project list contents
     footer: null, // page footer
   },
 });

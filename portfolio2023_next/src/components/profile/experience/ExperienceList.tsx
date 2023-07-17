@@ -27,7 +27,7 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
 
   const {
     container: scrollContainer,
-    experience: scrollTrigger,
+    experienceSection: scrollTrigger,
     stickyHeight,
   } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
   const expListRef = useRef<HTMLUListElement | null>(null);

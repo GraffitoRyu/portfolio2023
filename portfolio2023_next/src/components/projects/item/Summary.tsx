@@ -27,7 +27,7 @@ export default function ProjectSummary({
   return (
     <ListBtnContainer className={`${className ? className : ""}`}>
       <ListBtnWrap>
-        <ListBtnPeriod className="period" $date={summary.period} />
+        <ListBtnPeriod className="period" date={summary.period} />
         <FadeContainer>
           <ListBtnTitle>{summary.title.join(" ")}</ListBtnTitle>
         </FadeContainer>

@@ -52,13 +52,13 @@ export interface ScrollRefStateTypes {
   container: HTMLDivElement | null;
   stickyHeight: number;
   header: HTMLElement | null; // <header />
-  visual: HTMLElement | null; // <section />
-  career: HTMLElement | null; // <section />
+  career: HTMLDivElement | null;
   careerItems: CareerItemsRefTypes; // <details />
   careerOpen: CareerOpenTypes;
-  experience: HTMLElement | null; // <section />
-  stacks: HTMLElement | null; // <section />
-  projectList: HTMLElement | null; // <section />
+  experience: HTMLDivElement | null;
+  experienceSection: HTMLElement | null; // <section />
+  stacks: HTMLDivElement | null;
+  projectList: HTMLDivElement | null;
   footer: HTMLElement | null; // <footer />
 }
 
@@ -71,6 +71,7 @@ export interface DetailScrollRefStateTypes {
 }
 
 export interface DetailLayoutStateTypes {
+  clicked: boolean;
   category: string;
   loading: boolean;
   open: boolean;

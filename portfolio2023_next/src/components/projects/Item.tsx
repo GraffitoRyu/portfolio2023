@@ -44,8 +44,11 @@ export default function ProjectItem({
   const setDetailLayout =
     useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
 
-  const { container: scrollContainer, stickyHeight } =
-    useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const {
+    container: scrollContainer,
+    stickyHeight,
+    projectList,
+  } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
 
   useLayoutEffect(() => {
@@ -63,13 +66,10 @@ export default function ProjectItem({
           {
             scrollTrigger: {
               trigger,
-              start: `top 80%`,
-              end: `top 60%`,
+              start: `top 90%`,
+              end: `top 90%`,
               onEnter: () => {
                 setHide("");
-              },
-              onLeaveBack: () => {
-                setHide("hide");
               },
             },
           },
@@ -85,6 +85,27 @@ export default function ProjectItem({
     return () => ctx.revert();
   }, [scrollContainer, stickyHeight]);
 
+  // 초기화
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
+    if (!scrollContainer) return;
+
+    const ctx = ctxScrollTrigger({
+      container: scrollContainer,
+      create: {
+        trigger: projectList,
+        start: `top bottom`,
+        end: `top bottom`,
+        onLeaveBack: () => {
+          setHide("hide");
+        },
+      },
+    });
+
+    return () => ctx.revert();
+  }, [projectList, scrollContainer, stickyHeight]);
+
   // 프로젝트 상세 열 때, 호버 상태 초기화
   useEffect(() => {
     if (category) setHover("");
@@ -98,7 +119,7 @@ export default function ProjectItem({
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
       onClick={() => {
-        setDetailLayout(prev => ({ ...prev, loading: true }));
+        setDetailLayout(prev => ({ ...prev, clicked: true, loading: true }));
         router.push(`/projects/${code}`);
       }}
     >
