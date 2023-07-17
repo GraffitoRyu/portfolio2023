@@ -39,7 +39,7 @@ export const TransTitle = styled.h1`
   color: ${({ theme }) => theme.transCover.title};
   ${font({
     size: 160,
-    weight: 400,
+    weight: 500,
     family: `var(--serif-kr)`,
     height: "1em",
     spacing: 0,

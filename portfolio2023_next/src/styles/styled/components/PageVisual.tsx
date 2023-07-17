@@ -83,11 +83,10 @@ export const VisualTitle = styled.h1`
 `;
 
 export const VisualTitleLine = styled(PageTitle)`
+  color: ${({ theme }) => theme.visualSection.fill};
   &.stroke-title {
-    -webkit-text-stroke-color: ${({ theme }) => theme.visualSection.border};
   }
   &.filled-title {
-    color: ${({ theme }) => theme.visualSection.fill};
   }
   @media only screen and (min-width: 1024px) {
     ${font({ size: 240 })}

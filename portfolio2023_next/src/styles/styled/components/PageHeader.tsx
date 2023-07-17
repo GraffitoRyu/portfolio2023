@@ -73,7 +73,7 @@ export const TimerContainer = styled.div`
 
 export const TimeRegion = styled.strong`
   display: none;
-  ${font({ weight: 500, spacing: `-0.01em` })}
+  ${font({ weight: 500 })}
   &:after {
     content: "/";
     ${size({ m: [0, 16] })}

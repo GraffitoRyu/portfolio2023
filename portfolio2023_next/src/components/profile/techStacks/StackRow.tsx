@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 // components
-import StackLevelGauge from "./StackLevel";
+// import StackLevelGauge from "./StackLevel";
 
 // style components
 import {
@@ -114,10 +114,10 @@ export default function StackRow({
         <h3>{title}</h3>
       </StackCategory>
       <StackList className={`${stackHide}`} ref={stacksRef}>
-        {data.map(({ code, name, level }: StackTypes, i: number) => (
+        {data.map(({ code, name }: StackTypes, i: number) => (
           <StackFigure key={`stackList_${code}_${i}`} $index={i}>
             <figcaption>{name}</figcaption>
-            <StackLevelGauge level={level} />
+            {/* <StackLevelGauge level={level} /> */}
           </StackFigure>
         ))}
       </StackList>

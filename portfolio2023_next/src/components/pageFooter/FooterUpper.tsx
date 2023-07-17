@@ -68,7 +68,7 @@ export default function FooterUpperContainer() {
   return (
     <FooterHeader>
       <FooterTitle ref={footerTitleRef}>
-        <FooterTitleLine className="stroke-title">{`Let's work`}</FooterTitleLine>
+        <FooterTitleLine className="stroke-title">{`Let’s work`}</FooterTitleLine>
         <FooterTitleLine className="filled-title">together</FooterTitleLine>
       </FooterTitle>
     </FooterHeader>

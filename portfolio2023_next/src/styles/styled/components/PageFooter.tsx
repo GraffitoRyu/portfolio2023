@@ -60,11 +60,10 @@ export const FooterTitle = styled.h2`
 
 export const FooterTitleLine = styled(PageTitle)`
   ${font({ size: 160 })}
+  color: ${({ theme }) => theme.footer.titleFill};
   &.stroke-title {
-    -webkit-text-stroke: ${rem(2)} ${({ theme }) => theme.footer.titleBorder};
   }
   &.filled-title {
-    color: ${({ theme }) => theme.footer.titleFill};
   }
   @media only screen and (min-width: 560px) {
     ${font({ size: `80px` })}

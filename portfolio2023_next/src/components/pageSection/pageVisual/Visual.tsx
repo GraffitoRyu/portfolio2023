@@ -53,8 +53,7 @@ export default function PageVisual({ title }: { title: string[] }) {
     const visualEl = visualRef.current;
     if (!visualEl) return;
 
-    const triggerStart =
-      (windowWidth < 1024 ? 0 : headerHeight) + scrollTarget.offsetTop;
+    const triggerStart = scrollTarget.offsetTop;
     const targetEnd =
       windowWidth < 1024
         ? scrollTarget.offsetHeight
@@ -118,8 +117,7 @@ export default function PageVisual({ title }: { title: string[] }) {
       $hdHeight={headerHeight}
     >
       <VisualTitle ref={visualTitleRef} className={`${loaded} ${fixed}`}>
-        <VisualTitleLine className="visual-title filled-title">
-          {/* <VisualTitleLine className="visual-title stroke-title"> */}
+        <VisualTitleLine className="visual-title stroke-title">
           {title[0]}
         </VisualTitleLine>
         <VisualTitleLine className="visual-title filled-title">

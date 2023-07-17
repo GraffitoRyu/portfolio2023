@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { flex, font, position, size } from "../preset/mixins";
 
 // util
-import { rem } from "@/util/unit";
+import { rem, widthRatio } from "@/util/unit";
 
 export const PageSectionContainer = styled.section<{
   $wh: number;
@@ -130,7 +130,8 @@ export const SideContents = styled.aside<{ $hdHeight: number }>`
         type: "sticky",
         top: $hdHeight !== 0 ? `${$hdHeight}px` : 240,
       })}
-    ${size({ w: `41.6667%`, p: [0, 20] })}
+    flex:1;
+    ${size({ p: [0, 20] })}
     &.intro {
       width: 50%;
     }
@@ -143,7 +144,7 @@ export const SideContents = styled.aside<{ $hdHeight: number }>`
 export const ContentsMain = styled.div`
   width: 100%;
   @media only screen and (min-width: 1024px) {
-    ${size({ w: `58.3333%`, p: [0, 20] })}
+    ${size({ w: `${widthRatio(12, 7)}%`, p: [0, 20] })}
     &.intro {
       ${size({ w: "50%", pb: 240 })}
     }

@@ -59,13 +59,15 @@ export const ExpTitle = styled.dt`
   color: ${({ theme }) => theme.exp.title};
   ${font({
     size: 48,
-    weight: 700,
+    weight: 300,
     height: "1em",
     transform: "capitalize",
-    spacing: 0,
     family: "var(--serif-kr)",
   })}
-  @media only screen and (min-width:1024px) {
+  span {
+    ${font({ spacing: 0 })}
+  }
+  @media only screen and (min-width: 1024px) {
     ${font({ size: 32 })}
   }
 `;
