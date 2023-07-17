@@ -1,23 +1,5 @@
 [
   {
-    "code": "html",
-    "name": "HTML",
-    "category": "languages",
-    "level": 4
-  },
-  {
-    "code": "css",
-    "name": "CSS",
-    "category": "languages",
-    "level": 4
-  },
-  {
-    "code": "javascript",
-    "name": "JavaScript",
-    "category": "languages",
-    "level": 4
-  },
-  {
     "code": "scss",
     "name": "SCSS",
     "category": "languages",
@@ -72,12 +54,6 @@
     "level": 3
   },
   {
-    "code": "swiper",
-    "name": "Swiper",
-    "category": "library",
-    "level": 2
-  },
-  {
     "code": "gsap",
     "name": "GSAP",
     "category": "library",
@@ -96,12 +72,6 @@
     "level": 1
   },
   {
-    "code": "mapbox",
-    "name": "Mapbox GL",
-    "category": "map_api",
-    "level": 1
-  },
-  {
     "code": "styled_components",
     "name": "Styled-components",
     "category": "style",
@@ -115,7 +85,7 @@
   },
   {
     "code": "ajax",
-    "name": "Ajax",
+    "name": "AJAX",
     "category": "data",
     "level": 3
   },
@@ -186,24 +156,6 @@
     "level": 2
   },
   {
-    "code": "slack",
-    "name": "Slack",
-    "category": "collaboration",
-    "level": 4
-  },
-  {
-    "code": "eslint",
-    "name": "ESlint",
-    "category": "convention",
-    "level": 0
-  },
-  {
-    "code": "prettier",
-    "name": "Prettier",
-    "category": "convention",
-    "level": 0
-  },
-  {
     "code": "figma",
     "name": "Figma",
     "category": "design",
@@ -220,11 +172,5 @@
     "name": "Photoshop",
     "category": "design",
     "level": 2
-  },
-  {
-    "code": "xd",
-    "name": "XD",
-    "category": "design",
-    "level": 1
   }
 ]
