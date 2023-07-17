@@ -1,5 +1,3 @@
-"use client";
-
 // style components
 import { InitCoverTItle } from "@/styles/styled/components/InitPageCover";
 
