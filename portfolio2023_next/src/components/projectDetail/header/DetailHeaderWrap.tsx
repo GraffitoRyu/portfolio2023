@@ -79,7 +79,10 @@ export default function DetailHeaderWrap() {
     <StyledHeaderWrap ref={wrapRef}>
       <DetailHeaderTitleContainer />
       {windowWidth < 1024 ? null : <DetailLinkContainer />}
-      <CloseButton clickEvent={closeDetail} />
+      <CloseButton
+        clickEvent={closeDetail}
+        ariaLabel="프로젝트 상세 페이지 닫기"
+      />
     </StyledHeaderWrap>
   );
 }
