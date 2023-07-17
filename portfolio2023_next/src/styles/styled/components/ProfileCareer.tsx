@@ -13,7 +13,7 @@ import { easing } from "../preset/easing";
 export const CareerContainerList = styled.ul`
   ${size({ w: `calc(100% + ${rem(160)})`, m: [0, -80] })}
   @media only screen and (min-width: 768px) {
-    ${size({ w: "!00%" })}
+    ${size({ w: "100%", m: 0 })}
   }
 `;
 

@@ -52,6 +52,7 @@ export default function ThemeMenuBtn({ code }: { code: string }) {
       onClick={() => changeTheme(code)}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
+      aria-label={`${code} theme mode`}
     >
       <figure>{ThemeIcon(code)}</figure>
       <span>{code}</span>

@@ -70,6 +70,7 @@ export default function SitemapBtn({ code, path, name }: SitemapType) {
           router.push(path);
         }, transTime.common.coverUp);
       }}
+      aria-label={`포트폴리오 페이지 ${name}로 이동하기`}
     >
       <span>{name}</span>
     </SitemapLink>

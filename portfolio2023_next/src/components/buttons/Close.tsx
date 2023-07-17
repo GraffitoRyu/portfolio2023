@@ -9,8 +9,10 @@ import { CommonBtn } from "@/styles/styled/preset/buttons";
 import CloseIcon from "@/svg/btn/close.svg";
 
 export default function CloseButton({
+  ariaLabel,
   clickEvent,
 }: {
+  ariaLabel: string;
   clickEvent: (e: SyntheticEvent) => void;
 }) {
   const [hover, setHover] = useState<string>("");
@@ -21,6 +23,7 @@ export default function CloseButton({
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
       onClick={(e: SyntheticEvent) => clickEvent(e)}
+      aria-label={ariaLabel}
     >
       <figure>
         <CloseIcon />

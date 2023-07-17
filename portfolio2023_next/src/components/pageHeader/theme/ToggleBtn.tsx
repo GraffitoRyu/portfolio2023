@@ -34,6 +34,7 @@ export default function ThemeToggleBtn() {
       onClick={() => setToggle()}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
+      aria-label="컬러 테마메뉴 토글 버튼"
     >
       <ToggleIcon>
         <ThemeSvg.Light className={updateIcon("light")} />

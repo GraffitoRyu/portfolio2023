@@ -85,6 +85,7 @@ export default function ExternalBtn({ path, name }: SitemapType) {
           target="_blank"
           onMouseEnter={() => setHover("hover")}
           onMouseLeave={() => setHover("")}
+          aria-label={`외부 페이지 ${name} 링크로 이동하기`}
         >
           <figure>{ExtIcon(name)}</figure>
         </ExtBtn>

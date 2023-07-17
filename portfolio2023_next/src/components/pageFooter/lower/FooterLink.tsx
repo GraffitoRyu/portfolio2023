@@ -126,6 +126,7 @@ export default function FooterLink({
           }}
           onMouseEnter={() => setHoverText("hover")}
           onMouseLeave={() => setHoverText("")}
+          aria-label={`포트폴리오 페이지 ${name}로 이동하기`}
         >
           <span>{name}</span>
         </FooterLinkBtn>
@@ -142,6 +143,7 @@ export default function FooterLink({
           className={`${hoverText}`}
           onMouseEnter={() => setHoverText("hover")}
           onMouseLeave={() => setHoverText("")}
+          aria-label={`${name.includes("tel") ? "전화" : "이메일"} 연락하기`}
         >
           <span>{name}</span>
         </FooterLinkBtn>
@@ -152,6 +154,7 @@ export default function FooterLink({
           className={`${hoverIcon}`}
           onMouseEnter={() => setHoverIcon("hover")}
           onMouseLeave={() => setHoverIcon("")}
+          aria-label={`${name} 복사하기`}
         >
           <Tooltip
             contents="복사 완료!"
@@ -184,6 +187,7 @@ export default function FooterLink({
             ? path.replace(`/download/${doc_code}`, `류대현_${name}`)
             : false
         }
+        aria-label={`외부 페이지 ${name} 링크로 이동하기`}
       >
         <span>{name}</span>
         <FooterLinkIcon>

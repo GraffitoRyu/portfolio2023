@@ -106,7 +106,7 @@ export const StackRowContainer = styled.li`
 
 export const StackCategory = styled.div`
   ${size({ w: "100%", mb: 40 })}
-  h4 {
+  h3 {
     color: ${({ theme }) => theme.stacks.category};
     ${font({
       size: 32,
@@ -118,7 +118,7 @@ export const StackCategory = styled.div`
 
   @media only screen and (min-width: 1024px) {
     ${size({ mb: 24 })}
-    h4 {
+    h3 {
       ${font({ size: 24 })}
     }
   }

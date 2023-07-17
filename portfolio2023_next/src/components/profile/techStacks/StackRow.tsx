@@ -111,7 +111,7 @@ export default function StackRow({
   return (
     <StackRowContainer ref={triggerRef}>
       <StackCategory ref={categoryRef}>
-        <h4>{title}</h4>
+        <h3>{title}</h3>
       </StackCategory>
       <StackList className={`${stackHide}`} ref={stacksRef}>
         {data.map(({ code, name, level }: StackTypes, i: number) => (
