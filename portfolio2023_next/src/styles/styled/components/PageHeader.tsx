@@ -54,7 +54,7 @@ export const StyledHeaderWrap = styled.div`
 
 export const TimerContainer = styled.div`
   ${flex({})}
-  ${size({ w: "fit-content", h: 48, p: [0, 40, 0, 2] })}
+  ${size({ w: "fit-content", h: 48, p: [0, 8, 0, 2] })}
   border-top: ${rem(4)} solid ${({ theme }) => theme.timer.bar};
   border-bottom: ${rem(4)} solid transparent;
   color: ${({ theme }) => theme.timer.text};
