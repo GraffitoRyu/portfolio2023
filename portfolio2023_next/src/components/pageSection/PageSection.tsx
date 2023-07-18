@@ -27,8 +27,7 @@ export default function PageSection({
 
   const updateScrollRef = useCallback(
     (node: HTMLElement | null) => {
-      if (code === "experience")
-        setScrollRef(prev => ({ ...prev, [`${code}Section`]: node }));
+      setScrollRef(prev => ({ ...prev, [`${code}Section`]: node }));
     },
     [code, setScrollRef]
   );

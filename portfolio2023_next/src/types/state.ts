@@ -52,12 +52,15 @@ export interface ScrollRefStateTypes {
   container: HTMLDivElement | null;
   stickyHeight: number;
   header: HTMLElement | null; // <header />
+  visualSection: HTMLElement | null;
   career: HTMLDivElement | null;
+  careerSection: HTMLElement | null;
   careerItems: CareerItemsRefTypes; // <details />
   careerOpen: CareerOpenTypes;
   experience: HTMLDivElement | null;
   experienceSection: HTMLElement | null; // <section />
   stacks: HTMLDivElement | null;
+  stacksSection: HTMLElement | null;
   projectList: HTMLDivElement | null;
   footer: HTMLElement | null; // <footer />
 }
