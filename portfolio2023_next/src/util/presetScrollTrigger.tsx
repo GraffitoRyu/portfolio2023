@@ -51,6 +51,7 @@ export function ctxScrollTrigger({
         scroller: container,
         invalidateOnRefresh: true,
       });
+      ScrollTrigger.config({ ignoreMobileResize: true });
 
       if (typeof normalize === "boolean")
         ScrollTrigger.normalizeScroll({
