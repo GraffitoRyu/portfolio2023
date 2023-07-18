@@ -25,12 +25,11 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
   const [expData, setExpData] = useState<ExperienceTypes[]>([]);
   const [length, setLength] = useState<number>(0);
 
-  const {
-    container: scrollContainer,
-    experienceSection: scrollTrigger,
-    stickyHeight,
-  } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const { container: scrollContainer, experienceSection: scrollTrigger } =
+    useRecoilValue<ScrollRefStateTypes>(scrollRefState);
   const expListRef = useRef<HTMLUListElement | null>(null);
+
+  const [isMobileView, setMobileView] = useState<boolean>(false);
 
   const [listWidth, setListWidth] = useState<number>(0);
 
@@ -55,6 +54,10 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
       end: columnWidth * 5,
     });
   }, [columnWidth]);
+
+  useEffect(() => {
+    setMobileView(windowWidth < 640);
+  }, [windowWidth]);
 
   // 경험 리스트 총 스크롤 너비 업데이트
   useEffect(() => {
@@ -83,7 +86,6 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
     const scrollTarget = expListRef.current;
     if (!scrollTarget) return;
 
-    const isPhone = windowWidth < 640;
     const scrollRange = listWidth * ((length - 1) / length);
 
     const ctx = ctxScrollTrigger({
@@ -118,7 +120,7 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
               scrollTrigger: {
                 trigger: scrollTrigger,
                 start: `top top`, // trigger, view
-                end: () => `+=${scrollRange * (isPhone ? 2 : 1)} bottom`,
+                end: () => `+=${scrollRange * (isMobileView ? 2 : 1)} bottom`,
                 scrub: true,
                 pin: scrollTrigger,
                 anticipatePin: 1,
@@ -142,8 +144,7 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
     offset.start,
     scrollContainer,
     scrollTrigger,
-    stickyHeight,
-    windowWidth,
+    isMobileView,
   ]);
 
   return (
