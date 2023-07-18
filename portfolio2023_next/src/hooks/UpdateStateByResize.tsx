@@ -20,6 +20,19 @@ export default function UpdateStateByResize() {
   const setScreen = useSetRecoilState<ScreenSizeTypes>(screenSizeState);
 
   // resize update
+  const updateCssProps = () => {
+    if (typeof window === "undefined") return;
+
+    document.documentElement.style.setProperty(
+      `--ww`,
+      `${window.innerWidth}px`
+    );
+    document.documentElement.style.setProperty(
+      `--wh`,
+      `${window.innerHeight}px`
+    );
+  };
+
   const resizeCallback = debounce(() => {
     if (typeof window === "undefined") return;
 
@@ -28,14 +41,7 @@ export default function UpdateStateByResize() {
     // 접속 디바이스 업데이트
     setDevice(checkDeviceState());
     // 화면 사이즈 값 업데이트
-    document.documentElement.style.setProperty(
-      `--vw`,
-      `${window.innerWidth}px`
-    );
-    document.documentElement.style.setProperty(
-      `--vh`,
-      `${window.innerHeight}px`
-    );
+    updateCssProps();
     setScreen(prev => ({
       ...prev,
       windowWidth: window.innerWidth,
@@ -48,6 +54,7 @@ export default function UpdateStateByResize() {
   // 최초의 디바이스 세팅
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
+    updateCssProps();
 
     const sectionPadding = remToPx(80);
     const columnPadding = remToPx(20);
