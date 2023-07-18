@@ -15,16 +15,16 @@ export const PageSectionContainer = styled.section`
     ${size({ pl: 80, pr: 80 })}
   }
   &.side-v-padding {
-    ${size({ pt: `calc(var(--wh) / 4)`, pb: `calc(var(--wh) / 4)` })}
+    ${size({ pt: `calc(100vh / 4)`, pb: `calc(100vh / 4)` })}
   }
   &.section-visual {
-    ${size({ h: `calc(var(--wh) - var(--header-height))` })}
+    ${size({ h: `calc(100vh - var(--header-height))` })}
     .section-header {
       display: none;
     }
   }
   &:not(.section-visual) {
-    min-height: var(--wh);
+    min-height: 100vh;
     ${flex({ dir: "column", cross: "flex-start" })};
   }
 

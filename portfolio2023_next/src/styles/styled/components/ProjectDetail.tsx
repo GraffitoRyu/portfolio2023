@@ -124,9 +124,9 @@ export const PDSection = styled.section`
 `;
 
 export const PDVisualSection = styled(PDSection)`
-  ${size({ h: `var(--wh)`, pb: 400 })}
+  ${size({ h: `auto`, pb: 400 })}
   @media only screen and (min-width:1024px) {
-    ${size({ h: "auto", pb: 600 })}
+    ${size({ pb: 600 })}
   }
 `;
 
@@ -167,8 +167,9 @@ export const PDVisualLower = styled.div`
 `;
 
 export const PDVisualImageContainer = styled.div`
+  overflow: hidden;
   ${position({ type: "fixed", top: 0, left: 0, z: -100 })}
-  ${size({ w: "100%", h: `var(--wh)` })}
+  ${size({ w: "100%", h: `100vh` })}
   @media only screen and (min-width:1024px) {
     ${size({ h: "100vw" })}
   }

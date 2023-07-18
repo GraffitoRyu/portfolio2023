@@ -14,7 +14,7 @@ export const VisualContainer = styled.div`
   ${flex({ dir: "column", cross: "flex-start" })}
   height: 50%;
   @media only screen and (min-width: 1024px) {
-    ${size({ w: "100%", h: `calc(var(--wh) - var(--header-height))` })}
+    ${size({ w: "100%", h: `calc(100vh - var(--header-height))` })}
   }
 `;
 

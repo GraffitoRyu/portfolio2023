@@ -22,7 +22,7 @@ export const PageContainer = styled.main`
 
 export const StyledScrollContainer = styled.div`
   ${position({ type: "fixed", top: 0, left: 0, z: 0 })}
-  ${size({ w: "100%", h: `var(--wh)` })}
+  ${size({ w: "100%", h: `100vh` })}
   overflow: hidden auto;
   overscroll-behavior-y: none;
   &::-webkit-scrollbar {
