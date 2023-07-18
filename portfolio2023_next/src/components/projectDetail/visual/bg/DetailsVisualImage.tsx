@@ -65,21 +65,6 @@ export default function DetailVisualImage() {
             },
           ],
         },
-        {
-          target: scrollTarget_cover,
-          options: [
-            {
-              y: () => 0.05 * ScrollTrigger.maxScroll(scrollContainer),
-              scrollTrigger: {
-                trigger: scrollTrigger,
-                start: `top top`,
-                end: `bottom top`,
-                scrub: true,
-                // markers: true,
-              },
-            },
-          ],
-        },
       ],
     });
 
