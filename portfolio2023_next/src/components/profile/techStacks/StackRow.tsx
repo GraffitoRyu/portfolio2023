@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 // components
@@ -33,8 +33,9 @@ export default function StackRow({
 }) {
   const {
     container: scrollContainer,
-    stickyHeight,
-    stacks: stackSection,
+    careerSection,
+    experienceSection,
+    stacks: stackContents,
   } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
 
   const triggerRef = useRef<HTMLLIElement | null>(null);
@@ -42,6 +43,15 @@ export default function StackRow({
   const stacksRef = useRef<HTMLDivElement | null>(null);
 
   const [stackHide, setStackHide] = useState<string>("hide");
+  const [sectionOffset, setSectionOffset] = useState<number>(0);
+
+  // 스크롤 모션 재계산
+  useEffect(() => {
+    if (!careerSection || !experienceSection?.parentElement) return;
+    setSectionOffset(
+      careerSection.offsetHeight + experienceSection.parentElement.offsetHeight
+    );
+  }, [careerSection, experienceSection, experienceSection?.parentElement]);
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
@@ -80,6 +90,7 @@ export default function StackRow({
               opacity: 1,
               scrollTrigger: {
                 ...scrollTrigger,
+                // markers: true,
                 onToggle: () => {
                   setStackHide("");
                 },
@@ -91,7 +102,7 @@ export default function StackRow({
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, stickyHeight]);
+  }, [scrollContainer, sectionOffset]);
 
   // 초기화; 섹션이 뷰포트 아래로 내려갔을 때
   useLayoutEffect(() => {
@@ -102,7 +113,7 @@ export default function StackRow({
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
       create: {
-        trigger: stackSection,
+        trigger: stackContents,
         start: `top bottom`,
         end: `top bottom`,
         onLeaveBack: () => {
@@ -112,7 +123,7 @@ export default function StackRow({
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, stackSection, stickyHeight]);
+  }, [scrollContainer, stackContents, sectionOffset]);
 
   return (
     <StackRowContainer ref={triggerRef}>
