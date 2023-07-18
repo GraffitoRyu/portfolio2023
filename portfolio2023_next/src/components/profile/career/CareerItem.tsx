@@ -39,10 +39,8 @@ export default function CareerItem({
   details,
   last,
 }: CareerItemProps) {
-  const [
-    { container: scrollContainer, stickyHeight, careerOpen, career },
-    setScrollRef,
-  ] = useRecoilState<ScrollRefStateTypes>(scrollRefState);
+  const [{ container: scrollContainer, careerOpen, career }, setScrollRef] =
+    useRecoilState<ScrollRefStateTypes>(scrollRefState);
   const itemRef = useRef<HTMLLIElement | null>(null);
   const [hide, setHide] = useState<string>("hide");
 
@@ -104,13 +102,16 @@ export default function CareerItem({
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, stickyHeight]);
+  }, [scrollContainer]);
 
   // 초기화; 섹션이 뷰포트 아래로 내려갔을 때
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
 
     if (!scrollContainer || !career) return;
+
+    const detailTag = detailsRef.current;
+    if (!detailTag) return;
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
@@ -122,12 +123,21 @@ export default function CareerItem({
         // markers: true,
         onLeaveBack: () => {
           setHide("hide");
+          // 스크롤 다시 되돌아갈때 확장 상태 초기화
+          if (detailTag instanceof HTMLDetailsElement) {
+            detailTag.open = false;
+            setOpen("");
+            setScrollRef(prev => ({
+              ...prev,
+              careerOpen: { ...careerOpen, [code]: false },
+            }));
+          }
         },
       },
     });
 
     return () => ctx.revert();
-  }, [career, scrollContainer, stickyHeight]);
+  }, [career, careerOpen, code, scrollContainer, setScrollRef]);
 
   return (
     <CareerItemContainer className={`${hide}`} ref={itemRef}>
