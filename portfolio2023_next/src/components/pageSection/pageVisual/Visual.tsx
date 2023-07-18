@@ -34,15 +34,27 @@ export default function PageVisual({ title }: { title: string[] }) {
   const { windowWidth, headerHeight } =
     useRecoilValue<ScreenSizeTypes>(screenSizeState);
 
-  const { container: scrollContainer, stickyHeight } =
+  const { container: scrollContainer } =
     useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const [isMobile, setMobile] = useState<boolean>(false);
 
   const visualRef = useRef<HTMLDivElement | null>(null);
   const visualTitleRef = useRef<HTMLHeadingElement | null>(null);
+  const [titleTop, setTitleTop] = useState<number>(0);
 
   const { loadComplete } = useRecoilValue<pageStateTypes>(pageState);
   const [loaded, setLoaded] = useState<string>("loading");
   const [fixed, setFixed] = useState<string>("");
+
+  useEffect(() => {
+    setMobile(windowWidth < 1024);
+  }, [windowWidth]);
+
+  useEffect(() => {
+    const visualTitle = visualTitleRef.current;
+    if (!visualTitle) return;
+    setTitleTop(visualTitle.offsetTop);
+  }, []);
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
@@ -53,12 +65,11 @@ export default function PageVisual({ title }: { title: string[] }) {
     const visualEl = visualRef.current;
     if (!visualEl) return;
 
-    const triggerStart = scrollTarget.offsetTop;
-    const targetEnd =
-      windowWidth < 1024
-        ? scrollTarget.offsetHeight
-        : headerHeight + visualEl.offsetHeight;
-    const triggerEnd = windowWidth < 1024 ? headerHeight : "center";
+    const triggerStart = titleTop;
+    const targetEnd = isMobile
+      ? scrollTarget.offsetHeight
+      : headerHeight + visualEl.offsetHeight;
+    const triggerEnd = isMobile ? headerHeight : "center";
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -66,9 +77,7 @@ export default function PageVisual({ title }: { title: string[] }) {
       opacity: 0,
       ease: "none",
       y: () =>
-        windowWidth < 1024
-          ? 0
-          : -0.05 * ScrollTrigger.maxScroll(scrollContainer),
+        isMobile ? 0 : -0.05 * ScrollTrigger.maxScroll(scrollContainer),
       scrollTrigger: {
         trigger: scrollTarget,
         start: `top ${triggerStart}`, // target, viewport
@@ -99,7 +108,7 @@ export default function PageVisual({ title }: { title: string[] }) {
       ],
     });
     return () => ctx.revert();
-  }, [scrollContainer, windowWidth, stickyHeight, headerHeight]);
+  }, [scrollContainer, isMobile, headerHeight, titleTop]);
 
   useEffect(() => {
     if (loadComplete) {
