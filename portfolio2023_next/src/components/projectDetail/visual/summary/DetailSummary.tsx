@@ -58,20 +58,14 @@ export default function DetailSummary() {
 
   useEffect(() => {
     if (openComplete) {
-      console.log(`openComplete true`);
       setHide("init-hide");
       setTimeout(() => {
         setHide("");
       }, 1600);
     } else {
-      console.log(`openComplete false`);
       setHide("init-hide hide");
     }
   }, [openComplete]);
-
-  useEffect(() => {
-    console.log(`hide:`, hide);
-  }, [hide]);
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;

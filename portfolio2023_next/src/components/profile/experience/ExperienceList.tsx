@@ -165,7 +165,7 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
 function getActiveIndex(progress: number, length: number): number {
   const ratio = progress * 100;
   const unit = 100 / length;
-  // console.log(`progress: `, ratio, ` / unit:`, unit);
+
   if (ratio < unit) return 0;
   else if (unit <= ratio && ratio < unit * 2) return 1;
   else if (unit * 2 <= ratio && ratio < unit * 3) return 2;
