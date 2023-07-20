@@ -148,7 +148,7 @@ export const sitemapData: SitemapType[] = [
   {
     code: "projects_doc",
     name: "경력기술서",
-    path: "/download/projects_v2023_07_14.pdf",
+    path: "/download/projects_v2023_07_20.pdf",
     external: false,
     copy: false,
     download: true,
