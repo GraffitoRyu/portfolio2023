@@ -144,17 +144,17 @@
       {
         "referType": "image",
         "src": "/img/details/media_racesolution_pc.jpg",
-        "title": "레이스솔루션 매니저 관제 화면"
+        "alt": "레이스솔루션 매니저 관제 화면"
       },
       {
         "referType": "image",
         "src": "/img/details/media_racesolution_hud.jpg",
-        "title": "레이스솔루션 방송용 HUD 송출 화면 (출처: 슈퍼레이스 유튜브)"
+        "alt": "레이스솔루션 방송용 HUD 송출 화면 (출처: 슈퍼레이스 유튜브)"
       },
       {
         "referType": "video",
         "src": "https://drive.google.com/uc?export=download&id=1ZHTDbWyW_mH80cObTIffcuNwa_20Ljxn",
-        "title": "레이스솔루션 리플레이"
+        "alt": "레이스솔루션 리플레이"
       }
     ]
   },
@@ -209,17 +209,17 @@
       {
         "referType": "image",
         "src": "/img/details/media_solutionmaster_manager.jpg",
-        "title": "솔루션마스터 매니저 페이지"
+        "alt": "솔루션마스터 매니저 페이지"
       },
       {
         "referType": "image",
         "src": "/img/details/media_solutionmaster_host_control.jpg",
-        "title": "솔루션마스터 매니저 페이지 - HOST CONTROL"
+        "alt": "솔루션마스터 매니저 페이지 - HOST CONTROL"
       },
       {
         "referType": "image",
         "src": "/img/details/media_solutionmaster_control.jpg",
-        "title": "솔루션마스터 관제화면 - ENTRY CONTROL"
+        "alt": "솔루션마스터 관제화면 - ENTRY CONTROL"
       }
     ]
   },
@@ -276,17 +276,17 @@
       {
         "referType": "image",
         "src": "/img/details/media_lapvslap.jpg",
-        "title": "랩대랩 사용 화면 - 라인차트"
+        "alt": "랩대랩 사용 화면 - 라인차트"
       },
       {
         "referType": "image",
         "src": "/img/details/media_lapvslap_lapchart.jpg",
-        "title": "랩대랩 사용 화면 - 랩차트"
+        "alt": "랩대랩 사용 화면 - 랩차트"
       },
       {
         "referType": "image",
         "src": "/img/details/media_lapvslap_comment.jpg",
-        "title": "랩대랩 사용 화면 - 코멘트"
+        "alt": "랩대랩 사용 화면 - 코멘트"
       }
     ]
   }
