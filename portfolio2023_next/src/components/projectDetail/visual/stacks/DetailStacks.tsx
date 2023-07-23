@@ -43,6 +43,7 @@ export default function DetailStacks() {
     <PDStacksContainer>
       <DetailInfoItem code="stacks" className="details-stack-title">
         <DetailInfoTitle code="stacks" title="Tech Stacks" />
+        <dd></dd>
       </DetailInfoItem>
       {stacks.map((d: StackSingleTypes, i: number) => (
         <DetailInfoItem code="stacks" key={`detailStacks_${category}_${i}`}>
