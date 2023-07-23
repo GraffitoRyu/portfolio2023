@@ -1,4 +1,8 @@
-import { DM_Serif_Display, Noto_Sans_KR } from "next/font/google";
+import {
+  DM_Serif_Display,
+  Noto_Sans_KR,
+  Noto_Serif_KR,
+} from "next/font/google";
 
 const sans = Noto_Sans_KR({
   weight: ["300", "400", "500", "700", "900"],
@@ -37,4 +41,11 @@ const serif_dm = DM_Serif_Display({
   adjustFontFallback: false,
 });
 
-export { sans, serif_dm };
+const serif = Noto_Serif_KR({
+  weight: ["300", "500", "700"],
+  subsets: ["latin"],
+  variable: "--serif-kr",
+  display: "swap",
+});
+
+export { sans, serif, serif_dm };

@@ -15,7 +15,7 @@ import InitPageCover from "@/components/pageInitialize/InitPageCover";
 import Cursor from "@/components/cursor/Cursor";
 
 // styles
-import { sans, serif_dm } from "@/styles/fonts/fonts"; // error로 사용할 수 없다
+import { sans, serif, serif_dm } from "@/styles/fonts/fonts"; // error로 사용할 수 없다
 import "@/styles/scss/globals.scss";
 import StyledComponentsRegistry from "./lib/registry";
 import { HTMLThemeStyle, PageContainer } from "@/styles/styled/components/Page";
@@ -26,14 +26,18 @@ import UpdateStateByResize from "@/hooks/UpdateStateByResize";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ko" className={`${sans.variable} ${serif_dm.variable}`}>
-      <head>
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link
+    <html
+      lang="ko"
+      className={`${sans.variable} ${serif.variable} ${serif_dm.variable}`}
+    >
+      {/* <html lang="ko" className={`${sans.variable} ${serif_dm.variable}`}> */}
+      {/* <head> */}
+      {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+      {/* <link
           href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@100;300;500;700&display=swap"
           rel="stylesheet"
-        />
-      </head>
+        /> */}
+      {/* </head> */}
       <body>
         <RecoilContainer>
           <ReactQueryContainer>
