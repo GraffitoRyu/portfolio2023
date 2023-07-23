@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     width: "device-width",
     initialScale: 1,
     minimumScale: 1,
-    userScalable: false,
+    maximumScale: 1,
   },
   formatDetection: {
     address: false,
