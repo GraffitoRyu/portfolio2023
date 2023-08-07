@@ -12,6 +12,7 @@
     "@svgr/webpack": "^8.0.1",
     "@tanstack/react-query": "^4.29.15",
     "@tanstack/react-query-devtools": "^4.29.12",
+    "@vercel/analytics": "^1.0.1",
     "autoprefixer": "^10.4.14",
     "clipboard": "^2.0.11",
     "eslint": "^8.45.0",

@@ -8,6 +8,9 @@ import ReactQueryContainer from "@/components/roots/ReactQuery";
 import RecoilContainer from "@/components/roots/Recoil";
 import ThemeColors from "@/components/roots/ThemeColor";
 
+// analytics
+import { Analytics } from "@vercel/analytics/react";
+
 // components
 import PageTemplate from "@/components/roots/PageTemplate";
 import TransCover from "@/components/pageTransition/TransCover";
@@ -30,14 +33,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="ko"
       className={`${sans.variable} ${serif.variable} ${serif_dm.variable}`}
     >
-      {/* <html lang="ko" className={`${sans.variable} ${serif_dm.variable}`}> */}
-      {/* <head> */}
-      {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-      {/* <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@100;300;500;700&display=swap"
-          rel="stylesheet"
-        /> */}
-      {/* </head> */}
       <body>
         <RecoilContainer>
           <ReactQueryContainer>
@@ -58,6 +53,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </StyledComponentsRegistry>
           </ReactQueryContainer>
         </RecoilContainer>
+        <Analytics />
       </body>
     </html>
   );
