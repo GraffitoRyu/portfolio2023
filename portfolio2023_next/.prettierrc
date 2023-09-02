@@ -3,7 +3,7 @@
     {
       "files": "**/*.tsx",
       "options": {
-        "singleAttributePeLline": false,
+        "singleAttributePerLine": false,
         "arrowParens": "avoid"
       }
     },

@@ -18,7 +18,7 @@ import InitPageCover from "@/components/pageInitialize/InitPageCover";
 import Cursor from "@/components/cursor/Cursor";
 
 // styles
-import { sans, serif, serif_dm } from "@/styles/fonts/fonts"; // error로 사용할 수 없다
+import { sans, serif, serif_dm } from "@/styles/fonts/fonts";
 import "@/styles/scss/globals.scss";
 import StyledComponentsRegistry from "./lib/registry";
 import { HTMLThemeStyle, PageContainer } from "@/styles/styled/components/Page";
