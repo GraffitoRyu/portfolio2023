@@ -49,7 +49,7 @@ export default function StackRow({
   useEffect(() => {
     if (!careerSection || !experienceSection?.parentElement) return;
     setSectionOffset(
-      careerSection.offsetHeight + experienceSection.parentElement.offsetHeight
+      careerSection.offsetHeight + experienceSection.parentElement.offsetHeight,
     );
   }, [careerSection, experienceSection, experienceSection?.parentElement]);
 

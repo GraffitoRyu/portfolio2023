@@ -28,10 +28,10 @@ export default function ThemeContainer() {
         setTheme(prev => ({
           ...prev,
           isOpen: false,
-        }))
+        })),
       );
     },
-    [isOpen, themeRef, setTheme]
+    [isOpen, themeRef, setTheme],
   );
 
   useEffect(() => {

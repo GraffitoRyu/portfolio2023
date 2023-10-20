@@ -44,7 +44,7 @@ export default function DetailVisualTitle() {
       titleRef.current = node;
       setDetailScrollRef(prev => ({ ...prev, visualTitle: node }));
     },
-    [setDetailScrollRef]
+    [setDetailScrollRef],
   );
 
   const { openComplete } =

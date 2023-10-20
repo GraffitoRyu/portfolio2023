@@ -31,10 +31,10 @@ export default function PageIntro({ title, desc }: IntroTypes) {
   const { windowWidth } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
 
   const [titleHide, setTitleHide] = useState<string>(
-    windowWidth < 1024 ? "init-hide hide" : ""
+    windowWidth < 1024 ? "init-hide hide" : "",
   );
   const [descHide, setDescHide] = useState<string>(
-    windowWidth < 1024 ? "init-hide hide" : ""
+    windowWidth < 1024 ? "init-hide hide" : "",
   );
 
   const titleRef = useRef<HTMLHeadingElement | null>(null);

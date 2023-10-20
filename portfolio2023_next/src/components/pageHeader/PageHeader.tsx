@@ -41,7 +41,7 @@ export default function PageHeader() {
 
     document.documentElement.style.setProperty(
       `--header-height`,
-      `${header.clientHeight}px`
+      `${header.clientHeight}px`,
     );
 
     setScreenSize(prev => ({
@@ -59,7 +59,7 @@ export default function PageHeader() {
       headerRef.current = node;
       setScrollRef(prev => ({ ...prev, header: node }));
     },
-    [setScrollRef]
+    [setScrollRef],
   );
 
   // 헤더 높이 최초 업데이트

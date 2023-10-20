@@ -49,9 +49,12 @@ export default function DetailVisualSubtitle() {
   useEffect(() => {
     if (openComplete) {
       setHide("init-hide");
-      setTimeout(() => {
-        setHide("");
-      }, delayIndex * 200 + 1600);
+      setTimeout(
+        () => {
+          setHide("");
+        },
+        delayIndex * 200 + 1600,
+      );
     } else setHide("init-hide hide");
   }, [delayIndex, openComplete]);
 

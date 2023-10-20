@@ -82,7 +82,8 @@ export const VisualTitleLine = styled(PageTitle)`
 
 const introFadeInUp = css`
   &.init-hide {
-    transition: opacity ${transTime.visual.intro / 1000}s ${easing.quart},
+    transition:
+      opacity ${transTime.visual.intro / 1000}s ${easing.quart},
       transform ${transTime.visual.intro / 1000}s ${easing.quart};
   }
   &.hide {

@@ -36,7 +36,7 @@ export default function SectionContents({
       if (!code) return;
       setScrollRef(prev => ({ ...prev, [code]: node }));
     },
-    [code, setScrollRef]
+    [code, setScrollRef],
   );
 
   return (

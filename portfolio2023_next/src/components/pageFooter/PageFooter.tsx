@@ -28,7 +28,7 @@ export default function PageFooter() {
       footerRef.current = node;
       setScrollRef(prev => ({ ...prev, footer: node }));
     },
-    [setScrollRef]
+    [setScrollRef],
   );
 
   return (

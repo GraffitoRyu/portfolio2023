@@ -2,7 +2,7 @@ export default function closeByClickOutSide(
   e: PointerEvent | MouseEvent | TouchEvent,
   openState: boolean,
   ref: React.MutableRefObject<HTMLElement | null>,
-  callback: () => void
+  callback: () => void,
 ): void {
   if (
     openState == true &&

@@ -63,7 +63,7 @@ export default function CareerItem({
         },
       }));
     },
-    [code, setScrollRef]
+    [code, setScrollRef],
   );
 
   // 확장 영역 업데이트

@@ -38,7 +38,7 @@ export default function ProjectLoadingBar() {
 
     const curProgress = Object.values(condition).reduce(
       (acc, cur) => acc + cur,
-      0
+      0,
     );
     setPercent(curProgress);
   }, [clicked, category, dataStatus, open]);

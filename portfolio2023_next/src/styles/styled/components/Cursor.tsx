@@ -18,7 +18,10 @@ export const CursorStyle = styled.div`
     ${position({ center: true })}
     border: 1px solid ${({ theme }) => theme.cursor.basic};
     background: ${({ theme }) => theme.cursor.basic};
-    transition: width 0.4s, height 0.4s, background-color 0.4s;
+    transition:
+      width 0.4s,
+      height 0.4s,
+      background-color 0.4s;
   }
   &.link {
     .cursor {

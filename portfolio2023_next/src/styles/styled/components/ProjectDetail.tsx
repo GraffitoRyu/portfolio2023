@@ -235,7 +235,8 @@ export const PDVisualSubtitle = styled.p<{ $index: number }>`
   transition:color ${transTime.color / 1000}s;
 
   &.init-hide {
-    transition: color ${transTime.color / 1000}s,
+    transition:
+      color ${transTime.color / 1000}s,
       opacity 1.6s ${easing.quart}
         ${({ $index }: { $index: number }) => 0.2 * $index}s,
       transform 1.6s ${easing.quart}

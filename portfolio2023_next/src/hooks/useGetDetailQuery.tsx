@@ -2,7 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { getDetailData } from "@/util/getData";
 
 export default function useGetDetailByCodeQuery(code: string | null) {
-  return useQuery(["detail", code], () => getDetailData(code), {
+  return useQuery({
+    queryKey: ["detail", code],
+    queryFn: () => getDetailData(code),
     enabled: typeof code === "string",
   });
 }
