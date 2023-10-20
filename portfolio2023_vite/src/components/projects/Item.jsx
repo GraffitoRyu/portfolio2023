@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useSearchParams } from "react-router-dom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 // svg
-import { ReactComponent as IconOpenProject } from "../../svg/btn/project_open.svg";
+import IconOpenProject from "../../svg/btn/project_open.svg";
 
 // state
 import { accessDeviceSelector } from "../../hooks/state/accessDevice";

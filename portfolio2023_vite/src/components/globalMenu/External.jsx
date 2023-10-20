@@ -3,8 +3,8 @@ import { useState } from "react";
 import { sitemapData } from "../../data/sitemap";
 
 // svg
-import { ReactComponent as IconGithub } from "../../svg/header/github_icon.svg";
-import { ReactComponent as IconNotion } from "../../svg/header/notion_icon.svg";
+import IconGithub from "../../svg/header/github_icon.svg";
+import IconNotion from "../../svg/header/notion_icon.svg";
 
 export default function ExternalMenu() {
   const externalData = sitemapData.filter(d => d.external && d.header);

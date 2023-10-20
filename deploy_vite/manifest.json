@@ -1,10 +1,10 @@
 {
   "../src/svg/btn/close.svg": {
-    "file": "assets/close-c443f732.svg",
+    "file": "assets/close-4d784d0a.svg",
     "src": "../src/svg/btn/close.svg"
   },
   "../src/svg/btn/link.svg": {
-    "file": "assets/link-23275dd1.svg",
+    "file": "assets/link-95342e97.svg",
     "src": "../src/svg/btn/link.svg"
   },
   "../src/svg/btn/project_open.svg": {
@@ -12,39 +12,48 @@
     "src": "../src/svg/btn/project_open.svg"
   },
   "../src/svg/btn/theme_dark.svg": {
-    "file": "assets/theme_dark-cdaf53e5.svg",
+    "file": "assets/theme_dark-dd8f1125.svg",
     "src": "../src/svg/btn/theme_dark.svg"
   },
   "../src/svg/btn/theme_light.svg": {
-    "file": "assets/theme_light-b5d74609.svg",
+    "file": "assets/theme_light-41bf14ef.svg",
     "src": "../src/svg/btn/theme_light.svg"
   },
   "../src/svg/btn/theme_system.svg": {
-    "file": "assets/theme_system-3ac4dd2c.svg",
+    "file": "assets/theme_system-c85948c9.svg",
     "src": "../src/svg/btn/theme_system.svg"
   },
   "../src/svg/common/external_icon.svg": {
-    "file": "assets/external_icon-79615557.svg",
+    "file": "assets/external_icon-6f78e284.svg",
     "src": "../src/svg/common/external_icon.svg"
   },
   "../src/svg/header/github_icon.svg": {
-    "file": "assets/github_icon-e3f56dab.svg",
+    "file": "assets/github_icon-a84fb2e6.svg",
     "src": "../src/svg/header/github_icon.svg"
   },
   "../src/svg/header/notion_icon.svg": {
-    "file": "assets/notion_icon-1ea49ff9.svg",
+    "file": "assets/notion_icon-43e49e81.svg",
     "src": "../src/svg/header/notion_icon.svg"
   },
-  "index.css": {
-    "file": "assets/index-80432b00.css",
-    "src": "index.css"
-  },
-  "index.html": {
-    "css": [
-      "assets/index-80432b00.css"
+  "_page-65885f3e.js": {
+    "assets": [
+      "assets/external_icon-6f78e284.svg",
+      "assets/project_open-a4caea58.svg",
+      "assets/github_icon-a84fb2e6.svg",
+      "assets/notion_icon-43e49e81.svg",
+      "assets/theme_light-41bf14ef.svg",
+      "assets/theme_dark-dd8f1125.svg",
+      "assets/theme_system-c85948c9.svg",
+      "assets/close-4d784d0a.svg",
+      "assets/link-95342e97.svg"
     ],
-    "file": "assets/main-2d6ca20c.js",
-    "isEntry": true,
-    "src": "index.html"
+    "css": [
+      "assets/page-805c3765.css"
+    ],
+    "file": "assets/page-65885f3e.js"
+  },
+  "page.css": {
+    "file": "assets/page-805c3765.css",
+    "src": "page.css"
   }
 }

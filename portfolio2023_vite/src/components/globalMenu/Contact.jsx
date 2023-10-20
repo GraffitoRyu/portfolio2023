@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // svg
-import { ReactComponent as IconExternal } from "../../svg/common/external_icon.svg";
+import IconExternal from "../../svg/common/external_icon.svg";
 
 export default function ContactBtn(props) {
   const d = props.data;

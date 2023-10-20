@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 // svg
-import { ReactComponent as IconExternal } from "../../svg/common/external_icon.svg";
+import IconExternal from "../../svg/common/external_icon.svg";
 
 export default function GnbFooter(props) {
   const d = props.data;

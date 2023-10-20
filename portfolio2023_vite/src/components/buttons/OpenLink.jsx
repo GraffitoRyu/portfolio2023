@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ReactComponent as BtnLink } from "../../svg/btn/link.svg";
+import BtnLink from "../../svg/btn/link.svg";
 
 export default function OpenLinkBtn(props) {
   const [hover, setHover] = useState("");

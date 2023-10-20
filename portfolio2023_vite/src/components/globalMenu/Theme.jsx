@@ -2,9 +2,9 @@ import { useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 
 // svg
-import { ReactComponent as ThemeLight } from "../../svg/btn/theme_light.svg";
-import { ReactComponent as ThemeDark } from "../../svg/btn/theme_dark.svg";
-import { ReactComponent as ThemeSystem } from "../../svg/btn/theme_system.svg";
+import ThemeLight from "../../svg/btn/theme_light.svg";
+import ThemeDark from "../../svg/btn/theme_dark.svg";
+import ThemeSystem from "../../svg/btn/theme_system.svg";
 
 // util
 import closeByClickOutside from "../../hooks/util/closeByClickOutside";
