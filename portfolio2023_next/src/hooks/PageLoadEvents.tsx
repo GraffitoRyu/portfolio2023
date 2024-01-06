@@ -7,7 +7,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 // type
 import { SitemapType } from "@/types/sitemap";
 import { DetailTypes } from "@/types/projectDetails";
-import { DetailLayoutStateTypes, pageStateTypes } from "@/types/state";
+import { DetailLayoutStateTypes, PageStateTypes } from "@/types/state";
 
 // state
 import { pageState } from "@/states/page";
@@ -26,7 +26,7 @@ export function PageLoadEvents() {
   const { category } = useParams();
   const [savedPathName, setPathname] = useState<string>("/"); // 현재 루트 저장
   const [{ init, initComplete, cur }, setPage] =
-    useRecoilState<pageStateTypes>(pageState);
+    useRecoilState<PageStateTypes>(pageState);
 
   // 프로젝트 상세에 대한 열림/닫힘 상태 업데이트
   const setDetailState =

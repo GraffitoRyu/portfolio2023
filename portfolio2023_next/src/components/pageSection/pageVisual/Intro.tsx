@@ -14,7 +14,7 @@ import { IntroTypes } from "@/types/section";
 import {
   ScreenSizeTypes,
   ScrollRefStateTypes,
-  pageStateTypes,
+  PageStateTypes,
 } from "@/types/state";
 
 // state
@@ -27,7 +27,7 @@ import { transTime } from "@/styles/styled/preset/transTime";
 import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
 
 export default function PageIntro({ title, desc }: IntroTypes) {
-  const { init, loadComplete } = useRecoilValue<pageStateTypes>(pageState);
+  const { init, loadComplete } = useRecoilValue<PageStateTypes>(pageState);
   const { windowWidth } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
 
   const [titleHide, setTitleHide] = useState<string>(

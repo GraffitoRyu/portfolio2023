@@ -9,7 +9,7 @@ import { SitemapLink } from "@/styles/styled/components/Gnb";
 
 // type
 import { SitemapType } from "@/types/sitemap";
-import { ScrollRefStateTypes, pageStateTypes } from "@/types/state";
+import { ScrollRefStateTypes, PageStateTypes } from "@/types/state";
 
 // state
 import { pageState } from "@/states/page";
@@ -26,7 +26,7 @@ export default function SitemapBtn({ code, path, name }: SitemapType) {
   const { category } = useParams();
 
   // 페이지 상태 관리
-  const setPageAtom = useSetRecoilState<pageStateTypes>(pageState);
+  const setPageAtom = useSetRecoilState<PageStateTypes>(pageState);
   const { container } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
 
   // 경로 상태 관리

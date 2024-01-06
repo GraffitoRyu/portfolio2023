@@ -22,7 +22,7 @@ import { screenSizeState } from "@/states/screen";
 import {
   ScreenSizeTypes,
   ScrollRefStateTypes,
-  pageStateTypes,
+  PageStateTypes,
 } from "@/types/state";
 
 // util
@@ -33,7 +33,7 @@ export default function PageHeader() {
   const setScreenSize = useSetRecoilState<ScreenSizeTypes>(screenSizeState);
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
   const [hide, setHide] = useState<string>("init-hide hide");
-  const { init, initComplete } = useRecoilValue<pageStateTypes>(pageState);
+  const { init, initComplete } = useRecoilValue<PageStateTypes>(pageState);
 
   const updateHeaderHeight = useCallback(() => {
     const header = headerRef?.current;

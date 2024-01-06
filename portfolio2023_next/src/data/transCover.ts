@@ -1,6 +1,6 @@
-import { transCoverPageTypes } from "@/types/transCover";
+import { TransCoverPageTypes } from "@/types/transCover";
 
-export const transCoverData: transCoverPageTypes = {
+export const transCoverData: TransCoverPageTypes = {
   profile: {
     title: "profile",
     desc: "",

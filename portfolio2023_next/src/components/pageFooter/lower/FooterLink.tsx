@@ -18,7 +18,7 @@ import {
 
 // types
 import { SitemapType } from "@/types/sitemap";
-import { ScrollRefStateTypes, pageStateTypes } from "@/types/state";
+import { ScrollRefStateTypes, PageStateTypes } from "@/types/state";
 
 // state
 import { pageState } from "@/states/page";
@@ -58,7 +58,7 @@ export default function FooterLink({
   // 현재 페이지 경로
   const pathname = usePathname();
   // 페이지 상태 관리
-  const setPageAtom = useSetRecoilState<pageStateTypes>(pageState);
+  const setPageAtom = useSetRecoilState<PageStateTypes>(pageState);
   const { container } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
 
   const isNav: boolean = header && !external ? true : false;
