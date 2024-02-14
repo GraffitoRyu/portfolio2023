@@ -19,7 +19,7 @@ function DetailInfoItemRef(
     $itemIndex?: number;
     $delayIndex?: number;
   },
-  ref: ForwardedRef<HTMLDListElement>
+  ref: ForwardedRef<HTMLDListElement>,
 ) {
   const customAttrs = {
     className: `details-${code}-item ${className ?? ""}`,

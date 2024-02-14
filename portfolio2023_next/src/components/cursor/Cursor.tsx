@@ -36,7 +36,7 @@ export default function Cursor() {
         setCursor(c);
       }
     },
-    [setCursor]
+    [setCursor],
   );
 
   useEffect(() => {

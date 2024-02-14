@@ -24,7 +24,7 @@ export default function DetailVisualViewport({
     (node: HTMLDivElement | null) => {
       setScrollRef(prev => ({ ...prev, visual: node }));
     },
-    [setScrollRef]
+    [setScrollRef],
   );
 
   return <PDVisualViewport ref={updateScrollRef}>{children}</PDVisualViewport>;

@@ -53,7 +53,7 @@ export default function ProjectDetail() {
       detailRef.current = node;
       setDetailScrollRef(prev => ({ ...prev, container: node }));
     },
-    [setDetailScrollRef]
+    [setDetailScrollRef],
   );
 
   // 프로젝트 상세 스크롤 높이 업데이트
@@ -68,7 +68,7 @@ export default function ProjectDetail() {
           ...prev,
           scrollHeight: ctx ? ctx.height : 0,
         }));
-      }, 400)
+      }, 400),
     );
 
     ob.observe(scrollWrap);

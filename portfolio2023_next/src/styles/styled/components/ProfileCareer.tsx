@@ -30,22 +30,30 @@ export const CareerBorder = styled.div`
     display: block;
     ${size({ w: "100%", h: "100%" })}
     background-color: ${({ theme }) => theme.career.border};
-    transition: background-color 0.4s, width 0.8s ${easing.quart},
+    transition:
+      background-color 0.4s,
+      width 0.8s ${easing.quart},
       opacity 0.8s ${easing.quart};
   }
 
   &.bottom:before {
-    transition: background-color 0.4s, width 0.8s ${easing.quart} 0.2s,
+    transition:
+      background-color 0.4s,
+      width 0.8s ${easing.quart} 0.2s,
       opacity 0.8s ${easing.quart} 0.2s;
   }
 
   ${CareerItemContainer}.hide &:before {
     width: 0;
     opacity: 0;
-    transition: background-color 0.4s, width 0.8s ${easing.quart},
+    transition:
+      background-color 0.4s,
+      width 0.8s ${easing.quart},
       opacity 0.8s ${easing.quart};
     &.top:before {
-      transition: background-color 0.4s, width 0.8s ${easing.quart} 0.2s,
+      transition:
+        background-color 0.4s,
+        width 0.8s ${easing.quart} 0.2s,
         opacity 0.8s ${easing.quart} 0.2s;
     }
   }
@@ -88,8 +96,10 @@ const fadeInUp_after = css`
 `;
 
 const summaryTransition = css`
-  transition: color ${transTime.color / 1000}s,
-    background-color ${transTime.color / 1000}s, transform 0.8s ${easing.quart},
+  transition:
+    color ${transTime.color / 1000}s,
+    background-color ${transTime.color / 1000}s,
+    transform 0.8s ${easing.quart},
     opacity 0.8s ${easing.quart};
 `;
 
@@ -169,7 +179,10 @@ export const CareerExpandIcon = styled.figure`
     ${size({ w: 24, h: 2, r: 1 })}
       background-color:${({ theme }) => theme.career.icon};
     transform-origin: center;
-    transition: transform 0.4s, opacity 0.4s, background-color 0.4s;
+    transition:
+      transform 0.4s,
+      opacity 0.4s,
+      background-color 0.4s;
   }
   &:before {
     transform: translate(-50%, -50%) rotate(45deg);
@@ -286,7 +299,9 @@ export const CareerWrap = styled.details<{ $height: number }>`
       &:after {
         transform: translate(-50%, -50%) rotate(-180deg);
         opacity: 0;
-        transition: transform 0.6s, opacity 0.8s linear 0.2s,
+        transition:
+          transform 0.6s,
+          opacity 0.8s linear 0.2s,
           background-color 0.4s;
       }
     }

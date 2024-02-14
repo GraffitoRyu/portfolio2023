@@ -57,7 +57,8 @@ export const ProjectItemBorder = styled.div<{ $pos: "top" | "bottom" }>`
   ${({ $pos }) => position({ type: "absolute", [$pos]: 0 })}
   ${size({ w: 0, h: "1px" })}
   background-color:${({ theme }) => theme.projectList.border};
-  transition: width 0.6s ${easing.quart},
+  transition:
+    width 0.6s ${easing.quart},
     background-color ${transTime.color / 1000}s;
   ${ProjectItemContainer}:not(.hide) & {
     width: 100%;

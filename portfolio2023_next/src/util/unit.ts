@@ -24,7 +24,7 @@ export function getRootFontSize(): number {
         window
           .getComputedStyle(_html)
           .getPropertyValue("font-size")
-          .replace("px", "")
+          .replace("px", ""),
       );
     }
   }

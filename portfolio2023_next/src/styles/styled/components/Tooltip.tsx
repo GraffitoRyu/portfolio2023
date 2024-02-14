@@ -51,7 +51,8 @@ export const TooltipBox = styled.div<{ $section: string; $pos: string[] }>`
     if ($pos[0] === "center") return `transform: translateX(50%)`;
     else if ($pos[1] === "center") return `transform: translateY(50%)`;
   }};
-  transition: opacity ${transTime.tooltip / 1000}s,
+  transition:
+    opacity ${transTime.tooltip / 1000}s,
     transform ${transTime.tooltip / 1000}s;
 
   &.show {

@@ -13,10 +13,10 @@ import { SitemapType } from "@/types/sitemap";
 import { sitemapData } from "@/data/sitemap";
 
 const gnbData: SitemapType[] | undefined = sitemapData.filter(
-  (d: SitemapType) => d.header && !d.external
+  (d: SitemapType) => d.header && !d.external,
 );
 const extData: SitemapType[] | undefined = sitemapData.filter(
-  (d: SitemapType) => d.header && d.external
+  (d: SitemapType) => d.header && d.external,
 );
 
 export default function Gnb() {

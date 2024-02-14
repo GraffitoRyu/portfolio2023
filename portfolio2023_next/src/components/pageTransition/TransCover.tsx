@@ -20,17 +20,17 @@ import { pageState } from "@/states/page";
 import { transCoverData } from "@/data/transCover";
 
 // types
-import { pageStateTypes } from "@/types/state";
-import { transCoverTypes } from "@/types/transCover";
+import { PageStateTypes } from "@/types/state";
+import { TransCoverTypes } from "@/types/transCover";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 
 export default function TransCover() {
   const [{ initComplete, cover, loaded }, setPage] =
-    useRecoilState<pageStateTypes>(pageState);
+    useRecoilState<PageStateTypes>(pageState);
   const [loading, setLoading] = useState("");
-  const [data, setData] = useState<transCoverTypes>(transCoverData[cover]);
+  const [data, setData] = useState<TransCoverTypes>(transCoverData[cover]);
 
   useEffect(() => {
     setData(transCoverData[cover]);

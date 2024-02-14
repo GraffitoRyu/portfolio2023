@@ -66,7 +66,7 @@ export default function CareerSummary({
         }));
       }
     },
-    [careerItems, careerOpen, code, setScrollRef]
+    [careerItems, careerOpen, code, setScrollRef],
   );
 
   useEffect(() => {

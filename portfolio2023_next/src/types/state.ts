@@ -24,7 +24,7 @@ export type ScreenSizeTypes = {
   detailHeaderHeight: number;
 };
 
-export type pageStateTypes = {
+export type PageStateTypes = {
   init: boolean;
   initComplete: boolean;
   cur: string;

@@ -18,7 +18,7 @@ function PeriodTime({ $date }: { $date: string }) {
 
 function Period(
   { className, date }: PeriodProps,
-  ref: ForwardedRef<HTMLDivElement>
+  ref: ForwardedRef<HTMLDivElement>,
 ) {
   return (
     <PeriodContainer

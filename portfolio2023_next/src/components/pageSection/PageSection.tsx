@@ -29,7 +29,7 @@ export default function PageSection({
     (node: HTMLElement | null) => {
       setScrollRef(prev => ({ ...prev, [`${code}Section`]: node }));
     },
-    [code, setScrollRef]
+    [code, setScrollRef],
   );
 
   return (

@@ -14,10 +14,10 @@ const getOptions = {
 
 export default async function TechStacks() {
   const index = await getSSRData(
-    Object.assign(getOptions, { queryValue: "stackKeys" })
+    Object.assign(getOptions, { queryValue: "stackKeys" }),
   );
   const rawData = await getSSRData(
-    Object.assign(getOptions, { queryValue: "stacks" })
+    Object.assign(getOptions, { queryValue: "stacks" }),
   );
   const stackData: StackDataTypes = convertStackData(index, rawData);
 
@@ -42,7 +42,7 @@ function convertStackData(index: StackKeyTypes[], raw: StackTypes[]) {
   const dataIndex: string[] = index.map((d: StackKeyTypes) => d.code);
   const filterData = dataIndex.map((key: string) => {
     const filtered: StackTypes[] = raw.filter(
-      (r: StackTypes) => r.category === key
+      (r: StackTypes) => r.category === key,
     );
     return [key, filtered];
   });

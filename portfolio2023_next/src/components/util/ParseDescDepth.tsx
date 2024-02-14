@@ -20,7 +20,7 @@ export default function ParseDescDepth({ data }: DescTypes) {
             {data.depth2?.map((d2: string, i: number) => (
               <DepthItem
                 key={`parseDescDepth_${Math.floor(
-                  Math.random() * 100000000
+                  Math.random() * 100000000,
                 )}_${i}`}
               >
                 <span>{d2}</span>

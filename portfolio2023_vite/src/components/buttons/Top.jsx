@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ReactComponent as BtnTop } from "../../svg/btn/top.svg";
+import BtnTop from "../../svg/btn/top.svg";
 
 export default function TopBtn(props) {
   const [hover, setHover] = useState("");

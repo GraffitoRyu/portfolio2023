@@ -25,11 +25,11 @@ export default function UpdateStateByResize() {
 
     document.documentElement.style.setProperty(
       `--ww`,
-      `${window.innerWidth}px`
+      `${window.innerWidth}px`,
     );
     document.documentElement.style.setProperty(
       `--wh`,
-      `${window.innerHeight}px`
+      `${window.innerHeight}px`,
     );
   };
 

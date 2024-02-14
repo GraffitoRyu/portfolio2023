@@ -22,7 +22,7 @@ import { screenSizeState } from "@/states/screen";
 import {
   ScreenSizeTypes,
   ScrollRefStateTypes,
-  pageStateTypes,
+  PageStateTypes,
 } from "@/types/state";
 
 // util
@@ -33,7 +33,7 @@ export default function PageHeader() {
   const setScreenSize = useSetRecoilState<ScreenSizeTypes>(screenSizeState);
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
   const [hide, setHide] = useState<string>("init-hide hide");
-  const { init, initComplete } = useRecoilValue<pageStateTypes>(pageState);
+  const { init, initComplete } = useRecoilValue<PageStateTypes>(pageState);
 
   const updateHeaderHeight = useCallback(() => {
     const header = headerRef?.current;
@@ -41,7 +41,7 @@ export default function PageHeader() {
 
     document.documentElement.style.setProperty(
       `--header-height`,
-      `${header.clientHeight}px`
+      `${header.clientHeight}px`,
     );
 
     setScreenSize(prev => ({
@@ -59,7 +59,7 @@ export default function PageHeader() {
       headerRef.current = node;
       setScrollRef(prev => ({ ...prev, header: node }));
     },
-    [setScrollRef]
+    [setScrollRef],
   );
 
   // 헤더 높이 최초 업데이트

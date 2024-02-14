@@ -236,7 +236,7 @@ export const transition = ([...setArray]: TransitionTypes[]) => css`
       d =>
         `${d.prop} ${d.time}${d.easing ? ` ${d.easing}` : ""}${
           d.delay ? ` ${d.delay}` : ""
-        }`
+        }`,
     )
     .join(",")};
 `;

@@ -5,7 +5,7 @@ export const getSystemTheme: () => string = () => {
 };
 
 export const applyTheme: (theme: string | undefined | null) => void = (
-  theme
+  theme,
 ) => {
   const rootClassList = document.querySelector("html")?.classList;
   // reset

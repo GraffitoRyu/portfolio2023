@@ -1,4 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 1,
+  themeColor: [
+    { color: "#cccccc" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+};
 export const metadata: Metadata = {
   title: {
     default: "류대현 포트폴리오 :: Front-end Engineer / UI Engineer",
@@ -25,20 +36,10 @@ export const metadata: Metadata = {
     "포트폴리오",
     "portfolio",
   ],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    minimumScale: 1,
-    maximumScale: 1,
-  },
   formatDetection: {
     address: false,
     telephone: false,
   },
-  themeColor: [
-    { color: "#cccccc" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
   // SEO
   metadataBase: new URL("https://ryudh.com"),
   // 대체 접속 경로

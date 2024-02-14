@@ -2,7 +2,7 @@ import { ForwardedRef, forwardRef } from "react";
 
 function LoadingIcon(
   { className }: { className?: string },
-  ref: ForwardedRef<SVGSVGElement>
+  ref: ForwardedRef<SVGSVGElement>,
 ) {
   return (
     <svg

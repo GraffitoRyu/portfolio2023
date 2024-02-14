@@ -15,7 +15,7 @@ export const ExpList = styled.ul<{ $length: number }>`
   ${({ $length }) =>
     size({
       w: `calc(${widthRatio(12, 11) * ($length !== 0 ? $length : 5)}% + ${rem(
-        40
+        40,
       )})`,
       h: "100%",
       m: [0, -20],
@@ -26,7 +26,7 @@ export const ExpList = styled.ul<{ $length: number }>`
     ${({ $length }) =>
       size({
         w: `calc(${widthRatio(7, 5) * ($length !== 0 ? $length : 5)}% + ${rem(
-          40
+          40,
         )})`,
       })}
   }

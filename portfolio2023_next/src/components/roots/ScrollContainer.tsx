@@ -19,7 +19,7 @@ export default function ScrollContainer({ children }: { children: ReactNode }) {
     (node: HTMLDivElement | null) => {
       setScrollRef(prev => ({ ...prev, container: node }));
     },
-    [setScrollRef]
+    [setScrollRef],
   );
 
   return (

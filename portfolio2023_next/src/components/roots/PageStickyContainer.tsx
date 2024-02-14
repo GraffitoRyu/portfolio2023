@@ -38,7 +38,7 @@ export default function PageStickyContainer({
           ...prev,
           stickyHeight: ctx ? Math.ceil(ctx.height) : 0,
         }));
-      }, 400)
+      }, 400),
     );
 
     ob.observe(container);

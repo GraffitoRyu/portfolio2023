@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import debounce from "@/util/debounceEvent";
 
 function useResizeObserver<T extends HTMLElement>(
-  callback: (target: T | null, entry: ResizeObserverEntry) => void
+  callback: (target: T | null, entry: ResizeObserverEntry) => void,
 ) {
   const ref = useRef<T>(null);
 
@@ -16,7 +16,7 @@ function useResizeObserver<T extends HTMLElement>(
     const observer = new ResizeObserver(
       debounce((entries: ResizeObserverEntry[]) => {
         callback(element, entries[0]);
-      }, 400)
+      }, 400),
     );
 
     observer.observe(element);

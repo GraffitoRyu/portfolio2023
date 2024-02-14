@@ -1,7 +1,7 @@
 import { atom } from "recoil";
-import { pageStateTypes } from "@/types/state";
+import { PageStateTypes } from "@/types/state";
 
-export const pageState = atom<pageStateTypes>({
+export const pageState = atom<PageStateTypes>({
   key: "pageStateAtom",
   default: {
     init: false, // 새로고침 후 첫 진입

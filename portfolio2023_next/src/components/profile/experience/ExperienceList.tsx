@@ -68,7 +68,7 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
       debounce((entries: ResizeObserverEntry[]) => {
         const ctx = entries[0].contentRect;
         setListWidth(ctx.width);
-      }, 300)
+      }, 300),
     );
 
     observer.observe(list);

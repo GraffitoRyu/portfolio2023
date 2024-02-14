@@ -19,7 +19,7 @@ import { transTime } from "@/styles/styled/preset/transTime";
 import {
   ScreenSizeTypes,
   ScrollRefStateTypes,
-  pageStateTypes,
+  PageStateTypes,
 } from "@/types/state";
 
 // state
@@ -42,7 +42,7 @@ export default function PageVisual({ title }: { title: string[] }) {
   const visualTitleRef = useRef<HTMLHeadingElement | null>(null);
   const [titleTop, setTitleTop] = useState<number>(0);
 
-  const { loadComplete } = useRecoilValue<pageStateTypes>(pageState);
+  const { loadComplete } = useRecoilValue<PageStateTypes>(pageState);
   const [loaded, setLoaded] = useState<string>("loading");
   const [fixed, setFixed] = useState<string>("");
 
