@@ -200,24 +200,24 @@ export const font = ({
   ${typeof size === "number"
     ? `font-size:${rem(size)};`
     : typeof size === "string"
-    ? `font-size:${size};`
-    : ""}
+      ? `font-size:${size};`
+      : ""}
   ${typeof weight !== "undefined" && `font-weight:${weight};`}
   ${typeof height === "number"
     ? `line-height:${rem(height)};`
     : typeof height === "string"
-    ? `line-height:${height};`
-    : ""}
+      ? `line-height:${height};`
+      : ""}
   ${typeof spacing === "number"
     ? `letter-spacing:${rem(spacing)};`
     : typeof spacing === "string"
-    ? `letter-spacing:${spacing};`
-    : ""}
+      ? `letter-spacing:${spacing};`
+      : ""}
   ${Array.isArray(family)
     ? `font-family:${family.join(",")};`
     : typeof family === "string"
-    ? `font-family:${family};`
-    : ""}
+      ? `font-family:${family};`
+      : ""}
   ${whitespace && `white-space:${whitespace};`}
   ${transform && `text-transform:${transform};`}
   ${deco && `text-decoration:${deco};`}
