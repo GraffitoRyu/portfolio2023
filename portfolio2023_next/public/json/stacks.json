@@ -24,14 +24,14 @@
     "level": 1
   },
   {
-    "code": "react_router",
-    "name": "React Router",
-    "category": "webapp",
-    "level": 1
-  },
-  {
     "code": "nextjs",
     "name": "Next.js",
+    "category": "webapp",
+    "level": 0
+  },
+  {
+    "code": "jotai",
+    "name": "Jotai",
     "category": "webapp",
     "level": 0
   },
