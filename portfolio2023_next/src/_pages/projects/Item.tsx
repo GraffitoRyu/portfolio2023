@@ -5,9 +5,9 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 // components
-import SlideTitle from "@/components/projects/item/SlideTitle";
-import ProjectSummary from "@/components/projects/item/Summary";
-import BtnIcon from "@/components/projects/item/BtnIcon";
+import SlideTitle from "@/_pages/projects/item/SlideTitle";
+import ProjectSummary from "@/_pages/projects/item/Summary";
+import BtnIcon from "@/_pages/projects/item/BtnIcon";
 
 // style components
 import {

@@ -88,10 +88,10 @@ export default function CareerSummary({
       onMouseLeave={() => setHover("")}
     >
       <CareerPeriod>
-        <span>{convertPeriod(period[0]).slice(windowWidth < 768 ? 2 : 0)}</span>
+        <span>{convertPeriod(period[0], windowWidth)}</span>
       </CareerPeriod>
       <CareerPeriod>
-        <span>{convertPeriod(period[1]).slice(windowWidth < 768 ? 2 : 0)}</span>
+        <span>{convertPeriod(period[1], windowWidth)}</span>
       </CareerPeriod>
       <CareerRole>
         <span>{role}</span>
@@ -106,8 +106,16 @@ export default function CareerSummary({
   );
 }
 
-function convertPeriod(date: string): string {
-  return `${periodVal("year", date)}. ${periodVal("month", date)}.`;
+function convertPeriod(date: string, windowWidth: number): string {
+  if (
+    typeof date !== "undefined" &&
+    new Date(date) instanceof Date &&
+    !isNaN(new Date(date).valueOf())
+  )
+    return `${periodVal("year", date)}. ${periodVal("month", date)}.`.slice(
+      windowWidth < 768 ? 2 : 0,
+    );
+  return date === "" ? "재직중" : date;
 }
 
 function periodVal(type: string, value: string) {

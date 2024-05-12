@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 
 // components
-import LoadingIconComponent from "../loading/LoadingIcon";
+import LoadingIconComponent from "../../loading/LoadingIcon";
 
 // style components
 import {

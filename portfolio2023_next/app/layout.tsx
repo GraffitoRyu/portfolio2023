@@ -13,14 +13,14 @@ import { Analytics } from "@vercel/analytics/react";
 
 // components
 import PageTemplate from "@/components/roots/PageTemplate";
-import TransCover from "@/components/pageTransition/TransCover";
-import InitPageCover from "@/components/pageInitialize/InitPageCover";
+import TransCover from "@/components/pageFrame/pageTransition/TransCover";
+import InitPageCover from "@/components/pageFrame/pageInitialize/InitPageCover";
 import Cursor from "@/components/cursor/Cursor";
 
 // styles
 import { sans, serif, serif_dm } from "@/styles/fonts/fonts";
 import "@/styles/scss/globals.scss";
-import StyledComponentsRegistry from "./lib/registry";
+import StyledComponentsRegistry from "../src/components/roots/StyledComponentsRegistry";
 import { HTMLThemeStyle, PageContainer } from "@/styles/styled/components/Page";
 
 // hooks

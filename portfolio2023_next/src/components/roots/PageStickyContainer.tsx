@@ -4,7 +4,7 @@ import { ReactNode, useEffect, useRef } from "react";
 import { useSetRecoilState } from "recoil";
 
 // components
-import PageHeader from "../pageHeader/PageHeader";
+import PageHeader from "../pageFrame/pageHeader/PageHeader";
 
 // style components
 import { StickyContainer } from "@/styles/styled/components/Page";
