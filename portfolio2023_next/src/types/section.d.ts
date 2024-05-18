@@ -1,4 +1,4 @@
-export type IntroTypes = {
+type IntroTypes = {
   title: Array<string | JSX.Element>;
   desc: string[];
 };

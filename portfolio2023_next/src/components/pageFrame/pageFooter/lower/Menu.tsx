@@ -1,5 +1,5 @@
 // components
-import FooterLink from "./FooterLink";
+import FooterLink from "./LinkBtn";
 
 // style components
 import {
@@ -8,9 +8,6 @@ import {
   FooterMenuTitle,
 } from "@/styles/styled/components/PageFooter";
 
-// types
-import { SitemapType } from "@/types/sitemap";
-
 export default function FooterMenu({
   title,
   category,
@@ -18,14 +15,14 @@ export default function FooterMenu({
 }: {
   title: string;
   category: string;
-  data: SitemapType[];
+  data: SitemapDataType[];
 }) {
   return (
     <FooterMenuItem>
       <FooterMenuTitle>{title}</FooterMenuTitle>
       <FooterMenuContents className={`${category}-menu`}>
-        {data.map((d: SitemapType, i: number) => (
-          <FooterLink key={`footerLink_${d.code}_${i}`} {...d} />
+        {data.map(d => (
+          <FooterLink {...d} key={`footer/menu/${d.key}`} />
         ))}
       </FooterMenuContents>
     </FooterMenuItem>

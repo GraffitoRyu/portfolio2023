@@ -1,17 +1,15 @@
-import { ProjectsType } from "./projects";
-
-export type DetailTypes = {
+type DetailTypes = {
   [index: string]: ProjectsType;
 };
 
-export interface DetailInfoSummaryTypes {
+interface DetailInfoSummaryTypes {
   code: string;
   title: string;
   contents: string | string[];
   type: string;
 }
 
-export interface DetailInfoDescTypes {
+interface DetailInfoDescTypes {
   code: string;
   title: string;
   contents: string[] | undefined;

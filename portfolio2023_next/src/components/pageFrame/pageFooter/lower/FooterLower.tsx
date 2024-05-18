@@ -1,6 +1,6 @@
 // components
-import PortfolioSummary from "./PortfolioSummary";
-import FooterMenu from "./FooterMenu";
+import PortfolioSummary from "./Summary";
+import FooterMenu from "./Menu";
 
 // style components
 import {
@@ -8,27 +8,21 @@ import {
   FooterMenuColumn,
 } from "@/styles/styled/components/PageFooter";
 
-// types
-import { SitemapType } from "@/types/sitemap";
-
 // data
-import { sitemapData } from "@/data/sitemap";
-
-const contactData: SitemapType[] = sitemapData.filter(d => d.contact);
-const resumeData: SitemapType[] = sitemapData.filter(d => d.resume);
-const footerNavData: SitemapType[] = sitemapData.filter(d => d.header);
-const recruitData: SitemapType[] = sitemapData.filter(d => d.recruit);
+import sitemap from "@/data/sitemap";
 
 export default function FooterLower() {
+  const { portfolio, recruit, contact, download } = sitemap;
+
   return (
     <FooterLowerContainer>
       <FooterMenuColumn className="link-page">
-        <FooterMenu title="Portfolio" category="nav" data={footerNavData} />
-        <FooterMenu title="Recruitment" category="recruit" data={recruitData} />
+        <FooterMenu title="Portfolio" category="nav" data={portfolio} />
+        <FooterMenu title="Recruitment" category="recruit" data={recruit} />
       </FooterMenuColumn>
       <FooterMenuColumn className="none-page">
-        <FooterMenu title="Contact" category="contact" data={contactData} />
-        <FooterMenu title="Resume" category="resume" data={resumeData} />
+        <FooterMenu title="Contact" category="contact" data={contact} />
+        <FooterMenu title="Resume" category="resume" data={download} />
       </FooterMenuColumn>
       <PortfolioSummary />
     </FooterLowerContainer>

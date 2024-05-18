@@ -1,4 +1,4 @@
-export interface SummaryType {
+interface SummaryType {
   [index: string]: string | string[];
   title: string[];
   desc: string;
@@ -6,14 +6,14 @@ export interface SummaryType {
   period: string[];
 }
 
-export interface LinkType {
+interface LinkType {
   [index: string]: string | string[] | undefined;
   code: string;
   name: string;
   url: string;
   hide: undefined | string[];
 }
-export interface ServiceType {
+interface ServiceType {
   [index: string]: string | string[] | LinkType[];
   provider: string;
   serviceType: string;
@@ -21,7 +21,7 @@ export interface ServiceType {
   link: LinkType[];
 }
 
-export interface ExpStacksType {
+interface ExpStacksType {
   [index: string]: string[];
   languages: string[];
   frameworks: string[];
@@ -29,20 +29,20 @@ export interface ExpStacksType {
   collaboration: string[];
 }
 
-export interface ExpType {
+interface ExpType {
   [index: string]: string[] | ExpStacksType;
   stacks: ExpStacksType;
   desc: string[];
 }
 
-export interface MediaType {
+interface MediaType {
   [index: string]: string;
   referType: string;
   src: string;
   alt: string;
 }
 
-export interface ProjectsType {
+interface ProjectsType {
   [index: string]:
     | string
     | SummaryType

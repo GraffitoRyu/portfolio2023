@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react";
 
-export interface PeriodProps {
+interface PeriodProps {
   className?: string | HTMLAttributes<HTMLDivElement>;
   date: string[];
 }

@@ -18,13 +18,6 @@ import { pageState } from "@/states/page";
 import { scrollRefState } from "@/states/scroll";
 import { screenSizeState } from "@/states/screen";
 
-// types
-import {
-  ScreenSizeTypes,
-  ScrollRefStateTypes,
-  PageStateTypes,
-} from "@/types/state";
-
 // util
 import debounce from "@/util/debounceEvent";
 
@@ -87,7 +80,7 @@ export default function PageHeader() {
   }, [initComplete]);
 
   return (
-    <HeaderContainer className={`${hide}`} ref={updateScrollRef}>
+    <HeaderContainer className={hide} ref={updateScrollRef}>
       <StyledHeaderWrap>
         <TimeDisplay />
         <Gnb />

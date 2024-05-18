@@ -11,9 +11,6 @@ import {
   ThemeMenuContainer,
 } from "@/styles/styled/components/ThemeMenu";
 
-// types
-import { ThemeStateTypes } from "@/types/state";
-
 // state
 import { themeState } from "@/states/theme";
 
@@ -38,10 +35,8 @@ export default function ThemeMenuList() {
   return (
     <ThemeMenuContainer className={`theme-menu ${openClass} ${themeClass}`}>
       <ThemeList>
-        {themeList.map((code: string, i: number) => (
-          <ThemeListItem
-            key={`themeMenu_${code}_${Math.floor(Math.random() * 100000)}_${i}`}
-          >
+        {themeList.map((code: string) => (
+          <ThemeListItem key={`theme/menu/${code}`}>
             <ThemeMenuBtn code={code} />
           </ThemeListItem>
         ))}

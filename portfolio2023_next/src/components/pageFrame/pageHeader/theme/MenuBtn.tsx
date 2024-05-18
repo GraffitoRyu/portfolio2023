@@ -1,32 +1,17 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 
+// components
+import ThemeIcon from "./BtnIcons";
+
 // style components
 import { ThemeMenuButton } from "@/styles/styled/components/ThemeMenu";
-
-// types
-import { ThemeStateTypes } from "@/types/state";
 
 // state
 import { themeState } from "@/states/theme";
 
 // util
 import { getSystemTheme } from "@/util/changeTheme";
-
-// SVG
-import * as ThemeSvg from "./BtnIcons";
-function ThemeIcon(theme: string) {
-  switch (theme) {
-    case "light":
-      return <ThemeSvg.Light />;
-    case "dark":
-      return <ThemeSvg.Dark />;
-    case "system":
-      return <ThemeSvg.System />;
-    default:
-      return null;
-  }
-}
 
 export default function ThemeMenuBtn({ code }: { code: string }) {
   const [theme, setTheme] = useRecoilState<ThemeStateTypes>(themeState);
@@ -54,7 +39,9 @@ export default function ThemeMenuBtn({ code }: { code: string }) {
       onMouseLeave={() => setHover("")}
       aria-label={`${code} theme mode`}
     >
-      <figure>{ThemeIcon(code)}</figure>
+      <figure>
+        <ThemeIcon themeCode={code} />
+      </figure>
       <span>{code}</span>
     </ThemeMenuButton>
   );

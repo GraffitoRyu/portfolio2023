@@ -13,9 +13,6 @@ import {
   InitCoverContainer,
 } from "@/styles/styled/components/InitPageCover";
 
-// types
-import { PageStateTypes } from "@/types/state";
-
 // state
 import { pageState } from "@/states/page";
 

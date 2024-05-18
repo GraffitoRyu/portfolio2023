@@ -1,4 +1,4 @@
-export interface CareerColorTypes {
+interface CareerColorTypes {
   border: string;
   borderHover: string;
   bgHover: string;
@@ -15,24 +15,24 @@ export interface CareerColorTypes {
   expandBg: string;
 }
 
-export interface CareerModeTypes {
+interface CareerModeTypes {
   [index: string]: CareerColorTypes;
   light: CareerColorTypes;
   dark: CareerColorTypes;
 }
 
-export interface ExpColorTypes {
+interface ExpColorTypes {
   title: string;
   desc: string;
 }
 
-export interface ExpModeTypes {
+interface ExpModeTypes {
   [index: string]: ExpColorTypes;
   light: ExpColorTypes;
   dark: ExpColorTypes;
 }
 
-export interface StacksColorTypes {
+interface StacksColorTypes {
   [index: string]: string;
   legendTitle: string;
   legendLabel: string;
@@ -44,7 +44,7 @@ export interface StacksColorTypes {
   levelFull: string;
 }
 
-export interface StacksModeType {
+interface StacksModeType {
   [index: string]: StacksColorTypes;
   light: StacksColorTypes;
   dark: StacksColorTypes;

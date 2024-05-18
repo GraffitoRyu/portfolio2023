@@ -8,26 +8,13 @@ import Tooltip from "@/components/tooltip/Tooltip";
 // style components
 import { ExtBtn } from "@/styles/styled/components/Gnb";
 
-// type
-import { SitemapType } from "@/types/sitemap";
-
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // SVG
-import * as ExtSvg from "./BtnIcons";
-function ExtIcon(name: string) {
-  switch (name) {
-    case "Github":
-      return <ExtSvg.Github />;
-    case "Notion":
-      return <ExtSvg.Notion />;
-    default:
-      return name;
-  }
-}
+import ExternalIcon from "./BtnIcons";
 
-export default function ExternalBtn({ path, name }: SitemapType) {
+export default function ExternalBtn({ path, name }: SitemapDataType) {
   const [hover, setHover] = useState<string>("");
   const [active, setActive] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);
@@ -87,7 +74,9 @@ export default function ExternalBtn({ path, name }: SitemapType) {
           onMouseLeave={() => setHover("")}
           aria-label={`외부 페이지 ${name} 링크로 이동하기`}
         >
-          <figure>{ExtIcon(name)}</figure>
+          <figure>
+            <ExternalIcon menuName={name} />
+          </figure>
         </ExtBtn>
       </Tooltip>
     </div>

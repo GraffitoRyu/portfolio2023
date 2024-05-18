@@ -1,15 +1,17 @@
-export interface SectionHeaderTypes {
-  title: string;
-  desc: string;
+interface SectionHeaderTypes {
+  title?: string;
+  desc?: string[];
+  empty?: boolean;
+  className?: string;
 }
 
-export interface SectionHeaderModeTypes {
+interface SectionHeaderModeTypes {
   [index: string]: SectionHeaderTypes;
   light: SectionHeaderTypes;
   dark: SectionHeaderTypes;
 }
 
-export interface IntroTypes {
+interface IntroTypes {
   bgFrom: string;
   bgTo: string;
   title: string;
@@ -17,18 +19,18 @@ export interface IntroTypes {
   desc: string;
 }
 
-export interface IntroModeTypes {
+interface IntroModeTypes {
   [index: string]: IntroTypes;
   light: IntroTypes;
   dark: IntroTypes;
 }
 
-export interface VisualTypes {
+interface VisualTypes {
   border: string;
   fill: string;
 }
 
-export interface VisualModeTypes {
+interface VisualModeTypes {
   [index: string]: VisualTypes;
   light: VisualTypes;
   dark: VisualTypes;

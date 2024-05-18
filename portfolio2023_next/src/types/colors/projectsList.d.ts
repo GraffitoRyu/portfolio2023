@@ -1,4 +1,4 @@
-export interface ListColorTypes {
+interface ListColorTypes {
   border: string;
   bgHover: string;
   title: string;
@@ -7,7 +7,7 @@ export interface ListColorTypes {
   slideTitle: string;
 }
 
-export interface ListModeTypes {
+interface ListModeTypes {
   [index: string]: ListColorTypes;
   light: ListColorTypes;
   dark: ListColorTypes;

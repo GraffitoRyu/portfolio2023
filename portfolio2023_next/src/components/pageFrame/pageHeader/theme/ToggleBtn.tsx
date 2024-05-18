@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 
+// components
+import ThemeIcon from "./BtnIcons";
+
 // style components
 import { ToggleBtn, ToggleIcon } from "@/styles/styled/components/ThemeMenu";
 
-// types
-import { ThemeStateTypes } from "@/types/state";
-
 // state
 import { themeState } from "@/states/theme";
-
-// svg
-import * as ThemeSvg from "./BtnIcons";
 
 export default function ThemeToggleBtn() {
   const [theme, setTheme] = useRecoilState<ThemeStateTypes>(themeState);
@@ -37,8 +34,8 @@ export default function ThemeToggleBtn() {
       aria-label="컬러 테마메뉴 토글 버튼"
     >
       <ToggleIcon>
-        <ThemeSvg.Light className={updateIcon("light")} />
-        <ThemeSvg.Dark className={updateIcon("dark")} />
+        <ThemeIcon themeCode="light" className={updateIcon("light")} />
+        <ThemeIcon themeCode="dark" className={updateIcon("dark")} />
       </ToggleIcon>
     </ToggleBtn>
   );

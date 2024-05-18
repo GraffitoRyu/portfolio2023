@@ -1,9 +1,9 @@
-export type CustomTweenType = {
+type CustomTweenType = {
   target?: Element | undefined | null;
   options?: object[];
   direction?: string;
 };
-export type HookScrollTriggerProps = {
+type HookScrollTriggerProps = {
   container: Element | undefined | null;
   normalize?: boolean;
   timeline?: boolean;

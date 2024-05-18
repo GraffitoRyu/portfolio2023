@@ -7,9 +7,6 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import ThemeMenuList from "./MenuList";
 import ThemeToggleBtn from "./ToggleBtn";
 
-// types
-import { ThemeStateTypes } from "@/types/state";
-
 // state
 import { themeState } from "@/states/theme";
 

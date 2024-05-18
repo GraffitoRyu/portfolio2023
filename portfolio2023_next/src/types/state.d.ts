@@ -1,21 +1,21 @@
-export type CursorTypes = {
+type CursorTypes = {
   x: number;
   y: number;
   hover: string;
 };
 
-export type DeviceTypes = {
+type DeviceTypes = {
   apple: boolean;
   mobile: boolean;
   tablet: boolean;
   orientation: string;
 };
 
-export type CareerDetailHeight = {
+type CareerDetailHeight = {
   [code: string]: number;
 };
 
-export type ScreenSizeTypes = {
+type ScreenSizeTypes = {
   windowWidth: number;
   windowHeight: number;
   headerHeight: number;
@@ -24,7 +24,7 @@ export type ScreenSizeTypes = {
   detailHeaderHeight: number;
 };
 
-export type PageStateTypes = {
+type PageStateTypes = {
   init: boolean;
   initComplete: boolean;
   cur: string;
@@ -34,21 +34,21 @@ export type PageStateTypes = {
   notFound: boolean;
 };
 
-export type ThemeStateTypes = {
+type ThemeStateTypes = {
   isOpen: boolean;
   isSystem: boolean;
   theme: string;
 };
 
-export interface CareerItemsRefTypes {
+interface CareerItemsRefTypes {
   [index: string]: HTMLDetailsElement | null;
 }
 
-export interface CareerOpenTypes {
+interface CareerOpenTypes {
   [index: string]: boolean;
 }
 
-export interface ScrollRefStateTypes {
+interface ScrollRefStateTypes {
   container: HTMLDivElement | null;
   stickyHeight: number;
   header: HTMLElement | null; // <header />
@@ -65,7 +65,7 @@ export interface ScrollRefStateTypes {
   footer: HTMLElement | null; // <footer />
 }
 
-export interface DetailScrollRefStateTypes {
+interface DetailScrollRefStateTypes {
   container: HTMLElement | null; // <article />
   scrollHeight: number;
   header: HTMLElement | null; // <header/>
@@ -73,7 +73,7 @@ export interface DetailScrollRefStateTypes {
   visualTitle: HTMLHeadingElement | null;
 }
 
-export interface DetailLayoutStateTypes {
+interface DetailLayoutStateTypes {
   clicked: boolean;
   category: string;
   loading: boolean;

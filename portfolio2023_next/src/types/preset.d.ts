@@ -1,10 +1,10 @@
-export type ImageTypes = {
+type ImageTypes = {
   w?: number | string;
   h?: number | string;
   fit?: string;
 };
 
-export type SizeTypes = {
+type SizeTypes = {
   w?: string | number;
   h?: string | number;
   m?: string | number | Array<string | number>; // length: 1 ~ 4
@@ -20,7 +20,7 @@ export type SizeTypes = {
   pl?: string | number; // padding-left
 };
 
-export type FlexTypes = {
+type FlexTypes = {
   dir?: string;
   std?: string;
   cross?: string;
@@ -29,7 +29,7 @@ export type FlexTypes = {
   end?: boolean | boolean[];
 };
 
-export type PositionTypes = {
+type PositionTypes = {
   type?: string | undefined;
   top?: string | number;
   left?: string | number;
@@ -39,7 +39,7 @@ export type PositionTypes = {
   center?: boolean | string | undefined;
 };
 
-export type BtnTypes = {
+type BtnTypes = {
   w?: number | string;
   h: number | string;
   r?: number | string;
@@ -47,7 +47,7 @@ export type BtnTypes = {
   color?: string;
 };
 
-export type EasingTypes = {
+type EasingTypes = {
   [index: string]: string;
   quad: string;
   quart: string;

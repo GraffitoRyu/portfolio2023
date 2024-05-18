@@ -13,9 +13,6 @@ import {
   FooterWrap,
 } from "@/styles/styled/components/PageFooter";
 
-// types
-import { ScrollRefStateTypes } from "@/types/state";
-
 // state
 import { scrollRefState } from "@/states/scroll";
 

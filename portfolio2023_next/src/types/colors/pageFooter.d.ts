@@ -1,4 +1,4 @@
-export interface FooterTypes {
+interface FooterTypes {
   bg: string;
   titleBorder: string;
   titleFill: string;
@@ -12,7 +12,7 @@ export interface FooterTypes {
   tooltipText: string;
 }
 
-export interface FooterModeTypes {
+interface FooterModeTypes {
   [index: string]: FooterTypes;
   light: FooterTypes;
   dark: FooterTypes;

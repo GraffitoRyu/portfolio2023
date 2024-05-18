@@ -1,7 +1,7 @@
 import { ReactNode, Suspense } from "react";
 
 // meta data
-export { metadata, viewport } from "@/data/meta";
+export { metadata, viewport } from "@/data/metadata";
 
 // root components
 import ReactQueryContainer from "@/components/roots/ReactQuery";

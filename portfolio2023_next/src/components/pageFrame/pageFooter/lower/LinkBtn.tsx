@@ -7,6 +7,7 @@ import ClipboardJS from "clipboard";
 
 // components
 import Tooltip from "@/components/tooltip/Tooltip";
+import LinkIcon from "./LinkIcon";
 
 // style components
 import {
@@ -16,10 +17,6 @@ import {
   FooterLinkItem,
 } from "@/styles/styled/components/PageFooter";
 
-// types
-import { SitemapType } from "@/types/sitemap";
-import { ScrollRefStateTypes, PageStateTypes } from "@/types/state";
-
 // state
 import { pageState } from "@/states/page";
 import { scrollRefState } from "@/states/scroll";
@@ -27,33 +24,14 @@ import { scrollRefState } from "@/states/scroll";
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 
-// svg
-import * as LinkSvg from "./LinkIcon";
-
-function LinkIcon({
-  external,
-  copy,
-  download,
-}: {
-  external: boolean;
-  copy: boolean;
-  download: boolean;
-}) {
-  if (external === true) return <LinkSvg.External />;
-  else if (copy === true) return <LinkSvg.Copy />;
-  else if (download === true) return <LinkSvg.Download />;
-  return null;
-}
-
 export default function FooterLink({
   code,
   name,
   path,
-  copy,
-  header,
-  external,
-  download,
-}: SitemapType) {
+  isCopy,
+  isExternal,
+  isDownload,
+}: SitemapDataType) {
   const router = useRouter();
   // 현재 페이지 경로
   const pathname = usePathname();
@@ -61,7 +39,7 @@ export default function FooterLink({
   const setPageAtom = useSetRecoilState<PageStateTypes>(pageState);
   const { container } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
 
-  const isNav: boolean = header && !external ? true : false;
+  const isNav: boolean = !isExternal ? true : false;
 
   const downBtnRef = useRef<HTMLButtonElement | null>(null);
   const [hoverText, setHoverText] = useState<string>("");
@@ -133,7 +111,7 @@ export default function FooterLink({
     );
 
   // 복사 기능 메뉴
-  if (copy)
+  if (isCopy)
     return (
       <FooterLinkItem>
         <FooterLinkBtn
@@ -163,7 +141,13 @@ export default function FooterLink({
             show={copiedShow}
           >
             <FooterLinkIcon>
-              {LinkIcon({ external, copy, download })}
+              <LinkIcon
+                {...{
+                  isExternal,
+                  isCopy,
+                  isDownload,
+                }}
+              />
             </FooterLinkIcon>
           </Tooltip>
         </FooterLinkCopyBtn>
@@ -182,7 +166,7 @@ export default function FooterLink({
         onMouseEnter={() => setHoverText("hover")}
         onMouseLeave={() => setHoverText("")}
         download={
-          download
+          isDownload
             ? path.replace(`/download/${doc_code}`, `류대현_${name}`)
             : false
         }
@@ -190,7 +174,13 @@ export default function FooterLink({
       >
         <span>{name}</span>
         <FooterLinkIcon>
-          {LinkIcon({ external, copy, download })}
+          <LinkIcon
+            {...{
+              isExternal,
+              isCopy,
+              isDownload,
+            }}
+          />
         </FooterLinkIcon>
       </FooterLinkBtn>
     </FooterLinkItem>

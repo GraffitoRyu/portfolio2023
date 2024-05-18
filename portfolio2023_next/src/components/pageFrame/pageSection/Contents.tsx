@@ -13,9 +13,6 @@ import {
 // state
 import { scrollRefState } from "@/states/scroll";
 
-// type
-import { ScrollRefStateTypes } from "@/types/state";
-
 export default function SectionContents({
   code,
   children,

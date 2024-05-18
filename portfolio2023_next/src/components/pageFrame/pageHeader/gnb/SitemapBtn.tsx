@@ -7,10 +7,6 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 // style components
 import { SitemapLink } from "@/styles/styled/components/Gnb";
 
-// type
-import { SitemapType } from "@/types/sitemap";
-import { ScrollRefStateTypes, PageStateTypes } from "@/types/state";
-
 // state
 import { pageState } from "@/states/page";
 import { scrollRefState } from "@/states/scroll";
@@ -18,7 +14,7 @@ import { scrollRefState } from "@/states/scroll";
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 
-export default function SitemapBtn({ code, path, name }: SitemapType) {
+export default function SitemapBtn({ code, path, name }: SitemapDataType) {
   const router = useRouter();
 
   // 현재 페이지 경로

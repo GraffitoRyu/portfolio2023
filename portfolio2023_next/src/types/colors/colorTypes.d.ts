@@ -1,4 +1,3 @@
-export type * as common from "@/types/colors/common";
 export type * as pageHeader from "@/types/colors/pageHeader";
 export type * as pageSection from "@/types/colors/pageSection";
 export type * as pageFooter from "@/types/colors/pageFooter";

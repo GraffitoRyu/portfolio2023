@@ -1,14 +1,14 @@
-export type DescDepthTypes = {
+type DescDepthTypes = {
   [index: string]: string | string[] | undefined;
   depth1: string;
   depth2: string[];
 };
 
-export type DescTypes = {
+type DescTypes = {
   data: string | DescDepthTypes | undefined;
 };
 
-export type DescNewLineTypes = {
+type DescNewLineTypes = {
   data: Array<string | JSX.Element> | undefined;
   breakLine?: boolean;
 };

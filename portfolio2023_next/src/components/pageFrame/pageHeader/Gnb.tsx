@@ -6,36 +6,25 @@ import ThemeContainer from "./theme/Container";
 // style components
 import { GnbCommonStyle, GnbContainer } from "@/styles/styled/components/Gnb";
 
-//type
-import { SitemapType } from "@/types/sitemap";
-
 // data
-import { sitemapData } from "@/data/sitemap";
-
-const gnbData: SitemapType[] | undefined = sitemapData.filter(
-  (d: SitemapType) => d.header && !d.external,
-);
-const extData: SitemapType[] | undefined = sitemapData.filter(
-  (d: SitemapType) => d.header && d.external,
-);
+import sitemap from "@/data/sitemap";
 
 export default function Gnb() {
+  const { portfolio } = sitemap;
+
+  const gnbData = portfolio.filter(d => !d.isExternal);
+  const extData = portfolio.filter(d => d.isExternal);
+
   return (
     <GnbContainer className="gnb">
       <GnbCommonStyle />
-      {gnbData?.map((d: SitemapType) => (
-        <SitemapBtn
-          key={`sitemapMenu_${d.code}_${Math.floor(Math.random() * 100000)}`}
-          {...d}
-        />
-      )) ?? ""}
+      {gnbData.map(d => (
+        <SitemapBtn {...d} key={`header/route/${d.key}`} />
+      ))}
       {<ThemeContainer />}
-      {extData?.map((d: SitemapType) => (
-        <ExternalBtn
-          key={`externalLink_${d.code}_${Math.floor(Math.random() * 100000)}`}
-          {...d}
-        />
-      )) ?? ""}
+      {extData.map(d => (
+        <ExternalBtn {...d} key={`header/external/${d.key}`} />
+      ))}
     </GnbContainer>
   );
 }

@@ -1,4 +1,4 @@
-export interface DetailColorTypes {
+interface DetailColorTypes {
   bg: string;
   visualBg: string;
   visualTitle: string;
@@ -14,7 +14,7 @@ export interface DetailColorTypes {
   captionDesc: string;
 }
 
-export interface DetailModeTypes {
+interface DetailModeTypes {
   [index: string]: DetailColorTypes;
   light: DetailColorTypes;
   dark: DetailColorTypes;

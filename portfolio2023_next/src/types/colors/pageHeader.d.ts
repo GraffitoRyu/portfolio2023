@@ -1,27 +1,27 @@
-export interface TimerColorTypes {
+interface TimerColorTypes {
   bar: string;
   text: string;
 }
 
-export interface ModeTypes {
+interface ModeTypes {
   [index: string]: TimerColorTypes;
   light: TimerColorTypes;
   dark: TimerColorTypes;
 }
 
-export interface GnbSitemapBtnTypes {
+interface GnbSitemapBtnTypes {
   basic: string;
   hover: string;
   selected: string;
 }
 
-export interface SitemapBtnModeTypes {
+interface SitemapBtnModeTypes {
   [index: string]: GnbSitemapBtnTypes;
   light: GnbSitemapBtnTypes;
   dark: GnbSitemapBtnTypes;
 }
 
-export interface GnbUtilTypes {
+interface GnbUtilTypes {
   bg: string;
   bgHover?: string;
   svg: string;
@@ -31,20 +31,20 @@ export interface GnbUtilTypes {
   tooltipText: string;
 }
 
-export interface GnbUtilModeTypes {
+interface GnbUtilModeTypes {
   [index: string]: GnbUtilTypes;
   light: GnbUtilTypes;
   dark: GnbUtilTypes;
 }
 
-export interface ThemeMenuTypes {
+interface ThemeMenuTypes {
   container: string;
   menu: string;
   hover: string;
   selected: string;
 }
 
-export interface ThemeMenuModeTypes {
+interface ThemeMenuModeTypes {
   [index: string]: ThemeMenuTypes;
   light: ThemeMenuTypes;
   dark: ThemeMenuTypes;

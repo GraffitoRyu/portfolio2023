@@ -10,10 +10,6 @@ import {
   HeaderTitle,
 } from "@/styles/styled/components/PageSection";
 
-// type
-import { ScrollRefStateTypes } from "@/types/state";
-import { SectionHeaderTypes } from "@/types/profile";
-
 // state
 import { scrollRefState } from "@/states/scroll";
 import { ctxScrollTrigger } from "@/util/presetScrollTrigger";

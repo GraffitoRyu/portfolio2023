@@ -1,69 +1,69 @@
-export interface CursorColorTypes {
+interface CursorColorTypes {
   basic: string;
   hover: string;
 }
 
-export interface CursorModeTypes {
+interface CursorModeTypes {
   [index: string]: CursorColorTypes;
   light: CursorColorTypes;
   dark: CursorColorTypes;
 }
 
-export interface PageColorTypes {
+interface PageColorTypes {
   bg: string;
   selectionBg: string;
   selectionText: string;
 }
 
-export interface PageModeTypes {
+interface PageModeTypes {
   [index: string]: PageColorTypes;
   light: PageColorTypes;
   dark: PageColorTypes;
 }
 
-export interface ScrollBarColorTypes {
+interface ScrollBarColorTypes {
   thumb: string;
 }
 
-export interface ScrollBarModeTypes {
+interface ScrollBarModeTypes {
   [index: string]: ScrollBarColorTypes;
   light: ScrollBarColorTypes;
   dark: ScrollBarColorTypes;
 }
 
-export interface BtnColorTypes {
+interface BtnColorTypes {
   [index: string]: string;
   basic: string;
   hoverBg: string;
   hoverContents: string;
 }
 
-export interface BtnModeTypes {
+interface BtnModeTypes {
   [index: string]: BtnColorTypes;
   light: BtnColorTypes;
   dark: BtnColorTypes;
 }
 
-export interface TransCoverColorTypes {
+interface TransCoverColorTypes {
   [index: string]: string;
   bg: string;
   title: string;
 }
 
-export interface TransCoverModeTypes {
+interface TransCoverModeTypes {
   [index: string]: TransCoverColorTypes;
   light: TransCoverColorTypes;
   dark: TransCoverColorTypes;
 }
 
-export interface InitCoverColorTypes {
+interface InitCoverColorTypes {
   [index: string]: string;
   // bg: string;
   icon: string;
   text: string;
 }
 
-export interface InitCoverModeTypes {
+interface InitCoverModeTypes {
   [index: string]: InitCoverColorTypes;
   light: InitCoverColorTypes;
   dark: InitCoverColorTypes;

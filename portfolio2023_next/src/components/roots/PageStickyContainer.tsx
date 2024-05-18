@@ -12,9 +12,6 @@ import { StickyContainer } from "@/styles/styled/components/Page";
 // state
 import { scrollRefState } from "@/states/scroll";
 
-// type
-import { ScrollRefStateTypes } from "@/types/state";
-
 // util
 import debounce from "@/util/debounceEvent";
 
