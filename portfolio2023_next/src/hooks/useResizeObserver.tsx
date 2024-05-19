@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from "react";
-import debounce from "@/util/debounceEvent";
+import debounce from "@/util/interactions/debounceEvent";
 
 function useResizeObserver<T extends HTMLElement>(
   callback: (target: T | null, entry: ResizeObserverEntry) => void,

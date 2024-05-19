@@ -3,17 +3,14 @@
 import { useEffect, useLayoutEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
-// types
-import { DeviceTypes, ScreenSizeTypes } from "@/types/state";
-
 // state
 import { deviceState } from "@/states/device";
 import { screenSizeState } from "@/states/screen";
 
 // util
-import { remToPx } from "@/util/unit";
-import { checkDevice } from "@/util/checkDevice";
-import debounce from "@/util/debounceEvent";
+import { remToPx } from "@/util/unit.util";
+import { checkDevice } from "@/util/cross_browsing/checkDevice";
+import debounce from "@/util/interactions/debounceEvent";
 
 export default function UpdateStateByResize() {
   const setDevice = useSetRecoilState<DeviceTypes>(deviceState);

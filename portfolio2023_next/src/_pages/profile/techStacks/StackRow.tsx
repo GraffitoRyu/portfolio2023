@@ -14,15 +14,11 @@ import {
   StackRowContainer,
 } from "@/styles/styled/components/ProfileStacks";
 
-// types
-import { StackTypes } from "@/types/profile";
-import { ScrollRefStateTypes } from "@/types/state";
-
 // state
 import { scrollRefState } from "@/states/scroll";
 
 // util
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function StackRow({
   title,

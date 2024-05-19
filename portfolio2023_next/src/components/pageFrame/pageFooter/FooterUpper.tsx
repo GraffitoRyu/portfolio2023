@@ -12,7 +12,7 @@ import {
 import { scrollRefState } from "@/states/scroll";
 
 // util
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function FooterUpperContainer() {
   const {

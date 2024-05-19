@@ -8,10 +8,6 @@ import DetailMediaItem from "./DetailMediaItem";
 // style components
 import { PDMediaSection } from "@/styles/styled/components/ProjectDetail";
 
-// types
-import { MediaType } from "@/types/projects";
-import { DetailTypes } from "@/types/projectDetails";
-
 // state
 import { detailData } from "@/states/detail";
 

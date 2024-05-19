@@ -20,14 +20,10 @@ import {
   CareerWrap,
 } from "@/styles/styled/components/ProfileCareer";
 
-// type
-import { CareerTypes } from "@/types/profile";
-import { ScreenSizeTypes, ScrollRefStateTypes } from "@/types/state";
-
 // state
 import { scrollRefState } from "@/states/scroll";
 import { screenSizeState } from "@/states/screen";
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 interface CareerItemProps extends CareerTypes {
   last?: boolean;

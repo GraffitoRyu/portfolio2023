@@ -12,10 +12,6 @@ import {
   CareerSummaryContainer,
 } from "@/styles/styled/components/ProfileCareer";
 
-// types
-import { CareerSummaryTypes } from "@/types/profile";
-import { ScreenSizeTypes, ScrollRefStateTypes } from "@/types/state";
-
 // state
 import { scrollRefState } from "@/states/scroll";
 import { screenSizeState } from "@/states/screen";

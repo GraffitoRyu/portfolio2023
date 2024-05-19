@@ -6,9 +6,6 @@ import {
   ExpTitle,
 } from "@/styles/styled/components/ProfileExperience";
 
-// types
-import { ExperienceTypes } from "@/types/profile";
-
 interface ExpItemProps extends ExperienceTypes {
   $totalLength: number;
   $itemIndex: number;

@@ -7,7 +7,7 @@ import { img } from "../preset/img";
 import { SvgFill, flex, font, position, size } from "../preset/mixins";
 
 // util
-import { rem } from "@/util/unit";
+import { rem } from "@/util/unit.util";
 
 export const ToggleBtn = styled.button`
   ${({ theme }) => SvgFill(theme.gnbUtilBtn.svg)};

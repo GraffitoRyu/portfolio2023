@@ -1,6 +1,5 @@
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { CustomTweenType, HookScrollTriggerProps } from "@/types/hooks";
 
 function gsapTween(tweenArr: CustomTweenType[]) {
   if (tweenArr.length > 0) {

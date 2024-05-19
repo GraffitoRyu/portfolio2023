@@ -12,9 +12,6 @@ import CloseButton from "@/components/buttons/Close";
 // style components
 import { StyledHeaderWrap } from "@/styles/styled/components/PageHeader";
 
-// types
-import { DetailLayoutStateTypes, ScreenSizeTypes } from "@/types/state";
-
 // state
 import { screenSizeState } from "@/states/screen";
 import { detailLayoutState } from "@/states/detail";
@@ -23,7 +20,7 @@ import { detailLayoutState } from "@/states/detail";
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // util
-import debounce from "@/util/debounceEvent";
+import debounce from "@/util/interactions/debounceEvent";
 
 export default function DetailHeaderWrap() {
   const [{ windowWidth }, setScreenSize] =

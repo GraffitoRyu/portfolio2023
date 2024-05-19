@@ -12,7 +12,7 @@ import {
 
 // state
 import { scrollRefState } from "@/states/scroll";
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function SectionHeader({
   empty,

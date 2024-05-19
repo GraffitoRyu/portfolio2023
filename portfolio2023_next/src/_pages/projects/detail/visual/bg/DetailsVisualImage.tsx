@@ -12,18 +12,12 @@ import {
   PDVisualImageCover,
 } from "@/styles/styled/components/ProjectDetail";
 
-// type
-import {
-  DetailLayoutStateTypes,
-  DetailScrollRefStateTypes,
-} from "@/types/state";
-
 // state
 import { detailLayoutState } from "@/states/detail";
 import { detailScrollRefState } from "@/states/scroll";
 
 // util
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function DetailVisualImage() {
   const { category } = useParams();

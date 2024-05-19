@@ -12,9 +12,6 @@ import {
   ListBtnWrap,
 } from "@/styles/styled/components/ProjectList";
 
-// type
-import { SummaryType } from "@/types/projects";
-
 export default function ProjectSummary({
   className,
   code,

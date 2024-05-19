@@ -24,7 +24,7 @@ import { screenSizeState } from "@/states/screen";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function PageIntro({ title, desc }: IntroTypes) {
   const { init, loadComplete } = useRecoilValue<PageStateTypes>(pageState);

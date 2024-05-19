@@ -11,7 +11,7 @@ import ThemeToggleBtn from "./ToggleBtn";
 import { themeState } from "@/states/theme";
 
 // util
-import closeByClickOutSide from "@/util/closeByClickOutside";
+import closeByClickOutSide from "@/util/interactions/closeByClickOutside";
 
 export default function ThemeContainer() {
   const themeRef = useRef<HTMLDivElement | null>(null);

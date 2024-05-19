@@ -20,15 +20,8 @@ import {
 import { detailScrollRefState } from "@/states/scroll";
 import { detailData, detailLayoutState } from "@/states/detail";
 
-// type
-import { DetailTypes } from "@/types/projectDetails";
-import {
-  DetailLayoutStateTypes,
-  DetailScrollRefStateTypes,
-} from "@/types/state";
-
 // util
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function DetailVisualTitle() {
   const { category } = useParams();

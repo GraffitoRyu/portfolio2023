@@ -19,12 +19,8 @@ import {
 import { scrollRefState } from "@/states/scroll";
 import { detailLayoutState } from "@/states/detail";
 
-// type
-import { SummaryType } from "@/types/projects";
-import { DetailLayoutStateTypes, ScrollRefStateTypes } from "@/types/state";
-
 // util
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function ProjectItem({
   code,

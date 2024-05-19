@@ -15,15 +15,11 @@ import {
   StackLegendTitle,
 } from "@/styles/styled/components/ProfileStacks";
 
-//types
-import { StackLegendTypes } from "@/types/profile";
-import { ScrollRefStateTypes } from "@/types/state";
-
 // state
 import { scrollRefState } from "@/states/scroll";
 
 // util
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 // data
 import legendData from "@/data/stackLegend";

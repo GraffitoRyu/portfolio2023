@@ -11,7 +11,7 @@ import { img } from "./img";
 import { sizePreset } from "./size";
 
 // util
-import { rem } from "@/util/unit";
+import { rem } from "@/util/unit.util";
 
 export const btnStyle = ({ w, h, r = 0, bw = 2, color }: BtnTypes) => css`
   ${flex({})}

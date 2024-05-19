@@ -12,10 +12,6 @@ import {
   CareerDetailList,
 } from "@/styles/styled/components/ProfileCareer";
 
-// types
-import { ScreenSizeTypes } from "@/types/state";
-import { CareerDetailsTypes } from "@/types/profile";
-
 // state
 import { screenSizeState } from "@/states/screen";
 

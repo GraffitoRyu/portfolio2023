@@ -19,7 +19,7 @@ import { scrollRefState } from "@/states/scroll";
 import { screenSizeState } from "@/states/screen";
 
 // util
-import debounce from "@/util/debounceEvent";
+import debounce from "@/util/interactions/debounceEvent";
 
 export default function PageHeader() {
   const headerRef = useRef<HTMLElement | null>(null);

@@ -7,7 +7,7 @@ import { sizePreset } from "../preset/size";
 import { flex, font, position, size } from "../preset/mixins";
 
 // util
-import { rem } from "@/util/unit";
+import { rem } from "@/util/unit.util";
 import { easing } from "../preset/easing";
 
 export const HeaderContainer = styled.header`

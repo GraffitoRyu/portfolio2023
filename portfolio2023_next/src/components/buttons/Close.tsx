@@ -19,7 +19,7 @@ export default function CloseButton({
 
   return (
     <CommonBtn
-      className={`${hover}`}
+      className={hover}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
       onClick={(e: SyntheticEvent) => clickEvent(e)}

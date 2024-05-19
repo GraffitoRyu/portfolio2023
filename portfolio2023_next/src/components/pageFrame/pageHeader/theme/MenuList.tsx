@@ -15,7 +15,7 @@ import {
 import { themeState } from "@/states/theme";
 
 // util
-import { applyTheme } from "@/util/changeTheme";
+import { applyTheme } from "@/util/interactions/changeTheme";
 
 export default function ThemeMenuList() {
   const themeList: string[] = ["light", "dark", "system"];

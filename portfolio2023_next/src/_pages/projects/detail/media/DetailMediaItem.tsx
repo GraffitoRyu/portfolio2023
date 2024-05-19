@@ -12,16 +12,12 @@ import {
   PDMediaItem,
 } from "@/styles/styled/components/ProjectDetail";
 
-// types
-import { MediaType } from "@/types/projects";
-import { DetailScrollRefStateTypes, ScreenSizeTypes } from "@/types/state";
-
 // state
 import { screenSizeState } from "@/states/screen";
 import { detailScrollRefState } from "@/states/scroll";
 
 // util
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function DetailMediaItem({ data }: { data: MediaType }) {
   const { windowWidth } = useRecoilValue<ScreenSizeTypes>(screenSizeState);

@@ -15,9 +15,6 @@ import LoadingIcon from "@/svg/common/LoadingIcon";
 // types
 import { pageState } from "@/states/page";
 
-// state
-import { PageStateTypes } from "@/types/state";
-
 export default function LoadingIconComponent() {
   const page = useRecoilValue<PageStateTypes>(pageState);
   const [loading, setLoading] = useState<string>("loading");
@@ -27,7 +24,7 @@ export default function LoadingIconComponent() {
   }, [page.init]);
 
   return (
-    <LoadingIconContainer className={`${loading}`}>
+    <LoadingIconContainer className={loading}>
       <LoadingIconFigure className="loading-icon">
         <LoadingIcon />
       </LoadingIconFigure>

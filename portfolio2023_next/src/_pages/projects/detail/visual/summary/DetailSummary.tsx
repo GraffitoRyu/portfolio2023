@@ -14,16 +14,8 @@ import { PDSummaryContainer } from "@/styles/styled/components/ProjectDetail";
 import { detailData, detailLayoutState } from "@/states/detail";
 import { detailScrollRefState } from "@/states/scroll";
 
-// type
-import { DetailTypes } from "@/types/projectDetails";
-import { ProjectsType } from "@/types/projects";
-import {
-  DetailLayoutStateTypes,
-  DetailScrollRefStateTypes,
-} from "@/types/state";
-
 // util
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 type SummaryProps = {
   itemType: string;

@@ -11,7 +11,7 @@ import { ThemeMenuButton } from "@/styles/styled/components/ThemeMenu";
 import { themeState } from "@/states/theme";
 
 // util
-import { getSystemTheme } from "@/util/changeTheme";
+import { getSystemTheme } from "@/util/interactions/changeTheme";
 
 export default function ThemeMenuBtn({ code }: { code: string }) {
   const [theme, setTheme] = useRecoilState<ThemeStateTypes>(themeState);

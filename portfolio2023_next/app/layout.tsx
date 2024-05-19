@@ -4,8 +4,8 @@ import { ReactNode, Suspense } from "react";
 export { metadata, viewport } from "@/data/metadata";
 
 // root components
+import JotaiProvider from "@/components/roots/JotaiProvider";
 import ReactQueryContainer from "@/components/roots/ReactQuery";
-import RecoilContainer from "@/components/roots/Recoil";
 import ThemeColors from "@/components/roots/ThemeColor";
 
 // analytics
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${sans.variable} ${serif.variable} ${serif_dm.variable}`}
     >
       <body>
-        <RecoilContainer>
+        <JotaiProvider>
           <ReactQueryContainer>
             <StyledComponentsRegistry>
               <ThemeColors>
@@ -52,7 +52,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </ThemeColors>
             </StyledComponentsRegistry>
           </ReactQueryContainer>
-        </RecoilContainer>
+        </JotaiProvider>
         <Analytics />
       </body>
     </html>

@@ -10,18 +10,14 @@ import ExperienceItem from "./ExperienceItem";
 import { scrollRefState } from "@/states/scroll";
 import { screenSizeState } from "@/states/screen";
 
-// types
-import { ScreenSizeTypes, ScrollRefStateTypes } from "@/types/state";
-import { ExperienceTypes } from "@/types/profile";
-
 // style components
 import { ExpList } from "@/styles/styled/components/ProfileExperience";
 
 // util
-import debounce from "@/util/debounceEvent";
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import debounce from "@/util/interactions/debounceEvent";
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
-export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
+export default function ExperienceList({ data }: { data?: ExperienceTypes[] }) {
   const [expData, setExpData] = useState<ExperienceTypes[]>([]);
   const [length, setLength] = useState<number>(0);
 
@@ -40,10 +36,15 @@ export default function ExperienceList({ data }: { data: ExperienceTypes[] }) {
   const [onIndex, setOnIndex] = useState<number>(0);
 
   useLayoutEffect(() => {
-    if (data?.length > 0) {
-      setExpData(data);
-      setLength(data.length);
-    }
+    if (
+      typeof data === "undefined" ||
+      !Array.isArray(data) ||
+      data.length === 0
+    )
+      return;
+
+    setExpData(data);
+    setLength(data.length);
   }, [data]);
 
   useEffect(() => {

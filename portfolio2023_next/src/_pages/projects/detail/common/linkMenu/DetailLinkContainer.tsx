@@ -8,10 +8,6 @@ import DetailExternalBtn from "./DetailExternalBtn";
 // style components
 import { PDLinkContainer } from "@/styles/styled/components/ProjectDetail";
 
-// types
-import { DetailTypes } from "@/types/projectDetails";
-import { LinkType } from "@/types/projects";
-
 // state
 import { detailData } from "@/states/detail";
 

@@ -2,7 +2,7 @@
 
 import { styled } from "styled-components";
 import { flex, font, position, size } from "../preset/mixins";
-import { rem } from "@/util/unit";
+import { rem } from "@/util/unit.util";
 import { transTime } from "../preset/transTime";
 
 export const TooltipContainer = styled.div`

@@ -12,13 +12,6 @@ import DetailExperience from "./exp/DetailExperience";
 // style components
 import { PDContainer } from "@/styles/styled/components/ProjectDetail";
 
-// types
-import {
-  DetailLayoutStateTypes,
-  DetailScrollRefStateTypes,
-} from "@/types/state";
-import { DetailTypes } from "@/types/projectDetails";
-
 // state
 import { detailScrollRefState } from "@/states/scroll";
 import { detailData, detailLayoutState } from "@/states/detail";
@@ -28,7 +21,7 @@ import { transTime } from "@/styles/styled/preset/transTime";
 
 // hooks
 import useGetDetailByCodeQuery from "@/hooks/useGetDetailQuery";
-import debounce from "@/util/debounceEvent";
+import debounce from "@/util/interactions/debounceEvent";
 import DetailMediaContainer from "./media/DetailMedia";
 
 export default function ProjectDetail() {

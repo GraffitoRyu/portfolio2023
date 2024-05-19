@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { flex, font, size } from "../preset/mixins";
 
 // util
-import { rem, widthRatio } from "@/util/unit";
+import { rem, widthRatio } from "@/util/unit.util";
 
 function getLevelColor(index: number, level: number): string {
   if (level === 4) return "levelFull";

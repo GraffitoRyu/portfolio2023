@@ -17,13 +17,8 @@ import {
 import { detailData } from "@/states/detail";
 import { detailScrollRefState } from "@/states/scroll";
 
-// type
-import { CustomTweenType } from "@/types/hooks";
-import { DetailTypes } from "@/types/projectDetails";
-import { DetailScrollRefStateTypes } from "@/types/state";
-
 // util
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function DetailExperience() {
   const { container: scrollContainer, scrollHeight } =

@@ -10,8 +10,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.36.2",
-    "@tanstack/react-query-devtools": "^5.36.2",
+    "@tanstack/react-query": "^5.37.1",
+    "@tanstack/react-query-devtools": "^5.37.1",
     "@vercel/analytics": "^1.2.2",
     "clipboard": "^2.0.11",
     "gsap": "^3.12.5",

@@ -2,24 +2,16 @@
 import CareerContainer from "./CareerContainer";
 import CareerItem from "./CareerItem";
 
-// type
-import { CareerTypes } from "@/types/profile";
-
-// util
-import { getSSRData } from "@/util/getData";
+import { useQueryProfileCareerData } from "@/lib/query";
 
 export default async function Career() {
-  const careerData: CareerTypes[] = await getSSRData({
-    page: "profile",
-    queryName: "item",
-    queryValue: "career",
-  });
+  const { data: careerData } = useQueryProfileCareerData();
 
   return (
     <CareerContainer>
-      {careerData.map((c: CareerTypes, i: number) => (
+      {careerData?.map((c: CareerTypes, i: number) => (
         <CareerItem
-          key={`career_${c.code}_${i}`}
+          key={`profile/career/${c.code}`}
           {...c}
           last={i === careerData.length - 1}
         />

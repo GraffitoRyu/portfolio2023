@@ -9,9 +9,6 @@ import { ProjectLoadingProgress } from "@/styles/styled/components/ProjectList";
 // state
 import { detailLayoutState } from "@/states/detail";
 
-// type
-import { DetailLayoutStateTypes } from "@/types/state";
-
 export default function ProjectLoadingBar() {
   const [
     { clicked, category, dataStatus, open, openComplete, loading },

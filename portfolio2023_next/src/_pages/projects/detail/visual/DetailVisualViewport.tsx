@@ -6,9 +6,6 @@ import { useSetRecoilState } from "recoil";
 // style components
 import { PDVisualViewport } from "@/styles/styled/components/ProjectDetail";
 
-// type
-import { DetailScrollRefStateTypes } from "@/types/state";
-
 // state
 import { detailScrollRefState } from "@/states/scroll";
 

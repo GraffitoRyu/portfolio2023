@@ -18,7 +18,7 @@ import { img } from "@/styles/styled/preset/img";
 import { transTime } from "../preset/transTime";
 
 // util
-import { rem, widthRatio } from "@/util/unit";
+import { rem, widthRatio } from "@/util/unit.util";
 
 export const FooterContainer = styled.footer`
   ${position({ type: "relative", z: 600 })}

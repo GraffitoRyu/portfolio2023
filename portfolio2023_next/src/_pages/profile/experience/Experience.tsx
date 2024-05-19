@@ -1,18 +1,10 @@
 // components
 import ExperienceContainer from "./ExperienceContainer";
 
-// type
-import { ExperienceTypes } from "@/types/profile";
-
-// util
-import { getSSRData } from "@/util/getData";
+import { useQueryProfileExperienceData } from "@/lib/query";
 
 export default async function Experience() {
-  const expData: ExperienceTypes[] = await getSSRData({
-    page: "profile",
-    queryName: "item",
-    queryValue: "experience",
-  });
+  const { data: expData } = useQueryProfileExperienceData();
 
   return <ExperienceContainer data={expData} />;
 }

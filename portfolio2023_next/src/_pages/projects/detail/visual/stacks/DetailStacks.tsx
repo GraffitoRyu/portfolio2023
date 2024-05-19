@@ -13,9 +13,6 @@ import { PDStacksContainer } from "@/styles/styled/components/ProjectDetail";
 // state
 import { detailData } from "@/states/detail";
 
-// type
-import { DetailTypes } from "@/types/projectDetails";
-
 const stacksArr = [
   ["languages", [""]],
   ["frameworks", [""]],

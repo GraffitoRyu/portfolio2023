@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { flex, font, position, size } from "../preset/mixins";
 
 // util
-import { rem, widthRatio } from "@/util/unit";
+import { rem, widthRatio } from "@/util/unit.util";
 
 export const PageSectionContainer = styled.section`
   transition: none;

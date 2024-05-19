@@ -13,7 +13,7 @@ import { StickyContainer } from "@/styles/styled/components/Page";
 import { scrollRefState } from "@/states/scroll";
 
 // util
-import debounce from "@/util/debounceEvent";
+import debounce from "@/util/interactions/debounceEvent";
 
 export default function PageStickyContainer({
   children,

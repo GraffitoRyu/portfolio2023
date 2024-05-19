@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const db = process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL;
+const db = process.env.FIREBASE_DATABASE_URL;
 
 export const revalidate = 0;
 

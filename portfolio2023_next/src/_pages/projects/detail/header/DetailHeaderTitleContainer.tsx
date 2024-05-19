@@ -9,19 +9,12 @@ import {
   PDHeaderTitleContainer,
 } from "@/styles/styled/components/ProjectDetail";
 
-// types
-import {
-  DetailLayoutStateTypes,
-  DetailScrollRefStateTypes,
-} from "@/types/state";
-import { DetailTypes } from "@/types/projectDetails";
-
 // state
 import { detailData, detailLayoutState } from "@/states/detail";
 import { detailScrollRefState } from "@/states/scroll";
 
 // util
-import { ctxScrollTrigger } from "@/util/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function DetailHeaderTitleContainer() {
   const { category } = useParams();

@@ -3,7 +3,7 @@
 import { css } from "styled-components";
 
 // util
-import { getUnit, rem } from "@/util/unit";
+import { getUnit, rem } from "@/util/unit.util";
 
 // types
 import { FlexTypes, PositionTypes, SizeTypes } from "@/types/preset";
