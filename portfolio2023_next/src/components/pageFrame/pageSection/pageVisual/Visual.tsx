@@ -15,13 +15,6 @@ import {
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 
-// type
-import {
-  ScreenSizeTypes,
-  ScrollRefStateTypes,
-  PageStateTypes,
-} from "@/types/state";
-
 // state
 import { pageState } from "@/states/page";
 import { scrollRefState } from "@/states/scroll";

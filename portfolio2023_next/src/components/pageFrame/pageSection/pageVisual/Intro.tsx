@@ -9,14 +9,6 @@ import { IntroDesc, IntroTitle } from "@/styles/styled/components/PageVisual";
 // util components
 import ParseDescNewLine from "@/components/util/ParseDescNewLine";
 
-// type
-import { IntroTypes } from "@/types/section";
-import {
-  ScreenSizeTypes,
-  ScrollRefStateTypes,
-  PageStateTypes,
-} from "@/types/state";
-
 // state
 import { pageState } from "@/states/page";
 import { scrollRefState } from "@/states/scroll";

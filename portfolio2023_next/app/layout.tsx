@@ -21,11 +21,13 @@ import Cursor from "@/components/cursor/Cursor";
 import { sans, serif, serif_dm } from "@/styles/fonts/fonts";
 import "@/styles/scss/globals.scss";
 import StyledComponentsRegistry from "../src/components/roots/StyledComponentsRegistry";
-import { HTMLThemeStyle, PageContainer } from "@/styles/styled/components/Page";
+import {
+  HTMLThemeStyle,
+  StyledMainContainer,
+} from "@/styles/styled/components/Page";
 
 // hooks
-import { PageLoadEvents } from "@/hooks/PageLoadEvents";
-import UpdateStateByResize from "@/hooks/UpdateStateByResize";
+import { PageLoadEvents } from "@/hooks/route/PageLoadEvents";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -39,8 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <StyledComponentsRegistry>
               <ThemeColors>
                 <HTMLThemeStyle />
-                <UpdateStateByResize />
-                <PageContainer>
+                <StyledMainContainer>
                   <PageTemplate>{children}</PageTemplate>
                   <TransCover />
                   <InitPageCover />
@@ -48,7 +49,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   <Suspense fallback={null}>
                     <PageLoadEvents />
                   </Suspense>
-                </PageContainer>
+                </StyledMainContainer>
               </ThemeColors>
             </StyledComponentsRegistry>
           </ReactQueryContainer>

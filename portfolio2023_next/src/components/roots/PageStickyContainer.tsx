@@ -7,7 +7,7 @@ import { useSetRecoilState } from "recoil";
 import PageHeader from "../pageFrame/pageHeader/PageHeader";
 
 // style components
-import { StickyContainer } from "@/styles/styled/components/Page";
+import { StyledStickyContainer } from "@/styles/styled/components/Page";
 
 // state
 import { scrollRefState } from "@/states/scroll";
@@ -46,9 +46,9 @@ export default function PageStickyContainer({
   }, [setScrollRef]);
 
   return (
-    <StickyContainer className="sticky-container" ref={containerRef}>
+    <StyledStickyContainer className="sticky-container" ref={containerRef}>
       <PageHeader />
       {children}
-    </StickyContainer>
+    </StyledStickyContainer>
   );
 }
