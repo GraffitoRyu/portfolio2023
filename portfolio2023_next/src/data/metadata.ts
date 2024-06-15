@@ -1,5 +1,10 @@
 import type { Metadata, Viewport } from "next";
 
+export const site: { domain: string; title: string } = {
+  domain: "https://ryudh.com",
+  title: "류대현 포트폴리오 :: Front-end Engineer / UI Engineer",
+};
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -12,8 +17,8 @@ export const viewport: Viewport = {
 };
 export const metadata: Metadata = {
   title: {
-    default: "류대현 포트폴리오 :: Front-end Engineer / UI Engineer",
-    template: "%s | 류대현 포트폴리오 :: Front-end Engineer / UI Engineer",
+    default: site.title,
+    template: `%s | ${site.title}`,
   },
   description: "UI 엔지니어, 프론트엔드 엔지니어 류대현의 포트폴리오입니다.",
   keywords: [
@@ -41,7 +46,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   // SEO
-  metadataBase: new URL("https://ryudh.com"),
+  metadataBase: new URL(site.domain),
   // 대체 접속 경로
   alternates: {
     canonical: "/",
@@ -53,12 +58,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ko-KR",
-    url: "https://ryudh.com/",
-    title: "류대현 포트폴리오 :: Front-end Engineer & UI Engineer",
+    url: site.domain,
+    title: site.title,
     description: "프론트엔드 엔지니어 / 웹 퍼블리셔 류대현입니다.",
     images: [
       {
-        url: "https://ryudh.com/img/common/site_thumb.jpg",
+        url: `${site.domain}/img/common/site_thumb.jpg`,
         alt: "UIUX & Frontend Developer Portfolio by Daehyeon Ryu",
       },
     ],
