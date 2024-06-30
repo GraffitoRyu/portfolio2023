@@ -41,7 +41,7 @@ export default function DetailVisualTitle() {
   );
 
   const { openComplete } =
-    useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
+    useRecoilValue<PageDetailLoadStateTypes>(detailLayoutState);
   const [hide, setHide] = useState<string>("hide");
 
   useLayoutEffect(() => {

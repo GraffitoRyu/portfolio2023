@@ -13,7 +13,7 @@ export default function ProjectLoadingBar() {
   const [
     { clicked, category, dataStatus, open, openComplete, loading },
     setDetailLayout,
-  ] = useRecoilState<DetailLayoutStateTypes>(detailLayoutState);
+  ] = useRecoilState<PageDetailLoadStateTypes>(detailLayoutState);
   const [percent, setPercent] = useState<number>(0);
   const [hide, setHide] = useState<string>("hide");
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
-import { useSetRecoilState } from "recoil";
+import { useSetAtom } from "jotai";
 
 // style components
 import {
@@ -13,11 +13,7 @@ import {
 } from "@/styles/styled/components/ProfileCareer";
 
 // state
-import { screenSizeState } from "@/states/screen";
-
-interface CareerDetailProps extends CareerDetailsTypes {
-  code: string;
-}
+import { viewportState } from "@/jotai/viewport";
 
 export default function CareerDetail({
   code,
@@ -26,7 +22,7 @@ export default function CareerDetail({
   projects,
 }: CareerDetailProps) {
   const detailRef = useRef<HTMLDivElement | null>(null);
-  const setScreenSize = useSetRecoilState<ScreenSizeTypes>(screenSizeState);
+  const setScreenSize = useSetAtom(viewportState);
 
   const updateExpandHeight = useCallback(() => {
     const expandBox = detailRef.current;

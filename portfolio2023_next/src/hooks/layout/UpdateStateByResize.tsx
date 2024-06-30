@@ -2,10 +2,11 @@
 
 import { useEffect, useLayoutEffect } from "react";
 import { useSetRecoilState } from "recoil";
+import { useSetAtom } from "jotai";
 
 // state
+import { viewportState } from "@/jotai/viewport";
 import { deviceState } from "@/states/device";
-import { screenSizeState } from "@/states/screen";
 
 // util
 import { remToPx } from "@/util/unit.util";
@@ -14,7 +15,7 @@ import debounce from "@/util/interactions/debounceEvent";
 
 export default function UpdateStateByResize() {
   const setDevice = useSetRecoilState<DeviceTypes>(deviceState);
-  const setScreen = useSetRecoilState<ScreenSizeTypes>(screenSizeState);
+  const setScreen = useSetAtom(viewportState);
 
   // resize update
   const updateCssProps = () => {

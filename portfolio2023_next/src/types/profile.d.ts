@@ -1,7 +1,7 @@
 interface SectionHeaderTypes {
   empty?: boolean;
   title?: string;
-  desc?: Array<string | JSX.Element>;
+  desc?: Array<string | React.ReactNode>;
   className?: string;
 }
 
@@ -17,6 +17,13 @@ interface CareerDetailsTypes {
   task: string[];
   stacks: string[];
   projects: string[];
+}
+interface CareerItemProps extends CareerTypes {
+  last?: boolean;
+}
+
+interface CareerDetailProps extends CareerDetailsTypes {
+  code: string;
 }
 
 interface CareerTypes {

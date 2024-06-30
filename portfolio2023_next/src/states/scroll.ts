@@ -1,6 +1,3 @@
-import { atom } from "recoil";
-import { DetailScrollRefStateTypes, ScrollRefStateTypes } from "@/types/state";
-
 // 페이지의 스크롤 관련 요소 참조 상태
 export const scrollRefState = atom<ScrollRefStateTypes>({
   key: "scrollRefStateAtom",

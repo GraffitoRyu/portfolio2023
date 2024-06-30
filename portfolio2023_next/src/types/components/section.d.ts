@@ -1,4 +1,4 @@
 type IntroTypes = {
-  title: Array<string | JSX.Element>;
+  title: Array<string | React.ReactNode>;
   desc: string[];
 };

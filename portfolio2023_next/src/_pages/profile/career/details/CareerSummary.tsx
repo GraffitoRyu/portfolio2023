@@ -1,7 +1,8 @@
 "use client";
 
 import { SyntheticEvent, useCallback, useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
+import { useAtomValue } from "jotai";
 
 import {
   CareerCompany,
@@ -14,7 +15,7 @@ import {
 
 // state
 import { scrollRefState } from "@/states/scroll";
-import { screenSizeState } from "@/states/screen";
+import { viewportState } from "@/jotai/viewport";
 
 interface CareerSummaryProps extends CareerSummaryTypes {
   code: string;
@@ -26,7 +27,7 @@ export default function CareerSummary({
   role,
   company,
 }: CareerSummaryProps) {
-  const { windowWidth } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
+  const { windowWidth } = useAtomValue(viewportState);
   const [{ careerItems, careerOpen }, setScrollRef] =
     useRecoilState<ScrollRefStateTypes>(scrollRefState);
 

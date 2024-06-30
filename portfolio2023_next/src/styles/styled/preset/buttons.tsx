@@ -2,9 +2,6 @@
 
 import { css, styled } from "styled-components";
 
-// type
-import { BtnTypes } from "@/types/preset";
-
 // style preset
 import { SvgFill, SvgStroke, flex, font, size } from "./mixins";
 import { img } from "./img";

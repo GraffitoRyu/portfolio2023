@@ -1,5 +1,3 @@
-import { CursorModeTypes } from "@/types/colors/common";
-
 export const cursor: CursorModeTypes = {
   light: {
     basic: "#1a1a1a",

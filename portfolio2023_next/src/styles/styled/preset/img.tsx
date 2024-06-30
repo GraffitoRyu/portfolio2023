@@ -2,9 +2,6 @@
 
 import { css } from "styled-components";
 
-// types
-import { ImageTypes } from "@/types/preset";
-
 // util
 import { size } from "./mixins";
 

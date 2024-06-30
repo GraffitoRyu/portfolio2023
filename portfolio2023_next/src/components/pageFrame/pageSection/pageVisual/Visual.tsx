@@ -2,6 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -16,16 +17,15 @@ import {
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // state
-import { pageState } from "@/states/page";
 import { scrollRefState } from "@/states/scroll";
-import { screenSizeState } from "@/states/screen";
+import { viewportState } from "@/jotai/viewport";
+import { pageLoadState } from "@/jotai/pages/load";
 
 // hooks
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function PageVisual({ title }: { title: string[] }) {
-  const { windowWidth, headerHeight } =
-    useRecoilValue<ScreenSizeTypes>(screenSizeState);
+  const { windowWidth, headerHeight } = useAtomValue(viewportState);
 
   const { container: scrollContainer } =
     useRecoilValue<ScrollRefStateTypes>(scrollRefState);
@@ -35,7 +35,7 @@ export default function PageVisual({ title }: { title: string[] }) {
   const visualTitleRef = useRef<HTMLHeadingElement | null>(null);
   const [titleTop, setTitleTop] = useState<number>(0);
 
-  const { loadComplete } = useRecoilValue<PageStateTypes>(pageState);
+  const { loadComplete } = useAtomValue(pageLoadState);
   const [loaded, setLoaded] = useState<string>("loading");
   const [fixed, setFixed] = useState<string>("");
 

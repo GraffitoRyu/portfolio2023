@@ -21,7 +21,7 @@ import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function DetailVisualImage() {
   const { category } = useParams();
-  const { open } = useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
+  const { open } = useRecoilValue<PageDetailLoadStateTypes>(detailLayoutState);
 
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLDivElement | null>(null);

@@ -12,35 +12,6 @@
  */
 
 import * as color from "@/styles/colors/themeColors";
-import type * as ColorTypes from "@/types/colors/colorTypes";
-
-export interface CustomThemeTypes {
-  page: ColorTypes.common.PageColorTypes;
-  cursor: ColorTypes.common.CursorColorTypes;
-  scrollbar: ColorTypes.common.ScrollBarColorTypes;
-  buttons: ColorTypes.common.BtnColorTypes;
-  transCover: ColorTypes.common.TransCoverColorTypes;
-  initCover: ColorTypes.common.InitCoverColorTypes;
-  timer: ColorTypes.pageHeader.TimerColorTypes;
-  gnbSitemapBtn: ColorTypes.pageHeader.GnbSitemapBtnTypes;
-  gnbUtilBtn: ColorTypes.pageHeader.GnbUtilTypes;
-  gnbThemeMenu: ColorTypes.pageHeader.ThemeMenuTypes;
-  sectionHeader: ColorTypes.pageSection.SectionHeaderTypes;
-  visualSection: ColorTypes.pageSection.VisualTypes;
-  introSection: ColorTypes.pageSection.IntroTypes;
-  footer: ColorTypes.pageFooter.FooterTypes;
-  career: ColorTypes.profile.CareerColorTypes;
-  exp: ColorTypes.profile.ExpColorTypes;
-  stacks: ColorTypes.profile.StacksColorTypes;
-  projectList: ColorTypes.projectsList.ListColorTypes;
-  projectDetails: ColorTypes.projectDetail.DetailColorTypes;
-}
-
-export interface CustomThemeModeTypes {
-  [index: string]: CustomThemeTypes;
-  light: CustomThemeTypes;
-  dark: CustomThemeTypes;
-}
 
 export const customThemes: CustomThemeModeTypes = {
   light: {

@@ -1,5 +1,3 @@
-import { DetailModeTypes } from "@/types/colors/projectDetail";
-
 export const details: DetailModeTypes = {
   light: {
     bg: "rgb(255, 255, 255)",

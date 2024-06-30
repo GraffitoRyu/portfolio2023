@@ -9,9 +9,6 @@ import { PageSectionContainer } from "@/styles/styled/components/PageSection";
 // state
 import { scrollRefState } from "@/states/scroll";
 
-// types
-import { ScrollRefStateTypes } from "@/types/state";
-
 export default function PageSection({
   page,
   code,

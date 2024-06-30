@@ -22,7 +22,7 @@ export default function SitemapBtn({ code, path, name }: SitemapDataType) {
   const { category } = useParams();
 
   // 페이지 상태 관리
-  const setPageAtom = useSetRecoilState<PageStateTypes>(pageState);
+  const setPageAtom = useSetRecoilState<PageLoadStateTypes>(pageState);
   const { container } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
 
   // 경로 상태 관리

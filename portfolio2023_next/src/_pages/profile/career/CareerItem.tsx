@@ -7,7 +7,8 @@ import {
   useRef,
   useState,
 } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
+import { useRecoilState } from "recoil";
 
 // components
 import CareerSummary from "./details/CareerSummary";
@@ -22,12 +23,10 @@ import {
 
 // state
 import { scrollRefState } from "@/states/scroll";
-import { screenSizeState } from "@/states/screen";
-import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
+import { viewportState } from "@/jotai/viewport";
 
-interface CareerItemProps extends CareerTypes {
-  last?: boolean;
-}
+// utils
+import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function CareerItem({
   code,
@@ -44,7 +43,7 @@ export default function CareerItem({
   const [open, setOpen] = useState<string>("");
 
   const { careerExpandHeight } =
-    useRecoilValue<ScreenSizeTypes>(screenSizeState);
+    useAtomValue<ViewportStateTypes>(viewportState);
   const [expandHeight, setExpandHeight] = useState<number>(0);
 
   // 확장 영역 요소 업데이트

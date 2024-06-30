@@ -2,13 +2,14 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // components
 import ExperienceItem from "./ExperienceItem";
 
 // state
 import { scrollRefState } from "@/states/scroll";
-import { screenSizeState } from "@/states/screen";
+import { viewportState } from "@/jotai/viewport";
 
 // style components
 import { ExpList } from "@/styles/styled/components/ProfileExperience";
@@ -29,8 +30,7 @@ export default function ExperienceList({ data }: { data?: ExperienceTypes[] }) {
 
   const [listWidth, setListWidth] = useState<number>(0);
 
-  const { windowWidth, columnWidth } =
-    useRecoilValue<ScreenSizeTypes>(screenSizeState);
+  const { windowWidth, columnWidth } = useAtomValue(viewportState);
   const [offset, setOffset] = useState({ start: 0, end: 0 });
 
   const [onIndex, setOnIndex] = useState<number>(0);

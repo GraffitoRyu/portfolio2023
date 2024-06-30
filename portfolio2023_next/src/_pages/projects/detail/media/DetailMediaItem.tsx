@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef } from "react";
 import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // components
 import DetailMediaContents from "../common/media/DetailMediaContents";
@@ -13,14 +14,14 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { screenSizeState } from "@/states/screen";
+import { viewportState } from "@/jotai/viewport";
 import { detailScrollRefState } from "@/states/scroll";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function DetailMediaItem({ data }: { data: MediaType }) {
-  const { windowWidth } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
+  const { windowWidth } = useAtomValue(viewportState);
   const { container: scrollContainer, scrollHeight } =
     useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
   const figureRef = useRef<HTMLElement | null>(null);

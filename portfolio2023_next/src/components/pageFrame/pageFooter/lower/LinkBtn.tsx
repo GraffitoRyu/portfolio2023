@@ -36,7 +36,7 @@ export default function FooterLink({
   // 현재 페이지 경로
   const pathname = usePathname();
   // 페이지 상태 관리
-  const setPageAtom = useSetRecoilState<PageStateTypes>(pageState);
+  const setPageAtom = useSetRecoilState<PageLoadStateTypes>(pageState);
   const { container } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
 
   const isNav: boolean = !isExternal ? true : false;

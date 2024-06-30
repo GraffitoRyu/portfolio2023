@@ -30,7 +30,7 @@ export default function ProjectItem({
   code: string;
   summary: SummaryType;
   $isLast: boolean;
-}): JSX.Element {
+}) {
   const router = useRouter();
   const { category } = useParams();
 
@@ -38,7 +38,7 @@ export default function ProjectItem({
   const [hover, setHover] = useState<string>("");
 
   const setDetailLayout =
-    useSetRecoilState<DetailLayoutStateTypes>(detailLayoutState);
+    useSetRecoilState<PageDetailLoadStateTypes>(detailLayoutState);
 
   const {
     container: scrollContainer,

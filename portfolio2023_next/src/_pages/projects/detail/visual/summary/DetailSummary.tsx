@@ -29,7 +29,7 @@ export default function DetailSummary() {
   const [summaryData, setSummaryData] = useState<SummaryProps[] | null>(null);
 
   const { openComplete } =
-    useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
+    useRecoilValue<PageDetailLoadStateTypes>(detailLayoutState);
   const [delayIndex, setDelayIndex] = useState<number>(1);
   const [hide, setHide] = useState<string>("init-hide hide");
 

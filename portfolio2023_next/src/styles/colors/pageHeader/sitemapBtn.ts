@@ -1,6 +1,3 @@
-// GNB 버튼 컬러
-import { SitemapBtnModeTypes } from "@/types/colors/pageHeader";
-
 export const gnbSitemapBtn: SitemapBtnModeTypes = {
   light: {
     basic: "#bfbfbf",

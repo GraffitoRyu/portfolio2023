@@ -1,5 +1,3 @@
-import { StacksModeType } from "@/types/colors/profile";
-
 export const stacks: StacksModeType = {
   light: {
     legendTitle: "#5a5a5a",

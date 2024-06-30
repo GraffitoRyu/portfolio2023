@@ -2,6 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // style components
 import { IntroDesc, IntroTitle } from "@/styles/styled/components/PageVisual";
@@ -10,17 +11,19 @@ import { IntroDesc, IntroTitle } from "@/styles/styled/components/PageVisual";
 import ParseDescNewLine from "@/components/util/ParseDescNewLine";
 
 // state
-import { pageState } from "@/states/page";
+import { pageLoadState } from "@/jotai/pages/load";
+import { viewportState } from "@/jotai/viewport";
 import { scrollRefState } from "@/states/scroll";
-import { screenSizeState } from "@/states/screen";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
+
+// utils
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function PageIntro({ title, desc }: IntroTypes) {
-  const { init, loadComplete } = useRecoilValue<PageStateTypes>(pageState);
-  const { windowWidth } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
+  const { init, loadComplete } = useAtomValue(pageLoadState);
+  const { windowWidth } = useAtomValue(viewportState);
 
   const [titleHide, setTitleHide] = useState<string>(
     windowWidth < 1024 ? "init-hide hide" : "",

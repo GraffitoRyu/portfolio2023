@@ -1,6 +1,6 @@
 "use client";
 
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // components
 import DetailLinkContainer from "../common/linkMenu/DetailLinkContainer";
@@ -10,10 +10,10 @@ import DetailStacks from "./stacks/DetailStacks";
 import { PDVisualLower } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { screenSizeState } from "@/states/screen";
+import { viewportState } from "@/jotai/viewport";
 
 export default function DetailVisualLower() {
-  const { windowWidth } = useRecoilValue<ScreenSizeTypes>(screenSizeState);
+  const { windowWidth } = useAtomValue(viewportState);
 
   return (
     <PDVisualLower>

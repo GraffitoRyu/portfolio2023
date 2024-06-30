@@ -1,5 +1,3 @@
-import { InitCoverModeTypes } from "@/types/colors/common";
-
 export const initCover: InitCoverModeTypes = {
   light: {
     // bg: "#fff",

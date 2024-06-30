@@ -4,9 +4,11 @@ import { ReactNode, Suspense } from "react";
 export { metadata, viewport } from "@/data/metadata";
 
 // root components
-import JotaiProvider from "@/components/roots/JotaiProvider";
-import ReactQueryContainer from "@/components/roots/ReactQuery";
-import ThemeColors from "@/components/roots/ThemeColor";
+import JotaiProvider from "@/components/roots/provider/JotaiProvider";
+import ReactQueryProvider from "@/components/roots/provider/ReactQueryProvider";
+import StyledComponentsRegistry from "../src/components/roots/lib/StyledRegistry";
+import StyledThemeColorProvider from "@/components/roots/provider/StyledThemeColorProvider";
+import PageLoadEvents from "@/components/roots/lib/PageLoadEvents";
 
 // analytics
 import { Analytics } from "@vercel/analytics/react";
@@ -20,14 +22,10 @@ import Cursor from "@/components/cursor/Cursor";
 // styles
 import { sans, serif, serif_dm } from "@/styles/fonts/fonts";
 import "@/styles/scss/globals.scss";
-import StyledComponentsRegistry from "../src/components/roots/StyledComponentsRegistry";
 import {
   HTMLThemeStyle,
   StyledMainContainer,
 } from "@/styles/styled/components/Page";
-
-// hooks
-import { PageLoadEvents } from "@/hooks/route/PageLoadEvents";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -37,9 +35,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body>
         <JotaiProvider>
-          <ReactQueryContainer>
+          <ReactQueryProvider>
             <StyledComponentsRegistry>
-              <ThemeColors>
+              <StyledThemeColorProvider>
                 <HTMLThemeStyle />
                 <StyledMainContainer>
                   <PageTemplate>{children}</PageTemplate>
@@ -50,9 +48,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     <PageLoadEvents />
                   </Suspense>
                 </StyledMainContainer>
-              </ThemeColors>
+              </StyledThemeColorProvider>
             </StyledComponentsRegistry>
-          </ReactQueryContainer>
+          </ReactQueryProvider>
         </JotaiProvider>
         <Analytics />
       </body>

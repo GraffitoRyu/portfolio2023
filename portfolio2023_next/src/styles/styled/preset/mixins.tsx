@@ -5,9 +5,6 @@ import { css } from "styled-components";
 // util
 import { getUnit, rem } from "@/util/unit.util";
 
-// types
-import { FlexTypes, PositionTypes, SizeTypes } from "@/types/preset";
-
 /**
  * styled-components - mixin
  * 1. size : width, height, margin(top, right, bottom, left), padding(top, right, bottom, left)

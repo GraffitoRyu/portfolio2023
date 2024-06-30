@@ -22,7 +22,7 @@ export default function DetailHeaderTitleContainer() {
   const [title, setTitle] = useState<string>("");
 
   const { openComplete } =
-    useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
+    useRecoilValue<PageDetailLoadStateTypes>(detailLayoutState);
   const {
     container: scrollContainer,
     visual: scrollTrigger,

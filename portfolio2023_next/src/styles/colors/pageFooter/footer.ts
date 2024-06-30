@@ -1,5 +1,3 @@
-import { FooterModeTypes } from "@/types/colors/pageFooter";
-
 export const footer: FooterModeTypes = {
   light: {
     bg: "#efefef",

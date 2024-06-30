@@ -1,8 +1,4 @@
-import { atom } from "recoil";
-
-// types
-import { DetailTypes } from "@/types/projectDetails";
-import { DetailLayoutStateTypes } from "@/types/state";
+// import { atom } from "recoil";
 
 // 프로젝트 상세 데이터 관리
 export const detailData = atom<DetailTypes>({
@@ -10,7 +6,7 @@ export const detailData = atom<DetailTypes>({
   default: {},
 });
 
-export const detailLayoutState = atom<DetailLayoutStateTypes>({
+export const detailLayoutState = atom<PageDetailLoadStateTypes>({
   key: "projectDetailLayoutState",
   default: {
     clicked: false, // 프로젝트 상세보기 클릭 여부

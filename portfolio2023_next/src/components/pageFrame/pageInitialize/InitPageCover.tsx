@@ -22,7 +22,8 @@ import { transTime } from "@/styles/styled/preset/transTime";
 export default function InitPageCover() {
   const [initializing, setInit] = useState<string>("");
   const [show, setShow] = useState<string>("show");
-  const [{ init, loaded }, setPage] = useRecoilState<PageStateTypes>(pageState);
+  const [{ init, loaded }, setPage] =
+    useRecoilState<PageLoadStateTypes>(pageState);
 
   useEffect(() => {
     if (typeof window === "undefined") return;

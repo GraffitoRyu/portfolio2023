@@ -27,7 +27,7 @@ import DetailMediaContainer from "./media/DetailMedia";
 export default function ProjectDetail() {
   // 프로젝트 상세 열림 상태 관리
   const [{ category, open }, setLayoutState] =
-    useRecoilState<DetailLayoutStateTypes>(detailLayoutState);
+    useRecoilState<PageDetailLoadStateTypes>(detailLayoutState);
   const [openClass, setOpen] = useState<string>("");
 
   // 프로젝트 스크롤 인터렉션 참조 요소 상태 관리

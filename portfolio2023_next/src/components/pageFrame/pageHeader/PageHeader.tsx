@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useAtomValue, useSetAtom } from "jotai";
+import { useSetRecoilState } from "recoil";
 
 // components
 import Gnb from "./Gnb";
@@ -14,19 +15,19 @@ import {
 } from "@/styles/styled/components/PageHeader";
 
 // state
-import { pageState } from "@/states/page";
 import { scrollRefState } from "@/states/scroll";
-import { screenSizeState } from "@/states/screen";
+import { viewportState } from "@/jotai/viewport";
+import { pageLoadState } from "@/jotai/pages/load";
 
 // util
 import debounce from "@/util/interactions/debounceEvent";
 
 export default function PageHeader() {
   const headerRef = useRef<HTMLElement | null>(null);
-  const setScreenSize = useSetRecoilState<ScreenSizeTypes>(screenSizeState);
+  const setScreenSize = useSetAtom(viewportState);
   const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
   const [hide, setHide] = useState<string>("init-hide hide");
-  const { init, initComplete } = useRecoilValue<PageStateTypes>(pageState);
+  const { init, initComplete } = useAtomValue(pageLoadState);
 
   const updateHeaderHeight = useCallback(() => {
     const header = headerRef?.current;

@@ -20,7 +20,7 @@ export default function DetailVisualSubtitle() {
   const [desc, setDesc] = useState<string>("");
 
   const { openComplete } =
-    useRecoilValue<DetailLayoutStateTypes>(detailLayoutState);
+    useRecoilValue<PageDetailLoadStateTypes>(detailLayoutState);
   const [delayIndex, setDelayIndex] = useState<number>(0);
   const [hide, setHide] = useState<string>("init-hide hide");
 

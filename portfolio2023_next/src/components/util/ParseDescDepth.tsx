@@ -1,9 +1,6 @@
 // style components
 import { DepthItem } from "@/styles/styled/components/Util";
 
-// type
-import { DescTypes } from "@/types/util/parseDesc";
-
 export default function ParseDescDepth({ data }: DescTypes) {
   return (
     <>

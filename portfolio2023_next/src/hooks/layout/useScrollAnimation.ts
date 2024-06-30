@@ -48,7 +48,7 @@ export function useGsapRegister<ContainerElement extends HTMLElement>({
  * @see https://stackblitz.com/edit/stackblitz-starters-u6rgzq?file=README.md gsap + ScrollTrigger + Next.js Starter Templates
  * @see https://gsap.com/resources/React useGSAP Hook
  * @example
- * ```
+ * ```typescript
  * export default function SectionComponent({ children }: { children: ReactNode }) {
  *  const containerEl = useAtomValue(scrollContainer);
  *  const container = useRef<HTMLElement | null>(containerEl);

@@ -9,6 +9,6 @@ type DescTypes = {
 };
 
 type DescNewLineTypes = {
-  data: Array<string | JSX.Element> | undefined;
+  data: Array<string | React.ReactNode> | undefined;
   breakLine?: boolean;
 };

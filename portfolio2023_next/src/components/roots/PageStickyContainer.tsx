@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useEffect, useRef } from "react";
-import { useSetRecoilState } from "recoil";
+import { useSetAtom } from "jotai";
 
 // components
 import PageHeader from "../pageFrame/pageHeader/PageHeader";
@@ -20,7 +20,7 @@ export default function PageStickyContainer({
 }: {
   children: ReactNode;
 }) {
-  const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
+  const setScrollRef = useSetAtom(scrollRefState);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {

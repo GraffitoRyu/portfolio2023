@@ -1,5 +1,3 @@
-import { CareerModeTypes } from "@/types/colors/profile";
-
 export const career: CareerModeTypes = {
   light: {
     border: "#a0a0a0",

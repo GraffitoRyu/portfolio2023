@@ -75,7 +75,7 @@ export default function SectionHeader({
         <>
           <HeaderTitle ref={titleRef}>{title}</HeaderTitle>
           <HeaderDesc ref={descRef}>
-            {desc?.map((d: string | JSX.Element, i: number) => (
+            {desc?.map((d: string | React.ReactNode, i: number) => (
               <span key={`sectionHeader_${title}_${i}`}>{d}</span>
             ))}
           </HeaderDesc>

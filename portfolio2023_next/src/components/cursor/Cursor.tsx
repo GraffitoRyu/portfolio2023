@@ -2,9 +2,6 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-// types
-import { CursorTypes } from "@/types/state";
-
 // styled components
 import { CursorStyle } from "@/styles/styled/components/Cursor";
 

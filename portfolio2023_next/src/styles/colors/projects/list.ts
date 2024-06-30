@@ -1,5 +1,3 @@
-import { ListModeTypes } from "@/types/colors/projectsList";
-
 export const list: ListModeTypes = {
   light: {
     border: "#ccc",
