@@ -11,7 +11,7 @@ import DetailInfoContents from "../../common/info/DetailInfoContents";
 import { PDSummaryContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailData, detailLayoutState } from "@/states/detail";
+import { detailData } from "@/states/detail";
 import { pageDetailLoadState } from "@/jotai/pages/load";
 import { detailScrollRefState } from "@/states/scroll";
 
@@ -26,7 +26,7 @@ type SummaryProps = {
 
 export default function DetailSummary() {
   const { category } = useParams();
-  const data = useRecoilValue<DetailTypes>(detailData);
+  const data = useAtomValue<DetailTypes>(detailData);
   const [summaryData, setSummaryData] = useState<SummaryProps[] | null>(null);
 
   const { openComplete } =
@@ -35,7 +35,7 @@ export default function DetailSummary() {
   const [hide, setHide] = useState<string>("init-hide hide");
 
   const { container: scrollContainer, scrollHeight } =
-    useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
+    useAtomValue<DetailScrollRefStateTypes>(detailScrollRefState);
   const summaryRef = useRef<HTMLDListElement[]>([]);
 
   useLayoutEffect(() => {

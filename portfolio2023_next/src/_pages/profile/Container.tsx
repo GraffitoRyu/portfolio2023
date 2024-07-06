@@ -6,6 +6,7 @@ import PageVisual from "@/components/pageFrame/pageSection/pageVisual/Visual";
 import Career from "@/_pages/profile/career/Career";
 import Experience from "@/_pages/profile/experience/Experience";
 import TechStacks from "@/_pages/profile/techStacks/Stacks";
+import { Fragment } from "react";
 
 export default function ProfileContainer() {
   return (

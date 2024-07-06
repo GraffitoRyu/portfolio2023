@@ -6,9 +6,11 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
+// hook
 import useIsomorphicLayoutEffect from "../util/useIsomorphicLayoutEffect";
 
-import { scrollPageRefState } from "@/jotai/scroll";
+// state
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
 
 /**
  * GSAP ScrollTrigger 공통 전역옵션
@@ -176,7 +178,7 @@ export default function useScrollAnimation({
 
     // console.log(`[useScrollAnimation :: useGSAP] options`, ...options);
 
-    const validElements = refs.filter((ref) => ref !== null);
+    const validElements = refs.filter(ref => ref !== null);
 
     if (validElements.length === 0) {
       // console.error("스크롤 인터랙션 초기화 오류 :: element 유효하지 않음", refs);
