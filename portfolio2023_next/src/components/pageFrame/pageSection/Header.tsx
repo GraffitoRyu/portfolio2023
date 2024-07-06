@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useLayoutEffect, useRef } from "react";
-import { useRecoilValue } from "recoil";
+import { useLayoutEffect, useRef } from "react";
+import { useAtomValue } from "jotai";
 
 // style components
 import {
@@ -11,7 +11,9 @@ import {
 } from "@/styles/styled/components/PageSection";
 
 // state
-import { scrollRefState } from "@/states/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
+
+// util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function SectionHeader({
@@ -20,8 +22,8 @@ export default function SectionHeader({
   desc,
   className,
 }: SectionHeaderTypes) {
-  const { container: scrollContainer, stickyHeight } =
-    useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const { container: scrollContainer } =
+    useAtomValue<ScrollRefStateTypes>(scrollPageRefState);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const descRef = useRef<HTMLParagraphElement | null>(null);
 
@@ -61,7 +63,7 @@ export default function SectionHeader({
       ],
     });
     return () => ctx.revert();
-  }, [scrollContainer, stickyHeight]);
+  }, [scrollContainer]);
 
   return (
     <SectionHeaderContainer

@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 
 // style component
 import { CommonBtn } from "@/styles/styled/preset/buttons";
@@ -14,7 +14,7 @@ export default function ExternalLinkButton({
   ariaLabel,
 }: {
   href: string;
-  children: ReactNode;
+  children: React.ReactNode;
   ariaLabel: string;
 }) {
   const [hover, setHover] = useState<string>("");

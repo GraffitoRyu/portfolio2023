@@ -2,11 +2,11 @@
 
 import { usePathname, useParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
-import { useAtom, useSetAtom } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 
 // state
 import { pageDetailLoadState, pageLoadState } from "@/jotai/pages/load";
-import { detailData, detailLayoutState } from "@/states/detail";
+import { detailData } from "@/states/detail";
 
 // data
 import sitemap from "@/data/sitemap";
@@ -25,7 +25,7 @@ export default function PageLoadEvents() {
 
   // 프로젝트 상세에 대한 열림/닫힘 상태 업데이트
   const setDetailState = useSetAtom(pageDetailLoadState);
-  const savedData = useRecoilValue<DetailTypes>(detailData);
+  const savedData = useAtomValue<DetailTypes>(detailData);
 
   // 루트 업데이트
   useLayoutEffect(() => {

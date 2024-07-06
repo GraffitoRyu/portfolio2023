@@ -1,4 +1,4 @@
-import { ReactNode, Suspense } from "react";
+import { Suspense } from "react";
 
 // meta data
 export { metadata, viewport } from "@/data/metadata";
@@ -9,12 +9,13 @@ import ReactQueryProvider from "@/components/roots/provider/ReactQueryProvider";
 import StyledComponentsRegistry from "../src/components/roots/lib/StyledRegistry";
 import StyledThemeColorProvider from "@/components/roots/provider/StyledThemeColorProvider";
 import PageLoadEvents from "@/components/roots/lib/PageLoadEvents";
+import ViewportDeviceChecker from "@/components/roots/lib/ViewportDeviceChecker";
 
 // analytics
 import { Analytics } from "@vercel/analytics/react";
 
 // components
-import PageTemplate from "@/components/roots/PageTemplate";
+import PageTemplate from "@/components/pageFrame/PageTemplate";
 import TransCover from "@/components/pageFrame/pageTransition/TransCover";
 import InitPageCover from "@/components/pageFrame/pageInitialize/InitPageCover";
 import Cursor from "@/components/cursor/Cursor";
@@ -27,7 +28,11 @@ import {
   StyledMainContainer,
 } from "@/styles/styled/components/Page";
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="ko"
@@ -35,18 +40,19 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body>
         <JotaiProvider>
+          <ViewportDeviceChecker />
           <ReactQueryProvider>
             <StyledComponentsRegistry>
               <StyledThemeColorProvider>
                 <HTMLThemeStyle />
                 <StyledMainContainer>
+                  <Suspense fallback={null}>
+                    <PageLoadEvents />
+                  </Suspense>
                   <PageTemplate>{children}</PageTemplate>
                   <TransCover />
                   <InitPageCover />
                   <Cursor />
-                  <Suspense fallback={null}>
-                    <PageLoadEvents />
-                  </Suspense>
                 </StyledMainContainer>
               </StyledThemeColorProvider>
             </StyledComponentsRegistry>

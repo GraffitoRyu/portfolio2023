@@ -1,5 +1,3 @@
-import { Fragment } from "react";
-
 import SectionContents from "@/components/pageFrame/pageSection/Contents";
 import SectionHeader from "@/components/pageFrame/pageSection/Header";
 import PageSection from "@/components/pageFrame/pageSection/PageSection";

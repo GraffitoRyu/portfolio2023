@@ -1,8 +1,7 @@
 "use client";
 
-import { SyntheticEvent, useCallback, useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
-import { useAtomValue } from "jotai";
+import { useCallback, useEffect, useState } from "react";
+import { useAtom, useAtomValue } from "jotai";
 
 import {
   CareerCompany,
@@ -14,8 +13,8 @@ import {
 } from "@/styles/styled/components/ProfileCareer";
 
 // state
-import { scrollRefState } from "@/states/scroll";
 import { viewportState } from "@/jotai/viewport";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
 
 interface CareerSummaryProps extends CareerSummaryTypes {
   code: string;
@@ -29,12 +28,12 @@ export default function CareerSummary({
 }: CareerSummaryProps) {
   const { windowWidth } = useAtomValue(viewportState);
   const [{ careerItems, careerOpen }, setScrollRef] =
-    useRecoilState<ScrollRefStateTypes>(scrollRefState);
+    useAtom<ScrollRefStateTypes>(scrollPageRefState);
 
   const [hover, setHover] = useState<string>("");
 
   const openDetails = useCallback(
-    (e: SyntheticEvent) => {
+    (e: React.SyntheticEvent) => {
       const container = careerItems[code];
       if (!container) return;
 

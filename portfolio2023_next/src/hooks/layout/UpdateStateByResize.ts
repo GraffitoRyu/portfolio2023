@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useLayoutEffect } from "react";
-import { useSetRecoilState } from "recoil";
 import { useSetAtom } from "jotai";
 
 // state

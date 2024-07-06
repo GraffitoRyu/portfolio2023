@@ -1,73 +1,23 @@
 "use client";
 
-import { ReactNode } from "react";
 import {
   QueryClient,
+  QueryClientProvider,
   defaultShouldDehydrateQuery,
   isServer,
 } from "@tanstack/react-query";
 
-// const queryClient = new QueryClient({
-//   defaultOptions: {
-//     queries: {
-//       refetchOnWindowFocus: false,
-//       refetchOnMount: false,
-//       retry: false,
-//       staleTime: 5 * 60 * 60 * 1000,
-//       gcTime: Infinity,
-//     },
-//   },
-// });
-
 let browserQueryClient: QueryClient | undefined = undefined;
-
-/**
- * Jotai 상태 공급자
- * - Roots > Provider; Jotai
- * @component
- */
-export default function ReactQueryProvider({
-  children,
-}: {
-  children: ReactNode;
-}) {
-  // const 
-  const queryClient = () => {
-    if (isServer)
-      return new QueryClient({
-        defaultOptions: {
-          queries: {
-            refetchOnWindowFocus: false,
-            refetchOnMount: false,
-            retry: false,
-            staleTime: 5 * 60 * 60 * 1000,
-            gcTime: Infinity,
-          },
-          dehydrate: {
-            // include pending queries in dehydration
-            shouldDehydrateQuery: query =>
-              defaultShouldDehydrateQuery(query) ||
-              query.state.status === "pending",
-          },
-        },
-      });
-
-      return browserQueryClient || ;
-  };
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-      {/* <ReactQueryDevtools initialIsOpen={true} position="bottom-right" /> */}
-    </QueryClientProvider>
-  );
-}
 
 function makeQueryClient() {
   return new QueryClient({
     defaultOptions: {
       queries: {
-        staleTime: 60 * 1000,
+        staleTime: 5 * 60 * 60 * 1000,
+        gcTime: Infinity,
+        refetchOnMount: false,
+        refetchOnWindowFocus: false,
+        retry: false,
       },
       dehydrate: {
         // include pending queries in dehydration
@@ -79,9 +29,7 @@ function makeQueryClient() {
   });
 }
 
-
-
-export function getQueryClient() {
+function getQueryClient() {
   if (isServer) {
     // Server: always make a new query client
     return makeQueryClient();
@@ -93,4 +41,24 @@ export function getQueryClient() {
     if (!browserQueryClient) browserQueryClient = makeQueryClient();
     return browserQueryClient;
   }
+}
+
+/**
+ * Jotai 상태 공급자
+ * - Roots > Provider; Jotai
+ * @component
+ */
+export default function ReactQueryProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const queryClient = getQueryClient();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      {children}
+      {/* <ReactQueryDevtools initialIsOpen={true} position="bottom-right" /> */}
+    </QueryClientProvider>
+  );
 }

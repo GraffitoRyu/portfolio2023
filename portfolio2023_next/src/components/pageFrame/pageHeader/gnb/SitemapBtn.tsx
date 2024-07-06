@@ -2,14 +2,14 @@
 
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useAtomValue, useSetAtom } from "jotai";
 
 // style components
 import { SitemapLink } from "@/styles/styled/components/Gnb";
 
 // state
-import { pageState } from "@/states/page";
-import { scrollRefState } from "@/states/scroll";
+import { pageLoadState } from "@/jotai/pages/load";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
@@ -22,8 +22,8 @@ export default function SitemapBtn({ code, path, name }: SitemapDataType) {
   const { category } = useParams();
 
   // 페이지 상태 관리
-  const setPageAtom = useSetRecoilState<PageLoadStateTypes>(pageState);
-  const { container } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const setPageAtom = useSetAtom(pageLoadState);
+  const { container } = useAtomValue<ScrollRefStateTypes>(scrollPageRefState);
 
   // 경로 상태 관리
   const [curPath, setCurPath] = useState<string>("/");
@@ -55,7 +55,7 @@ export default function SitemapBtn({ code, path, name }: SitemapDataType) {
 
         setPageAtom(prev => ({
           ...prev,
-          cover: code,
+          changePageName: code,
           loaded: false,
         }));
 

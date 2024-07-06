@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // style components
 import {
@@ -17,8 +17,8 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailScrollRefState } from "@/states/scroll";
-import { detailData, detailLayoutState } from "@/states/detail";
+import { detailData } from "@/states/detail";
+import { pageDetailLoadState } from "@/jotai/pages/load";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
@@ -41,7 +41,7 @@ export default function DetailVisualTitle() {
   );
 
   const { openComplete } =
-    useRecoilValue<PageDetailLoadStateTypes>(detailLayoutState);
+    useAtomValue<PageDetailLoadStateTypes>(pageDetailLoadState);
   const [hide, setHide] = useState<string>("hide");
 
   useLayoutEffect(() => {

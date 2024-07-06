@@ -1,33 +1,36 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
+import { useAtom } from "jotai";
 
 // components
 import DetailHeader from "./header/DetailHeader";
 import DetailVisualContainer from "./visual/DetailVisualContainer";
 import DetailSubVisual from "./subVisual/DetailSubVisual";
 import DetailExperience from "./exp/DetailExperience";
+import DetailMediaContainer from "./media/DetailMedia";
 
 // style components
 import { PDContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
+import { detailData } from "@/states/detail";
 import { detailScrollRefState } from "@/states/scroll";
-import { detailData, detailLayoutState } from "@/states/detail";
+import { pageDetailLoadState } from "@/jotai/pages/load";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // hooks
-import useGetDetailByCodeQuery from "@/hooks/useGetDetailQuery";
-import debounce from "@/util/interactions/debounceEvent";
-import DetailMediaContainer from "./media/DetailMedia";
+import useResizeObserver from "@/hooks/layout/useResizeObserver";
+
+// fetch
+import { useQueryProjectsDetailData } from "@/lib/query";
 
 export default function ProjectDetail() {
   // 프로젝트 상세 열림 상태 관리
-  const [{ category, open }, setLayoutState] =
-    useRecoilState<PageDetailLoadStateTypes>(detailLayoutState);
+  const [{ category, open }, setLayoutState] = useAtom(pageDetailLoadState);
   const [openClass, setOpen] = useState<string>("");
 
   // 프로젝트 스크롤 인터렉션 참조 요소 상태 관리
@@ -38,7 +41,7 @@ export default function ProjectDetail() {
 
   // 프로젝트 데이터 상태관리
   const setDetailData = useSetRecoilState<DetailTypes>(detailData);
-  const { status, data } = useGetDetailByCodeQuery(category);
+  const { status, data } = useQueryProjectsDetailData(category);
 
   // 스크롤 참조 데이터 업데이트
   const setRef = useCallback(
@@ -50,26 +53,15 @@ export default function ProjectDetail() {
   );
 
   // 프로젝트 상세 스크롤 높이 업데이트
-  useEffect(() => {
-    const scrollWrap = scrollWrapRef.current;
-    if (!scrollWrap) return;
-
-    const ob = new ResizeObserver(
-      debounce((entries: ResizeObserverEntry[]) => {
-        const ctx = entries?.[0]?.contentRect;
-        setDetailScrollRef(prev => ({
-          ...prev,
-          scrollHeight: ctx ? ctx.height : 0,
-        }));
-      }, 400),
-    );
-
-    ob.observe(scrollWrap);
-
-    return () => {
-      ob.disconnect();
-    };
-  }, [setDetailScrollRef]);
+  useResizeObserver({
+    ref: scrollWrapRef,
+    callback: ({ height }) => {
+      setDetailScrollRef(prev => ({
+        ...prev,
+        scrollHeight: height || 0,
+      }));
+    },
+  });
 
   // 데이터 조회 상태
   useEffect(() => {

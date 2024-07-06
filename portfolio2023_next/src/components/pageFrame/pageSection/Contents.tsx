@@ -1,7 +1,7 @@
 "use client";
 
-import { ReactNode, useCallback } from "react";
-import { useSetRecoilState } from "recoil";
+import { useCallback } from "react";
+import { useSetAtom } from "jotai";
 
 // style components
 import {
@@ -11,7 +11,7 @@ import {
 } from "@/styles/styled/components/PageSection";
 
 // state
-import { scrollRefState } from "@/states/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
 
 export default function SectionContents({
   code,
@@ -21,12 +21,12 @@ export default function SectionContents({
   sideClassName,
 }: {
   code?: string;
-  children: ReactNode;
-  sideContents?: ReactNode;
+  children: React.ReactNode;
+  sideContents?: React.ReactNode;
   sectionClassName?: string;
   sideClassName?: string;
 }) {
-  const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
+  const setScrollRef = useSetAtom(scrollPageRefState);
 
   const updateScrollRef = useCallback(
     (node: HTMLElement | null) => {

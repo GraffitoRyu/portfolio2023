@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useAtomValue, useSetAtom } from "jotai";
 
 // components
 import SlideTitle from "@/_pages/projects/item/SlideTitle";
@@ -16,8 +16,8 @@ import {
 } from "@/styles/styled/components/ProjectList";
 
 // state
-import { scrollRefState } from "@/states/scroll";
-import { detailLayoutState } from "@/states/detail";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
+import { pageDetailLoadState } from "@/jotai/pages/load";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
@@ -37,14 +37,10 @@ export default function ProjectItem({
   const [hide, setHide] = useState<string>("hide");
   const [hover, setHover] = useState<string>("");
 
-  const setDetailLayout =
-    useSetRecoilState<PageDetailLoadStateTypes>(detailLayoutState);
+  const setDetailLoad = useSetAtom(pageDetailLoadState);
 
-  const {
-    container: scrollContainer,
-    stickyHeight,
-    projectList,
-  } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const { container: scrollContainer, projectList } =
+    useAtomValue<ScrollRefStateTypes>(scrollPageRefState);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
 
   useLayoutEffect(() => {
@@ -79,7 +75,7 @@ export default function ProjectItem({
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, stickyHeight]);
+  }, [scrollContainer]);
 
   // 초기화
   useLayoutEffect(() => {
@@ -101,7 +97,7 @@ export default function ProjectItem({
     });
 
     return () => ctx.revert();
-  }, [projectList, scrollContainer, stickyHeight]);
+  }, [projectList, scrollContainer]);
 
   // 프로젝트 상세 열 때, 호버 상태 초기화
   useEffect(() => {
@@ -116,7 +112,7 @@ export default function ProjectItem({
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
       onClick={() => {
-        setDetailLayout(prev => ({ ...prev, clicked: true, loading: true }));
+        setDetailLoad(prev => ({ ...prev, clicked: true, loading: true }));
         router.push(`/projects/${code}`);
       }}
     >

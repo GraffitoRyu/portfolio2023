@@ -1,5 +1,3 @@
-import { SyntheticEvent } from "react";
-
 export default function navDelay({
   delay,
   e,
@@ -7,7 +5,7 @@ export default function navDelay({
   navEvent,
 }: {
   delay: number; // ms
-  e: SyntheticEvent;
+  e: React.SyntheticEvent;
   clickEvent: () => void;
   navEvent: () => void;
 }) {

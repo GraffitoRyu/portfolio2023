@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useAtomValue, useSetAtom } from "jotai";
 import ClipboardJS from "clipboard";
 
 // components
@@ -18,8 +18,8 @@ import {
 } from "@/styles/styled/components/PageFooter";
 
 // state
-import { pageState } from "@/states/page";
-import { scrollRefState } from "@/states/scroll";
+import { pageLoadState } from "@/jotai/pages/load";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
@@ -36,8 +36,8 @@ export default function FooterLink({
   // 현재 페이지 경로
   const pathname = usePathname();
   // 페이지 상태 관리
-  const setPageAtom = useSetRecoilState<PageLoadStateTypes>(pageState);
-  const { container } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const setPageAtom = useSetAtom(pageLoadState);
+  const { container } = useAtomValue<ScrollRefStateTypes>(scrollPageRefState);
 
   const isNav: boolean = !isExternal ? true : false;
 
@@ -91,7 +91,7 @@ export default function FooterLink({
 
             setPageAtom(prev => ({
               ...prev,
-              cover: code,
+              changePageName: code,
               loaded: false,
             }));
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useAtom } from "jotai";
 
 // components
 import LoadingIconComponent from "../../loading/LoadingIcon";
@@ -14,7 +14,7 @@ import {
 } from "@/styles/styled/components/InitPageCover";
 
 // state
-import { pageState } from "@/states/page";
+import { pageLoadState } from "@/jotai/pages/load";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
@@ -22,8 +22,7 @@ import { transTime } from "@/styles/styled/preset/transTime";
 export default function InitPageCover() {
   const [initializing, setInit] = useState<string>("");
   const [show, setShow] = useState<string>("show");
-  const [{ init, loaded }, setPage] =
-    useRecoilState<PageLoadStateTypes>(pageState);
+  const [{ init, loaded }, setPage] = useAtom(pageLoadState);
 
   useEffect(() => {
     if (typeof window === "undefined") return;

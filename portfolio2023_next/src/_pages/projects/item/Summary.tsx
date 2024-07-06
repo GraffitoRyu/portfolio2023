@@ -1,5 +1,3 @@
-import { HTMLAttributes } from "react";
-
 // components
 import {
   FadeContainer,
@@ -17,7 +15,7 @@ export default function ProjectSummary({
   code,
   summary,
 }: {
-  className?: string | HTMLAttributes<HTMLDivElement>;
+  className?: string | React.HTMLAttributes<HTMLDivElement>;
   code: string;
   summary: SummaryType;
 }) {

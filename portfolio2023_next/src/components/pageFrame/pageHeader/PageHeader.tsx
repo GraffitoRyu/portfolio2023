@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useAtomValue, useSetAtom } from "jotai";
-import { useSetRecoilState } from "recoil";
 
 // components
 import Gnb from "./Gnb";
@@ -15,38 +14,19 @@ import {
 } from "@/styles/styled/components/PageHeader";
 
 // state
-import { scrollRefState } from "@/states/scroll";
 import { viewportState } from "@/jotai/viewport";
 import { pageLoadState } from "@/jotai/pages/load";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
 
-// util
-import debounce from "@/util/interactions/debounceEvent";
+// hook
+import useResizeObserver from "@/hooks/layout/useResizeObserver";
 
 export default function PageHeader() {
   const headerRef = useRef<HTMLElement | null>(null);
   const setScreenSize = useSetAtom(viewportState);
-  const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
+  const setScrollRef = useSetAtom(scrollPageRefState);
   const [hide, setHide] = useState<string>("init-hide hide");
   const { init, initComplete } = useAtomValue(pageLoadState);
-
-  const updateHeaderHeight = useCallback(() => {
-    const header = headerRef?.current;
-    if (!header) return;
-
-    document.documentElement.style.setProperty(
-      `--header-height`,
-      `${header.clientHeight}px`,
-    );
-
-    setScreenSize(prev => ({
-      ...prev,
-      headerHeight: header.clientHeight,
-    }));
-  }, [setScreenSize]);
-
-  const updateDebounce = debounce(() => {
-    updateHeaderHeight();
-  }, 500);
 
   const updateScrollRef = useCallback(
     (node: HTMLElement | null) => {
@@ -55,20 +35,6 @@ export default function PageHeader() {
     },
     [setScrollRef],
   );
-
-  // 헤더 높이 최초 업데이트
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    updateHeaderHeight();
-  }, [updateHeaderHeight]);
-
-  // 헤더 높이 상태 업데이트
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    window.addEventListener("resize", updateDebounce, false);
-    return () => window.removeEventListener("resize", updateDebounce, false);
-  }, [updateDebounce]);
 
   // 최초 로딩 시 등장
   useEffect(() => {
@@ -79,6 +45,23 @@ export default function PageHeader() {
   useEffect(() => {
     if (initComplete) setHide("");
   }, [initComplete]);
+
+  // 헤더 높이 상태 업데이트
+  useResizeObserver({
+    ref: headerRef,
+    delay: 500,
+    callback: ({ height }) => {
+      document.documentElement.style.setProperty(
+        `--header-height`,
+        `${height}px`,
+      );
+
+      setScreenSize(prev => ({
+        ...prev,
+        headerHeight: height,
+      }));
+    },
+  });
 
   return (
     <HeaderContainer className={hide} ref={updateScrollRef}>

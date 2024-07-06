@@ -1,6 +1,6 @@
 import { useParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // components
 import DetailInfoItem from "../../common/info/DetailInfoItem";
@@ -12,6 +12,7 @@ import { PDSummaryContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
 import { detailData, detailLayoutState } from "@/states/detail";
+import { pageDetailLoadState } from "@/jotai/pages/load";
 import { detailScrollRefState } from "@/states/scroll";
 
 // util
@@ -29,7 +30,7 @@ export default function DetailSummary() {
   const [summaryData, setSummaryData] = useState<SummaryProps[] | null>(null);
 
   const { openComplete } =
-    useRecoilValue<PageDetailLoadStateTypes>(detailLayoutState);
+    useAtomValue<PageDetailLoadStateTypes>(pageDetailLoadState);
   const [delayIndex, setDelayIndex] = useState<number>(1);
   const [hide, setHide] = useState<string>("init-hide hide");
 

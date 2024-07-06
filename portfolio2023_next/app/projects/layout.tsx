@@ -1,11 +1,9 @@
-import { ReactNode } from "react";
-
 export default function ProjectsLayout({
   children,
   detail,
 }: {
-  children: ReactNode;
-  detail: ReactNode;
+  children: React.ReactNode;
+  detail: React.ReactNode;
 }) {
   return (
     <>

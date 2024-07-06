@@ -7,8 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { useAtomValue } from "jotai";
-import { useRecoilState } from "recoil";
+import { useAtom, useAtomValue } from "jotai";
 
 // components
 import CareerSummary from "./details/CareerSummary";
@@ -22,7 +21,7 @@ import {
 } from "@/styles/styled/components/ProfileCareer";
 
 // state
-import { scrollRefState } from "@/states/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
 import { viewportState } from "@/jotai/viewport";
 
 // utils
@@ -34,8 +33,10 @@ export default function CareerItem({
   details,
   last,
 }: CareerItemProps) {
-  const [{ container: scrollContainer, careerOpen, career }, setScrollRef] =
-    useRecoilState<ScrollRefStateTypes>(scrollRefState);
+  const [
+    { container: scrollContainer, careerOpen, careerContents },
+    setScrollRef,
+  ] = useAtom<ScrollRefStateTypes>(scrollPageRefState);
   const itemRef = useRef<HTMLLIElement | null>(null);
   const [hide, setHide] = useState<string>("hide");
 
@@ -103,7 +104,7 @@ export default function CareerItem({
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
 
-    if (!scrollContainer || !career) return;
+    if (!scrollContainer || !careerContents) return;
 
     const detailTag = detailsRef.current;
     if (!detailTag) return;
@@ -112,7 +113,7 @@ export default function CareerItem({
       container: scrollContainer,
       normalize: true,
       create: {
-        trigger: career,
+        trigger: careerContents,
         start: `top bottom`,
         end: `top bottom`,
         // markers: true,
@@ -132,7 +133,7 @@ export default function CareerItem({
     });
 
     return () => ctx.revert();
-  }, [career, careerOpen, code, scrollContainer, setScrollRef]);
+  }, [careerContents, careerOpen, code, scrollContainer, setScrollRef]);
 
   return (
     <CareerItemContainer className={`${hide}`} ref={itemRef}>

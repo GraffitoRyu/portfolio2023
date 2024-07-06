@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // components
 // import StackLevelGauge from "./StackLevel";
@@ -15,7 +15,7 @@ import {
 } from "@/styles/styled/components/ProfileStacks";
 
 // state
-import { scrollRefState } from "@/states/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
@@ -29,10 +29,10 @@ export default function StackRow({
 }) {
   const {
     container: scrollContainer,
-    careerSection,
-    experienceSection,
-    stacks: stackContents,
-  } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+    sectionCareer,
+    sectionExperience,
+    sectionStacks,
+  } = useAtomValue(scrollPageRefState);
 
   const triggerRef = useRef<HTMLLIElement | null>(null);
   const categoryRef = useRef<HTMLDivElement | null>(null);
@@ -43,11 +43,11 @@ export default function StackRow({
 
   // 스크롤 모션 재계산
   useEffect(() => {
-    if (!careerSection || !experienceSection?.parentElement) return;
+    if (!sectionCareer || !sectionExperience?.parentElement) return;
     setSectionOffset(
-      careerSection.offsetHeight + experienceSection.parentElement.offsetHeight,
+      sectionCareer.offsetHeight + sectionExperience.parentElement.offsetHeight,
     );
-  }, [careerSection, experienceSection, experienceSection?.parentElement]);
+  }, [sectionCareer, sectionExperience, sectionExperience?.parentElement]);
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
@@ -109,7 +109,7 @@ export default function StackRow({
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
       create: {
-        trigger: stackContents,
+        trigger: sectionStacks,
         start: `top bottom`,
         end: `top bottom`,
         onLeaveBack: () => {
@@ -119,7 +119,7 @@ export default function StackRow({
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, stackContents, sectionOffset]);
+  }, [scrollContainer, sectionStacks, sectionOffset]);
 
   return (
     <StackRowContainer ref={triggerRef}>

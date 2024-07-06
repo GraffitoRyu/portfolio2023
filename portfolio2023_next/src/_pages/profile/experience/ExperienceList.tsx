@@ -1,15 +1,14 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
 import { useAtomValue } from "jotai";
 
 // components
 import ExperienceItem from "./ExperienceItem";
 
 // state
-import { scrollRefState } from "@/states/scroll";
 import { viewportState } from "@/jotai/viewport";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
 
 // style components
 import { ExpList } from "@/styles/styled/components/ProfileExperience";
@@ -22,8 +21,8 @@ export default function ExperienceList({ data }: { data?: ExperienceTypes[] }) {
   const [expData, setExpData] = useState<ExperienceTypes[]>([]);
   const [length, setLength] = useState<number>(0);
 
-  const { container: scrollContainer, experienceSection: scrollTrigger } =
-    useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const { container: scrollContainer, sectionExperience: scrollTrigger } =
+    useAtomValue(scrollPageRefState);
   const expListRef = useRef<HTMLUListElement | null>(null);
 
   const [isMobileView, setMobileView] = useState<boolean>(false);

@@ -2,8 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef } from "react";
-import { useAtom } from "jotai";
-import { useSetRecoilState } from "recoil";
+import { useAtom, useSetAtom } from "jotai";
 
 // components
 import DetailHeaderTitleContainer from "./DetailHeaderTitleContainer";
@@ -14,25 +13,24 @@ import CloseButton from "@/components/buttons/Close";
 import { StyledHeaderWrap } from "@/styles/styled/components/PageHeader";
 
 // state
-import { detailLayoutState } from "@/states/detail";
+import { viewportState } from "@/jotai/viewport";
+import { pageDetailLoadState } from "@/jotai/pages/load";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // util
 import debounce from "@/util/interactions/debounceEvent";
-import { viewportState } from "@/jotai/viewport";
 
 export default function DetailHeaderWrap() {
   const [{ windowWidth }, setScreenSize] = useAtom(viewportState);
   const wrapRef = useRef<HTMLDivElement | null>(null);
 
   const router = useRouter();
-  const setDetailLayout =
-    useSetRecoilState<PageDetailLoadStateTypes>(detailLayoutState);
+  const setDetailLoad = useSetAtom(pageDetailLoadState);
 
   const closeDetail = () => {
-    setDetailLayout(prev => ({
+    setDetailLoad(prev => ({
       ...prev,
       open: false,
       openComplete: false,

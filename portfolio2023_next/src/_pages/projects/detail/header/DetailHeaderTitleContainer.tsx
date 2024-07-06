@@ -1,6 +1,6 @@
 import { useParams } from "next/navigation";
 import { useLayoutEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // style components
 import {
@@ -10,8 +10,9 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailData, detailLayoutState } from "@/states/detail";
+import { detailData } from "@/states/detail";
 import { detailScrollRefState } from "@/states/scroll";
+import { pageDetailLoadState } from "@/jotai/pages/load";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
@@ -21,8 +22,7 @@ export default function DetailHeaderTitleContainer() {
   const data = useRecoilValue<DetailTypes>(detailData);
   const [title, setTitle] = useState<string>("");
 
-  const { openComplete } =
-    useRecoilValue<PageDetailLoadStateTypes>(detailLayoutState);
+  const { openComplete } = useAtomValue(pageDetailLoadState);
   const {
     container: scrollContainer,
     visual: scrollTrigger,

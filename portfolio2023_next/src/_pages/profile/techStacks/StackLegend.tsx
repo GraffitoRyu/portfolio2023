@@ -1,7 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // components
 import StackLevelGauge from "./StackLevel";
@@ -16,7 +16,7 @@ import {
 } from "@/styles/styled/components/ProfileStacks";
 
 // state
-import { scrollRefState } from "@/states/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
@@ -25,8 +25,8 @@ import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 import legendData from "@/data/stackLegend";
 
 export default function StackLegend() {
-  const { container: scrollContainer, stickyHeight } =
-    useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const { container: scrollContainer } =
+    useAtomValue<ScrollRefStateTypes>(scrollPageRefState);
   const legendRef = useRef<HTMLDListElement | null>(null);
 
   useLayoutEffect(() => {
@@ -59,7 +59,7 @@ export default function StackLegend() {
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, stickyHeight]);
+  }, [scrollContainer]);
 
   return (
     <StackLegendContainer ref={legendRef}>

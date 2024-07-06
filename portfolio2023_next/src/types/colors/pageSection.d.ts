@@ -14,9 +14,9 @@ interface SectionHeaderModeTypes {
 interface IntroTypes {
   bgFrom: string;
   bgTo: string;
-  title: string;
+  title: (string | React.ReactNode)[];
   strong: string;
-  desc: string;
+  desc: (string | React.ReactNode)[];
 }
 
 interface IntroModeTypes {

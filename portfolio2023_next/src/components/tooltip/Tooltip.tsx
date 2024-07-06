@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // style components
 import {
@@ -18,9 +18,9 @@ export default function Tooltip({
   active,
   show,
 }: {
-  children: ReactNode;
-  title?: string | ReactNode;
-  contents: string | ReactNode;
+  children: React.ReactNode;
+  title?: string | React.ReactNode;
+  contents: string | React.ReactNode;
   pos: string[];
   section: string;
   active: boolean;

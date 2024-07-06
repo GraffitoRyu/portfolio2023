@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
 import { useAtomValue } from "jotai";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -17,9 +16,9 @@ import {
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // state
-import { scrollRefState } from "@/states/scroll";
 import { viewportState } from "@/jotai/viewport";
 import { pageLoadState } from "@/jotai/pages/load";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
 
 // hooks
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
@@ -27,8 +26,7 @@ import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 export default function PageVisual({ title }: { title: string[] }) {
   const { windowWidth, headerHeight } = useAtomValue(viewportState);
 
-  const { container: scrollContainer } =
-    useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const { container: scrollContainer } = useAtomValue(scrollPageRefState);
   const [isMobile, setMobile] = useState<boolean>(false);
 
   const visualRef = useRef<HTMLDivElement | null>(null);

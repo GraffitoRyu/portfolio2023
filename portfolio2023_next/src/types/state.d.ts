@@ -59,29 +59,47 @@ type ThemeStateTypes = {
 };
 
 interface CareerItemsRefTypes {
-  [index: string]: HTMLDetailsElement | null;
+  [sectionKey: string]: HTMLDetailsElement | null;
 }
 
 interface CareerOpenTypes {
-  [index: string]: boolean;
+  [sectionKey: string]: boolean;
 }
 
+/**
+ * 스크롤 참조를 위한 ref 상태관리
+ */
 interface ScrollRefStateTypes {
-  container: HTMLDivElement | null;
-  stickyHeight: number;
-  header: HTMLElement | null; // <header />
-  visualSection: HTMLElement | null;
-  career: HTMLDivElement | null;
-  careerSection: HTMLElement | null;
-  careerItems: CareerItemsRefTypes; // <details />
-  careerOpen: CareerOpenTypes;
-  experience: HTMLDivElement | null;
-  experienceSection: HTMLElement | null; // <section />
-  stacks: HTMLDivElement | null;
-  stacksSection: HTMLElement | null;
-  projectList: HTMLDivElement | null;
-  footer: HTMLElement | null; // <footer />
+  container: HTMLElement | null;
+  sectionVisual: HTMLElement | null;
+  sectionCareer: HTMLElement | null;
+  careerContents: HTMLElement | null; // career 섹션 컨텐츠 묶음
+  careerItems: CareerItemsRefTypes; // career 각 컨텐츠
+  careerOpen: CareerOpenTypes; // career 각 컨텐츠 아이템 별 열림 여부
+  sectionExperience: HTMLElement | null;
+  experienceContents: HTMLElement | null; // experience 섹션 컨텐츠 묶음
+  sectionStacks: HTMLElement | null;
+  stackContents: HTMLElement | null;
+  projectList: HTMLElement | null; // 프로젝트 목록 묶음
+  footer: HTMLElement | null;
+  // container: HTMLDivElement | null;
+  // header: HTMLElement | null; // <header />
+  // visualSection: HTMLElement | null;
+  // career: HTMLDivElement | null;
+  // careerSection: HTMLElement | null;
+  // careerItems: CareerItemsRefTypes; // <details />
+  // careerOpen: CareerOpenTypes;
+  // experience: HTMLDivElement | null;
+  // experienceSection: HTMLElement | null; // <section />
+  // stacks: HTMLDivElement | null;
+  // stacksSection: HTMLElement | null;
+  // projectList: HTMLDivElement | null;
+  // footer: HTMLElement | null; // <footer />
 }
+
+// interface ScrollRefSizeType {
+//   stickyHeight: number;
+// }
 
 interface DetailScrollRefStateTypes {
   container: HTMLElement | null; // <article />

@@ -1,6 +1,10 @@
 import { atom } from "jotai";
 
-export const scrollPageRefState = atom({
+/**
+ * 스크롤 참조 ref 관리
+ * @state
+ */
+export const scrollPageRefState = atom<ScrollRefStateTypes>({
   container: null,
   sectionVisual: null,
   sectionCareer: null,
@@ -9,10 +13,18 @@ export const scrollPageRefState = atom({
   careerOpen: {}, // career 각 컨텐츠 아이템 별 열림 여부
   sectionExperience: null,
   experienceContents: null, // experience 섹션 컨텐츠 묶음
-  sectionStack: null,
+  sectionStacks: null,
   stackContents: null,
   projectList: null, // 프로젝트 목록 묶음
+  footer: null,
 });
+
+// /**
+//  * 리사이즈에 따른 sticky container의 height
+//  */
+// export const scrollRefSizeState = atom<ScrollRefSizeType>({
+//   stickyHeight: 0,
+// });
 
 export const scrollDetailRefState = atom({
   container: null,

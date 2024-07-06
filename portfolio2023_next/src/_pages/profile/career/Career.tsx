@@ -4,7 +4,7 @@ import CareerItem from "./CareerItem";
 
 import { useQueryProfileCareerData } from "@/lib/query";
 
-export default async function Career() {
+export default function Career() {
   const { data: careerData } = useQueryProfileCareerData();
 
   return (

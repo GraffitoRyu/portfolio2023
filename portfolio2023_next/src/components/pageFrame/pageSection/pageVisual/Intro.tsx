@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
 import { useAtomValue } from "jotai";
 
 // style components
@@ -13,7 +12,7 @@ import ParseDescNewLine from "@/components/util/ParseDescNewLine";
 // state
 import { pageLoadState } from "@/jotai/pages/load";
 import { viewportState } from "@/jotai/viewport";
-import { scrollRefState } from "@/states/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
@@ -35,8 +34,7 @@ export default function PageIntro({ title, desc }: IntroTypes) {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const descRef = useRef<HTMLParagraphElement | null>(null);
 
-  const { container: scrollContainer, stickyHeight } =
-    useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const { container: scrollContainer } = useAtomValue(scrollPageRefState);
 
   useEffect(() => {
     if (windowWidth >= 1024) return;
@@ -99,7 +97,7 @@ export default function PageIntro({ title, desc }: IntroTypes) {
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, windowWidth, stickyHeight]);
+  }, [scrollContainer, windowWidth]);
 
   return (
     <>

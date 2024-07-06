@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useAtom } from "jotai";
 
 // components
 import LoadingIconComponent from "../../loading/LoadingIcon";
@@ -14,7 +14,7 @@ import {
 } from "@/styles/styled/components/TransCover";
 
 // state
-import { pageState } from "@/states/page";
+import { pageLoadState } from "@/jotai/pages/load";
 
 // data
 import { transCoverData } from "@/data/transCover";
@@ -23,14 +23,16 @@ import { transCoverData } from "@/data/transCover";
 import { transTime } from "@/styles/styled/preset/transTime";
 
 export default function TransCover() {
-  const [{ initComplete, cover, loaded }, setPage] =
-    useRecoilState<PageLoadStateTypes>(pageState);
+  const [{ initComplete, changePageName, loaded }, setPage] =
+    useAtom<PageLoadStateTypes>(pageLoadState);
   const [loading, setLoading] = useState("");
-  const [data, setData] = useState<TransCoverTypes>(transCoverData[cover]);
+  const [data, setData] = useState<TransCoverTypes>(
+    transCoverData[changePageName],
+  );
 
   useEffect(() => {
-    setData(transCoverData[cover]);
-  }, [cover]);
+    setData(transCoverData[changePageName]);
+  }, [changePageName]);
 
   useEffect(() => {
     // 최초 로딩 시에는, intro page cover로 적용

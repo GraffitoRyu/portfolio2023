@@ -1,7 +1,7 @@
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -13,15 +13,15 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailLayoutState } from "@/states/detail";
 import { detailScrollRefState } from "@/states/scroll";
+import { pageDetailLoadState } from "@/jotai/pages/load";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function DetailVisualImage() {
   const { category } = useParams();
-  const { open } = useRecoilValue<PageDetailLoadStateTypes>(detailLayoutState);
+  const { open } = useAtomValue(pageDetailLoadState);
 
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLDivElement | null>(null);

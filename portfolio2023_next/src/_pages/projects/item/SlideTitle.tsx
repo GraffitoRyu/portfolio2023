@@ -1,4 +1,4 @@
-import { HTMLAttributes, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // components
 import {
@@ -10,7 +10,7 @@ export default function SlideTitle({
   className,
   text,
 }: {
-  className?: string | HTMLAttributes<HTMLElement>;
+  className?: string | React.HTMLAttributes<HTMLElement>;
   text: string[];
 }) {
   const titleArr: string[] = new Array(3).fill(text.join(" "));

@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 // style components
 import {
   PDStackContents,
@@ -36,7 +34,7 @@ function SwitchContents({
   children,
 }: {
   code: string;
-  children: ReactNode;
+  children: React.ReactNode;
 }) {
   switch (code) {
     case "stacks":

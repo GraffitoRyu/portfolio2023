@@ -1,7 +1,6 @@
 "use client";
 
-import { ReactNode, useCallback } from "react";
-import { useSetRecoilState } from "recoil";
+import { useCallback } from "react";
 
 // style components
 import { PDVisualViewport } from "@/styles/styled/components/ProjectDetail";
@@ -12,7 +11,7 @@ import { detailScrollRefState } from "@/states/scroll";
 export default function DetailVisualViewport({
   children,
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
 }) {
   const setScrollRef =
     useSetRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);

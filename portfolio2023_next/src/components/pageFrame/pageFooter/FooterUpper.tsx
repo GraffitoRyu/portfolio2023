@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // style components
 import {
@@ -9,17 +9,14 @@ import {
 } from "@/styles/styled/components/PageFooter";
 
 // state
-import { scrollRefState } from "@/states/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function FooterUpperContainer() {
-  const {
-    container: scrollContainer,
-    footer: scrollTrigger,
-    stickyHeight,
-  } = useRecoilValue<ScrollRefStateTypes>(scrollRefState);
+  const { container: scrollContainer, footer: scrollTrigger } =
+    useAtomValue<ScrollRefStateTypes>(scrollPageRefState);
   const footerTitleRef = useRef<HTMLHeadingElement | null>(null);
   const [footerPos, setFooterPos] = useState<number>(0);
 
@@ -61,7 +58,7 @@ export default function FooterUpperContainer() {
     });
 
     return () => ctx.revert();
-  }, [footerPos, footerTitleRef, scrollContainer, scrollTrigger, stickyHeight]);
+  }, [footerPos, footerTitleRef, scrollContainer, scrollTrigger]);
 
   return (
     <FooterHeader>

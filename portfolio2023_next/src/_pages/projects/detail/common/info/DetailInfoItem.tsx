@@ -1,4 +1,4 @@
-import { ForwardedRef, ReactNode, forwardRef } from "react";
+import { forwardRef } from "react";
 
 import {
   PDStackItem,
@@ -15,11 +15,11 @@ function DetailInfoItemRef(
   }: {
     code: string;
     className?: string;
-    children: ReactNode;
+    children: React.ReactNode;
     $itemIndex?: number;
     $delayIndex?: number;
   },
-  ref: ForwardedRef<HTMLDListElement>,
+  ref: React.ForwardedRef<HTMLDListElement>,
 ) {
   const customAttrs = {
     className: `details-${code}-item ${className ?? ""}`,

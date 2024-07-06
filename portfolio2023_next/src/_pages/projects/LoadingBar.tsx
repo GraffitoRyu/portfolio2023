@@ -1,19 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useAtom } from "jotai";
 
 // style components
 import { ProjectLoadingProgress } from "@/styles/styled/components/ProjectList";
 
 // state
-import { detailLayoutState } from "@/states/detail";
+import { pageDetailLoadState } from "@/jotai/pages/load";
 
 export default function ProjectLoadingBar() {
   const [
     { clicked, category, dataStatus, open, openComplete, loading },
-    setDetailLayout,
-  ] = useRecoilState<PageDetailLoadStateTypes>(detailLayoutState);
+    setDetailLoad,
+  ] = useAtom(pageDetailLoadState);
   const [percent, setPercent] = useState<number>(0);
   const [hide, setHide] = useState<string>("hide");
 
@@ -42,12 +42,12 @@ export default function ProjectLoadingBar() {
 
   useEffect(() => {
     if (openComplete) {
-      setDetailLayout(prev => ({ ...prev, loading: false }));
+      setDetailLoad(prev => ({ ...prev, loading: false }));
       setTimeout(() => {
-        setDetailLayout(prev => ({ ...prev, clicked: false }));
+        setDetailLoad(prev => ({ ...prev, clicked: false }));
       }, 800);
     }
-  }, [openComplete, setDetailLayout]);
+  }, [openComplete, setDetailLoad]);
 
   useEffect(() => {
     setHide(loading ? "" : "hide");

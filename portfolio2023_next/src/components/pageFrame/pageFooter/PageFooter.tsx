@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useRef } from "react";
-import { useSetRecoilState } from "recoil";
+import { useSetAtom } from "jotai";
 
 // components
 import FooterUpperContainer from "./FooterUpper";
@@ -14,11 +14,11 @@ import {
 } from "@/styles/styled/components/PageFooter";
 
 // state
-import { scrollRefState } from "@/states/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll";
 
 export default function PageFooter() {
   const footerRef = useRef<HTMLElement | null>(null);
-  const setScrollRef = useSetRecoilState<ScrollRefStateTypes>(scrollRefState);
+  const setScrollRef = useSetAtom(scrollPageRefState);
 
   const setRef = useCallback(
     (node: HTMLElement | null) => {
