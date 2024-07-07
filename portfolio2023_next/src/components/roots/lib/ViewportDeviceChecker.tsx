@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { useAtom } from "jotai";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { useAtom, useSetAtom } from "jotai";
 
 // hook
 import useResizeObserver from "@/hooks/layout/useResizeObserver";
@@ -11,11 +11,20 @@ import {
   isAppleDeviceState,
   responsiveDeviceState,
   viewportOrientationState,
+  viewportState,
 } from "@/jotai/viewport";
+
+// util
+import { remToPx } from "@/util/unit.util";
 
 /**
  * 접속 환경관련 상태 업데이트
  * @component
+ * @desc
+ * - 애플기기 접속 여부
+ * - 화면방향 상태; portrait, landscape
+ * - 접속 디바이스 타입; desktop, tablet, mobile
+ * - 접속 디바이스 타입의 구분; hardware(물리적 기기) / viewport(화면사이즈)
  */
 export default function ViewportDeviceChecker() {
   // 현재 해당하는 breakpoint 상태 업데이트
@@ -83,45 +92,85 @@ export default function ViewportDeviceChecker() {
 
   // 뷰포트 디바이스 모드 타입 감지
   const [viewport, setViewport] = useState<BreakPointType>("desktop");
-  useResizeObserver({
-    delay: 10,
-    callback: ({ width, height }) => {
-      if (typeof window === "undefined") {
-        if (viewport !== "desktop") setViewport("desktop");
-      }
 
+  // 화면 사이즈 상태관리
+  const setViewportSize = useSetAtom(viewportState);
+
+  /**
+   * 화면사이즈에 따른 접속디바이스 모드 추출
+   * @param {number} width 화면 사이즈
+   * @return {BreakPointType} "desktop", "tablet", "mobile"
+   */
+  const checkViewport = useCallback(
+    (width: number): BreakPointType => {
+      // 기본값 desktop
+      if (typeof window === "undefined") return "desktop";
+
+      // 물리 디바이스가 desktop인 경우
       if (hardware === "desktop") {
-        if (width >= 1280) {
-          if (viewport !== "desktop") setViewport("desktop");
-        } else if (width < 1280 && width >= 768) {
-          if (viewport !== "tablet") setViewport("tablet");
-        }
-
-        if (viewport !== "mobile") setViewport("mobile");
+        // 브라우저 창 사이즈에 따라 viewport 모드 추출
+        if (width >= 1280) return "desktop";
+        else if (width < 1280 && width >= 768) return "tablet";
+        return "mobile";
       }
 
-      if (hardware === "tablet" && width < 768) {
-        if (viewport !== "mobile") setViewport("mobile");
-      }
+      // 물리 디바이스가 tablet인 경우
+      if (hardware === "tablet" && width < 768) return "mobile";
 
-      if (hardware !== viewport) setViewport(hardware);
+      return hardware;
+    },
+    [hardware],
+  );
+
+  /**
+   * 화면 리사이즈에 따른 전역 상태 업데이트 콜백
+   * @param {ResizeObserverCallbackPropsType}
+   */
+  const updateViewportInfo = useCallback(
+    ({ width, height }: ResizeObserverCallbackPropsType) => {
+      // viewport 화면모드 업데이트
+      const updateViewport = checkViewport(width);
+      if (viewport !== updateViewport) setViewport(updateViewport);
+
+      // width
+      const w = width ? width : window.innerWidth || 0;
+      // height
+      const h = height ? height : window.innerHeight || 0;
+      // padding
+      const p = {
+        section: remToPx(80),
+        column: remToPx(20),
+      };
 
       // CSS Props 업데이트
-      document.documentElement.style.setProperty(`--ww`, `${width}px`);
-      document.documentElement.style.setProperty(`--wh`, `${height}px`);
+      const htmlEl = document.documentElement;
+      htmlEl.style.setProperty(`--ww`, w ? `${w}px` : "100%");
+      htmlEl.style.setProperty(`--wh`, h ? `${h}px` : "100%");
+
+      // viewport attr 업데이트
+      const attr = htmlEl.getAttribute("viewport-device");
+      if (viewport !== attr) htmlEl.setAttribute("viewport-device", viewport);
+
+      // 화면 사이즈 상태관리
+      setViewportSize(prev => ({
+        ...prev,
+        windowWidth: w,
+        windowHeight: h,
+        columnWidth: (w - p.section * 2 - p.column * 2) / 12,
+      }));
     },
+    [checkViewport, setViewportSize, viewport],
+  );
+
+  // 화면 리사이즈 감지
+  useResizeObserver({
+    delay: 50,
+    callback: updateViewportInfo,
   });
 
   // 뷰포트 디바이스 모드 타입 업데이트
   useEffect(() => {
     if (typeof window === "undefined") return;
-
-    // HTML 속성 업데이트
-    const viewportAttr =
-      document.documentElement.getAttribute("viewport-device");
-    if (viewport !== viewportAttr) {
-      document.documentElement.setAttribute("viewport-device", viewport);
-    }
 
     if (responsiveDevice.viewport !== viewport)
       setResponsiveDevice(prev => ({

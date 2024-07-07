@@ -11,3 +11,9 @@ type HookScrollTriggerProps = {
   tweenArr?: CustomTweenType[];
   create?: object;
 };
+
+type ResizeObserverCallbackPropsType = {
+  [sizeKey: string]: number;
+  width: number;
+  height: number;
+};

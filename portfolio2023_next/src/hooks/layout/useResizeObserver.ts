@@ -22,7 +22,7 @@ export default function useResizeObserver<T extends HTMLElement>({
   ref?: React.RefObject<T>;
   delay?: number;
   notDebounce?: boolean;
-  callback?: ({ width, height }: { width: number; height: number }) => void;
+  callback?: ({ width, height }: ResizeObserverCallbackPropsType) => void;
 }): { width: number; height: number } {
   const [width, setWidth] = useState<number>(0);
   const [height, setHeight] = useState<number>(0);
