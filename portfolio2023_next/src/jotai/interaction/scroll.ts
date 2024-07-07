@@ -9,8 +9,8 @@ export const scrollPageRefState = atom<ScrollRefStateTypes>({
   sectionVisual: null,
   sectionCareer: null,
   careerContents: null, // career 섹션 컨텐츠 묶음
-  careerItems: {}, // career 각 컨텐츠
-  careerOpen: {}, // career 각 컨텐츠 아이템 별 열림 여부
+  careerItems: {}, // career 각 컨텐츠 (HTMLDetailsElement | null)
+  careerOpen: {}, // career 각 컨텐츠 아이템 별 열림 여부 (boolean)
   sectionExperience: null,
   experienceContents: null, // experience 섹션 컨텐츠 묶음
   sectionStacks: null,
@@ -26,6 +26,9 @@ export const scrollPageRefState = atom<ScrollRefStateTypes>({
 //   stickyHeight: 0,
 // });
 
+/**
+ * 프로젝트 상세 참조 ref 관리
+ */
 export const scrollDetailRefState = atom({
   container: null,
   sectionVisual: null,
