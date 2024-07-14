@@ -10,7 +10,7 @@ import DetailStacks from "./stacks/DetailStacks";
 import { PDVisualLower } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { viewportState } from "@/jotai/viewport";
+import { viewportState } from "@/jotai/viewport.state";
 
 export default function DetailVisualLower() {
   const { windowWidth } = useAtomValue(viewportState);

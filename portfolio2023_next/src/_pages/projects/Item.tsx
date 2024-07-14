@@ -16,8 +16,8 @@ import {
 } from "@/styles/styled/components/ProjectList";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
-import { pageDetailLoadState } from "@/jotai/pages/load";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import { pageDetailLoadState } from "@/jotai/load.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";

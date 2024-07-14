@@ -1,3 +1,5 @@
+"use client";
+
 // components
 import ProjectItem from "./Item";
 
@@ -9,7 +11,7 @@ import {
 
 import { useQueryProjectListData } from "@/lib/query";
 
-export default async function ProjectList() {
+export default function ProjectList() {
   const { data: listData } = useQueryProjectListData();
 
   return (

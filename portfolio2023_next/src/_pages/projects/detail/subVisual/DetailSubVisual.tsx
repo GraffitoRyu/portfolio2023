@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { useLayoutEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // components
 import DetailMediaContents from "../common/media/DetailMediaContents";
@@ -14,15 +14,14 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailData } from "@/states/detail";
-import { detailScrollRefState } from "@/states/scroll";
+import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function DetailSubVisual() {
   const { category } = useParams();
-  const data = useRecoilValue<DetailTypes>(detailData);
+  const data = useAtomValue<DetailTypes>(projectDetailDataState);
   const [img, setImg] = useState<MediaType | null>(null);
 
   const { container: scrollContainer, scrollHeight } =

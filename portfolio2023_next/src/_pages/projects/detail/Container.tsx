@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import { useSetRecoilState } from "recoil";
-import { useAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 
 // components
 import DetailHeader from "./header/DetailHeader";
@@ -15,9 +14,8 @@ import DetailMediaContainer from "./media/DetailMedia";
 import { PDContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailData } from "@/states/detail";
-import { detailScrollRefState } from "@/states/scroll";
-import { pageDetailLoadState } from "@/jotai/pages/load";
+import { pageDetailLoadState } from "@/jotai/load.state";
+import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
@@ -28,10 +26,13 @@ import useResizeObserver from "@/hooks/layout/useResizeObserver";
 // fetch
 import { useQueryProjectsDetailData } from "@/lib/query";
 
-export default function ProjectDetail() {
+/**
+ * 프로젝트 > 프로젝트 상세; bottom sheet container
+ * @component
+ */
+export default function ProjectDetailContainer() {
   // 프로젝트 상세 열림 상태 관리
   const [{ category, open }, setLayoutState] = useAtom(pageDetailLoadState);
-  const [openClass, setOpen] = useState<string>("");
 
   // 프로젝트 스크롤 인터렉션 참조 요소 상태 관리
   const setDetailScrollRef =
@@ -40,7 +41,7 @@ export default function ProjectDetail() {
   const scrollWrapRef = useRef<HTMLDivElement | null>(null);
 
   // 프로젝트 데이터 상태관리
-  const setDetailData = useSetRecoilState<DetailTypes>(detailData);
+  const setDetailData = useSetAtom(projectDetailDataState);
   const { status, data } = useQueryProjectsDetailData(category);
 
   // 스크롤 참조 데이터 업데이트
@@ -74,24 +75,25 @@ export default function ProjectDetail() {
     }
   }, [category, data, setDetailData, setLayoutState, status]);
 
+  const [openActive, setOpenActive] = useState<boolean>(false);
   // 열림 상태 적용
   useEffect(() => {
-    setOpen(open ? "open" : "");
+    setOpenActive(!open);
   }, [open]);
 
   // 상세 페이지 오픈 슬라이드 완료 상태 업데이트
   useEffect(() => {
-    if (category && openClass === "open") {
+    if (category && openActive) {
       const timer = setTimeout(() => {
         setLayoutState(prev => ({ ...prev, openComplete: true }));
       }, transTime.detail.sheetSlide);
 
       return () => clearTimeout(timer);
     }
-  }, [category, openClass, setLayoutState]);
+  }, [category, openActive, setLayoutState]);
 
   return (
-    <PDContainer className={`${openClass}`} ref={setRef}>
+    <PDContainer className={`${open ? "open" : ""}`} ref={setRef}>
       <div className="detail-scroll-wrap" ref={scrollWrapRef}>
         <DetailHeader />
         <DetailVisualContainer />

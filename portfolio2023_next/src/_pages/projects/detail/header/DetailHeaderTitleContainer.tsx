@@ -10,16 +10,15 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailData } from "@/states/detail";
-import { detailScrollRefState } from "@/states/scroll";
-import { pageDetailLoadState } from "@/jotai/pages/load";
+import { pageDetailLoadState } from "@/jotai/load.state";
+import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function DetailHeaderTitleContainer() {
   const { category } = useParams();
-  const data = useRecoilValue<DetailTypes>(detailData);
+  const data = useAtomValue<DetailTypes>(projectDetailDataState);
   const [title, setTitle] = useState<string>("");
 
   const { openComplete } = useAtomValue(pageDetailLoadState);

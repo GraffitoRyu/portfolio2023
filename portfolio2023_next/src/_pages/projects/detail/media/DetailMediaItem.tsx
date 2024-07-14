@@ -1,7 +1,6 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
-import { useRecoilValue } from "recoil";
 import { useAtomValue } from "jotai";
 
 // components
@@ -14,8 +13,7 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { viewportState } from "@/jotai/viewport";
-import { detailScrollRefState } from "@/states/scroll";
+import { viewportState } from "@/jotai/viewport.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";

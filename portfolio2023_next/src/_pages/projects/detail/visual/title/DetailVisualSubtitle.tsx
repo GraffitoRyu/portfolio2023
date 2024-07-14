@@ -2,25 +2,24 @@
 
 import { useParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // style components
 import { PDVisualSubtitle } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailScrollRefState } from "@/states/scroll";
-import { detailData, detailLayoutState } from "@/states/detail";
+import { pageDetailLoadState } from "@/jotai/load.state";
+import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function DetailVisualSubtitle() {
   const { category } = useParams();
-  const data = useRecoilValue<DetailTypes>(detailData);
+  const data = useAtomValue<DetailTypes>(projectDetailDataState);
   const [desc, setDesc] = useState<string>("");
 
-  const { openComplete } =
-    useRecoilValue<PageDetailLoadStateTypes>(detailLayoutState);
+  const { openComplete } = useAtomValue(pageDetailLoadState);
   const [delayIndex, setDelayIndex] = useState<number>(0);
   const [hide, setHide] = useState<string>("init-hide hide");
 

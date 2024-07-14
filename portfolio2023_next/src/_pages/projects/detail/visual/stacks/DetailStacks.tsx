@@ -1,6 +1,6 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // components
 import DetailInfoItem from "../../common/info/DetailInfoItem";
@@ -11,7 +11,7 @@ import DetailInfoContents from "../../common/info/DetailInfoContents";
 import { PDStacksContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailData } from "@/states/detail";
+import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 const stacksArr = [
   ["languages", [""]],
@@ -25,7 +25,7 @@ type StackArrTypes = typeof stacksArr;
 
 export default function DetailStacks() {
   const { category } = useParams();
-  const data = useRecoilValue<DetailTypes>(detailData);
+  const data = useAtomValue<DetailTypes>(projectDetailDataState);
   const [stacks, setStacks] = useState<StackArrTypes>(stacksArr);
 
   useEffect(() => {

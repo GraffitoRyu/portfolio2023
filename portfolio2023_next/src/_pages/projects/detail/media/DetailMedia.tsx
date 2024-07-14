@@ -1,6 +1,6 @@
 import { useParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // components
 import DetailMediaItem from "./DetailMediaItem";
@@ -9,11 +9,11 @@ import DetailMediaItem from "./DetailMediaItem";
 import { PDMediaSection } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailData } from "@/states/detail";
+import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 export default function DetailMediaContainer() {
   const { category } = useParams();
-  const data = useRecoilValue<DetailTypes>(detailData);
+  const data = useAtomValue<DetailTypes>(projectDetailDataState);
   const [media, setMedia] = useState<MediaType[] | []>([]);
 
   useLayoutEffect(() => {

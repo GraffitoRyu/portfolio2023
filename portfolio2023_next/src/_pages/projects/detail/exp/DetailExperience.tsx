@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { useLayoutEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // style components
 import {
@@ -14,8 +14,7 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailData } from "@/states/detail";
-import { detailScrollRefState } from "@/states/scroll";
+import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
@@ -27,7 +26,7 @@ export default function DetailExperience() {
   const descRef = useRef<HTMLLIElement[]>([]);
 
   const { category } = useParams();
-  const data = useRecoilValue<DetailTypes>(detailData);
+  const data = useAtomValue<DetailTypes>(projectDetailDataState);
   const [expData, setExpData] = useState<string[]>([]);
 
   useLayoutEffect(() => {

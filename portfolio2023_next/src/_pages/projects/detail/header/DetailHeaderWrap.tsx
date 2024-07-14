@@ -13,8 +13,8 @@ import CloseButton from "@/components/buttons/Close";
 import { StyledHeaderWrap } from "@/styles/styled/components/PageHeader";
 
 // state
-import { viewportState } from "@/jotai/viewport";
-import { pageDetailLoadState } from "@/jotai/pages/load";
+import { viewportState } from "@/jotai/viewport.state";
+import { pageDetailLoadState } from "@/jotai/load.state";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";

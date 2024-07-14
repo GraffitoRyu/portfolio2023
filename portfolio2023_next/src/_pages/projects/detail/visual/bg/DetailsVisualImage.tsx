@@ -13,8 +13,7 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailScrollRefState } from "@/states/scroll";
-import { pageDetailLoadState } from "@/jotai/pages/load";
+import { pageDetailLoadState } from "@/jotai/load.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";

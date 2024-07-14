@@ -1,5 +1,5 @@
-import ProjectDetail from "@/_pages/projects/detail/DetailContainer";
+import ProjectDetailContainer from "@/_pages/projects/detail/Container";
 
 export default function DetailRoute() {
-  return <ProjectDetail />;
+  return <ProjectDetailContainer />;
 }

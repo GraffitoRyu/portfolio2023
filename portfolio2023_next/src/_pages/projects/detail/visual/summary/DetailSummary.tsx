@@ -11,9 +11,8 @@ import DetailInfoContents from "../../common/info/DetailInfoContents";
 import { PDSummaryContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailData } from "@/states/detail";
-import { pageDetailLoadState } from "@/jotai/pages/load";
-import { detailScrollRefState } from "@/states/scroll";
+import { pageDetailLoadState } from "@/jotai/load.state";
+import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
@@ -26,7 +25,7 @@ type SummaryProps = {
 
 export default function DetailSummary() {
   const { category } = useParams();
-  const data = useAtomValue<DetailTypes>(detailData);
+  const data = useAtomValue<DetailTypes>(projectDetailDataState);
   const [summaryData, setSummaryData] = useState<SummaryProps[] | null>(null);
 
   const { openComplete } =

@@ -6,7 +6,6 @@ import { useCallback } from "react";
 import { PDVisualViewport } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailScrollRefState } from "@/states/scroll";
 
 export default function DetailVisualViewport({
   children,

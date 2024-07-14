@@ -1,6 +1,8 @@
+"use client";
+
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // components
 import DetailExternalBtn from "./DetailExternalBtn";
@@ -9,11 +11,11 @@ import DetailExternalBtn from "./DetailExternalBtn";
 import { PDLinkContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { detailData } from "@/states/detail";
+import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 export default function DetailLinkContainer() {
   const { category } = useParams();
-  const data = useRecoilValue<DetailTypes>(detailData);
+  const data = useAtomValue<DetailTypes>(projectDetailDataState);
   const [linkData, setLinkData] = useState<LinkType[] | []>([]);
 
   useEffect(() => {
