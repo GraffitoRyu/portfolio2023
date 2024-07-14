@@ -122,11 +122,5 @@
     "jsdoc/require-returns-type": 0,
     "jsdoc/valid-types": 1 // Recommended
   },
-  "ignorePatterns": [
-    "dist",
-    "node_modules",
-    "scripts",
-    ".eslintrc.js",
-    "__legacy_code"
-  ]
+  "ignorePatterns": ["dist", "node_modules", "scripts"]
 }
