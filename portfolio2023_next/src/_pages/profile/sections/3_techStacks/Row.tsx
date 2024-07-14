@@ -129,7 +129,10 @@ export default function StackRow({
       <StackList className={`${stackHide}`} ref={stacksRef}>
         {data
           ? data.map(({ code, name }: StackTypes, i: number) => (
-              <StackFigure key={`stackList_${code}_${i}`} $index={i}>
+              <StackFigure
+                key={`profile/techStack/list/${code}/${i}`}
+                $index={i}
+              >
                 <figcaption>{name}</figcaption>
                 {/* <StackLevelGauge level={level} /> */}
               </StackFigure>
