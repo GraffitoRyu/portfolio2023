@@ -1,8 +1,7 @@
 import { Provider } from "jotai";
 
 /**
- * Jotai 상태 공급자
- * - Roots > Provider; Jotai
+ * Root/Provider; Jotai 상태 공급자
  * @component
  */
 export default function JotaiProvider({

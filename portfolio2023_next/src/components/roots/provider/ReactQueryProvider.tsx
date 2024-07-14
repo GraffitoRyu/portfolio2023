@@ -9,7 +9,11 @@ import {
 
 let browserQueryClient: QueryClient | undefined = undefined;
 
-function makeQueryClient() {
+/**
+ * QueryClient를 생성하는 함수입니다.
+ * @return {QueryClient} 생성된 QueryClient 인스턴스
+ */
+function makeQueryClient(): QueryClient {
   return new QueryClient({
     defaultOptions: {
       queries: {
@@ -29,7 +33,11 @@ function makeQueryClient() {
   });
 }
 
-function getQueryClient() {
+/**
+ * getQueryClient 함수는 QueryClient를 반환합니다.
+ * @return {QueryClient} QueryClient 인스턴스
+ */
+function getQueryClient(): QueryClient {
   if (isServer) {
     // Server: always make a new query client
     return makeQueryClient();
@@ -44,8 +52,7 @@ function getQueryClient() {
 }
 
 /**
- * Jotai 상태 공급자
- * - Roots > Provider; Jotai
+ * Root/Provider; React Query 상태 공급자
  * @component
  */
 export default function ReactQueryProvider({

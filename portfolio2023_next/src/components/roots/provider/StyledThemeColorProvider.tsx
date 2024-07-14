@@ -5,11 +5,15 @@ import { useAtomValue } from "jotai";
 import { ThemeProvider } from "styled-components";
 
 // state
-import { themeState } from "@/jotai/theme";
+import { themeState } from "@/jotai/theme.state";
 
 // style
 import { customThemes } from "@/styles/styled/preset/color";
 
+/**
+ * Root/Provider; Styled-component 테마 공급자
+ * @component
+ */
 export default function StyledThemeColorProvider({
   children,
 }: {

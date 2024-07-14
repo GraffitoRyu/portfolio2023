@@ -52,10 +52,23 @@ interface PageDetailLoadStateTypes {
   dataStatus: string;
 }
 
+/**
+ * 테마 종류
+ */
+type ThemeType = "light" | "dark";
+
+/**
+ * 테마 메뉴 종류
+ */
+type ThemeMenuType = ThemeType | "system";
+
+/**
+ * 테마 상태관리 데이터 타입
+ */
 type ThemeStateTypes = {
   isOpen: boolean;
   isSystem: boolean;
-  theme: "light" | "dark";
+  theme: ThemeType;
 };
 
 interface CareerItemsRefTypes {

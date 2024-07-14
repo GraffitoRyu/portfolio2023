@@ -12,13 +12,13 @@ import {
   responsiveDeviceState,
   viewportOrientationState,
   viewportState,
-} from "@/jotai/viewport";
+} from "@/jotai/viewport.state";
 
 // util
 import { remToPx } from "@/util/unit.util";
 
 /**
- * 접속 환경관련 상태 업데이트
+ * Root/Library; 접속 환경관련 상태 업데이트
  * @component
  * @desc
  * - 애플기기 접속 여부
@@ -72,10 +72,12 @@ export default function ViewportDeviceChecker() {
   // 하드웨어 디바이스 타입 감지
   const hardware = useMemo(
     (): BreakPointType =>
-      (document.cookie.replace(
-        /(?:(?:^|.*;\s*)X-Responsive-Device\s*=\s*([^;]*).*$)|^.*$/,
-        "$1",
-      ) || "desktop") as BreakPointType,
+      typeof window === "undefined"
+        ? "desktop"
+        : ((document.cookie.replace(
+            /(?:(?:^|.*;\s*)X-Responsive-Device\s*=\s*([^;]*).*$)|^.*$/,
+            "$1",
+          ) || "desktop") as BreakPointType),
     [],
   );
 
