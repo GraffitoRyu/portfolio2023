@@ -13,7 +13,7 @@ import {
 import LoadingIcon from "@/svg/common/LoadingIcon";
 
 // state
-import { pageLoadState } from "@/jotai/pages/load";
+import { pageLoadState } from "@/jotai/load.state";
 
 export default function LoadingIconComponent() {
   const { init } = useAtomValue<PageLoadStateTypes>(pageLoadState);

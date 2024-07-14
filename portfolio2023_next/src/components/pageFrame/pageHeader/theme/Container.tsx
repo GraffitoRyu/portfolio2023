@@ -1,22 +1,21 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useAtom } from "jotai";
 
 // components
 import ThemeMenuList from "./MenuList";
 import ThemeToggleBtn from "./ToggleBtn";
 
 // state
-import { themeState } from "@/states/theme";
+import { themeState } from "@/jotai/theme.state";
 
 // util
 import closeByClickOutSide from "@/util/interactions/closeByClickOutside";
 
 export default function ThemeContainer() {
   const themeRef = useRef<HTMLDivElement | null>(null);
-  const setTheme = useSetRecoilState<ThemeStateTypes>(themeState);
-  const { isOpen } = useRecoilValue<ThemeStateTypes>(themeState);
+  const [{ isOpen }, setTheme] = useAtom<ThemeStateTypes>(themeState);
 
   const closeThemeMenu = useCallback(
     (e: PointerEvent | MouseEvent) => {

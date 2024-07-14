@@ -14,9 +14,9 @@ import {
 } from "@/styles/styled/components/PageHeader";
 
 // state
-import { viewportState } from "@/jotai/viewport";
-import { pageLoadState } from "@/jotai/pages/load";
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
+import { viewportState } from "@/jotai/viewport.state";
+import { pageLoadState } from "@/jotai/load.state";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 // hook
 import useResizeObserver from "@/hooks/layout/useResizeObserver";

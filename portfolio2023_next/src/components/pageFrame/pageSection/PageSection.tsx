@@ -7,7 +7,7 @@ import { useSetAtom } from "jotai";
 import { PageSectionContainer } from "@/styles/styled/components/PageSection";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 export default function PageSection({
   page,

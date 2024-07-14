@@ -9,7 +9,7 @@ import {
 } from "@/styles/styled/components/PageFooter";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";

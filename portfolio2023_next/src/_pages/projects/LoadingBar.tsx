@@ -7,7 +7,7 @@ import { useAtom } from "jotai";
 import { ProjectLoadingProgress } from "@/styles/styled/components/ProjectList";
 
 // state
-import { pageDetailLoadState } from "@/jotai/pages/load";
+import { pageDetailLoadState } from "@/jotai/load.state";
 
 export default function ProjectLoadingBar() {
   const [

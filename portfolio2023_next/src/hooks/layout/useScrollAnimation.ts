@@ -10,7 +10,7 @@ import { useGSAP } from "@gsap/react";
 import useIsomorphicLayoutEffect from "../util/useIsomorphicLayoutEffect";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 /**
  * GSAP ScrollTrigger 공통 전역옵션

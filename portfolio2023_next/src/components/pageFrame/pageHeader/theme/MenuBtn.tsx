@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useRecoilState } from "recoil";
+import { useCallback, useState } from "react";
+import { useAtom } from "jotai";
 
 // components
 import ThemeIcon from "./BtnIcons";
@@ -8,28 +8,35 @@ import ThemeIcon from "./BtnIcons";
 import { ThemeMenuButton } from "@/styles/styled/components/ThemeMenu";
 
 // state
-import { themeState } from "@/states/theme";
+import { themeState } from "@/jotai/theme.state";
 
 // util
 import { getSystemTheme } from "@/util/interactions/changeTheme";
 
-export default function ThemeMenuBtn({ code }: { code: string }) {
-  const [theme, setTheme] = useRecoilState<ThemeStateTypes>(themeState);
+export default function ThemeMenuBtn({ code }: { code: ThemeMenuType }) {
+  const [theme, setTheme] = useAtom<ThemeStateTypes>(themeState);
   const [hover, setHover] = useState("");
 
-  const changeTheme: (selectedTheme: string) => void = selectedTheme => {
-    if (!selectedTheme) return;
-    setTheme(prev => ({
-      ...prev,
-      isSystem: selectedTheme == "system",
-      theme: selectedTheme == "system" ? getSystemTheme() : selectedTheme,
-    }));
-  };
+  const changeTheme = useCallback(
+    (selectedTheme: ThemeMenuType) => {
+      if (!selectedTheme) return;
 
-  const updateSelected: (code: string) => string = code => {
-    if (theme.isSystem) return code === "system" ? "selected" : "";
-    return theme.theme === code ? "selected" : "";
-  };
+      setTheme(prev => ({
+        ...prev,
+        isSystem: selectedTheme === "system",
+        theme: selectedTheme === "system" ? getSystemTheme() : selectedTheme,
+      }));
+    },
+    [setTheme],
+  );
+
+  const updateSelected = useCallback(
+    (code: string): string => {
+      if (theme.isSystem) return code === "system" ? "selected" : "";
+      return theme.theme === code ? "selected" : "";
+    },
+    [theme.isSystem, theme.theme],
+  );
 
   return (
     <ThemeMenuButton

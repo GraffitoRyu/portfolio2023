@@ -16,9 +16,9 @@ import {
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // state
-import { viewportState } from "@/jotai/viewport";
-import { pageLoadState } from "@/jotai/pages/load";
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
+import { viewportState } from "@/jotai/viewport.state";
+import { pageLoadState } from "@/jotai/load.state";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 // hooks
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";

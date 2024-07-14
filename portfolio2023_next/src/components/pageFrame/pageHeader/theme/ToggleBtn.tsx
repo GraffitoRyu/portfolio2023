@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRecoilState } from "recoil";
+import { useAtom } from "jotai";
 
 // components
 import ThemeIcon from "./BtnIcons";
@@ -8,10 +8,10 @@ import ThemeIcon from "./BtnIcons";
 import { ToggleBtn, ToggleIcon } from "@/styles/styled/components/ThemeMenu";
 
 // state
-import { themeState } from "@/states/theme";
+import { themeState } from "@/jotai/theme.state";
 
 export default function ThemeToggleBtn() {
-  const [theme, setTheme] = useRecoilState<ThemeStateTypes>(themeState);
+  const [theme, setTheme] = useAtom<ThemeStateTypes>(themeState);
   const [hover, setHover] = useState<string>("");
 
   const setToggle: () => void = () => {

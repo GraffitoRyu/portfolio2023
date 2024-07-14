@@ -14,7 +14,7 @@ import {
 } from "@/styles/styled/components/InitPageCover";
 
 // state
-import { pageLoadState } from "@/jotai/pages/load";
+import { pageLoadState } from "@/jotai/load.state";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";

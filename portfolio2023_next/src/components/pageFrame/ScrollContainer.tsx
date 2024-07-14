@@ -7,7 +7,7 @@ import { useSetAtom } from "jotai";
 import { StyledScrollContainer } from "@/styles/styled/components/Page";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 /**
  * 스크롤 컨테이너

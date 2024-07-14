@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // components
 import ThemeMenuBtn from "./MenuBtn";
@@ -12,14 +12,14 @@ import {
 } from "@/styles/styled/components/ThemeMenu";
 
 // state
-import { themeState } from "@/states/theme";
+import { themeState } from "@/jotai/theme.state";
 
 // util
 import { applyTheme } from "@/util/interactions/changeTheme";
 
 export default function ThemeMenuList() {
-  const themeList: string[] = ["light", "dark", "system"];
-  const theme = useRecoilValue<ThemeStateTypes>(themeState);
+  const themeList: ThemeMenuType[] = ["light", "dark", "system"];
+  const theme = useAtomValue<ThemeStateTypes>(themeState);
   const [openClass, setOpenClass] = useState<string>("off");
   const [themeClass, setThemeClass] = useState<string>("system");
 
@@ -35,7 +35,7 @@ export default function ThemeMenuList() {
   return (
     <ThemeMenuContainer className={`theme-menu ${openClass} ${themeClass}`}>
       <ThemeList>
-        {themeList.map((code: string) => (
+        {themeList.map(code => (
           <ThemeListItem key={`theme/menu/${code}`}>
             <ThemeMenuBtn code={code} />
           </ThemeListItem>

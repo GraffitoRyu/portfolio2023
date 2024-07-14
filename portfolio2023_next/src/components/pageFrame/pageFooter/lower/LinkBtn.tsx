@@ -18,8 +18,8 @@ import {
 } from "@/styles/styled/components/PageFooter";
 
 // state
-import { pageLoadState } from "@/jotai/pages/load";
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
+import { pageLoadState } from "@/jotai/load.state";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";

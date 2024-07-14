@@ -10,9 +10,9 @@ import { IntroDesc, IntroTitle } from "@/styles/styled/components/PageVisual";
 import ParseDescNewLine from "@/components/util/ParseDescNewLine";
 
 // state
-import { pageLoadState } from "@/jotai/pages/load";
-import { viewportState } from "@/jotai/viewport";
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
+import { pageLoadState } from "@/jotai/load.state";
+import { viewportState } from "@/jotai/viewport.state";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";

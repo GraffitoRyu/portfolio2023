@@ -14,7 +14,7 @@ import {
 } from "@/styles/styled/components/TransCover";
 
 // state
-import { pageLoadState } from "@/jotai/pages/load";
+import { pageLoadState } from "@/jotai/load.state";
 
 // data
 import { transCoverData } from "@/data/transCover";

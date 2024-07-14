@@ -11,7 +11,10 @@ import {
 } from "@/styles/styled/components/PageSection";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+
+// util
+import { capitalize } from "@/util/unit.util";
 
 export default function SectionContents({
   code,
@@ -31,7 +34,7 @@ export default function SectionContents({
   const updateScrollRef = useCallback(
     (node: HTMLElement | null) => {
       if (!code) return;
-      setScrollRef(prev => ({ ...prev, [code]: node }));
+      setScrollRef(prev => ({ ...prev, [`section${capitalize(code)}`]: node }));
     },
     [code, setScrollRef],
   );
