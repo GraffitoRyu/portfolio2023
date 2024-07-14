@@ -37,23 +37,23 @@ export default function ProfileExperienceContents() {
 
   const [listWidth, setListWidth] = useState<number>(0);
 
-  const { windowWidth, columnWidth } = useAtomValue(viewportState);
-  const [offset, setOffset] = useState({ start: 0, end: 0 });
+  const { windowWidth } = useAtomValue(viewportState);
+  // const [offset, setOffset] = useState({ start: 0, end: 0 });
 
   const [onIndex, setOnIndex] = useState<number>(0);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
+  // useEffect(() => {
+  //   if (typeof window === "undefined") return;
 
-    setOffset({
-      start: columnWidth * 10,
-      end: columnWidth * 5,
-    });
-  }, [columnWidth]);
+  //   setOffset({
+  //     start: columnWidth * 10,
+  //     end: columnWidth * 5,
+  //   });
+  // }, [columnWidth]);
 
   useEffect(() => {
-    setMobileView(windowWidth < 640);
-  }, [windowWidth]);
+    if (isMobileView !== windowWidth < 640) setMobileView(windowWidth < 640);
+  }, [isMobileView, windowWidth]);
 
   // 경험 리스트 총 스크롤 너비 업데이트
   useResizeObserver({
@@ -123,15 +123,7 @@ export default function ProfileExperienceContents() {
     });
 
     return () => ctx.revert();
-  }, [
-    expLength,
-    listWidth,
-    offset.end,
-    offset.start,
-    scrollContainer,
-    scrollTrigger,
-    isMobileView,
-  ]);
+  }, [expLength, isMobileView, listWidth, scrollContainer, scrollTrigger]);
 
   return (
     <StyledExpScrollContainer>

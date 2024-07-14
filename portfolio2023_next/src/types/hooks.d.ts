@@ -1,6 +1,6 @@
 type CustomTweenType = {
   target?: Element | undefined | null;
-  options?: object[];
+  options?: ScrollTriggerAnimationOptions[];
   direction?: string;
 };
 type HookScrollTriggerProps = {
