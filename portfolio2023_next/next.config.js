@@ -16,7 +16,7 @@ const nextConfig = {
     // into React components. See https://react-svgr.com/docs/next/
 
     // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find((rule) =>
+    const fileLoaderRule = config.module.rules.find(rule =>
       rule.test?.test?.(".svg"),
     );
 
