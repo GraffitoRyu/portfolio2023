@@ -1,86 +1,19 @@
-import SectionContents from "@/components/pageFrame/pageSection/Contents";
-import SectionHeader from "@/components/pageFrame/pageSection/Header";
-import PageSection from "@/components/pageFrame/pageSection/PageSection";
-import PageIntro from "@/components/pageFrame/pageSection/pageVisual/Intro";
-import PageVisual from "@/components/pageFrame/pageSection/pageVisual/Visual";
-import Career from "@/_pages/profile/career/Career";
-import Experience from "@/_pages/profile/experience/Experience";
-import TechStacks from "@/_pages/profile/techStacks/Stacks";
-import { Fragment } from "react";
+import ProfileVisualSectionContainer from "./sections/0_visual/SectionContainer";
+import ProfileTechStacksSectionContainer from "./sections/3_techStacks/SectionContainer";
+import ProfileCareerSectionContainer from "./sections/1_career/SectionContainer";
+import ProfileExperienceSectionContainer from "./sections/2_experience/SectionContainer";
 
+/**
+ * 프로필; 페이지 컨테이너
+ * @component
+ */
 export default function ProfileContainer() {
   return (
     <>
-      <PageSection page="profile" code="visual" className="side-h-padding">
-        <PageVisual title={["Ready for ", "interaction"]} />
-        <SectionHeader empty={true} />
-        <SectionContents sectionClassName="intro" sideClassName="intro">
-          <PageIntro
-            title={[
-              "인터랙션 이벤트 구현에 관심이 많은 ",
-              <Fragment key="strongLine">
-                프론트엔드 개발자 <strong>류대현</strong>입니다.
-              </Fragment>,
-            ]}
-            desc={[
-              "2018년 웹 디자인과 웹 퍼블리싱으로 시작하여, ",
-              "2020년부터는 프론트엔드 개발 위주로 경험을 쌓았습니다. ",
-              "컴포넌트 기반 구조와, 인터랙티브한 반응형 웹을 ",
-              "각각 효율적으로 구축하기 위해 항상 연구하고 있습니다.",
-            ]}
-          />
-        </SectionContents>
-      </PageSection>
-      <PageSection
-        page="profile"
-        code="career"
-        className="side-h-padding side-v-padding"
-      >
-        <SectionHeader
-          title="Career"
-          desc={["지난 6년간 실무 경험을 쌓은 ", "근무 경력입니다."]}
-        />
-        <SectionContents code="career" sectionClassName="career">
-          <Career />
-        </SectionContents>
-      </PageSection>
-      <PageSection
-        page="profile"
-        code="experience"
-        className="side-h-padding side-v-padding"
-      >
-        <SectionHeader
-          title="Experience"
-          desc={[
-            "개인적인 작업부터 협업에 이르기 까지 ",
-            "프로젝트에 참여하면서 경험한 것들입니다.",
-          ]}
-        />
-        <SectionContents code="experience" sectionClassName="experience">
-          <Experience />
-        </SectionContents>
-      </PageSection>
-      <PageSection
-        page="profile"
-        code="stacks"
-        className="side-h-padding side-v-padding"
-      >
-        <SectionHeader
-          title="Tech Stacks"
-          desc={[
-            "지난 5년 간 경험한 기술들입니다. ",
-            "항상 새로운 기술을 받아들이고 익히기 위해",
-            "지속적으로 노력하고 있습니다.",
-          ]}
-        />
-        <SectionContents
-          code="stacks"
-          sectionClassName="stacks"
-          // sideContents={<StackLegend />}
-        >
-          <TechStacks />
-        </SectionContents>
-      </PageSection>
+      <ProfileVisualSectionContainer />
+      <ProfileCareerSectionContainer />
+      <ProfileExperienceSectionContainer />
+      <ProfileTechStacksSectionContainer />
     </>
   );
 }

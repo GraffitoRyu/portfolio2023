@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import { useAtomValue } from "jotai";
 
 // components
-import StackLevelGauge from "./StackLevel";
+import StackLevelGauge from "./Level";
 
 // style components
 import {
@@ -16,7 +16,7 @@ import {
 } from "@/styles/styled/components/ProfileStacks";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";

@@ -5,15 +5,15 @@ import { useSetAtom } from "jotai";
 
 // style components
 import {
-  CareerDetailContainer,
-  CareerDetailItem,
-  CareerDetailItemDesc,
-  CareerDetailItemTitle,
-  CareerDetailList,
+  StyledCareerDetailContainer,
+  StyledCareerDetailItem,
+  StyledCareerDetailItemDesc,
+  StyledCareerDetailItemTitle,
+  StyledCareerDetailList,
 } from "@/styles/styled/components/ProfileCareer";
 
 // state
-import { viewportState } from "@/jotai/viewport";
+import { viewportState } from "@/jotai/viewport.state";
 
 export default function CareerDetail({
   code,
@@ -46,37 +46,37 @@ export default function CareerDetail({
   }, [updateExpandHeight]);
 
   return (
-    <CareerDetailContainer>
-      <CareerDetailList ref={detailRef}>
-        <CareerDetailItem>
-          <CareerDetailItemTitle>
+    <StyledCareerDetailContainer>
+      <StyledCareerDetailList ref={detailRef}>
+        <StyledCareerDetailItem>
+          <StyledCareerDetailItemTitle>
             <span>담당 업무</span>
-          </CareerDetailItemTitle>
+          </StyledCareerDetailItemTitle>
           {task.map((t: string, i: number) => (
-            <CareerDetailItemDesc key={`careerTask_${code}_${i}`}>
+            <StyledCareerDetailItemDesc key={`careerTask_${code}_${i}`}>
               <span>{t}</span>
-            </CareerDetailItemDesc>
+            </StyledCareerDetailItemDesc>
           ))}
-        </CareerDetailItem>
-        <CareerDetailItem>
-          <CareerDetailItemTitle>
+        </StyledCareerDetailItem>
+        <StyledCareerDetailItem>
+          <StyledCareerDetailItemTitle>
             <span>주요 활용기술</span>
-          </CareerDetailItemTitle>
-          <CareerDetailItemDesc>
+          </StyledCareerDetailItemTitle>
+          <StyledCareerDetailItemDesc>
             <span>{stacks.join(", ")}</span>
-          </CareerDetailItemDesc>
-        </CareerDetailItem>
-        <CareerDetailItem>
-          <CareerDetailItemTitle>
+          </StyledCareerDetailItemDesc>
+        </StyledCareerDetailItem>
+        <StyledCareerDetailItem>
+          <StyledCareerDetailItemTitle>
             <span>참여 프로젝트</span>
-          </CareerDetailItemTitle>
+          </StyledCareerDetailItemTitle>
           {projects.map((project: string, i: number) => (
-            <CareerDetailItemDesc key={`careerProjects_${code}_${i}`}>
+            <StyledCareerDetailItemDesc key={`careerProjects_${code}_${i}`}>
               <span>{project}</span>
-            </CareerDetailItemDesc>
+            </StyledCareerDetailItemDesc>
           ))}
-        </CareerDetailItem>
-      </CareerDetailList>
-    </CareerDetailContainer>
+        </StyledCareerDetailItem>
+      </StyledCareerDetailList>
+    </StyledCareerDetailContainer>
   );
 }

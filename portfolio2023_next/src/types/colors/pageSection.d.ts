@@ -12,17 +12,22 @@ interface SectionHeaderModeTypes {
 }
 
 interface IntroTypes {
-  bgFrom: string;
-  bgTo: string;
   title: (string | React.ReactNode)[];
-  strong: string;
   desc: (string | React.ReactNode)[];
 }
 
+interface IntroColorTypes {
+  bgFrom: string;
+  bgTo: string;
+  title: string;
+  strong: string;
+  desc: string;
+}
+
 interface IntroModeTypes {
-  [index: string]: IntroTypes;
-  light: IntroTypes;
-  dark: IntroTypes;
+  [index: string]: IntroColorTypes;
+  light: IntroColorTypes;
+  dark: IntroColorTypes;
 }
 
 interface VisualTypes {

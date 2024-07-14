@@ -1,0 +1,26 @@
+"use client";
+
+// components
+import CareerItem from "./Item";
+
+// styled component
+import { StyledCareerList } from "@/styles/styled/components/ProfileCareer";
+
+// fetch
+import { useQueryProfileCareerData } from "@/lib/query";
+
+export default function CareerList() {
+  const { data: careerData = [] } = useQueryProfileCareerData();
+
+  return (
+    <StyledCareerList>
+      {careerData?.map((c: CareerTypes, i: number) => (
+        <CareerItem
+          key={`profile/career/${c.code}`}
+          {...c}
+          last={i === careerData.length - 1}
+        />
+      ))}
+    </StyledCareerList>
+  );
+}

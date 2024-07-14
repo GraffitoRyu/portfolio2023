@@ -4,17 +4,17 @@ import { useCallback, useEffect, useState } from "react";
 import { useAtom, useAtomValue } from "jotai";
 
 import {
-  CareerCompany,
-  CareerExpandCell,
-  CareerExpandIcon,
-  CareerPeriod,
-  CareerRole,
-  CareerSummaryContainer,
+  StyledCareerCompany,
+  StyledCareerExpandCell,
+  StyledCareerExpandIcon,
+  StyledCareerPeriod,
+  StyledCareerRole,
+  StyledCareerSummaryContainer,
 } from "@/styles/styled/components/ProfileCareer";
 
 // state
-import { viewportState } from "@/jotai/viewport";
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
+import { viewportState } from "@/jotai/viewport.state";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 interface CareerSummaryProps extends CareerSummaryTypes {
   code: string;
@@ -77,28 +77,28 @@ export default function CareerSummary({
   }, [careerOpen, code, setScrollRef]);
 
   return (
-    <CareerSummaryContainer
+    <StyledCareerSummaryContainer
       className={`${hover}`}
       onClick={openDetails}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
     >
-      <CareerPeriod>
+      <StyledCareerPeriod>
         <span>{convertPeriod(period[0], windowWidth)}</span>
-      </CareerPeriod>
-      <CareerPeriod>
+      </StyledCareerPeriod>
+      <StyledCareerPeriod>
         <span>{convertPeriod(period[1], windowWidth)}</span>
-      </CareerPeriod>
-      <CareerRole>
+      </StyledCareerPeriod>
+      <StyledCareerRole>
         <span>{role}</span>
-      </CareerRole>
-      <CareerCompany>
+      </StyledCareerRole>
+      <StyledCareerCompany>
         <span>{company}</span>
-      </CareerCompany>
-      <CareerExpandCell>
-        <CareerExpandIcon />
-      </CareerExpandCell>
-    </CareerSummaryContainer>
+      </StyledCareerCompany>
+      <StyledCareerExpandCell>
+        <StyledCareerExpandIcon />
+      </StyledCareerExpandCell>
+    </StyledCareerSummaryContainer>
   );
 }
 

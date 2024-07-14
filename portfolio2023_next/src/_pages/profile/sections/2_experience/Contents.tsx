@@ -1,25 +1,33 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
 
 // components
-import ExperienceItem from "./ExperienceItem";
+import ProfileExperienceItem from "./Item";
 
 // state
-import { viewportState } from "@/jotai/viewport";
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
+import { viewportState } from "@/jotai/viewport.state";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 // style components
-import { ExpList } from "@/styles/styled/components/ProfileExperience";
+import {
+  StyledExpList,
+  StyledExpScrollContainer,
+} from "@/styles/styled/components/ProfileExperience";
+
+// hooks
+import useResizeObserver from "@/hooks/layout/useResizeObserver";
 
 // util
-import debounce from "@/util/interactions/debounceEvent";
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
-export default function ExperienceList({ data }: { data?: ExperienceTypes[] }) {
-  const [expData, setExpData] = useState<ExperienceTypes[]>([]);
-  const [length, setLength] = useState<number>(0);
+// fetch
+import { useQueryProfileExperienceData } from "@/lib/query";
+
+export default function ProfileExperienceContents() {
+  const { data: expData = [] } = useQueryProfileExperienceData();
+  const expLength = useMemo(() => expData.length, [expData]);
 
   const { container: scrollContainer, sectionExperience: scrollTrigger } =
     useAtomValue(scrollPageRefState);
@@ -33,18 +41,6 @@ export default function ExperienceList({ data }: { data?: ExperienceTypes[] }) {
   const [offset, setOffset] = useState({ start: 0, end: 0 });
 
   const [onIndex, setOnIndex] = useState<number>(0);
-
-  useLayoutEffect(() => {
-    if (
-      typeof data === "undefined" ||
-      !Array.isArray(data) ||
-      data.length === 0
-    )
-      return;
-
-    setExpData(data);
-    setLength(data.length);
-  }, [data]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -60,23 +56,13 @@ export default function ExperienceList({ data }: { data?: ExperienceTypes[] }) {
   }, [windowWidth]);
 
   // 경험 리스트 총 스크롤 너비 업데이트
-  useEffect(() => {
-    const list = expListRef.current;
-    if (!list) return;
-
-    const observer = new ResizeObserver(
-      debounce((entries: ResizeObserverEntry[]) => {
-        const ctx = entries[0].contentRect;
-        setListWidth(ctx.width);
-      }, 300),
-    );
-
-    observer.observe(list);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  useResizeObserver({
+    ref: expListRef,
+    delay: 300,
+    callback: ({ width }) => {
+      setListWidth(width);
+    },
+  });
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
@@ -86,7 +72,7 @@ export default function ExperienceList({ data }: { data?: ExperienceTypes[] }) {
     const scrollTarget = expListRef.current;
     if (!scrollTarget) return;
 
-    const scrollRange = listWidth * ((length - 1) / length);
+    const scrollRange = listWidth * ((expLength - 1) / expLength);
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
@@ -125,9 +111,9 @@ export default function ExperienceList({ data }: { data?: ExperienceTypes[] }) {
                 pin: scrollTrigger,
                 anticipatePin: 1,
                 invalidateOnRefresh: true,
-                // markers: true,
+                markers: true,
                 onUpdate: ({ progress }: { progress: number }) => {
-                  setOnIndex(getActiveIndex(progress, length));
+                  setOnIndex(getActiveIndex(progress, expLength));
                 },
               },
             },
@@ -138,7 +124,7 @@ export default function ExperienceList({ data }: { data?: ExperienceTypes[] }) {
 
     return () => ctx.revert();
   }, [
-    length,
+    expLength,
     listWidth,
     offset.end,
     offset.start,
@@ -148,17 +134,18 @@ export default function ExperienceList({ data }: { data?: ExperienceTypes[] }) {
   ]);
 
   return (
-    <ExpList ref={expListRef} $length={expData.length}>
-      {expData.map((ex: ExperienceTypes, i: number) => (
-        <ExperienceItem
-          key={`exp_${ex.code}_${i}`}
-          {...ex}
-          $activeIndex={onIndex}
-          $totalLength={expData.length}
-          $itemIndex={i}
-        />
-      ))}
-    </ExpList>
+    <StyledExpScrollContainer>
+      <StyledExpList ref={expListRef} $length={expLength}>
+        {expData.map((ex: ExperienceTypes, i: number) => (
+          <ProfileExperienceItem
+            key={`profile/experience/${ex.code}`}
+            {...ex}
+            isActive={onIndex === i}
+            $totalLength={expLength}
+          />
+        ))}
+      </StyledExpList>
+    </StyledExpScrollContainer>
   );
 }
 

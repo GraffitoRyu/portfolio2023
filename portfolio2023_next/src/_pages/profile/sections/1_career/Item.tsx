@@ -15,14 +15,14 @@ import CareerDetail from "./details/CareerDetail";
 
 // style components
 import {
-  CareerBorder,
-  CareerItemContainer,
-  CareerWrap,
+  StyledCareerBorder,
+  StyledCareerItem,
+  StyledCareerDetailWrap,
 } from "@/styles/styled/components/ProfileCareer";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
-import { viewportState } from "@/jotai/viewport";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import { viewportState } from "@/jotai/viewport.state";
 
 // utils
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
@@ -136,17 +136,17 @@ export default function CareerItem({
   }, [careerContents, careerOpen, code, scrollContainer, setScrollRef]);
 
   return (
-    <CareerItemContainer className={`${hide}`} ref={itemRef}>
-      <CareerBorder className="top" />
-      <CareerWrap
+    <StyledCareerItem className={`${hide}`} ref={itemRef}>
+      <StyledCareerBorder className="top" />
+      <StyledCareerDetailWrap
         ref={updateExpendRef}
         className={`${open}`}
         $height={expandHeight}
       >
         <CareerSummary code={code} {...summary} />
         <CareerDetail code={code} {...details} />
-      </CareerWrap>
-      {last ? <CareerBorder className="bottom" /> : null}
-    </CareerItemContainer>
+      </StyledCareerDetailWrap>
+      {last ? <StyledCareerBorder className="bottom" /> : null}
+    </StyledCareerItem>
   );
 }

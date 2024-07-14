@@ -1,3 +1,5 @@
+"use client";
+
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
 import {
   getProfileCareerData,

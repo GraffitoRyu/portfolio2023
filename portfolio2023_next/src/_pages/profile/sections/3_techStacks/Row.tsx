@@ -15,7 +15,7 @@ import {
 } from "@/styles/styled/components/ProfileStacks";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll";
+import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
@@ -127,12 +127,14 @@ export default function StackRow({
         <h3>{title}</h3>
       </StackCategory>
       <StackList className={`${stackHide}`} ref={stacksRef}>
-        {data.map(({ code, name }: StackTypes, i: number) => (
-          <StackFigure key={`stackList_${code}_${i}`} $index={i}>
-            <figcaption>{name}</figcaption>
-            {/* <StackLevelGauge level={level} /> */}
-          </StackFigure>
-        ))}
+        {data
+          ? data.map(({ code, name }: StackTypes, i: number) => (
+              <StackFigure key={`stackList_${code}_${i}`} $index={i}>
+                <figcaption>{name}</figcaption>
+                {/* <StackLevelGauge level={level} /> */}
+              </StackFigure>
+            ))
+          : null}
       </StackList>
     </StackRowContainer>
   );

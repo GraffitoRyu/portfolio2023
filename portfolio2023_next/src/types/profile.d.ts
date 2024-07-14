@@ -39,7 +39,7 @@ interface CareerTypes {
 }
 
 interface ExperienceTypes {
-  [index: string]: string | string[] | number | undefined;
+  [index: string]: string | string[] | number | boolean | undefined;
   code: string;
   title?: string;
   desc: string[];
