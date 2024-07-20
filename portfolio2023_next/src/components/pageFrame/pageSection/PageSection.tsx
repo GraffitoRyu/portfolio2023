@@ -8,6 +8,7 @@ import { PageSectionContainer } from "@/styles/styled/components/PageSection";
 
 // state
 import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import { capitalize } from "@/util/unit.util";
 
 export default function PageSection({
   page,
@@ -26,7 +27,7 @@ export default function PageSection({
     (node: HTMLElement | null) => {
       setScrollRef(prev => ({
         ...prev,
-        [`section${code.toUpperCase()}`]: node,
+        [`section${capitalize(code)}`]: node,
       }));
     },
     [code, setScrollRef],

@@ -8,6 +8,7 @@ import ProfileExperienceContents from "./Contents";
 /**
  * 프로필 > 경험; 섹션 컨테이너
  * @component
+ * @route /
  */
 export default function ProfileExperienceSectionContainer() {
   return (
