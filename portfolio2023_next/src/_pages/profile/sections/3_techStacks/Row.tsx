@@ -25,7 +25,7 @@ export default function StackRow({
   data,
 }: {
   title: string;
-  data: StackTypes[];
+  data: StackAPIDataTypes[];
 }) {
   const {
     container: scrollContainer,
@@ -128,7 +128,7 @@ export default function StackRow({
       </StackCategory>
       <StackList className={`${stackHide}`} ref={stacksRef}>
         {data
-          ? data.map(({ code, name }: StackTypes, i: number) => (
+          ? data.map(({ code, name }: StackAPIDataTypes, i: number) => (
               <StackFigure
                 key={`profile/techStack/list/${code}/${i}`}
                 $index={i}

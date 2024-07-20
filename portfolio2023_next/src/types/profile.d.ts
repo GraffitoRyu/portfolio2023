@@ -18,7 +18,7 @@ interface CareerDetailsTypes {
   stacks: string[];
   projects: string[];
 }
-interface CareerItemProps extends CareerTypes {
+interface CareerItemProps extends CareerAPIDataType {
   last?: boolean;
 }
 
@@ -26,7 +26,7 @@ interface CareerDetailProps extends CareerDetailsTypes {
   code: string;
 }
 
-interface CareerTypes {
+interface CareerAPIDataType {
   [index: string]:
     | string
     | CareerSummaryTypes
@@ -38,14 +38,14 @@ interface CareerTypes {
   details: CareerDetailsTypes;
 }
 
-interface ExperienceTypes {
+interface ExperienceAPIDataTypes {
   [index: string]: string | string[] | number | boolean | undefined;
   code: string;
   title?: string;
   desc: string[];
 }
 
-interface StackTypes {
+interface StackAPIDataTypes {
   [index: string]: string | number;
   code: string;
   name: string;
@@ -53,14 +53,14 @@ interface StackTypes {
   level: number;
 }
 
-interface StackKeyTypes {
+interface StackKeyAPIDataTypes {
   [index: string]: string;
   code: string;
   name: string;
 }
 
 interface StackDataTypes {
-  [index: string]: StackTypes[];
+  [index: string]: StackAPIDataTypes[];
 }
 
 interface StackLegendTypes {

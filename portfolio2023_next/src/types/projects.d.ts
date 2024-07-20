@@ -42,7 +42,7 @@ interface MediaType {
   alt: string;
 }
 
-interface ProjectsType {
+interface ProjectsAPIDataType {
   [index: string]:
     | string
     | SummaryType

@@ -7,14 +7,14 @@ import CareerItem from "./Item";
 import { StyledCareerList } from "@/styles/styled/components/ProfileCareer";
 
 // fetch
-import { useQueryProfileCareerData } from "@/lib/query";
+import { useQueryProfileCareerData } from "@/lib/query.lib";
 
 export default function CareerList() {
   const { data: careerData = [] } = useQueryProfileCareerData();
 
   return (
     <StyledCareerList>
-      {careerData?.map((c: CareerTypes, i: number) => (
+      {careerData?.map((c: CareerAPIDataType, i: number) => (
         <CareerItem
           key={`profile/career/${c.code}`}
           {...c}

@@ -24,7 +24,7 @@ import { transTime } from "@/styles/styled/preset/transTime";
 import useResizeObserver from "@/hooks/layout/useResizeObserver";
 
 // fetch
-import { useQueryProjectsDetailData } from "@/lib/query";
+import { useQueryProjectsDetailData } from "@/lib/query.lib";
 
 /**
  * 프로젝트 > 프로젝트 상세; bottom sheet container

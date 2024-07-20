@@ -1,5 +1,5 @@
 type DetailTypes = {
-  [index: string]: ProjectsType;
+  [index: string]: ProjectsAPIDataType;
 };
 
 interface DetailInfoSummaryTypes {

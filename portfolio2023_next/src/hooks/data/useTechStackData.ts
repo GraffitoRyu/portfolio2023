@@ -6,7 +6,7 @@ import { useMemo } from "react";
 import {
   useQueryProfileStackKeys,
   useQueryProfileStacksData,
-} from "@/lib/query";
+} from "@/lib/query.lib";
 
 /**
  * 프로필 > 기술스택; 데이터 추출 Hook
@@ -21,11 +21,11 @@ export default function useTechStackData() {
     if (typeof index === "undefined" || typeof rawData === "undefined")
       return {};
 
-    const dataIndex: string[] = index.map((d: StackKeyTypes) => d.code);
+    const dataIndex: string[] = index.map((d: StackKeyAPIDataTypes) => d.code);
 
     const filterData = dataIndex.map((key: string) => {
-      const filtered: StackTypes[] = rawData.filter(
-        (r: StackTypes) => r.category === key,
+      const filtered: StackAPIDataTypes[] = rawData.filter(
+        (r: StackAPIDataTypes) => r.category === key,
       );
       return [key, filtered];
     });

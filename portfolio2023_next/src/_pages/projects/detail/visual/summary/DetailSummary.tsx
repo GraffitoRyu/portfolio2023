@@ -118,7 +118,10 @@ export default function DetailSummary() {
   );
 }
 
-function getSummaryData({ summary, service }: ProjectsType): SummaryProps[] {
+function getSummaryData({
+  summary,
+  service,
+}: ProjectsAPIDataType): SummaryProps[] {
   return [
     {
       itemType: "serviceType",

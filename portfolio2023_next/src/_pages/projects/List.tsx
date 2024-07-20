@@ -9,14 +9,14 @@ import {
   ProjectListItem,
 } from "@/styles/styled/components/ProjectList";
 
-import { useQueryProjectListData } from "@/lib/query";
+import { useQueryProjectListData } from "@/lib/query.lib";
 
 export default function ProjectList() {
   const { data: listData } = useQueryProjectListData();
 
   return (
     <ProjectListContainer>
-      {listData?.map(({ code, summary }: ProjectsType, i: number) => (
+      {listData?.map(({ code, summary }: ProjectsAPIDataType, i: number) => (
         <ProjectListItem key={`project/list/${code}`}>
           <ProjectItem
             code={code}
