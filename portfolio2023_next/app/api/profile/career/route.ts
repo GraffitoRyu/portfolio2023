@@ -1,19 +1,19 @@
-import apiLog from "@/util/log.util";
 import { NextResponse } from "next/server";
+import { getFirebaseData } from "@/util/api.util";
+import cacheOptions from "@/lib/cache.lib";
 
 /**
  * 커리어 조회 API
  * @api
  * @route /api/profile/career
+ * @return {Promise<NextResponse<CareerAPIDataType[]>>}
  */
-export async function GET() {
-  const domain = process.env.FIREBASE_DATABASE_URL;
-  const route = `/api/profile/career`;
+export async function GET(): Promise<NextResponse<CareerAPIDataType[]>> {
+  const res = await getFirebaseData<CareerAPIDataType[]>({
+    routeUrl: "/api/profile/career",
+    queryUrl: "/career",
+    failResponse: [],
+  });
 
-  const url = `${domain}/career.json`;
-  apiLog({ route, messages: url });
-
-  const res = await (await fetch(url)).json();
-
-  return NextResponse.json(res);
+  return NextResponse.json(res, { ...cacheOptions });
 }

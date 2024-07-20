@@ -1,19 +1,19 @@
-import apiLog from "@/util/log.util";
 import { NextResponse } from "next/server";
+import { getFirebaseData } from "@/util/api.util";
+import cacheOptions from "@/lib/cache.lib";
 
 /**
  * 기술 스택 조회 API
  * @api
  * @route /api/profile/stacks
+ * @return {Promise<NextResponse<StackAPIDataTypes[]>>}
  */
-export async function GET() {
-  const domain = process.env.FIREBASE_DATABASE_URL;
-  const route = `/api/profile/stacks`;
+export async function GET(): Promise<NextResponse<StackAPIDataTypes[]>> {
+  const res = await getFirebaseData<StackAPIDataTypes[]>({
+    routeUrl: "/api/profile/stacks",
+    queryUrl: "/stacks",
+    failResponse: [],
+  });
 
-  const url = `${domain}/stacks.json`;
-  apiLog({ route, messages: url });
-
-  const res = await (await fetch(url)).json();
-
-  return NextResponse.json(res);
+  return NextResponse.json(res, { ...cacheOptions });
 }

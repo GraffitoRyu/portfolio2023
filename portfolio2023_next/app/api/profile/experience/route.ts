@@ -1,19 +1,19 @@
-import apiLog from "@/util/log.util";
 import { NextResponse } from "next/server";
+import { getFirebaseData } from "@/util/api.util";
+import cacheOptions from "@/lib/cache.lib";
 
 /**
  * 경험 내용 조회 API
  * @api
  * @route /api/profile/experience
+ * @return {Promise<NextResponse<ExperienceAPIDataTypes[]>>}
  */
-export async function GET() {
-  const domain = process.env.FIREBASE_DATABASE_URL;
-  const route = `/api/profile/experience`;
+export async function GET(): Promise<NextResponse<ExperienceAPIDataTypes[]>> {
+  const res = await getFirebaseData<ExperienceAPIDataTypes[]>({
+    routeUrl: "/api/profile/experience",
+    queryUrl: "/experience",
+    failResponse: [],
+  });
 
-  const url = `${domain}/experience.json`;
-  apiLog({ route, messages: url });
-
-  const res = await (await fetch(url)).json();
-
-  return NextResponse.json(res);
+  return NextResponse.json(res, { ...cacheOptions });
 }

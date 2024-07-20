@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import userAgentOptions from "@/data/userAgent";
 
 /**
@@ -30,15 +30,16 @@ const checkAppleDevice = (userAgent: string): "true" | "false" => {
 
 /**
  * 감지된 기기환경 저장
- * @param {NextResponse} response
- * @param {string} userAgent
+ * @param {NextRequest} req
+ * @param {NextResponse} res
  * @return {NextResponse}
  */
 export default function setViewportDeviceInfo(
-  response: NextResponse,
-  userAgent: string,
+  req: NextRequest,
+  res: NextResponse,
 ): NextResponse {
-  const responseUpdate = response;
+  const userAgent = req.headers.get("user-agent") || "";
+  const responseUpdate = res;
 
   // 접속 디바이스의 브레이크 포인트 체크
   responseUpdate.headers.set(

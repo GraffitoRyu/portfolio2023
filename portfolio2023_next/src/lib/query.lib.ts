@@ -7,7 +7,7 @@ import {
   getProfileStackKeysList,
   getProfileStacksData,
   getProjectsData,
-} from "./fetch";
+} from "./fetch.lib";
 
 /**
  * 프로필 > 커리어 데이터 API 쿼리
@@ -15,7 +15,9 @@ import {
  * @method GET
  * @route /api/profile/career
  */
-export const useQueryProfileCareerData = (): UseQueryResult<CareerTypes[]> =>
+export const useQueryProfileCareerData = (): UseQueryResult<
+  CareerAPIDataType[]
+> =>
   useQuery({
     queryKey: ["profile/career"],
     queryFn: () => getProfileCareerData(),
@@ -28,7 +30,7 @@ export const useQueryProfileCareerData = (): UseQueryResult<CareerTypes[]> =>
  * @route /api/profile/experience
  */
 export const useQueryProfileExperienceData = (): UseQueryResult<
-  ExperienceTypes[]
+  ExperienceAPIDataTypes[]
 > =>
   useQuery({
     queryKey: ["profile/experience"],
@@ -41,7 +43,9 @@ export const useQueryProfileExperienceData = (): UseQueryResult<
  * @method GET
  * @route /api/profile/stacks/key
  */
-export const useQueryProfileStackKeys = (): UseQueryResult<StackKeyTypes[]> =>
+export const useQueryProfileStackKeys = (): UseQueryResult<
+  StackKeyAPIDataTypes[]
+> =>
   useQuery({
     queryKey: ["profile/stack/key"],
     queryFn: () => getProfileStackKeysList(),
@@ -53,7 +57,9 @@ export const useQueryProfileStackKeys = (): UseQueryResult<StackKeyTypes[]> =>
  * @method GET
  * @route /api/profile/stacks
  */
-export const useQueryProfileStacksData = (): UseQueryResult<StackTypes[]> =>
+export const useQueryProfileStacksData = (): UseQueryResult<
+  StackAPIDataTypes[]
+> =>
   useQuery({
     queryKey: ["profile/stack"],
     queryFn: () => getProfileStacksData(),
@@ -65,7 +71,9 @@ export const useQueryProfileStacksData = (): UseQueryResult<StackTypes[]> =>
  * @method GET
  * @route /api/projects
  */
-export const useQueryProjectListData = (): UseQueryResult<ProjectsType[]> =>
+export const useQueryProjectListData = (): UseQueryResult<
+  ProjectsAPIDataType[]
+> =>
   useQuery({
     queryKey: ["projects"],
     queryFn: () => getProjectsData(),
@@ -79,7 +87,7 @@ export const useQueryProjectListData = (): UseQueryResult<ProjectsType[]> =>
  */
 export const useQueryProjectsDetailData = (
   code?: string,
-): UseQueryResult<ProjectsType> =>
+): UseQueryResult<ProjectsAPIDataType | undefined> =>
   useQuery({
     queryKey: ["projects/detail", code],
     queryFn: () => getProjectsData(),

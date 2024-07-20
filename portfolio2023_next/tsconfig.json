@@ -33,10 +33,10 @@
       "@vercel/analytics/react": ["./node_modules/@vercel/analytics/dist/react"]
     }
   },
-  "files": [
-    "node_modules/gsap/types/index.d.ts",
-    "node_modules/@vercel/analytics/dist/react/index.d.ts"
-  ],
+  // "files": [
+  //   "node_modules/gsap/types/index.d.ts",
+  //   "node_modules/@vercel/analytics/dist/react/index.d.ts"
+  // ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",

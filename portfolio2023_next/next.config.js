@@ -12,6 +12,9 @@ const nextConfig = {
   },
   // svg 컴포넌트 변환을 위한 설정
   webpack(config) {
+    /**
+     * -------- SVGR 설정 시작
+     */
     // Configures webpack to handle SVG files with SVGR. SVGR optimizes and transforms SVG files
     // into React components. See https://react-svgr.com/docs/next/
 
@@ -38,6 +41,9 @@ const nextConfig = {
 
     // Modify the file loader rule to ignore *.svg, since we have it handled now.
     fileLoaderRule.exclude = /\.svg$/i;
+    /**
+     * -------- SVGR 설정 끝
+     */
 
     return config;
   },
