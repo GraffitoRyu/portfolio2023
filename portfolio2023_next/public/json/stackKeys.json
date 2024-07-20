@@ -12,10 +12,6 @@
     "name": "자바스크립트 라이브러리"
   },
   {
-    "code": "map_api",
-    "name": "지도 API 라이브러리"
-  },
-  {
     "code": "style",
     "name": "스타일링 프레임워크 & 라이브러리"
   },
@@ -24,12 +20,8 @@
     "name": "데이터 기술"
   },
   {
-    "code": "build",
-    "name": "빌드 도구"
-  },
-  {
-    "code": "deploy",
-    "name": "배포 플랫폼"
+    "code": "environment",
+    "name": "번들러 & 배포"
   },
   {
     "code": "aws",
@@ -42,5 +34,9 @@
   {
     "code": "design",
     "name": "디자인 & 프로토타이핑"
+  },
+  {
+    "code": "map_api",
+    "name": "지도 API 라이브러리"
   }
 ]

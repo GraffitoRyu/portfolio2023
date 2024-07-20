@@ -1,5 +1,17 @@
 [
   {
+    "code": "typescript",
+    "name": "TypeScript",
+    "category": "languages",
+    "level": 0
+  },
+  {
+    "code": "html_css",
+    "name": "HTML / CSS",
+    "category": "languages",
+    "level": 4
+  },
+  {
     "code": "scss",
     "name": "SCSS",
     "category": "languages",
@@ -12,9 +24,9 @@
     "level": 3
   },
   {
-    "code": "typescript",
-    "name": "TypeScript",
-    "category": "languages",
+    "code": "nextjs",
+    "name": "Next.js",
+    "category": "webapp",
     "level": 0
   },
   {
@@ -24,14 +36,20 @@
     "level": 1
   },
   {
-    "code": "nextjs",
-    "name": "Next.js",
+    "code": "jotai",
+    "name": "Jotai",
     "category": "webapp",
     "level": 0
   },
   {
-    "code": "jotai",
-    "name": "Jotai",
+    "code": "react_query",
+    "name": "React Query",
+    "category": "webapp",
+    "level": 0
+  },
+  {
+    "code": "apollo",
+    "name": "Apollo",
     "category": "webapp",
     "level": 0
   },
@@ -42,10 +60,16 @@
     "level": 0
   },
   {
-    "code": "jquery",
-    "name": "jQuery",
+    "code": "react_hook_form",
+    "name": "React Hook Form",
     "category": "library",
-    "level": 4
+    "level": 3
+  },
+  {
+    "code": "recharts",
+    "name": "Recharts",
+    "category": "library",
+    "level": 3
   },
   {
     "code": "d3",
@@ -60,16 +84,10 @@
     "level": 1
   },
   {
-    "code": "google_maps_api",
-    "name": "Google Maps API",
-    "category": "map_api",
-    "level": 3
-  },
-  {
-    "code": "kakao_maps_api",
-    "name": "Kakao Maps API",
-    "category": "map_api",
-    "level": 1
+    "code": "jquery",
+    "name": "jQuery",
+    "category": "library",
+    "level": 4
   },
   {
     "code": "styled_components",
@@ -84,16 +102,16 @@
     "level": 0
   },
   {
+    "code": "rest",
+    "name": "REST",
+    "category": "data",
+    "level": 2
+  },
+  {
     "code": "ajax",
     "name": "AJAX",
     "category": "data",
-    "level": 3
-  },
-  {
-    "code": "websocket",
-    "name": "WebSocket",
-    "category": "data",
-    "level": 3
+    "level": 2
   },
   {
     "code": "json",
@@ -102,27 +120,33 @@
     "level": 3
   },
   {
+    "code": "graphql",
+    "name": "GraphQL",
+    "category": "data",
+    "level": 0
+  },
+  {
+    "code": "websocket",
+    "name": "WebSocket",
+    "category": "data",
+    "level": 1
+  },
+  {
     "code": "geojson",
     "name": "GeoJSON",
     "category": "data",
     "level": 1
   },
   {
-    "code": "react_query",
-    "name": "React Query",
-    "category": "webapp",
-    "level": 0
-  },
-  {
     "code": "vite",
     "name": "Vite",
-    "category": "build",
+    "category": "environment",
     "level": 2
   },
   {
     "code": "vercel",
     "name": "Vercel",
-    "category": "deploy",
+    "category": "environment",
     "level": 0
   },
   {
@@ -138,8 +162,14 @@
     "level": 2
   },
   {
+    "code": "eslint_prettier",
+    "name": "ESLint / Prettier",
+    "category": "collaboration",
+    "level": 2
+  },
+  {
     "code": "git",
-    "name": "Git/Github",
+    "name": "Git / Github",
     "category": "collaboration",
     "level": 3
   },
@@ -152,6 +182,12 @@
   {
     "code": "jira",
     "name": "Jira",
+    "category": "collaboration",
+    "level": 2
+  },
+  {
+    "code": "slack",
+    "name": "Slack",
     "category": "collaboration",
     "level": 2
   },
@@ -172,5 +208,17 @@
     "name": "Photoshop",
     "category": "design",
     "level": 2
+  },
+  {
+    "code": "google_maps_api",
+    "name": "Google Maps API",
+    "category": "map_api",
+    "level": 3
+  },
+  {
+    "code": "kakao_maps_api",
+    "name": "Kakao Maps API",
+    "category": "map_api",
+    "level": 1
   }
 ]
