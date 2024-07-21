@@ -25,7 +25,7 @@ type StackArrTypes = typeof stacksArr;
 
 export default function DetailStacks() {
   const { category } = useParams();
-  const data = useAtomValue<DetailTypes>(projectDetailDataState);
+  const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);
   const [stacks, setStacks] = useState<StackArrTypes>(stacksArr);
 
   useEffect(() => {

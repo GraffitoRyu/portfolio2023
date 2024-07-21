@@ -2,6 +2,8 @@ import { atom } from "jotai";
 
 /**
  * 화면 사이즈 상태관리
+ * @state
+ * @return {ViewportStateTypes}
  */
 export const viewportState = atom<ViewportStateTypes>({
   windowWidth: 0,

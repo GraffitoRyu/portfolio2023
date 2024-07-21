@@ -13,7 +13,7 @@ import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 export default function DetailMediaContainer() {
   const { category } = useParams();
-  const data = useAtomValue<DetailTypes>(projectDetailDataState);
+  const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);
   const [media, setMedia] = useState<MediaType[] | []>([]);
 
   useLayoutEffect(() => {

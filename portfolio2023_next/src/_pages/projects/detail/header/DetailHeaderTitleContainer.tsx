@@ -1,5 +1,5 @@
 import { useParams } from "next/navigation";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
 import { useAtomValue } from "jotai";
 
 // style components
@@ -15,25 +15,25 @@ import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
+import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 
 export default function DetailHeaderTitleContainer() {
   const { category } = useParams();
-  const data = useAtomValue<DetailTypes>(projectDetailDataState);
-  const [title, setTitle] = useState<string>("");
+  const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);
 
   const { openComplete } = useAtomValue(pageDetailLoadState);
   const {
     container: scrollContainer,
-    visual: scrollTrigger,
+    sectionVisual: scrollTrigger,
     visualTitle: visualTitleRef,
-  } = useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
+  } = useAtomValue<DetailScrollRefStateTypes>(scrollDetailRefState);
   const titleRef = useRef<HTMLSpanElement>(null);
 
-  useLayoutEffect(() => {
-    if (typeof category !== "string" || !data?.[category]) return;
+  const title = useMemo((): string => {
+    if (typeof category !== "string" || !data?.[category]) return "";
 
     const d = data[category];
-    if (d?.summary?.title) setTitle(d.summary.title.join(" "));
+    return d.summary.title.join(" ");
   }, [category, data]);
 
   useLayoutEffect(() => {

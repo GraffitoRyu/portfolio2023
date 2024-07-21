@@ -14,19 +14,20 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
+import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function DetailExperience() {
-  const { container: scrollContainer, scrollHeight } =
-    useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
+  const { container: scrollContainer } =
+    useAtomValue<DetailScrollRefStateTypes>(scrollDetailRefState);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const descRef = useRef<HTMLLIElement[]>([]);
 
   const { category } = useParams();
-  const data = useAtomValue<DetailTypes>(projectDetailDataState);
+  const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);
   const [expData, setExpData] = useState<string[]>([]);
 
   useLayoutEffect(() => {
@@ -94,7 +95,7 @@ export default function DetailExperience() {
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, scrollHeight]);
+  }, [scrollContainer]);
 
   return (
     <PDExpSection className="detail-section-exp">

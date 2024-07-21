@@ -1,7 +1,3 @@
-type DetailTypes = {
-  [index: string]: ProjectsAPIDataType;
-};
-
 interface DetailInfoSummaryTypes {
   code: string;
   title: string;

@@ -1,19 +1,20 @@
 "use client";
 
 import { useCallback } from "react";
+import { useSetAtom } from "jotai";
 
 // style components
 import { PDVisualViewport } from "@/styles/styled/components/ProjectDetail";
 
 // state
+import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 
 export default function DetailVisualViewport({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const setScrollRef =
-    useSetRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
+  const setScrollRef = useSetAtom(scrollDetailRefState);
 
   const updateScrollRef = useCallback(
     (node: HTMLDivElement | null) => {

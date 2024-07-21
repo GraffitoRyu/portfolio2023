@@ -18,14 +18,15 @@ import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
+import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 
 export default function DetailSubVisual() {
   const { category } = useParams();
-  const data = useAtomValue<DetailTypes>(projectDetailDataState);
+  const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);
   const [img, setImg] = useState<MediaType | null>(null);
 
-  const { container: scrollContainer, scrollHeight } =
-    useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
+  const { container: scrollContainer } =
+    useAtomValue<DetailScrollRefStateTypes>(scrollDetailRefState);
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const subVisualRef = useRef<HTMLElement | null>(null);
 
@@ -68,7 +69,7 @@ export default function DetailSubVisual() {
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, scrollHeight]);
+  }, [scrollContainer]);
 
   return (
     <PDSubVisualSection ref={triggerRef}>

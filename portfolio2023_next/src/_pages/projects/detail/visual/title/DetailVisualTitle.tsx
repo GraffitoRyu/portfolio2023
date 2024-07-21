@@ -5,10 +5,11 @@ import {
   useCallback,
   useEffect,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
-import { useAtomValue } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 
 // style components
 import {
@@ -18,6 +19,7 @@ import {
 
 // state
 import { pageDetailLoadState } from "@/jotai/load.state";
+import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // util
@@ -25,11 +27,16 @@ import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
 
 export default function DetailVisualTitle() {
   const { category } = useParams();
-  const data = useAtomValue<DetailTypes>(projectDetailDataState);
-  const [title, setTitle] = useState<string[]>([""]);
+  const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);
+  const title = useMemo((): string[] => {
+    if (typeof category !== "string" || typeof data[category] === "undefined")
+      return [];
 
-  const [{ container: scrollContainer, scrollHeight }, setDetailScrollRef] =
-    useRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
+    return data[category].summary.title;
+  }, [category, data]);
+
+  const [{ container: scrollContainer }, setDetailScrollRef] =
+    useAtom<DetailScrollRefStateTypes>(scrollDetailRefState);
 
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const updateScrollRef = useCallback(
@@ -43,17 +50,6 @@ export default function DetailVisualTitle() {
   const { openComplete } =
     useAtomValue<PageDetailLoadStateTypes>(pageDetailLoadState);
   const [hide, setHide] = useState<string>("hide");
-
-  useLayoutEffect(() => {
-    if (
-      typeof category === "string" &&
-      data?.[category]?.summary?.title?.length > 0
-    ) {
-      setTitle(data[category].summary.title);
-    } else {
-      setTitle([]);
-    }
-  }, [category, data]);
 
   useEffect(() => {
     setHide(openComplete ? "" : "hide");
@@ -88,7 +84,7 @@ export default function DetailVisualTitle() {
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, scrollHeight]);
+  }, [scrollContainer]);
 
   return (
     <PDVisualTitle className={`${hide}`} ref={updateScrollRef}>

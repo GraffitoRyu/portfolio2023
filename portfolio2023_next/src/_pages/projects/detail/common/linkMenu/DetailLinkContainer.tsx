@@ -15,7 +15,7 @@ import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 export default function DetailLinkContainer() {
   const { category } = useParams();
-  const data = useAtomValue<DetailTypes>(projectDetailDataState);
+  const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);
   const [linkData, setLinkData] = useState<LinkType[] | []>([]);
 
   useEffect(() => {

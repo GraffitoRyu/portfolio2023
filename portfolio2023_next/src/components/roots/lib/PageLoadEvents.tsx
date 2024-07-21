@@ -33,7 +33,9 @@ export default function PageLoadEvents() {
 
   // 프로젝트 상세에 대한 열림/닫힘 상태 업데이트
   const setDetailState = useSetAtom(pageDetailLoadState);
-  const existDetailData = useAtomValue<DetailTypes>(projectDetailDataState);
+  const existDetailData = useAtomValue<DetailDataCollectionTypes>(
+    projectDetailDataState,
+  );
 
   // 루트 업데이트
   useLayoutEffect(() => {

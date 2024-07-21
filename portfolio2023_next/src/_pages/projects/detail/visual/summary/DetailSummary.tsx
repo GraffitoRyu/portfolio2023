@@ -16,6 +16,7 @@ import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
+import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 
 type SummaryProps = {
   itemType: string;
@@ -25,7 +26,7 @@ type SummaryProps = {
 
 export default function DetailSummary() {
   const { category } = useParams();
-  const data = useAtomValue<DetailTypes>(projectDetailDataState);
+  const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);
   const [summaryData, setSummaryData] = useState<SummaryProps[] | null>(null);
 
   const { openComplete } =
@@ -33,8 +34,8 @@ export default function DetailSummary() {
   const [delayIndex, setDelayIndex] = useState<number>(1);
   const [hide, setHide] = useState<string>("init-hide hide");
 
-  const { container: scrollContainer, scrollHeight } =
-    useAtomValue<DetailScrollRefStateTypes>(detailScrollRefState);
+  const { container: scrollContainer } =
+    useAtomValue<DetailScrollRefStateTypes>(scrollDetailRefState);
   const summaryRef = useRef<HTMLDListElement[]>([]);
 
   useLayoutEffect(() => {
@@ -91,7 +92,7 @@ export default function DetailSummary() {
     });
 
     return () => ctx.revert();
-  }, [openComplete, scrollContainer, scrollHeight]);
+  }, [openComplete, scrollContainer]);
 
   return (
     <PDSummaryContainer>

@@ -17,11 +17,12 @@ import { viewportState } from "@/jotai/viewport.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
+import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 
 export default function DetailMediaItem({ data }: { data: MediaType }) {
   const { windowWidth } = useAtomValue(viewportState);
-  const { container: scrollContainer, scrollHeight } =
-    useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
+  const { container: scrollContainer } =
+    useAtomValue<DetailScrollRefStateTypes>(scrollDetailRefState);
   const figureRef = useRef<HTMLElement | null>(null);
 
   useLayoutEffect(() => {
@@ -54,7 +55,7 @@ export default function DetailMediaItem({ data }: { data: MediaType }) {
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, scrollHeight, windowWidth]);
+  }, [scrollContainer, windowWidth]);
 
   return (
     <PDMediaItem>

@@ -13,18 +13,19 @@ import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // util
 import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
+import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 
 export default function DetailVisualSubtitle() {
   const { category } = useParams();
-  const data = useAtomValue<DetailTypes>(projectDetailDataState);
+  const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);
   const [desc, setDesc] = useState<string>("");
 
   const { openComplete } = useAtomValue(pageDetailLoadState);
   const [delayIndex, setDelayIndex] = useState<number>(0);
   const [hide, setHide] = useState<string>("init-hide hide");
 
-  const { container: scrollContainer, scrollHeight } =
-    useRecoilValue<DetailScrollRefStateTypes>(detailScrollRefState);
+  const { container: scrollContainer } =
+    useAtomValue<DetailScrollRefStateTypes>(scrollDetailRefState);
   const subtitleRef = useRef<HTMLParagraphElement | null>(null);
 
   useLayoutEffect(() => {
@@ -79,7 +80,7 @@ export default function DetailVisualSubtitle() {
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, scrollHeight]);
+  }, [scrollContainer]);
 
   return (
     <PDVisualSubtitle

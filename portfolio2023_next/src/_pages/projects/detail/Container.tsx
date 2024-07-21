@@ -15,6 +15,7 @@ import { PDContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
 import { pageDetailLoadState } from "@/jotai/load.state";
+import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // style
@@ -35,14 +36,13 @@ export default function ProjectDetailContainer() {
   const [{ category, open }, setLayoutState] = useAtom(pageDetailLoadState);
 
   // 프로젝트 스크롤 인터렉션 참조 요소 상태 관리
-  const setDetailScrollRef =
-    useSetRecoilState<DetailScrollRefStateTypes>(detailScrollRefState);
+  const setDetailScrollRef = useSetAtom(scrollDetailRefState);
   const detailRef = useRef<HTMLElement | null>(null);
   const scrollWrapRef = useRef<HTMLDivElement | null>(null);
 
   // 프로젝트 데이터 상태관리
   const setDetailData = useSetAtom(projectDetailDataState);
-  const { status, data } = useQueryProjectsDetailData(category);
+  const { status, data: detailData } = useQueryProjectsDetailData(category);
 
   // 스크롤 참조 데이터 업데이트
   const setRef = useCallback(
@@ -54,32 +54,35 @@ export default function ProjectDetailContainer() {
   );
 
   // 프로젝트 상세 스크롤 높이 업데이트
-  useResizeObserver({
-    ref: scrollWrapRef,
-    callback: ({ height }) => {
-      setDetailScrollRef(prev => ({
-        ...prev,
-        scrollHeight: height || 0,
-      }));
-    },
-  });
+  // useResizeObserver({
+  //   ref: scrollWrapRef,
+  //   callback: ({ height }) => {
+  //     setDetailScrollRef(prev => ({
+  //       ...prev,
+  //       scrollHeight: height || 0,
+  //     }));
+  //   },
+  // });
 
   // 데이터 조회 상태
   useEffect(() => {
     if (typeof category !== "string") return;
     // console.log(`get [${category}] data status: `, status);
+
     setLayoutState(prev => ({ ...prev, dataStatus: status }));
-    if (status === "success") {
-      // console.log(`[Detail Container :: React Query] Data is ready.`, data);
-      setDetailData(prev => ({ ...prev, [category]: data }));
-    }
-  }, [category, data, setDetailData, setLayoutState, status]);
+
+    if (status !== "success") return;
+
+    // console.log(`[Detail Container :: React Query] Data is ready.`, data);
+
+    setDetailData(prev => ({ ...prev, [category]: detailData }));
+  }, [category, detailData, setDetailData, setLayoutState, status]);
 
   const [openActive, setOpenActive] = useState<boolean>(false);
   // 열림 상태 적용
   useEffect(() => {
-    setOpenActive(!open);
-  }, [open]);
+    if (openActive !== !open) setOpenActive(!open);
+  }, [openActive, open]);
 
   // 상세 페이지 오픈 슬라이드 완료 상태 업데이트
   useEffect(() => {

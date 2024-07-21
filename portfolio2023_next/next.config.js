@@ -2,11 +2,13 @@
 const path = require("path");
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: true, // 리액트 엄격모드
   swcMinify: true,
   compiler: {
+    // styled-components 사용 옵션
     styledComponents: true,
   },
+  // scss 컴파일 옵션
   sassOptions: {
     includesPaths: [path.join(__dirname, "styles")],
   },

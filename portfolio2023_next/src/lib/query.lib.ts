@@ -7,6 +7,7 @@ import {
   getProfileStackKeysList,
   getProfileStacksData,
   getProjectsData,
+  getProjectsDetailData,
 } from "./fetch.lib";
 
 /**
@@ -84,12 +85,13 @@ export const useQueryProjectListData = (): UseQueryResult<
  * @api
  * @method GET
  * @route /api/projects/{detailCode}
+ * @param {string} code 프로젝트 코드
  */
 export const useQueryProjectsDetailData = (
-  code?: string,
+  code: string,
 ): UseQueryResult<ProjectsAPIDataType | undefined> =>
   useQuery({
     queryKey: ["projects/detail", code],
-    queryFn: () => getProjectsData(),
+    queryFn: () => getProjectsDetailData(code),
     enabled: typeof code === "string" && code !== "",
   });

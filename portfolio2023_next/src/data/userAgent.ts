@@ -1,3 +1,7 @@
+/**
+ * userAgent > apple 디바이스 체크 키워드
+ * @type {UserAgentDeviceType}
+ */
 const apple: UserAgentDeviceType = [
   "iPhone",
   "iPad",
@@ -5,7 +9,17 @@ const apple: UserAgentDeviceType = [
   "Mac",
   "macintosh",
 ];
+
+/**
+ * userAgent > 태블릿 체크 키워드
+ * @type {UserAgentDeviceType}
+ */
 const tablet: UserAgentDeviceType = ["Tablet", "iPad", "playbook", "silk"];
+
+/**
+ * userAgent > 모바일 디바이스 체크 키워드
+ * @type {UserAgentDeviceType}
+ */
 const mobile: UserAgentDeviceType = [
   "Android",
   "Mobile",
@@ -30,6 +44,18 @@ const mobile: UserAgentDeviceType = [
   "Zune",
 ];
 
-const userAgentOptions = { apple, tablet, mobile };
+/**
+ * userAgent 체크 키워드 콜렉션
+ * @type {UserAgentDeviceCollectionType}
+ * @desc
+ * - apple
+ * - tablet
+ * - mobile
+ */
+const userAgentOptions: UserAgentDeviceCollectionType = {
+  apple,
+  tablet,
+  mobile,
+};
 
 export default userAgentOptions;
