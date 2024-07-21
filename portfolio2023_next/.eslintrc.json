@@ -50,12 +50,31 @@
       "version": "detect"
     },
     "import/resolver": {
-      "node": { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+      // "pnpm": {
+      //   "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      // }
     }
   },
   "rules": {
     "import/prefer-default-export": "off",
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+        // "devDependencies": [
+        //   "**/*.[jt]s?(x)",
+        //   "**/__tests__/**/*.[jt]s?(x)",
+        //   "**/?(*.)+(spec|test).[jt]s?(x)"
+        // ],
+        // "optionalDependencies": false, // 선택적 의존성을 허용하지 않음
+        // "peerDependencies": false, // 피어 의존성을 허용하지 않음
+        // "packageDir": [".", "../"] // 현재 프로젝트와 루트 디렉토리에서 의존성을 검색
+      }
+    ],
     "prettier/prettier": [
       "error",
       { "endOfLine": "auto" },
