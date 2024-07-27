@@ -1,8 +1,8 @@
-interface SectionHeaderTypes {
-  empty?: boolean;
-  title?: string;
-  desc?: Array<string | React.ReactNode>;
-  className?: string;
+interface SectionHeaderPropsTypes {
+  empty: boolean;
+  title: string;
+  desc: Array<string | React.ReactNode>;
+  className: string;
 }
 
 interface CareerSummaryTypes {

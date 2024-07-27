@@ -1,14 +1,14 @@
 interface SectionHeaderTypes {
-  title?: string;
-  desc?: string[];
-  empty?: boolean;
-  className?: string;
+  title: string;
+  desc: string | string[];
+  empty: boolean;
+  className: string;
 }
 
 interface SectionHeaderModeTypes {
-  [index: string]: SectionHeaderTypes;
-  light: SectionHeaderTypes;
-  dark: SectionHeaderTypes;
+  [index: string]: Partial<SectionHeaderTypes>;
+  light: Partial<SectionHeaderTypes>;
+  dark: Partial<SectionHeaderTypes>;
 }
 
 interface IntroTypes {
