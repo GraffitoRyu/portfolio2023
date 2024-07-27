@@ -29,7 +29,7 @@ export default function DetailHeaderWrap() {
   const router = useRouter();
   const setDetailLoad = useSetAtom(pageDetailLoadState);
 
-  const closeDetail = () => {
+  const closeDetail = useCallback(() => {
     setDetailLoad(prev => ({
       ...prev,
       open: false,
@@ -39,7 +39,7 @@ export default function DetailHeaderWrap() {
     setTimeout(() => {
       router.back();
     }, transTime.detail.sheetSlide);
-  };
+  }, [router, setDetailLoad]);
 
   const updateHeaderHeight = useCallback(() => {
     const wrap = wrapRef.current;

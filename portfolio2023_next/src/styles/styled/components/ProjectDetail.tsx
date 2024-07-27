@@ -33,6 +33,7 @@ export const PDContainer = styled.article`
     },
   ])}
   transform: translateY(100%);
+  overscroll-behavior-y: auto;
   &.open {
     transform: translateY(0);
   }
@@ -492,5 +493,14 @@ export const PDMediaFigure = styled.figure`
   transform: scale(0.8);
   img {
     ${position({ type: `static !important` })}
+  }
+  .iframe-ratio-wrapper {
+    position: relative;
+    height: 0;
+    padding-top: 56.25%;
+    iframe {
+      ${position({ type: "absolute", top: 0, left: 0 })};
+      ${size({ w: "100%", h: "100%" })}
+    }
   }
 `;

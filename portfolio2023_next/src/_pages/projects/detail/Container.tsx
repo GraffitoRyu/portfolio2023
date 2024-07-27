@@ -22,7 +22,7 @@ import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // hooks
-import useResizeObserver from "@/hooks/layout/useResizeObserver";
+// import useResizeObserver from "@/hooks/layout/useResizeObserver";
 
 // fetch
 import { useQueryProjectsDetailData } from "@/lib/query.lib";

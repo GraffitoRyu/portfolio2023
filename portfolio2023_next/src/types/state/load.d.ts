@@ -24,3 +24,16 @@ type PageDetailLoadStateTypes = {
   openComplete: boolean; // 열림 트랜지션 후 완료
   dataStatus: string;
 };
+
+/**
+ * 페이지 프로젝트 상세 로그 진행상태 관리 타입
+ * @state
+ */
+type PageDetailLoadProgressStateType = {
+  [stateKey: string]: number;
+  clicked: number; // 20; 프로젝트 상세보기 클릭 여부
+  category: number; // 20; 상세 아이템
+  loading: number; // 20; 로딩 진행바 숨김/보임
+  success: number; // 40; 완료 여부
+  open: number; // 20; 열림 상태
+};

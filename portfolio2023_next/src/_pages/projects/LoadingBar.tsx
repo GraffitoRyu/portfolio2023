@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { useAtom } from "jotai";
 
 // style components
@@ -14,8 +14,8 @@ export default function ProjectLoadingBar() {
     { clicked, category, dataStatus, open, openComplete, loading },
     setDetailLoad,
   ] = useAtom(pageDetailLoadState);
-  const [percent, setPercent] = useState<number>(0);
-  const [hide, setHide] = useState<string>("hide");
+
+  const isHide = useMemo(() => (loading ? "" : "hide"), [loading]);
 
   /**
    * 1. category
@@ -23,22 +23,17 @@ export default function ProjectLoadingBar() {
    * 3. dataStats: success
    * 4. open: true
    */
-
-  useEffect(() => {
-    const condition = {
-      click: clicked ? 20 : 0,
+  const percent = useMemo((): number => {
+    const condition: PageDetailLoadProgressStateType = {
+      clicked: clicked ? 20 : 0,
       category: category ? 20 : 0,
       loading: dataStatus === "loading" ? 20 : 0,
       success: dataStatus === "success" ? 40 : 0,
       open: open ? 20 : 0,
     };
 
-    const curProgress = Object.values(condition).reduce(
-      (acc, cur) => acc + cur,
-      0,
-    );
-    setPercent(curProgress);
-  }, [clicked, category, dataStatus, open]);
+    return Object.values(condition).reduce((acc, cur) => acc + cur, 0);
+  }, [category, clicked, dataStatus, open]);
 
   useEffect(() => {
     if (openComplete) {
@@ -49,13 +44,9 @@ export default function ProjectLoadingBar() {
     }
   }, [openComplete, setDetailLoad]);
 
-  useEffect(() => {
-    setHide(loading ? "" : "hide");
-  }, [loading]);
-
   return (
     <ProjectLoadingProgress
-      className={`${hide}`}
+      className={isHide}
       value={percent}
       max="100"
     ></ProjectLoadingProgress>
