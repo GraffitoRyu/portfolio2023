@@ -74,7 +74,7 @@ export default function DetailSubVisual() {
   return (
     <PDSubVisualSection ref={triggerRef}>
       <PDSubVisual ref={subVisualRef}>
-        {img ? (
+        {img?.sec ? (
           <DetailMediaContents
             referType={img.referType}
             src={img.src}
