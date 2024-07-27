@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { Suspense, useLayoutEffect, useRef } from "react";
 import { useAtomValue } from "jotai";
 
 // components
@@ -60,11 +60,13 @@ export default function DetailMediaItem({ data }: { data: MediaType }) {
   return (
     <PDMediaItem>
       <PDMediaFigure ref={figureRef}>
-        <DetailMediaContents
-          referType={data.referType}
-          src={data.src}
-          alt={data.alt}
-        />
+        <Suspense fallback={<span>Loading...</span>}>
+          <DetailMediaContents
+            referType={data.referType}
+            src={data.src}
+            alt={data.alt}
+          />
+        </Suspense>
       </PDMediaFigure>
     </PDMediaItem>
   );

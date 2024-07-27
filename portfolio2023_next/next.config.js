@@ -12,6 +12,22 @@ const nextConfig = {
   sassOptions: {
     includesPaths: [path.join(__dirname, "styles")],
   },
+  // 외부 이미지 접근 설정
+  images: {
+    remotePatterns: [
+      // 프로젝트 상세 영상
+      {
+        protocol: "https",
+        hostname: "drive.google.com",
+        pathname: "/uc",
+      },
+      {
+        protocol: "https",
+        hostname: "drive.usercontent.google.com",
+        pathname: "/uc",
+      },
+    ],
+  },
   // svg 컴포넌트 변환을 위한 설정
   webpack(config) {
     /**

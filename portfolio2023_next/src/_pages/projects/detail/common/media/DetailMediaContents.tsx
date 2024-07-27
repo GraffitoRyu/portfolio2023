@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 export default function DetailMediaContents({
@@ -31,10 +33,20 @@ function DetailMediaImage({ src, alt }: { src: string; alt: string }) {
     />
   );
 }
-function DetailMediaVideo({ src }: { src: string }) {
+function DetailMediaVideo({ src: videoId }: { src: string }) {
   return (
-    <video preload="auto" muted loop controls>
-      <source src={src} type="video/mp4" />
-    </video>
+    <div className="iframe-ratio-wrapper">
+      <iframe
+        width="560"
+        height="315"
+        src={`https://www.youtube.com/embed/${videoId}?mute=1&autoplay=1&loop=1&playlist=${videoId}`}
+        title="류대현 포트폴리오 프로젝트 영상 참조"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+        referrerPolicy="strict-origin-when-cross-origin"
+        // loading="lazy"
+        allowFullScreen
+      ></iframe>
+    </div>
   );
 }
