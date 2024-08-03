@@ -7,7 +7,11 @@ import { CursorStyle } from "@/styles/styled/components/Cursor";
 
 export default function Cursor() {
   const [hide, setHide] = useState<string>("hide");
-  const [cursor, setCursor] = useState<CursorTypes>({ x: 0, y: 0, hover: "" });
+  const [cursor, setCursor] = useState<CursorStateTypes>({
+    x: 0,
+    y: 0,
+    hover: "",
+  });
 
   const updateCursor = useCallback(
     (e: MouseEvent | PointerEvent) => {
@@ -25,7 +29,7 @@ export default function Cursor() {
         )
           targetElement = "text";
 
-        const c: CursorTypes = {
+        const c: CursorStateTypes = {
           x: e.clientX,
           y: e.clientY,
           hover: targetElement,

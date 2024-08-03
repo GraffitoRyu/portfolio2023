@@ -21,7 +21,7 @@ export default function SectionHeader({
   title,
   desc,
   className,
-}: SectionHeaderTypes) {
+}: Partial<SectionHeaderPropsTypes>) {
   const { container: scrollContainer } =
     useAtomValue<ScrollRefStateTypes>(scrollPageRefState);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
