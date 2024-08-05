@@ -19,8 +19,7 @@
     "jsx-a11y",
     "testing-library",
     "prettier",
-    "@tanstack/query",
-    "jsdoc"
+    "@tanstack/query"
   ],
   "extends": [
     "eslint:recommended",
@@ -32,9 +31,7 @@
     "plugin:react-hooks/recommended",
     "next/core-web-vitals",
     "next",
-    "plugin:@tanstack/eslint-plugin-query/recommended",
-    "plugin:jsdoc/recommended",
-    "plugin:jsdoc/recommended-typescript"
+    "plugin:@tanstack/eslint-plugin-query/recommended"
   ],
   "overrides": [
     {
@@ -115,31 +112,31 @@
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
 
-    "jsdoc/check-access": 1, // Recommended
-    "jsdoc/check-alignment": 1, // Recommended
-    "jsdoc/check-line-alignment": 1,
-    "jsdoc/check-param-names": 0, // Recommended ---------------
-    "jsdoc/check-property-names": 1, // Recommended
-    "jsdoc/check-syntax": 1,
-    "jsdoc/check-tag-names": 0, // Recommended ----------------
-    "jsdoc/check-types": 1, // Recommended
-    "jsdoc/check-values": 1, // Recommended
-    "jsdoc/no-types": 0,
-    "jsdoc/no-undefined-types": 0, // Recommended
-    "jsdoc/require-jsdoc": 0, // Recommended --------------------
-    "jsdoc/require-param": 0, // Recommended -----------------
-    "jsdoc/require-param-description": 0, // Recommended -------------
-    "jsdoc/require-param-name": 1, // Recommended
-    "jsdoc/require-param-type": 1, // Recommended
-    "jsdoc/require-property": 1, // Recommended
-    "jsdoc/require-property-description": 0, // Recommended ------------
-    "jsdoc/require-property-name": 1, // Recommended
-    "jsdoc/require-property-type": 1, // Recommended
-    "jsdoc/require-returns": 0, // Recommended
-    "jsdoc/require-returns-type": 0,
-    "jsdoc/valid-types": 1 // Recommended
+    // "jsdoc/check-access": 1, // Recommended
+    // "jsdoc/check-alignment": 1, // Recommended
+    // "jsdoc/check-line-alignment": 1,
+    // "jsdoc/check-param-names": 0, // Recommended ---------------
+    // "jsdoc/check-property-names": 1, // Recommended
+    // "jsdoc/check-syntax": 1,
+    // "jsdoc/check-tag-names": 0, // Recommended ----------------
+    // "jsdoc/check-types": 1, // Recommended
+    // "jsdoc/check-values": 1, // Recommended
+    // "jsdoc/no-types": 0,
+    // "jsdoc/no-undefined-types": 0, // Recommended
+    // "jsdoc/require-jsdoc": 0, // Recommended --------------------
+    // "jsdoc/require-param": 0, // Recommended -----------------
+    // "jsdoc/require-param-description": 0, // Recommended -------------
+    // "jsdoc/require-param-name": 1, // Recommended
+    // "jsdoc/require-param-type": 1, // Recommended
+    // "jsdoc/require-property": 1, // Recommended
+    // "jsdoc/require-property-description": 0, // Recommended ------------
+    // "jsdoc/require-property-name": 1, // Recommended
+    // "jsdoc/require-property-type": 1, // Recommended
+    // "jsdoc/require-returns": 0, // Recommended
+    // "jsdoc/require-returns-type": 0,
+    // "jsdoc/valid-types": 1 // Recommended
   },
   "ignorePatterns": ["dist", "node_modules", "scripts"]
 }
