@@ -1,42 +1,34 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useRef } from "react";
 import { useAtom } from "jotai";
 
 // components
 import ThemeMenuList from "./MenuList";
 import ThemeToggleBtn from "./ToggleBtn";
 
+// hooks
+import useCloseByClickOutside from "@/hooks/interaction/useCloseByClickOutside";
+
 // state
 import { themeState } from "@/jotai/theme.state";
 
-// util
-import closeByClickOutSide from "@/util/interactions/closeByClickOutside";
-
+/**
+ * 테마 메뉴 컨테이너
+ * @component
+ */
 export default function ThemeContainer() {
   const themeRef = useRef<HTMLDivElement | null>(null);
   const [{ isOpen }, setTheme] = useAtom<ThemeStateTypes>(themeState);
 
-  const closeThemeMenu = useCallback(
-    (e: PointerEvent | MouseEvent) => {
-      if (!themeRef.current) return false;
-      return closeByClickOutSide(e, isOpen, themeRef, () =>
-        setTheme(prev => ({
-          ...prev,
-          isOpen: false,
-        })),
-      );
-    },
-    [isOpen, themeRef, setTheme],
-  );
+  const updateOpenState = useCallback(() => {
+    setTheme(prev => ({
+      ...prev,
+      isOpen: false,
+    }));
+  }, [setTheme]);
 
-  useEffect(() => {
-    if (themeRef.current) {
-      document.addEventListener("click", e => closeThemeMenu(e));
-      return () =>
-        document.removeEventListener("click", e => closeThemeMenu(e));
-    }
-  }, [themeRef, closeThemeMenu]);
+  useCloseByClickOutside(themeRef.current, isOpen, updateOpenState);
 
   return (
     <div className="util-item theme-item" ref={themeRef}>
