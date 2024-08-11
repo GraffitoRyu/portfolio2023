@@ -3,7 +3,7 @@
 import { css } from "styled-components";
 
 // util
-import { getUnit, rem } from "@/util/unit.util";
+import { getUnit, rem } from "@/utils/style.util";
 
 /**
  * styled-components - mixin

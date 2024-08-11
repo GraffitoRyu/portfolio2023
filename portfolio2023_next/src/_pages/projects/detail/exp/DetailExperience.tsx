@@ -18,7 +18,7 @@ import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // util
-import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 
 export default function DetailExperience() {
   const { container: scrollContainer } =

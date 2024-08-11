@@ -25,7 +25,7 @@ import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 import { viewportState } from "@/jotai/viewport.state";
 
 // utils
-import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 
 export default function CareerItem({
   code,

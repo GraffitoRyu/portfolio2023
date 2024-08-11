@@ -3,7 +3,7 @@
 import { styled } from "styled-components";
 
 // util
-import { rem, widthRatio } from "@/util/unit.util";
+import { rem, widthRatio } from "@/utils/style.util";
 
 // style
 import {

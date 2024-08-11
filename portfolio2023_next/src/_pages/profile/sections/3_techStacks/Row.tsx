@@ -18,7 +18,7 @@ import {
 import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 // util
-import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 
 export default function StackRow({
   title,

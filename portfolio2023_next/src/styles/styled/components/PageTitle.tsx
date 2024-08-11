@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import { font } from "../preset/mixins";
-import { rem } from "@/util/unit.util";
+import { rem } from "@/utils/style.util";
 
 export const PageTitle = styled.span`
   display: block;

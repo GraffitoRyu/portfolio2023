@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import setViewportDeviceInfo from "@/util/cross_browsing/checkDevice";
+import setViewportDeviceInfo from "@/utils/cross_browsing/checkDevice.util";
 
 /**
  * Next.js 미들웨어

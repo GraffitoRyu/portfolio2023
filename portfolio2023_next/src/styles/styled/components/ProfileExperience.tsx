@@ -3,7 +3,7 @@
 import styled from "styled-components";
 
 // util
-import { rem, widthRatio } from "@/util/unit.util";
+import { rem, widthRatio } from "@/utils/style.util";
 import { flex, font, size } from "../preset/mixins";
 
 export const StyledExpScrollContainer = styled.div`

@@ -16,7 +16,7 @@ import {
 import { viewportState } from "@/jotai/viewport.state";
 
 // util
-import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 
 export default function DetailMediaItem({ data }: { data: MediaType }) {

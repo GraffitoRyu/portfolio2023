@@ -11,7 +11,7 @@ import { ThemeMenuButton } from "@/styles/styled/components/ThemeMenu";
 import { themeState } from "@/jotai/theme.state";
 
 // util
-import { getSystemTheme } from "@/util/interactions/changeTheme";
+import { getSystemTheme } from "@/utils/interactions/theme.util";
 
 export default function ThemeMenuBtn({ code }: { code: ThemeMenuType }) {
   const [theme, setTheme] = useAtom<ThemeStateTypes>(themeState);

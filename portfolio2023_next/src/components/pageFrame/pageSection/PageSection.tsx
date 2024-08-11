@@ -8,7 +8,9 @@ import { PageSectionContainer } from "@/styles/styled/components/PageSection";
 
 // state
 import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
-import { capitalize } from "@/util/unit.util";
+
+// util
+import { capitalize } from "@/utils/data/convert.util";
 
 export default function PageSection({
   page,

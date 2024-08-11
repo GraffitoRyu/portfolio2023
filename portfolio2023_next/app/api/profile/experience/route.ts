@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getFirebaseData } from "@/util/api.util";
+import { getFirebaseData } from "@/utils/data/api.util";
 import cacheOptions from "@/lib/cache.lib";
 
 /**

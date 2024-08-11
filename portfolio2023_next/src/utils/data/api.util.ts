@@ -1,6 +1,9 @@
 import { revalidateTag } from "next/cache";
 
-import { nextAPILog } from "./log.util";
+// utils
+import { nextAPILog } from "@/utils/log.util";
+
+// lib
 import { firebaseDB, firebaseRef, firebaseGet } from "@/lib/firebase.lib";
 
 /**

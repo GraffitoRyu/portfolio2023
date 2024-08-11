@@ -14,7 +14,7 @@ import { pageDetailLoadState } from "@/jotai/load.state";
 import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // util
-import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 
 export default function DetailHeaderTitleContainer() {

@@ -3,7 +3,7 @@
 import styled, { css } from "styled-components";
 
 // util
-import { rem, widthRatio } from "@/util/unit.util";
+import { rem, widthRatio } from "@/utils/style.util";
 
 // style
 import { flex, font, position, size } from "../preset/mixins";

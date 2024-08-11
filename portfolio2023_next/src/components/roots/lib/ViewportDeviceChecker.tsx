@@ -15,7 +15,7 @@ import {
 } from "@/jotai/viewport.state";
 
 // util
-import { remToPx } from "@/util/unit.util";
+import { remToPx } from "@/utils/style.util";
 
 /**
  * Root/Library; 접속 환경관련 상태 업데이트

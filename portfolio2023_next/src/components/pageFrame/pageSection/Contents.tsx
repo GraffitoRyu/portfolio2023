@@ -14,7 +14,7 @@ import {
 import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 // util
-import { capitalize } from "@/util/unit.util";
+import { capitalize } from "@/utils/data/convert.util";
 
 export default function SectionContents({
   code,

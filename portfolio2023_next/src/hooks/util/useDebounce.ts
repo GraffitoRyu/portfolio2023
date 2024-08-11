@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * 디바운스 Hook
  * @hook
@@ -12,7 +10,7 @@ export default function useDebounce<
 >(callback: F, delay?: number) {
   let timer: ReturnType<typeof setTimeout> | NodeJS.Timeout | null = null;
 
-  const debounced = (...args: Parameters<F>) => {
+  return (...args: Parameters<F>) => {
     if (timer !== null) {
       clearTimeout(timer);
       timer = null;
@@ -20,6 +18,4 @@ export default function useDebounce<
 
     timer = setTimeout(() => callback(...args), delay ?? 400);
   };
-
-  return debounced;
 }

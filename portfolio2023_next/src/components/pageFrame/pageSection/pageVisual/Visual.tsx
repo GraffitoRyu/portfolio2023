@@ -21,7 +21,7 @@ import { pageLoadState } from "@/jotai/load.state";
 import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 
 // hooks
-import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 
 export default function PageVisual({ title }: { title: string[] }) {
   const { windowWidth, headerHeight } = useAtomValue(viewportState);

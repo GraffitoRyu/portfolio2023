@@ -18,7 +18,7 @@ import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // utils
-import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 
 export default function PageIntro({ title, desc }: IntroTypes) {
   const { init, loadComplete } = useAtomValue(pageLoadState);

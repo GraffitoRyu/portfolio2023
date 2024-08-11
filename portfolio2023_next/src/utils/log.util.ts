@@ -1,4 +1,4 @@
-import { formatDate } from "./time.util";
+import { dateFormat } from "./data/dateTime.util";
 
 /**
  * 콘솔로그; 개발용
@@ -24,7 +24,7 @@ export const nextAPILog = (
 ) => {
   if (process.env.NODE_ENV === "production") return;
 
-  const DATE = formatDate(new Date());
+  const DATE = dateFormat(new Date());
   const TIME =
     new Intl.DateTimeFormat("en-US", {
       hour: "numeric",

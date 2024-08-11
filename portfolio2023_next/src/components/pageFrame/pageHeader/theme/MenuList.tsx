@@ -15,7 +15,7 @@ import {
 import { themeState } from "@/jotai/theme.state";
 
 // util
-import { applyTheme } from "@/util/interactions/changeTheme";
+import { applyTheme } from "@/utils/interactions/theme.util";
 
 export default function ThemeMenuList() {
   const themeList: ThemeMenuType[] = ["light", "dark", "system"];

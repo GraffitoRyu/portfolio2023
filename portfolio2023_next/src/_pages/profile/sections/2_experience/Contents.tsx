@@ -27,7 +27,7 @@ import {
 import useResizeObserver from "@/hooks/layout/useResizeObserver";
 
 // util
-import { ctxScrollTrigger } from "@/util/interactions/presetScrollTrigger";
+import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 
 // fetch
 import { useQueryProfileExperienceData } from "@/lib/query.lib";
