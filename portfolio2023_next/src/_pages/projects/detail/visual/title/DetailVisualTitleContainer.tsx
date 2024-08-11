@@ -3,13 +3,13 @@ import DetailVisualTitle from "./DetailVisualTitle";
 import DetailVisualSubtitle from "./DetailVisualSubtitle";
 
 // style component
-import { PDVisualTitleContainer } from "@/styles/styled/components/ProjectDetail";
+import { StyledPDVisualTitleContainer } from "@/styles/styled/components/ProjectDetail";
 
 export default function DetailVisualTitleContainer() {
   return (
-    <PDVisualTitleContainer>
+    <StyledPDVisualTitleContainer>
       <DetailVisualTitle />
       <DetailVisualSubtitle />
-    </PDVisualTitleContainer>
+    </StyledPDVisualTitleContainer>
   );
 }

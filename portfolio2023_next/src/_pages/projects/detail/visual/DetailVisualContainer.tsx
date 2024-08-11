@@ -6,17 +6,17 @@ import DetailSummary from "./summary/DetailSummary";
 import DetailVisualTitleContainer from "./title/DetailVisualTitleContainer";
 
 // style components
-import { PDVisualSection } from "@/styles/styled/components/ProjectDetail";
+import { StyledPDVisualSection } from "@/styles/styled/components/ProjectDetail";
 
 export default function DetailVisualContainer() {
   return (
-    <PDVisualSection className="detail-section-visual">
+    <StyledPDVisualSection className="detail-section-visual">
       <DetailVisualImage />
       <DetailVisualViewport>
         <DetailSummary />
         <DetailVisualTitleContainer />
       </DetailVisualViewport>
       <DetailVisualLower />
-    </PDVisualSection>
+    </StyledPDVisualSection>
   );
 }

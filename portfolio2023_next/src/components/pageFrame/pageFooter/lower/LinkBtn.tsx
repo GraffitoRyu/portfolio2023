@@ -11,10 +11,10 @@ import LinkIcon from "./LinkIcon";
 
 // style components
 import {
-  FooterLinkBtn,
-  FooterLinkCopyBtn,
-  FooterLinkIcon,
-  FooterLinkItem,
+  StyledFooterLinkBtn,
+  StyledFooterLinkCopyBtn,
+  StyledFooterLinkIcon,
+  StyledFooterLinkItem,
 } from "@/styles/styled/components/PageFooter";
 
 // state
@@ -80,8 +80,8 @@ export default function FooterLink({
   // 포트폴리오 페이지 메뉴
   if (isNav)
     return (
-      <FooterLinkItem>
-        <FooterLinkBtn
+      <StyledFooterLinkItem>
+        <StyledFooterLinkBtn
           as="button"
           type="button"
           className={`${hoverText}`}
@@ -106,15 +106,15 @@ export default function FooterLink({
           aria-label={`포트폴리오 페이지 ${name}로 이동하기`}
         >
           <span>{name}</span>
-        </FooterLinkBtn>
-      </FooterLinkItem>
+        </StyledFooterLinkBtn>
+      </StyledFooterLinkItem>
     );
 
   // 복사 기능 메뉴
   if (isCopy)
     return (
-      <FooterLinkItem>
-        <FooterLinkBtn
+      <StyledFooterLinkItem>
+        <StyledFooterLinkBtn
           href={path}
           target="_blank"
           className={`${hoverText}`}
@@ -123,8 +123,8 @@ export default function FooterLink({
           aria-label={`${name.includes("tel") ? "전화" : "이메일"} 연락하기`}
         >
           <span>{name}</span>
-        </FooterLinkBtn>
-        <FooterLinkCopyBtn
+        </StyledFooterLinkBtn>
+        <StyledFooterLinkCopyBtn
           ref={downBtnRef}
           type="button"
           data-clipboard-text={name}
@@ -140,7 +140,7 @@ export default function FooterLink({
             active={copied}
             show={copiedShow}
           >
-            <FooterLinkIcon>
+            <StyledFooterLinkIcon>
               <LinkIcon
                 {...{
                   isExternal,
@@ -148,18 +148,18 @@ export default function FooterLink({
                   isDownload,
                 }}
               />
-            </FooterLinkIcon>
+            </StyledFooterLinkIcon>
           </Tooltip>
-        </FooterLinkCopyBtn>
-      </FooterLinkItem>
+        </StyledFooterLinkCopyBtn>
+      </StyledFooterLinkItem>
     );
 
   const doc_code = code.replace("_doc", "");
 
   // 외부 링크 메뉴
   return (
-    <FooterLinkItem>
-      <FooterLinkBtn
+    <StyledFooterLinkItem>
+      <StyledFooterLinkBtn
         href={path}
         target="_blank"
         className={`${hoverText}`}
@@ -173,7 +173,7 @@ export default function FooterLink({
         aria-label={`외부 페이지 ${name} 링크로 이동하기`}
       >
         <span>{name}</span>
-        <FooterLinkIcon>
+        <StyledFooterLinkIcon>
           <LinkIcon
             {...{
               isExternal,
@@ -181,8 +181,8 @@ export default function FooterLink({
               isDownload,
             }}
           />
-        </FooterLinkIcon>
-      </FooterLinkBtn>
-    </FooterLinkItem>
+        </StyledFooterLinkIcon>
+      </StyledFooterLinkBtn>
+    </StyledFooterLinkItem>
   );
 }

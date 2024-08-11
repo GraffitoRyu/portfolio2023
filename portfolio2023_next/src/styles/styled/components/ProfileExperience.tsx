@@ -10,7 +10,7 @@ export const StyledExpScrollContainer = styled.div`
   ${size({ w: "100%", h: "100%" })}
 `;
 
-export const StyledExpList = styled.ul<{ $length: number }>`
+export const StyledExpList = styled.ul<StyleOptionExpList>`
   ${flex({ start: true })}
   ${({ $length }) =>
     size({
@@ -32,7 +32,7 @@ export const StyledExpList = styled.ul<{ $length: number }>`
   }
 `;
 
-export const StyledExpItem = styled.li<{ $totalLength: number }>`
+export const StyledExpItem = styled.li<StyleOptionExpItem>`
   ${({ $totalLength }) =>
     size({
       w: `${widthRatio(5 * ($totalLength !== 0 ? $totalLength : 25), 5)}%`,

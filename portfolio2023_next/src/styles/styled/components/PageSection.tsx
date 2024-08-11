@@ -8,7 +8,7 @@ import { flex, font, position, size } from "../preset/mixins";
 // util
 import { rem, widthRatio } from "@/utils/style.util";
 
-export const PageSectionContainer = styled.section`
+export const StyledPageSectionContainer = styled.section`
   transition: none;
   ${size({ w: "100%" })}
   &.side-h-padding {
@@ -47,7 +47,7 @@ export const PageSectionContainer = styled.section`
   }
 `;
 
-export const SectionHeaderContainer = styled.header`
+export const StyledSectionHeaderContainer = styled.header`
   ${size({ w: "100%", mb: 200 })}
   &.empty {
     margin: 0;
@@ -59,7 +59,7 @@ export const SectionHeaderContainer = styled.header`
   }
 `;
 
-export const HeaderTitle = styled.h2`
+export const StyledHeaderTitle = styled.h2`
   ${size({ mb: 64 })}
   color: ${({ theme }) => theme.sectionHeader.title};
   ${font({
@@ -78,7 +78,7 @@ export const HeaderTitle = styled.h2`
   }
 `;
 
-export const HeaderDesc = styled.p`
+export const StyledHeaderDesc = styled.p`
   color: ${({ theme }) => theme.sectionHeader.desc};
   ${font({
     size: 32,
@@ -97,7 +97,7 @@ export const HeaderDesc = styled.p`
   }
 `;
 
-export const Contents = styled.div`
+export const StyledSectionContents = styled.div`
   ${size({ w: "100%" })}
   @media only screen and (min-width: 1024px) {
     ${position({ type: "relative", z: 10 })}
@@ -108,7 +108,7 @@ export const Contents = styled.div`
   }
 `;
 
-export const SideContents = styled.aside`
+export const StyledSectionSideContents = styled.aside`
   width: 100%;
   min-height: 1px;
   @media only screen and (min-width: 1024px) {
@@ -124,7 +124,7 @@ export const SideContents = styled.aside`
   }
 `;
 
-export const ContentsMain = styled.div`
+export const StyledSectionContentsMain = styled.div`
   width: 100%;
   @media only screen and (min-width: 1024px) {
     ${size({ w: `${widthRatio(12, 7)}%`, p: [0, 20] })}

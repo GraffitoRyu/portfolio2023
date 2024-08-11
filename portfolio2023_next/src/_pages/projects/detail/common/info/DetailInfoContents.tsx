@@ -1,7 +1,7 @@
 // style components
 import {
-  PDStackContents,
-  PDSummaryContents,
+  StyledPDStackContents,
+  StyledPDSummaryContents,
 } from "@/styles/styled/components/ProjectDetail";
 
 export default function DetailInfoContents({
@@ -38,9 +38,9 @@ function SwitchContents({
 }) {
   switch (code) {
     case "stacks":
-      return <PDStackContents>{children}</PDStackContents>;
+      return <StyledPDStackContents>{children}</StyledPDStackContents>;
     case "summary":
-      return <PDSummaryContents>{children}</PDSummaryContents>;
+      return <StyledPDSummaryContents>{children}</StyledPDSummaryContents>;
     default:
       return null;
   }

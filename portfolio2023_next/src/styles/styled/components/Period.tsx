@@ -5,7 +5,7 @@ import styled from "styled-components";
 // style
 import { flex, font, size } from "../preset/mixins";
 
-export const PeriodContainer = styled.div`
+export const StyledPeriodContainer = styled.div`
   ${flex({ std: "flex-start" })}
   ${font({
     size: 32,
@@ -18,7 +18,7 @@ export const PeriodContainer = styled.div`
   }
 `;
 
-export const Bar = styled.span`
+export const StyledPeriodBar = styled.span`
   ${size({ w: 80, h: 1, m: [0, 32] })}
   &:before {
     content: "";

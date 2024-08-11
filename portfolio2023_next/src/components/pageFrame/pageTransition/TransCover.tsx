@@ -8,9 +8,9 @@ import LoadingIconComponent from "../../loading/LoadingIcon";
 
 // style components
 import {
-  TransBox,
-  TransTitle,
-  TransitionCover,
+  StyledTransBox,
+  StyledTransTitle,
+  StyledTransitionCover,
 } from "@/styles/styled/components/TransCover";
 
 // state
@@ -54,11 +54,11 @@ export default function TransCover() {
   }, [initComplete, loaded, setPage]);
 
   return (
-    <TransitionCover className={`transCover ${loading}`}>
-      <TransBox className="transCoverBox">
-        <TransTitle>{data.title}</TransTitle>
+    <StyledTransitionCover className={`transCover ${loading}`}>
+      <StyledTransBox className="transCoverBox">
+        <StyledTransTitle>{data.title}</StyledTransTitle>
         <LoadingIconComponent />
-      </TransBox>
-    </TransitionCover>
+      </StyledTransBox>
+    </StyledTransitionCover>
   );
 }

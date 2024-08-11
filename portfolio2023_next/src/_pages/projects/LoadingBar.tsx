@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 
 // style components
-import { ProjectLoadingProgress } from "@/styles/styled/components/ProjectList";
+import { StyledProjectLoadingProgress } from "@/styles/styled/components/ProjectList";
 
 // state
 import { pageDetailLoadState } from "@/jotai/load.state";
@@ -65,10 +65,10 @@ export default function ProjectLoadingBar() {
   }, [category, clicked, dataStatus, open, openComplete]);
 
   return (
-    <ProjectLoadingProgress
+    <StyledProjectLoadingProgress
       className={isHide ? "" : "hide"}
       value={progress}
       max="100"
-    ></ProjectLoadingProgress>
+    ></StyledProjectLoadingProgress>
   );
 }

@@ -11,7 +11,7 @@ import DetailExperience from "./exp/DetailExperience";
 import DetailMediaContainer from "./media/DetailMedia";
 
 // style components
-import { PDContainer } from "@/styles/styled/components/ProjectDetail";
+import { StyledPDContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
 import { pageDetailLoadState } from "@/jotai/load.state";
@@ -96,7 +96,7 @@ export default function ProjectDetailContainer() {
   }, [category, openActive, setLayoutState]);
 
   return (
-    <PDContainer className={`${open ? "open" : ""}`} ref={setRef}>
+    <StyledPDContainer className={`${open ? "open" : ""}`} ref={setRef}>
       <div className="detail-scroll-wrap" ref={scrollWrapRef}>
         <DetailHeader />
         <DetailVisualContainer />
@@ -104,6 +104,6 @@ export default function ProjectDetailContainer() {
         <DetailExperience />
         <DetailMediaContainer />
       </div>
-    </PDContainer>
+    </StyledPDContainer>
   );
 }

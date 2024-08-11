@@ -6,7 +6,7 @@ import { keyframes, styled } from "styled-components";
 import { transTime } from "../preset/transTime";
 import { flex, font, position, size } from "../preset/mixins";
 
-export const InitCoverContainer = styled.div`
+export const StyledInitCoverContainer = styled.div`
   ${position({ type: "fixed", left: 0, top: 0, z: 4000 })}
   ${size({ w: "100%", h: "100%" })}
   opacity:0;
@@ -20,7 +20,7 @@ export const InitCoverContainer = styled.div`
   }
 `;
 
-export const InitCoverBox = styled.div`
+export const StyledInitCoverBox = styled.div`
   position: relative;
   ${size({ w: "100%", h: `100vh`, p: [0, 80] })}
   ${flex({ dir: "column" })}
@@ -34,7 +34,7 @@ const initTitleBreathing = keyframes`
   100% {opacity:1}
 `;
 
-export const InitCoverTItle = styled.div`
+export const StyledInitCoverTItle = styled.div`
   color: ${({ theme }) => theme.initCover.text};
   ${flex({ dir: "column" })}
   ${font({

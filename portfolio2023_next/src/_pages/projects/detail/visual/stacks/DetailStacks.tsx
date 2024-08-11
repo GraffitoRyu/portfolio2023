@@ -8,7 +8,7 @@ import DetailInfoTitle from "../../common/info/DetailInfoTitle";
 import DetailInfoContents from "../../common/info/DetailInfoContents";
 
 // style components
-import { PDStacksContainer } from "@/styles/styled/components/ProjectDetail";
+import { StyledPDStacksContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
 import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
@@ -37,7 +37,7 @@ export default function DetailStacks() {
   }, [category, data]);
 
   return (
-    <PDStacksContainer>
+    <StyledPDStacksContainer>
       <DetailInfoItem code="stacks" className="details-stack-title">
         <DetailInfoTitle code="stacks" title="Tech Stacks" />
         <dd></dd>
@@ -55,7 +55,7 @@ export default function DetailStacks() {
           />
         </DetailInfoItem>
       ))}
-    </PDStacksContainer>
+    </StyledPDStacksContainer>
   );
 }
 

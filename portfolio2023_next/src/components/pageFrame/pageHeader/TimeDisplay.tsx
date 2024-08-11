@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 
 // style components
 import {
-  TimeRegion,
-  TimerContainer,
+  StyledTimeRegion,
+  StyledTimerContainer,
 } from "@/styles/styled/components/PageHeader";
 
 export default function TimeDisplay() {
@@ -23,8 +23,8 @@ export default function TimeDisplay() {
   }, [curTime]);
 
   return (
-    <TimerContainer>
-      <TimeRegion>Daejeon, KR</TimeRegion>
+    <StyledTimerContainer>
+      <StyledTimeRegion>Daejeon, KR</StyledTimeRegion>
       <time>
         {curTime instanceof Date
           ? curTime.toLocaleString("ko-KR", {
@@ -38,6 +38,6 @@ export default function TimeDisplay() {
             })
           : "----.--.-- --:--:--"}
       </time>
-    </TimerContainer>
+    </StyledTimerContainer>
   );
 }

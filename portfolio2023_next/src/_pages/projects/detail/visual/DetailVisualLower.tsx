@@ -7,7 +7,7 @@ import DetailLinkContainer from "../common/linkMenu/DetailLinkContainer";
 import DetailStacks from "./stacks/DetailStacks";
 
 // style components
-import { PDVisualLower } from "@/styles/styled/components/ProjectDetail";
+import { StyledPDVisualLower } from "@/styles/styled/components/ProjectDetail";
 
 // state
 import { viewportState } from "@/jotai/viewport.state";
@@ -16,9 +16,9 @@ export default function DetailVisualLower() {
   const { windowWidth } = useAtomValue(viewportState);
 
   return (
-    <PDVisualLower>
+    <StyledPDVisualLower>
       {windowWidth < 1024 ? <DetailLinkContainer /> : null}
       <DetailStacks />
-    </PDVisualLower>
+    </StyledPDVisualLower>
   );
 }

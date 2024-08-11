@@ -16,15 +16,23 @@ import { getUnit, rem } from "@/utils/style.util";
  * 7. svgStroke: rect, circle, path { stroke-width: props1, stroke: props2 }
  */
 
-// margin, padding 배열 변환
-const convertSpacing = (v: string | number | Array<string | number>) => {
+/**
+ * style preset; margin, padding 배열 변환
+ * @param {string | number | (string | number)[]} v margin 또는 padding 설정 값
+ */
+const convertSpacing = (
+  v: string | number | Array<string | number>,
+): number | string => {
   if (Array.isArray(v))
     return v.map((d: string | number) => getUnit(d)).join(" ");
   else return getUnit(v);
 };
 
 /**
- * @desc 각 값은 auto(default), string(%, px, rem 등 단위가 있는 것으로 간주), number는 rem 변환
+ * style preset; 사이즈 css
+ * @desc
+ * - 각 값은 auto(default), string(%, px, rem 등 단위가 있는 것으로 간주), number는 rem 변환
+ * @param {PresetSizeProps} props
  * @property {string | number} [w] : width
  * @property {string | number} [h] : height
  * @property {string | number | Array<string | number>} [p] : padding 단일 값은 모든 방향 적용, 배열의 경우 [상하, 좌우]/[상, 좌우, 하]/[상, 우, 하, 좌]
@@ -53,7 +61,7 @@ export const size = ({
   pr,
   pb,
   pl,
-}: SizeTypes) => css`
+}: Partial<PresetSizeProps>) => css`
   ${typeof w !== "undefined" && `width:${getUnit(w)};`}
   ${typeof h !== "undefined" && `height:${getUnit(h)};`}
   ${typeof m !== "undefined" && `margin: ${convertSpacing(m)};`}
@@ -70,15 +78,19 @@ export const size = ({
 `;
 
 /**
+ * style preset; 최대 사이즈 css
+ * @param {PresetSizeProps} props
  * @property {number | string} [w] : auto(default), string(%, px, rem 등 단위가 있는 것으로 간주), number는 rem 변환
  * @property {number | string} [h] : auto(default), string(%, px, rem 등 단위가 있는 것으로 간주), number는 rem 변환
  */
-export const maxSize = ({ w, h }: SizeTypes) => css`
+export const maxSize = ({ w, h }: Partial<PresetSizeProps>) => css`
   max-width: ${typeof w !== "undefined" ? getUnit(w) : "auto"};
   max-height: ${typeof h !== "undefined" ? getUnit(h) : "auto"};
 `;
 
 /**
+ * style preset; flex box css 설정
+ * @param {PresetFlexProps} props
  * @property {string | undefined} [dir] : row, column
  * @property {string | undefined} [std] : justify-content (기준 축 정렬)
  * @property {string | undefined} [cross] : align-items (교차 축 정렬)
@@ -86,7 +98,14 @@ export const maxSize = ({ w, h }: SizeTypes) => css`
  * @property {boolean | boolean[] | undefined} [start] : flex-start 설정 (true / [justify-content, align-items])
  * @property {boolean | boolean[] | undefined} [end] : flex-end 설정 (true / [justify-content, align-items])
  */
-export const flex = ({ dir, std, cross, wrap, start, end }: FlexTypes) => css`
+export const flex = ({
+  dir,
+  std,
+  cross,
+  wrap,
+  start,
+  end,
+}: Partial<PresetFlexProps>) => css`
   display: flex;
   justify-content: ${!std &&
   typeof start === "undefined" &&
@@ -135,13 +154,15 @@ export const flex = ({ dir, std, cross, wrap, start, end }: FlexTypes) => css`
 `;
 
 /**
- * @property {string | undefined} [type] : absolute(default), relative, fixed, sticky, static, ...
+ * style preset; position css 설정
+ * @param {PresetPositionProps} props
+ * @property {string} [type] : absolute(default), relative, fixed, sticky, static, ...
  * @property {string | number} [top] : px, rem 단위를 붙인 string 형태 필요
  * @property {string | number} [left] : px, rem 단위를 붙인 string 형태 필요
  * @property {string | number} [bottom] : px, rem 단위를 붙인 string 형태 필요
  * @property {string | number} [right] : px, rem 단위를 붙인 string 형태 필요
- * @property {number | undefined} [z] : z-index
- * @property {boolean | string | undefined} [center] : px, rem 단위를 붙인 string 형태 필요
+ * @property {number} [z] : z-index
+ * @property {boolean | "x" | "Y"} [center] : px, rem 단위를 붙인 string 형태 필요
  */
 export const position = ({
   type,
@@ -151,7 +172,7 @@ export const position = ({
   right,
   center,
   z,
-}: PositionTypes) => css`
+}: Partial<PresetPositionProps>) => css`
   position: ${type ?? "absolute"};
   ${typeof top !== "undefined" ? `top:${getUnit(top)};` : ""};
   ${typeof left !== "undefined" ? `left:${getUnit(left)};` : ""};
@@ -173,6 +194,19 @@ export const position = ({
     : ""}
 `;
 
+/**
+ * style preset; 폰트 css 설정
+ * @param {PresetFontProps} props
+ * @property {number | string} [size] font-size
+ * @property {number | string} [weight] font-weight
+ * @property {number | string} [height] line-height
+ * @property {number | string} [spacing] letter-spacing
+ * @property {string | string[]} [family] font-family
+ * @property {string} [whitespace] white-space
+ * @property {string} [transform] text-transform
+ * @property {string} [deco] text-decoration
+ * @property {string} [style] font-style
+ */
 export const font = ({
   size,
   weight,
@@ -183,17 +217,7 @@ export const font = ({
   transform,
   deco,
   style,
-}: {
-  size?: number | string;
-  weight?: number | string;
-  height?: number | string;
-  spacing?: number | string;
-  family?: string | string[];
-  whitespace?: string;
-  transform?: string;
-  deco?: string;
-  style?: string;
-}) => css`
+}: Partial<PresetFontProps>) => css`
   ${typeof size === "number"
     ? `font-size:${rem(size)};`
     : typeof size === "string"
@@ -221,13 +245,16 @@ export const font = ({
   ${style && `font-style:${style};`}
 `;
 
-type TransitionTypes = {
-  prop: string;
-  time: string;
-  easing?: string;
-  delay?: string;
-};
-export const transition = ([...setArray]: TransitionTypes[]) => css`
+/**
+ * style preset; transition 설정
+ * @param {PresetTransitionProps[]} props
+ * @property {string} prop transition-property
+ * @property {string} time transition-duration (0.0s)
+ * @property {string} [easing] transition-timing-function
+ * @property {string} [delay] transition-delay (0.0s)
+ * @see https://easings.net/ transition-timing-function
+ */
+export const transition = ([...setArray]: PresetTransitionProps[]) => css`
   transition: ${setArray
     .map(
       d =>
@@ -238,7 +265,15 @@ export const transition = ([...setArray]: TransitionTypes[]) => css`
     .join(",")};
 `;
 
-export const SvgFill = (color: string) => css`
+/**
+ * style preset; svg fill 컬러 설정
+ * @param {string} color
+ * @desc
+ * - rect fill
+ * - circle fill
+ * - path fill
+ */
+export const svgFill = (color: string) => css`
   rect,
   circle,
   path {
@@ -246,7 +281,15 @@ export const SvgFill = (color: string) => css`
   }
 `;
 
-export const SvgStroke = (width: string, color: string) => css`
+/**
+ * style preset; svg stroke 설정
+ * @param {string} width stroke-width
+ * @param {string} color stroke
+ * - rect
+ * - circle
+ * - path
+ */
+export const svgStroke = (width: string, color: string) => css`
   rect,
   circle,
   path {

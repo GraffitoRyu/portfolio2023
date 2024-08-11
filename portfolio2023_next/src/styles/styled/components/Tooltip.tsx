@@ -5,12 +5,12 @@ import { flex, font, position, size } from "../preset/mixins";
 import { rem } from "@/utils/style.util";
 import { transTime } from "../preset/transTime";
 
-export const TooltipContainer = styled.div`
+export const StyledTooltipContainer = styled.div`
   position: relative;
   ${size({ w: "fit-content", h: "fit-content" })}
 `;
 
-export const TooltipPositionBox = styled.div<{ $pos: string[] }>`
+export const StyledTooltipPositionBox = styled.div<{ $pos: string[] }>`
   ${position({ type: "absolute", z: 100 })}
   ${({ $pos }) => {
     let direction = "";
@@ -39,7 +39,7 @@ export const TooltipPositionBox = styled.div<{ $pos: string[] }>`
   }
 `;
 
-export const TooltipBox = styled.div<{ $section: string; $pos: string[] }>`
+export const StyledTooltipBox = styled.div<StyleOptionTooltipBox>`
   ${size({ w: "fit-content", h: "fit-content", r: 8, p: [0, 16] })}
   max-width: ${rem(160)};
   min-width: ${rem(80)};
@@ -73,7 +73,7 @@ export const TooltipBox = styled.div<{ $section: string; $pos: string[] }>`
   }
 `;
 
-export const TooltipTitle = styled.h6<{ $section: string }>`
+export const StyledTooltipTitle = styled.h6<StyleOptionTooltipText>`
   ${size({ w: "fit-content", mb: 16 })}
   color:${({ $section, theme }) => theme[$section].tooltipTitle};
   ${font({
@@ -83,7 +83,7 @@ export const TooltipTitle = styled.h6<{ $section: string }>`
   })}
 `;
 
-export const TooltipContents = styled.p<{ $section: string }>`
+export const StyledTooltipContents = styled.p<StyleOptionTooltipText>`
   ${flex({ start: [true, false] })}
   min-height:${rem(32)};
   color: ${({ $section, theme }) => theme[$section].tooltipText};

@@ -11,8 +11,8 @@ import BtnIcon from "@/_pages/projects/item/BtnIcon";
 
 // style components
 import {
-  ProjectItemBorder,
-  ProjectItemContainer,
+  StyledProjectItemBorder,
+  StyledProjectItemContainer,
 } from "@/styles/styled/components/ProjectList";
 
 // state
@@ -105,7 +105,7 @@ export default function ProjectItem({
   }, [category]);
 
   return (
-    <ProjectItemContainer
+    <StyledProjectItemContainer
       type="button"
       ref={triggerRef}
       className={`${hide} ${hover}`}
@@ -116,11 +116,11 @@ export default function ProjectItem({
         router.push(`/projects/${code}`);
       }}
     >
-      <ProjectItemBorder $pos="top" />
+      <StyledProjectItemBorder $pos="top" />
       <ProjectSummary code={code} summary={summary} />
       <SlideTitle text={summary.title} />
       <BtnIcon />
-      {$isLast && <ProjectItemBorder $pos="bottom" />}
-    </ProjectItemContainer>
+      {$isLast && <StyledProjectItemBorder $pos="bottom" />}
+    </StyledProjectItemContainer>
   );
 }

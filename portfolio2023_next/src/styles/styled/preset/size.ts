@@ -1,3 +1,17 @@
+/**
+ * style preset; 사이즈 고정 값
+ * @desc
+ * - common
+ *  - remStd
+ *  - padding
+ *  - section
+ *    - mobile: top, left, bottom, right
+ *    - pc: top, left, bottom, right
+ * - icon
+ *  - mobile, w768_landscape, w768, w1024, w1280, w1440
+ * - btn
+ *  - mobile, w768_landscape, w768m w1024, w1280, w1440
+ */
 export const sizePreset = {
   common: {
     remStd: 25.6,

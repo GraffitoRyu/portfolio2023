@@ -3,9 +3,9 @@ import { useAtomValue } from "jotai";
 
 // style components
 import {
-  FooterHeader,
-  FooterTitle,
-  FooterTitleLine,
+  StyledFooterHeader,
+  StyledFooterTitle,
+  StyledFooterTitleLine,
 } from "@/styles/styled/components/PageFooter";
 
 // state
@@ -61,11 +61,13 @@ export default function FooterUpperContainer() {
   }, [footerPos, footerTitleRef, scrollContainer, scrollTrigger]);
 
   return (
-    <FooterHeader>
-      <FooterTitle ref={footerTitleRef}>
-        <FooterTitleLine className="stroke-title">{`Let’s work`}</FooterTitleLine>
-        <FooterTitleLine className="filled-title">together</FooterTitleLine>
-      </FooterTitle>
-    </FooterHeader>
+    <StyledFooterHeader>
+      <StyledFooterTitle ref={footerTitleRef}>
+        <StyledFooterTitleLine className="stroke-title">{`Let’s work`}</StyledFooterTitleLine>
+        <StyledFooterTitleLine className="filled-title">
+          together
+        </StyledFooterTitleLine>
+      </StyledFooterTitle>
+    </StyledFooterHeader>
   );
 }

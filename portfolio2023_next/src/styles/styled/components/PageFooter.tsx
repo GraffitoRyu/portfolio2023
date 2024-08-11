@@ -3,11 +3,11 @@
 import styled, { css } from "styled-components";
 
 // style components
-import { PageTitle } from "./PageTitle";
+import { StyledPageTitle } from "./PageTitle";
 
 // style
 import {
-  SvgFill,
+  svgFill,
   flex,
   font,
   maxSize,
@@ -20,7 +20,7 @@ import { transTime } from "../preset/transTime";
 // util
 import { rem, widthRatio } from "@/utils/style.util";
 
-export const FooterContainer = styled.footer`
+export const StyledFooterContainer = styled.footer`
   ${position({ type: "relative", z: 600 })}
   ${size({ w: "100%", h: `100vh`, p: 80 })}
   background-color: ${({ theme }) => theme.footer.bg};
@@ -36,24 +36,24 @@ export const FooterContainer = styled.footer`
   }
 `;
 
-export const FooterWrap = styled.div`
+export const StyledFooterWrap = styled.div`
   ${flex({ dir: "column", std: "space-between", cross: "start" })}
   ${size({ w: "100%", h: "100%" })}
 `;
 
-export const FooterHeader = styled.header`
+export const StyledFooterHeader = styled.header`
   ${size({ mb: 80 })}
   @media only screen and (min-width: 1024px) {
     ${size({ mb: 160 })}
   }
 `;
 
-export const FooterTitle = styled.h2`
+export const StyledFooterTitle = styled.h2`
   ${flex({ dir: "column", cross: "start" })}
   font-size:0;
 `;
 
-export const FooterTitleLine = styled(PageTitle)`
+export const StyledFooterTitleLine = styled(StyledPageTitle)`
   ${font({ size: 160 })}
   color: ${({ theme }) => theme.footer.titleFill};
   &.stroke-title {
@@ -68,7 +68,7 @@ export const FooterTitleLine = styled(PageTitle)`
   }
 `;
 
-export const FooterLowerContainer = styled.div`
+export const StyledFooterLowerContainer = styled.div`
   ${size({ w: "100%", m: 0 })}
   @media only screen and (min-width: 1024px) {
     ${flex({
@@ -81,7 +81,7 @@ export const FooterLowerContainer = styled.div`
   }
 `;
 
-export const PortfolioSummaryContainer = styled.div`
+export const StyledPortfolioSummaryContainer = styled.div`
   ${size({ w: "100%", mt: 160 })}
   max-width:300px;
   @media only screen and (min-width: 580px) {
@@ -119,7 +119,7 @@ const FooterDescFont = css`
   }
 `;
 
-export const PortfolioDescription = styled.p`
+export const StyledPortfolioDescription = styled.p`
   color: ${({ theme }) => theme.footer.summary};
   ${FooterDescFont}
   line-height: 1.5em;
@@ -131,20 +131,20 @@ export const PortfolioDescription = styled.p`
   }
 `;
 
-export const PortfolioCopyright = styled.p`
+export const StyledPortfolioCopyright = styled.p`
   ${size({ mt: 24 })}
   color: ${({ theme }) => theme.footer.copyright};
   ${FooterDescFont}
   line-height: 1em;
 `;
 
-export const FooterMenuContainer = styled.div`
+export const StyledFooterMenuContainer = styled.div`
   @media only screen and (min-width: 1024px) {
     ${flex({ start: true })}
   }
 `;
 
-export const FooterMenuColumn = styled.div`
+export const StyledFooterMenuColumn = styled.div`
   width: 100%;
   @media only screen and (min-width: 1024px) {
     ${size({ w: "41.6667%", p: [0, 20] })}
@@ -162,7 +162,7 @@ export const FooterMenuColumn = styled.div`
   }
 `;
 
-export const FooterMenuItem = styled.dl`
+export const StyledFooterMenuItem = styled.dl`
   ${size({ w: "100%", mb: 40 })}
   @media only screen and (min-width: 560px) {
     ${size({ mb: 24 })}
@@ -178,7 +178,7 @@ export const FooterMenuItem = styled.dl`
   }
 `;
 
-export const FooterMenuTitle = styled.dt`
+export const StyledFooterMenuTitle = styled.dt`
   ${size({ w: "fit-content", mb: 16 })}
   color: ${({ theme }) => theme.footer.linkCategory};
   @media only screen and (min-width: 560px) {
@@ -191,7 +191,7 @@ export const FooterMenuTitle = styled.dt`
   font-weight: 700;
 `;
 
-export const FooterMenuContents = styled.dd`
+export const StyledFooterMenuContents = styled.dd`
   ${flex({ std: "flex-start", wrap: "wrap" })}
   @media only screen and (min-width: 1024px) {
     &.contact-menu {
@@ -200,14 +200,14 @@ export const FooterMenuContents = styled.dd`
   }
 `;
 
-export const FooterLinkItem = styled.div`
+export const StyledFooterLinkItem = styled.div`
   ${flex({ std: "flex-start", wrap: "wrap" })}
   ${size({ w: "fit-content", m: [0, 40, 16, 0] })}
   &:last-child {
     margin-right: 0;
   }
 `;
-export const FooterLinkIcon = styled.figure`
+export const StyledFooterLinkIcon = styled.figure`
   ${size({ w: 32, h: 32, mt: 4 })}
   svg {
     ${img({})}
@@ -228,7 +228,7 @@ export const FooterLinkIcon = styled.figure`
   }
 `;
 
-export const FooterLinkBtn = styled.a`
+export const StyledFooterLinkBtn = styled.a`
   ${flex({ std: "flex-start" })}
 
   span {
@@ -244,7 +244,7 @@ export const FooterLinkBtn = styled.a`
 
   figure {
     ${size({ ml: 8 })}
-    ${({ theme }) => SvgFill(theme.footer.linkIcon)}
+    ${({ theme }) => svgFill(theme.footer.linkIcon)}
   }
 
   &.hover {
@@ -252,7 +252,7 @@ export const FooterLinkBtn = styled.a`
       color: ${({ theme }) => theme.footer.linkHover};
     }
     figure {
-      ${({ theme }) => SvgFill(theme.footer.linkHover)}
+      ${({ theme }) => svgFill(theme.footer.linkHover)}
     }
   }
   @media only screen and (min-width: 640px) {
@@ -266,11 +266,11 @@ export const FooterLinkBtn = styled.a`
   }
 `;
 
-export const FooterLinkCopyBtn = styled.button`
+export const StyledFooterLinkCopyBtn = styled.button`
   position: relative;
   ${size({ ml: 8 })}
-  ${({ theme }) => SvgFill(theme.footer.linkIcon)}
+  ${({ theme }) => svgFill(theme.footer.linkIcon)}
   &.hover {
-    ${({ theme }) => SvgFill(theme.footer.linkHover)}
+    ${({ theme }) => svgFill(theme.footer.linkHover)}
   }
 `;

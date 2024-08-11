@@ -5,8 +5,8 @@ import { useAtomValue } from "jotai";
 
 // style components
 import {
-  LoadingIconContainer,
-  LoadingIconFigure,
+  StyledLoadingIconContainer,
+  StyledLoadingIconFigure,
 } from "@/styles/styled/components/LoadingIcon";
 
 // svg components
@@ -24,10 +24,10 @@ export default function LoadingIconComponent() {
   }, [init]);
 
   return (
-    <LoadingIconContainer className={loading}>
-      <LoadingIconFigure className="loading-icon">
+    <StyledLoadingIconContainer className={loading}>
+      <StyledLoadingIconFigure className="loading-icon">
         <LoadingIcon />
-      </LoadingIconFigure>
-    </LoadingIconContainer>
+      </StyledLoadingIconFigure>
+    </StyledLoadingIconContainer>
   );
 }

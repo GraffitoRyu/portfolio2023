@@ -1,7 +1,7 @@
 // style components
 import {
-  PDStackTitle,
-  PDSummaryTitle,
+  StyledPDStackTitle,
+  StyledPDSummaryTitle,
 } from "@/styles/styled/components/ProjectDetail";
 
 export default function DetailInfoTitle({
@@ -13,9 +13,9 @@ export default function DetailInfoTitle({
 }) {
   switch (code) {
     case "stacks":
-      return <PDStackTitle>{title}</PDStackTitle>;
+      return <StyledPDStackTitle>{title}</StyledPDStackTitle>;
     case "summary":
-      return <PDSummaryTitle>{title}</PDSummaryTitle>;
+      return <StyledPDSummaryTitle>{title}</StyledPDSummaryTitle>;
     default:
       return null;
   }

@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 // style components
-import { CommonBtn } from "@/styles/styled/preset/buttons";
+import { StyledDefaultBtn } from "@/styles/styled/preset/buttons";
 
 // svg
 import CloseIcon from "@/svg/btn/close.svg";
@@ -18,7 +18,7 @@ export default function CloseButton({
   const [hover, setHover] = useState<string>("");
 
   return (
-    <CommonBtn
+    <StyledDefaultBtn
       className={hover}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
@@ -28,6 +28,6 @@ export default function CloseButton({
       <figure>
         <CloseIcon />
       </figure>
-    </CommonBtn>
+    </StyledDefaultBtn>
   );
 }

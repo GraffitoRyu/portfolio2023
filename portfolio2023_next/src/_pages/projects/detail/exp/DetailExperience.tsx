@@ -6,11 +6,11 @@ import { useAtomValue } from "jotai";
 
 // style components
 import {
-  PDExpContainer,
-  PDExpDesc,
-  PDExpList,
-  PDExpSection,
-  PDExpTitle,
+  StyledPDExpContainer,
+  StyledPDExpDesc,
+  StyledPDExpList,
+  StyledPDExpSection,
+  StyledPDExpTitle,
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
@@ -98,24 +98,24 @@ export default function DetailExperience() {
   }, [scrollContainer]);
 
   return (
-    <PDExpSection className="detail-section-exp">
-      <PDExpContainer>
-        <PDExpTitle ref={titleRef}>
+    <StyledPDExpSection className="detail-section-exp">
+      <StyledPDExpContainer>
+        <StyledPDExpTitle ref={titleRef}>
           <span>Experience</span>
-        </PDExpTitle>
-        <PDExpList>
+        </StyledPDExpTitle>
+        <StyledPDExpList>
           {expData?.map((exp: string, i: number) => (
-            <PDExpDesc
+            <StyledPDExpDesc
               key={`detailExp_${category}_${i}`}
               ref={(node: HTMLLIElement) => {
                 descRef.current[i] = node;
               }}
             >
               <span>{exp}</span>
-            </PDExpDesc>
+            </StyledPDExpDesc>
           ))}
-        </PDExpList>
-      </PDExpContainer>
-    </PDExpSection>
+        </StyledPDExpList>
+      </StyledPDExpContainer>
+    </StyledPDExpSection>
   );
 }

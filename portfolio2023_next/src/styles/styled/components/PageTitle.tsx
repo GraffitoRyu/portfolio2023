@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { font } from "../preset/mixins";
 import { rem } from "@/utils/style.util";
 
-export const PageTitle = styled.span`
+export const StyledPageTitle = styled.span`
   display: block;
   ${font({
     size: 144,

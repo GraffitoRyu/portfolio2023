@@ -1,3 +1,20 @@
+/**
+ * style preset; transition time
+ * @desc
+ * - common
+ *  - initComplete
+ *  - initFade
+ *  - coverUp
+ *  - loadComplete
+ * - color
+ * - visual
+ *  - fadeInUp
+ *  - intro
+ * - career
+ * - tooltip
+ * - detail
+ *  - sheetSlide
+ */
 export const transTime = {
   common: {
     initComplete: 1000, // PageLoadEvent에서 init을 충족한 뒤 애니메이션 대기 시간 (페이지 첫 진입 후 로딩 완료)

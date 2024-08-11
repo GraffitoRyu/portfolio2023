@@ -2,12 +2,12 @@
 import DetailHeaderWrap from "./DetailHeaderWrap";
 
 // style components
-import { PDHeader } from "@/styles/styled/components/ProjectDetail";
+import { StyledPDHeader } from "@/styles/styled/components/ProjectDetail";
 
 export default function DetailHeader() {
   return (
-    <PDHeader>
+    <StyledPDHeader>
       <DetailHeaderWrap />
-    </PDHeader>
+    </StyledPDHeader>
   );
 }

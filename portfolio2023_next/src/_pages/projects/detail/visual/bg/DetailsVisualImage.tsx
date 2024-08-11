@@ -7,9 +7,9 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // style components
 import {
-  PDVisualImage,
-  PDVisualImageContainer,
-  PDVisualImageCover,
+  StyledPDVisualImage,
+  StyledPDVisualImageContainer,
+  StyledPDVisualImageCover,
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
@@ -66,9 +66,9 @@ export default function DetailVisualImage() {
   }, [scrollContainer, open]);
 
   return (
-    <PDVisualImageContainer ref={triggerRef}>
+    <StyledPDVisualImageContainer ref={triggerRef}>
       {category ? (
-        <PDVisualImage ref={imgRef}>
+        <StyledPDVisualImage ref={imgRef}>
           <Image
             src={`/img/details/intro_${category}.jpg`}
             alt={typeof category === "string" ? category : "Detail Visual"}
@@ -76,9 +76,9 @@ export default function DetailVisualImage() {
             placeholder="blur"
             blurDataURL={`/img/details/intro_${category}.jpg`}
           />
-        </PDVisualImage>
+        </StyledPDVisualImage>
       ) : null}
-      <PDVisualImageCover ref={imgCoverRef} />
-    </PDVisualImageContainer>
+      <StyledPDVisualImageCover ref={imgCoverRef} />
+    </StyledPDVisualImageContainer>
   );
 }

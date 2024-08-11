@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
 
 import {
-  PDStackItem,
-  PDSummaryItem,
+  StyledPDStackItem,
+  StyledPDSummaryItem,
 } from "@/styles/styled/components/ProjectDetail";
 
 function DetailInfoItemRef(
@@ -16,9 +16,7 @@ function DetailInfoItemRef(
     code: string;
     className?: string;
     children: React.ReactNode;
-    $itemIndex?: number;
-    $delayIndex?: number;
-  },
+  } & Partial<StyleOptionDetailInfoItem>,
   ref: React.ForwardedRef<HTMLDListElement>,
 ) {
   const customAttrs = {
@@ -32,9 +30,11 @@ function DetailInfoItemRef(
 
   switch (code) {
     case "stacks":
-      return <PDStackItem {...customAttrs}>{children}</PDStackItem>;
+      return <StyledPDStackItem {...customAttrs}>{children}</StyledPDStackItem>;
     case "summary":
-      return <PDSummaryItem {...customAttrs}>{children}</PDSummaryItem>;
+      return (
+        <StyledPDSummaryItem {...customAttrs}>{children}</StyledPDSummaryItem>
+      );
     default:
       return null;
   }

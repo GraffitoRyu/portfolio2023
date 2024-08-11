@@ -1,13 +1,13 @@
 import {
-  PortfolioCopyright,
-  PortfolioDescription,
-  PortfolioSummaryContainer,
+  StyledPortfolioCopyright,
+  StyledPortfolioDescription,
+  StyledPortfolioSummaryContainer,
 } from "@/styles/styled/components/PageFooter";
 
 export default function PortfolioSummary() {
   return (
-    <PortfolioSummaryContainer>
-      <PortfolioDescription>
+    <StyledPortfolioSummaryContainer>
+      <StyledPortfolioDescription>
         경력 5+ 년 프론트엔드 개발자 / 웹 퍼블리셔 <br />
         류대현 프로필 포트폴리오. <br />
         Figma로 레이아웃 디자인. Next.js와 Jotai, TypeScript로 환경 기반 구축,
@@ -16,8 +16,8 @@ export default function PortfolioSummary() {
         활용한 페이지 데이터 관리, React Query를 활용한 클라이언트 사이드 데이터
         fetching 등을 활용하여 구축. Vercel을 통해 배포. 2023년 프로젝트. 2024년
         리팩토링.
-      </PortfolioDescription>
-      <PortfolioCopyright>&copy; 2023-2024</PortfolioCopyright>
-    </PortfolioSummaryContainer>
+      </StyledPortfolioDescription>
+      <StyledPortfolioCopyright>&copy; 2023-2024</StyledPortfolioCopyright>
+    </StyledPortfolioSummaryContainer>
   );
 }

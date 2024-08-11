@@ -8,10 +8,10 @@ import { useAtomValue } from "jotai";
 
 // style components
 import {
-  StackCategory,
-  StackFigure,
-  StackList,
-  StackRowContainer,
+  StyledStackCategory,
+  StyledStackFigure,
+  StyledStackList,
+  StyledStackRowContainer,
 } from "@/styles/styled/components/ProfileStacks";
 
 // state
@@ -122,23 +122,23 @@ export default function StackRow({
   }, [scrollContainer, sectionStacks, sectionOffset]);
 
   return (
-    <StackRowContainer ref={triggerRef}>
-      <StackCategory ref={categoryRef}>
+    <StyledStackRowContainer ref={triggerRef}>
+      <StyledStackCategory ref={categoryRef}>
         <h3>{title}</h3>
-      </StackCategory>
-      <StackList className={`${stackHide}`} ref={stacksRef}>
+      </StyledStackCategory>
+      <StyledStackList className={`${stackHide}`} ref={stacksRef}>
         {data
           ? data.map(({ code, name }: StackAPIDataTypes, i: number) => (
-              <StackFigure
+              <StyledStackFigure
                 key={`profile/techStack/list/${code}/${i}`}
                 $index={i}
               >
                 <figcaption>{name}</figcaption>
                 {/* <StackLevelGauge level={level} /> */}
-              </StackFigure>
+              </StyledStackFigure>
             ))
           : null}
-      </StackList>
-    </StackRowContainer>
+      </StyledStackList>
+    </StyledStackRowContainer>
   );
 }

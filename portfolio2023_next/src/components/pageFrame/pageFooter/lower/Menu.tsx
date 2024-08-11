@@ -3,9 +3,9 @@ import FooterLink from "./LinkBtn";
 
 // style components
 import {
-  FooterMenuContents,
-  FooterMenuItem,
-  FooterMenuTitle,
+  StyledFooterMenuContents,
+  StyledFooterMenuItem,
+  StyledFooterMenuTitle,
 } from "@/styles/styled/components/PageFooter";
 
 export default function FooterMenu({
@@ -18,13 +18,13 @@ export default function FooterMenu({
   data: SitemapDataType[];
 }) {
   return (
-    <FooterMenuItem>
-      <FooterMenuTitle>{title}</FooterMenuTitle>
-      <FooterMenuContents className={`${category}-menu`}>
+    <StyledFooterMenuItem>
+      <StyledFooterMenuTitle>{title}</StyledFooterMenuTitle>
+      <StyledFooterMenuContents className={`${category}-menu`}>
         {data.map(d => (
           <FooterLink {...d} key={`footer/menu/${d.key}`} />
         ))}
-      </FooterMenuContents>
-    </FooterMenuItem>
+      </StyledFooterMenuContents>
+    </StyledFooterMenuItem>
   );
 }

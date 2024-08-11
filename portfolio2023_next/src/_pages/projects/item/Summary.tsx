@@ -1,13 +1,13 @@
 // components
 import {
-  FadeContainer,
-  FadeListContainer,
-  ListBtnContainer,
-  ListBtnDesc,
-  ListBtnPeriod,
-  ListBtnRole,
-  ListBtnTitle,
-  ListBtnWrap,
+  StyledFadeContainer,
+  StyledFadeListContainer,
+  StyledListBtnContainer,
+  StyledListBtnDesc,
+  StyledListBtnPeriod,
+  StyledListBtnRole,
+  StyledListBtnTitle,
+  StyledListBtnWrap,
 } from "@/styles/styled/components/ProjectList";
 
 export default function ProjectSummary({
@@ -20,21 +20,21 @@ export default function ProjectSummary({
   summary: SummaryType;
 }) {
   return (
-    <ListBtnContainer className={`${className ? className : ""}`}>
-      <ListBtnWrap>
-        <ListBtnPeriod className="period" date={summary.period} />
-        <FadeContainer>
-          <ListBtnTitle>{summary.title.join(" ")}</ListBtnTitle>
-        </FadeContainer>
-        <FadeContainer>
-          <ListBtnDesc>{summary.desc}</ListBtnDesc>
-        </FadeContainer>
-        <FadeListContainer as="ul">
+    <StyledListBtnContainer className={`${className ? className : ""}`}>
+      <StyledListBtnWrap>
+        <StyledListBtnPeriod className="period" date={summary.period} />
+        <StyledFadeContainer>
+          <StyledListBtnTitle>{summary.title.join(" ")}</StyledListBtnTitle>
+        </StyledFadeContainer>
+        <StyledFadeContainer>
+          <StyledListBtnDesc>{summary.desc}</StyledListBtnDesc>
+        </StyledFadeContainer>
+        <StyledFadeListContainer as="ul">
           {summary.role.map((d: string, i: number) => (
-            <ListBtnRole key={`${code}_role_${i}`}>{d}</ListBtnRole>
+            <StyledListBtnRole key={`${code}_role_${i}`}>{d}</StyledListBtnRole>
           ))}
-        </FadeListContainer>
-      </ListBtnWrap>
-    </ListBtnContainer>
+        </StyledFadeListContainer>
+      </StyledListBtnWrap>
+    </StyledListBtnContainer>
   );
 }

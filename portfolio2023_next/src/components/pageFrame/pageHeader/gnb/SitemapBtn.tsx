@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useAtomValue, useSetAtom } from "jotai";
 
 // style components
-import { SitemapLink } from "@/styles/styled/components/Gnb";
+import { StyledSitemapLink } from "@/styles/styled/components/Gnb";
 
 // state
 import { pageLoadState } from "@/jotai/load.state";
@@ -44,7 +44,7 @@ export default function SitemapBtn({ code, path, name }: SitemapDataType) {
   }, [curPath, path]);
 
   return (
-    <SitemapLink
+    <StyledSitemapLink
       type="button"
       className={`${now} ${hover}`}
       onMouseEnter={() => setHover("hover")}
@@ -68,6 +68,6 @@ export default function SitemapBtn({ code, path, name }: SitemapDataType) {
       aria-label={`포트폴리오 페이지 ${name}로 이동하기`}
     >
       <span>{name}</span>
-    </SitemapLink>
+    </StyledSitemapLink>
   );
 }

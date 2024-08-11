@@ -5,9 +5,9 @@ import { useSetAtom } from "jotai";
 
 // style components
 import {
-  Contents,
-  ContentsMain,
-  SideContents,
+  StyledSectionContents,
+  StyledSectionContentsMain,
+  StyledSectionSideContents,
 } from "@/styles/styled/components/PageSection";
 
 // state
@@ -40,13 +40,16 @@ export default function SectionContents({
   );
 
   return (
-    <Contents className={`${sectionClassName ?? ""}`} ref={updateScrollRef}>
-      <SideContents className={`${sideClassName ?? ""}`}>
+    <StyledSectionContents
+      className={`${sectionClassName ?? ""}`}
+      ref={updateScrollRef}
+    >
+      <StyledSectionSideContents className={`${sideClassName ?? ""}`}>
         {sideContents ?? null}
-      </SideContents>
-      <ContentsMain className={`${sideClassName ?? ""}`}>
+      </StyledSectionSideContents>
+      <StyledSectionContentsMain className={`${sideClassName ?? ""}`}>
         {children}
-      </ContentsMain>
-    </Contents>
+      </StyledSectionContentsMain>
+    </StyledSectionContents>
   );
 }

@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 
 // components
 import {
-  HoverSlideTitle,
-  TitleSpan,
+  StyledHoverSlideTitle,
+  StyledTitleSpan,
 } from "@/styles/styled/components/ProjectList";
 
 export default function SlideTitle({
@@ -32,15 +32,18 @@ export default function SlideTitle({
   }, [slideWidth]);
 
   return (
-    <HoverSlideTitle className={`${className ? className : ""}`} ref={slideRef}>
+    <StyledHoverSlideTitle
+      className={`${className ? className : ""}`}
+      ref={slideRef}
+    >
       {titleArr.map((title: string, i: number) => (
-        <TitleSpan
+        <StyledTitleSpan
           key={`projectSlideTitle_${Math.floor(Math.random() * 100000)}_${i}`}
           style={{ animationDuration: `${duration}s` }}
         >
           {title}
-        </TitleSpan>
+        </StyledTitleSpan>
       ))}
-    </HoverSlideTitle>
+    </StyledHoverSlideTitle>
   );
 }

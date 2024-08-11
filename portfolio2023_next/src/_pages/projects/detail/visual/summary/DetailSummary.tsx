@@ -8,7 +8,7 @@ import DetailInfoTitle from "../../common/info/DetailInfoTitle";
 import DetailInfoContents from "../../common/info/DetailInfoContents";
 
 // style components
-import { PDSummaryContainer } from "@/styles/styled/components/ProjectDetail";
+import { StyledPDSummaryContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
 import { pageDetailLoadState } from "@/jotai/load.state";
@@ -95,7 +95,7 @@ export default function DetailSummary() {
   }, [openComplete, scrollContainer]);
 
   return (
-    <PDSummaryContainer>
+    <StyledPDSummaryContainer>
       {summaryData?.map((d: SummaryProps, i: number) => (
         <DetailInfoItem
           code="summary"
@@ -115,7 +115,7 @@ export default function DetailSummary() {
           />
         </DetailInfoItem>
       ))}
-    </PDSummaryContainer>
+    </StyledPDSummaryContainer>
   );
 }
 

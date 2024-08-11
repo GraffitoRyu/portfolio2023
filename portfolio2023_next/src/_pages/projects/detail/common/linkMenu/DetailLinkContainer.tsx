@@ -8,7 +8,7 @@ import { useAtomValue } from "jotai";
 import DetailExternalBtn from "./DetailExternalBtn";
 
 // style components
-import { PDLinkContainer } from "@/styles/styled/components/ProjectDetail";
+import { StyledPDLinkContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
 import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
@@ -26,10 +26,10 @@ export default function DetailLinkContainer() {
   }, [category, data]);
 
   return (
-    <PDLinkContainer>
+    <StyledPDLinkContainer>
       {linkData.map((l: LinkType, i: number) => (
         <DetailExternalBtn key={`DetailLink_${l.code}_${i}`} {...l} />
       ))}
-    </PDLinkContainer>
+    </StyledPDLinkContainer>
   );
 }

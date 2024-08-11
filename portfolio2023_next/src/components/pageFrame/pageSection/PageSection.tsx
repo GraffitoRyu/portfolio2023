@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { useSetAtom } from "jotai";
 
 // style components
-import { PageSectionContainer } from "@/styles/styled/components/PageSection";
+import { StyledPageSectionContainer } from "@/styles/styled/components/PageSection";
 
 // state
 import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
@@ -36,13 +36,13 @@ export default function PageSection({
   );
 
   return (
-    <PageSectionContainer
+    <StyledPageSectionContainer
       className={`section-${page} section-${code} ${
         className ? className : ""
       }`}
       ref={updateScrollRef}
     >
       {children}
-    </PageSectionContainer>
+    </StyledPageSectionContainer>
   );
 }

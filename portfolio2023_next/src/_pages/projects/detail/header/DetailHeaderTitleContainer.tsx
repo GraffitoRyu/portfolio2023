@@ -4,9 +4,9 @@ import { useAtomValue } from "jotai";
 
 // style components
 import {
-  PDHeaderPageName,
-  PDHeaderProjectName,
-  PDHeaderTitleContainer,
+  StyledPDHeaderPageName,
+  StyledPDHeaderProjectName,
+  StyledPDHeaderTitleContainer,
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
@@ -74,9 +74,11 @@ export default function DetailHeaderTitleContainer() {
   }, [category, openComplete, scrollContainer, scrollTrigger, visualTitleRef]);
 
   return (
-    <PDHeaderTitleContainer>
-      <PDHeaderPageName>프로젝트</PDHeaderPageName>
-      <PDHeaderProjectName ref={titleRef}>{title}</PDHeaderProjectName>
-    </PDHeaderTitleContainer>
+    <StyledPDHeaderTitleContainer>
+      <StyledPDHeaderPageName>프로젝트</StyledPDHeaderPageName>
+      <StyledPDHeaderProjectName ref={titleRef}>
+        {title}
+      </StyledPDHeaderProjectName>
+    </StyledPDHeaderTitleContainer>
   );
 }

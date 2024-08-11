@@ -6,7 +6,7 @@ import { useAtomValue } from "jotai";
 import DetailMediaItem from "./DetailMediaItem";
 
 // style components
-import { PDMediaSection } from "@/styles/styled/components/ProjectDetail";
+import { StyledPDMediaSection } from "@/styles/styled/components/ProjectDetail";
 
 // state
 import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
@@ -24,10 +24,10 @@ export default function DetailMediaContainer() {
   }, [category, data]);
 
   return (
-    <PDMediaSection>
+    <StyledPDMediaSection>
       {media.map((m: MediaType, i: number) => (
         <DetailMediaItem key={`detailMedia_${category}_${i}`} data={m} />
       ))}
-    </PDMediaSection>
+    </StyledPDMediaSection>
   );
 }

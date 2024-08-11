@@ -8,8 +8,8 @@ import DetailMediaContents from "../common/media/DetailMediaContents";
 
 // style components
 import {
-  PDMediaFigure,
-  PDMediaItem,
+  StyledPDMediaFigure,
+  StyledPDMediaItem,
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
@@ -58,8 +58,8 @@ export default function DetailMediaItem({ data }: { data: MediaType }) {
   }, [scrollContainer, windowWidth]);
 
   return (
-    <PDMediaItem>
-      <PDMediaFigure ref={figureRef}>
+    <StyledPDMediaItem>
+      <StyledPDMediaFigure ref={figureRef}>
         <Suspense fallback={<span>Loading...</span>}>
           <DetailMediaContents
             referType={data.referType}
@@ -67,7 +67,7 @@ export default function DetailMediaItem({ data }: { data: MediaType }) {
             alt={data.alt}
           />
         </Suspense>
-      </PDMediaFigure>
-    </PDMediaItem>
+      </StyledPDMediaFigure>
+    </StyledPDMediaItem>
   );
 }

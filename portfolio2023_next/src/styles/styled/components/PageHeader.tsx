@@ -10,7 +10,7 @@ import { flex, font, position, size } from "../preset/mixins";
 import { rem } from "@/utils/style.util";
 import { easing } from "../preset/easing";
 
-export const HeaderContainer = styled.header`
+export const StyledHeaderContainer = styled.header`
   ${position({ type: "sticky", top: 0, left: 0 })}
   width:100%;
   z-index: 2000;
@@ -54,7 +54,7 @@ export const StyledHeaderWrap = styled.div`
   }
 `;
 
-export const TimerContainer = styled.div`
+export const StyledTimerContainer = styled.div`
   ${flex({})}
   ${size({ w: "fit-content", h: 48, p: [0, 8, 0, 2] })}
   border-top: ${rem(4)} solid ${({ theme }) => theme.timer.bar};
@@ -73,7 +73,7 @@ export const TimerContainer = styled.div`
   }
 `;
 
-export const TimeRegion = styled.strong`
+export const StyledTimeRegion = styled.strong`
   display: none;
   ${font({ weight: 500 })}
   &:after {

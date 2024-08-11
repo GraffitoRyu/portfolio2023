@@ -1,9 +1,12 @@
 import { forwardRef } from "react";
 
 // style components
-import { Bar, PeriodContainer } from "@/styles/styled/components/Period";
+import {
+  StyledPeriodBar,
+  StyledPeriodContainer,
+} from "@/styles/styled/components/Period";
 
-function PeriodTime({ $date }: { $date: string }) {
+function PeriodTime({ $date }: { $date: Date | string }) {
   const d = new Date($date);
   return (
     <time>
@@ -20,14 +23,14 @@ function Period(
   ref: React.ForwardedRef<HTMLDivElement>,
 ) {
   return (
-    <PeriodContainer
+    <StyledPeriodContainer
       className={`period ${className ? className : ""}`}
       ref={ref}
     >
       <PeriodTime $date={date[0]} />
-      <Bar />
+      <StyledPeriodBar />
       <PeriodTime $date={date[1]} />
-    </PeriodContainer>
+    </StyledPeriodContainer>
   );
 }
 

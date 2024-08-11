@@ -9,8 +9,8 @@ import InitTitle from "./InitCoverTitle";
 
 // style components
 import {
-  InitCoverBox,
-  InitCoverContainer,
+  StyledInitCoverBox,
+  StyledInitCoverContainer,
 } from "@/styles/styled/components/InitPageCover";
 
 // state
@@ -48,11 +48,11 @@ export default function InitPageCover() {
   }, [init, loaded, setPage]);
 
   return (
-    <InitCoverContainer className={`${initializing} ${show}`}>
-      <InitCoverBox>
+    <StyledInitCoverContainer className={`${initializing} ${show}`}>
+      <StyledInitCoverBox>
         <InitTitle />
         <LoadingIconComponent />
-      </InitCoverBox>
-    </InitCoverContainer>
+      </StyledInitCoverBox>
+    </StyledInitCoverContainer>
   );
 }

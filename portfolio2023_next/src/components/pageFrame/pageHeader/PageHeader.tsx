@@ -9,7 +9,7 @@ import TimeDisplay from "./TimeDisplay";
 
 // style components
 import {
-  HeaderContainer,
+  StyledHeaderContainer,
   StyledHeaderWrap,
 } from "@/styles/styled/components/PageHeader";
 
@@ -64,11 +64,11 @@ export default function PageHeader() {
   });
 
   return (
-    <HeaderContainer className={hide} ref={updateScrollRef}>
+    <StyledHeaderContainer className={hide} ref={updateScrollRef}>
       <StyledHeaderWrap>
         <TimeDisplay />
         <Gnb />
       </StyledHeaderWrap>
-    </HeaderContainer>
+    </StyledHeaderContainer>
   );
 }

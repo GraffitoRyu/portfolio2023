@@ -6,9 +6,9 @@ import ThemeMenuBtn from "./MenuBtn";
 
 // style components
 import {
-  ThemeList,
-  ThemeListItem,
-  ThemeMenuContainer,
+  StyledThemeList,
+  StyledThemeListItem,
+  StyledThemeMenuContainer,
 } from "@/styles/styled/components/ThemeMenu";
 
 // state
@@ -33,14 +33,16 @@ export default function ThemeMenuList() {
   }, [theme.theme, theme.isSystem]);
 
   return (
-    <ThemeMenuContainer className={`theme-menu ${openClass} ${themeClass}`}>
-      <ThemeList>
+    <StyledThemeMenuContainer
+      className={`theme-menu ${openClass} ${themeClass}`}
+    >
+      <StyledThemeList>
         {themeList.map(code => (
-          <ThemeListItem key={`theme/menu/${code}`}>
+          <StyledThemeListItem key={`theme/menu/${code}`}>
             <ThemeMenuBtn code={code} />
-          </ThemeListItem>
+          </StyledThemeListItem>
         ))}
-      </ThemeList>
-    </ThemeMenuContainer>
+      </StyledThemeList>
+    </StyledThemeMenuContainer>
   );
 }

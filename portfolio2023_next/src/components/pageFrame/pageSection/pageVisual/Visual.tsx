@@ -7,9 +7,9 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // style components
 import {
-  VisualContainer,
-  VisualTitle,
-  VisualTitleLine,
+  StyledVisualContainer,
+  StyledVisualTitle,
+  StyledVisualTitleLine,
 } from "@/styles/styled/components/PageVisual";
 
 // style
@@ -111,15 +111,15 @@ export default function PageVisual({ title }: { title: string[] }) {
   }, [loadComplete]);
 
   return (
-    <VisualContainer ref={visualRef}>
-      <VisualTitle ref={visualTitleRef} className={`${loaded} ${fixed}`}>
-        <VisualTitleLine className="visual-title stroke-title">
+    <StyledVisualContainer ref={visualRef}>
+      <StyledVisualTitle ref={visualTitleRef} className={`${loaded} ${fixed}`}>
+        <StyledVisualTitleLine className="visual-title stroke-title">
           {title[0]}
-        </VisualTitleLine>
-        <VisualTitleLine className="visual-title filled-title">
+        </StyledVisualTitleLine>
+        <StyledVisualTitleLine className="visual-title filled-title">
           {title[1]}
-        </VisualTitleLine>
-      </VisualTitle>
-    </VisualContainer>
+        </StyledVisualTitleLine>
+      </StyledVisualTitle>
+    </StyledVisualContainer>
   );
 }

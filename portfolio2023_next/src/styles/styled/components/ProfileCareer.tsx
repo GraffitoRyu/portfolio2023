@@ -288,7 +288,7 @@ export const StyledCareerSummaryContainer = styled.summary`
   }
 `;
 
-export const StyledCareerDetailWrap = styled.details<{ $height: number }>`
+export const StyledCareerDetailWrap = styled.details<StyleOptionCareerDetailWrap>`
   width: 100%;
   &.open {
     ${StyledCareerExpandIcon} {

@@ -15,9 +15,9 @@ import {
 } from "@/styles/styled/preset/mixins";
 import { easing } from "@/styles/styled/preset/easing";
 import { transTime } from "@/styles/styled/preset/transTime";
-import { CommonBtn } from "@/styles/styled//preset/buttons";
+import { StyledDefaultBtn } from "@/styles/styled//preset/buttons";
 
-export const PDContainer = styled.article`
+export const StyledPDContainer = styled.article`
   ${size({ w: "100%", h: "100%" })}
   ${position({ type: "fixed", left: 0, bottom: 0, z: 2000 })}
   overflow: hidden auto;
@@ -39,12 +39,12 @@ export const PDContainer = styled.article`
   }
 `;
 
-export const PDHeader = styled.header`
+export const StyledPDHeader = styled.header`
   ${position({ type: "sticky", top: 0, left: 0, z: 1000 })}
   ${size({ w: "100%", h: 0 })}
 `;
 
-export const PDHeaderTitleContainer = styled.h3`
+export const StyledPDHeaderTitleContainer = styled.h3`
   ${flex({ std: "flex-start" })}
   ${size({ mr: "auto" })}
   color: ${({ theme }) => theme.projectDetails.visualTitle};
@@ -64,11 +64,11 @@ export const PDHeaderTitleContainer = styled.h3`
   }
 `;
 
-export const PDHeaderPageName = styled.span`
+export const StyledPDHeaderPageName = styled.span`
   ${flex({ std: "flex-start" })}
 `;
 
-export const PDHeaderProjectName = styled.span`
+export const StyledPDHeaderProjectName = styled.span`
   opacity: 0;
   letter-spacing: 0;
   transition: opacity 0.24s;
@@ -79,7 +79,7 @@ export const PDHeaderProjectName = styled.span`
   }
 `;
 
-export const PDLinkContainer = styled.ul`
+export const StyledPDLinkContainer = styled.ul`
   ${flex({ std: "flex-start", wrap: "wrap" })}
   ${size({ w: `calc(100% + ${rem(40)})`, m: [0, -20] })}
   @media only screen and (min-width:1024px) {
@@ -88,16 +88,16 @@ export const PDLinkContainer = styled.ul`
   }
 `;
 
-export const PDLinkItem = styled.li`
+export const StyledPDLinkItem = styled.li`
   ${size({ p: [0, 20], mb: 40 })}
   @media only screen and (min-width:1024px) {
     ${size({ p: 0, m: [0, 24, 0, 0] })}
   }
 `;
 
-export const PDLinkBtn = styled(CommonBtn)``;
+export const StyledPDLinkBtn = styled(StyledDefaultBtn)``;
 
-export const PDLinkName = styled.span`
+export const StyledPDLinkName = styled.span`
   ${size({ mr: 16 })}
   ${font({
     size: 24,
@@ -115,7 +115,7 @@ export const PDLinkName = styled.span`
   }
 `;
 
-export const PDSection = styled.section`
+export const StyledPDSection = styled.section`
   width: 100%;
   position: relative;
   z-index: 100;
@@ -124,32 +124,32 @@ export const PDSection = styled.section`
   }
 `;
 
-export const PDVisualSection = styled(PDSection)`
+export const StyledPDVisualSection = styled(StyledPDSection)`
   ${size({ h: `auto`, pb: 400 })}
   @media only screen and (min-width:1024px) {
     ${size({ pb: 600 })}
   }
 `;
 
-export const PDSubVisualSection = styled(PDSection)`
+export const StyledPDSubVisualSection = styled(StyledPDSection)`
   overflow: hidden;
 `;
 
-export const PDExpSection = styled(PDSection)`
+export const StyledPDExpSection = styled(StyledPDSection)`
   ${size({ w: `100%`, p: [240, 80, 160] })}
   @media only screen and (min-width:768px) {
     ${size({ p: [240, 60, 0] })}
   }
 `;
 
-export const PDMediaSection = styled(PDSection)`
+export const StyledPDMediaSection = styled(StyledPDSection)`
   ${size({ pb: 640 })}
   @media only screen and (min-width:1024px) {
     ${size({ pb: 160 })}
   }
 `;
 
-export const PDVisualViewport = styled.div`
+export const StyledPDVisualViewport = styled.div`
   ${flex({ dir: "column", std: "flex-end", cross: "flex-start" })}
   ${size({ w: "100%", h: `var(--wh)`, p: [`var(--header-height)`, 80, 200] })}
   @media only screen and (max-width:768px) and (orientation:landscape) {
@@ -163,11 +163,11 @@ export const PDVisualViewport = styled.div`
   }
 `;
 
-export const PDVisualLower = styled.div`
+export const StyledPDVisualLower = styled.div`
   ${size({ p: [0, 80] })}
 `;
 
-export const PDVisualImageContainer = styled.div`
+export const StyledPDVisualImageContainer = styled.div`
   overflow: hidden;
   ${position({ type: "fixed", top: 0, left: 0, z: -100 })}
   ${size({ w: "100%", h: `100vh` })}
@@ -176,7 +176,7 @@ export const PDVisualImageContainer = styled.div`
   }
 `;
 
-export const PDVisualImage = styled.div`
+export const StyledPDVisualImage = styled.div`
   ${position({ top: 0, left: 0 })}
   ${size({ w: "100%", h: "100%" })}
   img {
@@ -185,18 +185,18 @@ export const PDVisualImage = styled.div`
   }
 `;
 
-export const PDVisualImageCover = styled.div`
+export const StyledPDVisualImageCover = styled.div`
   ${size({ w: "100%", h: "100%" })}
   ${position({ type: "absolute", top: 0, left: 0 })}
     background-color: ${({ theme }) => theme.projectDetails.bg};
   background: ${({ theme }) => theme.projectDetails.visualBg};
 `;
 
-export const PDVisualTitleContainer = styled.div`
+export const StyledPDVisualTitleContainer = styled.div`
   ${size({ w: "100%" })}
 `;
 
-export const PDVisualTitle = styled.h4`
+export const StyledPDVisualTitle = styled.h4`
   color: ${({ theme }) => theme.projectDetails.visualTitle};
   font-size: 0;
   &.hide span {
@@ -205,7 +205,7 @@ export const PDVisualTitle = styled.h4`
   }
 `;
 
-export const PDVisualTitleLine = styled.span<{ $index: number }>`
+export const StyledPDVisualTitleLine = styled.span<{ $index: number }>`
   display: block;
   ${font({
     size: 88,
@@ -224,7 +224,7 @@ export const PDVisualTitleLine = styled.span<{ $index: number }>`
   }
 `;
 
-export const PDVisualSubtitle = styled.p<{ $index: number }>`
+export const StyledPDVisualSubtitle = styled.p<{ $index: number }>`
   ${size({ mt: 40 })}
   color: ${({ theme }) => theme.projectDetails.visualSubtitle};
   ${font({
@@ -255,10 +255,7 @@ export const PDVisualSubtitle = styled.p<{ $index: number }>`
   }
 `;
 
-export const PDInfoItem = styled.dl<{
-  $itemIndex?: number;
-  $delayIndex?: number;
-}>`
+export const StyledPDInfoItem = styled.dl<Partial<StyleOptionDetailInfoItem>>`
   ${size({ w: "100%", mb: 80, p: [0, 20] })}
 
   @media only screen and (min-width: 1024px) {
@@ -266,7 +263,7 @@ export const PDInfoItem = styled.dl<{
   }
 `;
 
-export const PDSummaryItem = styled(PDInfoItem)`
+export const StyledPDSummaryItem = styled(StyledPDInfoItem)`
   &.init-hide {
     transition: opacity 0.6s linear
       ${({ $itemIndex, $delayIndex }) =>
@@ -289,7 +286,7 @@ export const PDSummaryItem = styled(PDInfoItem)`
   }
 `;
 
-export const PDStackItem = styled(PDInfoItem)`
+export const StyledPDStackItem = styled(StyledPDInfoItem)`
   ${flex({ start: true, wrap: "wrap" })}
   &.details-stack-title {
     ${size({ w: `100%` })}
@@ -306,7 +303,7 @@ export const PDStackItem = styled(PDInfoItem)`
   }
 `;
 
-export const PDInfoTitle = styled.dt`
+export const StyledPDInfoTitle = styled.dt`
   ${size({ w: "fit-content", mb: 16 })}
   color:${({ theme }) => theme.projectDetails.infoTitle};
   ${font({
@@ -337,13 +334,13 @@ export const PDInfoTitle = styled.dt`
   }
 `;
 
-export const PDStackTitle = styled(PDInfoTitle)`
+export const StyledPDStackTitle = styled(StyledPDInfoTitle)`
   ${size({ w: "100%" })}
 `;
 
-export const PDSummaryTitle = styled(PDInfoTitle)``;
+export const StyledPDSummaryTitle = styled(StyledPDInfoTitle)``;
 
-export const PDInfoContents = styled.dd`
+export const StyledPDInfoContents = styled.dd`
   color: ${({ theme }) => theme.projectDetails.infoDesc};
   ${font({
     size: 32,
@@ -368,17 +365,17 @@ export const PDInfoContents = styled.dd`
   }
 `;
 
-export const PDStackContents = styled(PDInfoContents)`
+export const StyledPDStackContents = styled(StyledPDInfoContents)`
   ${size({ mr: 40 })}
 `;
 
-export const PDSummaryContents = styled(PDInfoContents)``;
+export const StyledPDSummaryContents = styled(StyledPDInfoContents)``;
 
-export const PDInfoContainer = styled.div`
+export const StyledPDInfoContainer = styled.div`
   ${size({ w: `calc(100% + ${rem(40)})`, m: [0, -20] })}
 `;
 
-export const PDSummaryContainer = styled(PDInfoContainer)`
+export const StyledPDSummaryContainer = styled(StyledPDInfoContainer)`
   ${flex({ start: true, wrap: "wrap" })}
   ${size({ mb: 40 })}
 
@@ -387,14 +384,14 @@ export const PDSummaryContainer = styled(PDInfoContainer)`
   }
 `;
 
-export const PDStacksContainer = styled(PDInfoContainer)`
+export const StyledPDStacksContainer = styled(StyledPDInfoContainer)`
   ${flex({ start: true, wrap: "wrap" })}
   ${size({ mt: 320 })}
   @media only screen and (min-width:1024px) {
   }
 `;
 
-export const PDExpContainer = styled.div`
+export const StyledPDExpContainer = styled.div`
   ${size({ w: "100%" })}
   @media only screen and (min-width: 768px) {
     ${size({
@@ -416,7 +413,7 @@ export const PDExpContainer = styled.div`
   }
 `;
 
-export const PDExpTitle = styled.h5`
+export const StyledPDExpTitle = styled.h5`
   ${size({ mb: 160 })}
   color: ${({ theme }) => theme.projectDetails.expTitle};
   span {
@@ -437,11 +434,11 @@ export const PDExpTitle = styled.h5`
   }
 `;
 
-export const PDExpList = styled.ul`
+export const StyledPDExpList = styled.ul`
   ${size({ w: "100%" })}
 `;
 
-export const PDExpDesc = styled.li`
+export const StyledPDExpDesc = styled.li`
   ${flex({ start: true })}
   opacity: 0;
   color: ${({ theme }) => theme.projectDetails.expDesc};
@@ -473,7 +470,7 @@ export const PDExpDesc = styled.li`
   }
 `;
 
-export const PDSubVisual = styled.figure`
+export const StyledPDSubVisual = styled.figure`
   ${size({ w: "100%" })}
   img {
     object-fit: cover;
@@ -481,11 +478,11 @@ export const PDSubVisual = styled.figure`
   }
 `;
 
-export const PDMediaItem = styled.div`
+export const StyledPDMediaItem = styled.div`
   ${size({ w: "100%", p: [0, 80], mt: 400 })}
 `;
 
-export const PDMediaFigure = styled.figure`
+export const StyledPDMediaFigure = styled.figure`
   ${size({ w: "100%", r: 40 })}
   position:relative;
   overflow: hidden;

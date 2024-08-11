@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import Tooltip from "@/components/tooltip/Tooltip";
 
 // style components
-import { ExtBtn } from "@/styles/styled/components/Gnb";
+import { StyledExtBtn } from "@/styles/styled/components/Gnb";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
@@ -66,7 +66,7 @@ export default function ExternalBtn({ path, name }: SitemapDataType) {
         active={active}
         show={show}
       >
-        <ExtBtn
+        <StyledExtBtn
           className={`util-btn ${hover}`}
           href={path}
           target="_blank"
@@ -77,7 +77,7 @@ export default function ExternalBtn({ path, name }: SitemapDataType) {
           <figure>
             <ExternalIcon menuName={name} />
           </figure>
-        </ExtBtn>
+        </StyledExtBtn>
       </Tooltip>
     </div>
   );

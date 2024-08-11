@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { useSetAtom } from "jotai";
 
 // style components
-import { PDVisualViewport } from "@/styles/styled/components/ProjectDetail";
+import { StyledPDVisualViewport } from "@/styles/styled/components/ProjectDetail";
 
 // state
 import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
@@ -23,5 +23,9 @@ export default function DetailVisualViewport({
     [setScrollRef],
   );
 
-  return <PDVisualViewport ref={updateScrollRef}>{children}</PDVisualViewport>;
+  return (
+    <StyledPDVisualViewport ref={updateScrollRef}>
+      {children}
+    </StyledPDVisualViewport>
+  );
 }

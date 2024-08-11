@@ -4,8 +4,8 @@ import FooterMenu from "./Menu";
 
 // style components
 import {
-  FooterLowerContainer,
-  FooterMenuColumn,
+  StyledFooterLowerContainer,
+  StyledFooterMenuColumn,
 } from "@/styles/styled/components/PageFooter";
 
 // data
@@ -15,16 +15,16 @@ export default function FooterLower() {
   const { portfolio, recruit, contact, download } = sitemap;
 
   return (
-    <FooterLowerContainer>
-      <FooterMenuColumn className="link-page">
+    <StyledFooterLowerContainer>
+      <StyledFooterMenuColumn className="link-page">
         <FooterMenu title="Portfolio" category="nav" data={portfolio} />
         <FooterMenu title="Recruitment" category="recruit" data={recruit} />
-      </FooterMenuColumn>
-      <FooterMenuColumn className="none-page">
+      </StyledFooterMenuColumn>
+      <StyledFooterMenuColumn className="none-page">
         <FooterMenu title="Contact" category="contact" data={contact} />
         <FooterMenu title="Resume" category="resume" data={download} />
-      </FooterMenuColumn>
+      </StyledFooterMenuColumn>
       <PortfolioSummary />
-    </FooterLowerContainer>
+    </StyledFooterLowerContainer>
   );
 }

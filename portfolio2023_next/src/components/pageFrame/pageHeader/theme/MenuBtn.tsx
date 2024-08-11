@@ -5,7 +5,7 @@ import { useAtom } from "jotai";
 import ThemeIcon from "./BtnIcons";
 
 // style components
-import { ThemeMenuButton } from "@/styles/styled/components/ThemeMenu";
+import { StyledThemeMenuButton } from "@/styles/styled/components/ThemeMenu";
 
 // state
 import { themeState } from "@/jotai/theme.state";
@@ -39,7 +39,7 @@ export default function ThemeMenuBtn({ code }: { code: ThemeMenuType }) {
   );
 
   return (
-    <ThemeMenuButton
+    <StyledThemeMenuButton
       className={`${updateSelected(code)} ${hover}`}
       onClick={() => changeTheme(code)}
       onMouseEnter={() => setHover("hover")}
@@ -50,6 +50,6 @@ export default function ThemeMenuBtn({ code }: { code: ThemeMenuType }) {
         <ThemeIcon themeCode={code} />
       </figure>
       <span>{code}</span>
-    </ThemeMenuButton>
+    </StyledThemeMenuButton>
   );
 }

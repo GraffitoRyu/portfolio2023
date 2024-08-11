@@ -4,7 +4,10 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
 
 // style components
-import { IntroDesc, IntroTitle } from "@/styles/styled/components/PageVisual";
+import {
+  StyledIntroDesc,
+  StyledIntroTitle,
+} from "@/styles/styled/components/PageVisual";
 
 // util components
 import ParseDescNewLine from "@/components/util/ParseDescNewLine";
@@ -101,12 +104,12 @@ export default function PageIntro({ title, desc }: IntroTypes) {
 
   return (
     <>
-      <IntroTitle className={`${titleHide}`} ref={titleRef}>
+      <StyledIntroTitle className={`${titleHide}`} ref={titleRef}>
         <ParseDescNewLine data={title} />
-      </IntroTitle>
-      <IntroDesc className={`${descHide}`} ref={descRef}>
+      </StyledIntroTitle>
+      <StyledIntroDesc className={`${descHide}`} ref={descRef}>
         <ParseDescNewLine data={desc} />
-      </IntroDesc>
+      </StyledIntroDesc>
     </>
   );
 }

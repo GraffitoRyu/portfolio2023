@@ -4,7 +4,10 @@ import ExternalBtn from "./gnb/ExternalBtn";
 import ThemeContainer from "./theme/Container";
 
 // style components
-import { GnbCommonStyle, GnbContainer } from "@/styles/styled/components/Gnb";
+import {
+  GnbCommonStyle,
+  StyledGnbContainer,
+} from "@/styles/styled/components/Gnb";
 
 // data
 import sitemap from "@/data/sitemap";
@@ -16,7 +19,7 @@ export default function Gnb() {
   const extData = portfolio.filter(d => d.isExternal);
 
   return (
-    <GnbContainer className="gnb">
+    <StyledGnbContainer className="gnb">
       <GnbCommonStyle />
       {gnbData.map(d => (
         <SitemapBtn {...d} key={`header/route/${d.key}`} />
@@ -25,6 +28,6 @@ export default function Gnb() {
       {extData.map(d => (
         <ExternalBtn {...d} key={`header/external/${d.key}`} />
       ))}
-    </GnbContainer>
+    </StyledGnbContainer>
   );
 }

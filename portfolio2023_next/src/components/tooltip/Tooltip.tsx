@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 
 // style components
 import {
-  TooltipBox,
-  TooltipContainer,
-  TooltipContents,
-  TooltipPositionBox,
-  TooltipTitle,
+  StyledTooltipBox,
+  StyledTooltipContainer,
+  StyledTooltipContents,
+  StyledTooltipPositionBox,
+  StyledTooltipTitle,
 } from "@/styles/styled/components/Tooltip";
 
 export default function Tooltip({
@@ -38,14 +38,22 @@ export default function Tooltip({
   }, [show]);
 
   return (
-    <TooltipContainer>
+    <StyledTooltipContainer>
       {children}
-      <TooltipPositionBox className={`${activeClass}`} $pos={pos}>
-        <TooltipBox className={`${showClass}`} $section={section} $pos={pos}>
-          {title && <TooltipTitle $section={section}>{title}</TooltipTitle>}
-          <TooltipContents $section={section}>{contents}</TooltipContents>
-        </TooltipBox>
-      </TooltipPositionBox>
-    </TooltipContainer>
+      <StyledTooltipPositionBox className={`${activeClass}`} $pos={pos}>
+        <StyledTooltipBox
+          className={`${showClass}`}
+          $section={section}
+          $pos={pos}
+        >
+          {title && (
+            <StyledTooltipTitle $section={section}>{title}</StyledTooltipTitle>
+          )}
+          <StyledTooltipContents $section={section}>
+            {contents}
+          </StyledTooltipContents>
+        </StyledTooltipBox>
+      </StyledTooltipPositionBox>
+    </StyledTooltipContainer>
   );
 }

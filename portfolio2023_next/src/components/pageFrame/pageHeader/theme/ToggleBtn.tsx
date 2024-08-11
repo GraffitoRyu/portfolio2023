@@ -5,7 +5,10 @@ import { useAtom } from "jotai";
 import ThemeIcon from "./BtnIcons";
 
 // style components
-import { ToggleBtn, ToggleIcon } from "@/styles/styled/components/ThemeMenu";
+import {
+  StyledToggleBtn,
+  StyledToggleIcon,
+} from "@/styles/styled/components/ThemeMenu";
 
 // state
 import { themeState } from "@/jotai/theme.state";
@@ -26,17 +29,17 @@ export default function ThemeToggleBtn() {
   };
 
   return (
-    <ToggleBtn
+    <StyledToggleBtn
       className={`util-btn theme-btn ${hover}`}
       onClick={() => setToggle()}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
       aria-label="컬러 테마메뉴 토글 버튼"
     >
-      <ToggleIcon>
+      <StyledToggleIcon>
         <ThemeIcon themeCode="light" className={updateIcon("light")} />
         <ThemeIcon themeCode="dark" className={updateIcon("dark")} />
-      </ToggleIcon>
-    </ToggleBtn>
+      </StyledToggleIcon>
+    </StyledToggleBtn>
   );
 }

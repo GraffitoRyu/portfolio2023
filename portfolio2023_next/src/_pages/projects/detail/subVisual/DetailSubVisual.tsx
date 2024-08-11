@@ -9,8 +9,8 @@ import DetailMediaContents from "../common/media/DetailMediaContents";
 
 // style components
 import {
-  PDSubVisual,
-  PDSubVisualSection,
+  StyledPDSubVisual,
+  StyledPDSubVisualSection,
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
@@ -72,8 +72,8 @@ export default function DetailSubVisual() {
   }, [scrollContainer]);
 
   return (
-    <PDSubVisualSection ref={triggerRef}>
-      <PDSubVisual ref={subVisualRef}>
+    <StyledPDSubVisualSection ref={triggerRef}>
+      <StyledPDSubVisual ref={subVisualRef}>
         {img?.sec ? (
           <DetailMediaContents
             referType={img.referType}
@@ -81,7 +81,7 @@ export default function DetailSubVisual() {
             alt={typeof category === "string" ? category : "Detail SubVisual"}
           />
         ) : null}
-      </PDSubVisual>
-    </PDSubVisualSection>
+      </StyledPDSubVisual>
+    </StyledPDSubVisualSection>
   );
 }

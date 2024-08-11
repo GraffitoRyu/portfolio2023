@@ -8,11 +8,11 @@ import StackLevelGauge from "./Level";
 
 // style components
 import {
-  StackLegendContainer,
-  StackLegendFigure,
-  StackLegendItem,
-  StackLegendLabel,
-  StackLegendTitle,
+  StyledStackLegendContainer,
+  StyledStackLegendFigure,
+  StyledStackLegendItem,
+  StyledStackLegendLabel,
+  StyledStackLegendTitle,
 } from "@/styles/styled/components/ProfileStacks";
 
 // state
@@ -62,18 +62,18 @@ export default function StackLegend() {
   }, [scrollContainer]);
 
   return (
-    <StackLegendContainer ref={legendRef}>
-      <StackLegendTitle>
+    <StyledStackLegendContainer ref={legendRef}>
+      <StyledStackLegendTitle>
         <span>경험 단계</span>
-      </StackLegendTitle>
+      </StyledStackLegendTitle>
       {legendData.map(({ label, level }: StackLegendTypes) => (
-        <StackLegendItem key={`stackLegend_${level}`}>
-          <StackLegendLabel>{label}</StackLegendLabel>
-          <StackLegendFigure>
+        <StyledStackLegendItem key={`stackLegend_${level}`}>
+          <StyledStackLegendLabel>{label}</StyledStackLegendLabel>
+          <StyledStackLegendFigure>
             <StackLevelGauge level={level} />
-          </StackLegendFigure>
-        </StackLegendItem>
+          </StyledStackLegendFigure>
+        </StyledStackLegendItem>
       ))}
-    </StackLegendContainer>
+    </StyledStackLegendContainer>
   );
 }

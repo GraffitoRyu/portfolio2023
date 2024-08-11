@@ -5,9 +5,9 @@ import { useAtomValue } from "jotai";
 
 // style components
 import {
-  SectionHeaderContainer,
-  HeaderDesc,
-  HeaderTitle,
+  StyledSectionHeaderContainer,
+  StyledHeaderDesc,
+  StyledHeaderTitle,
 } from "@/styles/styled/components/PageSection";
 
 // state
@@ -66,7 +66,7 @@ export default function SectionHeader({
   }, [scrollContainer]);
 
   return (
-    <SectionHeaderContainer
+    <StyledSectionHeaderContainer
       className={`section-header ${empty ? "empty" : ""} ${
         className ? className : ""
       }`}
@@ -75,14 +75,14 @@ export default function SectionHeader({
         ""
       ) : (
         <>
-          <HeaderTitle ref={titleRef}>{title}</HeaderTitle>
-          <HeaderDesc ref={descRef}>
+          <StyledHeaderTitle ref={titleRef}>{title}</StyledHeaderTitle>
+          <StyledHeaderDesc ref={descRef}>
             {desc?.map((d: string | React.ReactNode, i: number) => (
               <span key={`sectionHeader_${title}_${i}`}>{d}</span>
             ))}
-          </HeaderDesc>
+          </StyledHeaderDesc>
         </>
       )}
-    </SectionHeaderContainer>
+    </StyledSectionHeaderContainer>
   );
 }

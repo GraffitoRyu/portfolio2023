@@ -13,8 +13,8 @@ import { useAtom, useAtomValue } from "jotai";
 
 // style components
 import {
-  PDVisualTitle,
-  PDVisualTitleLine,
+  StyledPDVisualTitle,
+  StyledPDVisualTitleLine,
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
@@ -87,12 +87,12 @@ export default function DetailVisualTitle() {
   }, [scrollContainer]);
 
   return (
-    <PDVisualTitle className={`${hide}`} ref={updateScrollRef}>
+    <StyledPDVisualTitle className={`${hide}`} ref={updateScrollRef}>
       {title.map((t: string, i: number) => (
-        <PDVisualTitleLine key={`detailTitle_${t}_${i}`} $index={i}>
+        <StyledPDVisualTitleLine key={`detailTitle_${t}_${i}`} $index={i}>
           {t}
-        </PDVisualTitleLine>
+        </StyledPDVisualTitleLine>
       ))}
-    </PDVisualTitle>
+    </StyledPDVisualTitle>
   );
 }

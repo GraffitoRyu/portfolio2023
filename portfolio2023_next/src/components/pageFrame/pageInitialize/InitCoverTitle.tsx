@@ -1,10 +1,10 @@
 // style components
-import { InitCoverTItle } from "@/styles/styled/components/InitPageCover";
+import { StyledInitCoverTItle } from "@/styles/styled/components/InitPageCover";
 
 export default function InitTitle() {
   return (
-    <InitCoverTItle>
+    <StyledInitCoverTItle>
       <span>FRONTEND DEVELOPER PORTFOLIO</span>
-    </InitCoverTItle>
+    </StyledInitCoverTItle>
   );
 }

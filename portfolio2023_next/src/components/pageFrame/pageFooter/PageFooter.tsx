@@ -9,8 +9,8 @@ import FooterLower from "./lower/FooterLower";
 
 // styled components
 import {
-  FooterContainer,
-  FooterWrap,
+  StyledFooterContainer,
+  StyledFooterWrap,
 } from "@/styles/styled/components/PageFooter";
 
 // state
@@ -29,11 +29,11 @@ export default function PageFooter() {
   );
 
   return (
-    <FooterContainer className="page-footer" ref={setRef}>
-      <FooterWrap>
+    <StyledFooterContainer className="page-footer" ref={setRef}>
+      <StyledFooterWrap>
         <FooterUpperContainer />
         <FooterLower />
-      </FooterWrap>
-    </FooterContainer>
+      </StyledFooterWrap>
+    </StyledFooterContainer>
   );
 }

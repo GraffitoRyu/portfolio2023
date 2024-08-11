@@ -5,7 +5,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
 
 // style components
-import { PDVisualSubtitle } from "@/styles/styled/components/ProjectDetail";
+import { StyledPDVisualSubtitle } from "@/styles/styled/components/ProjectDetail";
 
 // state
 import { pageDetailLoadState } from "@/jotai/load.state";
@@ -83,12 +83,12 @@ export default function DetailVisualSubtitle() {
   }, [scrollContainer]);
 
   return (
-    <PDVisualSubtitle
+    <StyledPDVisualSubtitle
       className={`${hide}`}
       $index={delayIndex}
       ref={subtitleRef}
     >
       {desc}
-    </PDVisualSubtitle>
+    </StyledPDVisualSubtitle>
   );
 }
