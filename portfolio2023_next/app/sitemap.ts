@@ -1,6 +1,9 @@
-import { site } from "@/data/metadata";
 import { MetadataRoute } from "next";
+import { site } from "@/data/metadata";
 
+/**
+ * 사이트맵 생성
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
