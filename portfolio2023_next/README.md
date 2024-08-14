@@ -20,7 +20,7 @@
 
 ### 1) 코어
 
-- Node.js v20.14.0
+- Node.js v20.16.0
 - Next.js v14; App Router
 - TypeScript
 - React v18
