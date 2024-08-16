@@ -1,8 +1,9 @@
-# (리팩토링 진행중) 류대현 포트폴리오 2023-2024
+# (리팩토링 진행중) 류대현 포트폴리오
 
 2023년 제작했던, 제 소개를 위한 [프로필 포트폴리오](https://ryudh.com)입니다.
 
-실무에서 다음의 환경에서 작업한 경험을 바탕으로,
+2024년 현재,
+실무에서 작업한 경험을 바탕으로,
 부족한 부분을 보완하고 지금의 제 역량을 기준으로한 코드를 보여드리기 위해
 리팩토링을 진행하고 있습니다.
 
@@ -10,9 +11,10 @@
 
 ## 1. 링크
 
-- [프로필](https://ryudh.com) (Next.js 프로젝트, Vercel 배포)
+- [프로필](https://ryudh.com)
 - [Github](https://github.com/GraffitoRyu)
 - [Notion](https://www.notion.so/Ryu-Daehyeon-cc635240ed4f405ab6d27ec603f8b023)
+- [랠릿](https://www.rallit.com/hub/resumes/69685)
 
 ---
 
@@ -46,7 +48,7 @@
 
 ### 1) 코어
 
-- Node.js v20.15.1
+- Node.js v20.16.0
 - Next.js v14; App Router
 - TypeScript
 - React v18
