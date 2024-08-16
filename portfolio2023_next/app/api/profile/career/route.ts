@@ -5,6 +5,7 @@ import cacheOptions from "@/lib/cache.lib";
 /**
  * 커리어 조회 API
  * @api
+ * @method GET
  * @route /api/profile/career
  * @return {Promise<NextResponse<CareerAPIDataType[]>>}
  */

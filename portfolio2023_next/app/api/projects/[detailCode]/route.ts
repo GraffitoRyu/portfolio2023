@@ -5,6 +5,7 @@ import cacheOptions from "@/lib/cache.lib";
 /**
  * 프로젝트 상세 데이터 조회 API
  * @api
+ * @method GET
  * @param {string} params.detailCode 프로젝트 코드
  * @route /api/projects/{detailCode}
  * @return {Promise<NextResponse<ProjectsAPIDataType | undefined>>}

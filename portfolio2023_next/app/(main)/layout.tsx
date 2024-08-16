@@ -6,7 +6,7 @@ export { metadata, viewport } from "@/data/metadata";
 // root components
 import JotaiProvider from "@/components/roots/provider/JotaiProvider";
 import ReactQueryProvider from "@/components/roots/provider/ReactQueryProvider";
-import StyledComponentsRegistry from "../src/components/roots/lib/StyledRegistry";
+import StyledComponentsRegistry from "../../src/components/roots/lib/StyledRegistry";
 import StyledThemeColorProvider from "@/components/roots/provider/StyledThemeColorProvider";
 import PageLoadEvents from "@/components/roots/lib/PageLoadEvents";
 import ViewportDeviceChecker from "@/components/roots/lib/ViewportDeviceChecker";
@@ -28,6 +28,10 @@ import {
   StyledMainContainer,
 } from "@/styles/styled/components/Page";
 
+/**
+ * 레이아웃; 전역 레이아웃
+ * @NextLayout
+ */
 export default function RootLayout({
   children,
 }: {

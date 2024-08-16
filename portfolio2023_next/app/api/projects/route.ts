@@ -5,6 +5,7 @@ import cacheOptions from "@/lib/cache.lib";
 /**
  * 프로젝트 목록 데이터 조회 API
  * @api
+ * @method GET
  * @route /api/projects
  * @return {Promise<NextResponse<ProjectsAPIDataType[]>>}
  */

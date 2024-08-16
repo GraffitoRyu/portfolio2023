@@ -1,5 +1,6 @@
 /**
  * 텍스트 capitalize 첫글자 대문자
+ * @util
  * @param {string} value 텍스트
  * @return {string}
  */

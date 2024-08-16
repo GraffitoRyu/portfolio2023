@@ -1,5 +1,7 @@
 /**
  * 시스템 테마 추출
+ * @util
+ * @theme
  * @return {string} "dark", "light"
  */
 export const getSystemTheme = (): "dark" | "light" => {
@@ -11,7 +13,11 @@ export const getSystemTheme = (): "dark" | "light" => {
 
 /**
  * 테마 적용
+ * @util
+ * @theme
  * @param {string | undefined | null} theme 테마
+ * @desc
+ * <html />에 className으로 "dark-theme", "light-theme" 적용
  */
 export const applyTheme = (theme: string | undefined | null) => {
   if (typeof window === "undefined") return;

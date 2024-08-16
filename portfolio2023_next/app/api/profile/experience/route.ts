@@ -5,6 +5,7 @@ import cacheOptions from "@/lib/cache.lib";
 /**
  * 경험 내용 조회 API
  * @api
+ * @method GET
  * @route /api/profile/experience
  * @return {Promise<NextResponse<ExperienceAPIDataTypes[]>>}
  */

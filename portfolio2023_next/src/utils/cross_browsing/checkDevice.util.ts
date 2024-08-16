@@ -3,6 +3,8 @@ import userAgentOptions from "@/data/userAgent";
 
 /**
  * 반응형 웹 breakpoint 감지
+ * @util
+ * @cross_browsing
  * @param {string} userAgent
  * @return {BreakPointType} "desktop", "tablet", "mobile"
  */
@@ -19,6 +21,8 @@ const checkResponsiveDevice = (userAgent: string): BreakPointType => {
 
 /**
  * 애플 디바이스 감지
+ * @util
+ * @cross_browsing
  * @param {string} userAgent
  * @return {"true"|"false"}
  */
@@ -30,6 +34,8 @@ const checkAppleDevice = (userAgent: string): "true" | "false" => {
 
 /**
  * 감지된 기기환경 저장
+ * @util
+ * @cross_browsing
  * @param {NextRequest} req
  * @param {NextResponse} res
  * @return {NextResponse}

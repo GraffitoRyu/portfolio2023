@@ -5,6 +5,7 @@ import cacheOptions from "@/lib/cache.lib";
 /**
  * 기술 스택 조회 API
  * @api
+ * @method GET
  * @route /api/profile/stacks
  * @return {Promise<NextResponse<StackAPIDataTypes[]>>}
  */

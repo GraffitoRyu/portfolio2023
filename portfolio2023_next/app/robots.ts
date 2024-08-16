@@ -4,6 +4,7 @@ import { site } from "@/data/metadata";
 
 /**
  * robots.txt 생성 라우트
+ * @robots
  */
 export default function robots(): MetadataRoute.Robots {
   return {

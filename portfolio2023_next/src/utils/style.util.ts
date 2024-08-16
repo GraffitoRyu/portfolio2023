@@ -2,18 +2,24 @@ import { sizePreset } from "@/styles/styled/preset/size";
 
 /**
  * px값을 rem으로 변환
- * - 시안 기준을 2560px너비 100%로 함
+ * @util
+ * @style
  * @property {number} px : 픽셀 단위의 number
  * @return {string} rem 변환된 단위 값
+ * @desc
+ * - 시안 기준을 2560px너비 100%로 함
  */
 export const rem = (px: number): string =>
   `${px / sizePreset.common.remStd}rem`;
 
 /**
  * px값을 rem으로 변환 ??? 다시 살펴볼 것
- * - 시안 기준을 2560px너비 100%로 함
+ * @util
+ * @style
  * @property {number} px : 픽셀 단위의 number
  * @return {number}
+ * @desc
+ * - 시안 기준을 2560px너비 100%로 함
  */
 export const remToPx = (px: number): number =>
   typeof px === "number"
@@ -22,6 +28,8 @@ export const remToPx = (px: number): number =>
 
 /**
  * 현재 페이지의 html 기준 font-size 추출
+ * @util
+ * @style
  * @return {number} font-size
  */
 export const getRootFontSize = (): number => {
@@ -42,6 +50,7 @@ export const getRootFontSize = (): number => {
 /**
  * css 단위 변환
  * @util
+ * @style
  * @property {number | string} v : number인 경우 rem 변환, string인 경우 단위가 붙은 것으로 간주하고 그대로 return
  * @return {number | string} 단위 변환 값
  */

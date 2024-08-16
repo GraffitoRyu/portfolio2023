@@ -2,6 +2,8 @@ import { dateFormat } from "./data/dateTime.util";
 
 /**
  * 콘솔로그; 개발용
+ * @util
+ * @log
  * @param {unknown[]} arg
  */
 export function consoleLog(...arg: unknown[]) {
@@ -11,6 +13,8 @@ export function consoleLog(...arg: unknown[]) {
 
 /**
  * 콘솔로그; Next.js API Route 디버깅용
+ * @util
+ * @log
  * @param {string} method GET, POST, DELETE
  * @param {string} nextApiPath Next.js route API route URL
  * @param {string} DBApiPath DB API route URL

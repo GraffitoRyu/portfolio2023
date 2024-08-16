@@ -3,6 +3,7 @@ import { site } from "@/data/metadata";
 
 /**
  * 사이트맵 생성
+ * @sitemap
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
