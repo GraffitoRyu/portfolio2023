@@ -19,7 +19,7 @@ import { themeState } from "@/jotai/theme.state";
  */
 export default function ThemeContainer() {
   const themeRef = useRef<HTMLDivElement | null>(null);
-  const [{ isOpen }, setTheme] = useAtom<ThemeStateTypes>(themeState);
+  const [{ isOpen }, setTheme] = useAtom(themeState);
 
   const updateOpenState = useCallback(() => {
     setTheme(prev => ({

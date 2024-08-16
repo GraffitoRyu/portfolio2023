@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useAtom } from "jotai";
 
 // components
@@ -14,19 +14,22 @@ import {
 import { themeState } from "@/jotai/theme.state";
 
 export default function ThemeToggleBtn() {
-  const [theme, setTheme] = useAtom<ThemeStateTypes>(themeState);
+  const [theme, setTheme] = useAtom(themeState);
   const [hover, setHover] = useState<string>("");
 
-  const setToggle: () => void = () => {
+  const setToggle = useCallback(() => {
     setTheme(prev => ({
       ...prev,
       isOpen: !prev.isOpen,
     }));
-  };
+  }, [setTheme]);
 
-  const updateIcon: (thisTheme: string) => string = thisTheme => {
-    return theme.theme === thisTheme ? "on" : "";
-  };
+  const updateIcon = useCallback(
+    (thisTheme: string): string => {
+      return theme.theme === thisTheme ? "on" : "";
+    },
+    [theme.theme],
+  );
 
   return (
     <StyledToggleBtn

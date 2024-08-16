@@ -15,7 +15,19 @@ type ThemeMenuType = ThemeType | "system";
  * @state
  */
 type ThemeStateTypes = {
+  /**
+   * page header; 테마 선택메뉴 열림 상태
+   * @type {boolean}
+   */
   isOpen: boolean;
+  /**
+   * 시스템 테마 사용 여부
+   * @type {boolean}
+   */
   isSystem: boolean;
+  /**
+   * 현재 사용중인 테마
+   * @type {ThemeType} "light" | "dark" | "system"
+   */
   theme: ThemeType;
 };
