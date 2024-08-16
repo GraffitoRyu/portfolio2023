@@ -18,17 +18,51 @@ interface CareerOpenTypes {
  * @state
  */
 type ScrollRefStateTypes = {
+  /**
+   * <ScrollContainer />
+   */
   container: HTMLElement | null;
+  /**
+   * <PageSection page="profile" code="visual" />
+   */
   sectionVisual: HTMLElement | null;
+  /**
+   * <PageSection page="profile" code="career" />
+   */
   sectionCareer: HTMLElement | null;
-  careerContents: HTMLElement | null; // career 섹션 컨텐츠 묶음
-  careerItems: CareerItemsRefTypes; // career 각 컨텐츠
-  careerOpen: CareerOpenTypes; // career 각 컨텐츠 아이템 별 열림 여부
+  /**
+   * career 섹션 컨텐츠 묶음
+   */
+  careerContents: HTMLElement | null;
+  /**
+   * career 각 컨텐츠
+   */
+  careerItems: CareerItemsRefTypes;
+  /**
+   * career 각 컨텐츠 아이템 별 열림 여부
+   */
+  careerOpen: CareerOpenTypes;
+  /**
+   * <PageSection page="profile" code="experience" />
+   */
   sectionExperience: HTMLElement | null;
-  experienceContents: HTMLElement | null; // experience 섹션 컨텐츠 묶음
+  /**
+   * experience 섹션 컨텐츠 묶음
+   */
+  experienceContents: HTMLElement | null;
+  /**
+   * <PageSection page="profile" code="stacks" />
+   */
   sectionStacks: HTMLElement | null;
   stackContents: HTMLElement | null;
-  projectList: HTMLElement | null; // 프로젝트 목록 묶음
+  /**
+   * 프로젝트 목록 묶음
+   * <PageSection page="projects" code="projectList" />
+   */
+  projectList: HTMLElement | null;
+  /**
+   * <PageFooter />
+   */
   footer: HTMLElement | null;
   // container: HTMLDivElement | null;
   // header: HTMLElement | null; // <header />
@@ -54,10 +88,19 @@ type ScrollRefStateTypes = {
  * @state
  */
 type DetailScrollRefStateTypes = {
-  container: HTMLElement | null; // <article />
+  /**
+   * <ProjectDetailContainer /> (<article />)
+   */
+  container: HTMLElement | null;
   // scrollHeight: number;
+  /**
+   * <DetailVisualViewport />
+   */
   sectionVisual: HTMLElement | null;
   // header: HTMLElement | null; // <header/>
   // visual: HTMLDivElement | null;
+  /**
+   * <DetailVisualTitle />
+   */
   visualTitle: HTMLHeadingElement | null;
 };

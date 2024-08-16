@@ -18,7 +18,7 @@ export default function DetailVisualViewport({
 
   const updateScrollRef = useCallback(
     (node: HTMLDivElement | null) => {
-      setScrollRef(prev => ({ ...prev, visual: node }));
+      setScrollRef(prev => ({ ...prev, sectionVisual: node }));
     },
     [setScrollRef],
   );
