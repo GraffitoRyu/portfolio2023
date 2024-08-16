@@ -14,6 +14,7 @@
 - [프로필](https://ryudh.com)
 - [Github](https://github.com/GraffitoRyu)
 - [Notion](https://www.notion.so/Ryu-Daehyeon-cc635240ed4f405ab6d27ec603f8b023)
+- [랠릿](https://www.rallit.com/hub/resumes/69685)
 
 ---
 
