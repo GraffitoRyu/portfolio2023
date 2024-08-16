@@ -16,16 +16,16 @@ const nextConfig = {
   images: {
     remotePatterns: [
       // 프로젝트 상세 영상
-      {
-        protocol: "https",
-        hostname: "drive.google.com",
-        pathname: "/uc",
-      },
-      {
-        protocol: "https",
-        hostname: "drive.usercontent.google.com",
-        pathname: "/uc",
-      },
+      // {
+      //   protocol: "https",
+      //   hostname: "drive.google.com",
+      //   pathname: "/uc",
+      // },
+      // {
+      //   protocol: "https",
+      //   hostname: "drive.usercontent.google.com",
+      //   pathname: "/uc",
+      // },
     ],
   },
   // svg 컴포넌트 변환을 위한 설정
