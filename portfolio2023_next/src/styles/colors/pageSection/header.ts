@@ -1,4 +1,4 @@
-export const sectionHeader: SectionHeaderModeTypes = {
+export const sectionHeader: PageSectionHeaderModeTypes = {
   light: {
     title: "#3a3a3a",
     desc: "#5a5a5a",

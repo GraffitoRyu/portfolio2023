@@ -1,4 +1,4 @@
-export const scrollbar: ScrollBarModeTypes = {
+export const scrollbar: CommonScrollBarModeTypes = {
   light: {
     thumb: "rgba(26,26,26,0.6)",
   },

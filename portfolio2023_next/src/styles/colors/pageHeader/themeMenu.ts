@@ -1,4 +1,4 @@
-export const gnbThemeMenu: ThemeMenuModeTypes = {
+export const gnbThemeMenu: PageHeaderThemeMenuModeTypes = {
   light: {
     container: "#efefef",
     menu: "#afafaf",

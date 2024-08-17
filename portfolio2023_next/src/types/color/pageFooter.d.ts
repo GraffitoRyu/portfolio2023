@@ -1,4 +1,4 @@
-interface FooterTypes {
+interface PageFooterTypes {
   bg: string;
   titleBorder: string;
   titleFill: string;
@@ -12,8 +12,8 @@ interface FooterTypes {
   tooltipText: string;
 }
 
-interface FooterModeTypes {
-  [index: string]: FooterTypes;
-  light: FooterTypes;
-  dark: FooterTypes;
+interface PageFooterModeTypes {
+  [index: string]: PageFooterTypes;
+  light: PageFooterTypes;
+  dark: PageFooterTypes;
 }

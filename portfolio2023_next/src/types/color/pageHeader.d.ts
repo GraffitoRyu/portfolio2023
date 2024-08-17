@@ -1,27 +1,27 @@
-interface TimerColorTypes {
+interface PageHeaderTimerColorTypes {
   bar: string;
   text: string;
 }
 
-interface ModeTypes {
-  [index: string]: TimerColorTypes;
-  light: TimerColorTypes;
-  dark: TimerColorTypes;
+interface PageHeaderModeTypes {
+  [index: string]: PageHeaderTimerColorTypes;
+  light: PageHeaderTimerColorTypes;
+  dark: PageHeaderTimerColorTypes;
 }
 
-interface GnbSitemapBtnTypes {
+interface PageHeaderGnbSitemapBtnTypes {
   basic: string;
   hover: string;
   selected: string;
 }
 
-interface SitemapBtnModeTypes {
-  [index: string]: GnbSitemapBtnTypes;
-  light: GnbSitemapBtnTypes;
-  dark: GnbSitemapBtnTypes;
+interface PageHeaderSitemapBtnModeTypes {
+  [index: string]: PageHeaderGnbSitemapBtnTypes;
+  light: PageHeaderGnbSitemapBtnTypes;
+  dark: PageHeaderGnbSitemapBtnTypes;
 }
 
-interface GnbUtilTypes {
+interface PageHeaderGnbUtilTypes {
   bg: string;
   bgHover?: string;
   svg: string;
@@ -31,21 +31,21 @@ interface GnbUtilTypes {
   tooltipText: string;
 }
 
-interface GnbUtilModeTypes {
-  [index: string]: GnbUtilTypes;
-  light: GnbUtilTypes;
-  dark: GnbUtilTypes;
+interface PageHeaderGnbUtilModeTypes {
+  [index: string]: PageHeaderGnbUtilTypes;
+  light: PageHeaderGnbUtilTypes;
+  dark: PageHeaderGnbUtilTypes;
 }
 
-interface ThemeMenuTypes {
+interface PageHeaderThemeMenuTypes {
   container: string;
   menu: string;
   hover: string;
   selected: string;
 }
 
-interface ThemeMenuModeTypes {
-  [index: string]: ThemeMenuTypes;
-  light: ThemeMenuTypes;
-  dark: ThemeMenuTypes;
+interface PageHeaderThemeMenuModeTypes {
+  [index: string]: PageHeaderThemeMenuTypes;
+  light: PageHeaderThemeMenuTypes;
+  dark: PageHeaderThemeMenuTypes;
 }

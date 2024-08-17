@@ -1,4 +1,4 @@
-export const buttons: BtnModeTypes = {
+export const buttons: CommonBtnModeTypes = {
   light: {
     basic: "#5a5a5a",
     hoverBg: "#3f3f3f",

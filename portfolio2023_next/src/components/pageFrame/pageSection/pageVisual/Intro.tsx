@@ -23,7 +23,7 @@ import { transTime } from "@/styles/styled/preset/transTime";
 // utils
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 
-export default function PageIntro({ title, desc }: IntroTypes) {
+export default function PageIntro({ title, desc }: PageSectionIntroTypes) {
   const { init, loadComplete } = useAtomValue(pageLoadState);
   const { windowWidth } = useAtomValue(viewportState);
 

@@ -1,4 +1,4 @@
-export const stacks: StacksModeType = {
+export const stacks: ProfileStacksModeType = {
   light: {
     legendTitle: "#5a5a5a",
     legendLabel: "#a0a0a0",

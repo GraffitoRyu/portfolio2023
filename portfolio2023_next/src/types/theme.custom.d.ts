@@ -1,23 +1,23 @@
 interface CustomThemeTypes {
-  page: PageColorTypes;
-  cursor: CursorColorTypes;
-  scrollbar: ScrollBarColorTypes;
-  buttons: BtnColorTypes;
+  page: CommonPageColorTypes;
+  cursor: CommonCursorColorTypes;
+  scrollbar: CommonScrollBarColorTypes;
+  buttons: CommonBtnColorTypes;
   transCover: TransCoverColorTypes;
   initCover: InitCoverColorTypes;
-  timer: ColorTypes.pageHeader.TimerColorTypes;
-  gnbSitemapBtn: ColorTypes.pageHeader.GnbSitemapBtnTypes;
-  gnbUtilBtn: ColorTypes.pageHeader.GnbUtilTypes;
-  gnbThemeMenu: ColorTypes.pageHeader.ThemeMenuTypes;
-  sectionHeader: ColorTypes.pageSection.SectionHeaderTypes;
-  visualSection: ColorTypes.pageSection.VisualTypes;
-  introSection: ColorTypes.pageSection.IntroTypes;
-  footer: ColorTypes.pageFooter.FooterTypes;
-  career: ColorTypes.profile.CareerColorTypes;
-  exp: ColorTypes.profile.ExpColorTypes;
-  stacks: ColorTypes.profile.StacksColorTypes;
-  projectList: ColorTypes.projectsList.ListColorTypes;
-  projectDetails: ColorTypes.projectDetail.DetailColorTypes;
+  timer: PageHeaderTimerColorTypes;
+  gnbSitemapBtn: PageHeaderGnbSitemapBtnTypes;
+  gnbUtilBtn: PageHeaderGnbUtilTypes;
+  gnbThemeMenu: PageHeaderThemeMenuTypes;
+  sectionHeader: PageSectionHeaderTypes;
+  visualSection: PageSectionVisualTypes;
+  introSection: PageSectionIntroTypes;
+  footer: PageFooterTypes;
+  career: ProfileCareerColorTypes;
+  exp: ProfileExperienceColorTypes;
+  stacks: ProfileStacksColorTypes;
+  projectList: ProjectsListColorTypes;
+  projectDetails: ProjectsDetailColorTypes;
 }
 
 interface CustomThemeModeTypes {

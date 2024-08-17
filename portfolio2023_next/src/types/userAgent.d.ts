@@ -7,8 +7,17 @@ type UserAgentDeviceType = string[];
  * 접속 디바이스 체크를 위한 userAgent 키워드 컬렉션 타입
  */
 type UserAgentDeviceCollectionType = {
+  /**
+   * 접속 기기의 애플 디바이스 여부
+   */
   apple: UserAgentDeviceType;
+  /**
+   * 접속 기기의 태블릿 여부
+   */
   tablet: UserAgentDeviceType;
+  /**
+   * 접속 기기의 모바일 디바이스 여부
+   */
   mobile: UserAgentDeviceType;
 };
 
@@ -31,7 +40,13 @@ type BreakPointType = "desktop" | "tablet" | "mobile";
  * - viewport; 화면 사이즈를 기준으로 한 화면모드
  */
 type ResponsiveDeviceStateType = {
+  /**
+   * 접속 기기의 userAgent를 기준으로 한 화면모드
+   */
   hardware: BreakPointType;
+  /**
+   * 화면 사이즈를 기준으로 한 화면모드
+   */
   viewport: BreakPointType;
 };
 

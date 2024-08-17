@@ -1,4 +1,4 @@
-interface CareerColorTypes {
+interface ProfileCareerColorTypes {
   border: string;
   borderHover: string;
   bgHover: string;
@@ -15,24 +15,24 @@ interface CareerColorTypes {
   expandBg: string;
 }
 
-interface CareerModeTypes {
-  [index: string]: CareerColorTypes;
-  light: CareerColorTypes;
-  dark: CareerColorTypes;
+interface ProfileCareerModeTypes {
+  [index: string]: ProfileCareerColorTypes;
+  light: ProfileCareerColorTypes;
+  dark: ProfileCareerColorTypes;
 }
 
-interface ExpColorTypes {
+interface ProfileExperienceColorTypes {
   title: string;
   desc: string;
 }
 
-interface ExpModeTypes {
-  [index: string]: ExpColorTypes;
-  light: ExpColorTypes;
-  dark: ExpColorTypes;
+interface ProfileExperienceModeTypes {
+  [index: string]: ProfileExperienceColorTypes;
+  light: ProfileExperienceColorTypes;
+  dark: ProfileExperienceColorTypes;
 }
 
-interface StacksColorTypes {
+interface ProfileStacksColorTypes {
   [index: string]: string;
   legendTitle: string;
   legendLabel: string;
@@ -44,8 +44,8 @@ interface StacksColorTypes {
   levelFull: string;
 }
 
-interface StacksModeType {
-  [index: string]: StacksColorTypes;
-  light: StacksColorTypes;
-  dark: StacksColorTypes;
+interface ProfileStacksModeType {
+  [index: string]: ProfileStacksColorTypes;
+  light: ProfileStacksColorTypes;
+  dark: ProfileStacksColorTypes;
 }

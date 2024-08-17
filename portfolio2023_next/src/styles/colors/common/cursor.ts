@@ -1,4 +1,4 @@
-export const cursor: CursorModeTypes = {
+export const cursor: CommonCursorModeTypes = {
   light: {
     basic: "#1a1a1a",
     hover: "rgba(26,26,26,0.1)",

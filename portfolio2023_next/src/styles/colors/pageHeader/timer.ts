@@ -1,4 +1,4 @@
-export const timer: ModeTypes = {
+export const timer: PageHeaderModeTypes = {
   light: {
     bar: "#bfbfbf",
     text: "#bfbfbf",

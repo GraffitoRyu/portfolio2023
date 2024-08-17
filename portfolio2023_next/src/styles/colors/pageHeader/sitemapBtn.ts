@@ -1,4 +1,4 @@
-export const gnbSitemapBtn: SitemapBtnModeTypes = {
+export const gnbSitemapBtn: PageHeaderSitemapBtnModeTypes = {
   light: {
     basic: "#bfbfbf",
     hover: "#5a5a5a",

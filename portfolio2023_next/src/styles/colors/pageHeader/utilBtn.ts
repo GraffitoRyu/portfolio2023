@@ -1,6 +1,6 @@
 // 유틸 버튼 컬러
 
-export const gnbUtilBtn: GnbUtilModeTypes = {
+export const gnbUtilBtn: PageHeaderGnbUtilModeTypes = {
   light: {
     bg: "#efefef",
     svg: "#707070",

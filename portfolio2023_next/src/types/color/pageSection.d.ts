@@ -1,22 +1,22 @@
-interface SectionHeaderTypes {
+interface PageSectionHeaderTypes {
   title: string;
   desc: string | string[];
   empty: boolean;
   className: string;
 }
 
-interface SectionHeaderModeTypes {
-  [index: string]: Partial<SectionHeaderTypes>;
-  light: Partial<SectionHeaderTypes>;
-  dark: Partial<SectionHeaderTypes>;
+interface PageSectionHeaderModeTypes {
+  [index: string]: Partial<PageSectionHeaderTypes>;
+  light: Partial<PageSectionHeaderTypes>;
+  dark: Partial<PageSectionHeaderTypes>;
 }
 
-interface IntroTypes {
+interface PageSectionIntroTypes {
   title: (string | React.ReactNode)[];
   desc: (string | React.ReactNode)[];
 }
 
-interface IntroColorTypes {
+interface PageSectionIntroColorTypes {
   bgFrom: string;
   bgTo: string;
   title: string;
@@ -24,19 +24,19 @@ interface IntroColorTypes {
   desc: string;
 }
 
-interface IntroModeTypes {
-  [index: string]: IntroColorTypes;
-  light: IntroColorTypes;
-  dark: IntroColorTypes;
+interface PageSectionIntroModeTypes {
+  [index: string]: PageSectionIntroColorTypes;
+  light: PageSectionIntroColorTypes;
+  dark: PageSectionIntroColorTypes;
 }
 
-interface VisualTypes {
+interface PageSectionVisualTypes {
   border: string;
   fill: string;
 }
 
-interface VisualModeTypes {
-  [index: string]: VisualTypes;
-  light: VisualTypes;
-  dark: VisualTypes;
+interface PageSectionVisualModeTypes {
+  [index: string]: PageSectionVisualTypes;
+  light: PageSectionVisualTypes;
+  dark: PageSectionVisualTypes;
 }

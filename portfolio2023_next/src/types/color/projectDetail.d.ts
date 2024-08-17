@@ -1,4 +1,4 @@
-interface DetailColorTypes {
+interface ProjectsDetailColorTypes {
   bg: string;
   visualBg: string;
   visualTitle: string;
@@ -14,8 +14,8 @@ interface DetailColorTypes {
   captionDesc: string;
 }
 
-interface DetailModeTypes {
-  [index: string]: DetailColorTypes;
-  light: DetailColorTypes;
-  dark: DetailColorTypes;
+interface ProjectsDetailModeTypes {
+  [index: string]: ProjectsDetailColorTypes;
+  light: ProjectsDetailColorTypes;
+  dark: ProjectsDetailColorTypes;
 }

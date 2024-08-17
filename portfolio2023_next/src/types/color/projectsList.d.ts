@@ -1,4 +1,4 @@
-interface ListColorTypes {
+interface ProjectsListColorTypes {
   border: string;
   bgHover: string;
   title: string;
@@ -7,8 +7,8 @@ interface ListColorTypes {
   slideTitle: string;
 }
 
-interface ListModeTypes {
-  [index: string]: ListColorTypes;
-  light: ListColorTypes;
-  dark: ListColorTypes;
+interface ProjectsListModeTypes {
+  [index: string]: ProjectsListColorTypes;
+  light: ProjectsListColorTypes;
+  dark: ProjectsListColorTypes;
 }

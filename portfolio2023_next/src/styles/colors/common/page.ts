@@ -1,4 +1,4 @@
-export const page: PageModeTypes = {
+export const page: CommonPageModeTypes = {
   light: {
     bg: "#fff",
     selectionBg: "#44e588",
