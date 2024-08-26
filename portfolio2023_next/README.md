@@ -1,4 +1,4 @@
-# 류대현 포트폴리오
+# (리택토링 진행중) 류대현 포트폴리오
 
 2023년 제작했던, 제 소개를 위한 [프로필 포트폴리오](https://ryudh.com)입니다.
 
@@ -22,7 +22,7 @@
 
 ### 1) 코어
 
-- Node.js v20.16.0
+- Node.js v20.17.0
 - Next.js v14; App Router
 - TypeScript
 - React v18
@@ -49,21 +49,21 @@
 
 - ClipboardJS
 
-### 6) TDD
+<!-- ### 6) TDD
 
 - Jest
-- Testing-library
+- Testing-library -->
 
-### 7) 컨벤션
+### 6) 컨벤션
 
 - ESLint v8 (Next.js의 eslint v9 지원전까지 사용 보류)
 - Prettier
 - JSDoc
 
-### 8) 패키지 관리
+### 7) 패키지 관리
 
 - npm
 
-### 9) 배포
+### 8) 배포
 
 - vercel
