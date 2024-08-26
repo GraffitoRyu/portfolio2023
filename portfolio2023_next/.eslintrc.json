@@ -18,7 +18,6 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@tanstack/eslint-plugin-query/recommended",
     "plugin:prettier/recommended",
-    "next",
     "next/core-web-vitals"
   ],
   "overrides": [
