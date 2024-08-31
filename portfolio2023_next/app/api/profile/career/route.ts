@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getFirebaseData } from "@/utils/data/api.util";
-import cacheOptions from "@/lib/cache.lib";
+import cacheOptions from "@/lib/cache";
 
 /**
  * 커리어 조회 API

@@ -27,6 +27,7 @@ import {
   HTMLThemeStyle,
   StyledMainContainer,
 } from "@/styles/styled/components/Page";
+import { getServerState } from "@/jotai/server/util.server";
 
 /**
  * 레이아웃; 전역 레이아웃
@@ -37,15 +38,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const locale = getServerState<SystemLanguageType>("systemLocale", "ko");
+
   return (
     <html
-      lang="ko"
+      lang={locale}
       className={`${sans.variable} ${serif.variable} ${serif_dm.variable}`}
     >
       <body>
-        <JotaiProvider>
-          <ViewportDeviceChecker />
-          <ReactQueryProvider>
+        <ReactQueryProvider>
+          <JotaiProvider>
+            <ViewportDeviceChecker />
             <StyledComponentsRegistry>
               <StyledThemeColorProvider>
                 <HTMLThemeStyle />
@@ -60,8 +63,8 @@ export default function RootLayout({
                 </StyledMainContainer>
               </StyledThemeColorProvider>
             </StyledComponentsRegistry>
-          </ReactQueryProvider>
-        </JotaiProvider>
+          </JotaiProvider>
+        </ReactQueryProvider>
         <Analytics />
       </body>
     </html>

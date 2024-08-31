@@ -8,7 +8,7 @@ import {
   getProfileStacksData,
   getProjectsData,
   getProjectsDetailData,
-} from "./fetch.lib";
+} from "./fetch.firebase";
 
 /**
  * 프로필 > 커리어 데이터 API 쿼리
