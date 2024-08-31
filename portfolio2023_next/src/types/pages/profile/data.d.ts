@@ -1,10 +1,5 @@
 interface CareerAPIDataType {
-  [index: string]:
-    | string
-    | CareerSummaryTypes
-    | CareerDetailsTypes
-    | boolean
-    | undefined;
+  [index: string]: string | CareerSummaryTypes | CareerDetailsTypes | undefined;
   code: string;
   summary: CareerSummaryTypes;
   details: CareerDetailsTypes;

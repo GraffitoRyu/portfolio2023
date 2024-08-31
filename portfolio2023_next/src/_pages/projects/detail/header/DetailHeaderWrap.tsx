@@ -20,7 +20,7 @@ import { pageDetailLoadState } from "@/jotai/load.state";
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // util
-import debounce from "@/utils/interactions/debounce.util";
+import debounce from "@/utils/debounce.util";
 
 export default function DetailHeaderWrap() {
   const [{ windowWidth }, setScreenSize] = useAtom(viewportState);

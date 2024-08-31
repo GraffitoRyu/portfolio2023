@@ -7,32 +7,35 @@ import { useSetAtom } from "jotai";
 import { StyledPageSectionContainer } from "@/styles/styled/components/PageSection";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // util
 import { capitalize } from "@/utils/data/convert.util";
 
-export default function PageSection({
+/**
+ * 페이지 본문 공통 요소; Section Container
+ * @component
+ * @param {PageSectionContainerProps} props
+ * @param {string} props.page
+ * @param {string} props.code
+ * @param {React.ReactNode} props.children
+ * @param {string} [props.className]
+ */
+export default function PageSectionContainer({
   page,
   code,
   children,
   className,
-}: {
-  page: string;
-  code: string;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const setScrollRef = useSetAtom(scrollPageRefState);
+}: PageSectionContainerProps) {
+  const setScrollRef = useSetAtom(
+    scrollPageSectionRefState(`section${capitalize(code)}`),
+  );
 
   const updateScrollRef = useCallback(
     (node: HTMLElement | null) => {
-      setScrollRef(prev => ({
-        ...prev,
-        [`section${capitalize(code)}`]: node,
-      }));
+      setScrollRef(node);
     },
-    [code, setScrollRef],
+    [setScrollRef],
   );
 
   return (

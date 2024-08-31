@@ -6,11 +6,6 @@ import {
   StyledExpTitle,
 } from "@/styles/styled/components/ProfileExperience";
 
-interface ExpItemProps extends ExperienceAPIDataTypes {
-  isActive: boolean;
-  $totalLength: number;
-}
-
 /**
  * 프로필 > 경험; 각 항목 컴포넌트
  * @component

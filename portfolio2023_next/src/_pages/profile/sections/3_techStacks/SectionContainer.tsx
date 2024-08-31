@@ -1,6 +1,6 @@
-import SectionContents from "@/components/pageFrame/pageSection/Contents";
-import SectionHeader from "@/components/pageFrame/pageSection/Header";
-import PageSection from "@/components/pageFrame/pageSection/PageSection";
+import PageSectionContents from "@/components/pageFrame/pageSection/Contents";
+import PageSectionHeader from "@/components/pageFrame/pageSection/Header";
+import PageSectionContainer from "@/components/pageFrame/pageSection/Container";
 import TechStacksContainer from "./Container";
 
 /**
@@ -9,12 +9,12 @@ import TechStacksContainer from "./Container";
  */
 export default function ProfileTechStacksSectionContainer() {
   return (
-    <PageSection
+    <PageSectionContainer
       page="profile"
       code="stacks"
       className="side-h-padding side-v-padding"
     >
-      <SectionHeader
+      <PageSectionHeader
         title="Tech Stacks"
         desc={[
           "지난 5년 간 경험한 기술들입니다. ",
@@ -22,13 +22,13 @@ export default function ProfileTechStacksSectionContainer() {
           "지속적으로 노력하고 있습니다.",
         ]}
       />
-      <SectionContents
+      <PageSectionContents
         code="stacks"
         sectionClassName="stacks"
         // sideContents={<StackLegend />}
       >
         <TechStacksContainer />
-      </SectionContents>
-    </PageSection>
+      </PageSectionContents>
+    </PageSectionContainer>
   );
 }

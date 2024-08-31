@@ -18,8 +18,8 @@ import { themeState } from "@/jotai/theme.state";
 import { applyTheme } from "@/utils/interactions/theme.util";
 
 export default function ThemeMenuList() {
-  const themeList: ThemeMenuType[] = ["light", "dark", "system"];
-  const theme = useAtomValue<ThemeStateTypes>(themeState);
+  const themeList: SystemThemeMenuType[] = ["light", "dark", "system"];
+  const theme = useAtomValue<SystemThemeStateTypes>(themeState);
   const [openClass, setOpenClass] = useState<string>("off");
   const [themeClass, setThemeClass] = useState<string>("system");
 

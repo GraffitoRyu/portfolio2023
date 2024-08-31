@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 
 // components
 import CareerSummary from "./details/CareerSummary";
@@ -21,27 +21,45 @@ import {
 } from "@/styles/styled/components/ProfileCareer";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import {
+  careerOpenState,
+  scrollCareerRefState,
+  scrollPageSectionRefState,
+} from "@/jotai/interaction/scroll.state";
 import { viewportState } from "@/jotai/viewport.state";
 
 // utils
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 
+/**
+ * 프로필 > 커리어; 각 커리어 항목 아이템
+ * @component
+ * @param {CareerItemProps} props
+ * @param {string} props.code
+ * @param {CareerSummaryTypes} props.summary
+ * @param {CareerDetailsTypes} props.details
+ * @param {boolean} [props.last]
+ */
 export default function CareerItem({
   code,
   summary,
   details,
   last,
 }: CareerItemProps) {
-  const [
-    { container: scrollContainer, careerOpen, careerContents },
-    setScrollRef,
-  ] = useAtom<ScrollRefStateTypes>(scrollPageRefState);
+  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
+  const careerContents = useAtomValue(
+    scrollPageSectionRefState("careerContents"),
+  );
+
+  // 커리어 각 ref 관리
+  const setCareerItems = useSetAtom(scrollCareerRefState);
+  // 커리어 각 상태 토글상태 관리
+  const [{ [code]: isOpen }, setCareerOpen] = useAtom(careerOpenState);
+
   const itemRef = useRef<HTMLLIElement | null>(null);
   const [hide, setHide] = useState<string>("hide");
 
   const detailsRef = useRef<HTMLDetailsElement | null>(null);
-  const [open, setOpen] = useState<string>("");
 
   const { careerExpandHeight } =
     useAtomValue<ViewportStateTypes>(viewportState);
@@ -51,15 +69,12 @@ export default function CareerItem({
   const updateExpendRef = useCallback(
     (node: HTMLDetailsElement | null) => {
       detailsRef.current = node;
-      setScrollRef(prev => ({
+      setCareerItems(prev => ({
         ...prev,
-        careerItems: {
-          ...prev.careerItems,
-          [code]: node,
-        },
+        [code]: node,
       }));
     },
-    [code, setScrollRef],
+    [code, setCareerItems],
   );
 
   // 확장 영역 업데이트
@@ -68,12 +83,15 @@ export default function CareerItem({
       setExpandHeight(careerExpandHeight[code]);
   }, [careerExpandHeight, code]);
 
-  // 열림 상태 업데이트
-  useEffect(() => {
-    // 확장 모션을 위해, 내장 기능이 아닌 별도 클릭 이벤트 생성 후 상태 업데이트
-    if (typeof careerOpen[code] === "boolean")
-      setOpen(careerOpen[code] ? "open" : "");
-  }, [careerOpen, code]);
+  const onToggleDetail = useCallback(
+    (state: boolean) => {
+      setCareerOpen(prev => ({
+        ...prev,
+        [code]: state,
+      }));
+    },
+    [code, setCareerOpen],
+  );
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
@@ -122,25 +140,21 @@ export default function CareerItem({
           // 스크롤 다시 되돌아갈때 확장 상태 초기화
           if (detailTag instanceof HTMLDetailsElement) {
             detailTag.open = false;
-            setOpen("");
-            setScrollRef(prev => ({
-              ...prev,
-              careerOpen: { ...careerOpen, [code]: false },
-            }));
+            onToggleDetail(false);
           }
         },
       },
     });
 
     return () => ctx.revert();
-  }, [careerContents, careerOpen, code, scrollContainer, setScrollRef]);
+  }, [careerContents, onToggleDetail, scrollContainer]);
 
   return (
     <StyledCareerItem className={`${hide}`} ref={itemRef}>
       <StyledCareerBorder className="top" />
       <StyledCareerDetailWrap
         ref={updateExpendRef}
-        className={`${open}`}
+        className={isOpen ? "open" : ""}
         $height={expandHeight}
       >
         <CareerSummary code={code} {...summary} />

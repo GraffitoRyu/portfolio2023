@@ -18,12 +18,6 @@ import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 
-type SummaryProps = {
-  itemType: string;
-  title: string;
-  contents: string[];
-};
-
 export default function DetailSummary() {
   const { category } = useParams();
   const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);

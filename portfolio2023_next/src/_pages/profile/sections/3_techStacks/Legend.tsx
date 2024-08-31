@@ -16,7 +16,7 @@ import {
 } from "@/styles/styled/components/ProfileStacks";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // util
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
@@ -25,8 +25,8 @@ import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 import legendData from "@/data/stackLegend";
 
 export default function StackLegend() {
-  const { container: scrollContainer } =
-    useAtomValue<ScrollRefStateTypes>(scrollPageRefState);
+  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
+
   const legendRef = useRef<HTMLDListElement | null>(null);
 
   useLayoutEffect(() => {

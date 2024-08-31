@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
 
 // components
@@ -15,7 +15,10 @@ import {
 } from "@/styles/styled/components/ProfileStacks";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import {
+  scrollPageHeightState,
+  scrollPageSectionRefState,
+} from "@/jotai/interaction/scroll.state";
 
 // util
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
@@ -27,27 +30,18 @@ export default function StackRow({
   title: string;
   data: StackAPIDataTypes[];
 }) {
-  const {
-    container: scrollContainer,
-    sectionCareer,
-    sectionExperience,
-    sectionStacks,
-  } = useAtomValue(scrollPageRefState);
+  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
+  const sectionStacks = useAtomValue(
+    scrollPageSectionRefState("sectionStacks"),
+  );
 
   const triggerRef = useRef<HTMLLIElement | null>(null);
   const categoryRef = useRef<HTMLDivElement | null>(null);
   const stacksRef = useRef<HTMLDivElement | null>(null);
 
   const [stackHide, setStackHide] = useState<string>("hide");
-  const [sectionOffset, setSectionOffset] = useState<number>(0);
 
-  // 스크롤 모션 재계산
-  useEffect(() => {
-    if (!sectionCareer || !sectionExperience?.parentElement) return;
-    setSectionOffset(
-      sectionCareer.offsetHeight + sectionExperience.parentElement.offsetHeight,
-    );
-  }, [sectionCareer, sectionExperience, sectionExperience?.parentElement]);
+  const scrollHeight = useAtomValue(scrollPageHeightState);
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
@@ -64,6 +58,10 @@ export default function StackRow({
       start: `top 100%`,
       end: `top 60%`,
       scrub: true,
+      // markers: true,
+      onToggle: () => {
+        setStackHide("");
+      },
     };
 
     const ctx = ctxScrollTrigger({
@@ -84,13 +82,7 @@ export default function StackRow({
           options: [
             {
               opacity: 1,
-              scrollTrigger: {
-                ...scrollTrigger,
-                // markers: true,
-                onToggle: () => {
-                  setStackHide("");
-                },
-              },
+              scrollTrigger,
             },
           ],
         },
@@ -98,7 +90,7 @@ export default function StackRow({
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, sectionOffset]);
+  }, [scrollContainer, scrollHeight]);
 
   // 초기화; 섹션이 뷰포트 아래로 내려갔을 때
   useLayoutEffect(() => {
@@ -119,7 +111,7 @@ export default function StackRow({
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, sectionStacks, sectionOffset]);
+  }, [scrollContainer, sectionStacks, scrollHeight]);
 
   return (
     <StyledStackRowContainer ref={triggerRef}>

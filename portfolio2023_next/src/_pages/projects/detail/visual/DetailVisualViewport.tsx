@@ -7,18 +7,18 @@ import { useSetAtom } from "jotai";
 import { StyledPDVisualViewport } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
+import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
 
 export default function DetailVisualViewport({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const setScrollRef = useSetAtom(scrollDetailRefState);
+  const setScrollRef = useSetAtom(scrollDetailSectionRefState("sectionVisual"));
 
   const updateScrollRef = useCallback(
     (node: HTMLDivElement | null) => {
-      setScrollRef(prev => ({ ...prev, sectionVisual: node }));
+      setScrollRef(node);
     },
     [setScrollRef],
   );

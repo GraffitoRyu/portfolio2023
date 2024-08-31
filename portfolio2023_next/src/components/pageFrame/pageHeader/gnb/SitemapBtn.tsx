@@ -9,7 +9,7 @@ import { StyledSitemapLink } from "@/styles/styled/components/Gnb";
 
 // state
 import { pageLoadState } from "@/jotai/load.state";
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
@@ -23,7 +23,7 @@ export default function SitemapBtn({ code, path, name }: SitemapDataType) {
 
   // 페이지 상태 관리
   const setPageAtom = useSetAtom(pageLoadState);
-  const { container } = useAtomValue<ScrollRefStateTypes>(scrollPageRefState);
+  const container = useAtomValue(scrollPageSectionRefState("container"));
 
   // 경로 상태 관리
   const [curPath, setCurPath] = useState<string>("/");

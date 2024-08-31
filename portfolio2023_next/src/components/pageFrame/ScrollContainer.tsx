@@ -7,7 +7,7 @@ import { useSetAtom } from "jotai";
 import { StyledScrollContainer } from "@/styles/styled/components/Page";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 /**
  * 스크롤 컨테이너
@@ -20,11 +20,11 @@ export default function ScrollContainer({
 }: {
   children: React.ReactNode;
 }) {
-  const setScrollRef = useSetAtom(scrollPageRefState);
+  const setScrollRef = useSetAtom(scrollPageSectionRefState("container"));
 
   const updateScrollRef = useCallback(
     (node: HTMLDivElement | null) => {
-      setScrollRef(prev => ({ ...prev, container: node }));
+      setScrollRef(node);
     },
     [setScrollRef],
   );

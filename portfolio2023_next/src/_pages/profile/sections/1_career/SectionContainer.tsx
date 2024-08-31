@@ -1,8 +1,6 @@
-import { Suspense } from "react";
-
-import SectionContents from "@/components/pageFrame/pageSection/Contents";
-import SectionHeader from "@/components/pageFrame/pageSection/Header";
-import PageSection from "@/components/pageFrame/pageSection/PageSection";
+import PageSectionContents from "@/components/pageFrame/pageSection/Contents";
+import PageSectionHeader from "@/components/pageFrame/pageSection/Header";
+import PageSectionContainer from "@/components/pageFrame/pageSection/Container";
 import CareerList from "./List";
 
 /**
@@ -11,20 +9,18 @@ import CareerList from "./List";
  */
 export default function ProfileCareerSectionContainer() {
   return (
-    <PageSection
+    <PageSectionContainer
       page="profile"
       code="career"
       className="side-h-padding side-v-padding"
     >
-      <SectionHeader
+      <PageSectionHeader
         title="Career"
         desc={["지난 6년간 실무 경험을 쌓은 ", "근무 경력입니다."]}
       />
-      <SectionContents code="career" sectionClassName="career">
-        <Suspense fallback={null}>
-          <CareerList />
-        </Suspense>
-      </SectionContents>
-    </PageSection>
+      <PageSectionContents code="career" sectionClassName="career">
+        <CareerList />
+      </PageSectionContents>
+    </PageSectionContainer>
   );
 }

@@ -6,7 +6,7 @@ import { useMemo } from "react";
 import {
   useQueryProfileStackKeys,
   useQueryProfileStacksData,
-} from "@/lib/query.lib";
+} from "@/lib/query";
 
 /**
  * 프로필 > 기술스택; 데이터 추출 Hook

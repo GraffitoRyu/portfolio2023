@@ -13,12 +13,12 @@ import { themeState } from "@/jotai/theme.state";
 // util
 import { getSystemTheme } from "@/utils/interactions/theme.util";
 
-export default function ThemeMenuBtn({ code }: { code: ThemeMenuType }) {
+export default function ThemeMenuBtn({ code }: { code: SystemThemeMenuType }) {
   const [theme, setTheme] = useAtom(themeState);
   const [hover, setHover] = useState("");
 
   const changeTheme = useCallback(
-    (selectedTheme: ThemeMenuType) => {
+    (selectedTheme: SystemThemeMenuType) => {
       if (!selectedTheme) return;
 
       setTheme(prev => ({

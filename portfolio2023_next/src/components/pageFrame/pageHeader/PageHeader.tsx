@@ -16,7 +16,7 @@ import {
 // state
 import { viewportState } from "@/jotai/viewport.state";
 import { pageLoadState } from "@/jotai/load.state";
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // hook
 import useResizeObserver from "@/hooks/layout/useResizeObserver";
@@ -24,14 +24,14 @@ import useResizeObserver from "@/hooks/layout/useResizeObserver";
 export default function PageHeader() {
   const headerRef = useRef<HTMLElement | null>(null);
   const setScreenSize = useSetAtom(viewportState);
-  const setScrollRef = useSetAtom(scrollPageRefState);
+  const setScrollRef = useSetAtom(scrollPageSectionRefState("header"));
   const [hide, setHide] = useState<string>("init-hide hide");
   const { init, initComplete } = useAtomValue(pageLoadState);
 
   const updateScrollRef = useCallback(
     (node: HTMLElement | null) => {
       headerRef.current = node;
-      setScrollRef(prev => ({ ...prev, header: node }));
+      setScrollRef(node);
     },
     [setScrollRef],
   );

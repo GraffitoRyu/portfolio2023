@@ -7,7 +7,7 @@ import CareerItem from "./Item";
 import { StyledCareerList } from "@/styles/styled/components/ProfileCareer";
 
 // fetch
-import { useQueryProfileCareerData } from "@/lib/query.lib";
+import { useQueryProfileCareerData } from "@/lib/query";
 
 export default function CareerList() {
   const { data: careerData = [] } = useQueryProfileCareerData();

@@ -18,15 +18,22 @@ import { transTime } from "@/styles/styled/preset/transTime";
 // state
 import { viewportState } from "@/jotai/viewport.state";
 import { pageLoadState } from "@/jotai/load.state";
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // hooks
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 
+/**
+ * 페이지 본문 공통 요소; Section Visual
+ * @component
+ * @param {SectionHeaderProps} props
+ * @param {string[]} props.title
+ */
 export default function PageVisual({ title }: { title: string[] }) {
   const { windowWidth, headerHeight } = useAtomValue(viewportState);
 
-  const { container: scrollContainer } = useAtomValue(scrollPageRefState);
+  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
+
   const [isMobile, setMobile] = useState<boolean>(false);
 
   const visualRef = useRef<HTMLDivElement | null>(null);

@@ -19,8 +19,8 @@ export default function StyledThemeColorProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { theme } = useAtomValue<ThemeStateTypes>(themeState);
-  const [mode, setMode] = useState<"light" | "dark">(theme ?? "dark");
+  const { theme } = useAtomValue<SystemThemeStateTypes>(themeState);
+  const [mode, setMode] = useState<SystemThemeType>(theme ?? "dark");
 
   useEffect(() => {
     if (theme) setMode(theme);

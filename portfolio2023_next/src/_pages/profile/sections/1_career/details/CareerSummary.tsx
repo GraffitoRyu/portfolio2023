@@ -14,7 +14,10 @@ import {
 
 // state
 import { viewportState } from "@/jotai/viewport.state";
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import {
+  careerOpenState,
+  scrollCareerRefState,
+} from "@/jotai/interaction/scroll.state";
 
 interface CareerSummaryProps extends CareerSummaryTypes {
   code: string;
@@ -27,25 +30,22 @@ export default function CareerSummary({
   company,
 }: CareerSummaryProps) {
   const { windowWidth } = useAtomValue(viewportState);
-  const [{ careerItems, careerOpen }, setScrollRef] =
-    useAtom<ScrollRefStateTypes>(scrollPageRefState);
+  const { [code]: itemRef } = useAtomValue(scrollCareerRefState);
+  const [{ [code]: isOpen }, setOpen] = useAtom(careerOpenState);
 
   const [hover, setHover] = useState<string>("");
 
   const openDetails = useCallback(
     (e: React.SyntheticEvent) => {
-      const container = careerItems[code];
+      const container = itemRef;
       if (!container) return;
 
       e.preventDefault();
-      const isOpen = careerOpen[code];
+
       if (isOpen) {
-        setScrollRef(prev => ({
+        setOpen(prev => ({
           ...prev,
-          careerOpen: {
-            ...prev.careerOpen,
-            [code]: false,
-          },
+          [code]: false,
         }));
         // 닫힘 모션 끝나고 업데이트
         setTimeout(() => {
@@ -53,28 +53,22 @@ export default function CareerSummary({
         }, 400);
       } else {
         container.open = true;
-        setScrollRef(prev => ({
+        setOpen(prev => ({
           ...prev,
-          careerOpen: {
-            ...prev.careerOpen,
-            [code]: true,
-          },
+          [code]: true,
         }));
       }
     },
-    [careerItems, careerOpen, code, setScrollRef],
+    [code, isOpen, itemRef, setOpen],
   );
 
   useEffect(() => {
-    if (typeof careerOpen[code] !== "boolean")
-      setScrollRef(prev => ({
+    if (typeof isOpen !== "boolean")
+      setOpen(prev => ({
         ...prev,
-        careerOpen: {
-          ...prev.careerOpen,
-          [code]: false,
-        },
+        [code]: false,
       }));
-  }, [careerOpen, code, setScrollRef]);
+  }, [code, isOpen, setOpen]);
 
   return (
     <StyledCareerSummaryContainer

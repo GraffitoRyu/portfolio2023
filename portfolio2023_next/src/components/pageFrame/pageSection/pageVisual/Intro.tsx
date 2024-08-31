@@ -9,21 +9,31 @@ import {
   StyledIntroTitle,
 } from "@/styles/styled/components/PageVisual";
 
-// util components
-import ParseDescNewLine from "@/components/util/ParseDescNewLine";
-
 // state
 import { pageLoadState } from "@/jotai/load.state";
 import { viewportState } from "@/jotai/viewport.state";
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // utils
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+import { convertArrayToJsx } from "@/utils/data/convert.util";
 
-export default function PageIntro({ title, desc }: PageSectionIntroTypes) {
+/**
+ * 페이지 본문 공통 요소; Intro
+ * @component
+ * @param {PageSectionIntroTypes} props
+ * @param {string} props.category
+ * @param {(string | React.ReactNode)[]} props.title
+ * @param {(string | React.ReactNode)[]} props.desc
+ */
+export default function PageIntro({
+  category,
+  title,
+  desc,
+}: PageSectionIntroTypes) {
   const { init, loadComplete } = useAtomValue(pageLoadState);
   const { windowWidth } = useAtomValue(viewportState);
 
@@ -37,7 +47,7 @@ export default function PageIntro({ title, desc }: PageSectionIntroTypes) {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const descRef = useRef<HTMLParagraphElement | null>(null);
 
-  const { container: scrollContainer } = useAtomValue(scrollPageRefState);
+  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
 
   useEffect(() => {
     if (windowWidth >= 1024) return;
@@ -105,10 +115,10 @@ export default function PageIntro({ title, desc }: PageSectionIntroTypes) {
   return (
     <>
       <StyledIntroTitle className={`${titleHide}`} ref={titleRef}>
-        <ParseDescNewLine data={title} />
+        {convertArrayToJsx(title, { key: `${category}/intro/title` })}
       </StyledIntroTitle>
       <StyledIntroDesc className={`${descHide}`} ref={descRef}>
-        <ParseDescNewLine data={desc} />
+        {convertArrayToJsx(desc, { key: `${category}/intro/desc` })}
       </StyledIntroDesc>
     </>
   );

@@ -9,7 +9,7 @@ import {
   StyledProjectListItem,
 } from "@/styles/styled/components/ProjectList";
 
-import { useQueryProjectListData } from "@/lib/query.lib";
+import { useQueryProjectListData } from "@/lib/query";
 
 export default function ProjectList() {
   const { data: listData } = useQueryProjectListData();

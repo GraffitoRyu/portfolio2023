@@ -1,18 +1,5 @@
-/**
- * 날짜 형식 데이터 타입 체크
- * @util
- * @param {unknown} value 날짜 여부를 검사할 데이터
- * @return {boolean}
- */
-export const isValidDateType = (value: unknown): boolean => {
-  return (
-    value instanceof Date ||
-    (typeof value === "string" &&
-      value !== "" &&
-      new Date(value) instanceof Date &&
-      !isNaN(new Date(value).valueOf()))
-  );
-};
+import { convert2Digit } from "./convert.util";
+import { isValidDateType } from "./validation.util";
 
 /**
  * 접속위치에 따른 시간대 보정
@@ -21,25 +8,25 @@ export const isValidDateType = (value: unknown): boolean => {
  * @return {Date} 보정된 시간
  */
 export const correctTimezone = (date: Date): Date => {
-  // 분을 ms로 변환 (60초 * 1000ms)
-  const MILLISECONDS = 60 * 1000;
+  // 한국 시간(KST)의 UTC offset: +9시간
+  const koreaTimezoneOffset = 9 * 60; // 분 단위 (9시간 * 60분)
 
-  // 한국 시간(KST)으로 보정
-  const koreaTimezoneOffset = -540; // 한국 시간대의 UTC offset: -540분 (UTC+9)
+  // 현재 로컬 시간대의 UTC offset (분 단위)
+  const localTimezoneOffset = date.getTimezoneOffset();
 
-  // getTimezoneOffset: 현재 시간과 UTC 시간 차이를 분 단위로 추출
-  const localTimezoneOffset = date.getTimezoneOffset(); // 현재 로컬 시간대와 UTC 차이 (분 단위)
+  // UTC 기준 시간을 KST로 변환
+  const correctionInMinutes = koreaTimezoneOffset - localTimezoneOffset;
 
-  // 로컬 시간대에 따른 보정
-  const correction = (koreaTimezoneOffset - localTimezoneOffset) * MILLISECONDS;
+  // 분을 밀리초로 변환하여 시간 보정
+  const correctedTime = date.getTime() + correctionInMinutes * 60 * 1000;
 
-  return new Date(date.getTime() + correction);
+  return new Date(correctedTime);
 };
 
 /**
- * 날짜 데이터를 yyyy-mm-dd 문자열로 변환
+ * Date 타입 데이터를 yyyy-mm-dd로 변환
  * @util
- * @param {string | Date} date 날짜 데이터. 없을 경우 오늘날짜 반환
+ * @param {unknown} date
  * @param {object} [options]
  * @param {Intl.DateTimeFormatOptions} [options.formatOptions]
  * @param {boolean} [options.isKorean]
@@ -47,16 +34,23 @@ export const correctTimezone = (date: Date): Date => {
  * @return {string} yyyy-mm-dd
  */
 export const dateFormat = (
-  date: string | Date,
+  date: unknown,
   options?: {
+    isCorrection?: boolean;
     formatOptions?: Intl.DateTimeFormatOptions;
+    formatTimezone?: string;
     isKorean?: boolean;
     isISOString?: boolean;
   },
 ): string => {
   if (isValidDateType(date)) {
     const d = new Date(date as string | number | Date);
-    const defaultDateFormat = correctTimezone(d).toISOString();
+    const year = d.getFullYear();
+    const month = convert2Digit(d.getMonth() + 1);
+    const day = convert2Digit(d.getDate());
+    const defaultDateFormat = options?.isCorrection
+      ? correctTimezone(d).toISOString()
+      : `${year}-${month}-${day}`;
 
     if (options?.isISOString) return defaultDateFormat;
 
@@ -68,12 +62,15 @@ export const dateFormat = (
     }
 
     if (typeof options?.formatOptions !== "undefined")
-      return new Intl.DateTimeFormat("ko-KR", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-        ...options.formatOptions,
-      }).format(d);
+      return new Intl.DateTimeFormat(
+        options?.formatTimezone ? options.formatTimezone : "ko-KR",
+        {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          ...options.formatOptions,
+        },
+      ).format(d);
     return onlyDate;
   }
   return String(date);

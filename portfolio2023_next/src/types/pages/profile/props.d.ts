@@ -1,10 +1,3 @@
-interface SectionHeaderPropsTypes {
-  empty: boolean;
-  title: string;
-  desc: Array<string | React.ReactNode>;
-  className: string;
-}
-
 interface CareerSummaryTypes {
   [index: string]: string | string[];
   period: string[];
@@ -19,6 +12,12 @@ interface CareerDetailsTypes {
   projects: string[];
 }
 interface CareerItemProps extends CareerAPIDataType {
+  [index: string]:
+    | string
+    | CareerSummaryTypes
+    | CareerDetailsTypes
+    | boolean
+    | undefined;
   last?: boolean;
 }
 
@@ -35,3 +34,14 @@ interface StackLegendTypes {
   label: string;
   level: number;
 }
+
+interface ExpItemProps extends ExperienceAPIDataTypes {
+  isActive: boolean;
+  $totalLength: number;
+}
+
+type SummaryProps = {
+  itemType: string;
+  title: string;
+  contents: string[];
+};

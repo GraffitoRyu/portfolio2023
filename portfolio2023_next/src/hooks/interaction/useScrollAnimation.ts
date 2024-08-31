@@ -10,7 +10,7 @@ import { useGSAP } from "@gsap/react";
 import useIsomorphicLayoutEffect from "../util/useIsomorphicLayoutEffect";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 /**
  * GSAP ScrollTrigger 공통 전역옵션
@@ -103,7 +103,7 @@ export default function useScrollAnimation({
   isTimeline?: boolean;
   options: ScrollTriggerTweenArrayOptions[];
 }) {
-  const { container } = useAtomValue(scrollPageRefState);
+  const container = useAtomValue(scrollPageSectionRefState("container"));
   useGsapRegister({ container });
 
   /**

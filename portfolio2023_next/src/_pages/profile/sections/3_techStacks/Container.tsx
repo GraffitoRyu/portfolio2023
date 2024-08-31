@@ -1,7 +1,3 @@
-"use client";
-
-import { Suspense } from "react";
-
 // components
 import TechStackList from "./List";
 
@@ -12,9 +8,7 @@ import TechStackList from "./List";
 export default function TechStacksContainer() {
   return (
     <div className="stack-container">
-      <Suspense fallback={null}>
-        <TechStackList />
-      </Suspense>
+      <TechStackList />
     </div>
   );
 }

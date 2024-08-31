@@ -4,7 +4,7 @@ import { atomWithStorage, createJSONStorage } from "jotai/utils";
 /**
  * 테마 로컬 스토리지 생성
  */
-const localThemeStorage = createJSONStorage<ThemeType>(() =>
+const localThemeStorage = createJSONStorage<SystemThemeType>(() =>
   typeof window === "undefined"
     ? {
         getItem: () => null,
@@ -18,7 +18,7 @@ const localThemeStorage = createJSONStorage<ThemeType>(() =>
  * 선택 테마 상태관리
  * @state
  */
-export const themeAtom = atomWithStorage<ThemeType>(
+export const themeAtom = atomWithStorage<SystemThemeType>(
   "theme",
   "dark",
   localThemeStorage,
@@ -34,7 +34,11 @@ export const themeState = atom(
     isSystem: true, // 현재 활성화된 테마가 시스템 테마인지의 여부
     theme: get(themeAtom),
   }),
-  (get, set, update: (props: ThemeStateTypes) => ThemeStateTypes) => {
+  (
+    get,
+    set,
+    update: (props: SystemThemeStateTypes) => SystemThemeStateTypes,
+  ) => {
     const prev = get(themeState);
     const d = update(prev);
     // themeState의 상태를 업데이트

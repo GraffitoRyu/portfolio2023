@@ -14,16 +14,16 @@ import {
 } from "@/styles/styled/components/PageFooter";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 export default function PageFooter() {
   const footerRef = useRef<HTMLElement | null>(null);
-  const setScrollRef = useSetAtom(scrollPageRefState);
+  const setScrollRef = useSetAtom(scrollPageSectionRefState("footer"));
 
   const setRef = useCallback(
     (node: HTMLElement | null) => {
       footerRef.current = node;
-      setScrollRef(prev => ({ ...prev, footer: node }));
+      setScrollRef(node);
     },
     [setScrollRef],
   );

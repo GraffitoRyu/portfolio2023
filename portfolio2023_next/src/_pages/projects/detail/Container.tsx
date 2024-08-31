@@ -15,7 +15,10 @@ import { StyledPDContainer } from "@/styles/styled/components/ProjectDetail";
 
 // state
 import { pageDetailLoadState } from "@/jotai/load.state";
-import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
+import {
+  scrollDetailHeightState,
+  scrollDetailSectionRefState,
+} from "@/jotai/interaction/scroll.state";
 import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // style
@@ -25,7 +28,8 @@ import { transTime } from "@/styles/styled/preset/transTime";
 // import useResizeObserver from "@/hooks/layout/useResizeObserver";
 
 // fetch
-import { useQueryProjectsDetailData } from "@/lib/query.lib";
+import { useQueryProjectsDetailData } from "@/lib/query";
+import useResizeObserver from "@/hooks/layout/useResizeObserver";
 
 /**
  * 프로젝트 > 프로젝트 상세; bottom sheet container
@@ -36,7 +40,9 @@ export default function ProjectDetailContainer() {
   const [{ category, open }, setLayoutState] = useAtom(pageDetailLoadState);
 
   // 프로젝트 스크롤 인터렉션 참조 요소 상태 관리
-  const setDetailScrollRef = useSetAtom(scrollDetailRefState);
+  const setDetailScrollRef = useSetAtom(
+    scrollDetailSectionRefState("container"),
+  );
   const detailRef = useRef<HTMLElement | null>(null);
   const scrollWrapRef = useRef<HTMLDivElement | null>(null);
 
@@ -48,21 +54,20 @@ export default function ProjectDetailContainer() {
   const setRef = useCallback(
     (node: HTMLElement | null) => {
       detailRef.current = node;
-      setDetailScrollRef(prev => ({ ...prev, container: node }));
+      setDetailScrollRef(node);
     },
     [setDetailScrollRef],
   );
 
   // 프로젝트 상세 스크롤 높이 업데이트
-  // useResizeObserver({
-  //   ref: scrollWrapRef,
-  //   callback: ({ height }) => {
-  //     setDetailScrollRef(prev => ({
-  //       ...prev,
-  //       scrollHeight: height || 0,
-  //     }));
-  //   },
-  // });
+  const setScrollHeight = useSetAtom(scrollDetailHeightState);
+  useResizeObserver({
+    ref: scrollWrapRef,
+    delay: 300,
+    callback: ({ height }) => {
+      setScrollHeight(height || 0);
+    },
+  });
 
   // 데이터 조회 상태
   useEffect(() => {

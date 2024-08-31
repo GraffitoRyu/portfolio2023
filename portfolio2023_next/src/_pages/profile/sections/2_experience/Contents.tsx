@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
 
 // components
@@ -15,7 +8,10 @@ import ProfileExperienceItem from "./Item";
 
 // state
 import { viewportState } from "@/jotai/viewport.state";
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import {
+  scrollPageHeightState,
+  scrollPageSectionRefState,
+} from "@/jotai/interaction/scroll.state";
 
 // style components
 import {
@@ -30,7 +26,7 @@ import useResizeObserver from "@/hooks/layout/useResizeObserver";
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 
 // fetch
-import { useQueryProfileExperienceData } from "@/lib/query.lib";
+import { useQueryProfileExperienceData } from "@/lib/query";
 
 /**
  * 프로필 > 경험; 리스트 컨텐츠 컴포넌트
@@ -45,18 +41,24 @@ export default function ProfileExperienceContents() {
 
   // 화면 사이즈 상태
   const { windowWidth } = useAtomValue(viewportState);
+  const scrollHeight = useAtomValue(scrollPageHeightState);
   // 경험 리스트 ref
   const expListRef = useRef<HTMLUListElement | null>(null);
   // 스크롤 참조 ref 상태
-  const { container: scrollContainer, sectionExperience: scrollTrigger } =
-    useAtomValue(scrollPageRefState);
+  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
+  const scrollTrigger = useAtomValue(
+    scrollPageSectionRefState("sectionExperience"),
+  );
 
   // 경험 섹션의 모바일 모드 전환을 위한 상태관리
-  const [isMobileView, setMobileView] = useState<boolean>(false);
+  const [isMobileView, setMobileView] = useState<boolean>(windowWidth < 640);
 
-  useEffect(() => {
-    if (isMobileView !== windowWidth < 640) setMobileView(windowWidth < 640);
-  }, [isMobileView, windowWidth]);
+  const updateMobileView = useCallback(
+    (width: number) => {
+      if (isMobileView !== width < 640) setMobileView(width < 640);
+    },
+    [isMobileView],
+  );
 
   // 좌우 리스트 너비
   const [listWidth, setListWidth] = useState<number>(0);
@@ -66,6 +68,7 @@ export default function ProfileExperienceContents() {
     delay: 300,
     callback: ({ width }) => {
       setListWidth(width);
+      updateMobileView(width);
     },
   });
 
@@ -94,6 +97,16 @@ export default function ProfileExperienceContents() {
     [getActiveIndex],
   );
 
+  const scrollRange = useMemo((): number => {
+    if (listWidth <= 0 || expLength <= 0) return 0;
+    return listWidth * ((expLength - 1) / expLength);
+  }, [expLength, listWidth]);
+
+  const horizontalScrollEnd = useMemo(
+    () => `+=${scrollRange * (isMobileView ? 2 : 1)} bottom`,
+    [isMobileView, scrollRange],
+  );
+
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -101,8 +114,6 @@ export default function ProfileExperienceContents() {
 
     const scrollTarget = expListRef.current;
     if (!scrollTarget) return;
-
-    const scrollRange = listWidth * ((expLength - 1) / expLength);
 
     const ctx = ctxScrollTrigger({
       container: scrollContainer,
@@ -136,7 +147,7 @@ export default function ProfileExperienceContents() {
               scrollTrigger: {
                 trigger: scrollTrigger,
                 start: `top top`, // trigger, view
-                end: () => `+=${scrollRange * (isMobileView ? 2 : 1)} bottom`,
+                end: () => horizontalScrollEnd,
                 scrub: true,
                 pin: scrollTrigger,
                 anticipatePin: 1,
@@ -152,11 +163,11 @@ export default function ProfileExperienceContents() {
 
     return () => ctx.revert();
   }, [
-    expLength,
-    isMobileView,
-    listWidth,
+    scrollHeight,
+    horizontalScrollEnd,
     onChangeActiveIndex,
     scrollContainer,
+    scrollRange,
     scrollTrigger,
   ]);
 

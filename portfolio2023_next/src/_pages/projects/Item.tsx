@@ -16,7 +16,7 @@ import {
 } from "@/styles/styled/components/ProjectList";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 import { pageDetailLoadState } from "@/jotai/load.state";
 
 // util
@@ -39,8 +39,9 @@ export default function ProjectItem({
 
   const setDetailLoad = useSetAtom(pageDetailLoadState);
 
-  const { container: scrollContainer, projectList } =
-    useAtomValue<ScrollRefStateTypes>(scrollPageRefState);
+  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
+  const projectList = useAtomValue(scrollPageSectionRefState("projectList"));
+
   const triggerRef = useRef<HTMLButtonElement | null>(null);
 
   useLayoutEffect(() => {

@@ -11,19 +11,28 @@ import {
 } from "@/styles/styled/components/PageSection";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // util
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 
-export default function SectionHeader({
+/**
+ * 페이지 본문 공통 요소; Section Header
+ * @component
+ * @param {SectionHeaderProps} props
+ * @param {boolean} props.empty
+ * @param {string} props.title
+ * @param {Array<string | React.ReactNode>} props.desc
+ * @param {string} [props.className]
+ */
+export default function PageSectionHeader({
   empty,
   title,
   desc,
   className,
-}: Partial<SectionHeaderPropsTypes>) {
-  const { container: scrollContainer } =
-    useAtomValue<ScrollRefStateTypes>(scrollPageRefState);
+}: Partial<SectionHeaderProps>) {
+  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
+
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const descRef = useRef<HTMLParagraphElement | null>(null);
 

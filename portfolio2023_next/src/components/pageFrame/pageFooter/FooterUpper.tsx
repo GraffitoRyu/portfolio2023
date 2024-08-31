@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useAtomValue } from "jotai";
 
 // style components
@@ -9,22 +9,21 @@ import {
 } from "@/styles/styled/components/PageFooter";
 
 // state
-import { scrollPageRefState } from "@/jotai/interaction/scroll.state";
+import {
+  scrollPageHeightState,
+  scrollPageSectionRefState,
+} from "@/jotai/interaction/scroll.state";
 
 // util
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 
 export default function FooterUpperContainer() {
-  const { container: scrollContainer, footer: scrollTrigger } =
-    useAtomValue<ScrollRefStateTypes>(scrollPageRefState);
-  const footerTitleRef = useRef<HTMLHeadingElement | null>(null);
-  const [footerPos, setFooterPos] = useState<number>(0);
+  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
+  const scrollTrigger = useAtomValue(scrollPageSectionRefState("footer"));
 
-  useEffect(() => {
-    if (!scrollTrigger) return;
-    if (scrollTrigger.offsetTop != footerPos)
-      setFooterPos(scrollTrigger.offsetTop);
-  }, [footerPos, scrollTrigger]);
+  const scrollHeight = useAtomValue(scrollPageHeightState);
+
+  const footerTitleRef = useRef<HTMLHeadingElement | null>(null);
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
@@ -49,6 +48,7 @@ export default function FooterUpperContainer() {
                 start: `top bottom`, // target, view
                 end: `top top`, // target, view
                 scrub: true,
+                // markers: true,
                 invalidateOnRefresh: true,
               },
             },
@@ -58,7 +58,7 @@ export default function FooterUpperContainer() {
     });
 
     return () => ctx.revert();
-  }, [footerPos, footerTitleRef, scrollContainer, scrollTrigger]);
+  }, [scrollHeight, footerTitleRef, scrollContainer, scrollTrigger]);
 
   return (
     <StyledFooterHeader>

@@ -1,8 +1,6 @@
-import { Suspense } from "react";
-
-import SectionContents from "@/components/pageFrame/pageSection/Contents";
-import SectionHeader from "@/components/pageFrame/pageSection/Header";
-import PageSection from "@/components/pageFrame/pageSection/PageSection";
+import PageSectionContents from "@/components/pageFrame/pageSection/Contents";
+import PageSectionHeader from "@/components/pageFrame/pageSection/Header";
+import PageSectionContainer from "@/components/pageFrame/pageSection/Container";
 import ProfileExperienceContents from "./Contents";
 
 /**
@@ -12,23 +10,21 @@ import ProfileExperienceContents from "./Contents";
  */
 export default function ProfileExperienceSectionContainer() {
   return (
-    <PageSection
+    <PageSectionContainer
       page="profile"
       code="experience"
       className="side-h-padding side-v-padding"
     >
-      <SectionHeader
+      <PageSectionHeader
         title="Experience"
         desc={[
           "개인적인 작업부터 협업에 이르기 까지 ",
           "프로젝트에 참여하면서 경험한 것들입니다.",
         ]}
       />
-      <SectionContents code="experience" sectionClassName="experience">
-        <Suspense fallback={null}>
-          <ProfileExperienceContents />
-        </Suspense>
-      </SectionContents>
-    </PageSection>
+      <PageSectionContents code="experience" sectionClassName="experience">
+        <ProfileExperienceContents />
+      </PageSectionContents>
+    </PageSectionContainer>
   );
 }

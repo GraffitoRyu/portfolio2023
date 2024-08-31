@@ -1,4 +1,5 @@
 import { atom } from "jotai";
+import { atomFamily } from "jotai/utils";
 
 /**
  * 스크롤 참조 ref 관리
@@ -13,8 +14,8 @@ export const scrollPageRefState = atom<ScrollRefStateTypes>({
   // profile > career
   sectionCareer: null,
   careerContents: null, // career 섹션 컨텐츠 묶음
-  careerItems: {}, // career 각 컨텐츠 (HTMLDetailsElement | null)
-  careerOpen: {}, // career 각 컨텐츠 아이템 별 열림 여부 (boolean)
+  // careerItems: {}, // career 각 컨텐츠 (HTMLDetailsElement | null)
+  // careerOpen: {}, // career 각 컨텐츠 아이템 별 열림 여부 (boolean)
   // profile > experience
   sectionExperience: null,
   experienceContents: null, // experience 섹션 컨텐츠 묶음
@@ -24,6 +25,37 @@ export const scrollPageRefState = atom<ScrollRefStateTypes>({
   // projects
   projectList: null, // 프로젝트 목록 묶음
 });
+
+/**
+ * 스크롤 참조 ref 각 섹션별 상태관리; 페이지 스크롤 ref 관리
+ * @state
+ */
+export const scrollPageSectionRefState = atomFamily((sectionCode: string) =>
+  atom(
+    get => get(scrollPageRefState)[sectionCode],
+    (get, set, state: ScrollRefType) => {
+      const prev = get(scrollPageRefState);
+      set(scrollPageRefState, {
+        ...prev,
+        [sectionCode]: state,
+      });
+    },
+  ),
+);
+
+/**
+ * 프로필 > 커리어; 각 상세요소 참조 ref 관리
+ * @state
+ */
+export const scrollCareerRefState = atom<CareerItemsRefTypes>({});
+
+/**
+ * 프로필 > 커리어; 각 상세요소 토글상태 관리
+ * @state
+ * @desc
+ * - 각 항목 토글상태에 따라 스크롤 애니메이션 재계산 필요
+ */
+export const careerOpenState = atom<CareerItemsOpenTypes>({});
 
 // /**
 //  * 리사이즈에 따른 sticky container의 height
@@ -42,3 +74,32 @@ export const scrollDetailRefState = atom<DetailScrollRefStateTypes>({
   sectionVisual: null,
   visualTitle: null,
 });
+
+/**
+ * 스크롤 참조 ref 각 섹션별 상태관리; 프로젝트 상세 스크롤 ref 관리
+ * @state
+ */
+export const scrollDetailSectionRefState = atomFamily((sectionCode: string) =>
+  atom(
+    get => get(scrollDetailRefState)[sectionCode],
+    (get, set, state: ScrollRefType) => {
+      const prev = get(scrollDetailRefState);
+      set(scrollDetailRefState, {
+        ...prev,
+        [sectionCode]: state,
+      });
+    },
+  ),
+);
+
+/**
+ * 스크롤 높이 상태관리; 페이지
+ * @state
+ */
+export const scrollPageHeightState = atom<number>(0);
+
+/**
+ * 스크롤 높이 상태관리; 프로젝트 상세
+ * @state
+ */
+export const scrollDetailHeightState = atom<number>(0);

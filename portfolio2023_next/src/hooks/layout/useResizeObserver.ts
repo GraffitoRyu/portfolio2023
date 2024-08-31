@@ -14,16 +14,18 @@ import useDebounce from "../util/useDebounce";
  * @return {object} { width, height }
  */
 export default function useResizeObserver<T extends HTMLElement>({
+  element,
   ref,
   delay,
   notDebounce,
   callback,
-}: {
-  ref?: React.RefObject<T>;
-  delay?: number;
-  notDebounce?: boolean;
-  callback?: ({ width, height }: ResizeObserverCallbackPropsType) => void;
-}): { width: number; height: number } {
+}: Partial<{
+  element: HTMLElement | null;
+  ref: React.RefObject<T>;
+  delay: number;
+  notDebounce: boolean;
+  callback: ({ width, height }: ResizeObserverCallbackPropsType) => void;
+}>): { width: number; height: number } {
   const [width, setWidth] = useState<number>(0);
   const [height, setHeight] = useState<number>(0);
 
@@ -47,21 +49,23 @@ export default function useResizeObserver<T extends HTMLElement>({
     if (typeof window === "undefined") return;
     // ref 없으면 윈도우 사이즈 모니터링
     // ref가 존재하면, 특정 요소의 사이즈 모니터링
-    const element =
+    const targetElement =
       !ref?.current || !(ref.current instanceof Element)
-        ? window.document.documentElement
+        ? element
+          ? element
+          : window.document.documentElement
         : ref.current;
 
     const observer = new ResizeObserver(
       notDebounce ? onResizeObserve : onDebounceResizeObserve,
     );
 
-    observer.observe(element);
+    observer.observe(targetElement);
 
     return () => {
       observer.disconnect();
     };
-  }, [notDebounce, onDebounceResizeObserve, onResizeObserve, ref]);
+  }, [element, notDebounce, onDebounceResizeObserve, onResizeObserve, ref]);
 
   return { width, height };
 }
