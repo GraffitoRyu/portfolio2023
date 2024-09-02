@@ -20,23 +20,21 @@ interface PageSectionContainerProps {
  * @props
  */
 interface SectionHeaderProps {
-  empty: boolean;
   title: string;
-  desc: Array<string | React.ReactNode>;
+  desc: (string | React.ReactNode)[];
+  empty: boolean;
   className: string;
 }
 
-interface PageSectionHeaderTypes {
+interface PageSectionHeaderColorTypes {
   title: string;
-  desc: string | string[];
-  empty: boolean;
-  className: string;
+  desc: string;
 }
 
 interface PageSectionHeaderModeTypes {
-  [index: string]: Partial<PageSectionHeaderTypes>;
-  light: Partial<PageSectionHeaderTypes>;
-  dark: Partial<PageSectionHeaderTypes>;
+  [index: string]: PageSectionHeaderColorTypes;
+  light: PageSectionHeaderColorTypes;
+  dark: PageSectionHeaderColorTypes;
 }
 
 /**

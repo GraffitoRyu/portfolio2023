@@ -1,17 +1,17 @@
 interface CustomThemeTypes {
-  page: CommonPageColorTypes;
-  cursor: CommonCursorColorTypes;
-  scrollbar: CommonScrollBarColorTypes;
-  buttons: CommonBtnColorTypes;
+  page: PageColorTypes;
+  cursor: CursorColorTypes;
+  scrollbar: ScrollBarColorTypes;
+  buttons: BtnColorTypes;
   transCover: TransCoverColorTypes;
   initCover: InitCoverColorTypes;
   timer: PageHeaderTimerColorTypes;
   gnbSitemapBtn: PageHeaderGnbSitemapBtnTypes;
   gnbUtilBtn: PageHeaderGnbUtilTypes;
   gnbThemeMenu: PageHeaderThemeMenuTypes;
-  sectionHeader: PageSectionHeaderTypes;
+  sectionHeader: PageSectionHeaderColorTypes;
   visualSection: PageSectionVisualTypes;
-  introSection: PageSectionIntroTypes;
+  introSection: PageSectionIntroColorTypes;
   footer: PageFooterTypes;
   career: ProfileCareerColorTypes;
   exp: ProfileExperienceColorTypes;
