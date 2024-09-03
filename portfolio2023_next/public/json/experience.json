@@ -1,14 +1,14 @@
 [
   {
-    "code": "Learning WebApps",
+    "code": "WebApps",
     "desc": [
       "React를 활용한 컴포넌트 중심의 마크업 및 인터렉션",
-      "Recoil 기반의 상태 관리",
-      "Next.js 13.4의 App Router 환경으로 한 프로젝트 경험",
+      "Jotai, Recoil 등을 활용한 Atom 기반의 상태 관리",
+      "Next.js App Router 환경으로 한 프로젝트 경험",
       "Next.js 환경에서의 SEO, SSR, Data fetching, Dynamic/Parallel Routes 등 활용",
-      "Styled-components. Tailwind CSS를 활용한 스타일링",
+      "SCSS 문법, Styled-components. Tailwind CSS를 활용한 스타일링",
       "React Router를 활용한 라우팅 구현",
-      "TypeScript 환경의 프로젝트 구축"
+      "TypeScript 환경에서의 타입 세이프한 데이터 관리"
     ]
   },
   {
@@ -26,30 +26,30 @@
   {
     "code": "interaction",
     "desc": [
-      "4년 이상 경험의 jQuery 기반 인터랙션 동작 구현",
+      "GSAP, Intersection Observer WebAPI 등을 활용한 스크롤 모션 구현",
+      "D3/Recharts 기반의 그래프 차트에 대한 Zoom, Pan 동작 구현",
       "Google Maps API, Kakao Maps API, Mapbox GL 등의 지도 라이브러리 활용",
       "지도 라이브러리 기반의 GeoJSON을 활용한 경로 표현, 유틸리티 마커 구현",
-      "D3.js로 생성된 SVG 요소의 Zoom, Pan 동작 구현",
-      "GSAP, React Intersection Observer를 활용한 스크롤 모션 구현"
+      "4년 이상 경험의 jQuery 기반 인터랙션 동작 구현"
     ]
   },
   {
     "code": "data",
     "desc": [
-      "AJAX를 통한 JSON 데이터의 비동기/동기 송수신",
+      "Next.js에서의 RESTful API, React Query 등을 활용한 Data fetching",
+      "async/await, try/catch를 활용한 비동기/동기 처리",
       "WebSocket을 통한 JSON 데이터 송수신",
-      "Next.js에서의 API, React Query 등을 활용한 Data fetching",
       "GPS 데이터, GeoJSON 데이터 등으로 지도 상의 경로, 마커 등 구현",
-      "데이터 시각화를 위해 D3.js, Chart.js 등을 활용하여 차트 구현"
+      "데이터 시각화를 위해 D3.js, Chart.js, Recharts.js 등을 활용하여 차트 구현"
     ]
   },
   {
     "code": "collaboration",
     "desc": [
-      "Node.js/Express/MongoDB 환경에서, 백엔드와의 협업",
-      "백엔드 API 지원 요청 및 RESTful API 활용",
-      "Git/Github을 활용한 버전관리 및 협업",
-      "Zeplin, XD를 활용한 기획/디자인과의 협업 (프론트엔드 및 웹 퍼블리싱 담당)",
+      "Git/Github을 활용한 버전 관리",
+      "RESTful API 활용에 대한 백엔드와의 협업",
+      "Figma, Zeplin, XD를 활용한 기획/디자인과의 협업 (프론트엔드 및 웹 퍼블리싱 담당)",
+      "Node.js/Express/MongoDB 환경에서, 백엔드와의 협업 경험",
       "Figma 앱 디자인 협업 (앱 디자인 및 로고 작업)",
       "Photoshop을 통한 디자인/퍼블리싱 협업 (웹 디자인/퍼블리싱)"
     ]
