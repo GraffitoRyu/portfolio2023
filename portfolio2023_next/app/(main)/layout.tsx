@@ -21,7 +21,7 @@ import InitPageCover from "@/components/pageFrame/pageInitialize/InitPageCover";
 import Cursor from "@/components/cursor/Cursor";
 
 // styles
-import { sans, serif, serif_dm } from "@/styles/fonts/fonts";
+import { sans, serif, serif_dm } from "@/styles/fonts";
 import "@/styles/scss/globals.scss";
 import {
   HTMLThemeStyle,
