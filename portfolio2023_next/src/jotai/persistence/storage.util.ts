@@ -1,6 +1,10 @@
 import { createJSONStorage } from "jotai/utils";
+import type {
+  AsyncStringStorage,
+  SyncStringStorage,
+} from "jotai/vanilla/utils/atomWithStorage";
 
-const defaultStorage = {
+const defaultStorage: AsyncStringStorage | SyncStringStorage = {
   getItem: () => null,
   setItem: () => {},
   removeItem: () => {},
