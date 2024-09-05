@@ -27,6 +27,8 @@ import {
   HTMLThemeStyle,
   StyledMainContainer,
 } from "@/styles/styled/components/Page";
+
+// state
 import { getServerState } from "@/jotai/server/util.server";
 
 /**
