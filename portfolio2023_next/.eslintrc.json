@@ -1,24 +1,20 @@
 {
   "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
+    "es6": true
   },
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": "latest",
-    "sourceType": "module"
+    "ecmaVersion": "latest"
   },
-  "plugins": ["testing-library", "@tanstack/query"],
+  "plugins": ["testing-library", "prettier"],
   "extends": [
     "eslint:recommended",
-    "plugin:@tanstack/eslint-plugin-query/recommended",
-    "plugin:prettier/recommended",
     "next/core-web-vitals",
-    "next/typescript"
+    "next/typescript",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+    "plugin:prettier/recommended"
   ],
   "overrides": [
     {
@@ -29,36 +25,9 @@
       "extends": ["plugin:testing-library/react"]
     }
   ],
-  "settings": {
-    "react": {
-      "version": "detect"
-    },
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"],
-        "moduleDirectory": ["node_modules", "src/"]
-      }
-      // "pnpm": {
-      //   "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      // }
-    }
-  },
   "rules": {
     "import/prefer-default-export": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": true
-        // "devDependencies": [
-        //   "**/*.[jt]s?(x)",
-        //   "**/__tests__/**/*.[jt]s?(x)",
-        //   "**/?(*.)+(spec|test).[jt]s?(x)"
-        // ],
-        // "optionalDependencies": false, // 선택적 의존성을 허용하지 않음
-        // "peerDependencies": false, // 피어 의존성을 허용하지 않음
-        // "packageDir": [".", "../"] // 현재 프로젝트와 루트 디렉토리에서 의존성을 검색
-      }
-    ],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "prettier/prettier": [
       "error",
       { "endOfLine": "auto" },
@@ -77,8 +46,6 @@
     ],
     "react/jsx-one-expression-per-line": 0,
     "react/prefer-stateless-function": 0,
-    "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off",
     "react/display-name": "off",
     "react/function-component-definition": [
       "error",
@@ -102,30 +69,6 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-empty-object-type": "off",
     "@typescript-eslint/no-require-imports": "off"
-
-    // "jsdoc/check-access": 1, // Recommended
-    // "jsdoc/check-alignment": 1, // Recommended
-    // "jsdoc/check-line-alignment": 1,
-    // "jsdoc/check-param-names": 0, // Recommended ---------------
-    // "jsdoc/check-property-names": 1, // Recommended
-    // "jsdoc/check-syntax": 1,
-    // "jsdoc/check-tag-names": 0, // Recommended ----------------
-    // "jsdoc/check-types": 1, // Recommended
-    // "jsdoc/check-values": 1, // Recommended
-    // "jsdoc/no-types": 0,
-    // "jsdoc/no-undefined-types": 0, // Recommended
-    // "jsdoc/require-jsdoc": 0, // Recommended --------------------
-    // "jsdoc/require-param": 0, // Recommended -----------------
-    // "jsdoc/require-param-description": 0, // Recommended -------------
-    // "jsdoc/require-param-name": 1, // Recommended
-    // "jsdoc/require-param-type": 1, // Recommended
-    // "jsdoc/require-property": 1, // Recommended
-    // "jsdoc/require-property-description": 0, // Recommended ------------
-    // "jsdoc/require-property-name": 1, // Recommended
-    // "jsdoc/require-property-type": 1, // Recommended
-    // "jsdoc/require-returns": 0, // Recommended
-    // "jsdoc/require-returns-type": 0,
-    // "jsdoc/valid-types": 1 // Recommended
   },
-  "ignorePatterns": ["dist", "node_modules", "scripts"]
+  "ignorePatterns": ["out", "dist", "node_modules", "scripts"]
 }
