@@ -27,8 +27,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "jest.setup.js",
-    ".eslintrc.json"
+    "**/types/**.ts", // 프로젝트 전역 타입 정리
+    "**/types/**.tsx", // 프로젝트 전역 타입 정리
+    "jest.setup.js"
   ],
   "exclude": ["node_modules"]
 }

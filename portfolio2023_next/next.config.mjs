@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
-const path = require("path");
+
+import path from "path";
+
+const root = path.dirname(new URL(import.meta.url).pathname);
 
 const nextConfig = {
   reactStrictMode: true, // 리액트 엄격모드
@@ -10,7 +13,7 @@ const nextConfig = {
   },
   // scss 컴파일 옵션
   sassOptions: {
-    includesPaths: [path.join(__dirname, "styles")],
+    includesPaths: [path.join(root, "styles")],
   },
   // 외부 이미지 접근 설정
   images: {
@@ -37,7 +40,7 @@ const nextConfig = {
     // into React components. See https://react-svgr.com/docs/next/
 
     // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find(rule =>
+    const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.(".svg"),
     );
 
@@ -67,4 +70,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
