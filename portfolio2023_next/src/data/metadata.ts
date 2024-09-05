@@ -1,4 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import type {
+  Icons,
+  Robots,
+} from "next/dist/lib/metadata/types/metadata-types";
+import type { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 
 export const site: { title: string; desc: string; domain: string } = {
   title: "류대현 포트폴리오 :: Front-end Engineer / UI Engineer",
@@ -21,7 +26,7 @@ export const viewport: Viewport = {
 };
 
 // 오픈그래프
-const OPEN_GRAPH = {
+const OPEN_GRAPH: OpenGraph = {
   type: "website",
   locale: "ko-KR",
   url: site.domain,
@@ -36,7 +41,7 @@ const OPEN_GRAPH = {
 };
 
 // 파비콘 및 앱 아이콘 컬렉션
-const FAVICON = {
+const FAVICON: Icons = {
   icon: [
     { url: "/favicon/favicon.ico" },
     { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -99,7 +104,7 @@ const FAVICON = {
 };
 
 // 검색 로봇 설정
-const SEARCH_ROBOTS = {
+const SEARCH_ROBOTS: Robots = {
   // 검색 방지
   index: false,
   follow: false,
@@ -110,7 +115,7 @@ const SEARCH_ROBOTS = {
   },
 };
 
-const SEO = {
+const SEO: Metadata = {
   title: {
     default: site.title,
     template: `%s | ${site.title}`,
