@@ -1,4 +1,3 @@
-import { useParams } from "next/navigation";
 import { useLayoutEffect, useMemo, useRef } from "react";
 import { useAtomValue } from "jotai";
 
@@ -11,15 +10,14 @@ import {
 
 // state
 import { pageDetailLoadState } from "@/jotai/load.state";
-import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // util
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
+import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailData";
 
-export default function DetailHeaderTitleContainer() {
-  const { category } = useParams();
-  const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);
+export default function DetailHeaderTitle() {
+  const { title: titleArr } = useProjectCategoryDetailData();
 
   const { openComplete } = useAtomValue(pageDetailLoadState);
   const {
@@ -29,17 +27,15 @@ export default function DetailHeaderTitleContainer() {
   } = useAtomValue<DetailScrollRefStateTypes>(scrollDetailRefState);
   const titleRef = useRef<HTMLSpanElement>(null);
 
-  const title = useMemo((): string => {
-    if (typeof category !== "string" || !data?.[category]) return "";
-
-    const d = data[category];
-    return d.summary.title.join(" ");
-  }, [category, data]);
+  const title = useMemo(
+    (): string => (titleArr ? titleArr.join("") : ""),
+    [titleArr],
+  );
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
 
-    if (openComplete && category) {
+    if (openComplete) {
       if (!scrollContainer || !scrollTrigger || !visualTitleRef) return;
 
       const scrollTarget = titleRef.current;
@@ -71,7 +67,7 @@ export default function DetailHeaderTitleContainer() {
       });
       return () => ctx.revert();
     }
-  }, [category, openComplete, scrollContainer, scrollTrigger, visualTitleRef]);
+  }, [openComplete, scrollContainer, scrollTrigger, visualTitleRef]);
 
   return (
     <StyledPDHeaderTitleContainer>

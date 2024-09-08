@@ -3,8 +3,8 @@
 import { useAtomValue } from "jotai";
 
 // components
-import DetailLinkContainer from "../common/linkMenu/DetailLinkContainer";
-import DetailStacks from "./stacks/DetailStacks";
+import DetailLinkContainer from "../common/linkMenu/LinkContainer";
+import DetailStacks from "./stacks/Container";
 
 // style components
 import { StyledPDVisualLower } from "@/styles/styled/components/ProjectDetail";

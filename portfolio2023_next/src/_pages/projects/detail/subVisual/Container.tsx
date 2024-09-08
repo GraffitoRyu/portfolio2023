@@ -1,11 +1,10 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
 import { useAtomValue } from "jotai";
 
 // components
-import DetailMediaContents from "../common/media/DetailMediaContents";
+import DetailMediaContents from "../common/media/Contents";
 
 // style components
 import {
@@ -13,30 +12,28 @@ import {
   StyledPDSubVisualSection,
 } from "@/styles/styled/components/ProjectDetail";
 
+// hook
+import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailData";
+
 // state
-import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
+import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // util
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
-import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 
 export default function DetailSubVisual() {
-  const { category } = useParams();
-  const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);
-  const [img, setImg] = useState<MediaType | null>(null);
+  const { category, data } = useProjectCategoryDetailData();
 
-  const { container: scrollContainer } =
-    useAtomValue<DetailScrollRefStateTypes>(scrollDetailRefState);
+  const scrollContainer = useAtomValue(
+    scrollDetailSectionRefState("container"),
+  );
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const subVisualRef = useRef<HTMLElement | null>(null);
 
-  useLayoutEffect(() => {
-    if (typeof category !== "string" || !data?.[category]) return;
-
-    const imgData = data[category]?.sub_visual;
-    if (typeof imgData !== "undefined") setImg(imgData);
-    else setImg(null);
-  }, [category, data]);
+  const img = useMemo(
+    () => (typeof data?.sub_visual === "undefined" ? null : data.sub_visual),
+    [data?.sub_visual],
+  );
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;

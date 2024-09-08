@@ -4,11 +4,11 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { useAtom, useSetAtom } from "jotai";
 
 // components
-import DetailHeader from "./header/DetailHeader";
-import DetailVisualContainer from "./visual/DetailVisualContainer";
-import DetailSubVisual from "./subVisual/DetailSubVisual";
-import DetailExperience from "./exp/DetailExperience";
-import DetailMediaContainer from "./media/DetailMedia";
+import DetailHeaderContainer from "./header/Container";
+import DetailVisualContainer from "./visual/Container";
+import DetailSubVisual from "./subVisual/Container";
+import DetailExperience from "./experience/Container";
+import DetailMediaContainer from "./media/Container";
 
 // style components
 import { StyledPDContainer } from "@/styles/styled/components/ProjectDetail";
@@ -19,17 +19,16 @@ import {
   scrollDetailHeightState,
   scrollDetailSectionRefState,
 } from "@/jotai/interaction/scroll.state";
-import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
+import { projectCategoryDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // hooks
-// import useResizeObserver from "@/hooks/layout/useResizeObserver";
+import useResizeObserver from "@/hooks/layout/useResizeObserver";
 
 // fetch
 import { useQueryProjectsDetailData } from "@/lib/query";
-import useResizeObserver from "@/hooks/layout/useResizeObserver";
 
 /**
  * 프로젝트 > 프로젝트 상세; bottom sheet container
@@ -47,7 +46,9 @@ export default function ProjectDetailContainer() {
   const scrollWrapRef = useRef<HTMLDivElement | null>(null);
 
   // 프로젝트 데이터 상태관리
-  const setDetailData = useSetAtom(projectDetailDataState);
+  const setCategoryDetailData = useSetAtom(
+    projectCategoryDetailDataState(category),
+  );
   const { status, data: detailData } = useQueryProjectsDetailData(category);
 
   // 스크롤 참조 데이터 업데이트
@@ -80,13 +81,13 @@ export default function ProjectDetailContainer() {
 
     // console.log(`[Detail Container :: React Query] Data is ready.`, data);
 
-    setDetailData(prev => ({ ...prev, [category]: detailData }));
-  }, [category, detailData, setDetailData, setLayoutState, status]);
+    setCategoryDetailData(detailData);
+  }, [category, detailData, setCategoryDetailData, setLayoutState, status]);
 
   const [openActive, setOpenActive] = useState<boolean>(false);
   // 열림 상태 적용
   useEffect(() => {
-    if (openActive !== !open) setOpenActive(!open);
+    if (open !== openActive) setOpenActive(open);
   }, [openActive, open]);
 
   // 상세 페이지 오픈 슬라이드 완료 상태 업데이트
@@ -103,7 +104,7 @@ export default function ProjectDetailContainer() {
   return (
     <StyledPDContainer className={`${open ? "open" : ""}`} ref={setRef}>
       <div className="detail-scroll-wrap" ref={scrollWrapRef}>
-        <DetailHeader />
+        <DetailHeaderContainer />
         <DetailVisualContainer />
         <DetailSubVisual />
         <DetailExperience />

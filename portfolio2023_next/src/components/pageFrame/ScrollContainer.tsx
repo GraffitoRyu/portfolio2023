@@ -20,13 +20,15 @@ export default function ScrollContainer({
 }: {
   children: React.ReactNode;
 }) {
-  const setScrollRef = useSetAtom(scrollPageSectionRefState("container"));
+  const setPageScrollContainerRef = useSetAtom(
+    scrollPageSectionRefState("container"),
+  );
 
   const updateScrollRef = useCallback(
     (node: HTMLDivElement | null) => {
-      setScrollRef(node);
+      setPageScrollContainerRef(node);
     },
-    [setScrollRef],
+    [setPageScrollContainerRef],
   );
 
   return (

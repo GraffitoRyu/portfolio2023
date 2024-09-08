@@ -5,8 +5,8 @@ import { useCallback, useEffect, useRef } from "react";
 import { useAtom, useSetAtom } from "jotai";
 
 // components
-import DetailHeaderTitleContainer from "./DetailHeaderTitleContainer";
-import DetailLinkContainer from "../common/linkMenu/DetailLinkContainer";
+import DetailHeaderTitle from "./Title";
+import DetailLinkContainer from "../common/linkMenu/LinkContainer";
 import CloseButton from "@/components/buttons/Close";
 
 // style components
@@ -72,7 +72,7 @@ export default function DetailHeaderWrap() {
 
   return (
     <StyledHeaderWrap ref={wrapRef}>
-      <DetailHeaderTitleContainer />
+      <DetailHeaderTitle />
       {windowWidth < 1024 ? null : <DetailLinkContainer />}
       <CloseButton
         clickEvent={closeDetail}

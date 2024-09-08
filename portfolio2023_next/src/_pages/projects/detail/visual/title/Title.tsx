@@ -1,15 +1,7 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-import { useAtom, useAtomValue } from "jotai";
+import { useCallback, useLayoutEffect, useRef } from "react";
+import { useAtomValue, useSetAtom } from "jotai";
 
 // style components
 import {
@@ -19,41 +11,33 @@ import {
 
 // state
 import { pageDetailLoadState } from "@/jotai/load.state";
-import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
-import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
+import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // util
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailData";
 
 export default function DetailVisualTitle() {
-  const { category } = useParams();
-  const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);
-  const title = useMemo((): string[] => {
-    if (typeof category !== "string" || typeof data[category] === "undefined")
-      return [];
+  const { title = [""] } = useProjectCategoryDetailData();
 
-    return data[category].summary.title;
-  }, [category, data]);
-
-  const [{ container: scrollContainer }, setDetailScrollRef] =
-    useAtom<DetailScrollRefStateTypes>(scrollDetailRefState);
+  const scrollContainer = useAtomValue(
+    scrollDetailSectionRefState("container"),
+  );
+  const setVisualTitleRef = useSetAtom(
+    scrollDetailSectionRefState("visualTitle"),
+  );
 
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const updateScrollRef = useCallback(
     (node: HTMLHeadingElement | null) => {
       titleRef.current = node;
-      setDetailScrollRef(prev => ({ ...prev, visualTitle: node }));
+      setVisualTitleRef(node);
     },
-    [setDetailScrollRef],
+    [setVisualTitleRef],
   );
 
   const { openComplete } =
     useAtomValue<PageDetailLoadStateTypes>(pageDetailLoadState);
-  const [hide, setHide] = useState<string>("hide");
-
-  useEffect(() => {
-    setHide(openComplete ? "" : "hide");
-  }, [openComplete]);
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
@@ -87,7 +71,10 @@ export default function DetailVisualTitle() {
   }, [scrollContainer]);
 
   return (
-    <StyledPDVisualTitle className={`${hide}`} ref={updateScrollRef}>
+    <StyledPDVisualTitle
+      className={openComplete ? "" : "hide"}
+      ref={updateScrollRef}
+    >
       {title.map((t: string, i: number) => (
         <StyledPDVisualTitleLine key={`detailTitle_${t}_${i}`} $index={i}>
           {t}

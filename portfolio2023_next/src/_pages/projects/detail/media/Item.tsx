@@ -1,10 +1,10 @@
 "use client";
 
-import { Suspense, useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
 import { useAtomValue } from "jotai";
 
 // components
-import DetailMediaContents from "../common/media/DetailMediaContents";
+import DetailMediaContents from "../common/media/Contents";
 
 // style components
 import {
@@ -14,16 +14,27 @@ import {
 
 // state
 import { viewportState } from "@/jotai/viewport.state";
+import {
+  scrollDetailHeightState,
+  scrollDetailSectionRefState,
+} from "@/jotai/interaction/scroll.state";
 
 // util
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
-import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 
 export default function DetailMediaItem({ data }: { data: MediaType }) {
   const { windowWidth } = useAtomValue(viewportState);
-  const { container: scrollContainer } =
-    useAtomValue<DetailScrollRefStateTypes>(scrollDetailRefState);
+  const scrollContainer = useAtomValue(
+    scrollDetailSectionRefState("container"),
+  );
   const figureRef = useRef<HTMLElement | null>(null);
+
+  const scrollHeight = useAtomValue(scrollDetailHeightState);
+
+  const triggerEnd = useMemo(
+    () => `start ${windowWidth < 640 ? `60%` : `30%`}`,
+    [windowWidth],
+  );
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
@@ -45,7 +56,7 @@ export default function DetailMediaItem({ data }: { data: MediaType }) {
               scrollTrigger: {
                 trigger: fig,
                 start: `start 90%`,
-                end: `start ${windowWidth < 640 ? `60%` : `30%`}`,
+                end: triggerEnd,
                 scrub: true,
               },
             },
@@ -55,18 +66,16 @@ export default function DetailMediaItem({ data }: { data: MediaType }) {
     });
 
     return () => ctx.revert();
-  }, [scrollContainer, windowWidth]);
+  }, [scrollContainer, triggerEnd, data, scrollHeight]);
 
   return (
     <StyledPDMediaItem>
       <StyledPDMediaFigure ref={figureRef}>
-        <Suspense fallback={<span>Loading...</span>}>
-          <DetailMediaContents
-            referType={data.referType}
-            src={data.src}
-            alt={data.alt}
-          />
-        </Suspense>
+        <DetailMediaContents
+          referType={data.referType}
+          src={data.src}
+          alt={data.alt}
+        />
       </StyledPDMediaFigure>
     </StyledPDMediaItem>
   );

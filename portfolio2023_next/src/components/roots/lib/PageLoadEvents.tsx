@@ -1,18 +1,18 @@
 "use client";
 
-import { usePathname, useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 
 // state
 import { pageDetailLoadState, pageLoadState } from "@/jotai/load.state";
-import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
 
 // data
 import sitemap from "@/data/sitemap";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
+import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailData";
 
 /**
  * Root/Library; 페이지 변경 이벤트 감지를 위한 컴포넌트
@@ -24,7 +24,7 @@ import { transTime } from "@/styles/styled/preset/transTime";
  */
 export default function PageLoadEvents() {
   const pathname = usePathname(); // 현재 루트 수신
-  const { category } = useParams();
+  const { category } = useParams<{ category: string }>();
   const [savedPathName, setPathname] = useState<string>("/"); // 현재 루트 저장
   const [{ init, initComplete, currentPage }, setPage] =
     useAtom<PageLoadStateTypes>(pageLoadState);
@@ -33,9 +33,7 @@ export default function PageLoadEvents() {
 
   // 프로젝트 상세에 대한 열림/닫힘 상태 업데이트
   const setDetailState = useSetAtom(pageDetailLoadState);
-  const existDetailData = useAtomValue<DetailDataCollectionTypes>(
-    projectDetailDataState,
-  );
+  const { data: existCategoryDetailData } = useProjectCategoryDetailData();
 
   // 루트 업데이트
   useLayoutEffect(() => {
@@ -72,13 +70,13 @@ export default function PageLoadEvents() {
         ...prev,
         category: typeof category === "string" ? category : "",
       }));
-      if (typeof category === "string" && existDetailData?.[category]) {
+      if (existCategoryDetailData) {
         setDetailState(prev => ({ ...prev, open: true }));
       } else {
         setDetailState(prev => ({ ...prev, open: false }));
       }
     }
-  }, [category, initComplete, existDetailData, setDetailState]);
+  }, [category, initComplete, existCategoryDetailData, setDetailState]);
 
   return null;
 }

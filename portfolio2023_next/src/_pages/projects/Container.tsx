@@ -5,7 +5,7 @@ import PageSectionContainer from "@/components/pageFrame/pageSection/Container";
 import PageIntro from "@/components/pageFrame/pageSection/pageVisual/Intro";
 import PageVisual from "@/components/pageFrame/pageSection/pageVisual/Visual";
 import ProjectList from "@/_pages/projects/List";
-import ProjectLoadingBar from "@/_pages/projects/LoadingBar";
+import ProjectLoadingBar from "@/_pages/projects/detail/LoadingBar";
 
 export default function ProjectContainer() {
   return (

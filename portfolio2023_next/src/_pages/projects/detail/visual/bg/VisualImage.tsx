@@ -14,7 +14,7 @@ import {
 
 // state
 import { pageDetailLoadState } from "@/jotai/load.state";
-import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
+import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // util
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
@@ -23,11 +23,12 @@ export default function DetailVisualImage() {
   const { category } = useParams();
   const { open } = useAtomValue(pageDetailLoadState);
 
+  const scrollContainer = useAtomValue(
+    scrollDetailSectionRefState("container"),
+  );
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLDivElement | null>(null);
   const imgCoverRef = useRef<HTMLDivElement | null>(null);
-  const { container: scrollContainer } =
-    useAtomValue<DetailScrollRefStateTypes>(scrollDetailRefState);
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;

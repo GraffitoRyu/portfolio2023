@@ -1,63 +1,59 @@
-import { useParams } from "next/navigation";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
 
 // components
-import DetailInfoItem from "../../common/info/DetailInfoItem";
-import DetailInfoTitle from "../../common/info/DetailInfoTitle";
-import DetailInfoContents from "../../common/info/DetailInfoContents";
+import DetailInfoItem from "../../common/info/Item";
+import DetailInfoTitle from "../../common/info/Title";
+import DetailInfoContents from "../../common/info/Contents";
 
 // style components
 import { StyledPDSummaryContainer } from "@/styles/styled/components/ProjectDetail";
 
+// hook
+import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailData";
+
 // state
 import { pageDetailLoadState } from "@/jotai/load.state";
-import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
+import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // util
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
-import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 
 export default function DetailSummary() {
-  const { category } = useParams();
-  const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);
-  const [summaryData, setSummaryData] = useState<SummaryProps[] | null>(null);
+  const { data, title } = useProjectCategoryDetailData();
 
   const { openComplete } =
     useAtomValue<PageDetailLoadStateTypes>(pageDetailLoadState);
-  const [delayIndex, setDelayIndex] = useState<number>(1);
-  const [hide, setHide] = useState<string>("init-hide hide");
 
-  const { container: scrollContainer } =
-    useAtomValue<DetailScrollRefStateTypes>(scrollDetailRefState);
+  const delayIndex = useMemo(() => (title ? title.length : 1), [title]);
+  const summaryData = useMemo(
+    (): SummaryProps[] => (data ? getSummaryData(data) : []),
+    [data],
+  );
+
+  const scrollContainer = useAtomValue(
+    scrollDetailSectionRefState("container"),
+  );
   const summaryRef = useRef<HTMLDListElement[]>([]);
 
-  useLayoutEffect(() => {
-    if (typeof category === "string" && data?.[category]) {
-      setSummaryData(getSummaryData(data[category]));
-      const d = data[category].summary;
-      if (d?.title?.length > 0 && d?.desc) setDelayIndex(d.title.length);
-    } else {
-      setSummaryData([]);
-      setDelayIndex(1);
-    }
-  }, [category, data]);
+  const isHide = useMemo((): boolean => !openComplete, [openComplete]);
+  const [isInit, setInit] = useState<boolean>(true);
 
   useEffect(() => {
-    if (openComplete) {
-      setHide("init-hide");
-      setTimeout(() => {
-        setHide("");
-      }, 1600);
-    } else {
-      setHide("init-hide hide");
+    if (!openComplete) {
+      setInit(true);
+      return;
     }
+
+    setTimeout(() => {
+      setInit(false);
+    }, 1600);
   }, [openComplete]);
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
 
-    if (!openComplete) return;
+    if (isInit) return;
 
     if (!scrollContainer) return;
 
@@ -86,14 +82,14 @@ export default function DetailSummary() {
     });
 
     return () => ctx.revert();
-  }, [openComplete, scrollContainer]);
+  }, [isInit, scrollContainer]);
 
   return (
     <StyledPDSummaryContainer>
       {summaryData?.map((d: SummaryProps, i: number) => (
         <DetailInfoItem
           code="summary"
-          className={`${hide}`}
+          className={`${isHide ? "hide" : ""} ${isInit ? "init-hide" : ""}`}
           key={`detailSummaryItem_${d.itemType}_${i}`}
           $itemIndex={i + 1}
           $delayIndex={delayIndex}

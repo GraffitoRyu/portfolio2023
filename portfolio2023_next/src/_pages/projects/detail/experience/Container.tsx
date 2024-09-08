@@ -1,7 +1,6 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
 import { useAtomValue } from "jotai";
 
 // style components
@@ -13,30 +12,32 @@ import {
   StyledPDExpTitle,
 } from "@/styles/styled/components/ProjectDetail";
 
+// hook
+import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailData";
+
 // state
-import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
-import { projectDetailDataState } from "@/jotai/pages/project.detail.state";
+import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // util
 import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
 
 export default function DetailExperience() {
-  const { container: scrollContainer } =
-    useAtomValue<DetailScrollRefStateTypes>(scrollDetailRefState);
+  const scrollContainer = useAtomValue(
+    scrollDetailSectionRefState("container"),
+  );
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const descRef = useRef<HTMLLIElement[]>([]);
 
-  const { category } = useParams();
-  const data = useAtomValue<DetailDataCollectionTypes>(projectDetailDataState);
-  const [expData, setExpData] = useState<string[]>([]);
+  const { category, data } = useProjectCategoryDetailData();
 
-  useLayoutEffect(() => {
-    if (typeof category !== "string" || !data?.[category]) return;
-
-    const expDesc = data[category]?.experience?.desc;
-    if (expDesc && expDesc.length > 0) setExpData(expDesc);
-    else setExpData([]);
-  }, [category, data]);
+  const experienceData = useMemo(
+    (): string[] =>
+      typeof data?.experience?.desc === "undefined" ||
+      !Array.isArray(data.experience.desc)
+        ? []
+        : data.experience.desc,
+    [data?.experience?.desc],
+  );
 
   useLayoutEffect(() => {
     if (typeof window === "undefined") return;
@@ -95,7 +96,7 @@ export default function DetailExperience() {
     });
 
     return () => ctx.revert();
-  }, [scrollContainer]);
+  }, [experienceData, scrollContainer]);
 
   return (
     <StyledPDExpSection className="detail-section-exp">
@@ -104,7 +105,7 @@ export default function DetailExperience() {
           <span>Experience</span>
         </StyledPDExpTitle>
         <StyledPDExpList>
-          {expData?.map((exp: string, i: number) => (
+          {experienceData.map((exp: string, i: number) => (
             <StyledPDExpDesc
               key={`detailExp_${category}_${i}`}
               ref={(node: HTMLLIElement) => {
