@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
-import { gsap } from "gsap/dist/gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 // style components
 import {
@@ -16,12 +15,12 @@ import {
 import { transTime } from "@/styles/styled/preset/transTime";
 
 // state
-import { viewportState } from "@/jotai/viewport.state";
 import { pageLoadState } from "@/jotai/load.state";
 import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // hooks
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+import useCheckView from "@/hooks/layout/useCheckView";
+import useScrollAnimation from "@/hooks/interaction/useScrollAnimation";
 
 /**
  * 페이지 본문 공통 요소; Section Visual
@@ -30,59 +29,60 @@ import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
  * @param {string[]} props.title
  */
 export default function PageVisual({ title }: { title: string[] }) {
-  const { windowWidth, headerHeight } = useAtomValue(viewportState);
-
-  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
-
-  const [isMobile, setMobile] = useState<boolean>(false);
-
-  const visualRef = useRef<HTMLDivElement | null>(null);
-  const visualTitleRef = useRef<HTMLHeadingElement | null>(null);
-  const [titleTop, setTitleTop] = useState<number>(0);
-
   const { loadComplete } = useAtomValue(pageLoadState);
   const [loaded, setLoaded] = useState<string>("loading");
   const [fixed, setFixed] = useState<string>("");
 
   useEffect(() => {
-    setMobile(windowWidth < 1024);
-  }, [windowWidth]);
+    if (loadComplete) {
+      setLoaded("trans-title loaded");
+      setTimeout(() => {
+        setLoaded("");
+      }, transTime.visual.fadeInUp);
+    } else setLoaded("trans-title loading");
+  }, [loadComplete]);
 
-  useEffect(() => {
-    const visualTitle = visualTitleRef.current;
-    if (!visualTitle) return;
-    setTitleTop(visualTitle.offsetTop);
-  }, []);
+  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
+  const visualRef = useRef<HTMLDivElement | null>(null);
+  const visualTitleRef = useRef<HTMLHeadingElement | null>(null);
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
+  const { isCustomMobileView } = useCheckView(1024);
 
-    const scrollTarget = visualTitleRef.current;
-    if (!scrollContainer || !scrollTarget) return;
+  const parallaxSpeed = useCallback(
+    () =>
+      isCustomMobileView
+        ? 0
+        : -0.05 * ScrollTrigger.maxScroll(scrollContainer as HTMLElement),
+    [isCustomMobileView, scrollContainer],
+  );
 
-    const visualEl = visualRef.current;
-    if (!visualEl) return;
+  const triggerStart = useCallback(
+    (): number => visualTitleRef.current?.offsetTop || 0,
+    [],
+  );
+  const triggerEnd = useCallback(
+    () => (isCustomMobileView ? 0 : "center"),
+    [isCustomMobileView],
+  );
 
-    const triggerStart = titleTop;
-    const targetEnd = isMobile
-      ? scrollTarget.offsetHeight
-      : headerHeight + visualEl.offsetHeight;
-    const triggerEnd = isMobile ? headerHeight : "center";
+  const targetEnd = useCallback(
+    () =>
+      isCustomMobileView
+        ? visualTitleRef.current?.offsetHeight || 0
+        : visualRef.current?.offsetHeight || 0,
+    [isCustomMobileView],
+  );
 
-    gsap.registerPlugin(ScrollTrigger);
-
-    const options = {
+  const parallax = useCallback((): ScrollTriggerAnimationOptions => {
+    return {
       opacity: 0,
-      ease: "none",
-      y: () =>
-        isMobile ? 0 : -0.05 * ScrollTrigger.maxScroll(scrollContainer),
+      y: () => parallaxSpeed(),
       scrollTrigger: {
-        trigger: scrollTarget,
-        start: `top ${triggerStart}`, // target, viewport
-        end: `${targetEnd} ${triggerEnd}`, // target, viewport
+        trigger: visualTitleRef.current,
+        start: () => `top ${triggerStart()}`, // target, viewport
+        end: () => `${targetEnd()} ${triggerEnd()}`, // target, viewport
         scrub: true, // 스크롤 위치에 따라 실시간으로 대응하여 변하도록 설정
-        invalidateOnRefresh: true,
-        // markers: true, // 개발용 가이드라인
+        markers: true, // 개발용 가이드라인
         onEnter: () => {
           setFixed("fixed-parallax");
         },
@@ -94,28 +94,20 @@ export default function PageVisual({ title }: { title: string[] }) {
         },
       },
     };
+  }, [parallaxSpeed, targetEnd, triggerEnd, triggerStart]);
 
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      normalize: true,
-      tweenArr: [
+  useScrollAnimation(
+    {
+      elements: [scrollContainer, visualRef.current, visualTitleRef.current],
+      options: [
         {
-          target: scrollTarget,
-          options: [options],
+          target: visualTitleRef.current,
+          animation: [parallax()],
         },
       ],
-    });
-    return () => ctx.revert();
-  }, [scrollContainer, isMobile, headerHeight, titleTop]);
-
-  useEffect(() => {
-    if (loadComplete) {
-      setLoaded("trans-title loaded");
-      setTimeout(() => {
-        setLoaded("");
-      }, transTime.visual.fadeInUp);
-    } else setLoaded("trans-title loading");
-  }, [loadComplete]);
+    },
+    [parallax],
+  );
 
   return (
     <StyledVisualContainer ref={visualRef}>

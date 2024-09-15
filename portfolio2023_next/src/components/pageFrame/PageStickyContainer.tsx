@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { useSetAtom } from "jotai";
 
 // components
@@ -13,7 +13,10 @@ import { StyledStickyContainer } from "@/styles/styled/components/Page";
 import useResizeObserver from "@/hooks/layout/useResizeObserver";
 
 // // state
-import { scrollPageHeightState } from "@/jotai/interaction/scroll.state";
+import {
+  scrollPageHeightState,
+  scrollPageSectionRefState,
+} from "@/jotai/interaction/scroll.state";
 
 /**
  * 페이지 공통 요소; Sticky Header를 위한 컨테이너
@@ -26,8 +29,16 @@ export default function PageStickyContainer({
 }: {
   children: React.ReactNode;
 }) {
-  // const setScrollRef = useSetAtom(scrollRefState);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const setBodyRef = useSetAtom(scrollPageSectionRefState("body"));
+  const containerRef = useRef<HTMLElement | null>(null);
+
+  const updateRef = useCallback(
+    (node: HTMLElement | null) => {
+      containerRef.current = node;
+      setBodyRef(node);
+    },
+    [setBodyRef],
+  );
 
   const setScrollHeight = useSetAtom(scrollPageHeightState);
 
@@ -40,7 +51,7 @@ export default function PageStickyContainer({
   });
 
   return (
-    <StyledStickyContainer className="sticky-container" ref={containerRef}>
+    <StyledStickyContainer className="sticky-container" ref={updateRef}>
       <PageHeader />
       {children}
     </StyledStickyContainer>

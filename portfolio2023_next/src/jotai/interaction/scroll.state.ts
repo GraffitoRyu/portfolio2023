@@ -9,6 +9,7 @@ import { atomFamily } from "jotai/utils";
 export const scrollPageRefState = atom<ScrollRefStateTypes>({
   // common
   container: null,
+  body: null,
   sectionVisual: null,
   footer: null,
   // profile > career

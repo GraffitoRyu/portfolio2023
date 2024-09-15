@@ -79,7 +79,7 @@ export const pageDetailLoadState = atom<PageDetailLoadStateTypes>({
    * @type {string} 'pending' | 'error' | 'success' | ""
    * @see https://tanstack.com/query/latest/docs/framework/react/reference/useQuery return - status: QueryStatus
    * @example
-   * ```typescript
+   * ```tsx
    * export default function ProjectDetailContainer() {
    *  ...
    *  const { status } = useQueryProjectsDetailData();

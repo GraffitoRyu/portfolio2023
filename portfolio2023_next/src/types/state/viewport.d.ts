@@ -13,7 +13,6 @@ type CareerDetailHeight = {
 type ViewportStateTypes = {
   windowWidth: number;
   windowHeight: number;
-  headerHeight: number;
   columnWidth: number;
   careerExpandHeight: CareerDetailHeight;
   detailHeaderHeight: number;

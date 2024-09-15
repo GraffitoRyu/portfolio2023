@@ -30,9 +30,15 @@ type ScrollRefType =
 type ScrollRefStateTypes = {
   [sectionCode: string]: ScrollRefType;
   /**
-   * <ScrollContainer />
+   * <ScrollContainer />; 스크롤 바가 생성되는 영역
    */
   container: ScrollRefType;
+  /**
+   * <PageStickyContainer />; 스크롤 컨텐츠 영역
+   * @desc
+   * - height 모니터링
+   */
+  body: ScrollRefType;
   /**
    * <PageSection page="profile" code="visual" />
    */
