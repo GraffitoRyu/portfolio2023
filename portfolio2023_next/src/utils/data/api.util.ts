@@ -5,6 +5,7 @@ import { nextAPILog } from "@/utils/log.util";
 
 // lib
 import { firebaseDB, firebaseRef, firebaseGet } from "@/lib/firebase";
+import { site } from "@/data/metadata";
 
 /**
  * firebase API Fetch 요청
@@ -23,6 +24,10 @@ export const getFirebaseData = async <TFetchDataType>({
   searchParams,
   log,
 }: UtilGenerateGetApiUrlProps<TFetchDataType>): Promise<TFetchDataType> => {
+  if (process.env.NODE_ENV === "development") {
+    return await (await fetch(`${site.domain}/json${queryUrl}.json`)).json();
+  }
+
   try {
     const targetReference = firebaseRef(firebaseDB, queryUrl);
 
