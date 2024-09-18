@@ -7,7 +7,6 @@ import { StyledPageTitle } from "./PageTitle";
 
 // style
 import { flex, font, size, transition } from "../preset/mixins";
-import { easing } from "../preset/easing";
 import { transTime } from "../preset/transTime";
 
 export const StyledVisualContainer = styled.div`
@@ -18,7 +17,7 @@ export const StyledVisualContainer = styled.div`
   }
 `;
 
-const timeOption = { time: `${transTime.visual.fadeInUp / 1000}s` };
+const timeOption = { time: `${transTime.visual.upper / 1000}s` };
 
 const transVisualTitle = (delay: number | null) => {
   const option =
@@ -80,17 +79,17 @@ export const StyledVisualTitleLine = styled(StyledPageTitle)`
   }
 `;
 
-const introFadeInUp = css`
-  &.init-hide {
-    transition:
-      opacity ${transTime.visual.intro / 1000}s ${easing.quart},
-      transform ${transTime.visual.intro / 1000}s ${easing.quart};
-  }
-  &.hide {
-    opacity: 0;
-    transform: translateY(50%);
-  }
-`;
+// const introFadeInUp = css`
+//   &.init-hide {
+//     transition:
+//       opacity ${transTime.visual.intro / 1000}s ${easing.quart},
+//       transform ${transTime.visual.intro / 1000}s ${easing.quart};
+//   }
+//   &.hide {
+//     opacity: 0;
+//     transform: translateY(50%);
+//   }
+// `;
 
 export const StyledIntroTitle = styled.h2`
   ${size({ mb: 160 })}
@@ -104,8 +103,10 @@ export const StyledIntroTitle = styled.h2`
     color: ${({ theme }) => theme.introSection.strong};
     font-weight: 500;
   }
-  ${introFadeInUp}
-  @media only screen and (min-width:768px) {
+  &.init {
+    opacity: 0;
+  }
+  @media only screen and (min-width: 768px) {
     ${size({ mb: 80 })}
   }
   @media only screen and (min-width: 1024px) {
@@ -130,7 +131,9 @@ export const StyledIntroDesc = styled.p`
   span {
     display: inline-block;
   }
-  ${introFadeInUp}
+  &.init {
+    opacity: 0;
+  }
   @media only screen and (min-width: 640px) {
     ${font({
       size: 24,

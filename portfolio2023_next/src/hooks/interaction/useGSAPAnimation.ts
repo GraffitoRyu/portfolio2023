@@ -1,13 +1,12 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { useAtomValue } from "jotai";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 // hook
-import useResizeObserver from "../layout/useResizeObserver";
 import useIsomorphicLayoutEffect from "../util/useIsomorphicLayoutEffect";
 
 // state
@@ -42,8 +41,8 @@ export function useGsapRegister<ContainerElement extends HTMLElement>({
 
     // ScrollTrigger.config({ ignoreMobileResize: true });
 
-    ScrollTrigger.refresh();
     ScrollTrigger.clearScrollMemory();
+    ScrollTrigger.refresh();
 
     console.log(`[useGsapRegister] initialized`);
   }, [container]);
@@ -106,18 +105,15 @@ export function useGsapRegister<ContainerElement extends HTMLElement>({
  * }
  * ```
  */
-export default function useScrollAnimation(
+export default function useGSAPAnimation(
   {
+    key,
     container: containerEl,
     elements,
     isTimeline = false,
     options,
-  }: {
-    container?: HTMLElement | null;
-    elements: Array<HTMLElement | null>;
-    isTimeline?: boolean;
-    options: ScrollTriggerTweenArrayOptions[];
-  },
+    disabled = false,
+  }: UseGSAPAnimationHookOptions,
   deps?: React.DependencyList,
 ) {
   // scroll trigger 플러그인 등록
@@ -126,20 +122,19 @@ export default function useScrollAnimation(
     container: typeof containerEl !== "undefined" ? containerEl : container,
   });
 
-  const scrollBody = useAtomValue(scrollPageSectionRefState("body"));
-  const [scrollWidth, setScrollWidth] = useState<number>(0);
-  const [scrollHeight, setScrollHeight] = useState<number>(0);
-  useResizeObserver({
-    element: typeof containerEl !== "undefined" ? containerEl : scrollBody,
-    delay: 500,
-    callback: ({ width, height }) => {
-      setScrollWidth(width || 0);
-      setScrollHeight(height || 0);
-      ScrollTrigger.refresh();
-      ScrollTrigger.clearScrollMemory();
-      console.log(`[useScrollAnimation :: useResizeObserver]`);
-    },
-  });
+  // const scrollBody = useAtomValue(scrollPageSectionRefState("body"));
+  // const [scrollWidth, setScrollWidth] = useState<number>(0);
+  // const [scrollHeight, setScrollHeight] = useState<number>(0);
+  // useResizeObserver({
+  //   element: typeof containerEl !== "undefined" ? containerEl : scrollBody,
+  //   delay: 50,
+  //   callback: ({ width, height }) => {
+  //     setScrollWidth(width || 0);
+  //     setScrollHeight(height || 0);
+  //     // ScrollTrigger.refresh();
+  //     console.log(`[useScrollAnimation :: useResizeObserver]`);
+  //   },
+  // });
 
   /**
    * 애니메이션 옵션별 gsap tween 설정 실행
@@ -148,12 +143,12 @@ export default function useScrollAnimation(
   const gsapTween = useCallback(
     (option: ScrollTriggerTweenArrayOptions) => {
       if (option.target === null) {
-        // console.error("[useScrollAnimation :: gsapTween] 스크롤 인터랙션 초기화 오류 :: target 없음", option);
+        // console.error("[useScrollAnimation; ${key} :: gsapTween] 스크롤 인터랙션 초기화 오류 :: target 없음", option);
         return;
       }
 
       // 타임라인 적용 여부에 따른 라이브러리 객체 선언
-      const libObject = isTimeline ? gsap.timeline() : gsap;
+      const _g = isTimeline ? gsap.timeline() : gsap;
 
       // 옵션 추출
       // console.log("[useScrollAnimation :: gsapTween] 스크롤 인터랙션 초기화", option);
@@ -161,7 +156,7 @@ export default function useScrollAnimation(
 
       // 진행방향에 따른 tween 애니메이션 적용
       if (typeof direction === "undefined" || direction === "to") {
-        libObject.to(
+        _g.to(
           target,
           // to tween
           {
@@ -171,7 +166,7 @@ export default function useScrollAnimation(
         );
       }
       if (direction === "from") {
-        libObject.from(
+        _g.from(
           target,
           // from tween
           {
@@ -188,7 +183,7 @@ export default function useScrollAnimation(
           );
           return;
         }
-        libObject.fromTo(
+        _g.fromTo(
           target,
           // from tween
           {
@@ -205,33 +200,38 @@ export default function useScrollAnimation(
 
   return useGSAP(
     () => {
+      // console.log(`[useScrollAnimation; ${key}] options`, options);
+      if (disabled) return;
+
       if (typeof window === "undefined") return;
 
       // console.log(`[useScrollAnimation :: useGSAP] options`, ...options);
       if (options.length === 0) {
-        console.error("스크롤 인터랙션 초기화 오류 :: options 없음");
+        console.error(
+          `[useScrollAnimation; ${key}] 스크롤 인터랙션 초기화 오류 :: options 없음`,
+        );
         return;
       }
 
       const validElements = elements.filter(ref => ref !== null);
       if (validElements.length === 0) {
         // console.error(
-        //   "[useScrollAnimation :: useGSAP] 스크롤 인터랙션 초기화 오류 :: element 유효하지 않음",
+        //   "[useScrollAnimation; ${key} :: useGSAP] 스크롤 인터랙션 초기화 오류 :: element 유효하지 않음",
         //   refs,
         // );
         return;
       }
 
-      // console.log(`[useScrollAnimation :: useGSAP] deps`, deps);
-
+      // GSAP 애니메이션 초기화
       ScrollTrigger.refresh();
-      ScrollTrigger.clearScrollMemory();
 
       // tween 배열에 대한 애니메이션 설정 적용
       options.forEach(gsapTween);
+
+      // console.log(`[useScrollAnimation; ${key} :: useGSAP] deps`, deps);
     },
-    // [...elements, ...(deps || [])],
-    [...elements, scrollWidth, scrollHeight, ...(deps || [])],
+    [key, disabled, options.length, ...elements, ...(deps || [])],
+    // [...elements, scrollWidth, scrollHeight, ...(deps || [])],
     // {
     //   scope: propsContainerEl || globalContainerEl,
     //   dependencies: [...elements, ...(deps || [])],

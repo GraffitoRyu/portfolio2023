@@ -49,7 +49,7 @@ export const colorSet = (color: string) =>
     color: ${color};
     ${svgFill(color)}
     ${svgStroke(rem(1), color)}
-  ` ?? "";
+  ` || "";
 
 export const StyledDefaultBtn = styled.button`
   ${({ theme }) =>

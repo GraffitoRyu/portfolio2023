@@ -1,8 +1,8 @@
 import PageSectionContents from "@/components/pageFrame/pageSection/Contents";
 import PageSectionHeader from "@/components/pageFrame/pageSection/Header";
 import PageSectionContainer from "@/components/pageFrame/pageSection/Container";
-import PageIntro from "@/components/pageFrame/pageSection/pageVisual/Intro";
-import PageVisual from "@/components/pageFrame/pageSection/pageVisual/Visual";
+import PageVisualUpper from "@/components/pageFrame/pageSection/pageVisual/Upper";
+import PageVisualLower from "@/components/pageFrame/pageSection/pageVisual/Lower";
 
 /**
  * 프로필 > 비주얼; 섹션 컨테이너
@@ -15,10 +15,10 @@ export default function ProfileVisualSectionContainer() {
       code="visual"
       className="side-h-padding"
     >
-      <PageVisual title={["Ready for ", "interaction"]} />
+      <PageVisualUpper title={["Ready for ", "interaction"]} />
       <PageSectionHeader empty={true} />
       <PageSectionContents sectionClassName="intro" sideClassName="intro">
-        <PageIntro
+        <PageVisualLower
           category="profile/visual"
           title={[
             "인터랙션 이벤트 구현에 관심이 많은 ",

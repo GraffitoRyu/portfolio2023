@@ -24,8 +24,8 @@ export const transTime = {
   },
   color: 200,
   visual: {
-    fadeInUp: 800,
-    intro: 800,
+    upper: 800,
+    lower: 800,
   },
   career: 800,
   tooltip: 400,
