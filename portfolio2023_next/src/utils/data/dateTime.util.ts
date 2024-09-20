@@ -27,21 +27,17 @@ export const correctTimezone = (date: Date): Date => {
  * Date 타입 데이터를 yyyy-mm-dd로 변환
  * @util
  * @param {unknown} date
- * @param {object} [options]
+ * @param {UtilDateTimeFormatOptions} [options]
  * @param {Intl.DateTimeFormatOptions} [options.formatOptions]
- * @param {boolean} [options.isKorean]
- * @param {boolean} [options.isISOString]
- * @return {string} yyyy-mm-dd
+ * @param {Intl.LocalesArgument} [options.formatTimezone] 시간 기준; 기본값 ko-KR
+ * @param {boolean | boolean[]} [options.isKorean] // ymd 또는 [year, month?, day?]
+ * @param {boolean} [options.isCorrection] 시간 보정
+ * @param {boolean} [options.isISOString] ISO 문자열
+ * @return {string} yyyy-mm-dd 또는 각 옵션에 대한 날짜포맷
  */
 export const dateFormat = (
   date: unknown,
-  options?: {
-    isCorrection?: boolean;
-    formatOptions?: Intl.DateTimeFormatOptions;
-    formatTimezone?: string;
-    isKorean?: boolean;
-    isISOString?: boolean;
-  },
+  options?: Partial<UtilDateTimeFormatOptions>,
 ): string => {
   if (isValidDateType(date)) {
     const d = new Date(date as string | number | Date);
@@ -57,8 +53,21 @@ export const dateFormat = (
     const onlyDate = defaultDateFormat.split("T")[0];
 
     if (options?.isKorean) {
-      const ymd = onlyDate.split("-");
-      return `${ymd[0]}년 ${ymd[1]}월 ${ymd[2]}일`;
+      const [y, m, d] = onlyDate.split("-");
+      if (options.isKorean === true) return `${y}년 ${m}월 ${d}일`;
+      const __ymd = options.isKorean.map((apply, index) => {
+        switch (index) {
+          case 0:
+            return apply ? `${y}년` : "";
+          case 1:
+            return apply ? `${m}월` : "";
+          case 2:
+            return apply ? `${d}일` : "";
+          default:
+            return "";
+        }
+      });
+      return __ymd.join(" ");
     }
 
     if (typeof options?.formatOptions !== "undefined")
@@ -80,15 +89,23 @@ export const dateFormat = (
  * Date 타입 데이터를 HH:MM:SS 시간으로 변환
  * @util
  * @param {string | Date} date
+ * @param {UtilDateTimeFormatOptions} [options]
+ * @param {Intl.DateTimeFormatOptions} [options.formatOptions]
+ * @param {Intl.LocalesArgument} [options.formatTimezone] 시간 기준; 기본값 ko-KR
+ * @param {boolean | boolean[]} [options.isKorean] // ymd 또는 [year, month?, day?]
+ * @param {boolean} [options.isCorrection] 시간 보정
+ * @param {boolean} [options.isISOString] ISO 문자열
  * @return {string} HH:MM:SS
  */
-export const timeFormat = (date: string | Date): string => {
+export const timeFormat = (
+  date: unknown,
+  options?: Partial<UtilDateTimeFormatOptions>,
+): string => {
   if (isValidDateType(date)) {
     const d = new Date(date as string | number | Date);
-    const defaultDateFormat = correctTimezone(d)
-      .toISOString()
-      .split("T")[1]
-      .split(".")[0];
+    const defaultDateFormat = options?.isCorrection
+      ? correctTimezone(d).toISOString().split("T")[1].split(".")[0]
+      : `${convert2Digit(d.getHours())}:${convert2Digit(d.getMinutes())}:${convert2Digit(d.getSeconds())}`;
 
     return defaultDateFormat;
   }
