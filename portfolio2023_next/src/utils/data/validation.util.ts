@@ -49,3 +49,19 @@ export const isValidTimeStringFormat = (time: string): boolean => {
 
   return true;
 };
+
+/**
+ * validation; 데이터가 배열인지 체크
+ * @util
+ * @validation
+ * @param {unknown} data
+ * @param {boolean} [noEmpty] 배열이 비었는지까지 체크
+ * @return {boolean}
+ */
+export const isValidArray = (
+  data: unknown,
+  noEmpty: boolean = false,
+): boolean =>
+  data && Array.isArray(data) && ((noEmpty && data.length > 0) || !noEmpty)
+    ? true
+    : false;
