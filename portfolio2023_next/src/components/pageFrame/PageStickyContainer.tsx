@@ -2,6 +2,7 @@
 
 import { useCallback, useRef } from "react";
 import { useSetAtom } from "jotai";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 // components
 import PageHeader from "./pageHeader/PageHeader";
@@ -46,7 +47,9 @@ export default function PageStickyContainer({
     ref: containerRef,
     delay: 300,
     callback: ({ height }) => {
+      // console.log(`page scroll height`, height);
       setScrollHeight(height || 0);
+      ScrollTrigger.refresh();
     },
   });
 
