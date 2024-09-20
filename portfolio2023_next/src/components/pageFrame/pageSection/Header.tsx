@@ -9,7 +9,7 @@ import {
   StyledHeaderTitle,
 } from "@/styles/styled/components/PageSection";
 
-// util
+// hook
 import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
 /**
