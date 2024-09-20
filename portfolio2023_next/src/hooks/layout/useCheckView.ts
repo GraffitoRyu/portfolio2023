@@ -12,10 +12,10 @@ import { useMemo } from "react";
 export default function useCheckView(standard: number) {
   const { windowWidth } = useAtomValue(viewportState);
 
-  const isCustomMobileView = useMemo(
+  const isCustomView = useMemo(
     (): boolean => windowWidth < standard,
     [standard, windowWidth],
   );
 
-  return { isCustomMobileView };
+  return { isCustomView };
 }

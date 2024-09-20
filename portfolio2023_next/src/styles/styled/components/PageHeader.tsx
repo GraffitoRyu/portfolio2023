@@ -3,22 +3,24 @@
 import styled from "styled-components";
 
 // style
+import { easing } from "../preset/easing";
 import { sizePreset } from "../preset/size";
+import { transTime } from "../preset/transTime";
 import { flex, font, position, size } from "../preset/mixins";
 
 // util
 import { rem } from "@/utils/style.util";
-import { easing } from "../preset/easing";
 
 export const StyledHeaderContainer = styled.header`
   ${position({ type: "sticky", top: 0, left: 0 })}
-  width:100%;
+  width: 100%;
   z-index: 2000;
+  ${`backdrop-filter: blur(${rem(16)});`} /* Add this line to apply blur effect */
   pointer-events: none;
   &.init-hide {
     transition:
-      opacity 0.8s ${easing.quart},
-      transform 0.8s ${easing.quart};
+      opacity ${transTime.header / 1000}s ${easing.quart},
+      transform ${transTime.header / 1000}s ${easing.quart};
   }
   &.hide {
     opacity: 0;

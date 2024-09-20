@@ -1,7 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
-import { useAtomValue } from "jotai";
+import { useCallback, useRef } from "react";
 
 // style components
 import {
@@ -10,11 +9,8 @@ import {
   StyledHeaderTitle,
 } from "@/styles/styled/components/PageSection";
 
-// state
-import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
-
 // util
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
 /**
  * 페이지 본문 공통 요소; Section Header
@@ -31,48 +27,39 @@ export default function PageSectionHeader({
   desc,
   className,
 }: Partial<SectionHeaderProps>) {
-  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
-
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const descRef = useRef<HTMLParagraphElement | null>(null);
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (!scrollContainer) return;
-
-    const titleTarget = titleRef.current;
-    const descTarget = descRef.current;
-    if (!titleTarget || !descTarget) return;
-
-    const stOptions = {
-      start: `top 80%`,
-      end: `top 30%`,
-      invalidateOnRefresh: true,
-      scrub: true,
-    };
-
-    const gsapOptions = (target: HTMLElement) => ({
-      opacity: 1,
-      scrollTrigger: { ...stOptions, trigger: target },
-    });
-
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      normalize: true,
-      tweenArr: [
+  const fadeInOption = useCallback(
+    (target: HTMLElement): UseGSAPAnimationHookOptions => ({
+      target,
+      animation: [
         {
-          target: titleTarget,
-          options: [{ ...gsapOptions(titleTarget) }],
-        },
-        {
-          target: descTarget,
-          options: [{ ...gsapOptions(descTarget) }],
+          opacity: 1,
+          scrollTrigger: {
+            trigger: target,
+            start: "top 80%",
+            end: "top 30%",
+            scrub: true,
+          },
         },
       ],
-    });
-    return () => ctx.revert();
-  }, [scrollContainer]);
+    }),
+    [],
+  );
+
+  useGSAPAnimation(
+    {
+      key: `page/section/header/${title}`,
+      disabled: empty,
+      elements: [titleRef.current, descRef.current],
+      options: [
+        fadeInOption(titleRef.current as HTMLElement),
+        fadeInOption(descRef.current as HTMLElement),
+      ],
+    },
+    [empty, title, fadeInOption],
+  );
 
   return (
     <StyledSectionHeaderContainer
@@ -84,10 +71,10 @@ export default function PageSectionHeader({
         ""
       ) : (
         <>
-          <StyledHeaderTitle ref={titleRef}>{title}</StyledHeaderTitle>
+          <StyledHeaderTitle ref={titleRef}>{title || ""}</StyledHeaderTitle>
           <StyledHeaderDesc ref={descRef}>
             {desc?.map((d: string | React.ReactNode, i: number) => (
-              <span key={`sectionHeader_${title}_${i}`}>{d}</span>
+              <span key={`page/section/header/${title}/${i}`}>{d}</span>
             ))}
           </StyledHeaderDesc>
         </>

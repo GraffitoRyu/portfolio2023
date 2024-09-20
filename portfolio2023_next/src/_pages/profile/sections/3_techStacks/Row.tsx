@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
 
 // components
@@ -15,22 +15,20 @@ import {
 } from "@/styles/styled/components/ProfileStacks";
 
 // state
-import {
-  scrollPageHeightState,
-  scrollPageSectionRefState,
-} from "@/jotai/interaction/scroll.state";
+import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
-// util
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+// hooks
+import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
 export default function StackRow({
+  code: categoryCode,
   title,
   data,
 }: {
+  code: string;
   title: string;
   data: StackAPIDataTypes[];
 }) {
-  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
   const sectionStacks = useAtomValue(
     scrollPageSectionRefState("sectionStacks"),
   );
@@ -39,96 +37,77 @@ export default function StackRow({
   const categoryRef = useRef<HTMLDivElement | null>(null);
   const stacksRef = useRef<HTMLDivElement | null>(null);
 
-  const [stackHide, setStackHide] = useState<string>("hide");
+  const [hide, setHide] = useState<boolean>(true);
 
-  const scrollHeight = useAtomValue(scrollPageHeightState);
-
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (!scrollContainer) return;
-
-    const trigger = triggerRef.current;
-    const category = categoryRef.current;
-    const stacks = stacksRef.current;
-    if (!trigger || !category || !stacks) return;
-
-    const scrollTrigger = {
-      trigger,
-      start: `top 100%`,
-      end: `top 60%`,
-      scrub: true,
-      // markers: true,
-      onToggle: () => {
-        setStackHide("");
-      },
-    };
-
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      normalize: true,
-      tweenArr: [
+  const fadeInOption = useCallback(
+    (target: HTMLElement): UseGSAPAnimationHookOptions => ({
+      target,
+      animation: [
         {
-          target: category,
-          options: [
-            {
-              opacity: 1,
-              scrollTrigger,
+          opacity: 1,
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            start: "top 100%",
+            end: "top 60%",
+            scrub: true,
+            onToggle: () => {
+              setHide(false);
             },
-          ],
-        },
-        {
-          target: stacks,
-          options: [
-            {
-              opacity: 1,
-              scrollTrigger,
-            },
-          ],
+          },
         },
       ],
-    });
+    }),
+    [],
+  );
 
-    return () => ctx.revert();
-  }, [scrollContainer, scrollHeight]);
+  // 스크롤 인터렉션
+  useGSAPAnimation(
+    {
+      key: `profile/techStack/row/${categoryCode}/scroll`,
+      elements: [triggerRef.current, categoryRef.current, stacksRef.current],
+      options: [
+        fadeInOption(categoryRef.current as HTMLElement),
+        fadeInOption(stacksRef.current as HTMLElement),
+      ],
+    },
+    [categoryCode, fadeInOption],
+  );
 
-  // 초기화; 섹션이 뷰포트 아래로 내려갔을 때
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (!scrollContainer) return;
-
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      create: {
+  // 인터랙션 초기화
+  useGSAPAnimation(
+    {
+      key: `profile/techStack/row/${categoryCode}/scroll/reset`,
+      elements: [sectionStacks],
+      scrollCreate: {
         trigger: sectionStacks,
-        start: `top bottom`,
-        end: `top bottom`,
+        start: () => "top bottom",
+        end: () => "top bottom",
         onLeaveBack: () => {
-          setStackHide("hide");
+          setHide(true);
         },
       },
-    });
-
-    return () => ctx.revert();
-  }, [scrollContainer, sectionStacks, scrollHeight]);
+    },
+    [categoryCode],
+  );
 
   return (
     <StyledStackRowContainer ref={triggerRef}>
       <StyledStackCategory ref={categoryRef}>
         <h3>{title}</h3>
       </StyledStackCategory>
-      <StyledStackList className={`${stackHide}`} ref={stacksRef}>
+      <StyledStackList className={hide ? "hide" : ""} ref={stacksRef}>
         {data
-          ? data.map(({ code, name }: StackAPIDataTypes, i: number) => (
-              <StyledStackFigure
-                key={`profile/techStack/list/${code}/${i}`}
-                $index={i}
-              >
-                <figcaption>{name}</figcaption>
-                {/* <StackLevelGauge level={level} /> */}
-              </StyledStackFigure>
-            ))
+          ? data.map(
+              ({ code: stackItemCode, name }: StackAPIDataTypes, i: number) => (
+                <StyledStackFigure
+                  key={`profile/techStack/list/${stackItemCode}`}
+                  $index={i}
+                >
+                  <figcaption>{name}</figcaption>
+                  {/* <StackLevelGauge level={level} /> */}
+                </StyledStackFigure>
+              ),
+            )
           : null}
       </StyledStackList>
     </StyledStackRowContainer>

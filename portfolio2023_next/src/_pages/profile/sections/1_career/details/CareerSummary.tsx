@@ -13,15 +13,17 @@ import {
 } from "@/styles/styled/components/ProfileCareer";
 
 // state
-import { viewportState } from "@/jotai/viewport.state";
 import {
-  careerOpenState,
-  scrollCareerRefState,
+  careerEachOpenState,
+  scrollCareerEachItemRefState,
 } from "@/jotai/interaction/scroll.state";
 
-interface CareerSummaryProps extends CareerSummaryTypes {
-  code: string;
-}
+// hooks
+import useCheckView from "@/hooks/layout/useCheckView";
+
+// util
+import { dateFormat } from "@/utils/data/dateTime.util";
+import { isValidDateType } from "@/utils/data/validation.util";
 
 export default function CareerSummary({
   code,
@@ -29,59 +31,69 @@ export default function CareerSummary({
   role,
   company,
 }: CareerSummaryProps) {
-  const { windowWidth } = useAtomValue(viewportState);
-  const { [code]: itemRef } = useAtomValue(scrollCareerRefState);
-  const [{ [code]: isOpen }, setOpen] = useAtom(careerOpenState);
+  const itemEl = useAtomValue(scrollCareerEachItemRefState(code));
 
-  const [hover, setHover] = useState<string>("");
+  const [isOpen, setOpen] = useAtom(careerEachOpenState(code));
+  const [hover, setHover] = useState<boolean>(false);
 
-  const openDetails = useCallback(
-    (e: React.SyntheticEvent) => {
-      const container = itemRef;
-      if (!container) return;
+  const { isCustomView } = useCheckView(768);
 
-      e.preventDefault();
-
-      if (isOpen) {
-        setOpen(prev => ({
-          ...prev,
-          [code]: false,
-        }));
-        // 닫힘 모션 끝나고 업데이트
-        setTimeout(() => {
-          container.open = false;
-        }, 400);
-      } else {
-        container.open = true;
-        setOpen(prev => ({
-          ...prev,
-          [code]: true,
-        }));
-      }
+  const convertPeriod = useCallback(
+    (date: string): string => {
+      return date === ""
+        ? "재직중"
+        : !isValidDateType(date)
+          ? date
+          : dateFormat(date, {
+              formatTimezone: "ko-KR",
+              formatOptions: {
+                year: isCustomView ? "2-digit" : "numeric",
+                // day를 undefined하면 month가 두자리 변환되지 않음
+              },
+            })
+              .split(" ")
+              .filter((_, i) => i < 2) // day 제거
+              .join(" ")
+              .trim();
     },
-    [code, isOpen, itemRef, setOpen],
+    [isCustomView],
   );
 
+  const onOpenDetails = useCallback(
+    (e: React.SyntheticEvent) => {
+      if (itemEl === null) return;
+      e.preventDefault();
+
+      const updateOpen = !isOpen;
+      setOpen(updateOpen);
+
+      if (updateOpen) itemEl.open = true;
+      // 닫힘 모션 끝나고 업데이트
+      else
+        setTimeout(() => {
+          itemEl.open = false;
+        }, 400);
+    },
+    [isOpen, itemEl, setOpen],
+  );
+
+  // open 상태가 정의되지 않은 경우 초기화
   useEffect(() => {
-    if (typeof isOpen !== "boolean")
-      setOpen(prev => ({
-        ...prev,
-        [code]: false,
-      }));
+    if (typeof isOpen !== "boolean") setOpen(false);
   }, [code, isOpen, setOpen]);
 
   return (
     <StyledCareerSummaryContainer
-      className={`${hover}`}
-      onClick={openDetails}
-      onMouseEnter={() => setHover("hover")}
-      onMouseLeave={() => setHover("")}
+      className={hover ? "hover" : ""}
+      onClick={onOpenDetails}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
       <StyledCareerPeriod>
-        <span>{convertPeriod(period[0], windowWidth)}</span>
+        <span>{convertPeriod(period[0])}</span>
       </StyledCareerPeriod>
       <StyledCareerPeriod>
-        <span>{convertPeriod(period[1], windowWidth)}</span>
+        <span>{convertPeriod(period[1])}</span>
       </StyledCareerPeriod>
       <StyledCareerRole>
         <span>{role}</span>
@@ -94,22 +106,4 @@ export default function CareerSummary({
       </StyledCareerExpandCell>
     </StyledCareerSummaryContainer>
   );
-}
-
-function convertPeriod(date: string, windowWidth: number): string {
-  if (
-    typeof date !== "undefined" &&
-    new Date(date) instanceof Date &&
-    !isNaN(new Date(date).valueOf())
-  )
-    return `${periodVal("year", date)}. ${periodVal("month", date)}.`.slice(
-      windowWidth < 768 ? 2 : 0,
-    );
-  return date === "" ? "재직중" : date;
-}
-
-function periodVal(type: string, value: string) {
-  return new Date(value).toLocaleString("en-US", {
-    [type]: type === "year" ? "numeric" : "2-digit",
-  });
 }

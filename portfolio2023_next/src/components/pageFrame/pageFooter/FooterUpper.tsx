@@ -1,4 +1,6 @@
-import { useLayoutEffect, useRef } from "react";
+"use client";
+
+import { useCallback, useRef } from "react";
 import { useAtomValue } from "jotai";
 
 // style components
@@ -9,56 +11,44 @@ import {
 } from "@/styles/styled/components/PageFooter";
 
 // state
-import {
-  scrollPageHeightState,
-  scrollPageSectionRefState,
-} from "@/jotai/interaction/scroll.state";
+import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
-// util
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+// hooks
+import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
 export default function FooterUpperContainer() {
-  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
-  const scrollTrigger = useAtomValue(scrollPageSectionRefState("footer"));
-
-  const scrollHeight = useAtomValue(scrollPageHeightState);
-
+  const footer = useAtomValue(scrollPageSectionRefState("footer"));
   const footerTitleRef = useRef<HTMLHeadingElement | null>(null);
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (!scrollContainer || !scrollTrigger) return;
-
-    const scrollTarget = footerTitleRef.current;
-    if (!scrollTarget) return;
-
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      normalize: true,
-      tweenArr: [
+  const parallax = useCallback(
+    (): UseGSAPAnimationHookOptions => ({
+      target: footerTitleRef.current,
+      direction: "from",
+      animation: [
         {
-          direction: "from",
-          target: scrollTarget,
-          options: [
-            {
-              y: "-100%", // transform translate
-              scrollTrigger: {
-                trigger: scrollTrigger,
-                start: `top bottom`, // target, view
-                end: `top top`, // target, view
-                scrub: true,
-                // markers: true,
-                invalidateOnRefresh: true,
-              },
-            },
-          ],
+          y: "-100%",
+          scrollTrigger: {
+            trigger: footer,
+            start: "top bottom",
+            end: "top top",
+            scrub: true,
+            // markers: true,
+            invalidateOnRefresh: true,
+          },
         },
       ],
-    });
+    }),
+    [footer],
+  );
 
-    return () => ctx.revert();
-  }, [scrollHeight, footerTitleRef, scrollContainer, scrollTrigger]);
+  useGSAPAnimation(
+    {
+      key: "page/footer/upper",
+      elements: [footer, footerTitleRef.current],
+      options: [parallax()],
+    },
+    [parallax],
+  );
 
   return (
     <StyledFooterHeader>

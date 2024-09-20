@@ -5,6 +5,10 @@ interface CareerSummaryTypes {
   company: string;
 }
 
+interface CareerSummaryProps extends CareerSummaryTypes {
+  code: string;
+}
+
 interface CareerDetailsTypes {
   [index: string]: string | string[];
   task: string[];

@@ -15,11 +15,12 @@ export default function TechStackList() {
 
   return (
     <ul className="stack-table">
-      {index.map(({ name, code }, i: number) => (
+      {index.map(({ name, code }) => (
         <StackRow
           title={name}
           data={stackData[code]}
-          key={`profile/techStack/item/${i}`}
+          key={`profile/techStack/item/${code}`}
+          code={code}
         />
       ))}
     </ul>

@@ -1,4 +1,14 @@
 /**
+ * 스크롤 참조 ref 데이터
+ * @state
+ */
+type ScrollRefType =
+  | HTMLElement
+  | HTMLHeadingElement
+  | HTMLDetailsElement
+  | null;
+
+/**
  * 프로필 > 경력; 스크롤 참조를 위한 각 항목 ref
  * @state
  */
@@ -12,16 +22,6 @@ interface CareerItemsRefTypes {
 interface CareerItemsOpenTypes {
   [itemKey: string]: boolean;
 }
-
-/**
- * 스크롤 참조 ref 데이터
- * @state
- */
-type ScrollRefType =
-  | HTMLElement
-  | HTMLHeadingElement
-  | HTMLDetailsElement
-  | null;
 
 /**
  * 스크롤 참조를 위한 ref 상태관리

@@ -12,7 +12,7 @@ import { easing } from "../preset/easing";
 
 export const StyledCareerList = styled.ul`
   ${size({ w: `calc(100% + ${rem(160)})`, m: [0, -80] })}
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 1024px) {
     ${size({ w: "100%", m: 0 })}
   }
 `;

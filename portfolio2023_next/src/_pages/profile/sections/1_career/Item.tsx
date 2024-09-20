@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useRef, useState } from "react";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 
 // components
@@ -22,14 +16,14 @@ import {
 
 // state
 import {
-  careerOpenState,
-  scrollCareerRefState,
+  careerEachOpenState,
+  scrollCareerEachItemRefState,
   scrollPageSectionRefState,
 } from "@/jotai/interaction/scroll.state";
-import { viewportState } from "@/jotai/viewport.state";
+import { careerExpandHeightState } from "@/jotai/viewport.state";
 
-// utils
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+// hooks
+import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
 /**
  * 프로필 > 커리어; 각 커리어 항목 아이템
@@ -46,111 +40,76 @@ export default function CareerItem({
   details,
   last,
 }: CareerItemProps) {
-  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
   const careerContents = useAtomValue(
     scrollPageSectionRefState("careerContents"),
   );
 
   // 커리어 각 ref 관리
-  const setCareerItems = useSetAtom(scrollCareerRefState);
+  const setCareerItems = useSetAtom(scrollCareerEachItemRefState(code));
   // 커리어 각 상태 토글상태 관리
-  const [{ [code]: isOpen }, setCareerOpen] = useAtom(careerOpenState);
+  const [isOpen, setCareerOpen] = useAtom(careerEachOpenState(code));
+  const expandHeight = useAtomValue(careerExpandHeightState(code));
 
   const itemRef = useRef<HTMLLIElement | null>(null);
-  const [hide, setHide] = useState<string>("hide");
-
   const detailsRef = useRef<HTMLDetailsElement | null>(null);
 
-  const { careerExpandHeight } =
-    useAtomValue<ViewportStateTypes>(viewportState);
-  const [expandHeight, setExpandHeight] = useState<number>(0);
+  const [hide, setHide] = useState<boolean>(true);
 
   // 확장 영역 요소 업데이트
   const updateExpendRef = useCallback(
     (node: HTMLDetailsElement | null) => {
       detailsRef.current = node;
-      setCareerItems(prev => ({
-        ...prev,
-        [code]: node,
-      }));
+      setCareerItems(node);
     },
-    [code, setCareerItems],
+    [setCareerItems],
   );
 
-  // 확장 영역 업데이트
-  useEffect(() => {
-    if (careerExpandHeight[code] !== 0)
-      setExpandHeight(careerExpandHeight[code]);
-  }, [careerExpandHeight, code]);
+  // 스크롤 다시 되돌아갈때 확장 상태 초기화
+  const onResetDetail = useCallback(() => {
+    setHide(true);
+    setCareerOpen(false);
 
-  const onToggleDetail = useCallback(
-    (state: boolean) => {
-      setCareerOpen(prev => ({
-        ...prev,
-        [code]: state,
-      }));
-    },
-    [code, setCareerOpen],
-  );
+    if (detailsRef.current === null) return;
+    detailsRef.current.open = false;
+  }, [setCareerOpen]);
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (!scrollContainer) return;
-
-    const careerItemContainer = itemRef.current;
-    if (!careerItemContainer) return;
-
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      create: {
-        trigger: careerItemContainer,
-        start: `top 80%`,
-        end: `top top`,
+  // 경력 리스트 스크롤 인터랙션
+  useGSAPAnimation(
+    {
+      key: `profile/career/${code}/item/container`,
+      elements: [itemRef.current],
+      scrollCreate: {
+        trigger: itemRef.current,
+        start: "top 80%",
+        end: "top top",
         invalidateOnRefresh: true,
         // markers: true,
         onEnter: () => {
-          setHide("");
+          setHide(false);
         },
       },
-    });
-
-    return () => ctx.revert();
-  }, [scrollContainer]);
+    },
+    [code, hide],
+  );
 
   // 초기화; 섹션이 뷰포트 아래로 내려갔을 때
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (!scrollContainer || !careerContents) return;
-
-    const detailTag = detailsRef.current;
-    if (!detailTag) return;
-
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      normalize: true,
-      create: {
+  useGSAPAnimation(
+    {
+      key: `profile/career/${code}/item/detail`,
+      elements: [careerContents, detailsRef.current],
+      scrollCreate: {
         trigger: careerContents,
-        start: `top bottom`,
-        end: `top bottom`,
+        start: "top bottom",
+        end: "top bottom",
         // markers: true,
-        onLeaveBack: () => {
-          setHide("hide");
-          // 스크롤 다시 되돌아갈때 확장 상태 초기화
-          if (detailTag instanceof HTMLDetailsElement) {
-            detailTag.open = false;
-            onToggleDetail(false);
-          }
-        },
+        onLeaveBack: onResetDetail,
       },
-    });
-
-    return () => ctx.revert();
-  }, [careerContents, onToggleDetail, scrollContainer]);
+    },
+    [code, hide, onResetDetail],
+  );
 
   return (
-    <StyledCareerItem className={`${hide}`} ref={itemRef}>
+    <StyledCareerItem className={hide ? "hide" : ""} ref={itemRef}>
       <StyledCareerBorder className="top" />
       <StyledCareerDetailWrap
         ref={updateExpendRef}

@@ -37,7 +37,6 @@ export default function PageVisualUpper({ title }: { title: string[] }) {
   const { fixed } = useVisualUpperAnimation(
     visualRef.current,
     visualTitleRef.current,
-    loadComplete,
   );
 
   return (

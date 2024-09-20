@@ -1,17 +1,13 @@
 "use client";
 
-import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
 
 // components
 import ProfileExperienceItem from "./Item";
 
 // state
-import { viewportState } from "@/jotai/viewport.state";
-import {
-  scrollPageHeightState,
-  scrollPageSectionRefState,
-} from "@/jotai/interaction/scroll.state";
+import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // style components
 import {
@@ -20,10 +16,8 @@ import {
 } from "@/styles/styled/components/ProfileExperience";
 
 // hooks
-import useResizeObserver from "@/hooks/layout/useResizeObserver";
-
-// util
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+import useCheckView from "@/hooks/layout/useCheckView";
+import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
 // fetch
 import { useQueryProfileExperienceData } from "@/lib/query";
@@ -36,44 +30,23 @@ import { useQueryProfileExperienceData } from "@/lib/query";
 export default function ProfileExperienceContents() {
   // 경험 데이터 요청
   const { data: expData = [] } = useQueryProfileExperienceData();
+
   // 항목 개수
   const expLength = useMemo(() => expData.length, [expData]);
 
-  // 화면 사이즈 상태
-  const { windowWidth } = useAtomValue(viewportState);
-  const scrollHeight = useAtomValue(scrollPageHeightState);
-  // 경험 리스트 ref
-  const expListRef = useRef<HTMLUListElement | null>(null);
   // 스크롤 참조 ref 상태
-  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
-  const scrollTrigger = useAtomValue(
+  const sectionExperience = useAtomValue(
     scrollPageSectionRefState("sectionExperience"),
   );
+  // 경험 리스트 ref
+  const expListRef = useRef<HTMLUListElement | null>(null);
 
   // 경험 섹션의 모바일 모드 전환을 위한 상태관리
-  const [isMobileView, setMobileView] = useState<boolean>(windowWidth < 640);
-
-  const updateMobileView = useCallback(
-    (width: number) => {
-      if (isMobileView !== width < 640) setMobileView(width < 640);
-    },
-    [isMobileView],
-  );
-
-  // 좌우 리스트 너비
-  const [listWidth, setListWidth] = useState<number>(0);
-  // 경험 리스트 총 스크롤 너비 업데이트
-  useResizeObserver({
-    ref: expListRef,
-    delay: 300,
-    callback: ({ width }) => {
-      setListWidth(width);
-      updateMobileView(width);
-    },
-  });
+  const { isCustomView } = useCheckView(640);
 
   // 현재 활성화된 항목 인덱스
   const [onIndex, setOnIndex] = useState<number>(0);
+
   // 진행 정도에 따른 활성화 인덱스 추출
   const getActiveIndex = useCallback(
     (progress: number): number => {
@@ -89,6 +62,7 @@ export default function ProfileExperienceContents() {
     },
     [expLength],
   );
+
   // 스크롤 동작에 따른 활성화 인덱스 업데이트
   const onChangeActiveIndex = useCallback(
     ({ progress }: { progress: number }) => {
@@ -98,78 +72,71 @@ export default function ProfileExperienceContents() {
   );
 
   const scrollRange = useMemo((): number => {
-    if (listWidth <= 0 || expLength <= 0) return 0;
-    return listWidth * ((expLength - 1) / expLength);
-  }, [expLength, listWidth]);
+    if (expListRef.current === null || expLength <= 0) return 0;
+    return (
+      Math.floor(
+        expListRef.current.offsetWidth * ((expLength - 1) / expLength) * 10000,
+      ) / 10000
+    );
+  }, [expLength]);
 
-  const horizontalScrollEnd = useMemo(
-    () => `+=${scrollRange * (isMobileView ? 2 : 1)} bottom`,
-    [isMobileView, scrollRange],
+  const horizontalScrollEnd = useCallback(
+    () => `+=${scrollRange * (isCustomView ? 2 : 1)}`,
+    [isCustomView, scrollRange],
   );
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (!scrollContainer || !scrollTrigger) return;
-
-    const scrollTarget = expListRef.current;
-    if (!scrollTarget) return;
-
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      normalize: true,
-      timeline: true,
-      tweenArr: [
+  const fadeInOption = useCallback(
+    (): UseGSAPAnimationHookOptions => ({
+      target: expListRef.current,
+      direction: "fromTo",
+      animation: [
+        { opacity: 0 },
         {
-          target: scrollTarget,
-          direction: "fromTo",
-          options: [
-            {
-              opacity: 0,
-            },
-            {
-              opacity: 1,
-              scrollTrigger: {
-                trigger: scrollTarget,
-                start: "top 80%",
-                end: "top 50%",
-                scrub: true,
-              },
-            },
-          ],
-        },
-        {
-          target: scrollTarget,
-          options: [
-            {
-              x: -scrollRange,
-              ease: "none",
-              scrollTrigger: {
-                trigger: scrollTrigger,
-                start: `top top`, // trigger, view
-                end: () => horizontalScrollEnd,
-                scrub: true,
-                pin: scrollTrigger,
-                anticipatePin: 1,
-                invalidateOnRefresh: true,
-                // markers: true,
-                onUpdate: onChangeActiveIndex,
-              },
-            },
-          ],
+          opacity: 1,
+          scrollTrigger: {
+            trigger: expListRef.current,
+            start: "top 80%",
+            end: "top 50%",
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
         },
       ],
-    });
+    }),
+    [],
+  );
 
-    return () => ctx.revert();
-  }, [
-    scrollHeight,
-    horizontalScrollEnd,
-    onChangeActiveIndex,
-    scrollContainer,
-    scrollRange,
-    scrollTrigger,
-  ]);
+  const horizontalScrollOption = useCallback(
+    (): UseGSAPAnimationHookOptions => ({
+      target: expListRef.current,
+      animation: [
+        {
+          x: () => -scrollRange,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionExperience,
+            start: "top top", // trigger, view
+            end: () => horizontalScrollEnd(),
+            scrub: true,
+            pin: sectionExperience,
+            invalidateOnRefresh: true,
+            // markers: true,
+            onUpdate: onChangeActiveIndex,
+          },
+        },
+      ],
+    }),
+    [horizontalScrollEnd, onChangeActiveIndex, scrollRange, sectionExperience],
+  );
+
+  useGSAPAnimation(
+    {
+      key: "profile/experience/interaction",
+      elements: [expListRef.current, sectionExperience],
+      options: [fadeInOption(), horizontalScrollOption()],
+    },
+    [fadeInOption, horizontalScrollOption],
+  );
 
   return (
     <StyledExpScrollContainer>

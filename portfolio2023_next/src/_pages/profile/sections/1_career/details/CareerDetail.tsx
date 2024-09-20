@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useSetAtom } from "jotai";
 
 // style components
@@ -13,7 +13,10 @@ import {
 } from "@/styles/styled/components/ProfileCareer";
 
 // state
-import { viewportState } from "@/jotai/viewport.state";
+import { careerExpandHeightState } from "@/jotai/viewport.state";
+
+// hooks
+import useResizeObserver from "@/hooks/layout/useResizeObserver";
 
 export default function CareerDetail({
   code,
@@ -22,28 +25,15 @@ export default function CareerDetail({
   projects,
 }: CareerDetailProps) {
   const detailRef = useRef<HTMLDivElement | null>(null);
-  const setScreenSize = useSetAtom(viewportState);
+  const setExpandHeightSize = useSetAtom(careerExpandHeightState(code));
 
-  const updateExpandHeight = useCallback(() => {
-    const expandBox = detailRef.current;
-    if (!expandBox) return;
-
-    setScreenSize(prev => ({
-      ...prev,
-      careerExpandHeight: {
-        ...prev.careerExpandHeight,
-        [code]: expandBox.offsetHeight,
-      },
-    }));
-  }, [code, setScreenSize]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    updateExpandHeight();
-
-    window.addEventListener("resize", updateExpandHeight);
-    return () => window.addEventListener("resize", updateExpandHeight);
-  }, [updateExpandHeight]);
+  useResizeObserver({
+    ref: detailRef,
+    delay: 100,
+    callback: ({ height }) => {
+      setExpandHeightSize(height || 0);
+    },
+  });
 
   return (
     <StyledCareerDetailContainer>

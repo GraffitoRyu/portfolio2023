@@ -14,10 +14,9 @@ import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 export default function useVisualUpperAnimation(
   sectionEl: HTMLElement | null,
   titleEl: HTMLElement | null,
-  loadComplete: boolean,
 ) {
   // 모바일 뷰 커스텀 체크
-  const { isCustomMobileView } = useCheckView(1024);
+  const { isCustomView } = useCheckView(1024);
   // 스크롤 영역
   const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
 
@@ -28,25 +27,23 @@ export default function useVisualUpperAnimation(
   );
   // trigger end 위치 업데이트
   const triggerEnd = useCallback(
-    () => (isCustomMobileView ? 0 : "center"),
-    [isCustomMobileView],
+    () => (isCustomView ? 0 : "center"),
+    [isCustomView],
   );
   // target end 위치 업데이트
   const targetEnd = useCallback(
     () =>
-      isCustomMobileView
-        ? titleEl?.offsetHeight || 0
-        : sectionEl?.offsetHeight || 0,
-    [isCustomMobileView, sectionEl?.offsetHeight, titleEl?.offsetHeight],
+      isCustomView ? titleEl?.offsetHeight || 0 : sectionEl?.offsetHeight || 0,
+    [isCustomView, sectionEl?.offsetHeight, titleEl?.offsetHeight],
   );
 
   // 페럴렉스 효과 속도 업데이트
   const parallaxSpeed = useCallback(
     () =>
-      isCustomMobileView
+      isCustomView
         ? 0
         : -0.03 * ScrollTrigger.maxScroll(scrollContainer as HTMLElement),
-    [isCustomMobileView, scrollContainer],
+    [isCustomView, scrollContainer],
   );
 
   // 페럴렉스 효과 적용을 위한 클래스
@@ -57,7 +54,7 @@ export default function useVisualUpperAnimation(
 
   // 페럴렉스 효과 인터랙션 옵션
   const parallax = useCallback(
-    (): ScrollTriggerAnimationOptions => ({
+    (): UseGSAPAnimationHookTweenOption => ({
       opacity: 0,
       y: parallaxSpeed,
       scrollTrigger: {
@@ -85,8 +82,7 @@ export default function useVisualUpperAnimation(
   useGSAPAnimation(
     {
       key: "page/visual/upper",
-      elements: [scrollContainer, sectionEl, titleEl],
-      disabled: !loadComplete,
+      elements: [sectionEl, titleEl],
       options: [
         {
           optionKey: "page/visual/upper",
@@ -95,7 +91,7 @@ export default function useVisualUpperAnimation(
         },
       ],
     },
-    [parallax, loadComplete],
+    [parallax],
   );
 
   return { fixed };

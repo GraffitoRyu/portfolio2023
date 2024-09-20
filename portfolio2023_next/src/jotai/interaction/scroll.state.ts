@@ -45,18 +45,53 @@ export const scrollPageSectionRefState = atomFamily((sectionCode: string) =>
 );
 
 /**
- * 프로필 > 커리어; 각 상세요소 참조 ref 관리
+ * 프로필 > 커리어; 상세요소 참조 ref 관리
  * @state
  */
 export const scrollCareerRefState = atom<CareerItemsRefTypes>({});
 
+/**
+ * 프로필 > 커리어; 상세요소 참조 ref 각 아이템별 관리
+ * @state
+ */
+export const scrollCareerEachItemRefState = atomFamily((itemCode: string) =>
+  atom(
+    get => get(scrollCareerRefState)[itemCode],
+    (get, set, state: HTMLDetailsElement | null) => {
+      const prev = get(scrollCareerRefState);
+      set(scrollCareerRefState, {
+        ...prev,
+        [itemCode]: state,
+      });
+    },
+  ),
+);
+
+/**
+ * 프로필 > 커리어; 상세요소 토글상태 관리
+ * @state
+ * @desc
+ * - 각 항목 토글상태에 따라 스크롤 애니메이션 재계산 필요
+ */
+export const careerOpenState = atom<CareerItemsOpenTypes>({});
 /**
  * 프로필 > 커리어; 각 상세요소 토글상태 관리
  * @state
  * @desc
  * - 각 항목 토글상태에 따라 스크롤 애니메이션 재계산 필요
  */
-export const careerOpenState = atom<CareerItemsOpenTypes>({});
+export const careerEachOpenState = atomFamily((itemCode: string) =>
+  atom(
+    get => get(careerOpenState)[itemCode],
+    (get, set, state: boolean) => {
+      const prev = get(careerOpenState);
+      set(careerOpenState, {
+        ...prev,
+        [itemCode]: state,
+      });
+    },
+  ),
+);
 
 // /**
 //  * 리사이즈에 따른 sticky container의 height
