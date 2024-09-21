@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 import path from "path";
+import openBrowserLocalNextServer from "./config/openBrowser.mjs";
 
 const root = path.dirname(new URL(import.meta.url).pathname);
 
@@ -67,6 +68,12 @@ const nextConfig = {
      */
 
     return config;
+  },
+  async redirects() {
+    // 로컬 서버 구동 시, 브라우저 창 열기
+    // NODE_ENV === "development"에서만 열림
+    openBrowserLocalNextServer();
+    return [];
   },
 };
 
