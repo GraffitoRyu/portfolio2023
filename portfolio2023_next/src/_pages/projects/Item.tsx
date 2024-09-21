@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useAtomValue, useSetAtom } from "jotai";
 
 // components
@@ -19,8 +19,8 @@ import {
 import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 import { pageDetailLoadState } from "@/jotai/load.state";
 
-// util
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+// hook
+import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
 export default function ProjectItem({
   code,
@@ -39,66 +39,50 @@ export default function ProjectItem({
 
   const setDetailLoad = useSetAtom(pageDetailLoadState);
 
-  const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
   const projectList = useAtomValue(scrollPageSectionRefState("projectList"));
-
   const triggerRef = useRef<HTMLButtonElement | null>(null);
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (!scrollContainer) return;
-
-    const trigger = triggerRef.current;
-    if (!trigger) return;
-
-    const scrollOptions = [
-      {
-        target: trigger,
-        options: [
-          {
-            scrollTrigger: {
-              trigger,
-              start: `top 90%`,
-              end: `top 90%`,
-              onEnter: () => {
-                setHide("");
-              },
-            },
-          },
-        ],
+  const fadeIn = useCallback(
+    (): UseGSAPAnimationScrollTriggerOption => ({
+      trigger: triggerRef.current,
+      start: "top 80%",
+      end: "top 80%",
+      onEnter() {
+        setHide("");
       },
-    ];
+    }),
+    [],
+  );
 
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      tweenArr: [...scrollOptions],
-    });
+  useGSAPAnimation(
+    {
+      key: `project/list/item/${code}/fadeIn`,
+      elements: [triggerRef.current],
+      scrollCreate: fadeIn(),
+    },
+    [fadeIn],
+  );
 
-    return () => ctx.revert();
-  }, [scrollContainer]);
-
-  // 초기화
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (!scrollContainer) return;
-
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      normalize: true,
-      create: {
-        trigger: projectList,
-        start: `top bottom`,
-        end: `top bottom`,
-        onLeaveBack: () => {
-          setHide("hide");
-        },
+  const resetScroll = useCallback(
+    (): UseGSAPAnimationScrollTriggerOption => ({
+      trigger: projectList,
+      start: "top bottom",
+      end: "top bottom",
+      onLeaveBack() {
+        setHide("hide");
       },
-    });
+    }),
+    [projectList],
+  );
 
-    return () => ctx.revert();
-  }, [projectList, scrollContainer]);
+  useGSAPAnimation(
+    {
+      key: `project/list/item/${code}/reset`,
+      elements: [projectList],
+      scrollCreate: resetScroll(),
+    },
+    [fadeIn],
+  );
 
   // 프로젝트 상세 열 때, 호버 상태 초기화
   useEffect(() => {
