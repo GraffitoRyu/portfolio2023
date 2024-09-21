@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useRef } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import { useAtomValue } from "jotai";
 
 // style components
@@ -10,21 +10,20 @@ import {
 
 // state
 import { pageDetailLoadState } from "@/jotai/load.state";
+import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
 
-// util
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
-import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
+// hooks
+import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailData";
 
 export default function DetailHeaderTitle() {
   const { title: titleArr } = useProjectCategoryDetailData();
 
   const { openComplete } = useAtomValue(pageDetailLoadState);
-  const {
-    container: scrollContainer,
-    sectionVisual: scrollTrigger,
-    visualTitle: visualTitleRef,
-  } = useAtomValue<DetailScrollRefStateTypes>(scrollDetailRefState);
+  const sectionVisual = useAtomValue(
+    scrollDetailSectionRefState("sectionVisual"),
+  );
+  const visualTitle = useAtomValue(scrollDetailSectionRefState("visualTitle"));
   const titleRef = useRef<HTMLSpanElement>(null);
 
   const title = useMemo(
@@ -32,42 +31,37 @@ export default function DetailHeaderTitle() {
     [titleArr],
   );
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
+  const targetStart = useCallback(
+    () => (visualTitle?.offsetTop || 0) + (visualTitle?.clientHeight || 0),
+    [visualTitle?.clientHeight, visualTitle?.offsetTop],
+  );
+  const triggerStart = useCallback(() => titleRef.current?.offsetTop || 0, []);
 
-    if (openComplete) {
-      if (!scrollContainer || !scrollTrigger || !visualTitleRef) return;
-
-      const scrollTarget = titleRef.current;
-      if (!scrollTarget) return;
-
-      const targetStart =
-        visualTitleRef.offsetTop + visualTitleRef.clientHeight;
-
-      const ctx = ctxScrollTrigger({
-        container: scrollContainer,
-        tweenArr: [
-          {
-            target: scrollTarget,
-            options: [
-              {
-                opacity: 1,
-                scrollTrigger: {
-                  trigger: scrollTrigger,
-                  start: `${targetStart} ${scrollTarget.offsetTop}`,
-                  end: `bottom ${scrollTarget.offsetTop}`,
-                  scrub: true,
-                  invalidateOnRefresh: true,
-                  // markers: true,
-                },
+  useGSAPAnimation(
+    {
+      key: "projects/detail/header/title",
+      disabled: !openComplete,
+      elements: [titleRef.current, sectionVisual, visualTitle],
+      options: [
+        {
+          target: titleRef.current,
+          animation: [
+            {
+              opacity: 1,
+              scrollTrigger: {
+                trigger: sectionVisual,
+                start: () => `${targetStart()} ${triggerStart()}`,
+                end: () => `bottom ${triggerStart()}`,
+                scrub: true,
+                invalidateOnRefresh: true,
               },
-            ],
-          },
-        ],
-      });
-      return () => ctx.revert();
-    }
-  }, [openComplete, scrollContainer, scrollTrigger, visualTitleRef]);
+            },
+          ],
+        },
+      ],
+    },
+    [openComplete, targetStart, triggerStart],
+  );
 
   return (
     <StyledPDHeaderTitleContainer>

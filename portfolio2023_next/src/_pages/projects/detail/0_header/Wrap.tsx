@@ -1,8 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef } from "react";
-import { useAtom, useSetAtom } from "jotai";
+import { useCallback, useRef } from "react";
+import { useSetAtom } from "jotai";
 
 // components
 import DetailHeaderTitle from "./Title";
@@ -12,6 +12,10 @@ import CloseButton from "@/components/buttons/Close";
 // style components
 import { StyledHeaderWrap } from "@/styles/styled/components/PageHeader";
 
+// hooks
+import useCheckView from "@/hooks/layout/useCheckView";
+import useResizeObserver from "@/hooks/layout/useResizeObserver";
+
 // state
 import { viewportState } from "@/jotai/viewport.state";
 import { pageDetailLoadState } from "@/jotai/load.state";
@@ -19,15 +23,15 @@ import { pageDetailLoadState } from "@/jotai/load.state";
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 
-// util
-import debounce from "@/utils/debounce.util";
-
 export default function DetailHeaderWrap() {
-  const [{ windowWidth }, setScreenSize] = useAtom(viewportState);
+  const router = useRouter();
+
   const wrapRef = useRef<HTMLDivElement | null>(null);
 
-  const router = useRouter();
+  const setScreenSize = useSetAtom(viewportState);
   const setDetailLoad = useSetAtom(pageDetailLoadState);
+
+  const { isCustomView } = useCheckView(1024);
 
   const closeDetail = useCallback(() => {
     setDetailLoad(prev => ({
@@ -41,39 +45,21 @@ export default function DetailHeaderWrap() {
     }, transTime.detail.sheetSlide);
   }, [router, setDetailLoad]);
 
-  const updateHeaderHeight = useCallback(() => {
-    const wrap = wrapRef.current;
-    if (!wrap) return;
-
-    if (typeof wrap.offsetHeight === "number")
+  useResizeObserver({
+    ref: wrapRef,
+    delay: 500,
+    callback({ height }) {
       setScreenSize(prev => ({
         ...prev,
-        detailHeaderHeight: wrap.offsetHeight,
+        detailHeaderHeight: height,
       }));
-  }, [setScreenSize]);
-
-  const updateDebounce = debounce(() => {
-    updateHeaderHeight();
-  }, 500);
-
-  // 프로젝트 상세 헤더 높이 최초 업데이트
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    updateHeaderHeight();
-  }, [updateHeaderHeight]);
-
-  // 프로젝트 상세 헤더 높이 업데이트
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    window.addEventListener("resize", updateDebounce, false);
-    return () => window.removeEventListener("resize", updateDebounce, false);
-  }, [updateDebounce]);
+    },
+  });
 
   return (
     <StyledHeaderWrap ref={wrapRef}>
       <DetailHeaderTitle />
-      {windowWidth < 1024 ? null : <DetailLinkContainer />}
+      {isCustomView ? null : <DetailLinkContainer />}
       <CloseButton
         clickEvent={closeDetail}
         ariaLabel="프로젝트 상세 페이지 닫기"
