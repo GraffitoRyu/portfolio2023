@@ -4,11 +4,11 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { useAtom, useSetAtom } from "jotai";
 
 // components
-import DetailHeaderContainer from "./header/Container";
-import DetailVisualContainer from "./visual/Container";
-import DetailSubVisual from "./subVisual/Container";
-import DetailExperience from "./experience/Container";
-import DetailMediaContainer from "./media/Container";
+import DetailHeaderContainer from "./0_header/Container";
+import DetailVisualContainer from "./1_visual/Container";
+import DetailSubVisual from "./2_subVisual/Container";
+import DetailExperience from "./3_experience/Container";
+import DetailMediaContainer from "./4_media/Container";
 
 // style components
 import { StyledPDContainer } from "@/styles/styled/components/ProjectDetail";
