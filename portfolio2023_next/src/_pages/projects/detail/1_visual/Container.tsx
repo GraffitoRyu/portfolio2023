@@ -1,9 +1,9 @@
 // components
 import DetailVisualLower from "./Lower";
 import DetailVisualViewport from "./Viewport";
-import DetailVisualImage from "./bg/VisualImage";
-import DetailSummary from "./summary/Container";
-import DetailVisualTitleContainer from "./title/Container";
+import DetailVisualImage from "./0_bg/VisualImage";
+import DetailSummary from "./1_summary/Container";
+import DetailVisualTitleContainer from "./2_title/Container";
 
 // style components
 import { StyledPDVisualSection } from "@/styles/styled/components/ProjectDetail";

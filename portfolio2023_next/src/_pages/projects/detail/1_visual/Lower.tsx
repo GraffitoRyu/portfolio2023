@@ -1,23 +1,21 @@
 "use client";
 
-import { useAtomValue } from "jotai";
-
 // components
 import DetailLinkContainer from "../common/linkMenu/LinkContainer";
-import DetailStacks from "./stacks/Container";
+import DetailStacks from "./3_stacks/Container";
 
 // style components
 import { StyledPDVisualLower } from "@/styles/styled/components/ProjectDetail";
 
-// state
-import { viewportState } from "@/jotai/viewport.state";
+// hook
+import useCheckView from "@/hooks/layout/useCheckView";
 
 export default function DetailVisualLower() {
-  const { windowWidth } = useAtomValue(viewportState);
+  const { isCustomView } = useCheckView(1024);
 
   return (
     <StyledPDVisualLower>
-      {windowWidth < 1024 ? <DetailLinkContainer /> : null}
+      {isCustomView ? <DetailLinkContainer /> : null}
       <DetailStacks />
     </StyledPDVisualLower>
   );
