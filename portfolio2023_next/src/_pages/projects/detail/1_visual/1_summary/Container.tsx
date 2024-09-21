@@ -1,4 +1,6 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+"use client";
+
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
 
 // components
@@ -13,76 +15,72 @@ import { StyledPDSummaryContainer } from "@/styles/styled/components/ProjectDeta
 import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailData";
 
 // state
-import { pageDetailLoadState } from "@/jotai/load.state";
 import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // util
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
 export default function DetailSummary() {
-  const { data, title } = useProjectCategoryDetailData();
-
-  const { openComplete } =
-    useAtomValue<PageDetailLoadStateTypes>(pageDetailLoadState);
+  const { data, title, openComplete } = useProjectCategoryDetailData();
 
   const delayIndex = useMemo(() => (title ? title.length : 1), [title]);
-  const summaryData = useMemo(
-    (): SummaryProps[] => (data ? getSummaryData(data) : []),
-    [data],
-  );
+  const summaryData = useMemo(() => (data ? getSummaryData(data) : []), [data]);
 
-  const scrollContainer = useAtomValue(
+  const detailContainer = useAtomValue(
     scrollDetailSectionRefState("container"),
   );
-  const summaryRef = useRef<HTMLDListElement[]>([]);
+  const summaryRef = useRef<(HTMLDListElement | null)[]>(
+    Array(summaryData.length).fill(null),
+  );
 
-  const isHide = useMemo((): boolean => !openComplete, [openComplete]);
+  const isHide = useMemo(() => !openComplete, [openComplete]);
   const [isInit, setInit] = useState<boolean>(true);
 
   useEffect(() => {
     if (!openComplete) {
-      setInit(true);
+      if (isInit !== true) setInit(true);
       return;
     }
 
-    setTimeout(() => {
+    if (isInit === false) return;
+
+    const timer = setTimeout(() => {
       setInit(false);
     }, 1600);
-  }, [openComplete]);
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
+    return () => clearTimeout(timer);
+  }, [isInit, openComplete]);
 
-    if (isInit) return;
-
-    if (!scrollContainer) return;
-
-    const summaryItems = summaryRef.current;
-    if (!summaryItems || summaryItems?.length == 0) return;
-
-    const tweenArr = summaryItems.map((target: HTMLDListElement) => ({
-      target,
-      options: [
-        {
-          opacity: 0,
-          scrollTrigger: {
-            trigger: target,
-            start: `top 30%`,
-            end: `top top`,
-            scrub: true,
+  const fadeOutOptions = useCallback(
+    (): UseGSAPAnimationHookOptions[] =>
+      summaryRef.current.map(target => ({
+        target,
+        animation: [
+          {
+            opacity: 0,
+            scrollTrigger: {
+              trigger: target,
+              start: "top 30%",
+              end: "top top",
+              scrub: true,
+              // markers: true,
+            },
           },
-        },
-      ],
-    }));
+        ],
+      })),
+    [],
+  );
 
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      timeline: true,
-      tweenArr,
-    });
-
-    return () => ctx.revert();
-  }, [isInit, scrollContainer]);
+  useGSAPAnimation(
+    {
+      key: "projects/detail/visual/summary",
+      container: detailContainer,
+      disabled: !openComplete || isInit,
+      elements: summaryRef.current,
+      options: [...fadeOutOptions()],
+    },
+    [isInit, openComplete, fadeOutOptions],
+  );
 
   return (
     <StyledPDSummaryContainer>
@@ -90,10 +88,10 @@ export default function DetailSummary() {
         <DetailInfoItem
           code="summary"
           className={`${isHide ? "hide" : ""} ${isInit ? "init-hide" : ""}`}
-          key={`detailSummaryItem_${d.itemType}_${i}`}
+          key={`projects/detail/summary/item/${d.itemType}`}
           $itemIndex={i + 1}
           $delayIndex={delayIndex}
-          ref={(node: HTMLDListElement) => {
+          ref={node => {
             summaryRef.current[i] = node;
           }}
         >

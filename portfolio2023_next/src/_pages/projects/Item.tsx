@@ -1,8 +1,8 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 
 // components
 import SlideTitle from "@/_pages/projects/item/SlideTitle";
@@ -32,15 +32,13 @@ export default function ProjectItem({
   $isLast: boolean;
 }) {
   const router = useRouter();
-  const { category } = useParams();
-
-  const [hide, setHide] = useState<string>("hide");
-  const [hover, setHover] = useState<string>("");
-
-  const setDetailLoad = useSetAtom(pageDetailLoadState);
-
+  const [{ category }, setDetailLoad] = useAtom(pageDetailLoadState);
   const projectList = useAtomValue(scrollPageSectionRefState("projectList"));
+
   const triggerRef = useRef<HTMLButtonElement | null>(null);
+
+  const [hide, setHide] = useState<boolean>(true);
+  const [hover, setHover] = useState<boolean>(false);
 
   const fadeIn = useCallback(
     (): UseGSAPAnimationScrollTriggerOption => ({
@@ -48,7 +46,7 @@ export default function ProjectItem({
       start: "top 80%",
       end: "top 80%",
       onEnter() {
-        setHide("");
+        setHide(false);
       },
     }),
     [],
@@ -69,7 +67,7 @@ export default function ProjectItem({
       start: "top bottom",
       end: "top bottom",
       onLeaveBack() {
-        setHide("hide");
+        setHide(true);
       },
     }),
     [projectList],
@@ -86,20 +84,22 @@ export default function ProjectItem({
 
   // 프로젝트 상세 열 때, 호버 상태 초기화
   useEffect(() => {
-    if (category) setHover("");
+    if (category) setHover(false);
   }, [category]);
+
+  const onClickProject = useCallback(() => {
+    setDetailLoad(prev => ({ ...prev, clicked: true, loading: true }));
+    router.push(`/projects/${code}`);
+  }, [code, router, setDetailLoad]);
 
   return (
     <StyledProjectItemContainer
       type="button"
       ref={triggerRef}
-      className={`${hide} ${hover}`}
-      onMouseEnter={() => setHover("hover")}
-      onMouseLeave={() => setHover("")}
-      onClick={() => {
-        setDetailLoad(prev => ({ ...prev, clicked: true, loading: true }));
-        router.push(`/projects/${code}`);
-      }}
+      className={`${hide ? "hide" : ""} ${hover ? "hover" : ""}`}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      onClick={onClickProject}
     >
       <StyledProjectItemBorder $pos="top" />
       <ProjectSummary code={code} summary={summary} />

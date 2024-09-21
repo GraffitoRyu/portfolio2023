@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+"use client";
+
+import { useMemo, useRef } from "react";
 
 // components
 import {
@@ -13,23 +15,14 @@ export default function SlideTitle({
   className?: string | React.HTMLAttributes<HTMLElement>;
   text: string[];
 }) {
-  const titleArr: string[] = new Array(3).fill(text.join(" "));
   const slideRef = useRef<HTMLHeadingElement | null>(null);
+  const titleArr = useMemo(() => new Array(3).fill(text.join(" ")), [text]);
 
-  const [slideWidth, setSlideWidth] = useState<number>(0);
-  const [duration, setDuration] = useState<number>(0);
-
-  useEffect(() => {
-    const el: HTMLHeadingElement | null = slideRef.current;
-    if (el) {
-      const width: number = (el.children[0] as HTMLSpanElement).offsetWidth;
-      setSlideWidth(width);
-    }
-  }, []);
-
-  useEffect(() => {
-    setDuration((slideWidth / 1000) * 3.2);
-  }, [slideWidth]);
+  const slideWidth =
+    slideRef.current === null
+      ? 0
+      : (slideRef.current.children[0] as HTMLSpanElement).offsetWidth;
+  const duration = useMemo(() => (slideWidth / 1000) * 3.6, [slideWidth]);
 
   return (
     <StyledHoverSlideTitle
@@ -38,7 +31,7 @@ export default function SlideTitle({
     >
       {titleArr.map((title: string, i: number) => (
         <StyledTitleSpan
-          key={`projectSlideTitle_${Math.floor(Math.random() * 100000)}_${i}`}
+          key={`project/list/slideTitle/${text}/${i}`}
           style={{ animationDuration: `${duration}s` }}
         >
           {title}

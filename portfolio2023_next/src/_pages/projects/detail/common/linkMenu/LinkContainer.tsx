@@ -14,8 +14,7 @@ import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailD
 export default function DetailLinkContainer() {
   const { data } = useProjectCategoryDetailData();
   const linkData = useMemo(
-    (): LinkType[] =>
-      typeof data?.service?.link === "undefined" ? [] : data.service.link,
+    () => (typeof data?.service?.link === "undefined" ? [] : data.service.link),
     [data?.service?.link],
   );
 

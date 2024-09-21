@@ -55,7 +55,7 @@ export default function DetailStacks() {
       {stacks.map(([stackKey, list]) => (
         <DetailInfoItem
           code="stacks"
-          key={`detailStacks_${category}_${stackKey}`}
+          key={`projects/detail/stacks/${category}/${stackKey}`}
         >
           <DetailInfoTitle code="stacks" title={getStackTitle(stackKey)} />
           <DetailInfoContents code="stacks" title={stackKey} contents={list} />

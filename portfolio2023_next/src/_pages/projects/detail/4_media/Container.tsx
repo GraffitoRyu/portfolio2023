@@ -10,7 +10,7 @@ import { StyledPDMediaSection } from "@/styles/styled/components/ProjectDetail";
 import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailData";
 
 export default function DetailMediaContainer() {
-  const { category, data } = useProjectCategoryDetailData();
+  const { category, data, openComplete } = useProjectCategoryDetailData();
   const media = useMemo(
     () => (typeof data?.media === "undefined" ? [] : data.media),
     [data?.media],
@@ -18,8 +18,12 @@ export default function DetailMediaContainer() {
 
   return (
     <StyledPDMediaSection>
-      {media.map(m => (
-        <DetailMediaItem key={`projects/detail/media/${category}`} data={m} />
+      {media.map((m, i) => (
+        <DetailMediaItem
+          key={`projects/detail/media/${category}/${i}`}
+          data={m}
+          openComplete={openComplete}
+        />
       ))}
     </StyledPDMediaSection>
   );

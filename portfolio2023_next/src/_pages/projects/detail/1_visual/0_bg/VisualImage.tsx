@@ -1,8 +1,8 @@
-import { useParams } from "next/navigation";
+"use client";
+
 import Image from "next/image";
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import { useAtomValue } from "jotai";
-import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // style components
@@ -16,55 +16,46 @@ import {
 import { pageDetailLoadState } from "@/jotai/load.state";
 import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
 
-// util
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+// hooks
+import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
 export default function DetailVisualImage() {
-  const { category } = useParams();
-  const { open } = useAtomValue(pageDetailLoadState);
+  const { category, openComplete } = useAtomValue(pageDetailLoadState);
 
-  const scrollContainer = useAtomValue(
+  const detailContainer = useAtomValue(
     scrollDetailSectionRefState("container"),
   );
+
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLDivElement | null>(null);
   const imgCoverRef = useRef<HTMLDivElement | null>(null);
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (!scrollContainer) return;
-
-    const scrollTrigger = triggerRef.current;
-    const scrollTarget_img = imgRef.current;
-    const scrollTarget_cover = imgCoverRef.current;
-    if (!scrollTrigger || !scrollTarget_img || !scrollTarget_cover) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      tweenArr: [
+  useGSAPAnimation(
+    {
+      key: "projects/detail/visual/bg",
+      container: detailContainer,
+      disabled: !openComplete,
+      elements: [triggerRef.current, imgRef.current, imgCoverRef.current],
+      options: [
         {
-          target: scrollTarget_img,
-          options: [
+          target: imgRef.current,
+          animation: [
             {
-              y: () => 0.05 * ScrollTrigger.maxScroll(scrollContainer),
+              y: () =>
+                0.05 * ScrollTrigger.maxScroll(detailContainer as HTMLElement),
               scrollTrigger: {
-                trigger: scrollTrigger,
-                start: `top top`,
-                end: `bottom top`,
+                trigger: triggerRef.current,
+                start: "top top",
+                end: "bottom top",
                 scrub: true,
-                // markers: true,
               },
             },
           ],
         },
       ],
-    });
-
-    return () => ctx.revert();
-  }, [scrollContainer, open]);
+    },
+    [openComplete],
+  );
 
   return (
     <StyledPDVisualImageContainer ref={triggerRef}>

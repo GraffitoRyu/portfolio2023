@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useMemo, useRef } from "react";
+import { useCallback, useRef } from "react";
 import { useAtomValue } from "jotai";
 
 // components
@@ -13,49 +13,47 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { viewportState } from "@/jotai/viewport.state";
-import {
-  scrollDetailHeightState,
-  scrollDetailSectionRefState,
-} from "@/jotai/interaction/scroll.state";
+import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
 
-// util
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+// hooks
+import useCheckView from "@/hooks/layout/useCheckView";
+import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
-export default function DetailMediaItem({ data }: { data: MediaType }) {
-  const { windowWidth } = useAtomValue(viewportState);
-  const scrollContainer = useAtomValue(
+export default function DetailMediaItem({
+  data,
+  openComplete,
+}: {
+  data: MediaType;
+  openComplete: boolean;
+}) {
+  const { isCustomView } = useCheckView(640);
+
+  const detailContainer = useAtomValue(
     scrollDetailSectionRefState("container"),
   );
   const figureRef = useRef<HTMLElement | null>(null);
 
-  const scrollHeight = useAtomValue(scrollDetailHeightState);
-
-  const triggerEnd = useMemo(
-    () => `start ${windowWidth < 640 ? `60%` : `30%`}`,
-    [windowWidth],
+  const triggerEnd = useCallback(
+    () => `start ${isCustomView ? `60%` : `30%`}`,
+    [isCustomView],
   );
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (!scrollContainer) return;
-
-    const fig = figureRef.current;
-    if (!fig) return;
-
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      tweenArr: [
+  useGSAPAnimation(
+    {
+      key: "projects/detail/media",
+      container: detailContainer,
+      disabled: !openComplete,
+      elements: [figureRef.current],
+      options: [
         {
-          target: fig,
-          options: [
+          target: figureRef.current,
+          animation: [
             {
               opacity: 1,
               scale: 1,
               scrollTrigger: {
-                trigger: fig,
-                start: `start 90%`,
+                trigger: figureRef.current,
+                start: "start 90%",
                 end: triggerEnd,
                 scrub: true,
               },
@@ -63,10 +61,9 @@ export default function DetailMediaItem({ data }: { data: MediaType }) {
           ],
         },
       ],
-    });
-
-    return () => ctx.revert();
-  }, [scrollContainer, triggerEnd, data, scrollHeight]);
+    },
+    [openComplete, data, triggerEnd],
+  );
 
   return (
     <StyledPDMediaItem>

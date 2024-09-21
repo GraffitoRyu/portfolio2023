@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useLayoutEffect, useRef } from "react";
+import { useCallback, useRef } from "react";
 import { useAtomValue, useSetAtom } from "jotai";
 
 // style components
@@ -10,17 +10,16 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { pageDetailLoadState } from "@/jotai/load.state";
 import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
 
-// util
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+// hooks
 import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailData";
+import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
 export default function DetailVisualTitle() {
-  const { title = [""] } = useProjectCategoryDetailData();
+  const { title = [""], openComplete } = useProjectCategoryDetailData();
 
-  const scrollContainer = useAtomValue(
+  const detailContainer = useAtomValue(
     scrollDetailSectionRefState("container"),
   );
   const setVisualTitleRef = useSetAtom(
@@ -36,27 +35,20 @@ export default function DetailVisualTitle() {
     [setVisualTitleRef],
   );
 
-  const { openComplete } =
-    useAtomValue<PageDetailLoadStateTypes>(pageDetailLoadState);
-
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (!scrollContainer) return;
-
-    const scrollTarget = titleRef.current;
-    if (!scrollTarget) return;
-
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      tweenArr: [
+  useGSAPAnimation(
+    {
+      key: "projects/detail/visual/title",
+      container: detailContainer,
+      disabled: !openComplete,
+      elements: [titleRef.current],
+      options: [
         {
-          target: scrollTarget,
-          options: [
+          target: titleRef.current,
+          animation: [
             {
               opacity: 0,
               scrollTrigger: {
-                trigger: scrollTarget,
+                trigger: titleRef.current,
                 start: `top 30%`,
                 end: `top top`,
                 scrub: true,
@@ -65,10 +57,9 @@ export default function DetailVisualTitle() {
           ],
         },
       ],
-    });
-
-    return () => ctx.revert();
-  }, [scrollContainer]);
+    },
+    [openComplete],
+  );
 
   return (
     <StyledPDVisualTitle
@@ -76,7 +67,7 @@ export default function DetailVisualTitle() {
       ref={updateScrollRef}
     >
       {title.map((t: string, i: number) => (
-        <StyledPDVisualTitleLine key={`detailTitle_${t}_${i}`} $index={i}>
+        <StyledPDVisualTitleLine key={`projects/detail/title/${i}`} $index={i}>
           {t}
         </StyledPDVisualTitleLine>
       ))}

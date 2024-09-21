@@ -20,7 +20,7 @@ function DetailInfoItemRef(
   ref: React.ForwardedRef<HTMLDListElement>,
 ) {
   const customAttrs = {
-    className: `details-${code}-item ${className ?? ""}`,
+    className: `details-${code}-item ${className ? className : ""}`,
     ref,
   };
   if (typeof $itemIndex === "number")

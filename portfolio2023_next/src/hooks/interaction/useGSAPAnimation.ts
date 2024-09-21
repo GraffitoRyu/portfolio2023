@@ -116,7 +116,7 @@ export default function useGSAPAnimation(
     scrollCreate, // gsap scrollTrigger create
     options, // gsap tween animation options
     disabled = false,
-  }: UseGSAPAnimationHookProps,
+  }: Partial<UseGSAPAnimationHookProps>,
   deps: React.DependencyList,
 ) {
   // 페이지 진입상태 모니터링
@@ -210,6 +210,12 @@ export default function useGSAPAnimation(
   //   },
   // });
 
+  // gsap 실행 관련 요소의 유효성 모두 체크
+  const validElementLength = useCallback(
+    () => (elements ? elements.filter(el => el !== null) : []).length,
+    [elements],
+  );
+
   return useGSAP(
     () => {
       // console.log(`[useGSAPAnimation; ${key}]`);
@@ -223,14 +229,11 @@ export default function useGSAPAnimation(
       // 페이지 진입 시, 완료될 때까지 GSAP 방지
       if (!loadComplete) return;
 
-      // gsap 실행 관련 요소의 유효성 모두 체크
-      const validElements = elements.filter(ref => ref !== null);
-      if (validElements.length === 0) {
-        // if (key.startsWith("profile/techStack/row"))
-        //   console.error(
-        //     `[useGSAPAnimation; ${key} :: useGSAP] 스크롤 인터랙션 초기화 오류 :: element 유효하지 않음`,
-        //     elements,
-        //   );
+      if (validElementLength() === 0) {
+        // console.error(
+        //   `[useGSAPAnimation; ${key} :: useGSAP] 스크롤 인터랙션 초기화 오류 :: element 유효하지 않음`,
+        //   elements,
+        // );
         return;
       }
 
@@ -254,7 +257,9 @@ export default function useGSAPAnimation(
       options?.length,
       // scrollWidth,
       // scrollHeight,
-      ...elements,
+      containerEl,
+      // ...(elements || []),
+      validElementLength(),
       ...(deps || []),
     ],
     // {

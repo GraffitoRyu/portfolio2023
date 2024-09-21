@@ -9,27 +9,23 @@ import {
 } from "@/styles/styled/components/ProjectDetail";
 
 // state
-import { pageDetailLoadState } from "@/jotai/load.state";
-import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
+import { scrollDetailRefState } from "@/jotai/interaction/scroll.state";
 
 // hooks
 import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailData";
 
 export default function DetailHeaderTitle() {
-  const { title: titleArr } = useProjectCategoryDetailData();
+  const { openComplete, title: titleArr } = useProjectCategoryDetailData();
 
-  const { openComplete } = useAtomValue(pageDetailLoadState);
-  const sectionVisual = useAtomValue(
-    scrollDetailSectionRefState("sectionVisual"),
-  );
-  const visualTitle = useAtomValue(scrollDetailSectionRefState("visualTitle"));
+  const {
+    container: detailContainer,
+    sectionVisual,
+    visualTitle,
+  } = useAtomValue(scrollDetailRefState);
+
   const titleRef = useRef<HTMLSpanElement>(null);
-
-  const title = useMemo(
-    (): string => (titleArr ? titleArr.join("") : ""),
-    [titleArr],
-  );
+  const title = useMemo(() => (titleArr ? titleArr.join("") : ""), [titleArr]);
 
   const targetStart = useCallback(
     () => (visualTitle?.offsetTop || 0) + (visualTitle?.clientHeight || 0),
@@ -40,6 +36,7 @@ export default function DetailHeaderTitle() {
   useGSAPAnimation(
     {
       key: "projects/detail/header/title",
+      container: detailContainer,
       disabled: !openComplete,
       elements: [titleRef.current, sectionVisual, visualTitle],
       options: [

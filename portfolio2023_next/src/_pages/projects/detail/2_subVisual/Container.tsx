@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 import { useAtomValue } from "jotai";
 
 // components
@@ -19,12 +19,12 @@ import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailD
 import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // util
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
 export default function DetailSubVisual() {
-  const { category, data } = useProjectCategoryDetailData();
+  const { category, data, openComplete } = useProjectCategoryDetailData();
 
-  const scrollContainer = useAtomValue(
+  const detailContainer = useAtomValue(
     scrollDetailSectionRefState("container"),
   );
   const triggerRef = useRef<HTMLDivElement | null>(null);
@@ -35,38 +35,31 @@ export default function DetailSubVisual() {
     [data?.sub_visual],
   );
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (!scrollContainer) return;
-
-    const scrollTarget = subVisualRef.current;
-    const scrollTrigger = triggerRef.current;
-    if (!scrollTarget || !scrollTrigger) return;
-
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      tweenArr: [
+  useGSAPAnimation(
+    {
+      key: "projects/detail/subVisual",
+      container: detailContainer,
+      disabled: !openComplete,
+      elements: [subVisualRef.current, triggerRef.current],
+      options: [
         {
-          target: scrollTarget,
-          options: [
+          target: subVisualRef.current,
+          animation: [
             {
               scale: 0.8,
               scrollTrigger: {
-                trigger: scrollTrigger,
+                trigger: triggerRef.current,
                 start: `top 70%`,
                 end: `bottom 30%`,
                 scrub: true,
-                // markers: true,
               },
             },
           ],
         },
       ],
-    });
-
-    return () => ctx.revert();
-  }, [scrollContainer]);
+    },
+    [openComplete],
+  );
 
   return (
     <StyledPDSubVisualSection ref={triggerRef}>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useMemo, useRef } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import { useAtomValue } from "jotai";
 
 // style components
@@ -19,19 +19,19 @@ import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailD
 import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // util
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
 export default function DetailExperience() {
-  const scrollContainer = useAtomValue(
+  const detailContainer = useAtomValue(
     scrollDetailSectionRefState("container"),
   );
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const descRef = useRef<HTMLLIElement[]>([]);
 
-  const { category, data } = useProjectCategoryDetailData();
+  const { category, data, openComplete } = useProjectCategoryDetailData();
 
   const experienceData = useMemo(
-    (): string[] =>
+    () =>
       typeof data?.experience?.desc === "undefined" ||
       !Array.isArray(data.experience.desc)
         ? []
@@ -39,64 +39,58 @@ export default function DetailExperience() {
     [data?.experience?.desc],
   );
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
+  const titleOption = useCallback(
+    (): UseGSAPAnimationHookOptions => ({
+      target: titleRef.current,
+      direction: "fromTo",
+      animation: [
+        { opacity: 0, xPercent: 20 },
+        {
+          opacity: 1,
+          xPercent: 0,
+          // duration: 1.6,
+          // ease: Expo.easeOut,
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: `top 90%`,
+            end: `bottom 50%`,
+            scrub: true,
+          },
+        },
+      ],
+    }),
+    [],
+  );
 
-    if (!scrollContainer) return;
-
-    const scrollTitle = titleRef.current;
-    if (!scrollTitle) return;
-
-    const tweenOptions = [
-      {
-        target: scrollTitle,
-        direction: "fromTo",
-        options: [
-          { opacity: 0, xPercent: 20 },
+  const descOption = useCallback(
+    (): UseGSAPAnimationHookOptions[] =>
+      descRef.current.map(target => ({
+        target,
+        animation: [
           {
             opacity: 1,
-            xPercent: 0,
-            // duration: 1.6,
-            // ease: Expo.easeOut,
             scrollTrigger: {
-              trigger: scrollTitle,
-              start: `top 90%`,
-              end: `bottom 50%`,
+              trigger: target,
+              start: "top 80%",
+              end: "bottom 50%",
               scrub: true,
             },
           },
         ],
-      },
-    ];
+      })),
+    [],
+  );
 
-    const scrollDesc = descRef.current;
-    const descOptions: CustomTweenType[] = [];
-    if (scrollDesc?.length > 0) {
-      scrollDesc.forEach(descRef =>
-        descOptions.push({
-          target: descRef,
-          options: [
-            {
-              opacity: 1,
-              scrollTrigger: {
-                trigger: descRef,
-                start: `top 80%`,
-                end: `bottom 50%`,
-                scrub: true,
-              },
-            },
-          ],
-        }),
-      );
-    }
-
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      tweenArr: [...tweenOptions, ...descOptions],
-    });
-
-    return () => ctx.revert();
-  }, [experienceData, scrollContainer]);
+  useGSAPAnimation(
+    {
+      key: "projects/detail/experience",
+      container: detailContainer,
+      disabled: !openComplete,
+      elements: [titleRef.current, ...descRef.current],
+      options: [titleOption(), ...descOption()],
+    },
+    [openComplete, titleOption, descOption],
+  );
 
   return (
     <StyledPDExpSection className="detail-section-exp">

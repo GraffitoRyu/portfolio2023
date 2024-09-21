@@ -31,7 +31,9 @@ export default function ProjectSummary({
         </StyledFadeContainer>
         <StyledFadeListContainer as="ul">
           {summary.role.map((d: string, i: number) => (
-            <StyledListBtnRole key={`${code}_role_${i}`}>{d}</StyledListBtnRole>
+            <StyledListBtnRole key={`projects/list/summary/${code}/role/${i}`}>
+              {d}
+            </StyledListBtnRole>
           ))}
         </StyledFadeListContainer>
       </StyledListBtnWrap>

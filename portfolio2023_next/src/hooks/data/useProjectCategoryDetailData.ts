@@ -1,13 +1,14 @@
 "use client";
 
+import { useMemo } from "react";
 import { useAtomValue } from "jotai";
 
-import { projectCategoryDetailDataState } from "@/jotai/pages/project.detail.state";
+// states
 import { pageDetailLoadState } from "@/jotai/load.state";
-import { useMemo } from "react";
+import { projectCategoryDetailDataState } from "@/jotai/pages/project.detail.state";
 
 export default function useProjectCategoryDetailData() {
-  const { category } = useAtomValue(pageDetailLoadState);
+  const { category, openComplete } = useAtomValue(pageDetailLoadState);
 
   const data = useAtomValue(projectCategoryDetailDataState(category));
 
@@ -16,5 +17,5 @@ export default function useProjectCategoryDetailData() {
     [data?.summary.title],
   );
 
-  return { category, data, title };
+  return { category, data, title, openComplete };
 }

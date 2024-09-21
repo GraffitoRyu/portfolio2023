@@ -106,7 +106,7 @@ interface UseGSAPAnimationHookProps {
    * @optional
    * - 기본값; container
    */
-  container?: HTMLElement | null;
+  container: HTMLElement | null;
   /**
    * 애니메이션 타겟, 트리거 등의 ref current HTMLElement 배열
    * @required
@@ -116,7 +116,7 @@ interface UseGSAPAnimationHookProps {
    * timeline 여부
    * @optional
    */
-  isTimeline?: boolean;
+  isTimeline: boolean;
   /**
    * scrollTrigger create 옵션
    * @optional
@@ -131,7 +131,7 @@ interface UseGSAPAnimationHookProps {
    * }
    * ```
    */
-  scrollCreate?: UseGSAPAnimationScrollTriggerOption;
+  scrollCreate: UseGSAPAnimationScrollTriggerOption;
   /**
    * gsap tween 설정
    * @optional
@@ -151,10 +151,10 @@ interface UseGSAPAnimationHookProps {
    * }
    * ```
    */
-  options?: UseGSAPAnimationHookOptions[];
+  options: UseGSAPAnimationHookOptions[];
   /**
    * hook 비활성화
    * @optional
    */
-  disabled?: boolean;
+  disabled: boolean;
 }

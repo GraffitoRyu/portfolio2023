@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
 
 // style components
@@ -10,37 +10,36 @@ import { StyledPDVisualSubtitle } from "@/styles/styled/components/ProjectDetail
 import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailData";
 
 // state
-import { pageDetailLoadState } from "@/jotai/load.state";
 import { scrollDetailSectionRefState } from "@/jotai/interaction/scroll.state";
 
-// util
-import { ctxScrollTrigger } from "@/hooks/interaction/presetScrollTrigger";
+// hooks
+import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
 export default function DetailVisualSubTitle() {
-  const { data, title } = useProjectCategoryDetailData();
+  const { data, title, openComplete } = useProjectCategoryDetailData();
 
-  const { openComplete } = useAtomValue(pageDetailLoadState);
-
-  const scrollContainer = useAtomValue(
+  const detailContainer = useAtomValue(
     scrollDetailSectionRefState("container"),
   );
   const subtitleRef = useRef<HTMLParagraphElement | null>(null);
 
   const desc = useMemo(
-    (): string => (data?.summary?.desc ? data.summary.desc : ""),
+    () => (data?.summary?.desc ? data.summary.desc : ""),
     [data],
   );
 
-  const delayIndex = useMemo((): number => (title ? title.length : 0), [title]);
+  const delayIndex = useMemo(() => (title ? title.length : 0), [title]);
 
-  const isHide = useMemo((): boolean => !openComplete, [openComplete]);
+  const isHide = useMemo(() => !openComplete, [openComplete]);
   const [isInit, setInit] = useState<boolean>(true);
 
   useEffect(() => {
     if (!openComplete) {
-      setInit(true);
+      if (isInit !== true) setInit(true);
       return;
     }
+
+    if (isInit === false) return;
 
     const DELAY = delayIndex * 200 + 1600;
     setTimeout(() => {
@@ -48,38 +47,31 @@ export default function DetailVisualSubTitle() {
     }, DELAY);
   }, [delayIndex, isInit, openComplete]);
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-
-    if (!scrollContainer) return;
-
-    const subtitle = subtitleRef.current;
-    if (!subtitle) return;
-
-    if (isInit) return;
-
-    const ctx = ctxScrollTrigger({
-      container: scrollContainer,
-      tweenArr: [
+  useGSAPAnimation(
+    {
+      key: "projects/detail/visual/subtitle",
+      container: detailContainer,
+      disabled: !openComplete || isInit,
+      elements: [subtitleRef.current],
+      options: [
         {
-          target: subtitle,
-          options: [
+          target: subtitleRef.current,
+          animation: [
             {
               opacity: 0,
               scrollTrigger: {
-                trigger: subtitle,
-                start: `top 30%`,
-                end: `top top`,
+                trigger: subtitleRef.current,
+                start: "top 30%",
+                end: "top top",
                 scrub: true,
               },
             },
           ],
         },
       ],
-    });
-
-    return () => ctx.revert();
-  }, [isInit, scrollContainer]);
+    },
+    [isInit, openComplete],
+  );
 
   return (
     <StyledPDVisualSubtitle
