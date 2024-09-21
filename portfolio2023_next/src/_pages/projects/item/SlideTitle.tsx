@@ -22,7 +22,7 @@ export default function SlideTitle({
     slideRef.current === null
       ? 0
       : (slideRef.current.children[0] as HTMLSpanElement).offsetWidth;
-  const duration = useMemo(() => (slideWidth / 1000) * 3.6, [slideWidth]);
+  const duration = useMemo(() => (slideWidth / 1000) * 4.8, [slideWidth]);
 
   return (
     <StyledHoverSlideTitle
