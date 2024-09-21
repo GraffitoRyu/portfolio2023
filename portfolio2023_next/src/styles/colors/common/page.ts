@@ -1,5 +1,3 @@
-import { PageModeTypes } from "@/types/colors/common";
-
 export const page: PageModeTypes = {
   light: {
     bg: "#fff",

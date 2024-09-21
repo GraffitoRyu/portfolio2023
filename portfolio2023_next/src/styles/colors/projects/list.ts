@@ -1,6 +1,4 @@
-import { ListModeTypes } from "@/types/colors/projectsList";
-
-export const list: ListModeTypes = {
+export const list: ProjectsListModeTypes = {
   light: {
     border: "#ccc",
     bgHover: "#efefef",

@@ -6,7 +6,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import { img } from "@/styles/styled/preset/img";
 import { btnStyle } from "@/styles/styled/preset/buttons";
 import {
-  SvgFill,
+  svgFill,
   flex,
   font,
   maxSize,
@@ -38,12 +38,12 @@ export const GnbCommonStyle = createGlobalStyle`
   }
 `;
 
-export const GnbContainer = styled.nav`
+export const StyledGnbContainer = styled.nav`
   ${flex({ std: "flex-start" })}
   ${size({ ml: "auto" })}
 `;
 
-export const SitemapLink = styled.button`
+export const StyledSitemapLink = styled.button`
   ${size({ mr: 64 })}
   ${font({
     size: 24,
@@ -58,13 +58,13 @@ export const SitemapLink = styled.button`
   }
 `;
 
-export const ExtBtn = styled.a`
-  ${({ theme }) => SvgFill(theme.gnbUtilBtn.svg)};
+export const StyledExtBtn = styled.a`
+  ${({ theme }) => svgFill(theme.gnbUtilBtn.svg)};
   &.hover {
     background-color: ${({ theme }) => theme.gnbUtilBtn.bg};
-    ${({ theme }) => SvgFill(theme.gnbUtilBtn.svgHover)};
+    ${({ theme }) => svgFill(theme.gnbUtilBtn.svgHover)};
   }
   &:active {
-    ${({ theme }) => SvgFill(theme.gnbUtilBtn.svgActive)};
+    ${({ theme }) => svgFill(theme.gnbUtilBtn.svgActive)};
   }
 `;

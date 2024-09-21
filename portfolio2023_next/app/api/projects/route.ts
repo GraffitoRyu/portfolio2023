@@ -1,30 +1,27 @@
-import { ProjectsType } from "@/types/projects";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
+import { getFirebaseData } from "@/utils/data/api.util";
+import cacheOptions from "@/lib/cache";
 
-const db = process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL;
+/**
+ * 프로젝트 목록 데이터 조회 API
+ * @api
+ * @method GET
+ * @route /api/projects
+ * @return {Promise<NextResponse<ProjectsAPIDataType[]>>}
+ */
+export async function GET(): Promise<NextResponse<ProjectsAPIDataType[]>> {
+  const data = await getFirebaseData<ProjectsAPIDataType[]>({
+    routeUrl: "/api/projects",
+    queryUrl: "/projects",
+    failResponse: [],
+  });
 
-export async function GET(req: NextRequest) {
-  // 프로젝트 페이지를 위한 데이터 조회
-  const { searchParams } = new URL(req.url);
-  const type = searchParams.get("type");
-  const detail = searchParams.get("detail");
-  const res = await (await fetch(`${db}/projects.json`)).json();
+  const res =
+    (typeof data !== "undefined" &&
+      Array.isArray(data) &&
+      data.length > 0 &&
+      data.map(({ code, summary }) => ({ code, summary }))) ||
+    [];
 
-  // 목록 생성을 위한 데이터
-  if (typeof type === "string" && type === "list") {
-    const listData = res.map((d: ProjectsType) => ({
-      code: d.code,
-      summary: d.summary,
-    }));
-    return NextResponse.json({ res: listData });
-  }
-
-  // 프로젝트 상세를 위한 데이터
-  if (typeof detail === "string") {
-    const arr = res.filter((d: ProjectsType) => d.code === detail);
-    const validData = arr[0];
-    return NextResponse.json({ ...validData });
-  }
-
-  return NextResponse.json({ res });
+  return NextResponse.json(res, { ...cacheOptions });
 }

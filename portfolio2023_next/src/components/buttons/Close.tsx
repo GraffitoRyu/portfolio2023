@@ -1,9 +1,9 @@
 "use client";
 
-import { SyntheticEvent, useState } from "react";
+import { useState } from "react";
 
 // style components
-import { CommonBtn } from "@/styles/styled/preset/buttons";
+import { StyledDefaultBtn } from "@/styles/styled/preset/buttons";
 
 // svg
 import CloseIcon from "@/svg/btn/close.svg";
@@ -13,21 +13,21 @@ export default function CloseButton({
   clickEvent,
 }: {
   ariaLabel: string;
-  clickEvent: (e: SyntheticEvent) => void;
+  clickEvent: (e: React.SyntheticEvent) => void;
 }) {
   const [hover, setHover] = useState<string>("");
 
   return (
-    <CommonBtn
-      className={`${hover}`}
+    <StyledDefaultBtn
+      className={hover}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
-      onClick={(e: SyntheticEvent) => clickEvent(e)}
+      onClick={(e: React.SyntheticEvent) => clickEvent(e)}
       aria-label={ariaLabel}
     >
       <figure>
         <CloseIcon />
       </figure>
-    </CommonBtn>
+    </StyledDefaultBtn>
   );
 }

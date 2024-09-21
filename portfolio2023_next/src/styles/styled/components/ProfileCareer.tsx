@@ -3,26 +3,26 @@
 import styled, { css } from "styled-components";
 
 // util
-import { rem, widthRatio } from "@/util/unit";
+import { rem, widthRatio } from "@/utils/style.util";
 
 // style
 import { flex, font, position, size } from "../preset/mixins";
 import { transTime } from "../preset/transTime";
 import { easing } from "../preset/easing";
 
-export const CareerContainerList = styled.ul`
+export const StyledCareerList = styled.ul`
   ${size({ w: `calc(100% + ${rem(160)})`, m: [0, -80] })}
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 1024px) {
     ${size({ w: "100%", m: 0 })}
   }
 `;
 
-export const CareerItemContainer = styled.li`
+export const StyledCareerItem = styled.li`
   ${size({ w: "100%" })}
   position: relative;
 `;
 
-export const CareerBorder = styled.div`
+export const StyledCareerBorder = styled.div`
   ${size({ w: "100%", h: 1 })}
 
   &:before {
@@ -43,7 +43,7 @@ export const CareerBorder = styled.div`
       opacity 0.8s ${easing.quart} 0.2s;
   }
 
-  ${CareerItemContainer}.hide &:before {
+  ${StyledCareerItem}.hide &:before {
     width: 0;
     opacity: 0;
     transition:
@@ -103,13 +103,13 @@ const summaryTransition = css`
     opacity 0.8s ${easing.quart};
 `;
 
-export const CareerPeriod = styled.time`
+export const StyledCareerPeriod = styled.time`
   ${careerSummaryCell(2)}
   ${careerSummaryFont}
   color:${({ theme }) => theme.career.period};
   ${fadeInUp_after}
   ${summaryTransition}
-  ${CareerItemContainer}.hide & {
+  ${StyledCareerItem}.hide & {
     ${fadeInUp_before}
   }
   @media only screen and (min-width: 768px) {
@@ -117,14 +117,14 @@ export const CareerPeriod = styled.time`
   }
 `;
 
-export const CareerRole = styled.h3`
+export const StyledCareerRole = styled.h3`
   ${careerSummaryCell(4)}
   color: ${({ theme }) => theme.career.role};
   ${careerSummaryFont}
   ${font({ weight: 500 })}
   ${fadeInUp_after}
   ${summaryTransition}
-  ${CareerItemContainer}.hide & {
+  ${StyledCareerItem}.hide & {
     ${fadeInUp_before}
   }
   @media only screen and (min-width: 768px) {
@@ -132,7 +132,7 @@ export const CareerRole = styled.h3`
   }
 `;
 
-export const CareerCompany = styled.div`
+export const StyledCareerCompany = styled.div`
   ${careerSummaryCell(3)}
   ${careerSummaryFont}
   span {
@@ -141,7 +141,7 @@ export const CareerCompany = styled.div`
   color: ${({ theme }) => theme.career.company};
   ${fadeInUp_after}
   ${summaryTransition}
-  ${CareerItemContainer}.hide & {
+  ${StyledCareerItem}.hide & {
     ${fadeInUp_before}
   }
   @media only screen and (min-width: 768px) {
@@ -149,14 +149,14 @@ export const CareerCompany = styled.div`
   }
 `;
 
-export const CareerExpandCell = styled.div`
+export const StyledCareerExpandCell = styled.div`
   ${size({ w: "auto", m: [0, 40, 0, "auto"] })}
   justify-content:center;
   font-size: 0;
   position: relative;
   ${fadeInUp_after}
   ${summaryTransition}
-  ${CareerItemContainer}.hide & {
+  ${StyledCareerItem}.hide & {
     ${fadeInUp_before}
   }
   @media only screen and (min-width: 1024px) {
@@ -165,7 +165,7 @@ export const CareerExpandCell = styled.div`
   }
 `;
 
-export const CareerExpandIcon = styled.figure`
+export const StyledCareerExpandIcon = styled.figure`
   ${size({ w: 24, h: 24 })}
   ${position({ center: true })}
   transform: translate(-50%,-50%) rotate(45deg);
@@ -192,7 +192,7 @@ export const CareerExpandIcon = styled.figure`
   }
 `;
 
-export const CareerDetailContainer = styled.div`
+export const StyledCareerDetailContainer = styled.div`
   ${size({ w: "100%", h: 0, p: [0, 80] })}
   background-color: ${({ theme }) => theme.career.expandBg};
   overflow: clip;
@@ -202,7 +202,7 @@ export const CareerDetailContainer = styled.div`
   }
 `;
 
-export const CareerDetailList = styled.div`
+export const StyledCareerDetailList = styled.div`
   ${size({ w: "100%", p: [80, 0] })}
   opacity:0;
   transition: opacity 0.4s;
@@ -211,7 +211,7 @@ export const CareerDetailList = styled.div`
   }
 `;
 
-export const CareerDetailItem = styled.dl`
+export const StyledCareerDetailItem = styled.dl`
   ${size({ w: "100%", mb: 80 })}
   &:last-child {
     ${size({ mb: 0 })}
@@ -221,14 +221,14 @@ export const CareerDetailItem = styled.dl`
   }
 `;
 
-export const CareerDetailItemTitle = styled.dt`
+export const StyledCareerDetailItemTitle = styled.dt`
   ${careerFont}
   font-weight:500;
   ${size({ mb: 24 })}
   color:${({ theme }) => theme.career.detailTitle};
 `;
 
-export const CareerDetailItemDesc = styled.dd`
+export const StyledCareerDetailItemDesc = styled.dd`
   ${flex({ start: true })}
   ${careerFont}
   ${font({ height: "1.6em" })}
@@ -251,7 +251,7 @@ export const CareerDetailItemDesc = styled.dd`
   }
 `;
 
-export const CareerSummaryContainer = styled.summary`
+export const StyledCareerSummaryContainer = styled.summary`
   ${size({ w: `100%`, h: "auto", p: [64, 60] })}
   ${flex({ std: "flex-start", wrap: "wrap" })}
   ${position({ type: "relative", z: 10 })}
@@ -266,16 +266,16 @@ export const CareerSummaryContainer = styled.summary`
     &:before {
       background-color: ${({ theme }) => theme.career.bgHover};
     }
-    ${CareerPeriod} {
+    ${StyledCareerPeriod} {
       color: ${({ theme }) => theme.career.periodHover};
     }
-    ${CareerRole} {
+    ${StyledCareerRole} {
       color: ${({ theme }) => theme.career.roleHover};
     }
-    ${CareerCompany} {
+    ${StyledCareerCompany} {
       color: ${({ theme }) => theme.career.companyHover};
     }
-    ${CareerExpandIcon} {
+    ${StyledCareerExpandIcon} {
       &:before,
       &:after {
         background-color: ${({ theme }) => theme.career.iconHover};
@@ -288,10 +288,10 @@ export const CareerSummaryContainer = styled.summary`
   }
 `;
 
-export const CareerWrap = styled.details<{ $height: number }>`
+export const StyledCareerDetailWrap = styled.details<StyleOptionCareerDetailWrap>`
   width: 100%;
   &.open {
-    ${CareerExpandIcon} {
+    ${StyledCareerExpandIcon} {
       transform: translate(-50%, -50%) rotate(180deg);
       &:before {
         transform: translate(-50%, -50%) rotate(180deg);
@@ -305,10 +305,10 @@ export const CareerWrap = styled.details<{ $height: number }>`
           background-color 0.4s;
       }
     }
-    ${CareerDetailContainer} {
+    ${StyledCareerDetailContainer} {
       ${({ $height }) => size({ h: $height !== 0 ? `${$height}px` : 360 })};
     }
-    ${CareerDetailList} {
+    ${StyledCareerDetailList} {
       opacity: 1;
     }
   }

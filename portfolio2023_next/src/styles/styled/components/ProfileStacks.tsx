@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { flex, font, size } from "../preset/mixins";
 
 // util
-import { rem, widthRatio } from "@/util/unit";
+import { rem, widthRatio } from "@/utils/style.util";
 
 function getLevelColor(index: number, level: number): string {
   if (level === 4) return "levelFull";
@@ -14,7 +14,7 @@ function getLevelColor(index: number, level: number): string {
   return "levelEmpty";
 }
 
-export const StackLevelContainer = styled.ul<{ level: number }>`
+export const StyledStackLevelContainer = styled.ul<{ level: number }>`
   ${flex({ std: "flex-start" })}
   ${size({ w: 108, h: 4, mt: 16 })}
   li {
@@ -40,7 +40,7 @@ export const StackLevelContainer = styled.ul<{ level: number }>`
   }
 `;
 
-export const StackLegendContainer = styled.dl`
+export const StyledStackLegendContainer = styled.dl`
   ${flex({ std: "flex-start", wrap: "wrap" })}
   ${size({ w: "100%", mb: 80 })}
   opacity: 0;
@@ -53,7 +53,7 @@ export const StackLegendContainer = styled.dl`
   }
 `;
 
-export const StackLegendTitle = styled.dt`
+export const StyledStackLegendTitle = styled.dt`
   ${size({ w: "100%", mb: 40 })};
   color: ${({ theme }) => theme.stacks.legendTitle};
   ${font({
@@ -67,7 +67,7 @@ export const StackLegendTitle = styled.dt`
   }
 `;
 
-export const StackLegendItem = styled.dd`
+export const StyledStackLegendItem = styled.dd`
   ${size({ w: "fit-content", mr: 64, pb: 40 })}
   &:last-child {
     margin: 0;
@@ -77,7 +77,7 @@ export const StackLegendItem = styled.dd`
   }
 `;
 
-export const StackLegendLabel = styled.label`
+export const StyledStackLegendLabel = styled.label`
   color: ${({ theme }) => theme.stacks.legendLabel};
   ${font({
     size: 28,
@@ -89,11 +89,11 @@ export const StackLegendLabel = styled.label`
   }
 `;
 
-export const StackLegendFigure = styled.figure`
+export const StyledStackLegendFigure = styled.figure`
   ${size({ mb: 10, p: [0, 4] })}
 `;
 
-export const StackRowContainer = styled.li`
+export const StyledStackRowContainer = styled.li`
   ${size({ w: "100%", pb: 80 })}
   &:last-child {
     ${size({ pb: 0 })}
@@ -104,7 +104,7 @@ export const StackRowContainer = styled.li`
   }
 `;
 
-export const StackCategory = styled.div`
+export const StyledStackCategory = styled.div`
   ${size({ w: "100%", mb: 40 })}
   h3 {
     color: ${({ theme }) => theme.stacks.category};
@@ -124,7 +124,7 @@ export const StackCategory = styled.div`
   }
 `;
 
-export const StackFigure = styled.figure<{ $index: number }>`
+export const StyledStackFigure = styled.figure<{ $index: number }>`
   ${size({ m: [0, 64, 40, 0] })}
   &:last-child {
     margin-right: 0;
@@ -152,18 +152,18 @@ export const StackFigure = styled.figure<{ $index: number }>`
   }
 `;
 
-export const StackList = styled.div`
+export const StyledStackList = styled.div`
   ${flex({ std: "flex-start", wrap: "wrap" })}
   ${size({ w: "100%" })}
   opacity:0;
 
   &.hide {
-    ${StackFigure} {
+    ${StyledStackFigure} {
       opacity: 0;
     }
   }
   &.hide-back {
-    ${StackFigure} {
+    ${StyledStackFigure} {
       opacity: 0;
       transition: opacity 0.4s !important;
     }

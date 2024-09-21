@@ -7,7 +7,7 @@ import { easing } from "../preset/easing";
 import { flex, font, position, size } from "../preset/mixins";
 import { transTime } from "../preset/transTime";
 
-export const TransitionCover = styled.div`
+export const StyledTransitionCover = styled.div`
   ${position({ type: "fixed", left: 0, top: 0, z: 3000 })}
   ${size({ w: "100%", h: 0 })}
   background-color: ${({ theme }) => theme.transCover.bg};
@@ -24,13 +24,13 @@ export const TransitionCover = styled.div`
   }
 `;
 
-export const TransBox = styled.div`
+export const StyledTransBox = styled.div`
   ${position({ top: 0, left: 0 })}
   ${flex({ std: "flex-start" })}
   ${size({ w: "100%", h: `100vh`, p: [0, 80] })}
 `;
 
-export const TransTitle = styled.h1`
+export const StyledTransTitle = styled.h1`
   color: ${({ theme }) => theme.transCover.title};
   ${font({
     size: 160,

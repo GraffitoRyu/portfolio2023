@@ -4,23 +4,23 @@ import styled from "styled-components";
 
 // style
 import { img } from "../preset/img";
-import { SvgFill, flex, font, position, size } from "../preset/mixins";
+import { svgFill, flex, font, position, size } from "../preset/mixins";
 
 // util
-import { rem } from "@/util/unit";
+import { rem } from "@/utils/style.util";
 
-export const ToggleBtn = styled.button`
-  ${({ theme }) => SvgFill(theme.gnbUtilBtn.svg)};
+export const StyledToggleBtn = styled.button`
+  ${({ theme }) => svgFill(theme.gnbUtilBtn.svg)};
   &.hover {
     background-color: ${({ theme }) => theme.gnbUtilBtn.bg};
-    ${({ theme }) => SvgFill(theme.gnbUtilBtn.svgHover)};
+    ${({ theme }) => svgFill(theme.gnbUtilBtn.svgHover)};
   }
   &:active {
-    ${({ theme }) => SvgFill(theme.gnbUtilBtn.svgActive)};
+    ${({ theme }) => svgFill(theme.gnbUtilBtn.svgActive)};
   }
 `;
 
-export const ToggleIcon = styled.figure`
+export const StyledToggleIcon = styled.figure`
   svg {
     ${position({ type: "absolute", center: true })}
     opacity:0;
@@ -30,7 +30,7 @@ export const ToggleIcon = styled.figure`
   }
 `;
 
-export const ThemeMenuContainer = styled.div`
+export const StyledThemeMenuContainer = styled.div`
   ${position({ type: "absolute", top: "100%", left: 0 })}
   ${size({ w: 160 })}
   transform: ${`translateY(${rem(16)})`};
@@ -41,21 +41,21 @@ export const ThemeMenuContainer = styled.div`
   }
 `;
 
-export const ThemeList = styled.ul`
+export const StyledThemeList = styled.ul`
   ${size({ w: "100%" })}
 `;
 
-export const ThemeListItem = styled.li`
+export const StyledThemeListItem = styled.li`
   ${size({ w: "100%", h: 56 })}
 `;
 
-export const ThemeMenuButton = styled.button`
+export const StyledThemeMenuButton = styled.button`
   ${flex({ std: "flex-start" })}
   ${size({ w: "100%", h: "100%" })}
   figure {
     ${size({ w: 56 })}
     ${flex({})}
-    ${({ theme }) => SvgFill(theme.gnbThemeMenu.menu)}
+    ${({ theme }) => svgFill(theme.gnbThemeMenu.menu)}
     font-size:0;
     svg {
       ${img({ w: 24, h: 24 })}
@@ -72,7 +72,7 @@ export const ThemeMenuButton = styled.button`
   }
   &:not(.selected).hover {
     figure {
-      ${({ theme }) => SvgFill(theme.gnbThemeMenu.hover)}
+      ${({ theme }) => svgFill(theme.gnbThemeMenu.hover)}
     }
     span {
       color: ${({ theme }) => theme.gnbThemeMenu.hover};
@@ -80,7 +80,7 @@ export const ThemeMenuButton = styled.button`
   }
   &.selected {
     figure {
-      ${({ theme }) => SvgFill(theme.gnbThemeMenu.selected)}
+      ${({ theme }) => svgFill(theme.gnbThemeMenu.selected)}
     }
     span {
       color: ${({ theme }) => theme.gnbThemeMenu.selected};

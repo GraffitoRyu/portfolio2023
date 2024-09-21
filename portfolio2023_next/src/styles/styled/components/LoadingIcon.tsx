@@ -26,12 +26,12 @@ const loadingLine = keyframes`
   }
 `;
 
-export const LoadingIconContainer = styled.div`
+export const StyledLoadingIconContainer = styled.div`
   ${position({ type: "absolute", bottom: 80, right: 80 })}
   ${size({ w: 40, h: 40 })}
 `;
 
-export const LoadingIconFigure = styled.figure`
+export const StyledLoadingIconFigure = styled.figure`
   ${size({ w: 40, h: 40 })}
 
   svg {

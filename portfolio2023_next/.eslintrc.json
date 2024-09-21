@@ -1,39 +1,74 @@
 {
   "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
+    "es6": true
   },
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": "latest",
-    "sourceType": "module"
+    "ecmaVersion": "latest"
   },
-  "plugins": ["react", "@typescript-eslint", "import", "jsx-a11y", "prettier"],
+  "plugins": ["testing-library", "prettier"],
   "extends": [
     "eslint:recommended",
-    "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@next/next/recommended",
-    "next",
     "next/core-web-vitals",
-    "prettier"
+    "next/typescript",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)"
+      ],
+      "extends": ["plugin:testing-library/react"]
+    }
   ],
   "rules": {
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "prettier/prettier": [
       "error",
       { "endOfLine": "auto" },
       { "usePrettierrc": true }
     ],
-    "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off",
-    "react/display-name": "off",
     "no-unused-vars": "off",
+    "no-nested-ternary": 0,
+    "no-param-reassign": ["error", { "props": false }],
+    "no-unused-expressions": "off",
+    "no-prototype-builtins": "off",
+    "prefer-const": "error",
+    "array-callback-return": "off",
+    "react/jsx-filename-extension": [
+      2,
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "react/jsx-one-expression-per-line": 0,
+    "react/prefer-stateless-function": 0,
+    "react/display-name": "off",
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": ["function-declaration", "arrow-function"]
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-uses-react": "off",
+    "jsx-a11y/href-no-hash": [0],
+    "react/no-deprecated": "error",
+    "react/no-unsafe": [
+      "error",
+      {
+        "checkAliases": true
+      }
+    ],
     "@typescript-eslint/no-var-requires": 0,
-    "@typescript-eslint/no-unused-vars": ["error"],
-    "@typescript-eslint/explicit-module-boundary-types": "off"
-  }
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-require-imports": "off"
+  },
+  "ignorePatterns": ["out", "dist", "node_modules", "scripts"]
 }

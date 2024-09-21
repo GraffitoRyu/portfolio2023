@@ -1,6 +1,4 @@
-import { FooterModeTypes } from "@/types/colors/pageFooter";
-
-export const footer: FooterModeTypes = {
+export const footer: PageFooterModeTypes = {
   light: {
     bg: "#efefef",
     titleBorder: "#909090",

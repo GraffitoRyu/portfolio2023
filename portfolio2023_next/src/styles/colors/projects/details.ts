@@ -1,6 +1,4 @@
-import { DetailModeTypes } from "@/types/colors/projectDetail";
-
-export const details: DetailModeTypes = {
+export const details: ProjectsDetailModeTypes = {
   light: {
     bg: "rgb(255, 255, 255)",
     visualBg: `linear-gradient(

@@ -2,20 +2,21 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-// types
-import { CursorTypes } from "@/types/state";
-
 // styled components
-import { CursorStyle } from "@/styles/styled/components/Cursor";
+import { StyledCursor } from "@/styles/styled/components/Cursor";
 
 export default function Cursor() {
   const [hide, setHide] = useState<string>("hide");
-  const [cursor, setCursor] = useState<CursorTypes>({ x: 0, y: 0, hover: "" });
+  const [cursor, setCursor] = useState<CursorStateTypes>({
+    x: 0,
+    y: 0,
+    hover: "",
+  });
 
   const updateCursor = useCallback(
     (e: MouseEvent | PointerEvent) => {
       if (e?.target instanceof HTMLElement || e?.target instanceof SVGElement) {
-        let targetElement = "";
+        let targetElement: CursorHoverStateType = "";
         if (
           e.target.closest("a,button") ||
           getComputedStyle(e.target)["cursor"] === "pointer"
@@ -28,7 +29,7 @@ export default function Cursor() {
         )
           targetElement = "text";
 
-        const c: CursorTypes = {
+        const c: CursorStateTypes = {
           x: e.clientX,
           y: e.clientY,
           hover: targetElement,
@@ -52,11 +53,11 @@ export default function Cursor() {
   }, [updateCursor]);
 
   return (
-    <CursorStyle
+    <StyledCursor
       className={`cursor-container ${hide} ${cursor.hover}`}
       style={{ left: cursor.x, top: cursor.y }}
     >
       <figure className="cursor"></figure>
-    </CursorStyle>
+    </StyledCursor>
   );
 }

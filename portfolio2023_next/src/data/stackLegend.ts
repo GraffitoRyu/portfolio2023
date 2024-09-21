@@ -1,5 +1,3 @@
-import { StackLegendTypes } from "@/types/profile";
-
 const legendData: StackLegendTypes[] = [
   {
     label: "개인 프로젝트로 공부중",

@@ -1,22 +1,19 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
+    "baseUrl": "./",
+    "moduleResolution": "bundler",
     "plugins": [
       {
         "name": "next"
+      },
+      {
+        "name": "typescript-plugin-styled-components",
+        "options": {
+          "ssr": true,
+          "displayName": true,
+          "fileName": false
+        }
       }
     ],
     "paths": {
@@ -25,10 +22,12 @@
       "@vercel/analytics/react": ["./node_modules/@vercel/analytics/dist/react"]
     }
   },
-  "files": [
-    "node_modules/gsap/types/index.d.ts",
-    "node_modules/@vercel/analytics/dist/react/index.d.ts"
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "jest.setup.js"
   ],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

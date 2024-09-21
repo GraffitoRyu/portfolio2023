@@ -1,37 +1,55 @@
 [
   {
-    "code": "scss",
-    "name": "SCSS",
-    "category": "languages",
-    "level": 4
-  },
-  {
-    "code": "ejs",
-    "name": "EJS",
-    "category": "languages",
-    "level": 3
-  },
-  {
     "code": "typescript",
     "name": "TypeScript",
     "category": "languages",
     "level": 0
   },
   {
-    "code": "react",
-    "name": "React",
-    "category": "webapp",
-    "level": 1
+    "code": "html_css",
+    "name": "HTML / CSS",
+    "category": "languages",
+    "level": 0
   },
   {
-    "code": "react_router",
-    "name": "React Router",
-    "category": "webapp",
-    "level": 1
+    "code": "scss",
+    "name": "SCSS",
+    "category": "languages",
+    "level": 0
+  },
+  {
+    "code": "ejs",
+    "name": "EJS",
+    "category": "languages",
+    "level": 0
   },
   {
     "code": "nextjs",
     "name": "Next.js",
+    "category": "webapp",
+    "level": 0
+  },
+  {
+    "code": "react",
+    "name": "React",
+    "category": "webapp",
+    "level": 0
+  },
+  {
+    "code": "jotai",
+    "name": "Jotai",
+    "category": "webapp",
+    "level": 0
+  },
+  {
+    "code": "react_query",
+    "name": "React Query",
+    "category": "webapp",
+    "level": 0
+  },
+  {
+    "code": "apollo",
+    "name": "Apollo",
     "category": "webapp",
     "level": 0
   },
@@ -42,34 +60,34 @@
     "level": 0
   },
   {
-    "code": "jquery",
-    "name": "jQuery",
+    "code": "react_hook_form",
+    "name": "React Hook Form",
     "category": "library",
-    "level": 4
+    "level": 0
+  },
+  {
+    "code": "recharts",
+    "name": "Recharts",
+    "category": "library",
+    "level": 0
   },
   {
     "code": "d3",
     "name": "D3.js",
     "category": "library",
-    "level": 3
+    "level": 0
   },
   {
     "code": "gsap",
     "name": "GSAP",
     "category": "library",
-    "level": 1
+    "level": 0
   },
   {
-    "code": "google_maps_api",
-    "name": "Google Maps API",
-    "category": "map_api",
-    "level": 3
-  },
-  {
-    "code": "kakao_maps_api",
-    "name": "Kakao Maps API",
-    "category": "map_api",
-    "level": 1
+    "code": "jquery",
+    "name": "jQuery",
+    "category": "library",
+    "level": 0
   },
   {
     "code": "styled_components",
@@ -84,93 +102,129 @@
     "level": 0
   },
   {
+    "code": "rest",
+    "name": "REST",
+    "category": "data",
+    "level": 0
+  },
+  {
     "code": "ajax",
     "name": "AJAX",
     "category": "data",
-    "level": 3
-  },
-  {
-    "code": "websocket",
-    "name": "WebSocket",
-    "category": "data",
-    "level": 3
+    "level": 0
   },
   {
     "code": "json",
     "name": "JSON",
     "category": "data",
-    "level": 3
+    "level": 0
+  },
+  {
+    "code": "graphql",
+    "name": "GraphQL",
+    "category": "data",
+    "level": 0
+  },
+  {
+    "code": "websocket",
+    "name": "WebSocket",
+    "category": "data",
+    "level": 0
   },
   {
     "code": "geojson",
     "name": "GeoJSON",
     "category": "data",
-    "level": 1
+    "level": 0
   },
   {
-    "code": "react_query",
-    "name": "React Query",
-    "category": "webapp",
+    "code": "npm",
+    "name": "NPM",
+    "category": "environment",
     "level": 0
   },
   {
     "code": "vite",
     "name": "Vite",
-    "category": "build",
-    "level": 2
+    "category": "environment",
+    "level": 0
   },
   {
     "code": "vercel",
     "name": "Vercel",
-    "category": "deploy",
+    "category": "environment",
     "level": 0
   },
   {
     "code": "s3",
     "name": "S3",
     "category": "aws",
-    "level": 2
+    "level": 0
   },
   {
     "code": "cloudfront",
     "name": "CloudFront",
     "category": "aws",
-    "level": 2
+    "level": 0
+  },
+  {
+    "code": "eslint_prettier",
+    "name": "ESLint / Prettier",
+    "category": "collaboration",
+    "level": 0
   },
   {
     "code": "git",
-    "name": "Git/Github",
+    "name": "Git / Github",
     "category": "collaboration",
-    "level": 3
+    "level": 0
   },
   {
     "code": "confluence",
     "name": "Confluence",
     "category": "collaboration",
-    "level": 2
+    "level": 0
   },
   {
     "code": "jira",
     "name": "Jira",
     "category": "collaboration",
-    "level": 2
+    "level": 0
+  },
+  {
+    "code": "slack",
+    "name": "Slack",
+    "category": "collaboration",
+    "level": 0
   },
   {
     "code": "figma",
     "name": "Figma",
     "category": "design",
-    "level": 3
+    "level": 0
   },
   {
     "code": "zeplin",
     "name": "Zeplin",
     "category": "design",
-    "level": 3
+    "level": 0
   },
   {
     "code": "photoshop",
     "name": "Photoshop",
     "category": "design",
-    "level": 2
+    "level": 0
+  },
+  {
+    "code": "google_maps_api",
+    "name": "Google Maps API",
+    "category": "map_api",
+    "level": 0
+  },
+  {
+    "code": "kakao_maps_api",
+    "name": "Kakao Maps API",
+    "category": "map_api",
+    "level": 0
   }
 ]

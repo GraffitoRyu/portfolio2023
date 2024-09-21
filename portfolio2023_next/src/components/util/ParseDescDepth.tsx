@@ -1,8 +1,5 @@
 // style components
-import { DepthItem } from "@/styles/styled/components/Util";
-
-// type
-import { DescTypes } from "@/types/util/parseDesc";
+import { StyledDepthItem } from "@/styles/styled/components/Util";
 
 export default function ParseDescDepth({ data }: DescTypes) {
   return (
@@ -18,13 +15,9 @@ export default function ParseDescDepth({ data }: DescTypes) {
           </p>
           <ul className="depth-desc">
             {data.depth2?.map((d2: string, i: number) => (
-              <DepthItem
-                key={`parseDescDepth_${Math.floor(
-                  Math.random() * 100000000,
-                )}_${i}`}
-              >
+              <StyledDepthItem key={`parseDescDepth_${d2}_${i}`}>
                 <span>{d2}</span>
-              </DepthItem>
+              </StyledDepthItem>
             )) ?? ""}
           </ul>
         </>

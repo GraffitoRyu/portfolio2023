@@ -1,7 +1,4 @@
-// 현재 시간 표시기
-import { ModeTypes } from "@/types/colors/pageHeader";
-
-export const timer: ModeTypes = {
+export const timer: PageHeaderModeTypes = {
   light: {
     bar: "#bfbfbf",
     text: "#bfbfbf",

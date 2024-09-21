@@ -15,7 +15,7 @@ export const HTMLThemeStyle = createGlobalStyle`
   }
 `;
 
-export const PageContainer = styled.main`
+export const StyledMainContainer = styled.main`
   ${position({ type: "fixed", z: 10 })}
   ${size({ w: "100%", h: "100%" })}
 `;
@@ -30,7 +30,7 @@ export const StyledScrollContainer = styled.div`
   }
 `;
 
-export const StickyContainer = styled.div`
+export const StyledStickyContainer = styled.div`
   position: relative;
   width: 100%;
 `;

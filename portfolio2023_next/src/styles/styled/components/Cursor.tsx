@@ -5,7 +5,7 @@ import styled from "styled-components";
 // style
 import { position, size } from "../preset/mixins";
 
-export const CursorStyle = styled.div`
+export const StyledCursor = styled.div`
   ${size({ w: "1px", h: "1px" })};
   ${position({ type: "fixed", top: "0rem", left: "0rem", z: 9999 })}
   pointer-events: none;

@@ -1,6 +1,4 @@
-import { VisualModeTypes } from "@/types/colors/pageSection";
-
-export const visual: VisualModeTypes = {
+export const visual: PageSectionVisualModeTypes = {
   light: {
     border: "#1a1a1a",
     fill: "#1a1a1a",

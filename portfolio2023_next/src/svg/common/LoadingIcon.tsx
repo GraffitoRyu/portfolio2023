@@ -1,8 +1,8 @@
-import { ForwardedRef, forwardRef } from "react";
+import { forwardRef } from "react";
 
 function LoadingIcon(
   { className }: { className?: string },
-  ref: ForwardedRef<SVGSVGElement>,
+  ref: React.ForwardedRef<SVGSVGElement>,
 ) {
   return (
     <svg

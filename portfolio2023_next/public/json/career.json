@@ -1,5 +1,38 @@
 [
   {
+    "code": "uniai",
+    "details": {
+      "projects": [
+        "인공지능 양계 농장 관리 솔루션, 치킨몽거(구 팜에이드) (2023 - 2024)"
+      ],
+      "stacks": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "React Query",
+        "Apollo",
+        "GraphQL",
+        "Recoil",
+        "Jotai",
+        "SCSS",
+        "React Hook Form",
+        "Recharts",
+        "ESLint",
+        "Prettier"
+      ],
+      "task": [
+        "프로젝트 프론트엔드 개발 전담",
+        "리액트 컴포넌트 기반 마크업 개발 및 유지보수",
+        "분석 데이터 시각화 대시보드 구현"
+      ]
+    },
+    "summary": {
+      "company": "유니아이",
+      "period": ["2023-09-04T00:00:00", ""],
+      "role": "프론트엔드 엔지니어"
+    }
+  },
+  {
     "code": "3secondz",
     "summary": {
       "period": ["2019-11-15T00:00:00", "2023-01-06T00:00:00"],

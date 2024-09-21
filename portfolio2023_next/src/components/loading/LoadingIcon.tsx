@@ -1,36 +1,33 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useAtomValue } from "jotai";
 
 // style components
 import {
-  LoadingIconContainer,
-  LoadingIconFigure,
+  StyledLoadingIconContainer,
+  StyledLoadingIconFigure,
 } from "@/styles/styled/components/LoadingIcon";
 
 // svg components
 import LoadingIcon from "@/svg/common/LoadingIcon";
 
-// types
-import { pageState } from "@/states/page";
-
 // state
-import { PageStateTypes } from "@/types/state";
+import { pageLoadState } from "@/jotai/load.state";
 
 export default function LoadingIconComponent() {
-  const page = useRecoilValue<PageStateTypes>(pageState);
+  const { init } = useAtomValue<PageLoadStateTypes>(pageLoadState);
   const [loading, setLoading] = useState<string>("loading");
 
   useEffect(() => {
-    if (page.init) setLoading("");
-  }, [page.init]);
+    if (init) setLoading("");
+  }, [init]);
 
   return (
-    <LoadingIconContainer className={`${loading}`}>
-      <LoadingIconFigure className="loading-icon">
+    <StyledLoadingIconContainer className={loading}>
+      <StyledLoadingIconFigure className="loading-icon">
         <LoadingIcon />
-      </LoadingIconFigure>
-    </LoadingIconContainer>
+      </StyledLoadingIconFigure>
+    </StyledLoadingIconContainer>
   );
 }

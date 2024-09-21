@@ -1,5 +1,3 @@
-import { BtnModeTypes } from "@/types/colors/common";
-
 export const buttons: BtnModeTypes = {
   light: {
     basic: "#5a5a5a",

@@ -3,14 +3,13 @@
 import { css, styled } from "styled-components";
 
 // components
-import { PageTitle } from "./PageTitle";
+import { StyledPageTitle } from "./PageTitle";
 
 // style
 import { flex, font, size, transition } from "../preset/mixins";
-import { easing } from "../preset/easing";
 import { transTime } from "../preset/transTime";
 
-export const VisualContainer = styled.div`
+export const StyledVisualContainer = styled.div`
   ${flex({ dir: "column", cross: "flex-start" })}
   height: 50%;
   @media only screen and (min-width: 1024px) {
@@ -18,7 +17,7 @@ export const VisualContainer = styled.div`
   }
 `;
 
-const timeOption = { time: `${transTime.visual.fadeInUp / 1000}s` };
+const timeOption = { time: `${transTime.visual.upper / 1000}s` };
 
 const transVisualTitle = (delay: number | null) => {
   const option =
@@ -43,7 +42,7 @@ const transVisualTitle = (delay: number | null) => {
   `;
 };
 
-export const VisualTitle = styled.h1`
+export const StyledVisualTitle = styled.h1`
   ${flex({ dir: "column", cross: "flex-start" })}
   font-size: 0;
   transition: none;
@@ -69,7 +68,7 @@ export const VisualTitle = styled.h1`
   }
 `;
 
-export const VisualTitleLine = styled(PageTitle)`
+export const StyledVisualTitleLine = styled(StyledPageTitle)`
   color: ${({ theme }) => theme.visualSection.fill};
   &.stroke-title {
   }
@@ -80,19 +79,19 @@ export const VisualTitleLine = styled(PageTitle)`
   }
 `;
 
-const introFadeInUp = css`
-  &.init-hide {
-    transition:
-      opacity ${transTime.visual.intro / 1000}s ${easing.quart},
-      transform ${transTime.visual.intro / 1000}s ${easing.quart};
-  }
-  &.hide {
-    opacity: 0;
-    transform: translateY(50%);
-  }
-`;
+// const introFadeInUp = css`
+//   &.init-hide {
+//     transition:
+//       opacity ${transTime.visual.intro / 1000}s ${easing.quart},
+//       transform ${transTime.visual.intro / 1000}s ${easing.quart};
+//   }
+//   &.hide {
+//     opacity: 0;
+//     transform: translateY(50%);
+//   }
+// `;
 
-export const IntroTitle = styled.h2`
+export const StyledIntroTitle = styled.h2`
   ${size({ mb: 160 })}
   color: ${({ theme }) => theme.introSection.title};
   ${font({
@@ -104,8 +103,10 @@ export const IntroTitle = styled.h2`
     color: ${({ theme }) => theme.introSection.strong};
     font-weight: 500;
   }
-  ${introFadeInUp}
-  @media only screen and (min-width:768px) {
+  &.init {
+    opacity: 0;
+  }
+  @media only screen and (min-width: 768px) {
     ${size({ mb: 80 })}
   }
   @media only screen and (min-width: 1024px) {
@@ -117,7 +118,7 @@ export const IntroTitle = styled.h2`
   }
 `;
 
-export const IntroDesc = styled.p`
+export const StyledIntroDesc = styled.p`
   color: ${({ theme }) => theme.introSection.desc};
   ${font({
     size: 32,
@@ -130,7 +131,9 @@ export const IntroDesc = styled.p`
   span {
     display: inline-block;
   }
-  ${introFadeInUp}
+  &.init {
+    opacity: 0;
+  }
   @media only screen and (min-width: 640px) {
     ${font({
       size: 24,

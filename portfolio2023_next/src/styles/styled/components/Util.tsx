@@ -5,7 +5,7 @@ import styled from "styled-components";
 // style
 import { size } from "../preset/mixins";
 
-export const DepthItem = styled.li`
+export const StyledDepthItem = styled.li`
   font-size: 0;
   &:before {
     content: "";
@@ -14,7 +14,7 @@ export const DepthItem = styled.li`
   }
 `;
 
-export const ResponsiveBr = styled.br`
+export const StyledResponsiveBr = styled.br`
   display: none;
   @media only screen and (min-width: 1024px) {
     display: inline;

@@ -3,14 +3,14 @@
 import styled from "styled-components";
 
 // util
-import { rem, widthRatio } from "@/util/unit";
+import { rem, widthRatio } from "@/utils/style.util";
 import { flex, font, size } from "../preset/mixins";
 
-export const ExpScrollContainer = styled.div`
+export const StyledExpScrollContainer = styled.div`
   ${size({ w: "100%", h: "100%" })}
 `;
 
-export const ExpList = styled.ul<{ $length: number }>`
+export const StyledExpList = styled.ul<StyleOptionExpList>`
   ${flex({ start: true })}
   ${({ $length }) =>
     size({
@@ -32,7 +32,7 @@ export const ExpList = styled.ul<{ $length: number }>`
   }
 `;
 
-export const ExpItem = styled.li<{ $totalLength: number }>`
+export const StyledExpItem = styled.li<StyleOptionExpItem>`
   ${({ $totalLength }) =>
     size({
       w: `${widthRatio(5 * ($totalLength !== 0 ? $totalLength : 25), 5)}%`,
@@ -50,11 +50,11 @@ export const ExpItem = styled.li<{ $totalLength: number }>`
   }
 `;
 
-export const ExpContents = styled.dl`
+export const StyledExpContents = styled.dl`
   ${size({ w: "100%" })}
 `;
 
-export const ExpTitle = styled.dt`
+export const StyledExpTitle = styled.dt`
   ${size({ mb: 80 })}
   color: ${({ theme }) => theme.exp.title};
   ${font({
@@ -72,7 +72,7 @@ export const ExpTitle = styled.dt`
   }
 `;
 
-export const ExpDesc = styled.dd`
+export const StyledExpDesc = styled.dd`
   ${flex({ start: true })}
   color: ${({ theme }) => theme.exp.desc};
   ${font({

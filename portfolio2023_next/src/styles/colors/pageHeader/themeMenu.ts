@@ -1,7 +1,4 @@
-// 테마 메뉴 컬러
-import { ThemeMenuModeTypes } from "@/types/colors/pageHeader";
-
-export const gnbThemeMenu: ThemeMenuModeTypes = {
+export const gnbThemeMenu: PageHeaderThemeMenuModeTypes = {
   light: {
     container: "#efefef",
     menu: "#afafaf",

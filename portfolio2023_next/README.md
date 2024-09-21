@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# (리택토링 진행중) 류대현 포트폴리오
 
-## Getting Started
+2023년 제작했던, 제 소개를 위한 [프로필 포트폴리오](https://ryudh.com)입니다.
 
-First, run the development server:
+2024년 현재,
+실무에서 작업한 경험을 바탕으로,
+부족한 부분을 보완하고 지금의 제 역량을 기준으로한 코드를 보여드리기 위해
+리팩토링을 진행하고 있습니다.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 1. 링크
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [프로필](https://ryudh.com)
+- [Github](https://github.com/GraffitoRyu)
+- [Notion](https://www.notion.so/Ryu-Daehyeon-cc635240ed4f405ab6d27ec603f8b023)
+- [랠릿](https://www.rallit.com/hub/resumes/69685)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
+## 2. 개발환경
 
-To learn more about Next.js, take a look at the following resources:
+### 1) 코어
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Node.js v20.17.0
+- Next.js v14; App Router
+- TypeScript
+- React v18
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 2) 상태관리
 
-## Deploy on Vercel
+- React Query v5 (데이터 캐시 관리)
+- ~~Recoil~~ -> Jotai (UI 상태관리, 마이그레이션중)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3) 스타일링
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Styled-components v6
+- SCSS (주요 문법)
+- TailwindCSS (reset.css 및 프로토타이핑)
+- @svgr/webpack (svg 파일을 컴포넌트처럼 다루기위해 도입)
+- next/font
+
+### 4) 인터랙션
+
+- GSAP
+- Simplebar / Simplebar-react
+
+### 5) 유틸리티
+
+- ClipboardJS
+
+<!-- ### 6) TDD
+
+- Jest
+- Testing-library -->
+
+### 6) 컨벤션
+
+- ESLint v8 (Next.js의 eslint v9 지원전까지 사용 보류)
+- Prettier
+- JSDoc
+
+### 7) 패키지 관리
+
+- npm
+
+### 8) 배포
+
+- vercel

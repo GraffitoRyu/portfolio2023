@@ -1,6 +1,4 @@
-import { IntroModeTypes } from "@/types/colors/pageSection";
-
-export const intro: IntroModeTypes = {
+export const intro: PageSectionIntroModeTypes = {
   light: {
     bgFrom: "rgb(255, 255, 255)",
     bgTo: "rgba(255, 255, 255, 0)",
