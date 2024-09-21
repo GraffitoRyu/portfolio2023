@@ -17,7 +17,7 @@ export default function ProjectList() {
   return (
     <StyledProjectListContainer>
       {listData?.map(({ code, summary }: ProjectsAPIDataType, i: number) => (
-        <StyledProjectListItem key={`project/list/${code}`}>
+        <StyledProjectListItem key={`projects/list/${code}`}>
           <ProjectItem
             code={code}
             summary={summary}

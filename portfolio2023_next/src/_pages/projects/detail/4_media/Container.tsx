@@ -12,14 +12,14 @@ import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailD
 export default function DetailMediaContainer() {
   const { category, data } = useProjectCategoryDetailData();
   const media = useMemo(
-    (): MediaType[] => (typeof data?.media === "undefined" ? [] : data.media),
+    () => (typeof data?.media === "undefined" ? [] : data.media),
     [data?.media],
   );
 
   return (
     <StyledPDMediaSection>
-      {media.map((m: MediaType, i: number) => (
-        <DetailMediaItem key={`detailMedia_${category}_${i}`} data={m} />
+      {media.map(m => (
+        <DetailMediaItem key={`projects/detail/media/${category}`} data={m} />
       ))}
     </StyledPDMediaSection>
   );

@@ -12,7 +12,7 @@ export default function useProjectCategoryDetailData() {
   const data = useAtomValue(projectCategoryDetailDataState(category));
 
   const title = useMemo(
-    (): string[] | undefined => data?.summary.title || undefined,
+    () => data?.summary.title || undefined,
     [data?.summary.title],
   );
 
