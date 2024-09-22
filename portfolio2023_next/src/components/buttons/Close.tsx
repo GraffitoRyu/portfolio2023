@@ -1,28 +1,32 @@
 "use client";
 
-import { useState } from "react";
-
 // style components
 import { StyledDefaultBtn } from "@/styles/styled/preset/buttons";
+
+// hooks
+import useHover from "@/hooks/interaction/useHover";
 
 // svg
 import CloseIcon from "@/svg/btn/close.svg";
 
+/**
+ * 버튼 컴포넌트; 닫기
+ * @component
+ * @param {CloseButtonProps} props
+ * @param {string} props.ariaLabel
+ * @param {Function} props.clickEvent
+ */
 export default function CloseButton({
   ariaLabel,
   clickEvent,
-}: {
-  ariaLabel: string;
-  clickEvent: (e: React.SyntheticEvent) => void;
-}) {
-  const [hover, setHover] = useState<string>("");
+}: CloseButtonProps) {
+  const { state, hoverHandler } = useHover();
 
   return (
     <StyledDefaultBtn
-      className={hover}
-      onMouseEnter={() => setHover("hover")}
-      onMouseLeave={() => setHover("")}
-      onClick={(e: React.SyntheticEvent) => clickEvent(e)}
+      className={state ? "hover" : ""}
+      {...hoverHandler()}
+      onClick={clickEvent}
       aria-label={ariaLabel}
     >
       <figure>
