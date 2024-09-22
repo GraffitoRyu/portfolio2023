@@ -15,7 +15,6 @@ import ViewportDeviceChecker from "@/components/roots/lib/ViewportDeviceChecker"
 import { Analytics } from "@vercel/analytics/react";
 
 // components
-import PageTemplate from "@/components/pageFrame/PageTemplate";
 import TransCover from "@/components/pageFrame/pageTransition/TransCover";
 import InitPageCover from "@/components/pageFrame/pageInitialize/InitPageCover";
 import Cursor from "@/components/cursor/Cursor";
@@ -58,7 +57,7 @@ export default function RootLayout({
                   <Suspense fallback={null}>
                     <PageLoadEvents />
                   </Suspense>
-                  <PageTemplate>{children}</PageTemplate>
+                  {children}
                   <TransCover />
                   <InitPageCover />
                 </StyledMainContainer>

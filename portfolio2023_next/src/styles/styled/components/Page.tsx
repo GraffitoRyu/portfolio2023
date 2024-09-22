@@ -23,11 +23,6 @@ export const StyledMainContainer = styled.main`
 export const StyledScrollContainer = styled.div`
   ${position({ type: "fixed", top: 0, left: 0, z: 0 })}
   ${size({ w: "100%", h: `100vh` })}
-  overflow: hidden auto;
-  overscroll-behavior-y: none;
-  &::-webkit-scrollbar {
-    width: 0;
-  }
 `;
 
 export const StyledStickyContainer = styled.div`

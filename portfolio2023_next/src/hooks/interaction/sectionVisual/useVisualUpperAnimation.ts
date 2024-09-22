@@ -10,6 +10,8 @@ import useGSAPAnimation from "../useGSAPAnimation";
 
 // states
 import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
+import { pageDetailLoadState } from "@/jotai/load.state";
+import useLog from "@/hooks/util/useLog";
 
 export default function useVisualUpperAnimation(
   sectionEl: HTMLElement | null,
@@ -19,6 +21,7 @@ export default function useVisualUpperAnimation(
   const { isCustomView } = useCheckView(1024);
   // 스크롤 영역
   const scrollContainer = useAtomValue(scrollPageSectionRefState("container"));
+  const { category } = useAtomValue(pageDetailLoadState);
 
   // trigger start 위치 업데이트
   const triggerStart = useCallback(
@@ -78,10 +81,12 @@ export default function useVisualUpperAnimation(
     ],
   );
 
+  useLog({ category });
   // 스크롤 인터랙션
   useGSAPAnimation(
     {
       key: "page/visual/upper",
+      disabled: category !== "",
       elements: [sectionEl, titleEl],
       options: [
         {
@@ -91,7 +96,7 @@ export default function useVisualUpperAnimation(
         },
       ],
     },
-    [parallax],
+    [parallax, category],
   );
 
   return { fixed };

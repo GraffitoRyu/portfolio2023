@@ -1,5 +1,5 @@
 // components
-import ScrollContainer from "./ScrollContainer";
+import ScrollContainer from "./PageScrollContainer";
 import PageStickyContainer from "./PageStickyContainer";
 import PageFooter from "@/components/pageFrame/pageFooter/PageFooter";
 

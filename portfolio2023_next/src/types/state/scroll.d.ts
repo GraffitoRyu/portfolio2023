@@ -34,12 +34,6 @@ type ScrollRefStateTypes = {
    */
   container: ScrollRefType;
   /**
-   * <PageStickyContainer />; 스크롤 컨텐츠 영역
-   * @desc
-   * - height 모니터링
-   */
-  body: ScrollRefType;
-  /**
    * <PageSection page="profile" code="visual" />
    */
   sectionVisual: ScrollRefType;

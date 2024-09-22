@@ -42,7 +42,7 @@ export default function DetailVisualImage() {
           animation: [
             {
               y: () =>
-                0.05 * ScrollTrigger.maxScroll(detailContainer as HTMLElement),
+                -0.05 * ScrollTrigger.maxScroll(detailContainer as HTMLElement),
               scrollTrigger: {
                 trigger: triggerRef.current,
                 start: "top top",

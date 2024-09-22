@@ -1,15 +1,15 @@
 "use client";
 
 import { useParams, usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useCallback, useEffect, useState } from "react";
+import { useSetAtom } from "jotai";
 
 // style components
 import { StyledSitemapLink } from "@/styles/styled/components/Gnb";
 
 // state
 import { pageLoadState } from "@/jotai/load.state";
-import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
+// import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
@@ -23,7 +23,7 @@ export default function SitemapBtn({ code, path, name }: SitemapDataType) {
 
   // 페이지 상태 관리
   const setPageAtom = useSetAtom(pageLoadState);
-  const container = useAtomValue(scrollPageSectionRefState("container"));
+  // const container = useAtomValue(scrollPageSectionRefState("container"));
 
   // 경로 상태 관리
   const [curPath, setCurPath] = useState<string>("/");
@@ -43,28 +43,30 @@ export default function SitemapBtn({ code, path, name }: SitemapDataType) {
     setNow(path == curPath ? "now" : "");
   }, [curPath, path]);
 
+  const onClickLink = useCallback(() => {
+    // 페이지 전환 커버 동작 후 이동 시작
+    if (pathname === path) return;
+
+    setPageAtom(prev => ({
+      ...prev,
+      changePageName: code,
+      loaded: false,
+    }));
+
+    setTimeout(() => {
+      // if (container) container.scrollTo(0, 0);
+      setPageAtom(prev => ({ ...prev, loadComplete: false }));
+      router.push(path, { scroll: false });
+    }, transTime.common.coverUp);
+  }, [code, path, pathname, router, setPageAtom]);
+
   return (
     <StyledSitemapLink
       type="button"
       className={`${now} ${hover}`}
       onMouseEnter={() => setHover("hover")}
       onMouseLeave={() => setHover("")}
-      onClick={() => {
-        // 페이지 전환 커버 동작 후 이동 시작
-        if (pathname === path) return;
-
-        setPageAtom(prev => ({
-          ...prev,
-          changePageName: code,
-          loaded: false,
-        }));
-
-        setTimeout(() => {
-          if (container) container.scrollTo(0, 0);
-          setPageAtom(prev => ({ ...prev, loadComplete: false }));
-          router.push(path);
-        }, transTime.common.coverUp);
-      }}
+      onClick={onClickLink}
       aria-label={`포트폴리오 페이지 ${name}로 이동하기`}
     >
       <span>{name}</span>
