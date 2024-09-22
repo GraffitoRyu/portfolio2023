@@ -23,16 +23,17 @@ export default function FooterUpperContainer() {
   const parallax = useCallback(
     (): UseGSAPAnimationHookOptions => ({
       target: footerTitleRef.current,
-      direction: "from",
+      direction: "fromTo",
       animation: [
+        { y: "-100%" },
         {
-          y: "-100%",
+          y: "0%",
           scrollTrigger: {
             trigger: footer,
             start: "top bottom",
             end: "top top",
             scrub: true,
-            // markers: true,
+            markers: true,
             invalidateOnRefresh: true,
           },
         },
