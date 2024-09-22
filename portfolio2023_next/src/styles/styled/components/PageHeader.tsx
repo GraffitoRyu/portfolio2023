@@ -15,7 +15,6 @@ export const StyledHeaderContainer = styled.header`
   ${position({ type: "sticky", top: 0, left: 0 })}
   width: 100%;
   z-index: 2000;
-  ${`backdrop-filter: blur(${rem(16)});`} /* Add this line to apply blur effect */
   pointer-events: none;
   &.init-hide {
     transition:
