@@ -42,40 +42,36 @@ export default function PageLoadEvents() {
     // 현재 페이지의 코드(페이지 이름) 값
     const newPageName: string = getCurPageName(newPathName, routeData);
 
-    if (savedPathName !== newPathName) {
-      // 페이지 상태 업데이트
-      setPage(prev => ({
-        ...prev,
-        loaded: true,
-        cur: newPageName !== currentPage ? newPageName : currentPage,
-      }));
-      setPathname(newPathName);
-    }
+    if (savedPathName === newPathName) return;
+
+    // 페이지 상태 업데이트
+    setPage(prev => ({
+      ...prev,
+      loaded: true,
+      cur: newPageName !== currentPage ? newPageName : currentPage,
+    }));
+    setPathname(newPathName);
   }, [currentPage, pathname, routeData, savedPathName, setPage]);
 
   // 페이지 새로고침 또는 첫 진입 체크
   useLayoutEffect(() => {
-    if (!init) {
-      // console.log(`[PageLoadEvent : 페이지 최초 로드 완료] `, savedPathName);
-      setTimeout(() => {
-        setPage(prev => ({ ...prev, init: true, loaded: true }));
-      }, transTime.common.initComplete);
-    }
+    if (init) return;
+
+    // console.log(`[PageLoadEvent : 페이지 최초 로드 완료] `, savedPathName);
+    setTimeout(() => {
+      setPage(prev => ({ ...prev, init: true, loaded: true }));
+    }, transTime.common.initComplete);
   }, [init, savedPathName, setPage]);
 
   // 프로젝트 상세 카테고리 업데이트
   useLayoutEffect(() => {
-    if (initComplete) {
-      setDetailState(prev => ({
-        ...prev,
-        category: typeof category === "string" ? category : "",
-      }));
-      if (existCategoryDetailData) {
-        setDetailState(prev => ({ ...prev, open: true }));
-      } else {
-        setDetailState(prev => ({ ...prev, open: false }));
-      }
-    }
+    if (!initComplete) return;
+
+    setDetailState(prev => ({
+      ...prev,
+      category: typeof category === "string" ? category : "",
+      open: existCategoryDetailData ? true : false,
+    }));
   }, [category, initComplete, existCategoryDetailData, setDetailState]);
 
   return null;
@@ -87,9 +83,7 @@ export default function PageLoadEvents() {
  * @param {SitemapDataType[]} data 라우트 데이터
  * @return {string} 페이지 라우트 코드
  */
-export function getCurPageName(
+export const getCurPageName = (
   curPath: string,
   data: SitemapDataType[],
-): string {
-  return data.filter(d => d.path === curPath)[0]?.code;
-}
+): string => data.filter(d => d.path === curPath)[0]?.code || "profile";
