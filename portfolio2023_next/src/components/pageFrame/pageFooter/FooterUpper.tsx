@@ -33,7 +33,7 @@ export default function FooterUpperContainer() {
             start: "top bottom",
             end: "top top",
             scrub: true,
-            markers: true,
+            // markers: true,
             invalidateOnRefresh: true,
           },
         },
