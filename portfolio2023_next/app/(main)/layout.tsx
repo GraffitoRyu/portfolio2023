@@ -61,8 +61,8 @@ export default function RootLayout({
                   <PageTemplate>{children}</PageTemplate>
                   <TransCover />
                   <InitPageCover />
-                  <Cursor />
                 </StyledMainContainer>
+                <Cursor />
               </StyledThemeColorProvider>
             </StyledComponentsRegistry>
           </JotaiProvider>
