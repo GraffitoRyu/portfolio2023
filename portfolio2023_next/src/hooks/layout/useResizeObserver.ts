@@ -7,11 +7,12 @@ import useDebounce from "../util/useDebounce";
  * 화면크기 변경 감지 hook
  * @hook
  * @param {object} props
- * @param {React.RefObject<T>} [props.ref] 감지 기준 요소 ref (기본값 <html />)
+ * @param {HTMLElement | null} [props.element] 감지 기준 요소 element (기본값 <html />)
+ * @param {React.RefObject<HTMLElement | null>} [props.ref] 감지 기준 요소 ref (기본값 <html />)
  * @param {number} [props.delay] 지연시간 (ms, 기본값 400)
  * @param {boolean} [props.notDebounce] 디바운스 적용 여부
  * @param {Function} [props.callback] ({ width, height }) => void
- * @return {object} { width, height }
+ * @return {ResizeObserverCallbackPropsType} { width, height }
  */
 export default function useResizeObserver<T extends HTMLElement>({
   element,
@@ -20,12 +21,12 @@ export default function useResizeObserver<T extends HTMLElement>({
   notDebounce,
   callback,
 }: Partial<{
-  element: HTMLElement | null;
-  ref: React.RefObject<T>;
+  element: T | null;
+  ref: React.RefObject<T | null>;
   delay: number;
   notDebounce: boolean;
   callback: ({ width, height }: ResizeObserverCallbackPropsType) => void;
-}>): { width: number; height: number } {
+}>): ResizeObserverCallbackPropsType {
   const [width, setWidth] = useState<number>(0);
   const [height, setHeight] = useState<number>(0);
 
