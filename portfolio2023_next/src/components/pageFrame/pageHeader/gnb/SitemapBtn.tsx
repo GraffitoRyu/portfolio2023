@@ -51,11 +51,12 @@ export default function SitemapBtn({ code, path, name }: SitemapDataType) {
       ...prev,
       changePageName: code,
       loaded: false,
+      loadComplete: false,
     }));
 
     setTimeout(() => {
       // if (container) container.scrollTo(0, 0);
-      setPageAtom(prev => ({ ...prev, loadComplete: false }));
+      // setPageAtom(prev => ({ ...prev,  }));
       router.push(path, { scroll: false });
     }, transTime.common.coverUp);
   }, [code, path, pathname, router, setPageAtom]);
