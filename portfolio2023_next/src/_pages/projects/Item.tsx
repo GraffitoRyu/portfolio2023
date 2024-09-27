@@ -45,7 +45,7 @@ export default function ProjectItem({
       trigger: triggerRef.current,
       start: "top 80%",
       end: "top 80%",
-      onEnter() {
+      onEnter: () => {
         setHide(false);
       },
     }),
@@ -55,10 +55,11 @@ export default function ProjectItem({
   useGSAPAnimation(
     {
       key: `project/list/item/${code}/fadeIn`,
+      disabled: category !== "",
       elements: [triggerRef.current],
       scrollCreate: fadeIn(),
     },
-    [fadeIn],
+    [fadeIn, category],
   );
 
   const resetScroll = useCallback(
@@ -66,7 +67,7 @@ export default function ProjectItem({
       trigger: projectList,
       start: "top bottom",
       end: "top bottom",
-      onLeaveBack() {
+      onLeaveBack: () => {
         setHide(true);
       },
     }),
@@ -76,10 +77,11 @@ export default function ProjectItem({
   useGSAPAnimation(
     {
       key: `project/list/item/${code}/reset`,
+      disabled: category !== "",
       elements: [projectList],
       scrollCreate: resetScroll(),
     },
-    [fadeIn],
+    [fadeIn, category],
   );
 
   // 프로젝트 상세 열 때, 호버 상태 초기화
@@ -89,7 +91,7 @@ export default function ProjectItem({
 
   const onClickProject = useCallback(() => {
     setDetailLoad(prev => ({ ...prev, clicked: true, loading: true }));
-    router.push(`/projects/${code}`);
+    router.push(`/projects/${code}`, { scroll: false });
   }, [code, router, setDetailLoad]);
 
   return (

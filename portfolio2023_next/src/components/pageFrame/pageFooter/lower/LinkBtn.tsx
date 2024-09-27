@@ -1,8 +1,8 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useSetAtom } from "jotai";
 import ClipboardJS from "clipboard";
 
 // components
@@ -19,7 +19,6 @@ import {
 
 // state
 import { pageLoadState } from "@/jotai/load.state";
-import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
@@ -37,7 +36,7 @@ export default function FooterLink({
   const pathname = usePathname();
   // 페이지 상태 관리
   const setPageAtom = useSetAtom(pageLoadState);
-  const container = useAtomValue(scrollPageSectionRefState("container"));
+  // const container = useAtomValue(scrollPageSectionRefState("container"));
 
   const isNav: boolean = !isExternal ? true : false;
 
@@ -77,6 +76,23 @@ export default function FooterLink({
       }, 3000);
   }, [copiedShow]);
 
+  const onClickLink = useCallback(() => {
+    // 페이지 전환 커버 동작 후 이동 시작
+    if (pathname === path) return;
+
+    setPageAtom(prev => ({
+      ...prev,
+      changePageName: code,
+      loaded: false,
+    }));
+
+    setTimeout(() => {
+      // if (container) container.scrollTo(0, 0);
+      setPageAtom(prev => ({ ...prev, loadComplete: false }));
+      router.push(path, { scroll: false });
+    }, transTime.common.coverUp);
+  }, [code, path, pathname, router, setPageAtom]);
+
   // 포트폴리오 페이지 메뉴
   if (isNav)
     return (
@@ -85,22 +101,7 @@ export default function FooterLink({
           as="button"
           type="button"
           className={`${hoverText}`}
-          onClick={() => {
-            // 페이지 전환 커버 동작 후 이동 시작
-            if (pathname === path) return;
-
-            setPageAtom(prev => ({
-              ...prev,
-              changePageName: code,
-              loaded: false,
-            }));
-
-            setTimeout(() => {
-              if (container) container.scrollTo(0, 0);
-              setPageAtom(prev => ({ ...prev, loadComplete: false }));
-              router.push(path);
-            }, transTime.common.coverUp);
-          }}
+          onClick={onClickLink}
           onMouseEnter={() => setHoverText("hover")}
           onMouseLeave={() => setHoverText("")}
           aria-label={`포트폴리오 페이지 ${name}로 이동하기`}

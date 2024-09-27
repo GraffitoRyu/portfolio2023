@@ -31,6 +31,7 @@ export const sizePreset = {
       },
     },
   },
+  cursor: { basic: 8, clickable: 80, text: 64 },
   icon: {
     mobile: 24,
     w768_landscape: 20,

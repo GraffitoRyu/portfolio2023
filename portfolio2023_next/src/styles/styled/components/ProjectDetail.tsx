@@ -20,10 +20,7 @@ import { StyledDefaultBtn } from "@/styles/styled//preset/buttons";
 export const StyledPDContainer = styled.article`
   ${size({ w: "100%", h: "100%" })}
   ${position({ type: "fixed", left: 0, bottom: 0, z: 2000 })}
-  overflow: hidden auto;
-  &::-webkit-scrollbar {
-    width: 0;
-  }
+  overflow: hidden;
   background: ${({ theme }) => theme.projectDetails.bg};
   ${transition([
     {
@@ -33,7 +30,6 @@ export const StyledPDContainer = styled.article`
     },
   ])}
   transform: translateY(100%);
-  overscroll-behavior-y: auto;
   &.open {
     transform: translateY(0);
   }
@@ -138,7 +134,7 @@ export const StyledPDSubVisualSection = styled(StyledPDSection)`
 export const StyledPDExpSection = styled(StyledPDSection)`
   ${size({ w: `100%`, p: [240, 80, 160] })}
   @media only screen and (min-width:768px) {
-    ${size({ p: [240, 60, 0] })}
+    ${size({ p: [240, 60] })}
   }
 `;
 
@@ -168,6 +164,7 @@ export const StyledPDVisualLower = styled.div`
 `;
 
 export const StyledPDVisualImageContainer = styled.div`
+  pointer-events: none;
   overflow: hidden;
   ${position({ type: "fixed", top: 0, left: 0, z: -100 })}
   ${size({ w: "100%", h: `100vh` })}
@@ -480,6 +477,9 @@ export const StyledPDSubVisual = styled.figure`
 
 export const StyledPDMediaItem = styled.div`
   ${size({ w: "100%", p: [0, 80], mt: 400 })}
+  &:first-child {
+    margin-top: 0;
+  }
 `;
 
 export const StyledPDMediaFigure = styled.figure`

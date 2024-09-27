@@ -3,7 +3,7 @@ interface PageHeaderTimerColorTypes {
   text: string;
 }
 
-interface PageHeaderModeTypes {
+interface PageHeaderTimeDisplayModeTypes {
   [index: string]: PageHeaderTimerColorTypes;
   light: PageHeaderTimerColorTypes;
   dark: PageHeaderTimerColorTypes;

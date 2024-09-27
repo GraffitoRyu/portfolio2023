@@ -1,7 +1,7 @@
 /**
  * 커서 컴포넌트 hover 상태
  */
-type CursorHoverStateType = "text" | "link" | "";
+type CursorHoverStateType = "text" | "clickable" | "";
 
 /**
  * 커서 컴포넌트 상태 관리
@@ -18,7 +18,11 @@ type CursorStateTypes = {
   y: number;
   /**
    * 커서 hover 상태
-   * "text", "link", ""
+   * "text", "clickable", ""
    */
   hover: CursorHoverStateType;
+  /**
+   * 텍스트 요소의 line-height
+   */
+  height: number;
 };

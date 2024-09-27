@@ -195,21 +195,6 @@ export default function useGSAPAnimation(
     [isTimeline],
   );
 
-  // const scrollBody = useAtomValue(scrollPageSectionRefState("body"));
-  // const [scrollWidth, setScrollWidth] = useState<number>(0);
-  // const [scrollHeight, setScrollHeight] = useState<number>(0);
-
-  // useResizeObserver({
-  //   element: typeof containerEl !== "undefined" ? containerEl : scrollBody,
-  //   delay: 300,
-  //   callback: ({ width, height }) => {
-  //     setScrollWidth(width || 0);
-  //     setScrollHeight(height || 0);
-  //     // ScrollTrigger.refresh();
-  //     console.log(`[useGSAPAnimation :: useResizeObserver]`);
-  //   },
-  // });
-
   // gsap 실행 관련 요소의 유효성 모두 체크
   const validElementLength = useCallback(
     () => (elements ? elements.filter(el => el !== null) : []).length,
@@ -255,8 +240,6 @@ export default function useGSAPAnimation(
       key,
       disabled,
       options?.length,
-      // scrollWidth,
-      // scrollHeight,
       containerEl,
       // ...(elements || []),
       validElementLength(),

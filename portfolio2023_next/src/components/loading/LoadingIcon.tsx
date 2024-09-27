@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useAtomValue } from "jotai";
 
 // style components
@@ -16,15 +15,10 @@ import LoadingIcon from "@/svg/common/LoadingIcon";
 import { pageLoadState } from "@/jotai/load.state";
 
 export default function LoadingIconComponent() {
-  const { init } = useAtomValue<PageLoadStateTypes>(pageLoadState);
-  const [loading, setLoading] = useState<string>("loading");
-
-  useEffect(() => {
-    if (init) setLoading("");
-  }, [init]);
+  const { loaded } = useAtomValue(pageLoadState);
 
   return (
-    <StyledLoadingIconContainer className={loading}>
+    <StyledLoadingIconContainer className={loaded ? "" : "loading"}>
       <StyledLoadingIconFigure className="loading-icon">
         <LoadingIcon />
       </StyledLoadingIconFigure>

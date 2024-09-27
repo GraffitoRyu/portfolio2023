@@ -6,10 +6,11 @@ import PageVisualUpper from "@/components/pageFrame/pageSection/pageVisual/Upper
 import PageVisualLower from "@/components/pageFrame/pageSection/pageVisual/Lower";
 import ProjectList from "@/_pages/projects/List";
 import ProjectLoadingBar from "@/_pages/projects/detail/LoadingBar";
+import PageTemplate from "@/components/pageFrame/PageTemplate";
 
 export default function ProjectContainer() {
   return (
-    <>
+    <PageTemplate>
       <PageSectionContainer
         page="projects"
         code="visual"
@@ -44,6 +45,6 @@ export default function ProjectContainer() {
         </PageSectionContents>
       </PageSectionContainer>
       <ProjectLoadingBar />
-    </>
+    </PageTemplate>
   );
 }

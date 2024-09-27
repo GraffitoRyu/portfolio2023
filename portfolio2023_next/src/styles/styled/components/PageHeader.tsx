@@ -15,8 +15,19 @@ export const StyledHeaderContainer = styled.header`
   ${position({ type: "sticky", top: 0, left: 0 })}
   width: 100%;
   z-index: 2000;
-  ${`backdrop-filter: blur(${rem(16)});`} /* Add this line to apply blur effect */
   pointer-events: none;
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    ${`backdrop-filter: blur(${rem(16)});`} /* Add this line to apply blur effect */
+    ${`-webkit-backdrop-filter: blur(${rem(16)});`}/* Add this line to apply blur effect */
+  }
   &.init-hide {
     transition:
       opacity ${transTime.header / 1000}s ${easing.quart},
@@ -36,7 +47,6 @@ export const StyledHeaderWrap = styled.div`
     p: sizePreset.common.padding,
   })}
   pointer-events:none;
-  /* backdrop-filter: blur(8px); */
   @media only screen and (max-width: 768px) and (orientation: landscape) {
     ${size({
       h: sizePreset.btn.w768_landscape + sizePreset.common.padding * 2,
@@ -62,11 +72,7 @@ export const StyledTimerContainer = styled.div`
   border-top: ${rem(4)} solid ${({ theme }) => theme.timer.bar};
   border-bottom: ${rem(4)} solid transparent;
   color: ${({ theme }) => theme.timer.text};
-  ${font({
-    size: 24,
-    height: "1em",
-    weight: 500,
-  })}
+  ${font({ size: 24, height: "1em", weight: 500 })}
   time {
     ${font({ spacing: 0 })}
   }
