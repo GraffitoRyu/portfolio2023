@@ -2,19 +2,19 @@
   {
     "code": "WebApps",
     "desc": [
-      "React를 활용한 컴포넌트 중심의 마크업 및 인터렉션",
-      "Jotai, Recoil 등을 활용한 Atom 기반의 상태 관리",
+      "React 환경에서의 컴포넌트 기반 마크업 및 인터렉션",
+      "TypeScript 환경 기반의 타입 세이프 구조 구축",
+      "Jotai, Recoil을 통한 Atom 기반의 상태 관리",
       "Next.js App Router 환경으로 한 프로젝트 경험",
-      "Next.js 환경에서의 SEO, SSR, Data fetching, Dynamic/Parallel Routes 등 활용",
-      "SCSS 문법, Styled-components. Tailwind CSS를 활용한 스타일링",
-      "React Router를 활용한 라우팅 구현",
-      "TypeScript 환경에서의 타입 세이프한 데이터 관리"
+      "Next.js 환경에서의 SEO, SSR, SSG, Route Handler 기능을 통한 Data fetching, Dynamic/Parallel Routes 기능 등 활용",
+      "SCSS 문법, Styled-components. Tailwind CSS 등을 활용한 스타일링 경험",
+      "React Router를 활용한 라우팅 구현"
     ]
   },
   {
     "code": "markup",
     "desc": [
-      "검색 엔진 최적화",
+      "meta 정보, sitemap, robots 등 SEO 작업",
       "다양한 접속 환경에서의 크로스브라우징 트러블 슈팅",
       "시멘틱하면서 웹 표준 및 웹 접근성을 고려한 마크업",
       "SCSS로 작성하는 CSS 기반의 반응형 레이아웃 구축",
@@ -27,31 +27,31 @@
     "code": "interaction",
     "desc": [
       "GSAP, Intersection Observer WebAPI 등을 활용한 스크롤 모션 구현",
-      "D3/Recharts 기반의 그래프 차트에 대한 Zoom, Pan 동작 구현",
+      "D3, Recharts 기반의 그래프 차트 및 Zoom, Pan 동작 구현",
       "Google Maps API, Kakao Maps API, Mapbox GL 등의 지도 라이브러리 활용",
       "지도 라이브러리 기반의 GeoJSON을 활용한 경로 표현, 유틸리티 마커 구현",
-      "4년 이상 경험의 jQuery 기반 인터랙션 동작 구현"
+      "4년 이상의 jQuery 기반 인터랙션 동작 구현 경험"
     ]
   },
   {
     "code": "data",
     "desc": [
       "Next.js에서의 RESTful API, React Query 등을 활용한 Data fetching",
-      "async/await, try/catch를 활용한 비동기/동기 처리",
-      "WebSocket을 통한 JSON 데이터 송수신",
+      "async/await, try/catch를 활용한 비동기/동기 처리 및 에러 핸들링",
+      "WebSocket 환경에서의 JSON 데이터 통신, 채팅 기능 구현",
       "GPS 데이터, GeoJSON 데이터 등으로 지도 상의 경로, 마커 등 구현",
-      "데이터 시각화를 위해 D3.js, Chart.js, Recharts.js 등을 활용하여 차트 구현"
+      "시각화 라이브러리를 통한 차트 구현을 위한 데이터 가공"
     ]
   },
   {
     "code": "collaboration",
     "desc": [
-      "Git/Github을 활용한 버전 관리",
+      "Git, Github Repository, Git Branch, Pull Request 등을 활용한 버전 관리",
       "RESTful API 활용에 대한 백엔드와의 협업",
-      "Figma, Zeplin, XD를 활용한 기획/디자인과의 협업 (프론트엔드 및 웹 퍼블리싱 담당)",
+      "Figma, Zeplin, XD를 활용한 기획/디자인과의 협업",
       "Node.js/Express/MongoDB 환경에서, 백엔드와의 협업 경험",
-      "Figma 앱 디자인 협업 (앱 디자인 및 로고 작업)",
-      "Photoshop을 통한 디자인/퍼블리싱 협업 (웹 디자인/퍼블리싱)"
+      "Figma 등을 통한 웹, 앱 디자인 작업 담당 및 협업",
+      "Photoshop을 통한 웹 디자인/퍼블리싱 작업 담당 및 협업"
     ]
   }
 ]
