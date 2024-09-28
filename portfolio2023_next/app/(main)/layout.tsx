@@ -11,8 +11,9 @@ import StyledThemeColorProvider from "@/components/roots/provider/StyledThemeCol
 import PageLoadEvents from "@/components/roots/lib/PageLoadEvents";
 import ViewportDeviceChecker from "@/components/roots/lib/ViewportDeviceChecker";
 
-// analytics
-import { Analytics } from "@vercel/analytics/react";
+// vercel analytics
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // components
 import TransCover from "@/components/pageFrame/pageTransition/TransCover";
@@ -67,6 +68,7 @@ export default function RootLayout({
           </JotaiProvider>
         </ReactQueryProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

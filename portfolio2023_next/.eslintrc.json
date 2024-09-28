@@ -57,12 +57,7 @@
     "react/jsx-uses-react": "off",
     "jsx-a11y/href-no-hash": [0],
     "react/no-deprecated": "error",
-    "react/no-unsafe": [
-      "error",
-      {
-        "checkAliases": true
-      }
-    ],
+    "react/no-unsafe": ["error", { "checkAliases": true }],
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-explicit-any": "error",
