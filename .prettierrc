@@ -7,7 +7,7 @@
   "printWidth": 80,
   "overrides": [
     {
-      "files": "**/*.{ts,tsx,js,jsx}",
+      "files": "**/*.{ts,tsx,js,jsx,mjs}",
       "options": {
         "singleAttributePerLine": false,
         "arrowParens": "avoid"
