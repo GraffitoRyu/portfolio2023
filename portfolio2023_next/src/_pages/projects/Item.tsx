@@ -59,7 +59,7 @@ export default function ProjectItem({
       elements: [triggerRef.current],
       scrollCreate: fadeIn(),
     },
-    [fadeIn, category],
+    [code, category, fadeIn],
   );
 
   const resetScroll = useCallback(
@@ -81,7 +81,7 @@ export default function ProjectItem({
       elements: [projectList],
       scrollCreate: resetScroll(),
     },
-    [fadeIn, category],
+    [code, category, resetScroll],
   );
 
   // 프로젝트 상세 열 때, 호버 상태 초기화
