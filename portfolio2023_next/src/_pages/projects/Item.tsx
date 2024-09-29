@@ -58,6 +58,7 @@ export default function ProjectItem({
       disabled: category !== "",
       elements: [triggerRef.current],
       scrollCreate: fadeIn(),
+      log: ["fadeIn"],
     },
     [code, category, fadeIn],
   );
@@ -80,6 +81,7 @@ export default function ProjectItem({
       disabled: category !== "",
       elements: [projectList],
       scrollCreate: resetScroll(),
+      log: ["reset"],
     },
     [code, category, resetScroll],
   );
