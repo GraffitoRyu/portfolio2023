@@ -78,14 +78,16 @@ export default function StackRow({
     {
       key: `profile/techStack/row/${categoryCode}/scroll/reset`,
       elements: [sectionStacks],
-      scrollCreate: {
-        trigger: sectionStacks,
-        start: () => "top bottom",
-        end: () => "top bottom",
-        onLeaveBack: () => {
-          setHide(true);
+      scrollCreate: [
+        {
+          trigger: sectionStacks,
+          start: () => "top bottom",
+          end: () => "top bottom",
+          onLeaveBack: () => {
+            setHide(true);
+          },
         },
-      },
+      ],
     },
     [categoryCode],
   );

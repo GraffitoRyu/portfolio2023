@@ -78,16 +78,18 @@ export default function CareerItem({
     {
       key: `profile/career/${code}/item/container`,
       elements: [itemRef.current],
-      scrollCreate: {
-        trigger: itemRef.current,
-        start: "top 80%",
-        end: "top top",
-        invalidateOnRefresh: true,
-        // markers: true,
-        onEnter: () => {
-          setHide(false);
+      scrollCreate: [
+        {
+          trigger: itemRef.current,
+          start: "top 80%",
+          end: "top top",
+          invalidateOnRefresh: true,
+          // markers: true,
+          onEnter: () => {
+            setHide(false);
+          },
         },
-      },
+      ],
     },
     [code, hide],
   );
@@ -97,13 +99,15 @@ export default function CareerItem({
     {
       key: `profile/career/${code}/item/detail`,
       elements: [careerContents, detailsRef.current],
-      scrollCreate: {
-        trigger: careerContents,
-        start: "top bottom",
-        end: "top bottom",
-        // markers: true,
-        onLeaveBack: onResetDetail,
-      },
+      scrollCreate: [
+        {
+          trigger: careerContents,
+          start: "top bottom",
+          end: "top bottom",
+          // markers: true,
+          onLeaveBack: onResetDetail,
+        },
+      ],
     },
     [code, hide, onResetDetail],
   );
