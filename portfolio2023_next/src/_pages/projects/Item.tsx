@@ -41,28 +41,25 @@ export default function ProjectItem({
   const [hover, setHover] = useState<boolean>(false);
 
   const onFadeIn = useCallback(() => {
+    console.log("asd");
     setHide(false);
   }, []);
 
   const fadeIn = useCallback(
-    (): UseGSAPAnimationScrollTriggerOption => ({
-      trigger: triggerRef.current,
-      start: "top 80%",
-      end: "top 80%",
-      onEnter: onFadeIn,
+    (): UseGSAPAnimationHookOptions => ({
+      target: triggerRef.current,
+      animation: [
+        {
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            start: "top 80%",
+            end: "top 80%",
+            onEnter: onFadeIn,
+          },
+        },
+      ],
     }),
     [onFadeIn],
-  );
-
-  useGSAPAnimation(
-    {
-      key: `project/list/item/${code}/fadeIn`,
-      disabled: category !== "",
-      elements: [triggerRef.current],
-      scrollCreate: fadeIn(),
-      log: ["fadeIn"],
-    },
-    [code, category, fadeIn],
   );
 
   const onReset = useCallback(() => {
@@ -81,12 +78,13 @@ export default function ProjectItem({
 
   useGSAPAnimation(
     {
-      key: `project/list/item/${code}/reset`,
+      key: `project/list/item/${code}`,
       disabled: category !== "",
-      elements: [projectList],
+      elements: [projectList, triggerRef.current],
+      options: [fadeIn()],
       scrollCreate: resetScroll(),
     },
-    [code, category, resetScroll],
+    [code, category, fadeIn, resetScroll],
   );
 
   // 프로젝트 상세 열 때, 호버 상태 초기화
