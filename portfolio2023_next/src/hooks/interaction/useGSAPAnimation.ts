@@ -53,12 +53,16 @@ export function useGSAPRegister<ContainerElement extends HTMLElement>({
 /**
  * 스크롤 애니메이션 Hook
  * @hook
- * @param {object} props
+ * @param {UseGSAPAnimationHookProps} props
+ * @param {string} [props.key] 인터렉션 고유 키 (특별한 별도 기능 없음)
  * @param {HTMLElement | null} [props.container] 스크롤 기준 전체 영역 (기본값; 페이지 스크롤 영역)
+ * @param {boolean} [props.disabled] 이벤트 비활성화
  * @param {Array<HTMLElement | null>} props.elements 스크롤 애니메이션 관련된 모든 요소들 (ref null 체크)
  * @param {boolean} [props.isTimeline] 타임라인 적용 여부
- * @param {UseGSAPAnimationHookOptions[]} props.options 애니메이션 및 스크롤트리거 옵션
- * @param {unknown[]} [deps]
+ * @param {UseGSAPAnimationHookOptions[]} [props.options] 애니메이션 및 스크롤트리거 옵션
+ * @param {UseGSAPAnimationScrollTriggerOption[]} [props.scrollCreate] 단독 스크롤트리거 이벤트 추가
+ * @param {unknown[]} [props.log] 디버깅 옵션
+ * @param {React.DependencyList} [deps]
  * @see https://stackblitz.com/edit/stackblitz-starters-u6rgzq?file=README.md gsap + ScrollTrigger + Next.js Starter Templates
  * @see https://gsap.com/resources/React useGSAP Hook
  * @example
@@ -97,7 +101,8 @@ export function useGSAPRegister<ContainerElement extends HTMLElement>({
  *        ]
  *      }
  *    ]
- *  });
+ *  },
+ *  []);
  *
  *  return (
  *    <section className="page-section" ref={sectionRef}>
@@ -204,7 +209,11 @@ export default function useGSAPAnimation(
 
   return useGSAP(
     () => {
-      if (typeof log !== "undefined" && log.length > 0) {
+      if (
+        process.env.NODE_ENV === "development" &&
+        typeof log !== "undefined" &&
+        log.length > 0
+      ) {
         console.log(`[useGSAPAnimation; ${key}]`, {
           log,
           props: {
@@ -220,8 +229,6 @@ export default function useGSAPAnimation(
       // console.log(`[useGSAPAnimation; ${key}]`);
 
       // 비활성화 시 동작 제한
-      if (key?.startsWith("project/list/item/"))
-        console.log(`[useGSAPAnimation; ${key}] disabled`, { disabled, deps });
       if (disabled) return;
 
       // 서버 실행 방지
@@ -231,10 +238,10 @@ export default function useGSAPAnimation(
       if (!loadComplete) return;
 
       if (validElementLength() === 0) {
-        console.error(
-          `[useGSAPAnimation; ${key}] 스크롤 인터랙션 초기화 오류 :: element 유효하지 않음`,
-          elements,
-        );
+        // console.error(
+        //   `[useGSAPAnimation; ${key}] 스크롤 인터랙션 초기화 오류 :: element 유효하지 않음`,
+        //   elements,
+        // );
         return;
       }
 
