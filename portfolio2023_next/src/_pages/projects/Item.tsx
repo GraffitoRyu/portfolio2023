@@ -21,6 +21,7 @@ import { pageDetailLoadState } from "@/jotai/load.state";
 
 // hook
 import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
+import useLog from "@/hooks/util/useLog";
 
 export default function ProjectItem({
   code,
@@ -41,23 +42,15 @@ export default function ProjectItem({
   const [hover, setHover] = useState<boolean>(false);
 
   const onFadeIn = useCallback(() => {
-    console.log("asd");
     setHide(false);
   }, []);
 
   const fadeIn = useCallback(
-    (): UseGSAPAnimationHookOptions => ({
-      target: triggerRef.current,
-      animation: [
-        {
-          scrollTrigger: {
-            trigger: triggerRef.current,
-            start: "top 80%",
-            end: "top 80%",
-            onEnter: onFadeIn,
-          },
-        },
-      ],
+    (): UseGSAPAnimationScrollTriggerOption => ({
+      trigger: triggerRef.current,
+      start: "top 80%",
+      end: "top 80%",
+      onEnter: onFadeIn,
     }),
     [onFadeIn],
   );
@@ -79,12 +72,10 @@ export default function ProjectItem({
   useGSAPAnimation(
     {
       key: `project/list/item/${code}`,
-      disabled: typeof category !== "undefined" || category !== "",
       elements: [projectList, triggerRef.current],
-      options: [fadeIn()],
-      scrollCreate: resetScroll(),
+      scrollCreate: [fadeIn(), resetScroll()],
     },
-    [code, category, fadeIn, resetScroll],
+    [code, category, hide, fadeIn, resetScroll],
   );
 
   // 프로젝트 상세 열 때, 호버 상태 초기화
@@ -97,6 +88,7 @@ export default function ProjectItem({
     router.push(`/projects/${code}`, { scroll: false });
   }, [code, router, setDetailLoad]);
 
+  useLog({ code, category, hide });
   return (
     <StyledProjectItemContainer
       type="button"

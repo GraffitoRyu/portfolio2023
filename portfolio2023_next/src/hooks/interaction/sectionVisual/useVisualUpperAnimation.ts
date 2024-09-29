@@ -11,7 +11,6 @@ import useGSAPAnimation from "../useGSAPAnimation";
 // states
 import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 import { pageDetailLoadState } from "@/jotai/load.state";
-import useLog from "@/hooks/util/useLog";
 
 export default function useVisualUpperAnimation(
   sectionEl: HTMLElement | null,
@@ -81,7 +80,6 @@ export default function useVisualUpperAnimation(
     ],
   );
 
-  useLog({ category });
   // 스크롤 인터랙션
   useGSAPAnimation(
     {

@@ -131,7 +131,7 @@ interface UseGSAPAnimationHookProps {
    * }
    * ```
    */
-  scrollCreate: UseGSAPAnimationScrollTriggerOption;
+  scrollCreate: UseGSAPAnimationScrollTriggerOption[];
   /**
    * gsap tween 설정
    * @optional
