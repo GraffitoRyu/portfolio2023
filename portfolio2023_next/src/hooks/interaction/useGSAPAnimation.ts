@@ -220,6 +220,8 @@ export default function useGSAPAnimation(
       // console.log(`[useGSAPAnimation; ${key}]`);
 
       // 비활성화 시 동작 제한
+      if (key?.startsWith("project/list/item/"))
+        console.log(`[useGSAPAnimation; ${key}] disabled`, { disabled, deps });
       if (disabled) return;
 
       // 서버 실행 방지
@@ -229,10 +231,10 @@ export default function useGSAPAnimation(
       if (!loadComplete) return;
 
       if (validElementLength() === 0) {
-        // console.error(
-        //   `[useGSAPAnimation; ${key}] 스크롤 인터랙션 초기화 오류 :: element 유효하지 않음`,
-        //   elements,
-        // );
+        console.error(
+          `[useGSAPAnimation; ${key}] 스크롤 인터랙션 초기화 오류 :: element 유효하지 않음`,
+          elements,
+        );
         return;
       }
 
