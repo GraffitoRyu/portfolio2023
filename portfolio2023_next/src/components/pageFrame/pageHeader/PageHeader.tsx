@@ -15,6 +15,7 @@ import {
 
 // state
 import { pageLoadState } from "@/jotai/load.state";
+import { viewportState } from "@/jotai/viewport.state";
 import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // hook
@@ -22,6 +23,7 @@ import useResizeObserver from "@/hooks/layout/useResizeObserver";
 
 export default function PageHeader() {
   const headerRef = useRef<HTMLElement | null>(null);
+  const setViewportState = useSetAtom(viewportState);
   const setScrollRef = useSetAtom(scrollPageSectionRefState("header"));
   const [hide, setHide] = useState<string>("init-hide hide");
   const { init, initComplete } = useAtomValue(pageLoadState);
@@ -47,8 +49,9 @@ export default function PageHeader() {
   // 헤더 높이 상태 업데이트
   useResizeObserver({
     ref: headerRef,
-    delay: 500,
+    delay: 200,
     callback: ({ height }) => {
+      setViewportState(prev => ({ ...prev, headerHeight: height }));
       document.documentElement.style.setProperty(
         `--header-height`,
         `${height}px`,

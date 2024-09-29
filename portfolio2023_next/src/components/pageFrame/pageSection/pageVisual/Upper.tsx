@@ -34,14 +34,11 @@ export default function PageVisualUpper({ title }: { title: string[] }) {
   const visualRef = useRef<HTMLDivElement | null>(null);
   const visualTitleRef = useRef<HTMLHeadingElement | null>(null);
 
-  const { fixed } = useVisualUpperAnimation(
-    visualRef.current,
-    visualTitleRef.current,
-  );
+  useVisualUpperAnimation(visualRef.current, visualTitleRef.current);
 
   return (
     <StyledVisualContainer ref={visualRef}>
-      <StyledVisualTitle ref={visualTitleRef} className={`${loaded} ${fixed}`}>
+      <StyledVisualTitle ref={visualTitleRef} className={loaded}>
         <StyledVisualTitleLine className="visual-title stroke-title">
           {title[0]}
         </StyledVisualTitleLine>

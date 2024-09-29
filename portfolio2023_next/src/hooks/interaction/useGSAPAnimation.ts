@@ -246,7 +246,7 @@ export default function useGSAPAnimation(
       }
 
       // GSAP 애니메이션 초기화
-      ScrollTrigger.refresh();
+      ScrollTrigger.clearScrollMemory();
 
       // tween 배열에 대한 애니메이션 설정 적용
       if (options && isValidArray(options)) options.forEach(gsapTween);
@@ -256,6 +256,7 @@ export default function useGSAPAnimation(
       if (scrollCreate && isValidArray(scrollCreate))
         scrollCreate.forEach(create => ScrollTrigger.create(create));
 
+      ScrollTrigger.refresh();
       // console.log(`[useGSAPAnimation; ${key} :: useGSAP] deps`, deps);
     },
     [

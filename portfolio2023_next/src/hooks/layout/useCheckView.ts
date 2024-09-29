@@ -10,12 +10,18 @@ import { useMemo } from "react";
  * @param {number} standard 화면 너비 기준값 (px)
  */
 export default function useCheckView(standard: number) {
-  const { windowWidth } = useAtomValue(viewportState);
+  const { windowWidth, windowHeight, headerHeight } =
+    useAtomValue(viewportState);
+
+  const viewportCenter = useMemo(
+    () => windowHeight / 2 - headerHeight,
+    [headerHeight, windowHeight],
+  );
 
   const isCustomView = useMemo(
     (): boolean => windowWidth < standard,
     [standard, windowWidth],
   );
 
-  return { isCustomView };
+  return { isCustomView, windowWidth, windowHeight, viewportCenter };
 }

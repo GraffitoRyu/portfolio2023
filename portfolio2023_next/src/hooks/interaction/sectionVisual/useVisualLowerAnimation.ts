@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 // hooks
 import useGSAPAnimation from "../useGSAPAnimation";
@@ -9,6 +9,8 @@ import useCheckView from "@/hooks/layout/useCheckView";
 // styles
 import { easing } from "@/styles/styled/preset/easing";
 import { transTime } from "@/styles/styled/preset/transTime";
+import { useAtomValue } from "jotai";
+import { pageDetailLoadState } from "@/jotai/load.state";
 
 export default function useVisualLowerAnimation(
   titleEl: HTMLElement | null,
@@ -16,6 +18,7 @@ export default function useVisualLowerAnimation(
 ) {
   // 커스텀 모바일 뷰 체크
   const { isCustomView } = useCheckView(1024);
+  const { category, open } = useAtomValue(pageDetailLoadState);
 
   // 모바일 뷰에서 등장모션 완료 여부
   const [isActiveMobileScroll, setActiveMobileScroll] = useState<{
@@ -36,10 +39,10 @@ export default function useVisualLowerAnimation(
       target,
       direction: "fromTo",
       animation: [
-        { opacity: 0, y: "50%" },
+        { opacity: 0, y: () => "50%" },
         {
           opacity: 1,
-          y: "0%",
+          y: () => "0%",
           delay: ((transTime.visual.upper / 4) * delayIndex) / 1000,
           duration: transTime.visual.lower / 1000,
           ease: easing.quart,
@@ -60,14 +63,14 @@ export default function useVisualLowerAnimation(
     {
       key: "page/visual/lower/mobile/init",
       elements: [titleEl, descEl],
-      disabled: !isCustomView,
+      disabled: !isCustomView || open || category !== "",
       isTimeline: true,
       options: [
         mobileInitOption("title", titleEl, 2),
         mobileInitOption("desc", descEl, 3),
       ],
     },
-    [isCustomView, mobileInitOption],
+    [isCustomView, open, category, mobileInitOption],
   );
 
   // 모바일 스크롤 인터랙션 옵션
@@ -85,28 +88,43 @@ export default function useVisualLowerAnimation(
     [],
   );
 
+  const isMobileScrollDisabled = useMemo(
+    () =>
+      !isCustomView ||
+      Object.values(isActiveMobileScroll).some(active => !active) ||
+      open ||
+      category !== "",
+    [category, isActiveMobileScroll, isCustomView, open],
+  );
+
   // 모바일 스크롤 인터랙션
   useGSAPAnimation(
     {
       key: "page/visual/lower/mobile/scroll",
       elements: [titleEl, descEl],
-      disabled:
-        !isCustomView ||
-        Object.values(isActiveMobileScroll).some(active => !active),
+      disabled: isMobileScrollDisabled,
       options: [
         {
           optionKey: "page/visual/lower/mobile/scroll/title",
           target: titleEl,
-          animation: [mobileScrollOption(titleEl as HTMLElement)],
+          direction: "fromTo",
+          animation: [
+            { opacity: 1 },
+            mobileScrollOption(titleEl as HTMLElement),
+          ],
         },
         {
           optionKey: "page/visual/lower/mobile/scroll/desc",
           target: descEl,
-          animation: [mobileScrollOption(descEl as HTMLElement)],
+          direction: "fromTo",
+          animation: [
+            { opacity: 1 },
+            mobileScrollOption(descEl as HTMLElement),
+          ],
         },
       ],
     },
-    [isCustomView, mobileInitOption, ...Object.values(isActiveMobileScroll)],
+    [isMobileScrollDisabled, mobileInitOption],
   );
 
   // 데스크탑 스크롤 인터랙션 옵션
@@ -114,7 +132,9 @@ export default function useVisualLowerAnimation(
     (key: string, target: HTMLElement): UseGSAPAnimationHookOptions => ({
       optionKey: key,
       target,
+      direction: "fromTo",
       animation: [
+        { opacity: 0 },
         {
           opacity: 1,
           scrollTrigger: {
@@ -134,7 +154,7 @@ export default function useVisualLowerAnimation(
     {
       key: "page/visual/lower/desktop",
       elements: [titleEl, descEl],
-      disabled: isCustomView,
+      disabled: isCustomView || open || category !== "",
       options: [
         fadeInUpDesktop(
           "page/visual/lower/desktop/title",
@@ -146,6 +166,6 @@ export default function useVisualLowerAnimation(
         ),
       ],
     },
-    [isCustomView, fadeInUpDesktop],
+    [isCustomView, open, category, fadeInUpDesktop],
   );
 }

@@ -23,6 +23,7 @@ export const scrollPageRefState = atom<ScrollRefStateTypes>({
   sectionStacks: null,
   stackContents: null,
   // projects
+  sectionProjectList: null, // 프로젝트 목록 섹션
   projectList: null, // 프로젝트 목록 묶음
 });
 

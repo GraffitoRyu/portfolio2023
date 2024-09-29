@@ -58,16 +58,16 @@ export default function SimpleScrollContainer({
   let timer: NodeJS.Timeout | null = null;
   useResizeObserver({
     element: contentRef.current,
-    delay: 300,
+    delay: 200,
     callback: () => {
       if (timer !== null) clearTimeout(timer);
 
       if (!loadComplete) return;
 
       timer = setTimeout(() => {
-        // console.log("재계산");
+        console.log("재계산");
         ScrollTrigger.refresh();
-      }, 1000);
+      }, 200);
     },
   });
 
