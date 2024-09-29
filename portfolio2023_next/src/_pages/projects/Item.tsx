@@ -40,16 +40,18 @@ export default function ProjectItem({
   const [hide, setHide] = useState<boolean>(true);
   const [hover, setHover] = useState<boolean>(false);
 
+  const onFadeIn = useCallback(() => {
+    setHide(false);
+  }, []);
+
   const fadeIn = useCallback(
     (): UseGSAPAnimationScrollTriggerOption => ({
       trigger: triggerRef.current,
       start: "top 80%",
       end: "top 80%",
-      onEnter: () => {
-        setHide(false);
-      },
+      onEnter: onFadeIn,
     }),
-    [],
+    [onFadeIn],
   );
 
   useGSAPAnimation(
@@ -63,16 +65,18 @@ export default function ProjectItem({
     [code, category, fadeIn],
   );
 
+  const onReset = useCallback(() => {
+    setHide(true);
+  }, []);
+
   const resetScroll = useCallback(
     (): UseGSAPAnimationScrollTriggerOption => ({
       trigger: projectList,
       start: "top bottom",
       end: "top bottom",
-      onLeaveBack: () => {
-        setHide(true);
-      },
+      onLeaveBack: onReset,
     }),
-    [projectList],
+    [onReset, projectList],
   );
 
   useGSAPAnimation(
@@ -81,7 +85,6 @@ export default function ProjectItem({
       disabled: category !== "",
       elements: [projectList],
       scrollCreate: resetScroll(),
-      log: ["reset"],
     },
     [code, category, resetScroll],
   );
