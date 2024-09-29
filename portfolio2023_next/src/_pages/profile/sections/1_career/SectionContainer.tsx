@@ -18,7 +18,7 @@ export default function ProfileCareerSectionContainer() {
         title="Career"
         desc={["지난 6년간 실무 경험을 쌓은 ", "근무 경력입니다."]}
       />
-      <PageSectionContents code="career" sectionClassName="career">
+      <PageSectionContents code="careerContents" sectionClassName="career">
         <CareerList />
       </PageSectionContents>
     </PageSectionContainer>

@@ -21,7 +21,6 @@ import { pageDetailLoadState } from "@/jotai/load.state";
 
 // hook
 import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
-import useLog from "@/hooks/util/useLog";
 
 export default function ProjectItem({
   code,
@@ -88,7 +87,6 @@ export default function ProjectItem({
     router.push(`/projects/${code}`, { scroll: false });
   }, [code, router, setDetailLoad]);
 
-  useLog({ code, category, hide });
   return (
     <StyledProjectItemContainer
       type="button"

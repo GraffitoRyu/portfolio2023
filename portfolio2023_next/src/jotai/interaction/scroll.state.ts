@@ -30,10 +30,11 @@ export const scrollPageRefState = atom<ScrollRefStateTypes>({
  * 스크롤 참조 ref 각 섹션별 상태관리; 페이지 스크롤 ref 관리
  * @state
  */
-export const scrollPageSectionRefState = atomFamily((sectionCode: string) =>
+export const scrollPageSectionRefState = atomFamily((sectionCode?: string) =>
   atom(
-    get => get(scrollPageRefState)[sectionCode],
+    get => (sectionCode ? get(scrollPageRefState)[sectionCode] : null),
     (get, set, state: ScrollRefType) => {
+      if (!sectionCode || !state) return;
       const prev = get(scrollPageRefState);
       set(scrollPageRefState, {
         ...prev,
