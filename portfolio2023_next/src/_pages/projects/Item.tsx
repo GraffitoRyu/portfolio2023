@@ -74,7 +74,7 @@ export default function ProjectItem({
       elements: [projectList, triggerRef.current],
       scrollCreate: [fadeIn(), resetScroll()],
     },
-    [code, category, hide, fadeIn, resetScroll],
+    [code, category, fadeIn, resetScroll],
   );
 
   // 프로젝트 상세 열 때, 호버 상태 초기화
