@@ -221,18 +221,22 @@ export default function useGSAPAnimation(
 
       // 비활성화 시 동작 제한
       if (disabled) return;
+      if (key?.startsWith("project/list/item/"))
+        console.log(`[useGSAPAnimation; ${key}] disabled`, { disabled, deps });
 
       // 서버 실행 방지
       if (typeof window === "undefined") return;
 
       // 페이지 진입 시, 완료될 때까지 GSAP 방지
       if (!loadComplete) return;
+      if (key?.startsWith("project/list/item/"))
+        console.log(`[useGSAPAnimation; ${key}] loadComplete`, loadComplete);
 
       if (validElementLength() === 0) {
-        // console.error(
-        //   `[useGSAPAnimation; ${key} :: useGSAP] 스크롤 인터랙션 초기화 오류 :: element 유효하지 않음`,
-        //   elements,
-        // );
+        console.error(
+          `[useGSAPAnimation; ${key}] 스크롤 인터랙션 초기화 오류 :: element 유효하지 않음`,
+          elements,
+        );
         return;
       }
 
@@ -246,6 +250,9 @@ export default function useGSAPAnimation(
       // scrollTrigger create가 있는 경우
       if (typeof scrollCreate !== "undefined")
         ScrollTrigger.create(scrollCreate);
+
+      if (key?.startsWith("project/list/item/"))
+        console.log(`[useGSAPAnimation; ${key}] loadComplete`, scrollCreate);
 
       // console.log(`[useGSAPAnimation; ${key} :: useGSAP] deps`, deps);
     },

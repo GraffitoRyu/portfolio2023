@@ -79,7 +79,7 @@ export default function ProjectItem({
   useGSAPAnimation(
     {
       key: `project/list/item/${code}`,
-      disabled: category !== "",
+      disabled: typeof category !== "undefined" || category !== "",
       elements: [projectList, triggerRef.current],
       options: [fadeIn()],
       scrollCreate: resetScroll(),
