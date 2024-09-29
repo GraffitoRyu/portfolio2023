@@ -65,7 +65,7 @@ export default function SimpleScrollContainer({
       if (!loadComplete) return;
 
       timer = setTimeout(() => {
-        console.log("재계산");
+        // console.log("재계산");
         ScrollTrigger.refresh();
       }, 1000);
     },

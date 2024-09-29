@@ -116,6 +116,7 @@ export default function useGSAPAnimation(
     scrollCreate, // gsap scrollTrigger create
     options, // gsap tween animation options
     disabled = false,
+    log,
   }: Partial<UseGSAPAnimationHookProps>,
   deps: React.DependencyList,
 ) {
@@ -203,6 +204,19 @@ export default function useGSAPAnimation(
 
   return useGSAP(
     () => {
+      if (typeof log !== "undefined" && log.length > 0) {
+        console.log(`[useGSAPAnimation; ${key}]`, {
+          log,
+          props: {
+            deps,
+            disabled,
+            loadComplete,
+            isValidElements: validElementLength() === 0,
+            options,
+            scrollCreate,
+          },
+        });
+      }
       // console.log(`[useGSAPAnimation; ${key}]`);
 
       // 비활성화 시 동작 제한

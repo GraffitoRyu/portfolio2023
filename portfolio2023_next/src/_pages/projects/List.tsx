@@ -14,6 +14,7 @@ import { useQueryProjectListData } from "@/lib/query";
 export default function ProjectList() {
   const { data: listData } = useQueryProjectListData();
 
+  console.log(`listData:`, listData?.length);
   return (
     <StyledProjectListContainer>
       {listData?.map(({ code, summary }: ProjectsAPIDataType, i: number) => (

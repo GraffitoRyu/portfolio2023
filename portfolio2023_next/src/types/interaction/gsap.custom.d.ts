@@ -157,4 +157,9 @@ interface UseGSAPAnimationHookProps {
    * @optional
    */
   disabled: boolean;
+  /**
+   * 개발용 로그
+   * @optional
+   */
+  log: unknown[];
 }
