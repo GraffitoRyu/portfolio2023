@@ -23,7 +23,7 @@ export default function ProfileTechStacksSectionContainer() {
         ]}
       />
       <PageSectionContents
-        code="stacks"
+        code="stacksContents"
         sectionClassName="stacks"
         // sideContents={<StackLegend />}
       >

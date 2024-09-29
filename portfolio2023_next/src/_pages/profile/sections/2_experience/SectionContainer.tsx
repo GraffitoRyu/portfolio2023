@@ -22,7 +22,10 @@ export default function ProfileExperienceSectionContainer() {
           "프로젝트에 참여하면서 경험한 것들입니다.",
         ]}
       />
-      <PageSectionContents code="experience" sectionClassName="experience">
+      <PageSectionContents
+        code="experienceContents"
+        sectionClassName="experience"
+      >
         <ProfileExperienceContents />
       </PageSectionContents>
     </PageSectionContainer>

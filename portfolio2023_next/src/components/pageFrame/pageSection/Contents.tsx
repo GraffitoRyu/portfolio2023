@@ -29,7 +29,7 @@ export default function PageSectionContents({
   sectionClassName,
   sideClassName,
 }: PageSectionContentsProps) {
-  const setScrollRef = useSetAtom(scrollPageSectionRefState(`${code}Contents`));
+  const setScrollRef = useSetAtom(scrollPageSectionRefState(code));
 
   const updateScrollRef = useCallback(
     (node: HTMLElement | null) => {
