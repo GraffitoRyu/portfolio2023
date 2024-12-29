@@ -1,0 +1,34 @@
+{
+  "name": "@portfolio/roots",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "author": "GraffitoRyu",
+  "description": "포르폴리오/마크업 최상위 라이브러리 공급자 프리셋",
+  "scripts": {},
+  "files": [
+    "src"
+  ],
+  "main": "./src/index.tsx",
+  "module": "./src/index.tsx",
+  "export": {
+    ".": "./src/index.tsx"
+  },
+  "devDependencies": {
+    "@portfolio/eslint": "workspace:*",
+    "@portfolio/tsconfig": "workspace:*",
+    "@portfolio/types": "workspace:*",
+    "@portfolio/ui": "workspace:*",
+    "@tanstack/react-query": "^5.62.11",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "eslint": "^9.17.0",
+    "jotai": "^2.11.0",
+    "next": "^15.1.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "styled-components": "^6.1.13",
+    "typescript": "~5.7.2"
+  }
+}

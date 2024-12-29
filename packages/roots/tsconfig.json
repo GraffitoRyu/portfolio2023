@@ -1,0 +1,12 @@
+{
+  "extends": "@portfolio/tsconfig/nextjs.json",
+  "compilerOptions": {
+    "rootDir": "."
+  },
+  "include": [
+    "src",
+    "../types/src/svgr/svgr.d.ts",
+    "../types/src/styled-components/styled.d.ts"
+  ],
+  "exclude": ["node_modules"]
+}
