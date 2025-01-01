@@ -1,27 +1,15 @@
 {
-  "include": [
-    "**/*",
-    "**/.server/**/*",
-    "**/.client/**/*",
-    ".react-router/types/**/*"
-  ],
+  "extends": "@portfolio/tsconfig/vite.json",
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES2022"],
-    "types": ["node", "vite/client"],
-    "target": "ES2022",
-    "module": "ES2022",
-    "moduleResolution": "bundler",
-    "jsx": "react-jsx",
-    "rootDirs": [".", "./.react-router/types"],
-    "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"]
-    },
-    "esModuleInterop": true,
-    "verbatimModuleSyntax": true,
-    "noEmit": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true
-  }
+      "@/*": ["./src/*"],
+      "@img/*": ["./public/img/*"]
+    }
+  },
+  "include": [
+    "**.ts",
+    "**.tsx",
+    "../../packages/types/src/svgr/svgr.d.ts",
+    "../../packages/types/src/styled-components/styled.d.ts"
+  ]
 }

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { useSetAtom } from "jotai";
 
-import { modalState, modalDraggableState } from "@chickenmonger/ui/modal";
+import { modalState, modalDraggableState } from "@portfolio/ui/modal";
 
 /**
  * 경로변경 이벤트 감지

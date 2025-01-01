@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { useAtomValue } from "jotai";
-import { systemThemeState } from "@chickenmonger/util-jotai";
+import { systemThemeState } from "@portfolio/util-jotai";
 
 /**
  * 서비스 테마관리 공급자

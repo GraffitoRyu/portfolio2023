@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect } from "react";
-import { setServerState } from "@chickenmonger/util-jotai";
+import { setServerState } from "@portfolio/util-jotai";
 
 /**
  * 쿠키 요청값 업데이트

@@ -7,5 +7,12 @@
   "description": "포르폴리오/타입스크립트 설정",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "files": [
+    "base.json",
+    "nextjs.json",
+    "react.json",
+    "vite.json",
+    "vite.node.json"
+  ]
 }

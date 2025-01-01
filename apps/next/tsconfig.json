@@ -1,25 +1,9 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "@portfolio/tsconfig/next.json",
   "compilerOptions": {
-    "baseUrl": "./",
-    "moduleResolution": "bundler",
-    "plugins": [
-      {
-        "name": "next"
-      },
-      {
-        "name": "typescript-plugin-styled-components",
-        "options": {
-          "ssr": true,
-          "displayName": true,
-          "fileName": false
-        }
-      }
-    ],
     "paths": {
       "@/*": ["./src/*"],
-      "img/*": ["./public/img/*"],
-      "@vercel/analytics/react": ["./node_modules/@vercel/analytics/dist/react"]
+      "@img/*": ["./public/img/*"]
     }
   },
   "include": [
@@ -27,7 +11,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "jest.setup.js"
+    "../../packages/types/src/svgr/svgr.d.ts",
+    "../../packages/types/src/styled-components/styled.d.ts"
   ],
   "exclude": ["node_modules"]
 }
