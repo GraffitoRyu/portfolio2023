@@ -1,0 +1,29 @@
+{
+  "name": "@portfolio/preset-data",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "author": "GraffitoRyu",
+  "description": "포트폴리오/데이터 프리셋",
+  "scripts": {},
+  "module": "./src/index.tsx",
+  "main": "./src/index.tsx",
+  "exports": {
+    ".": "./src/index.tsx"
+  },
+  "peerDependencies": {
+    "react": ">= 18",
+    "react-dom": ">= 18"
+  },
+  "devDependencies": {
+    "@portfolio/eslint": "workspace:*",
+    "@portfolio/tsconfig": "workspace:*",
+    "@portfolio/types": "workspace:*",
+    "@types/node": "^22.10.4",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "eslint": "^9.17.0",
+    "prettier": "^3.4.2",
+    "typescript": "~5.7.2"
+  }
+}

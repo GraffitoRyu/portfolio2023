@@ -1,3 +1,5 @@
+import { SitemapDataType, type SitemapCollectionType } from "@portfolio/types";
+
 /**
  * 사이트맵; 포트폴리오 라우팅 데이터
  * @type {SitemapDataType[]}

@@ -1,5 +1,5 @@
-import { convert2Digit } from "./convert.util";
-import { isValidDateType } from "./validation.util";
+import { convert2Digit } from "./convert";
+import { isValidDateType } from "./data/validation";
 
 /**
  * 접속위치에 따른 시간대 보정

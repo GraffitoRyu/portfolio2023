@@ -1,4 +1,4 @@
-import { dateFormat } from "./data/dateTime.util";
+import { dateFormat } from "./date-time";
 
 /**
  * 콘솔로그; 개발용

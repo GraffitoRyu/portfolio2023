@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 import {
   svgrConfigNextjs,
   openBrowserLocalNextServer,
-} from "@portfolio/config-preset";
+} from "@portfolio/preset-config";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true, // 리액트 엄격모드

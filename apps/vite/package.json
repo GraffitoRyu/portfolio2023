@@ -21,6 +21,7 @@
     "@portfolio/eslint": "workspace:*",
     "@portfolio/tsconfig": "workspace:*",
     "@portfolio/types": "workspace:*",
+    "@portfolio/utils": "workspace:*",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "@tanstack/router-plugin": "^1.95.0",

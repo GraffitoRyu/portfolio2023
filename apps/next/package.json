@@ -31,8 +31,10 @@
   "devDependencies": {
     "@portfolio/eslint": "workspace:*",
     "@portfolio/tsconfig": "workspace:*",
-    "@portfolio/config-preset": "workspace:*",
+    "@portfolio/preset-config": "workspace:*",
+    "@portfolio/preset-data": "workspace:*",
     "@portfolio/types": "workspace:*",
+    "@portfolio/utils": "workspace:*",
     "@svgr/webpack": "^8.1.0",
     "@tanstack/eslint-plugin-query": "^5.62.9",
     "@testing-library/jest-dom": "^6.6.3",

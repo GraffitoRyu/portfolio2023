@@ -7,9 +7,15 @@
   "description": "포르폴리오/ESLint 설정",
   "exports": {
     "./base": "./base.js",
-    "./next-js": "./next.js",
-    "./react-internal": "./react-internal.js"
+    "./next": "./next.js",
+    "./react": "./react.js"
   },
+  "files": [
+    "base.js",
+    "next.js",
+    "react.js",
+    "vite.js"
+  ],
   "devDependencies": {
     "@eslint/js": "^9.17.0",
     "@next/eslint-plugin-next": "^15.1.3",

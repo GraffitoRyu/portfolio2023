@@ -1,0 +1,10 @@
+{
+  "extends": "@portfolio/tsconfig/base.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler"
+  },
+  "include": ["src", "index.tsx"],
+  "exclude": ["node_modules"]
+}

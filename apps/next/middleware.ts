@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { initServerCookieState } from "@/jotai/server/util.server";
-import setViewportDeviceInfo from "@/utils/cross_browsing/checkDevice.util";
+import setViewportDeviceInfo from "@/utils/cross-browsing/check-device";
 
 /**
  * Next.js 미들웨어
