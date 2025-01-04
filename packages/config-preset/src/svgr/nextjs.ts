@@ -1,8 +1,13 @@
+import type {
+  WebpackConfigType,
+  WebpackModuleRuleType,
+} from "@portfolio/types";
+
 /**
  * SVGR 설정; Next.js
  * @see https://react-svgr.com/docs/next/
  */
-const svgrConfigNextjs = config => {
+const svgrConfigNextjs = (config: WebpackConfigType) => {
   if (!config.module || !config.module.rules) {
     return config;
   }
@@ -10,10 +15,14 @@ const svgrConfigNextjs = config => {
   // Configures webpack to handle SVG files with SVGR. SVGR optimizes and transforms SVG files
   // into React components. See https://react-svgr.com/docs/next/
 
+  const isCheckSvg = (rule: WebpackModuleRuleType): boolean =>
+    typeof rule === "object" &&
+    typeof rule?.test === "function" &&
+    rule?.test(".svg");
+
   // Grab the existing rule that handles SVG imports
-  const fileLoaderRule = config.module.rules.find(rule =>
-    rule.test?.test?.(".svg"),
-  );
+  const fileLoaderRule: WebpackModuleRuleType =
+    config.module.rules.find(isCheckSvg);
 
   if (fileLoaderRule) {
     config.module.rules.push(
