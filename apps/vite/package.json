@@ -12,8 +12,8 @@
   "dependencies": {
     "@portfolio/roots": "workspace:*",
     "@portfolio/ui": "workspace:*",
-    "@tanstack/react-router": "^1.95.0",
-    "@tanstack/router-devtools": "^1.95.0",
+    "@tanstack/react-router": "^1.95.1",
+    "@tanstack/router-devtools": "^1.95.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -24,7 +24,7 @@
     "@portfolio/utils": "workspace:*",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
-    "@tanstack/router-plugin": "^1.95.0",
+    "@tanstack/router-plugin": "^1.95.1",
     "@vitejs/plugin-react-swc": "^3.7.2",
     "vite": "^6.0.7"
   }

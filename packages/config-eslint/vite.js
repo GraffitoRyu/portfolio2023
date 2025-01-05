@@ -6,7 +6,7 @@ import pluginRouter from "@tanstack/eslint-plugin-router";
  *
  * @type {import("eslint").Linter.Config}
  * */
-export const viteConfig = [
+export const eslintViteConfig = [
   ...pluginRouter.configs["flat/recommended"],
   ...reactConfig,
 ];

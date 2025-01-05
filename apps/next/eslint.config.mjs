@@ -1,4 +1,4 @@
-import nextjsEslintConfig from "@portfolio/eslint";
-const eslintConfig = nextjsEslintConfig;
+import { eslintNextjsConfig } from "@portfolio/eslint/next";
+const eslintConfig = eslintNextjsConfig;
 
 export default eslintConfig;
