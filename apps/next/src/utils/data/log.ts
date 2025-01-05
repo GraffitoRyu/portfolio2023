@@ -1,4 +1,4 @@
-import { dateFormat } from "./date-time";
+import { dateFormat } from "@portfolio/utils";
 
 /**
  * 콘솔로그; 개발용
