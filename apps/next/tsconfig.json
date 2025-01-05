@@ -1,5 +1,5 @@
 {
-  "extends": "@portfolio/tsconfig/nextjs.json",
+  "extends": "@portfolio/tsconfig/next.json",
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"],
@@ -8,8 +8,7 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "src",
     ".next/types/**/*.ts",
     "../../packages/types/src/svgr/svgr.d.ts",
     "../../packages/types/src/styled-components/styled.d.ts"

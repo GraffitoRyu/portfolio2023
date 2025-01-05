@@ -1,0 +1,22 @@
+{
+  "extends": "@portfolio/tsconfig/vite.node.json",
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowSyntheticDefaultImports": true,
+    "incremental": true,
+    "noEmit": false
+  },
+  "include": [
+    "vite.config.ts",
+    "vite-env.d.ts",
+    "../../packages/types/src/styled-components/styled.d.ts"
+  ]
+}
+
+// https://github.com/TanStack/router/blob/main/examples/react/router-monorepo-react-query/packages/app/package.json
+// https://github.com/bluwy/create-vite-extra/blob/master/template-ssr-react-ts/tsconfig.node.json
+
+
+// https://github.com/stormkit-io/monorepo-template-react/blob/main/tsconfig.json

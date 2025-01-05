@@ -44,7 +44,7 @@ lerna-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-vite-env.d.ts
+# vite-env.d.ts
 
 # Editor directories and files
 # .vscode/*

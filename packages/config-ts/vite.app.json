@@ -1,9 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./base.json",
   "compilerOptions": {
     "useDefineForClassFields": true,
-    "module": "ESNext",
-    "sourceMap": true,
 
     "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
@@ -22,6 +21,5 @@
     "preserveWatchOutput": true,
 
     "noEmit": true
-  },
-  "extends": "./base.json"
+  }
 }

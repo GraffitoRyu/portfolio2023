@@ -1,15 +1,7 @@
 {
-  "extends": "@portfolio/tsconfig/vite.json",
-  "compilerOptions": {
-    "paths": {
-      "@/*": ["./src/*"],
-      "@img/*": ["./public/img/*"]
-    }
-  },
-  "include": [
-    "**.ts",
-    "**.tsx",
-    "../../packages/types/src/svgr/svgr.d.ts",
-    "../../packages/types/src/styled-components/styled.d.ts"
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
   ]
 }
