@@ -1,16 +1,51 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "ui": "tui",
+  "ui": "stream",
+  "globalDependencies": [".env"],
+  "globalEnv": [
+    "FIREBASE_API_KEY",
+    "FIREBASE_AUTH_DOMAIN",
+    "FIREBASE_DATABASE_URL",
+    "FIREBASE_PROJECT_ID",
+    "FIREBASE_STORAGE_BUCKET",
+    "FIREBASE_MESSAGING_SENDER_ID",
+    "FIREBASE_APP_ID",
+    "FIREBASE_MEASUREMENT_ID",
+    "NEXT_PUBLIC_GET_DATA_DOMAIN"
+  ],
   "tasks": {
-    "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env"],
-      "outputs": [".next/**", "!.next/cache/**", "public/**"]
+    "package:build": {
+      "outputs": ["dist/**"]
     },
-    "dev": {
+    "next:dev": {
       "inputs": ["$TURBO_DEFAULT$", ".env"],
       "cache": false,
       "persistent": true
+    },
+    "next:lint": {},
+    "next:build": {
+      "dependsOn": ["^package:build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "outputs": [".next/**", "!.next/cache/**", "public/**"]
+    },
+    "next:start": {
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "outputs": [".next/**", "!.next/cache/**", "public/**"]
+    },
+    "vite:dev": {
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "cache": false,
+      "persistent": true
+    },
+    "vite:lint": {},
+    "vite:build": {
+      "dependsOn": ["^package:build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "outputs": ["dist/**"]
+    },
+    "vite:start": {
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "outputs": ["dist/**"]
     }
   }
 }

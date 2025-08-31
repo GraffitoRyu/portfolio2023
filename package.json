@@ -2,17 +2,24 @@
   "name": "@portfolio/monorepo",
   "private": true,
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev"
+    "package:build": "turbo package:build",
+    "next:dev": "turbo next:dev",
+    "next:lint": "turbo next:lint",
+    "next:build": "turbo next:build",
+    "next:start": "turbo next:start",
+    "vite:dev": "turbo vite:dev",
+    "vite:lint": "turbo vite:lint",
+    "vite:build": "turbo vite:build",
+    "vite:start": "turbo vite:start"
   },
   "devDependencies": {
-    "prettier": "^3.4.2",
-    "turbo": "^2.4.0",
-    "typescript": "5.7.3"
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.6",
+    "typescript": "5.9.2"
   },
-  "packageManager": "pnpm@10.2.1",
+  "packageManager": "pnpm@10.15.0",
   "engines": {
     "node": ">=22",
-    "pnpm": ">=9"
+    "pnpm": ">=10"
   }
 }

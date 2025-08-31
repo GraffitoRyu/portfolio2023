@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --port=3001",
-    "build": "vite build",
-    "serve": "vite preview",
-    "start": "vite"
+    "vite:dev": "vite --port=3001",
+    "vite:build": "vite build",
+    "vite:serve": "vite preview",
+    "vite:start": "vite"
   },
   "dependencies": {
     "@portfolio/roots": "workspace:*",
