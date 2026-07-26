@@ -14,7 +14,7 @@ import { pageLoadState } from "@/jotai/load.state";
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 
-export default function SitemapBtn({ code, path, name }: SitemapDataType) {
+export default function SitemapBtn({ path, name }: SitemapDataType) {
   const router = useRouter();
 
   // 현재 페이지 경로
@@ -49,7 +49,7 @@ export default function SitemapBtn({ code, path, name }: SitemapDataType) {
 
     setPageAtom(prev => ({
       ...prev,
-      changePageName: code,
+      changePageName: path === "/projects" ? "projects" : "profile",
       loaded: false,
       loadComplete: false,
     }));
@@ -59,7 +59,7 @@ export default function SitemapBtn({ code, path, name }: SitemapDataType) {
       // setPageAtom(prev => ({ ...prev,  }));
       router.push(path, { scroll: false });
     }, transTime.common.coverUp);
-  }, [code, path, pathname, router, setPageAtom]);
+  }, [path, pathname, router, setPageAtom]);
 
   return (
     <StyledSitemapLink

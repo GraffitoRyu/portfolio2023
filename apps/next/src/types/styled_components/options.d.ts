@@ -16,10 +16,10 @@ type StyleOptionDetailInfoItem = {
 };
 
 type StyleOptionTooltipBox = {
-  $section: string;
+  $section: "footer" | "gnbUtilBtn";
   $pos: string[];
 };
 
 type StyleOptionTooltipText = {
-  $section: string;
+  $section: "footer" | "gnbUtilBtn";
 };

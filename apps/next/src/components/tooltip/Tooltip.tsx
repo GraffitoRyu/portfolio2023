@@ -22,7 +22,7 @@ export default function Tooltip({
   title?: string | React.ReactNode;
   contents: string | React.ReactNode;
   pos: string[];
-  section: string;
+  section: "footer" | "gnbUtilBtn";
   active: boolean;
   show: boolean;
 }) {

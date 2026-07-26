@@ -6,7 +6,7 @@ type PageLoadStateTypes = {
   init: boolean; // 새로고침 후 첫 진입
   initComplete: boolean; // 인트로 애니메이션 종료 여부
   currentPage: string; // 현재 페이지
-  changePageName: string; // 페이지 전환 페이지 코드
+  changePageName: "profile" | "projects"; // 페이지 전환 페이지 코드
   loaded: boolean; // 로딩 완료 여부
   loadComplete: boolean; // 로딩 애니메이션 종료 여부
   notFound: boolean; // 404 page

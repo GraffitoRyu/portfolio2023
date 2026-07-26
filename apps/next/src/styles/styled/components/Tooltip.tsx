@@ -75,7 +75,7 @@ export const StyledTooltipBox = styled.div<StyleOptionTooltipBox>`
 
 export const StyledTooltipTitle = styled.h6<StyleOptionTooltipText>`
   ${size({ w: "fit-content", mb: 16 })}
-  color:${({ $section, theme }) => theme[$section].tooltipTitle};
+  color:${({ $section, theme }) => theme[$section].tooltipText};
   ${font({
     size: 24,
     weight: 500,

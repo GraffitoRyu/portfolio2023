@@ -12,10 +12,10 @@ import cacheOptions from "@/lib/cache";
  */
 export async function GET(
   req: NextRequest,
-  { params }: { params: { detailCode: string } },
+  { params }: { params: Promise<{ detailCode: string }> },
 ): Promise<NextResponse<ProjectsAPIDataType | undefined>> {
   // 프로젝트 상세 코드
-  const detailCode = params?.detailCode || undefined;
+  const { detailCode } = await params;
 
   // 파라미터가 없는 경우
   if (!detailCode) return NextResponse.json(undefined);

@@ -35,12 +35,15 @@ import { getServerState } from "@/jotai/server/util.server";
  * 레이아웃; 전역 레이아웃
  * @NextLayout
  */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const locale = getServerState<SystemLanguageType>("systemLocale", "ko");
+  const locale = await getServerState<SystemLanguageType>(
+    "systemLocale",
+    "ko",
+  );
 
   return (
     <html

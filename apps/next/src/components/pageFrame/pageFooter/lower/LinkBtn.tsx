@@ -82,7 +82,7 @@ export default function FooterLink({
 
     setPageAtom(prev => ({
       ...prev,
-      changePageName: code,
+      changePageName: path === "/projects" ? "projects" : "profile",
       loaded: false,
     }));
 
@@ -91,7 +91,7 @@ export default function FooterLink({
       setPageAtom(prev => ({ ...prev, loadComplete: false }));
       router.push(path, { scroll: false });
     }, transTime.common.coverUp);
-  }, [code, path, pathname, router, setPageAtom]);
+  }, [path, pathname, router, setPageAtom]);
 
   // 포트폴리오 페이지 메뉴
   if (isNav)

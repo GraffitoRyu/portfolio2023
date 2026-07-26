@@ -10,6 +10,9 @@ import { eslintBaseConfig as baseConfig } from "./base.js";
  * @type {import("eslint").Linter.Config}
  * */
 export const eslintNextjsConfig = [
+  {
+    ignores: [".next/**"],
+  },
   ...baseConfig,
   {
     ...pluginReact.configs.flat.recommended,

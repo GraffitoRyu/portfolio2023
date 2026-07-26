@@ -39,10 +39,10 @@ export function initServerCookieState(req: NextRequest, res: NextResponse) {
  * @param {unknown} alt 기본 상태 값
  * @return {unknown} 상태값
  */
-export const getServerState = <StateValueType>(
+export const getServerState = async <StateValueType>(
   stateKey: string,
   alt: StateValueType,
-): StateValueType => {
-  const state = cookies().get(stateKey)?.value || undefined;
+): Promise<StateValueType> => {
+  const state = (await cookies()).get(stateKey)?.value || undefined;
   return state ? (parseData(state) as StateValueType) : alt;
 };
