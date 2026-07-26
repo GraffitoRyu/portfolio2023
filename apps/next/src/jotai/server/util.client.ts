@@ -3,7 +3,7 @@ import { atomWithQuery } from "jotai-tanstack-query";
 
 import type { JotaiServerAtom } from "@/types/state/server.export";
 
-import { parseData, string } from "@/utils/data/convert.util";
+import { parseData, string } from "@portfolio/utils";
 import { getFetchServerState, postFetchServerState } from "@/lib/fetch.system";
 
 /**

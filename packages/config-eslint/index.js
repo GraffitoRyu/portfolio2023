@@ -1,7 +1,7 @@
-import { eslintBaseConfig } from "./base";
-import { eslintNextjsConfig } from "./next";
-import { eslintReactConfig } from "./react";
-import { eslintViteConfig } from "./vite";
+import { eslintBaseConfig } from "./base.js";
+import { eslintNextjsConfig } from "./next.js";
+import { eslintReactConfig } from "./react.js";
+import { eslintViteConfig } from "./vite.js";
 
 const eslintConfig = {
   base: eslintBaseConfig,

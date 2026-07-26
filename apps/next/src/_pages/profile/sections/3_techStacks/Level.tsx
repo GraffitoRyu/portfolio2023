@@ -1,4 +1,4 @@
-import legendData from "@/data/stackLegend";
+import { legendData } from "@portfolio/preset-data";
 import { StyledStackLevelContainer } from "@/styles/styled/components/ProfileStacks";
 
 export default function StackLevelGauge({ level }: { level: number }) {

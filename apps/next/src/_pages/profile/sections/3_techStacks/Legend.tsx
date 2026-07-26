@@ -18,7 +18,7 @@ import {
 import useGSAPAnimation from "@/hooks/interaction/useGSAPAnimation";
 
 // data
-import legendData from "@/data/stackLegend";
+import { legendData } from "@portfolio/preset-data";
 
 export default function StackLegend() {
   const legendRef = useRef<HTMLDListElement | null>(null);

@@ -14,7 +14,7 @@ import { pageLoadState } from "@/jotai/load.state";
 import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // util
-import { isValidArray } from "@/utils/data/validation.util";
+import { isValidArray } from "@portfolio/utils";
 
 /**
  * GSAP ScrollTrigger 공통 전역옵션

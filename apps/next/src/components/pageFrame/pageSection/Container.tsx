@@ -10,7 +10,7 @@ import { StyledPageSectionContainer } from "@/styles/styled/components/PageSecti
 import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // util
-import { capitalize } from "@/utils/data/convert.util";
+import { capitalize } from "@portfolio/utils";
 
 /**
  * 페이지 본문 공통 요소; Section Container

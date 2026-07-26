@@ -17,7 +17,7 @@ import {
 import { pageLoadState } from "@/jotai/load.state";
 
 // data
-import { transCoverData } from "@/data/transCover";
+import { transCoverData } from "@portfolio/preset-data";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";

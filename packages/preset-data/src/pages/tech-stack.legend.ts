@@ -1,4 +1,4 @@
-const legendData: StackLegendTypes[] = [
+const legendData = [
   {
     label: "개인 프로젝트로 공부중",
     level: 0,
@@ -19,6 +19,6 @@ const legendData: StackLegendTypes[] = [
     label: "익숙함",
     level: 4,
   },
-];
+] satisfies Array<{ label: string; level: number }>;
 
 export default legendData;

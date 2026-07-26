@@ -1,4 +1,4 @@
-export const transCoverData: TransCoverPageTypes = {
+export const transCoverData = {
   profile: {
     title: "profile",
     desc: "",
@@ -7,4 +7,7 @@ export const transCoverData: TransCoverPageTypes = {
     title: "projects",
     desc: "",
   },
-};
+} satisfies Record<
+  "profile" | "projects",
+  { title: string; desc: string }
+>;

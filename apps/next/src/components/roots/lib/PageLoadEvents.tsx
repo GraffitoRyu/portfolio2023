@@ -8,7 +8,7 @@ import { useAtom, useSetAtom } from "jotai";
 import { pageDetailLoadState, pageLoadState } from "@/jotai/load.state";
 
 // data
-import sitemap from "@/data/sitemap";
+import { sitemap } from "@portfolio/preset-data";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";

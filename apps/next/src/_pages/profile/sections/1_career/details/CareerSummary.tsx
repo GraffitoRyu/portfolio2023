@@ -22,8 +22,7 @@ import {
 import useCheckView from "@/hooks/layout/useCheckView";
 
 // util
-import { dateFormat } from "@/utils/data/dateTime.util";
-import { isValidDateType } from "@/utils/data/validation.util";
+import { dateFormat, isValidDateType } from "@portfolio/utils";
 
 export default function CareerSummary({
   code,
