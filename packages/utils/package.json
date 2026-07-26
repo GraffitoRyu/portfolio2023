@@ -11,6 +11,9 @@
   "exports": {
     ".": "./src/index.tsx"
   },
+  "dependencies": {
+    "@portfolio/preset-data": "workspace:*"
+  },
   "peerDependencies": {
     "react": ">= 18",
     "react-dom": ">= 18"
@@ -19,7 +22,6 @@
     "@portfolio/eslint": "workspace:*",
     "@portfolio/tsconfig": "workspace:*",
     "@portfolio/types": "workspace:*",
-    "@portfolio/preset-data": "workspace:*",
     "@types/node": "^22.13.1",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",

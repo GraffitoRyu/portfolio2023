@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "types": "./src/index.d.ts",
   "main": "./src/index.d.ts",
   "module": "./src/index.d.ts",
   "exports": {
