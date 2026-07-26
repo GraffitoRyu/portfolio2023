@@ -48,7 +48,7 @@
 
 ### 1) 코어
 
-- Node.js v20.17.0
+- Node.js v24.18.0 (`.nvmrc` 기준)
 - Next.js v14; App Router
 - TypeScript
 - React v18
@@ -88,7 +88,9 @@
 
 ### 7) 패키지 관리
 
-- npm
+- pnpm v10.15.0 (`packageManager` 기준)
+- 설치: `pnpm install`
+- lockfile 검증 설치: `pnpm install --frozen-lockfile`
 
 ### 8) 배포
 

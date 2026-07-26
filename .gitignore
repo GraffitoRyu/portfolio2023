@@ -9,7 +9,6 @@ AGENTS.md
 node_modules
 .pnp
 .pnp.js
-pnpm-lock.yaml
 package-lock.json
 
 # Local env files
@@ -65,6 +64,5 @@ reference
 certificates
 *storybook.log
 storybook-static
-
 
 
