@@ -11,8 +11,8 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
-    "@tanstack/react-router": "^1.99.13",
-    "@tanstack/router-devtools": "^1.99.13",
+    "@tanstack/react-router": "1.170.18",
+    "@tanstack/router-devtools": "1.167.0",
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "styled-components": "^6.1.15"
@@ -20,13 +20,13 @@
   "devDependencies": {
     "@portfolio/eslint": "workspace:*",
     "@portfolio/tsconfig": "workspace:*",
-    "@tanstack/router-plugin": "^1.99.14",
+    "@tanstack/router-plugin": "1.168.23",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react-swc": "^3.7.2",
+    "@vitejs/plugin-react-swc": "4.3.1",
     "eslint": "9.39.5",
     "typescript": "6.0.3",
-    "vite": "^6.1.0",
-    "vite-plugin-svgr": "^4.3.0"
+    "vite": "8.1.4",
+    "vite-plugin-svgr": "5.2.0"
   }
 }

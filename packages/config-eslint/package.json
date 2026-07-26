@@ -27,7 +27,7 @@
   "dependencies": {
     "@eslint/js": "9.39.5",
     "@next/eslint-plugin-next": "16.2.11",
-    "@tanstack/eslint-plugin-router": "^1.99.3",
+    "@tanstack/eslint-plugin-router": "1.162.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-only-warn": "1.2.1",
     "eslint-plugin-react": "7.37.5",
