@@ -3,8 +3,6 @@ import { revalidateTag } from "next/cache";
 // utils
 import { nextAPILog } from "./log";
 
-// lib
-import { firebaseDB, firebaseRef, firebaseGet } from "@/lib/firebase";
 import { site } from "@/data/metadata";
 
 /**
@@ -29,6 +27,9 @@ export const getFirebaseData = async <TFetchDataType>({
   }
 
   try {
+    const { firebaseDB, firebaseRef, firebaseGet } = await import(
+      "@/lib/firebase",
+    );
     const targetReference = firebaseRef(firebaseDB, queryUrl);
 
     // 쿼리 참조 데이터
