@@ -1,8 +1,5 @@
 import type { NextConfig } from "next";
-import {
-  svgrConfigNextjs,
-  openBrowserLocalNextServer,
-} from "@portfolio/preset-config";
+import { openBrowserLocalNextServer } from "@portfolio/preset-config";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true, // 리액트 엄격모드
@@ -14,8 +11,15 @@ const nextConfig: NextConfig = {
   sassOptions: {
     silenceDeprecations: ["legacy-js-api"],
   },
-  // svg 컴포넌트 변환을 위한 설정
-  webpack: svgrConfigNextjs,
+  // Turbopack에서 svg를 React 컴포넌트로 변환
+  turbopack: {
+    rules: {
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
+      },
+    },
+  },
   async redirects() {
     // 로컬 서버 구동 시, 브라우저 창 열기
     // NODE_ENV === "development"에서만 열림

@@ -22,10 +22,10 @@
     "@types/react-dom": "19.2.3",
     "@types/webpack": "5.28.5",
     "eslint": "9.39.5",
-    "typescript": "5.9.2",
-    "next": "15.5.21",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "typescript": "6.0.3",
+    "next": "16.2.11",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
     "styled-components": "^6.1.15"
   }
 }

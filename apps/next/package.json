@@ -21,9 +21,9 @@
     "gsap": "^3.12.7",
     "jotai": "^2.11.3",
     "jotai-tanstack-query": "^0.9.0",
-    "next": "15.5.21",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "next": "16.2.11",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
     "simplebar-core": "^1.3.0",
     "simplebar-react": "^3.3.0",
     "styled-components": "^6.1.15"
@@ -41,6 +41,6 @@
     "postcss": "8.5.17",
     "sass": "1.101.0",
     "tailwindcss": "4.3.2",
-    "typescript": "5.9.2"
+    "typescript": "6.0.3"
   }
 }

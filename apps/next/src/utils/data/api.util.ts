@@ -27,9 +27,8 @@ export const getFirebaseData = async <TFetchDataType>({
   }
 
   try {
-    const { firebaseDB, firebaseRef, firebaseGet } = await import(
-      "@/lib/firebase",
-    );
+    const { firebaseDB, firebaseRef, firebaseGet } =
+      await import("@/lib/firebase");
     const targetReference = firebaseRef(firebaseDB, queryUrl);
 
     // 쿼리 참조 데이터
@@ -54,7 +53,7 @@ export const getFirebaseData = async <TFetchDataType>({
     }
 
     // 데이터 유효성 검사 및 갱신
-    revalidateTag(routeUrl);
+    revalidateTag(routeUrl, "max");
 
     return snapshotResponse.val();
   } catch (error) {
