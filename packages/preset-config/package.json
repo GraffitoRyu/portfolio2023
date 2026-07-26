@@ -5,7 +5,10 @@
   "type": "module",
   "author": "GraffitoRyu",
   "description": "포트폴리오/개발 환경 프리셋",
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
   "files": [
     "src"
   ],

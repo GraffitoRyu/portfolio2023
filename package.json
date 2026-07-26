@@ -2,15 +2,13 @@
   "name": "@portfolio/monorepo",
   "private": true,
   "scripts": {
-    "package:build": "turbo package:build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "build": "turbo build",
     "next:dev": "turbo next:dev",
-    "next:lint": "turbo next:lint",
-    "next:build": "turbo next:build",
     "next:start": "turbo next:start",
     "vite:dev": "turbo vite:dev",
-    "vite:lint": "turbo vite:lint",
-    "vite:build": "turbo vite:build",
-    "vite:start": "turbo vite:start"
+    "vite:preview": "turbo vite:preview"
   },
   "devDependencies": {
     "prettier": "^3.6.2",

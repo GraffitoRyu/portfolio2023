@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "vite:dev": "vite --port=3001",
-    "vite:build": "vite build",
-    "vite:serve": "vite preview",
-    "vite:start": "vite"
+    "build": "vite build",
+    "vite:preview": "vite preview",
+    "lint": "eslint .",
+    "typecheck": "tsc -b"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.99.13",

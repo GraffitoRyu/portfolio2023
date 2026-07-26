@@ -14,38 +14,37 @@
     "NEXT_PUBLIC_GET_DATA_DOMAIN"
   ],
   "tasks": {
-    "package:build": {
-      "outputs": ["dist/**"]
+    "lint": {},
+    "typecheck": {
+      "dependsOn": ["^typecheck"],
+      "outputs": []
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
     },
     "next:dev": {
       "inputs": ["$TURBO_DEFAULT$", ".env"],
       "cache": false,
       "persistent": true
     },
-    "next:lint": {},
-    "next:build": {
-      "dependsOn": ["^package:build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env"],
-      "outputs": [".next/**", "!.next/cache/**", "public/**"]
-    },
     "next:start": {
+      "dependsOn": ["build"],
       "inputs": ["$TURBO_DEFAULT$", ".env"],
-      "outputs": [".next/**", "!.next/cache/**", "public/**"]
+      "cache": false,
+      "persistent": true
     },
     "vite:dev": {
       "inputs": ["$TURBO_DEFAULT$", ".env"],
       "cache": false,
       "persistent": true
     },
-    "vite:lint": {},
-    "vite:build": {
-      "dependsOn": ["^package:build"],
+    "vite:preview": {
+      "dependsOn": ["build"],
       "inputs": ["$TURBO_DEFAULT$", ".env"],
-      "outputs": ["dist/**"]
-    },
-    "vite:start": {
-      "inputs": ["$TURBO_DEFAULT$", ".env"],
-      "outputs": ["dist/**"]
+      "cache": false,
+      "persistent": true
     }
   }
 }

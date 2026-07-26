@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "next:dev": "next dev --hostname 0.0.0.0 --experimental-https",
-    "next:build": "next build",
+    "build": "next build",
     "next:start": "next start",
-    "next:lint": "next lint",
-    "test": "jest"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@portfolio/preset-data": "workspace:*",

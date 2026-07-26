@@ -8,7 +8,10 @@
   "exports": {
     ".": "./src/index.tsx"
   },
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
   "devDependencies": {
     "@portfolio/eslint": "workspace:*",
     "@portfolio/tsconfig": "workspace:*",
