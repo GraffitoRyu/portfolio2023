@@ -25,11 +25,10 @@
     "@portfolio/eslint": "workspace:*",
     "@portfolio/tsconfig": "workspace:*",
     "@portfolio/types": "workspace:*",
-    "@types/node": "^22.13.1",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
-    "eslint": "^9.20.0",
-    "prettier": "^3.4.2",
-    "typescript": "~5.7.3"
+    "@types/node": "24.13.3",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "eslint": "9.39.5",
+    "typescript": "5.9.2"
   }
 }

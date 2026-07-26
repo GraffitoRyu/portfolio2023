@@ -16,16 +16,16 @@
   "devDependencies": {
     "@portfolio/eslint": "workspace:*",
     "@portfolio/tsconfig": "workspace:*",
-    "@svgr/webpack": "^8.1.0",
-    "@types/node": "^22.13.1",
-    "@types/react": "19.0.8",
-    "@types/react-dom": "19.0.3",
-    "@types/webpack": "^5.28.5",
+    "@svgr/webpack": "8.1.0",
+    "@types/node": "24.13.3",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "@types/webpack": "5.28.5",
     "eslint": "9.39.5",
-    "typescript": "5.7.3",
-    "next": "^15.1.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "typescript": "5.9.2",
+    "next": "15.5.21",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "styled-components": "^6.1.15"
   }
 }
