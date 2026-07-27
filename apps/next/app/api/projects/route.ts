@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import { getFirebaseData } from "@/utils/data/api.util";
+import { getPortfolioData } from "@/data/repository/server";
 import cacheOptions from "@/lib/cache";
+import { projectsData } from "@portfolio/preset-data";
 
 /**
  * 프로젝트 목록 데이터 조회 API
@@ -10,10 +11,11 @@ import cacheOptions from "@/lib/cache";
  * @return {Promise<NextResponse<ProjectsAPIDataType[]>>}
  */
 export async function GET(): Promise<NextResponse<ProjectsAPIDataType[]>> {
-  const data = await getFirebaseData<ProjectsAPIDataType[]>({
+  const data = await getPortfolioData<ProjectsAPIDataType[]>({
     routeUrl: "/api/projects",
-    queryUrl: "/projects",
-    failResponse: [],
+    sourcePath: "/projects",
+    fixtureData: projectsData,
+    failureData: [],
   });
 
   const res =

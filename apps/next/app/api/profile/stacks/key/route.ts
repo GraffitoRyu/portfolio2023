@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import { getFirebaseData } from "@/utils/data/api.util";
+import { getPortfolioData } from "@/data/repository/server";
 import cacheOptions from "@/lib/cache";
+import { stackKeysData } from "@portfolio/preset-data";
 
 /**
  * 기술 스택 key 조회 API
@@ -10,10 +11,11 @@ import cacheOptions from "@/lib/cache";
  * @return {Promise<NextResponse<StackKeyAPIDataTypes[]>>}
  */
 export async function GET(): Promise<NextResponse<StackKeyAPIDataTypes[]>> {
-  const res = await getFirebaseData<StackKeyAPIDataTypes[]>({
+  const res = await getPortfolioData<StackKeyAPIDataTypes[]>({
     routeUrl: "/api/profile/stacks/key",
-    queryUrl: "/stackKeys",
-    failResponse: [],
+    sourcePath: "/stackKeys",
+    fixtureData: stackKeysData,
+    failureData: [],
   });
 
   return NextResponse.json(res, { ...cacheOptions });

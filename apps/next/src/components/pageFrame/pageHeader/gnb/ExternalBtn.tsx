@@ -1,5 +1,6 @@
 "use client";
 
+import type { SitemapExternalData } from "@portfolio/preset-data";
 import { useEffect, useRef, useState } from "react";
 
 // components
@@ -14,7 +15,7 @@ import { transTime } from "@/styles/styled/preset/transTime";
 // SVG
 import ExternalIcon from "./BtnIcons";
 
-export default function ExternalBtn({ path, name }: SitemapDataType) {
+export default function ExternalBtn({ path, name }: SitemapExternalData) {
   const [hover, setHover] = useState<string>("");
   const [active, setActive] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);

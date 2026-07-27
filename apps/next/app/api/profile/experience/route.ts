@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import { getFirebaseData } from "@/utils/data/api.util";
+import { getPortfolioData } from "@/data/repository/server";
 import cacheOptions from "@/lib/cache";
+import { experienceData } from "@portfolio/preset-data";
 
 /**
  * 경험 내용 조회 API
@@ -10,10 +11,11 @@ import cacheOptions from "@/lib/cache";
  * @return {Promise<NextResponse<ExperienceAPIDataTypes[]>>}
  */
 export async function GET(): Promise<NextResponse<ExperienceAPIDataTypes[]>> {
-  const res = await getFirebaseData<ExperienceAPIDataTypes[]>({
+  const res = await getPortfolioData<ExperienceAPIDataTypes[]>({
     routeUrl: "/api/profile/experience",
-    queryUrl: "/experience",
-    failResponse: [],
+    sourcePath: "/experience",
+    fixtureData: experienceData,
+    failureData: [],
   });
 
   return NextResponse.json(res, { ...cacheOptions });

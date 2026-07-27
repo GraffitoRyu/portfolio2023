@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useRef } from "react";
 import { useAtomValue } from "jotai";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { assetManifest } from "@portfolio/preset-data";
+import { resolvePublicAssetUrl } from "@/data/assets";
 
 // style components
 import {
@@ -29,6 +31,12 @@ export default function DetailVisualImage() {
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLDivElement | null>(null);
   const imgCoverRef = useRef<HTMLDivElement | null>(null);
+  const projectAssets =
+    category && category in assetManifest.public.projects
+      ? assetManifest.public.projects[
+          category as keyof typeof assetManifest.public.projects
+        ]
+      : null;
 
   useGSAPAnimation(
     {
@@ -59,14 +67,14 @@ export default function DetailVisualImage() {
 
   return (
     <StyledPDVisualImageContainer ref={triggerRef}>
-      {category ? (
+      {category && projectAssets ? (
         <StyledPDVisualImage ref={imgRef}>
           <Image
-            src={`/img/details/intro_${category}.jpg`}
+            src={resolvePublicAssetUrl(projectAssets.intro)}
             alt={typeof category === "string" ? category : "Detail Visual"}
             fill={true}
             placeholder="blur"
-            blurDataURL={`/img/details/intro_${category}.jpg`}
+            blurDataURL={resolvePublicAssetUrl(projectAssets.intro)}
           />
         </StyledPDVisualImage>
       ) : null}

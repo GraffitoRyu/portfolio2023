@@ -1,27 +1,19 @@
-interface CareerAPIDataType {
-  [index: string]: string | CareerSummaryTypes | CareerDetailsTypes | undefined;
-  code: string;
-  summary: CareerSummaryTypes;
-  details: CareerDetailsTypes;
+import type {
+  CareerData,
+  CareerDetailsData,
+  CareerSummaryData,
+  ExperienceData,
+  StackData,
+  StackKeyData,
+} from "@portfolio/preset-data";
+
+declare global {
+  type CareerAPIDataType = CareerData;
+  type CareerSummaryTypes = CareerSummaryData;
+  type CareerDetailsTypes = CareerDetailsData;
+  type ExperienceAPIDataTypes = ExperienceData;
+  type StackAPIDataTypes = StackData;
+  type StackKeyAPIDataTypes = StackKeyData;
 }
 
-interface ExperienceAPIDataTypes {
-  [index: string]: string | string[] | number | boolean | undefined;
-  code: string;
-  title?: string;
-  desc: string[];
-}
-
-interface StackAPIDataTypes {
-  [index: string]: string | number;
-  code: string;
-  name: string;
-  category: string;
-  level: number;
-}
-
-interface StackKeyAPIDataTypes {
-  [index: string]: string;
-  code: string;
-  name: string;
-}
+export {};

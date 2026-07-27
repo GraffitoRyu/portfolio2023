@@ -1,8 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useSetAtom } from "jotai";
+import { useEffect, useRef, useState } from "react";
 import ClipboardJS from "clipboard";
 
 // components
@@ -17,28 +15,19 @@ import {
   StyledFooterLinkItem,
 } from "@/styles/styled/components/PageFooter";
 
-// state
-import { pageLoadState } from "@/jotai/load.state";
-
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
+import usePortfolioNavigation from "@/hooks/navigation/usePortfolioNavigation";
+import { resolvePublicAssetUrl } from "@/data/assets";
 
 export default function FooterLink({
   code,
+  kind,
   name,
   path,
-  isCopy,
-  isExternal,
-  isDownload,
 }: SitemapDataType) {
-  const router = useRouter();
-  // 현재 페이지 경로
-  const pathname = usePathname();
-  // 페이지 상태 관리
-  const setPageAtom = useSetAtom(pageLoadState);
-  // const container = useAtomValue(scrollPageSectionRefState("container"));
-
-  const isNav: boolean = !isExternal ? true : false;
+  const { navigate } = usePortfolioNavigation();
+  const href = kind === "download" ? resolvePublicAssetUrl(path) : path;
 
   const downBtnRef = useRef<HTMLButtonElement | null>(null);
   const [hoverText, setHoverText] = useState<string>("");
@@ -76,32 +65,15 @@ export default function FooterLink({
       }, 3000);
   }, [copiedShow]);
 
-  const onClickLink = useCallback(() => {
-    // 페이지 전환 커버 동작 후 이동 시작
-    if (pathname === path) return;
-
-    setPageAtom(prev => ({
-      ...prev,
-      changePageName: path === "/projects" ? "projects" : "profile",
-      loaded: false,
-    }));
-
-    setTimeout(() => {
-      // if (container) container.scrollTo(0, 0);
-      setPageAtom(prev => ({ ...prev, loadComplete: false }));
-      router.push(path, { scroll: false });
-    }, transTime.common.coverUp);
-  }, [path, pathname, router, setPageAtom]);
-
   // 포트폴리오 페이지 메뉴
-  if (isNav)
+  if (kind === "route")
     return (
       <StyledFooterLinkItem>
         <StyledFooterLinkBtn
           as="button"
           type="button"
           className={`${hoverText}`}
-          onClick={onClickLink}
+          onClick={() => navigate({ code, path })}
           onMouseEnter={() => setHoverText("hover")}
           onMouseLeave={() => setHoverText("")}
           aria-label={`포트폴리오 페이지 ${name}로 이동하기`}
@@ -112,11 +84,11 @@ export default function FooterLink({
     );
 
   // 복사 기능 메뉴
-  if (isCopy)
+  if (kind === "copy")
     return (
       <StyledFooterLinkItem>
         <StyledFooterLinkBtn
-          href={path}
+          href={href}
           target="_blank"
           className={`${hoverText}`}
           onMouseEnter={() => setHoverText("hover")}
@@ -142,13 +114,7 @@ export default function FooterLink({
             show={copiedShow}
           >
             <StyledFooterLinkIcon>
-              <LinkIcon
-                {...{
-                  isExternal,
-                  isCopy,
-                  isDownload,
-                }}
-              />
+              <LinkIcon kind={kind} />
             </StyledFooterLinkIcon>
           </Tooltip>
         </StyledFooterLinkCopyBtn>
@@ -161,27 +127,21 @@ export default function FooterLink({
   return (
     <StyledFooterLinkItem>
       <StyledFooterLinkBtn
-        href={path}
+        href={href}
         target="_blank"
         className={`${hoverText}`}
         onMouseEnter={() => setHoverText("hover")}
         onMouseLeave={() => setHoverText("")}
         download={
-          isDownload
-            ? path.replace(`/download/${doc_code}`, `류대현_${name}`)
+          kind === "download"
+            ? href.replace(`/download/${doc_code}`, `류대현_${name}`)
             : false
         }
         aria-label={`외부 페이지 ${name} 링크로 이동하기`}
       >
         <span>{name}</span>
         <StyledFooterLinkIcon>
-          <LinkIcon
-            {...{
-              isExternal,
-              isCopy,
-              isDownload,
-            }}
-          />
+          <LinkIcon kind={kind} />
         </StyledFooterLinkIcon>
       </StyledFooterLinkBtn>
     </StyledFooterLinkItem>

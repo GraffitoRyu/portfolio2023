@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import { getFirebaseData } from "@/utils/data/api.util";
+import { getPortfolioData } from "@/data/repository/server";
 import cacheOptions from "@/lib/cache";
+import { careerData } from "@portfolio/preset-data";
 
 /**
  * 커리어 조회 API
@@ -10,10 +11,11 @@ import cacheOptions from "@/lib/cache";
  * @return {Promise<NextResponse<CareerAPIDataType[]>>}
  */
 export async function GET(): Promise<NextResponse<CareerAPIDataType[]>> {
-  const res = await getFirebaseData<CareerAPIDataType[]>({
+  const res = await getPortfolioData<CareerAPIDataType[]>({
     routeUrl: "/api/profile/career",
-    queryUrl: "/career",
-    failResponse: [],
+    sourcePath: "/career",
+    fixtureData: careerData,
+    failureData: [],
   });
 
   return NextResponse.json(res, { ...cacheOptions });

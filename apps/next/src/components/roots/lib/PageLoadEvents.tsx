@@ -8,11 +8,10 @@ import { useAtom, useSetAtom } from "jotai";
 import { pageDetailLoadState, pageLoadState } from "@/jotai/load.state";
 
 // data
-import { sitemap } from "@portfolio/preset-data";
-
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailData";
+import { getPortfolioRouteCode } from "@/hooks/navigation/usePortfolioNavigation";
 
 /**
  * Root/Library; 페이지 변경 이벤트 감지를 위한 컴포넌트
@@ -29,8 +28,6 @@ export default function PageLoadEvents() {
   const [{ init, initComplete, currentPage }, setPage] =
     useAtom<PageLoadStateTypes>(pageLoadState);
 
-  const routeData = sitemap.portfolio.filter(route => !route.isExternal);
-
   // 프로젝트 상세에 대한 열림/닫힘 상태 업데이트
   const setDetailState = useSetAtom(pageDetailLoadState);
   const { data: existCategoryDetailData } = useProjectCategoryDetailData();
@@ -40,7 +37,7 @@ export default function PageLoadEvents() {
     // 동적 경로 제외한 실 페이지 경로
     const newPathName: string = pathname;
     // 현재 페이지의 코드(페이지 이름) 값
-    const newPageName: string = getCurPageName(newPathName, routeData);
+    const newPageName = getPortfolioRouteCode(newPathName);
 
     if (savedPathName === newPathName) return;
 
@@ -48,10 +45,10 @@ export default function PageLoadEvents() {
     setPage(prev => ({
       ...prev,
       loaded: true,
-      cur: newPageName !== currentPage ? newPageName : currentPage,
+      currentPage: newPageName !== currentPage ? newPageName : currentPage,
     }));
     setPathname(newPathName);
-  }, [currentPage, pathname, routeData, savedPathName, setPage]);
+  }, [currentPage, pathname, savedPathName, setPage]);
 
   // 페이지 새로고침 또는 첫 진입 체크
   useLayoutEffect(() => {
@@ -76,14 +73,3 @@ export default function PageLoadEvents() {
 
   return null;
 }
-
-/**
- * 경로에서 페이지 이름 찾기
- * @param {string} curPath 현재 페이지 경로
- * @param {SitemapDataType[]} data 라우트 데이터
- * @return {string} 페이지 라우트 코드
- */
-export const getCurPageName = (
-  curPath: string,
-  data: SitemapDataType[],
-): string => data.filter(d => d.path === curPath)[0]?.code || "profile";

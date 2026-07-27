@@ -15,8 +15,8 @@ import { sitemap } from "@portfolio/preset-data";
 export default function Gnb() {
   const { portfolio } = sitemap;
 
-  const gnbData = portfolio.filter(d => !d.isExternal);
-  const extData = portfolio.filter(d => d.isExternal);
+  const gnbData = portfolio.filter(d => d.kind === "route");
+  const extData = portfolio.filter(d => d.kind === "external");
 
   return (
     <StyledGnbContainer className="gnb">

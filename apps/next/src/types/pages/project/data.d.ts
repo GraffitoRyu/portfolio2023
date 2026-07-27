@@ -1,16 +1,21 @@
-interface ProjectsAPIDataType {
-  [index: string]:
-    | string
-    | SummaryType
-    | ServiceType
-    | ExpType
-    | MediaType
-    | MediaType[]
-    | undefined;
-  code: string;
-  summary: SummaryType;
-  service?: ServiceType;
-  sub_visual?: MediaType;
-  experience?: ExpType;
-  media?: MediaType[];
+import type {
+  ProjectData,
+  ProjectExperienceData,
+  ProjectLinkData,
+  ProjectMediaData,
+  ProjectServiceData,
+  ProjectStackData,
+  ProjectSummaryData,
+} from "@portfolio/preset-data";
+
+declare global {
+  type ProjectsAPIDataType = ProjectData;
+  type SummaryType = ProjectSummaryData;
+  type LinkType = ProjectLinkData;
+  type ServiceType = ProjectServiceData;
+  type ExpStacksType = ProjectStackData;
+  type ExpType = ProjectExperienceData;
+  type MediaType = ProjectMediaData;
 }
+
+export {};

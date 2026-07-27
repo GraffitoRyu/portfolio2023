@@ -1,27 +1,8 @@
-interface CareerSummaryTypes {
-  [index: string]: string | string[];
-  period: string[];
-  role: string;
-  company: string;
-}
-
 interface CareerSummaryProps extends CareerSummaryTypes {
   code: string;
 }
 
-interface CareerDetailsTypes {
-  [index: string]: string | string[];
-  task: string[];
-  stacks: string[];
-  projects: string[];
-}
 interface CareerItemProps extends CareerAPIDataType {
-  [index: string]:
-    | string
-    | CareerSummaryTypes
-    | CareerDetailsTypes
-    | boolean
-    | undefined;
   last?: boolean;
 }
 

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import { getFirebaseData } from "@/utils/data/api.util";
+import { getPortfolioData } from "@/data/repository/server";
 import cacheOptions from "@/lib/cache";
+import { stacksData } from "@portfolio/preset-data";
 
 /**
  * 기술 스택 조회 API
@@ -10,10 +11,11 @@ import cacheOptions from "@/lib/cache";
  * @return {Promise<NextResponse<StackAPIDataTypes[]>>}
  */
 export async function GET(): Promise<NextResponse<StackAPIDataTypes[]>> {
-  const res = await getFirebaseData<StackAPIDataTypes[]>({
+  const res = await getPortfolioData<StackAPIDataTypes[]>({
     routeUrl: "/api/profile/stacks",
-    queryUrl: "/stacks",
-    failResponse: [],
+    sourcePath: "/stacks",
+    fixtureData: stacksData,
+    failureData: [],
   });
 
   return NextResponse.json(res, { ...cacheOptions });

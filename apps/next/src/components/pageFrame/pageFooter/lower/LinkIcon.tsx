@@ -3,16 +3,11 @@ import LinkIconCopy from "@/svg/footer/link_copy.svg";
 import LinkIconDownload from "@/svg/footer/link_download.svg";
 
 export default function LinkIcon({
-  isExternal,
-  isCopy,
-  isDownload,
+  kind,
 }: {
-  isExternal?: boolean;
-  isCopy?: boolean;
-  isDownload?: boolean;
+  kind: "external" | "copy" | "download";
 }) {
-  if (isExternal === true) return <LinkIconExternal />;
-  else if (isCopy === true) return <LinkIconCopy />;
-  else if (isDownload === true) return <LinkIconDownload />;
-  return null;
+  if (kind === "external") return <LinkIconExternal />;
+  if (kind === "copy") return <LinkIconCopy />;
+  return <LinkIconDownload />;
 }

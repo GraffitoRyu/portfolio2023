@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { resolvePublicAssetUrl } from "@/data/assets";
 
 export default function DetailMediaContents({
   referType,
@@ -22,14 +23,16 @@ export default function DetailMediaContents({
 }
 
 function DetailMediaImage({ src, alt }: { src: string; alt: string }) {
+  const assetUrl = resolvePublicAssetUrl(src);
+
   return (
     <Image
-      src={src}
+      src={assetUrl}
       alt={alt}
       fill={true}
       loading="eager"
       placeholder="blur"
-      blurDataURL={src}
+      blurDataURL={assetUrl}
     />
   );
 }

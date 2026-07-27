@@ -2,15 +2,12 @@
  * 사이트맵; 카테고리
  */
 export type SitemapCategoryType =
-  | "portfolio"
-  | "recruit"
-  | "contact"
-  | "resume";
+  "portfolio" | "recruit" | "contact" | "resume";
 
-/**
- * 사이트맵; 카테고리별 사이트맵 데이터
- */
-export type SitemapDataType = {
+export type PortfolioRouteCode = "profile" | "projects";
+export type PortfolioRoutePath = "/" | "/projects";
+
+type SitemapBaseData = {
   /**
    * 사이트맵; react map key
    */
@@ -27,19 +24,34 @@ export type SitemapDataType = {
    * 사이트맵; 메뉴 경로
    */
   path: string;
-  /**
-   * 사이트맵; 컨텐츠 복사 가능 여부
-   */
-  isCopy?: boolean;
-  /**
-   * 사이트맵; 컨텐츠 다운로드 가능 여부
-   */
-  isDownload?: boolean;
-  /**
-   * 사이트맵; 외부 경로 여부
-   */
-  isExternal?: boolean;
 };
+
+export type SitemapRouteData = SitemapBaseData & {
+  kind: "route";
+  code: PortfolioRouteCode;
+  path: PortfolioRoutePath;
+};
+
+export type SitemapExternalData = SitemapBaseData & {
+  kind: "external";
+};
+
+export type SitemapCopyData = SitemapBaseData & {
+  kind: "copy";
+};
+
+export type SitemapDownloadData = SitemapBaseData & {
+  kind: "download";
+};
+
+/**
+ * 사이트맵; 동작 종류가 명시된 카테고리별 사이트맵 데이터
+ */
+export type SitemapDataType =
+  | SitemapRouteData
+  | SitemapExternalData
+  | SitemapCopyData
+  | SitemapDownloadData;
 
 /**
  * 사이트맵; 유형별 데이터 컬렉션
