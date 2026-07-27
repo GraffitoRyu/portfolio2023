@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import { mediaQueryTokens } from "@portfolio/ui";
 
 // style
 import { size } from "../preset/mixins";
@@ -16,7 +17,7 @@ export const StyledDepthItem = styled.li`
 
 export const StyledResponsiveBr = styled.br`
   display: none;
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     display: inline;
   }
 `;

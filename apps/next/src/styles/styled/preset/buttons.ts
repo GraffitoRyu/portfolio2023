@@ -1,6 +1,7 @@
 "use client";
 
 import { css, styled } from "styled-components";
+import { mediaQueryTokens } from "@portfolio/ui";
 
 // style preset
 import { img } from "./img";
@@ -83,7 +84,7 @@ export const StyledDefaultBtn = styled.button`
     ${({ theme }) => colorSet(theme.buttons.hoverContents)}
   }
 
-  @media only screen and (max-width: 768px) and (orientation: landscape) {
+  @media only screen and ${mediaQueryTokens.max.tablet} and (orientation: landscape) {
     ${size({
       h: sizePreset.btn.w768_landscape,
       r: 8,
@@ -110,7 +111,7 @@ export const StyledDefaultBtn = styled.button`
     }
   }
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and ${mediaQueryTokens.min.tablet} {
     ${size({ h: sizePreset.btn.w768, r: 8 })}
 
     &:not(.text-type) {
@@ -128,7 +129,7 @@ export const StyledDefaultBtn = styled.button`
       }
     }
   }
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${size({ h: sizePreset.btn.w1024 })}
 
     &:not(.text-type) {
@@ -146,7 +147,7 @@ export const StyledDefaultBtn = styled.button`
       }
     }
   }
-  @media only screen and (min-width: 1280px) {
+  @media only screen and ${mediaQueryTokens.min.wide} {
     ${size({ h: sizePreset.btn.w1280 })}
 
     &:not(.text-type) {
@@ -157,7 +158,7 @@ export const StyledDefaultBtn = styled.button`
       ${size({ w: sizePreset.icon.w1280, h: sizePreset.icon.w1280 })}
     }
   }
-  @media only screen and (min-width: 1440px) {
+  @media only screen and ${mediaQueryTokens.min.large} {
     ${size({ h: sizePreset.btn.w1440 })}
 
     &:not(.text-type) {

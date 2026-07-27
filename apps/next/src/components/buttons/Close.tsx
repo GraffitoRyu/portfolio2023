@@ -1,5 +1,7 @@
 "use client";
 
+import { Button, Icon } from "@portfolio/ui";
+
 // style components
 import { StyledDefaultBtn } from "@/styles/styled/preset/buttons";
 
@@ -24,14 +26,15 @@ export default function CloseButton({
 
   return (
     <StyledDefaultBtn
+      as={Button}
       className={state ? "hover" : ""}
       {...hoverHandler()}
       onClick={clickEvent}
       aria-label={ariaLabel}
     >
-      <figure>
+      <Icon>
         <CloseIcon />
-      </figure>
+      </Icon>
     </StyledDefaultBtn>
   );
 }

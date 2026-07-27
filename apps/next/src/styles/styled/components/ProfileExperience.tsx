@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import { mediaQueryTokens, typographyTokens } from "@portfolio/ui";
 
 // util
 import { rem, widthRatio } from "@/utils/style.util";
@@ -22,7 +23,7 @@ export const StyledExpList = styled.ul<StyleOptionExpList>`
     })}
   opacity: 0;
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${({ $length }) =>
       size({
         w: `calc(${widthRatio(7, 5) * ($length !== 0 ? $length : 5)}% + ${rem(
@@ -45,7 +46,7 @@ export const StyledExpItem = styled.li<StyleOptionExpItem>`
   &.on {
     opacity: 1;
   }
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${size({ p: [0, 20] })}
   }
 `;
@@ -62,12 +63,12 @@ export const StyledExpTitle = styled.dt`
     weight: 300,
     height: "1em",
     transform: "capitalize",
-    family: "var(--serif-kr)",
+    family: typographyTokens.family.serifKorean,
   })}
   span {
     ${font({ spacing: 0 })}
   }
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${font({ size: 32 })}
   }
 `;
@@ -91,7 +92,7 @@ export const StyledExpDesc = styled.dd`
     word-break: keep-all;
     letter-spacing: -0.01em;
   }
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${font({ size: 24, height: "1.6em" })}
     &:before {
       ${size({ h: 40 })}

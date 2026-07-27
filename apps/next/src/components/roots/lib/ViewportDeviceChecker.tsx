@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { breakpointTokens } from "@portfolio/ui";
 import { useAtom, useSetAtom } from "jotai";
 
 // hook
@@ -111,13 +112,18 @@ export default function ViewportDeviceChecker() {
       // 물리 디바이스가 desktop인 경우
       if (hardware === "desktop") {
         // 브라우저 창 사이즈에 따라 viewport 모드 추출
-        if (width >= 1280) return "desktop";
-        else if (width < 1280 && width >= 768) return "tablet";
+        if (width >= breakpointTokens.viewportMode.desktop) return "desktop";
+        else if (
+          width < breakpointTokens.viewportMode.desktop &&
+          width >= breakpointTokens.viewportMode.tablet
+        )
+          return "tablet";
         return "mobile";
       }
 
       // 물리 디바이스가 tablet인 경우
-      if (hardware === "tablet" && width < 768) return "mobile";
+      if (hardware === "tablet" && width < breakpointTokens.viewportMode.tablet)
+        return "mobile";
 
       return hardware;
     },

@@ -3,13 +3,9 @@
  * @props
  */
 interface PageSectionContainerProps {
-  /**
-   * 페이지 카테고리
-   */
+  /** 페이지 카테고리 */
   page: string;
-  /**
-   * 섹션 코드
-   */
+  /** 섹션 코드 */
   code: string;
   children: React.ReactNode;
   className?: string;
@@ -24,17 +20,6 @@ interface SectionHeaderProps {
   desc: (string | React.ReactNode)[];
   empty: boolean;
   className: string;
-}
-
-interface PageSectionHeaderColorTypes {
-  title: string;
-  desc: string;
-}
-
-interface PageSectionHeaderModeTypes {
-  [index: string]: PageSectionHeaderColorTypes;
-  light: PageSectionHeaderColorTypes;
-  dark: PageSectionHeaderColorTypes;
 }
 
 /**
@@ -53,29 +38,4 @@ interface PageSectionIntroTypes {
   category: string;
   title: (string | React.ReactNode)[];
   desc: (string | React.ReactNode)[];
-}
-
-interface PageSectionIntroColorTypes {
-  bgFrom: string;
-  bgTo: string;
-  title: string;
-  strong: string;
-  desc: string;
-}
-
-interface PageSectionIntroModeTypes {
-  [index: string]: PageSectionIntroColorTypes;
-  light: PageSectionIntroColorTypes;
-  dark: PageSectionIntroColorTypes;
-}
-
-interface PageSectionVisualTypes {
-  border: string;
-  fill: string;
-}
-
-interface PageSectionVisualModeTypes {
-  [index: string]: PageSectionVisualTypes;
-  light: PageSectionVisualTypes;
-  dark: PageSectionVisualTypes;
 }

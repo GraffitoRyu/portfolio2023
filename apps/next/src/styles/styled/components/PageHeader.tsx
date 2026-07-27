@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import { mediaQueryTokens, zIndexTokens } from "@portfolio/ui";
 
 // style
 import { easing } from "../preset/easing";
@@ -14,7 +15,7 @@ import { rem } from "@/utils/style.util";
 export const StyledHeaderContainer = styled.header`
   ${position({ type: "sticky", top: 0, left: 0 })}
   width: 100%;
-  z-index: 2000;
+  z-index: ${zIndexTokens.header};
   pointer-events: none;
   &:before {
     content: "";
@@ -24,7 +25,7 @@ export const StyledHeaderContainer = styled.header`
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: -1;
+    z-index: ${zIndexTokens.headerBackdrop};
     ${`backdrop-filter: blur(${rem(16)});`} /* Add this line to apply blur effect */
     ${`-webkit-backdrop-filter: blur(${rem(16)});`}/* Add this line to apply blur effect */
   }
@@ -47,21 +48,21 @@ export const StyledHeaderWrap = styled.div`
     p: sizePreset.common.padding,
   })}
   pointer-events:none;
-  @media only screen and (max-width: 768px) and (orientation: landscape) {
+  @media only screen and ${mediaQueryTokens.max.tablet} and (orientation: landscape) {
     ${size({
       h: sizePreset.btn.w768_landscape + sizePreset.common.padding * 2,
     })}
   }
-  @media only screen and (min-width: 768px) {
+  @media only screen and ${mediaQueryTokens.min.tablet} {
     ${size({ h: sizePreset.btn.w768 + sizePreset.common.padding * 2 })}
   }
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${size({ h: sizePreset.btn.w1024 + sizePreset.common.padding * 2 })}
   }
-  @media only screen and (min-width: 1280px) {
+  @media only screen and ${mediaQueryTokens.min.wide} {
     ${size({ h: sizePreset.btn.w1280 + sizePreset.common.padding * 2 })}
   }
-  @media only screen and (min-width: 1440px) {
+  @media only screen and ${mediaQueryTokens.min.large} {
     ${size({ h: sizePreset.btn.w1440 + sizePreset.common.padding * 2 })}
   }
 `;
@@ -76,7 +77,7 @@ export const StyledTimerContainer = styled.div`
   time {
     ${font({ spacing: 0 })}
   }
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     height: 100%;
   }
 `;
@@ -88,7 +89,7 @@ export const StyledTimeRegion = styled.strong`
     content: "/";
     ${size({ m: [0, 16] })}
   }
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${flex({})}
   }
 `;

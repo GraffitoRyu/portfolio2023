@@ -2,6 +2,7 @@
 
 import { useCallback } from "react";
 import { useSetAtom } from "jotai";
+import { PageSection } from "@portfolio/ui";
 
 // style components
 import { StyledPageSectionContainer } from "@/styles/styled/components/PageSection";
@@ -40,6 +41,7 @@ export default function PageSectionContainer({
 
   return (
     <StyledPageSectionContainer
+      as={PageSection}
       className={`section-${page} section-${code} ${
         className ? className : ""
       }`}

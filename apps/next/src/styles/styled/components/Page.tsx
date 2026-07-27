@@ -1,6 +1,7 @@
 "use client";
 
 import { createGlobalStyle, styled } from "styled-components";
+import { zIndexTokens } from "@portfolio/ui";
 
 // style
 import { position, size } from "../preset/mixins";
@@ -16,12 +17,12 @@ export const HTMLThemeStyle = createGlobalStyle`
 `;
 
 export const StyledMainContainer = styled.main`
-  ${position({ type: "fixed", z: 10 })}
+  ${position({ type: "fixed", z: zIndexTokens.content })}
   ${size({ w: "100%", h: "100%" })}
 `;
 
 export const StyledScrollContainer = styled.div`
-  ${position({ type: "fixed", top: 0, left: 0, z: 0 })}
+  ${position({ type: "fixed", top: 0, left: 0, z: zIndexTokens.base })}
   ${size({ w: "100%", h: `100vh` })}
 `;
 

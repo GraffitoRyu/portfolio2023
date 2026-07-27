@@ -2,6 +2,7 @@
 
 import styled from "styled-components";
 import { keyframes } from "styled-components";
+import { mediaQueryTokens, zIndexTokens } from "@portfolio/ui";
 
 // components
 import PeriodForward from "@/components/period/Period";
@@ -20,7 +21,12 @@ import {
 import { transTime } from "../preset/transTime";
 
 export const StyledProjectLoadingProgress = styled.progress`
-  ${position({ type: "fixed", top: 0, left: 0, z: 3000 })}
+  ${position({
+    type: "fixed",
+    top: 0,
+    left: 0,
+    z: zIndexTokens.projectLoading,
+  })}
   ${size({ w: "100%", h: 8 })}
   border: 0;
   background-color: transparent;
@@ -81,7 +87,7 @@ export const StyledListBtnWrap = styled.div`
   ${size({ w: "100%", p: 80 })}
   color:${({ theme }) => theme.projectList.desc};
   position: relative;
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${size({ w: 1440 })}
   }
 `;
@@ -102,10 +108,10 @@ export const StyledListBtnPeriod = styled(PeriodForward)`
       ])}
     }
   }
-  @media only screen and (min-width: 640px) {
+  @media only screen and ${mediaQueryTokens.min.grid} {
     ${size({ mb: 24 })}
   }
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${position({ type: "absolute", left: "100%" })}
     ${size({ h: 56, mb: 0 })}
   }
@@ -136,14 +142,14 @@ export const StyledListBtnPeriod = styled(PeriodForward)`
 export const StyledFadeContainer = styled.div`
   text-align: left;
   overflow: hidden;
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     text-align: right;
   }
 `;
 
 export const StyledFadeListContainer = styled(StyledFadeContainer)`
   ${flex({ std: "flex-start" })}
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     justify-content: flex-end;
   }
 `;
@@ -156,7 +162,7 @@ export const StyledListBtnTitle = styled.h3`
     weight: 700,
     height: "1em",
   })}
-  @media only screen and (min-width: 640px) {
+  @media only screen and ${mediaQueryTokens.min.grid} {
     ${size({ mb: 24 })}
     ${font({ size: 56 })}
   }
@@ -187,7 +193,7 @@ export const StyledListBtnDesc = styled.p`
     transform: translateY(100%);
     opacity: 0;
   }
-  @media only screen and (min-width: 640px) {
+  @media only screen and ${mediaQueryTokens.min.grid} {
     ${font({ size: 32, height: "1em" })}
   }
 `;
@@ -228,10 +234,10 @@ export const StyledListBtnRole = styled.li`
     opacity: 0;
   }
 
-  @media only screen and (min-width: 640px) {
+  @media only screen and ${mediaQueryTokens.min.grid} {
     ${font({ size: 24 })}
   }
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     justify-content: flex-end;
   }
 `;
@@ -286,7 +292,7 @@ export const StyledProjectOpenIcon = styled.figure`
     ${img({})}
   }
   ${({ theme }) => svgFill(theme.projectList.slideTitle)}
-  @media only screen and (min-width:1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${size({ w: 120, h: 120 })}
   }
   ${StyledProjectItemContainer}:not(.hide).hover & {

@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useAtom, useAtomValue } from "jotai";
+import { ProjectCard } from "@portfolio/ui";
 
 // components
 import SlideTitle from "@/_pages/projects/item/SlideTitle";
@@ -89,6 +90,7 @@ export default function ProjectItem({
 
   return (
     <StyledProjectItemContainer
+      as={ProjectCard}
       type="button"
       ref={triggerRef}
       className={`${hide ? "hide" : ""} ${hover ? "hover" : ""}`}

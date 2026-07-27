@@ -1,6 +1,11 @@
 "use client";
 
 import styled from "styled-components";
+import {
+  mediaQueryTokens,
+  typographyTokens,
+  zIndexTokens,
+} from "@portfolio/ui";
 
 // style
 import { flex, font, position, size } from "../preset/mixins";
@@ -33,7 +38,7 @@ export const StyledPageSectionContainer = styled.section`
     transform: none !important;
   }
 
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     &.side-v-padding {
       ${size({ pt: `var(--header-height)` })}
     }
@@ -52,7 +57,7 @@ export const StyledSectionHeaderContainer = styled.header`
   &.empty {
     margin: 0;
   }
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     &:not(.empty) {
       ${size({ mb: 120 })}
     }
@@ -68,11 +73,11 @@ export const StyledHeaderTitle = styled.h2`
     spacing: `-0.02em`,
     height: "1em",
     transform: "capitalize",
-    family: `var(--serif-dm)`,
+    family: typographyTokens.family.serifDisplay,
   })}
   opacity:0;
   font-style: italic;
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${size({ mb: 80 })}
     ${font({ size: 160, weight: 500 })}
   }
@@ -89,7 +94,7 @@ export const StyledHeaderDesc = styled.p`
     word-break: break-all;
   }
   opacity: 0;
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${font({
       size: 32,
       weight: 300,
@@ -99,8 +104,8 @@ export const StyledHeaderDesc = styled.p`
 
 export const StyledSectionContents = styled.div`
   ${size({ w: "100%" })}
-  @media only screen and (min-width: 1024px) {
-    ${position({ type: "relative", z: 10 })}
+  @media only screen and ${mediaQueryTokens.min.desktop} {
+    ${position({ type: "relative", z: zIndexTokens.content })}
     ${flex({ start: true })}
     &:not(.full) {
       ${size({ w: `calc(100% + ${rem(40)})`, m: [0, -20] })}
@@ -111,7 +116,7 @@ export const StyledSectionContents = styled.div`
 export const StyledSectionSideContents = styled.aside`
   width: 100%;
   min-height: 1px;
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${position({ type: "sticky", top: `var(--header-height)` })}
     flex:1;
     ${size({ p: [0, 20] })}
@@ -126,7 +131,7 @@ export const StyledSectionSideContents = styled.aside`
 
 export const StyledSectionContentsMain = styled.div`
   width: 100%;
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${size({ w: `${widthRatio(12, 7)}%`, p: [0, 20] })}
     &.intro {
       ${size({ w: "50%", pb: 240 })}

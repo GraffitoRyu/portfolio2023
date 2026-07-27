@@ -1,13 +1,23 @@
 "use client";
 
 import { keyframes, styled } from "styled-components";
+import {
+  mediaQueryTokens,
+  typographyTokens,
+  zIndexTokens,
+} from "@portfolio/ui";
 
 // style
 import { transTime } from "../preset/transTime";
 import { flex, font, position, size } from "../preset/mixins";
 
 export const StyledInitCoverContainer = styled.div`
-  ${position({ type: "fixed", left: 0, top: 0, z: 4000 })}
+  ${position({
+    type: "fixed",
+    left: 0,
+    top: 0,
+    z: zIndexTokens.initializationCover,
+  })}
   ${size({ w: "100%", h: "100%" })}
   opacity:0;
   transition: opacity ${transTime.common.initFade / 1000}s;
@@ -41,7 +51,7 @@ export const StyledInitCoverTItle = styled.div`
     size: 40,
     weight: 500,
     height: "1em",
-    family: "var(--serif-kr)",
+    family: typographyTokens.family.serifKorean,
   })}
   span {
     ${size({ mt: 8 })}
@@ -51,13 +61,13 @@ export const StyledInitCoverTItle = styled.div`
   animation: ${initTitleBreathing} 1.6s infinite linear;
   transition: none;
 
-  @media only screen and (min-width: 560px) {
+  @media only screen and ${mediaQueryTokens.min.compact} {
     ${font({ size: 24 })}
   }
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${font({ size: 32 })}
   }
-  @media only screen and (min-width: 1280px) {
+  @media only screen and ${mediaQueryTokens.min.wide} {
     ${font({ size: 24 })}
   }
 `;

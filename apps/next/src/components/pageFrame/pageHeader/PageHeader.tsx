@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useAtomValue, useSetAtom } from "jotai";
+import { Header } from "@portfolio/ui";
 
 // components
 import Gnb from "./Gnb";
@@ -60,7 +61,7 @@ export default function PageHeader() {
   });
 
   return (
-    <StyledHeaderContainer className={hide} ref={updateScrollRef}>
+    <StyledHeaderContainer as={Header} className={hide} ref={updateScrollRef}>
       <StyledHeaderWrap>
         <TimeDisplay />
         <Gnb />

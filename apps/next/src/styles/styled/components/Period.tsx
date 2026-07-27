@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import { mediaQueryTokens } from "@portfolio/ui";
 
 // style
 import { flex, font, size } from "../preset/mixins";
@@ -13,7 +14,7 @@ export const StyledPeriodContainer = styled.div`
     height: "1em",
     whitespace: "nowrap",
   })}
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${font({ size: 20 })}
   }
 `;
@@ -25,7 +26,7 @@ export const StyledPeriodBar = styled.span`
     display: block;
     ${size({ w: "100%", h: "100%" })}
   }
-  @media only screen and (min-width: 1024px) {
+  @media only screen and ${mediaQueryTokens.min.desktop} {
     ${size({ w: 56, h: 2, m: [0, 16] })}
   }
 `;

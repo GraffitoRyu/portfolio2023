@@ -1,6 +1,7 @@
 "use client";
 
 import { styled } from "styled-components";
+import { typographyTokens, zIndexTokens } from "@portfolio/ui";
 
 // style
 import { easing } from "../preset/easing";
@@ -8,7 +9,12 @@ import { flex, font, position, size } from "../preset/mixins";
 import { transTime } from "../preset/transTime";
 
 export const StyledTransitionCover = styled.div`
-  ${position({ type: "fixed", left: 0, top: 0, z: 3000 })}
+  ${position({
+    type: "fixed",
+    left: 0,
+    top: 0,
+    z: zIndexTokens.transitionCover,
+  })}
   ${size({ w: "100%", h: 0 })}
   background-color: ${({ theme }) => theme.transCover.bg};
   overflow: clip;
@@ -35,7 +41,7 @@ export const StyledTransTitle = styled.h1`
   ${font({
     size: 160,
     weight: 500,
-    family: `var(--serif-kr)`,
+    family: typographyTokens.family.serifKorean,
     height: "1em",
     spacing: 0,
     transform: "capitalize",

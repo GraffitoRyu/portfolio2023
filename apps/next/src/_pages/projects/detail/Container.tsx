@@ -1,5 +1,7 @@
 "use client";
 
+import { ProjectDetail } from "@portfolio/ui";
+
 // components
 import SimpleScrollContainer from "@/components/scroll/SimpleScrollContainer";
 import DetailHeaderContainer from "./0_header/Container";
@@ -23,7 +25,7 @@ export default function ProjectDetailContainer() {
   const { open } = useProjectDetailState();
 
   return (
-    <StyledPDContainer className={`${open ? "open" : ""}`}>
+    <StyledPDContainer as={ProjectDetail} className={`${open ? "open" : ""}`}>
       <SimpleScrollContainer standard="detail">
         <DetailHeaderContainer />
         <DetailVisualContainer />

@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import { zIndexTokens } from "@portfolio/ui";
 
 // style
 import { position, size } from "../preset/mixins";
@@ -8,7 +9,12 @@ import { sizePreset } from "../preset/size";
 
 export const StyledCursor = styled.div`
   ${size({ w: "1px", h: "1px" })};
-  ${position({ type: "fixed", top: "0rem", left: "0rem", z: 9999 })}
+  ${position({
+    type: "fixed",
+    top: "0rem",
+    left: "0rem",
+    z: zIndexTokens.cursor,
+  })}
   pointer-events: none;
   backface-visibility: visible;
   mix-blend-mode: difference;

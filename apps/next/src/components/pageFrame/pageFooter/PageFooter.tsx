@@ -2,6 +2,7 @@
 
 import { useCallback, useRef } from "react";
 import { useSetAtom } from "jotai";
+import { Footer } from "@portfolio/ui";
 
 // components
 import FooterUpperContainer from "./FooterUpper";
@@ -29,7 +30,7 @@ export default function PageFooter() {
   );
 
   return (
-    <StyledFooterContainer className="page-footer" ref={setRef}>
+    <StyledFooterContainer as={Footer} className="page-footer" ref={setRef}>
       <StyledFooterWrap>
         <FooterUpperContainer />
         <FooterLower />

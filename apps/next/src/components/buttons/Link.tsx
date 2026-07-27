@@ -1,5 +1,7 @@
 "use client";
 
+import { Icon, Link } from "@portfolio/ui";
+
 // style component
 import { StyledDefaultBtn } from "@/styles/styled/preset/buttons";
 
@@ -26,7 +28,7 @@ export default function ExternalLinkButton({
 
   return (
     <StyledDefaultBtn
-      as="a"
+      as={Link}
       className={`text-type ${state ? "hover" : ""}`}
       href={href}
       target="_blank"
@@ -34,9 +36,9 @@ export default function ExternalLinkButton({
       aria-label={ariaLabel}
     >
       {children}
-      <figure>
+      <Icon>
         <LinkIcon />
-      </figure>
+      </Icon>
     </StyledDefaultBtn>
   );
 }
