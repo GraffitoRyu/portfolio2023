@@ -3,10 +3,7 @@
  * @state
  */
 type ScrollRefType =
-  | HTMLElement
-  | HTMLHeadingElement
-  | HTMLDetailsElement
-  | null;
+  HTMLElement | HTMLHeadingElement | HTMLDetailsElement | null;
 
 /**
  * 프로필 > 경력; 스크롤 참조를 위한 각 항목 ref

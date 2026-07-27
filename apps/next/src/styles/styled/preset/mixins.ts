@@ -107,48 +107,56 @@ export const flex = ({
   end,
 }: Partial<PresetFlexProps>) => css`
   display: flex;
-  justify-content: ${!std &&
-  typeof start === "undefined" &&
-  typeof end === "undefined"
-    ? `center`
-    : std};
-  align-items: ${!cross &&
-  typeof start === "undefined" &&
-  typeof end === "undefined"
-    ? `center`
-    : cross};
-  ${!std &&
-  !cross &&
-  typeof end === "undefined" &&
-  typeof start === "boolean" &&
-  start === true
-    ? `
+  justify-content: ${
+    !std && typeof start === "undefined" && typeof end === "undefined"
+      ? `center`
+      : std
+  };
+  align-items: ${
+    !cross && typeof start === "undefined" && typeof end === "undefined"
+      ? `center`
+      : cross
+  };
+  ${
+    !std &&
+    !cross &&
+    typeof end === "undefined" &&
+    typeof start === "boolean" &&
+    start === true
+      ? `
         justify-content:flex-start;
         align-items:flex-start;
       `
-    : ""}
-  ${typeof end === "undefined" && Array.isArray(start) && start.length === 2
-    ? `
+      : ""
+  }
+  ${
+    typeof end === "undefined" && Array.isArray(start) && start.length === 2
+      ? `
         justify-content: ${!std && start[0] === true ? "flex-start" : "center"};
         align-items: ${!cross && start[1] === true ? "flex-start" : "center"};
       `
-    : ""}
-  ${!std &&
-  !cross &&
-  typeof start === "undefined" &&
-  typeof end === "boolean" &&
-  end === true
-    ? `
+      : ""
+  }
+  ${
+    !std &&
+    !cross &&
+    typeof start === "undefined" &&
+    typeof end === "boolean" &&
+    end === true
+      ? `
         justify-content:flex-end;
         align-items:flex-end;
       `
-    : ""}
-  ${typeof start === "undefined" && Array.isArray(end) && end.length === 2
-    ? `
+      : ""
+  }
+  ${
+    typeof start === "undefined" && Array.isArray(end) && end.length === 2
+      ? `
         justify-content: ${!std && end[0] === true ? "flex-end" : "center"};
         align-items: ${!cross && end[1] === true ? "flex-end" : "center"};
       `
-    : ""}
+      : ""
+  }
   ${dir && `flex-direction: ${dir};`}
   ${wrap && `flex-wrap:${wrap};`}
 `;
@@ -179,19 +187,23 @@ export const position = ({
   ${typeof bottom !== "undefined" ? `bottom:${getUnit(bottom)};` : ""};
   ${typeof right !== "undefined" ? `right:${getUnit(right)};` : ""};
   ${z !== undefined ? `z-index:${z};` : ""}
-  ${typeof center === "boolean"
-    ? `
+  ${
+    typeof center === "boolean"
+      ? `
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
   `
-    : ""}
-  ${typeof center === "string" && ["x", "y"].includes(center)
-    ? `
+      : ""
+  }
+  ${
+    typeof center === "string" && ["x", "y"].includes(center)
+      ? `
     ${center === "x" ? "left" : "top"}:50%;
     transform:translate${center.toUpperCase()}(-50%);
   `
-    : ""}
+      : ""
+  }
 `;
 
 /**
@@ -218,27 +230,35 @@ export const font = ({
   deco,
   style,
 }: Partial<PresetFontProps>) => css`
-  ${typeof size === "number"
-    ? `font-size:${rem(size)};`
-    : typeof size === "string"
-      ? `font-size:${size};`
-      : ""}
+  ${
+    typeof size === "number"
+      ? `font-size:${rem(size)};`
+      : typeof size === "string"
+        ? `font-size:${size};`
+        : ""
+  }
   ${typeof weight !== "undefined" && `font-weight:${weight};`}
-  ${typeof height === "number"
-    ? `line-height:${rem(height)};`
-    : typeof height === "string"
-      ? `line-height:${height};`
-      : ""}
-  ${typeof spacing === "number"
-    ? `letter-spacing:${rem(spacing)};`
-    : typeof spacing === "string"
-      ? `letter-spacing:${spacing};`
-      : ""}
-  ${Array.isArray(family)
-    ? `font-family:${family.join(",")};`
-    : typeof family === "string"
-      ? `font-family:${family};`
-      : ""}
+  ${
+    typeof height === "number"
+      ? `line-height:${rem(height)};`
+      : typeof height === "string"
+        ? `line-height:${height};`
+        : ""
+  }
+  ${
+    typeof spacing === "number"
+      ? `letter-spacing:${rem(spacing)};`
+      : typeof spacing === "string"
+        ? `letter-spacing:${spacing};`
+        : ""
+  }
+  ${
+    Array.isArray(family)
+      ? `font-family:${family.join(",")};`
+      : typeof family === "string"
+        ? `font-family:${family};`
+        : ""
+  }
   ${whitespace && `white-space:${whitespace};`}
   ${transform && `text-transform:${transform};`}
   ${deco && `text-decoration:${deco};`}

@@ -7,7 +7,4 @@ export const transCoverData = {
     title: "projects",
     desc: "",
   },
-} satisfies Record<
-  "profile" | "projects",
-  { title: string; desc: string }
->;
+} satisfies Record<"profile" | "projects", { title: string; desc: string }>;

@@ -21,12 +21,16 @@ time {
 
 a,
 button {
-  transition: color $transColorTime, border-color $transColorTime,
+  transition:
+    color $transColorTime,
+    border-color $transColorTime,
     background-color $transColorTime;
 }
 
 path,
 rect,
 circle {
-  transition: fill $transColorTime, stroke $transColorTime;
+  transition:
+    fill $transColorTime,
+    stroke $transColorTime;
 }

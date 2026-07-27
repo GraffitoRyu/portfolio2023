@@ -40,10 +40,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const locale = await getServerState<SystemLanguageType>(
-    "systemLocale",
-    "ko",
-  );
+  const locale = await getServerState<SystemLanguageType>("systemLocale", "ko");
 
   return (
     <html
