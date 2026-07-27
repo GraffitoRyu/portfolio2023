@@ -25,6 +25,9 @@ importers:
       "@portfolio/preset-data":
         specifier: workspace:*
         version: link:../../packages/preset-data
+      "@portfolio/ui":
+        specifier: workspace:*
+        version: link:../../packages/ui
       "@portfolio/utils":
         specifier: workspace:*
         version: link:../../packages/utils

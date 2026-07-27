@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@portfolio/preset-data": "workspace:*",
+    "@portfolio/ui": "workspace:*",
     "@portfolio/utils": "workspace:*",
     "@gsap/react": "2.1.2",
     "@tanstack/react-query": "5.101.2",
