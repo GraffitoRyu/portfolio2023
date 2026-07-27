@@ -5,6 +5,8 @@
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
     "build": "turbo build",
+    "clean": "bash ./scripts/clean-package.sh",
+    "clear": "bash ./scripts/clear-cache.sh",
     "prepare": "husky",
     "next:dev": "turbo next:dev",
     "next:start": "turbo next:start",
