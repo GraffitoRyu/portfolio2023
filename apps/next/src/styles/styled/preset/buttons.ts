@@ -1,7 +1,7 @@
 "use client";
 
 import { css, styled } from "styled-components";
-import { mediaQueryTokens } from "@portfolio/ui";
+import { mediaQueryTokens } from "@graffitoryu/ui";
 
 // style preset
 import { img } from "./img";

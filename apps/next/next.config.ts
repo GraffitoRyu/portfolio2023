@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import { openBrowserLocalNextServer } from "@portfolio/preset-config";
+import { openBrowserLocalNextServer } from "@graffitoryu/preset-config";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true, // 리액트 엄격모드

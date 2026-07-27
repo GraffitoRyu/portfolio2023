@@ -1,5 +1,5 @@
 import type { NextRequest, NextResponse } from "next/server";
-import { checkResponsiveDevice, checkAppleDevice } from "@portfolio/utils";
+import { checkResponsiveDevice, checkAppleDevice } from "@graffitoryu/utils";
 
 /**
  * 감지된 기기환경 저장

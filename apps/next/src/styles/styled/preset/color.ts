@@ -1,1 +1,1 @@
-export { themeTokens as customThemes } from "@portfolio/ui";
+export { themeTokens as customThemes } from "@graffitoryu/ui";

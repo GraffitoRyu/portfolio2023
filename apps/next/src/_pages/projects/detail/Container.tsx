@@ -1,6 +1,6 @@
 "use client";
 
-import { ProjectDetail } from "@portfolio/ui";
+import { ProjectDetail } from "@graffitoryu/ui";
 
 // components
 import SimpleScrollContainer from "@/components/scroll/SimpleScrollContainer";

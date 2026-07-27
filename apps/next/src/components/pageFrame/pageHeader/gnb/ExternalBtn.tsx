@@ -1,6 +1,6 @@
 "use client";
 
-import type { SitemapExternalData } from "@portfolio/preset-data";
+import type { SitemapExternalData } from "@graffitoryu/preset-data";
 import { useEffect, useRef, useState } from "react";
 
 // components

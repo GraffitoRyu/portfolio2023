@@ -1,4 +1,7 @@
-import { SitemapDataType, type SitemapCollectionType } from "@portfolio/types";
+import {
+  SitemapDataType,
+  type SitemapCollectionType,
+} from "@graffitoryu/types";
 
 import { assetManifest } from "../assets";
 

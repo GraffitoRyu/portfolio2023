@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getPortfolioData } from "@/data/repository/server";
 import cacheOptions from "@/lib/cache";
-import { stacksData } from "@portfolio/preset-data";
+import { stacksData } from "@graffitoryu/preset-data";
 
 /**
  * 기술 스택 조회 API

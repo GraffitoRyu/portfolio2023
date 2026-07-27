@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { typographyTokens } from "@portfolio/ui";
+import { typographyTokens } from "@graffitoryu/ui";
 import { font } from "../preset/mixins";
 import { rem } from "@/utils/style.util";
 

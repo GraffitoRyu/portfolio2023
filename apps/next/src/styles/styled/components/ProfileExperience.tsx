@@ -1,7 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import { mediaQueryTokens, typographyTokens } from "@portfolio/ui";
+import { mediaQueryTokens, typographyTokens } from "@graffitoryu/ui";
 
 // util
 import { rem, widthRatio } from "@/utils/style.util";

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useAtomValue, useSetAtom } from "jotai";
-import { Header } from "@portfolio/ui";
+import { Header } from "@graffitoryu/ui";
 
 // components
 import Gnb from "./Gnb";

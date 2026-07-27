@@ -22,7 +22,7 @@ import {
 import useCheckView from "@/hooks/layout/useCheckView";
 
 // util
-import { dateFormat, isValidDateType } from "@portfolio/utils";
+import { dateFormat, isValidDateType } from "@graffitoryu/utils";
 
 export default function CareerSummary({
   code,

@@ -4,7 +4,7 @@ import type {
   PortfolioRouteCode,
   PortfolioRoutePath,
   SitemapRouteData,
-} from "@portfolio/preset-data";
+} from "@graffitoryu/preset-data";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback } from "react";
 import { useSetAtom } from "jotai";

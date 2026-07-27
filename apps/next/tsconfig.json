@@ -1,5 +1,5 @@
 {
-  "extends": "@portfolio/tsconfig/next.json",
+  "extends": "@graffitoryu/tsconfig/next.json",
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"],

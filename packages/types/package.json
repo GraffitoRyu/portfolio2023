@@ -1,5 +1,5 @@
 {
-  "name": "@portfolio/types",
+  "name": "@graffitoryu/types",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -14,8 +14,8 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@portfolio/eslint": "workspace:*",
-    "@portfolio/tsconfig": "workspace:*",
+    "@graffitoryu/eslint": "workspace:*",
+    "@graffitoryu/tsconfig": "workspace:*",
     "@svgr/webpack": "8.1.0",
     "@types/node": "24.13.3",
     "@types/react": "19.2.17",

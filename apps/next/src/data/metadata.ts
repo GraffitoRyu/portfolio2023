@@ -4,7 +4,7 @@ import type {
   Robots,
 } from "next/dist/lib/metadata/types/metadata-types";
 import type { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
-import { assetManifest } from "@portfolio/preset-data";
+import { assetManifest } from "@graffitoryu/preset-data";
 import { resolvePublicAssetUrl } from "./assets";
 
 const { favicons } = assetManifest.public;

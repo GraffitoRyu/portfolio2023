@@ -1,5 +1,5 @@
 {
-  "name": "@portfolio/vite",
+  "name": "@graffitoryu/portfolio2023-tanstack-router",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -18,8 +18,8 @@
     "styled-components": "6.4.4"
   },
   "devDependencies": {
-    "@portfolio/eslint": "workspace:*",
-    "@portfolio/tsconfig": "workspace:*",
+    "@graffitoryu/eslint": "workspace:*",
+    "@graffitoryu/tsconfig": "workspace:*",
     "@tanstack/router-plugin": "1.168.23",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",

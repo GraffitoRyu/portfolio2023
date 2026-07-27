@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "styled-components";
-import { typographyTokens, zIndexTokens } from "@portfolio/ui";
+import { typographyTokens, zIndexTokens } from "@graffitoryu/ui";
 
 // style
 import { easing } from "../preset/easing";

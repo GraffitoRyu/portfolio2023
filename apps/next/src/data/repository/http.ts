@@ -4,7 +4,7 @@ import type {
   ProjectData,
   StackData,
   StackKeyData,
-} from "@portfolio/preset-data";
+} from "@graffitoryu/preset-data";
 
 const getJson = async <TResponse>(route: string): Promise<TResponse> =>
   await (await fetch(route)).json();

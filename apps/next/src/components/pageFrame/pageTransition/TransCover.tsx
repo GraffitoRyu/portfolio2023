@@ -17,7 +17,7 @@ import {
 import { pageLoadState } from "@/jotai/load.state";
 
 // data
-import { transCoverData } from "@portfolio/preset-data";
+import { transCoverData } from "@graffitoryu/preset-data";
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";

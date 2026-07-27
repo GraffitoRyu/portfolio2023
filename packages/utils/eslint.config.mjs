@@ -1,4 +1,4 @@
-import { eslintReactConfig } from "@portfolio/eslint/react";
+import { eslintReactConfig } from "@graffitoryu/eslint/react";
 const eslintConfig = eslintReactConfig;
 
 export default eslintConfig;

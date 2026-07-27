@@ -1,5 +1,5 @@
 {
-  "name": "@portfolio/next",
+  "name": "@graffitoryu/portfolio2023-nextjs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,9 +10,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@portfolio/preset-data": "workspace:*",
-    "@portfolio/ui": "workspace:*",
-    "@portfolio/utils": "workspace:*",
+    "@graffitoryu/preset-data": "workspace:*",
+    "@graffitoryu/ui": "workspace:*",
+    "@graffitoryu/utils": "workspace:*",
     "@gsap/react": "2.1.2",
     "@tanstack/react-query": "5.101.2",
     "@vercel/analytics": "2.0.1",
@@ -30,9 +30,9 @@
     "styled-components": "6.4.4"
   },
   "devDependencies": {
-    "@portfolio/eslint": "workspace:*",
-    "@portfolio/preset-config": "workspace:*",
-    "@portfolio/tsconfig": "workspace:*",
+    "@graffitoryu/eslint": "workspace:*",
+    "@graffitoryu/preset-config": "workspace:*",
+    "@graffitoryu/tsconfig": "workspace:*",
     "@svgr/webpack": "8.1.0",
     "@tailwindcss/postcss": "4.3.2",
     "@types/node": "24.13.3",

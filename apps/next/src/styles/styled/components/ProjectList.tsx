@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 import { keyframes } from "styled-components";
-import { mediaQueryTokens, zIndexTokens } from "@portfolio/ui";
+import { mediaQueryTokens, zIndexTokens } from "@graffitoryu/ui";
 
 // components
 import PeriodForward from "@/components/period/Period";

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getPortfolioData } from "@/data/repository/server";
 import cacheOptions from "@/lib/cache";
-import { careerData } from "@portfolio/preset-data";
+import { careerData } from "@graffitoryu/preset-data";
 
 /**
  * 커리어 조회 API

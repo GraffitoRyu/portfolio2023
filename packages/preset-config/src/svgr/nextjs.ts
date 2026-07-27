@@ -1,7 +1,7 @@
 import type {
   WebpackConfigType,
   WebpackModuleRuleType,
-} from "@portfolio/types";
+} from "@graffitoryu/types";
 
 /**
  * SVGR 설정; Next.js

@@ -5,7 +5,7 @@ import {
   mediaQueryTokens,
   typographyTokens,
   zIndexTokens,
-} from "@portfolio/ui";
+} from "@graffitoryu/ui";
 
 // style
 import { flex, font, position, size } from "../preset/mixins";

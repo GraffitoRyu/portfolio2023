@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getPortfolioData } from "@/data/repository/server";
 import cacheOptions from "@/lib/cache";
-import { stackKeysData } from "@portfolio/preset-data";
+import { stackKeysData } from "@graffitoryu/preset-data";
 
 /**
  * 기술 스택 key 조회 API

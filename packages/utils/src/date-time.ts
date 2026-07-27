@@ -1,4 +1,4 @@
-import type { UtilDateTimeFormatOptions } from "@portfolio/types";
+import type { UtilDateTimeFormatOptions } from "@graffitoryu/types";
 import { convert2Digit } from "./convert";
 import { isValidDateType } from "./validation";
 

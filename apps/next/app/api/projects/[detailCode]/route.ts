@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getPortfolioData } from "@/data/repository/server";
 import cacheOptions from "@/lib/cache";
-import { projectsData } from "@portfolio/preset-data";
+import { projectsData } from "@graffitoryu/preset-data";
 
 /**
  * 프로젝트 상세 데이터 조회 API

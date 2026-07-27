@@ -1,4 +1,4 @@
-import type { ThemeMode, ThemeTokens } from "@portfolio/ui";
+import type { ThemeMode, ThemeTokens } from "@graffitoryu/ui";
 
 declare global {
   type CustomThemeTypes = ThemeTokens;

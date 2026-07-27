@@ -1,7 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import { mediaQueryTokens, zIndexTokens } from "@portfolio/ui";
+import { mediaQueryTokens, zIndexTokens } from "@graffitoryu/ui";
 
 // style
 import { easing } from "../preset/easing";

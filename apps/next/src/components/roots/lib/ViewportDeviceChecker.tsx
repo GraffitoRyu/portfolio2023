@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { breakpointTokens } from "@portfolio/ui";
+import { breakpointTokens } from "@graffitoryu/ui";
 import { useAtom, useSetAtom } from "jotai";
 
 // hook

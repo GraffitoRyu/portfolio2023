@@ -1,7 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import { mediaQueryTokens } from "@portfolio/ui";
+import { mediaQueryTokens } from "@graffitoryu/ui";
 
 // style
 import { size } from "../preset/mixins";

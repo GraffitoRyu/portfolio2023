@@ -1,4 +1,4 @@
-import type { BundleAssetPath, PublicAssetPath } from "@portfolio/types";
+import type { BundleAssetPath, PublicAssetPath } from "@graffitoryu/types";
 
 export const assetManifest = {
   bundle: {

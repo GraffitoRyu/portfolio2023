@@ -1,5 +1,5 @@
 {
-  "name": "@portfolio/utils",
+  "name": "@graffitoryu/utils",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -15,16 +15,16 @@
     ".": "./src/index.tsx"
   },
   "dependencies": {
-    "@portfolio/preset-data": "workspace:*"
+    "@graffitoryu/preset-data": "workspace:*"
   },
   "peerDependencies": {
     "react": ">= 18",
     "react-dom": ">= 18"
   },
   "devDependencies": {
-    "@portfolio/eslint": "workspace:*",
-    "@portfolio/tsconfig": "workspace:*",
-    "@portfolio/types": "workspace:*",
+    "@graffitoryu/eslint": "workspace:*",
+    "@graffitoryu/tsconfig": "workspace:*",
+    "@graffitoryu/types": "workspace:*",
     "@types/node": "24.13.3",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",

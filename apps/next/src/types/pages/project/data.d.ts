@@ -6,7 +6,7 @@ import type {
   ProjectServiceData,
   ProjectStackData,
   ProjectSummaryData,
-} from "@portfolio/preset-data";
+} from "@graffitoryu/preset-data";
 
 declare global {
   type ProjectsAPIDataType = ProjectData;

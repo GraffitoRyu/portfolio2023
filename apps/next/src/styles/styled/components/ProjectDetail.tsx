@@ -5,7 +5,7 @@ import {
   mediaQueryTokens,
   typographyTokens,
   zIndexTokens,
-} from "@portfolio/ui";
+} from "@graffitoryu/ui";
 
 // util
 import { rem, widthRatio } from "@/utils/style.util";

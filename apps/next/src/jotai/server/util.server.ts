@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import type { NextRequest, NextResponse } from "next/server";
 import { serverStateSet } from "./preset";
 
-import { parseData, string } from "@portfolio/utils";
+import { parseData, string } from "@graffitoryu/utils";
 
 /**
  * 서버와 클라이언트에서 상태값 동기화 활용을 위한 초기화 세팅

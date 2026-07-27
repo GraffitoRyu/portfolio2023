@@ -2,7 +2,7 @@
 
 import { useCallback, useRef } from "react";
 import { useSetAtom } from "jotai";
-import { Footer } from "@portfolio/ui";
+import { Footer } from "@graffitoryu/ui";
 
 // components
 import FooterUpperContainer from "./FooterUpper";

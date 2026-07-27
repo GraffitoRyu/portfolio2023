@@ -10,7 +10,7 @@ import {
 } from "@/styles/styled/components/Gnb";
 
 // data
-import { sitemap } from "@portfolio/preset-data";
+import { sitemap } from "@graffitoryu/preset-data";
 
 export default function Gnb() {
   const { portfolio } = sitemap;

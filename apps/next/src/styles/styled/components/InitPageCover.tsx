@@ -5,7 +5,7 @@ import {
   mediaQueryTokens,
   typographyTokens,
   zIndexTokens,
-} from "@portfolio/ui";
+} from "@graffitoryu/ui";
 
 // style
 import { transTime } from "../preset/transTime";

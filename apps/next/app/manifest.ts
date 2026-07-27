@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { assetManifest } from "@portfolio/preset-data";
+import { assetManifest } from "@graffitoryu/preset-data";
 import { site } from "@/data/metadata";
 import { resolvePublicAssetUrl } from "@/data/assets";
 

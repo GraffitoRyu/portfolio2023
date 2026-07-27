@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useAtom, useAtomValue } from "jotai";
-import { ProjectCard } from "@portfolio/ui";
+import { ProjectCard } from "@graffitoryu/ui";
 
 // components
 import SlideTitle from "@/_pages/projects/item/SlideTitle";

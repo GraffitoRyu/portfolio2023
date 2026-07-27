@@ -1,5 +1,5 @@
 {
-  "name": "@portfolio/preset-config",
+  "name": "@graffitoryu/preset-config",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -25,9 +25,9 @@
     "react-dom": ">= 18"
   },
   "devDependencies": {
-    "@portfolio/eslint": "workspace:*",
-    "@portfolio/tsconfig": "workspace:*",
-    "@portfolio/types": "workspace:*",
+    "@graffitoryu/eslint": "workspace:*",
+    "@graffitoryu/tsconfig": "workspace:*",
+    "@graffitoryu/types": "workspace:*",
     "@svgr/webpack": "8.1.0",
     "@types/node": "24.13.3",
     "@types/webpack": "5.28.5",

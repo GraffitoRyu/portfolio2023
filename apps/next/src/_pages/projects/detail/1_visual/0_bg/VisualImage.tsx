@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { useAtomValue } from "jotai";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { assetManifest } from "@portfolio/preset-data";
+import { assetManifest } from "@graffitoryu/preset-data";
 import { resolvePublicAssetUrl } from "@/data/assets";
 
 // style components

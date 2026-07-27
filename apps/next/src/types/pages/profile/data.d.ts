@@ -5,7 +5,7 @@ import type {
   ExperienceData,
   StackData,
   StackKeyData,
-} from "@portfolio/preset-data";
+} from "@graffitoryu/preset-data";
 
 declare global {
   type CareerAPIDataType = CareerData;

@@ -1,7 +1,7 @@
 "use client";
 
 import { createGlobalStyle, styled } from "styled-components";
-import { zIndexTokens } from "@portfolio/ui";
+import { zIndexTokens } from "@graffitoryu/ui";
 
 // style
 import { position, size } from "../preset/mixins";

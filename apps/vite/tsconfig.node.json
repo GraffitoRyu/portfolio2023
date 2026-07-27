@@ -1,5 +1,5 @@
 {
-  "extends": "@portfolio/tsconfig/vite.node.json",
+  "extends": "@graffitoryu/tsconfig/vite.node.json",
   "compilerOptions": {
     "composite": true,
     "module": "ESNext",

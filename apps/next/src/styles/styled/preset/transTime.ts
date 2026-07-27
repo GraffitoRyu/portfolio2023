@@ -1,4 +1,4 @@
-import { motionTokens } from "@portfolio/ui";
+import { motionTokens } from "@graffitoryu/ui";
 
 export const transTime = motionTokens.duration;
 

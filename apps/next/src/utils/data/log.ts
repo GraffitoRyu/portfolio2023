@@ -1,4 +1,4 @@
-import { dateFormat } from "@portfolio/utils";
+import { dateFormat } from "@graffitoryu/utils";
 
 /**
  * 콘솔로그; 개발용

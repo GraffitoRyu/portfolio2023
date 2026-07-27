@@ -12,7 +12,7 @@ import {
 import useVisualLowerAnimation from "@/hooks/interaction/sectionVisual/useVisualLowerAnimation";
 
 // utils
-import { convertArrayToJsx } from "@portfolio/utils";
+import { convertArrayToJsx } from "@graffitoryu/utils";
 
 /**
  * 페이지 본문 공통 요소; Intro

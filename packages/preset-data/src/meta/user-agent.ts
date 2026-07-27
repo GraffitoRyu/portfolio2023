@@ -1,7 +1,7 @@
 import type {
   UserAgentDeviceCollectionType,
   UserAgentDeviceType,
-} from "@portfolio/types";
+} from "@graffitoryu/types";
 
 /**
  * userAgent > apple 디바이스 체크 키워드

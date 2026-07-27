@@ -1,5 +1,5 @@
 {
-  "name": "@portfolio/monorepo",
+  "name": "@graffitoryu/portfolio2023",
   "private": true,
   "scripts": {
     "lint": "turbo lint",

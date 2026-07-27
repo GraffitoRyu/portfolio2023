@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "styled-components";
-import { zIndexTokens } from "@portfolio/ui";
+import { zIndexTokens } from "@graffitoryu/ui";
 import { flex, font, position, size } from "../preset/mixins";
 import { rem } from "@/utils/style.util";
 import { transTime } from "../preset/transTime";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { SitemapRouteData } from "@portfolio/preset-data";
+import type { SitemapRouteData } from "@graffitoryu/preset-data";
 import { useState } from "react";
 
 // style components

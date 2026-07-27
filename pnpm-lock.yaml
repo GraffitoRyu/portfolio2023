@@ -28,13 +28,13 @@ importers:
       "@gsap/react":
         specifier: 2.1.2
         version: 2.1.2(gsap@3.15.0)(react@19.2.7)
-      "@portfolio/preset-data":
+      "@graffitoryu/preset-data":
         specifier: workspace:*
         version: link:../../packages/preset-data
-      "@portfolio/ui":
+      "@graffitoryu/ui":
         specifier: workspace:*
         version: link:../../packages/ui
-      "@portfolio/utils":
+      "@graffitoryu/utils":
         specifier: workspace:*
         version: link:../../packages/utils
       "@tanstack/react-query":
@@ -80,13 +80,13 @@ importers:
         specifier: 6.4.4
         version: 6.4.4(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
     devDependencies:
-      "@portfolio/eslint":
+      "@graffitoryu/eslint":
         specifier: workspace:*
         version: link:../../packages/config-eslint
-      "@portfolio/preset-config":
+      "@graffitoryu/preset-config":
         specifier: workspace:*
         version: link:../../packages/preset-config
-      "@portfolio/tsconfig":
+      "@graffitoryu/tsconfig":
         specifier: workspace:*
         version: link:../../packages/config-ts
       "@svgr/webpack":
@@ -138,10 +138,10 @@ importers:
         specifier: 6.4.4
         version: 6.4.4(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
     devDependencies:
-      "@portfolio/eslint":
+      "@graffitoryu/eslint":
         specifier: workspace:*
         version: link:../../packages/config-eslint
-      "@portfolio/tsconfig":
+      "@graffitoryu/tsconfig":
         specifier: workspace:*
         version: link:../../packages/config-ts
       "@tanstack/router-plugin":
@@ -223,13 +223,13 @@ importers:
         specifier: ">= 18"
         version: 19.2.7(react@19.2.7)
     devDependencies:
-      "@portfolio/eslint":
+      "@graffitoryu/eslint":
         specifier: workspace:*
         version: link:../config-eslint
-      "@portfolio/tsconfig":
+      "@graffitoryu/tsconfig":
         specifier: workspace:*
         version: link:../config-ts
-      "@portfolio/types":
+      "@graffitoryu/types":
         specifier: workspace:*
         version: link:../types
       "@svgr/webpack":
@@ -260,13 +260,13 @@ importers:
         specifier: ">= 18"
         version: 19.2.7(react@19.2.7)
     devDependencies:
-      "@portfolio/eslint":
+      "@graffitoryu/eslint":
         specifier: workspace:*
         version: link:../config-eslint
-      "@portfolio/tsconfig":
+      "@graffitoryu/tsconfig":
         specifier: workspace:*
         version: link:../config-ts
-      "@portfolio/types":
+      "@graffitoryu/types":
         specifier: workspace:*
         version: link:../types
       "@types/node":
@@ -287,10 +287,10 @@ importers:
 
   packages/types:
     devDependencies:
-      "@portfolio/eslint":
+      "@graffitoryu/eslint":
         specifier: workspace:*
         version: link:../config-eslint
-      "@portfolio/tsconfig":
+      "@graffitoryu/tsconfig":
         specifier: workspace:*
         version: link:../config-ts
       "@svgr/webpack":
@@ -336,10 +336,10 @@ importers:
         specifier: 19.2.7
         version: 19.2.7(react@19.2.7)
     devDependencies:
-      "@portfolio/eslint":
+      "@graffitoryu/eslint":
         specifier: workspace:*
         version: link:../config-eslint
-      "@portfolio/tsconfig":
+      "@graffitoryu/tsconfig":
         specifier: workspace:*
         version: link:../config-ts
       "@types/node":
@@ -360,7 +360,7 @@ importers:
 
   packages/utils:
     dependencies:
-      "@portfolio/preset-data":
+      "@graffitoryu/preset-data":
         specifier: workspace:*
         version: link:../preset-data
       react:
@@ -370,13 +370,13 @@ importers:
         specifier: ">= 18"
         version: 19.2.7(react@19.2.7)
     devDependencies:
-      "@portfolio/eslint":
+      "@graffitoryu/eslint":
         specifier: workspace:*
         version: link:../config-eslint
-      "@portfolio/tsconfig":
+      "@graffitoryu/tsconfig":
         specifier: workspace:*
         version: link:../config-ts
-      "@portfolio/types":
+      "@graffitoryu/types":
         specifier: workspace:*
         version: link:../types
       "@types/node":

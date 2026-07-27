@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getPortfolioData } from "@/data/repository/server";
 import cacheOptions from "@/lib/cache";
-import { experienceData } from "@portfolio/preset-data";
+import { experienceData } from "@graffitoryu/preset-data";
 
 /**
  * 경험 내용 조회 API

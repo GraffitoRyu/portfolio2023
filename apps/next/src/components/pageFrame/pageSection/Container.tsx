@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 import { useSetAtom } from "jotai";
-import { PageSection } from "@portfolio/ui";
+import { PageSection } from "@graffitoryu/ui";
 
 // style components
 import { StyledPageSectionContainer } from "@/styles/styled/components/PageSection";
@@ -11,7 +11,7 @@ import { StyledPageSectionContainer } from "@/styles/styled/components/PageSecti
 import { scrollPageSectionRefState } from "@/jotai/interaction/scroll.state";
 
 // util
-import { capitalize } from "@portfolio/utils";
+import { capitalize } from "@graffitoryu/utils";
 
 /**
  * 페이지 본문 공통 요소; Section Container

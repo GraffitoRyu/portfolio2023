@@ -10,7 +10,7 @@ import type {
   ProjectData,
   StackData,
   StackKeyData,
-} from "@portfolio/types";
+} from "@graffitoryu/types";
 
 export const careerData: CareerData[] = careerFixture;
 export const experienceData: ExperienceData[] = experienceFixture;

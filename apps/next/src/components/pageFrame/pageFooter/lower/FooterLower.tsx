@@ -9,7 +9,7 @@ import {
 } from "@/styles/styled/components/PageFooter";
 
 // data
-import { sitemap } from "@portfolio/preset-data";
+import { sitemap } from "@graffitoryu/preset-data";
 
 export default function FooterLower() {
   const { portfolio, recruit, contact, download } = sitemap;

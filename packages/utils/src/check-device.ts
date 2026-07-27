@@ -1,5 +1,5 @@
-import { userAgentOptions } from "@portfolio/preset-data";
-import { BreakPointType } from "@portfolio/types";
+import { userAgentOptions } from "@graffitoryu/preset-data";
+import { BreakPointType } from "@graffitoryu/types";
 
 /**
  * 반응형 웹 breakpoint 감지

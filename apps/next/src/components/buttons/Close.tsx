@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Icon } from "@portfolio/ui";
+import { Button, Icon } from "@graffitoryu/ui";
 
 // style components
 import { StyledDefaultBtn } from "@/styles/styled/preset/buttons";
