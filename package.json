@@ -5,15 +5,29 @@
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
     "build": "turbo build",
+    "prepare": "husky",
     "next:dev": "turbo next:dev",
     "next:start": "turbo next:start",
     "vite:dev": "turbo vite:dev",
     "vite:preview": "turbo vite:preview"
   },
   "devDependencies": {
+    "husky": "9.1.7",
+    "lint-staged": "16.4.0",
     "prettier": "3.9.5",
     "turbo": "2.10.4",
     "typescript": "6.0.3"
+  },
+  "lint-staged": {
+    "*": "prettier --check --ignore-unknown",
+    "apps/next/**/*.{js,jsx,ts,tsx}": "apps/next/node_modules/.bin/eslint --config apps/next/eslint.config.mjs",
+    "apps/vite/**/!(*.gen).{js,jsx,ts,tsx}": "apps/vite/node_modules/.bin/eslint --config apps/vite/eslint.config.mjs",
+    "packages/config-eslint/**/*.{js,jsx,ts,tsx}": "packages/config-eslint/node_modules/.bin/eslint --config packages/config-eslint/eslint.config.mjs",
+    "packages/preset-config/**/*.{js,jsx,ts,tsx}": "packages/preset-config/node_modules/.bin/eslint --config packages/preset-config/eslint.config.mjs",
+    "packages/preset-data/**/*.{js,jsx,ts,tsx}": "packages/preset-data/node_modules/.bin/eslint --config packages/preset-data/eslint.config.mjs",
+    "packages/types/**/*.{js,jsx,ts,tsx}": "packages/types/node_modules/.bin/eslint --config packages/types/eslint.config.mjs",
+    "packages/ui/**/*.{js,jsx,ts,tsx}": "packages/ui/node_modules/.bin/eslint --config packages/ui/eslint.config.mjs",
+    "packages/utils/**/*.{js,jsx,ts,tsx}": "packages/utils/node_modules/.bin/eslint --config packages/utils/eslint.config.mjs"
   },
   "packageManager": "pnpm@11.10.0",
   "engines": {
