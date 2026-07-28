@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getPortfolioData } from "@/data/repository/server";
+import { getData } from "@/data/server";
 import cacheOptions from "@/lib/cache";
 import { experienceData } from "@graffitoryu/preset-data";
 
@@ -11,11 +11,11 @@ import { experienceData } from "@graffitoryu/preset-data";
  * @return {Promise<NextResponse<ExperienceAPIDataTypes[]>>}
  */
 export async function GET(): Promise<NextResponse<ExperienceAPIDataTypes[]>> {
-  const res = await getPortfolioData<ExperienceAPIDataTypes[]>({
+  const res = await getData<ExperienceAPIDataTypes[]>({
     routeUrl: "/api/profile/experience",
     sourcePath: "/experience",
-    fixtureData: experienceData,
-    failureData: [],
+    localData: experienceData,
+    failResponse: [],
   });
 
   return NextResponse.json(res, { ...cacheOptions });

@@ -1,4 +1,4 @@
-export const readFirebaseData = async <TResponse>(
+export const getFirebaseData = async <TResponse>(
   sourcePath: string,
 ): Promise<TResponse> => {
   const { firebaseDB, firebaseRef, firebaseGet } =

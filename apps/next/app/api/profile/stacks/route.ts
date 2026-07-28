@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getPortfolioData } from "@/data/repository/server";
+import { getData } from "@/data/server";
 import cacheOptions from "@/lib/cache";
 import { stacksData } from "@graffitoryu/preset-data";
 
@@ -11,11 +11,11 @@ import { stacksData } from "@graffitoryu/preset-data";
  * @return {Promise<NextResponse<StackAPIDataTypes[]>>}
  */
 export async function GET(): Promise<NextResponse<StackAPIDataTypes[]>> {
-  const res = await getPortfolioData<StackAPIDataTypes[]>({
+  const res = await getData<StackAPIDataTypes[]>({
     routeUrl: "/api/profile/stacks",
     sourcePath: "/stacks",
-    fixtureData: stacksData,
-    failureData: [],
+    localData: stacksData,
+    failResponse: [],
   });
 
   return NextResponse.json(res, { ...cacheOptions });

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getPortfolioData } from "@/data/repository/server";
+import { getData } from "@/data/server";
 import cacheOptions from "@/lib/cache";
 import { projectsData } from "@graffitoryu/preset-data";
 
@@ -21,11 +21,11 @@ export async function GET(
   // 파라미터가 없는 경우
   if (!detailCode) return NextResponse.json(undefined);
 
-  const data = await getPortfolioData<ProjectsAPIDataType[]>({
+  const data = await getData<ProjectsAPIDataType[]>({
     routeUrl: `/api/projects/${detailCode}`,
     sourcePath: "/projects",
-    fixtureData: projectsData,
-    failureData: [],
+    localData: projectsData,
+    failResponse: [],
   });
 
   const res =

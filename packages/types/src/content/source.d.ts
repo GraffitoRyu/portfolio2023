@@ -6,17 +6,17 @@ import type {
   StackKeyData,
 } from "./portfolio";
 
-export type PortfolioProfileData = {
+export type ProfileData = {
   career: CareerData[];
   experience: ExperienceData[];
   stackKeys: StackKeyData[];
   stacks: StackData[];
 };
 
-export type ProjectListItemData = Pick<ProjectData, "code" | "summary">;
+export type ProjectItemData = Pick<ProjectData, "code" | "summary">;
 
-export interface PortfolioRepository {
-  getProfile(): Promise<PortfolioProfileData>;
-  getProjects(): Promise<ProjectListItemData[]>;
+export interface DataSource {
+  getProfile(): Promise<ProfileData>;
+  getProjects(): Promise<ProjectItemData[]>;
   getProject(code: string): Promise<ProjectData | undefined>;
 }

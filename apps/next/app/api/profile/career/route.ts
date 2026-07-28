@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getPortfolioData } from "@/data/repository/server";
+import { getData } from "@/data/server";
 import cacheOptions from "@/lib/cache";
 import { careerData } from "@graffitoryu/preset-data";
 
@@ -11,11 +11,11 @@ import { careerData } from "@graffitoryu/preset-data";
  * @return {Promise<NextResponse<CareerAPIDataType[]>>}
  */
 export async function GET(): Promise<NextResponse<CareerAPIDataType[]>> {
-  const res = await getPortfolioData<CareerAPIDataType[]>({
+  const res = await getData<CareerAPIDataType[]>({
     routeUrl: "/api/profile/career",
     sourcePath: "/career",
-    fixtureData: careerData,
-    failureData: [],
+    localData: careerData,
+    failResponse: [],
   });
 
   return NextResponse.json(res, { ...cacheOptions });

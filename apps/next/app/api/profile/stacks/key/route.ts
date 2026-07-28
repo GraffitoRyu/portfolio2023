@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getPortfolioData } from "@/data/repository/server";
+import { getData } from "@/data/server";
 import cacheOptions from "@/lib/cache";
 import { stackKeysData } from "@graffitoryu/preset-data";
 
@@ -11,11 +11,11 @@ import { stackKeysData } from "@graffitoryu/preset-data";
  * @return {Promise<NextResponse<StackKeyAPIDataTypes[]>>}
  */
 export async function GET(): Promise<NextResponse<StackKeyAPIDataTypes[]>> {
-  const res = await getPortfolioData<StackKeyAPIDataTypes[]>({
+  const res = await getData<StackKeyAPIDataTypes[]>({
     routeUrl: "/api/profile/stacks/key",
     sourcePath: "/stackKeys",
-    fixtureData: stackKeysData,
-    failureData: [],
+    localData: stackKeysData,
+    failResponse: [],
   });
 
   return NextResponse.json(res, { ...cacheOptions });

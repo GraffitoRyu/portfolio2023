@@ -1,27 +1,27 @@
 import { revalidateTag } from "next/cache";
 
 import { nextAPILog } from "@/utils/data/log";
-import { readFirebaseData } from "./firebase";
+import { getFirebaseData } from "./firebase";
 
-type GetPortfolioDataOptions<TResponse> = {
+type GetDataOptions<TResponse> = {
   routeUrl: string;
   sourcePath: string;
-  fixtureData: TResponse;
-  failureData: TResponse;
+  localData: TResponse;
+  failResponse: TResponse;
   searchParams?: URLSearchParams;
   log?: object;
 };
 
-export const getPortfolioData = async <TResponse>({
+export const getData = async <TResponse>({
   routeUrl,
   sourcePath,
-  fixtureData,
-  failureData,
+  localData,
+  failResponse,
   searchParams,
   log,
-}: GetPortfolioDataOptions<TResponse>): Promise<TResponse> => {
+}: GetDataOptions<TResponse>): Promise<TResponse> => {
   if (process.env.NODE_ENV === "development") {
-    return fixtureData;
+    return localData;
   }
 
   try {
@@ -37,12 +37,12 @@ export const getPortfolioData = async <TResponse>({
       Object.keys(logData).length > 0 ? logData : undefined,
     );
 
-    const data = await readFirebaseData<TResponse>(sourcePath);
+    const data = await getFirebaseData<TResponse>(sourcePath);
     revalidateTag(routeUrl, "max");
 
     return data;
   } catch (error) {
     nextAPILog("get", routeUrl, sourcePath, { error });
-    return failureData;
+    return failResponse;
   }
 };

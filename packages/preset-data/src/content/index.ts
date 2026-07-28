@@ -1,8 +1,8 @@
-import careerFixture from "./career.json";
-import experienceFixture from "./experience.json";
-import projectsFixture from "./projects.json";
-import stackKeysFixture from "./stack-keys.json";
-import stacksFixture from "./stacks.json";
+import career from "./career.json";
+import experience from "./experience.json";
+import projects from "./projects.json";
+import stackKeys from "./stack-keys.json";
+import stacks from "./stacks.json";
 
 import type {
   CareerData,
@@ -12,8 +12,8 @@ import type {
   StackKeyData,
 } from "@graffitoryu/types";
 
-export const careerData: CareerData[] = careerFixture;
-export const experienceData: ExperienceData[] = experienceFixture;
-export const projectsData: ProjectData[] = projectsFixture;
-export const stackKeysData: StackKeyData[] = stackKeysFixture;
-export const stacksData: StackData[] = stacksFixture;
+export const careerData: CareerData[] = career;
+export const experienceData: ExperienceData[] = experience;
+export const projectsData: ProjectData[] = projects;
+export const stackKeysData: StackKeyData[] = stackKeys;
+export const stacksData: StackData[] = stacks;
