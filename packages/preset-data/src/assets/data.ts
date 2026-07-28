@@ -1,6 +1,6 @@
-import type { BundleAssetPath, PublicAssetPath } from "@graffitoryu/types";
+import type { BundlePath, PublicPath } from "@graffitoryu/types";
 
-export const assetManifest = {
+export const assets = {
   bundle: {
     icons: {
       close: "svg/btn/close.svg",
@@ -14,16 +14,16 @@ export const assetManifest = {
       footerExternal: "svg/footer/link_external.svg",
       github: "svg/header/github_icon.svg",
       notion: "svg/header/notion_icon.svg",
-    } satisfies Record<string, BundleAssetPath>,
+    } satisfies Record<string, BundlePath>,
   },
   public: {
     common: {
       siteThumbnail: "/img/common/site_thumb.jpg",
-    } satisfies Record<string, PublicAssetPath>,
+    } satisfies Record<string, PublicPath>,
     downloads: {
       projects: "/download/projects_v2023_07_20.pdf",
       resume: "/download/resume_v2023_07_18.pdf",
-    } satisfies Record<string, PublicAssetPath>,
+    } satisfies Record<string, PublicPath>,
     favicons: {
       android192: "/favicon/android-icon-192x192.png",
       apple57: "/favicon/apple-icon-57x57.png",
@@ -39,7 +39,7 @@ export const assetManifest = {
       favicon16: "/favicon/favicon-16x16.png",
       favicon32: "/favicon/favicon-32x32.png",
       favicon96: "/favicon/favicon-96x96.png",
-    } satisfies Record<string, PublicAssetPath>,
+    } satisfies Record<string, PublicPath>,
     projects: {
       teamsolution: {
         intro: "/img/details/intro_teamsolution.jpg",
@@ -79,9 +79,9 @@ export const assetManifest = {
     } satisfies Record<
       string,
       {
-        intro: PublicAssetPath;
-        subVisual: PublicAssetPath;
-        media: readonly PublicAssetPath[];
+        intro: PublicPath;
+        subVisual: PublicPath;
+        media: readonly PublicPath[];
       }
     >,
   },

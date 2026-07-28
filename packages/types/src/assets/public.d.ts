@@ -1,2 +1,2 @@
-export type PublicAssetPath = `/${string}`;
-export type BundleAssetPath = `svg/${string}.svg`;
+export type PublicPath = `/${string}`;
+export type BundlePath = `svg/${string}.svg`;

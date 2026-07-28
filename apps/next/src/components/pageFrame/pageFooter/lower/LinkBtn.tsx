@@ -18,7 +18,6 @@ import {
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 import useNavigation from "@/hooks/navigation/useNavigation";
-import { resolvePublicAssetUrl } from "@/data/assets";
 
 export default function FooterLink({
   code,
@@ -27,7 +26,7 @@ export default function FooterLink({
   path,
 }: SitemapDataType) {
   const { navigate } = useNavigation();
-  const href = kind === "download" ? resolvePublicAssetUrl(path) : path;
+  const href = path;
 
   const downBtnRef = useRef<HTMLButtonElement | null>(null);
   const [hoverText, setHoverText] = useState<string>("");

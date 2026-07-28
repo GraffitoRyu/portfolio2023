@@ -3,7 +3,7 @@ import {
   type SitemapCollectionType,
 } from "@graffitoryu/types";
 
-import { assetManifest } from "../assets";
+import { assets } from "../assets";
 
 /**
  * 사이트맵; 포트폴리오 라우팅 데이터
@@ -113,14 +113,14 @@ const download: SitemapDataType[] = [
     key: "sitemap/download/resume",
     code: "resume_doc",
     name: "이력서",
-    path: assetManifest.public.downloads.resume,
+    path: assets.public.downloads.resume,
   },
   {
     kind: "download",
     key: "sitemap/download/projects",
     code: "projects_doc",
     name: "경력기술서",
-    path: assetManifest.public.downloads.projects,
+    path: assets.public.downloads.projects,
   },
 ];
 
