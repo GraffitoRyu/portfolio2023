@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "styled-components";
-import { typographyTokens, zIndexTokens } from "@graffitoryu/ui";
+import { typography, zIndex } from "@graffitoryu/ui";
 
 // style
 import { easing } from "../preset/easing";
@@ -13,7 +13,7 @@ export const StyledTransitionCover = styled.div`
     type: "fixed",
     left: 0,
     top: 0,
-    z: zIndexTokens.transitionCover,
+    z: zIndex.transitionCover,
   })}
   ${size({ w: "100%", h: 0 })}
   background-color: ${({ theme }) => theme.transCover.bg};
@@ -41,7 +41,7 @@ export const StyledTransTitle = styled.h1`
   ${font({
     size: 160,
     weight: 500,
-    family: typographyTokens.family.serifKorean,
+    family: typography.family.serifKorean,
     height: "1em",
     spacing: 0,
     transform: "capitalize",

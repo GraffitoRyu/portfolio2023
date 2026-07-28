@@ -1,5 +1,5 @@
-export { sizeTokens as sizePreset } from "@graffitoryu/ui";
+export { size as sizePreset } from "@graffitoryu/ui";
 
-import { sizeTokens } from "@graffitoryu/ui";
+import { size } from "@graffitoryu/ui";
 
-export type SizePreset = keyof typeof sizeTokens;
+export type SizePreset = keyof typeof size;

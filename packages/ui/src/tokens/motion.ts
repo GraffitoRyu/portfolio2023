@@ -1,4 +1,4 @@
-export const motionTokens = {
+export const motion = {
   easing: {
     quad: " cubic-bezier(0.5, 1, 0.89, 1)",
     quart: "cubic-bezier(0.25, 1, 0.5, 1)",
@@ -25,5 +25,3 @@ export const motionTokens = {
     },
   },
 } as const;
-
-export type MotionTokens = typeof motionTokens;

@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { typographyTokens } from "@graffitoryu/ui";
+import { typography } from "@graffitoryu/ui";
 import { font } from "../preset/mixins";
 import { rem } from "@/utils/style.util";
 
@@ -13,7 +13,7 @@ export const StyledPageTitle = styled.span`
   })}
   &.stroke-title {
     /* -webkit-text-stroke: ${rem(2)} gray; */
-    ${font({ weight: 500, family: typographyTokens.family.serifKorean })}
+    ${font({ weight: 500, family: typography.family.serifKorean })}
   }
   &.filled-title {
   }

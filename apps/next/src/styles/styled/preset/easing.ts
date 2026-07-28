@@ -1,3 +1,3 @@
-import { motionTokens } from "@graffitoryu/ui";
+import { motion } from "@graffitoryu/ui";
 
-export const easing = motionTokens.easing;
+export const easing = motion.easing;

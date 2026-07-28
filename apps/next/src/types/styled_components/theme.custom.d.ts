@@ -1,8 +1,8 @@
-import type { ThemeMode, ThemeTokens } from "@graffitoryu/ui";
+import type { ThemeMode, Theme } from "@graffitoryu/ui";
 
 declare global {
-  type CustomThemeTypes = ThemeTokens;
-  type CustomThemeModeTypes = Record<ThemeMode, ThemeTokens>;
+  type CustomThemeTypes = Theme;
+  type CustomThemeModeTypes = Record<ThemeMode, Theme>;
 }
 
 export {};

@@ -1,11 +1,7 @@
 "use client";
 
 import { keyframes, styled } from "styled-components";
-import {
-  mediaQueryTokens,
-  typographyTokens,
-  zIndexTokens,
-} from "@graffitoryu/ui";
+import { media, typography, zIndex } from "@graffitoryu/ui";
 
 // style
 import { transTime } from "../preset/transTime";
@@ -16,7 +12,7 @@ export const StyledInitCoverContainer = styled.div`
     type: "fixed",
     left: 0,
     top: 0,
-    z: zIndexTokens.initializationCover,
+    z: zIndex.initializationCover,
   })}
   ${size({ w: "100%", h: "100%" })}
   opacity:0;
@@ -51,7 +47,7 @@ export const StyledInitCoverTItle = styled.div`
     size: 40,
     weight: 500,
     height: "1em",
-    family: typographyTokens.family.serifKorean,
+    family: typography.family.serifKorean,
   })}
   span {
     ${size({ mt: 8 })}
@@ -61,13 +57,13 @@ export const StyledInitCoverTItle = styled.div`
   animation: ${initTitleBreathing} 1.6s infinite linear;
   transition: none;
 
-  @media only screen and ${mediaQueryTokens.min.compact} {
+  @media only screen and ${media.min.compact} {
     ${font({ size: 24 })}
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${font({ size: 32 })}
   }
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${font({ size: 24 })}
   }
 `;

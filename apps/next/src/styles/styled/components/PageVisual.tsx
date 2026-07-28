@@ -1,7 +1,7 @@
 "use client";
 
 import { css, styled } from "styled-components";
-import { mediaQueryTokens } from "@graffitoryu/ui";
+import { media } from "@graffitoryu/ui";
 
 // components
 import { StyledPageTitle } from "./PageTitle";
@@ -13,7 +13,7 @@ import { transTime } from "../preset/transTime";
 export const StyledVisualContainer = styled.div`
   ${flex({ dir: "column", cross: "flex-start" })}
   height: 50%;
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ w: "100%", h: `calc(100vh - var(--header-height))` })}
   }
 `;
@@ -61,7 +61,7 @@ export const StyledVisualTitle = styled.h1`
       ${transVisualTitle(0.16)}
     }
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     &.fixed-parallax {
       position: fixed;
       pointer-events: none;
@@ -75,7 +75,7 @@ export const StyledVisualTitleLine = styled(StyledPageTitle)`
   }
   &.filled-title {
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${font({ size: 240 })}
   }
 `;
@@ -107,10 +107,10 @@ export const StyledIntroTitle = styled.h2`
   &.init {
     opacity: 0;
   }
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${size({ mb: 80 })}
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${font({
       size: 64,
       height: 80,
@@ -135,7 +135,7 @@ export const StyledIntroDesc = styled.p`
   &.init {
     opacity: 0;
   }
-  @media only screen and ${mediaQueryTokens.min.grid} {
+  @media only screen and ${media.min.grid} {
     ${font({
       size: 24,
       height: 40,
@@ -144,7 +144,7 @@ export const StyledIntroDesc = styled.p`
       display: inline;
     }
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${font({
       size: 32,
       height: 56,

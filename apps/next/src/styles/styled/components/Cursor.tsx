@@ -1,7 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import { zIndexTokens } from "@graffitoryu/ui";
+import { zIndex } from "@graffitoryu/ui";
 
 // style
 import { position, size } from "../preset/mixins";
@@ -13,7 +13,7 @@ export const StyledCursor = styled.div`
     type: "fixed",
     top: "0rem",
     left: "0rem",
-    z: zIndexTokens.cursor,
+    z: zIndex.cursor,
   })}
   pointer-events: none;
   backface-visibility: visible;

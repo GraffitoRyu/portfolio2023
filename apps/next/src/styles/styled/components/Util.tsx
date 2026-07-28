@@ -1,7 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import { mediaQueryTokens } from "@graffitoryu/ui";
+import { media } from "@graffitoryu/ui";
 
 // style
 import { size } from "../preset/mixins";
@@ -17,7 +17,7 @@ export const StyledDepthItem = styled.li`
 
 export const StyledResponsiveBr = styled.br`
   display: none;
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     display: inline;
   }
 `;

@@ -1,4 +1,4 @@
-export const typographyTokens = {
+export const typography = {
   family: {
     sans: "var(--sans-kr)",
     serifKorean: "var(--serif-kr)",
@@ -24,5 +24,3 @@ export const typographyTokens = {
     global: "-0.05em",
   },
 } as const;
-
-export type TypographyTokens = typeof typographyTokens;

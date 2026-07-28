@@ -1,7 +1,7 @@
 "use client";
 
 import { css, styled } from "styled-components";
-import { mediaQueryTokens } from "@graffitoryu/ui";
+import { media } from "@graffitoryu/ui";
 
 // style preset
 import { img } from "./img";
@@ -84,7 +84,7 @@ export const StyledDefaultBtn = styled.button`
     ${({ theme }) => colorSet(theme.buttons.hoverContents)}
   }
 
-  @media only screen and ${mediaQueryTokens.max.tablet} and (orientation: landscape) {
+  @media only screen and ${media.max.tablet} and (orientation: landscape) {
     ${size({
       h: sizePreset.btn.w768_landscape,
       r: 8,
@@ -111,7 +111,7 @@ export const StyledDefaultBtn = styled.button`
     }
   }
 
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${size({ h: sizePreset.btn.w768, r: 8 })}
 
     &:not(.text-type) {
@@ -129,7 +129,7 @@ export const StyledDefaultBtn = styled.button`
       }
     }
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ h: sizePreset.btn.w1024 })}
 
     &:not(.text-type) {
@@ -147,7 +147,7 @@ export const StyledDefaultBtn = styled.button`
       }
     }
   }
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${size({ h: sizePreset.btn.w1280 })}
 
     &:not(.text-type) {
@@ -158,7 +158,7 @@ export const StyledDefaultBtn = styled.button`
       ${size({ w: sizePreset.icon.w1280, h: sizePreset.icon.w1280 })}
     }
   }
-  @media only screen and ${mediaQueryTokens.min.large} {
+  @media only screen and ${media.min.large} {
     ${size({ h: sizePreset.btn.w1440 })}
 
     &:not(.text-type) {

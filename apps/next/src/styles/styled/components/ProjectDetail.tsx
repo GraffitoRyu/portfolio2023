@@ -1,11 +1,7 @@
 "use client";
 
 import { styled } from "styled-components";
-import {
-  mediaQueryTokens,
-  typographyTokens,
-  zIndexTokens,
-} from "@graffitoryu/ui";
+import { media, typography, zIndex } from "@graffitoryu/ui";
 
 // util
 import { rem, widthRatio } from "@/utils/style.util";
@@ -24,7 +20,7 @@ import { StyledDefaultBtn } from "@/styles/styled//preset/buttons";
 
 export const StyledPDContainer = styled.article`
   ${size({ w: "100%", h: "100%" })}
-  ${position({ type: "fixed", left: 0, bottom: 0, z: zIndexTokens.detail })}
+  ${position({ type: "fixed", left: 0, bottom: 0, z: zIndex.detail })}
   overflow: hidden;
   background: ${({ theme }) => theme.projectDetails.bg};
   ${transition([
@@ -45,7 +41,7 @@ export const StyledPDHeader = styled.header`
     type: "sticky",
     top: 0,
     left: 0,
-    z: zIndexTokens.detailHeader,
+    z: zIndex.detailHeader,
   })}
   ${size({ w: "100%", h: 0 })}
 `;
@@ -59,13 +55,13 @@ export const StyledPDHeaderTitleContainer = styled.h3`
     weight: 500,
     height: "1em",
   })}
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${font({ size: 24 })}
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${font({ size: 32 })}
   }
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${font({ size: 24 })}
   }
 `;
@@ -88,7 +84,7 @@ export const StyledPDHeaderProjectName = styled.span`
 export const StyledPDLinkContainer = styled.ul`
   ${flex({ std: "flex-start", wrap: "wrap" })}
   ${size({ w: `calc(100% + ${rem(40)})`, m: [0, -20] })}
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${flex({ std: "flex-end" })}
     ${size({ w: `fit-content`, m: 0 })}
   }
@@ -96,7 +92,7 @@ export const StyledPDLinkContainer = styled.ul`
 
 export const StyledPDLinkItem = styled.li`
   ${size({ p: [0, 20], mb: 40 })}
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ p: 0, m: [0, 24, 0, 0] })}
   }
 `;
@@ -110,13 +106,13 @@ export const StyledPDLinkName = styled.span`
     weight: 500,
     height: "1em",
   })}
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${font({ size: 24 })}
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${font({ size: 28 })}
   }
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${font({ size: 16 })}
   }
 `;
@@ -124,7 +120,7 @@ export const StyledPDLinkName = styled.span`
 export const StyledPDSection = styled.section`
   width: 100%;
   position: relative;
-  z-index: ${zIndexTokens.floating};
+  z-index: ${zIndex.floating};
   &:not(.detail-section-visual) {
     background: ${({ theme }) => theme.projectDetails.bg};
   }
@@ -132,7 +128,7 @@ export const StyledPDSection = styled.section`
 
 export const StyledPDVisualSection = styled(StyledPDSection)`
   ${size({ h: `auto`, pb: 400 })}
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ pb: 600 })}
   }
 `;
@@ -143,14 +139,14 @@ export const StyledPDSubVisualSection = styled(StyledPDSection)`
 
 export const StyledPDExpSection = styled(StyledPDSection)`
   ${size({ w: `100%`, p: [240, 80, 160] })}
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${size({ p: [240, 60] })}
   }
 `;
 
 export const StyledPDMediaSection = styled(StyledPDSection)`
   ${size({ pb: 640 })}
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ pb: 160 })}
   }
 `;
@@ -158,13 +154,13 @@ export const StyledPDMediaSection = styled(StyledPDSection)`
 export const StyledPDVisualViewport = styled.div`
   ${flex({ dir: "column", std: "flex-end", cross: "flex-start" })}
   ${size({ w: "100%", h: `var(--wh)`, p: [`var(--header-height)`, 80, 200] })}
-  @media only screen and ${mediaQueryTokens.max.tablet} and (orientation:landscape) {
+  @media only screen and ${media.max.tablet} and (orientation:landscape) {
     ${size({ pb: 80 })}
   }
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${size({ pb: 120 })}
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ pb: 160 })}
   }
 `;
@@ -180,10 +176,10 @@ export const StyledPDVisualImageContainer = styled.div`
     type: "fixed",
     top: 0,
     left: 0,
-    z: zIndexTokens.visualBackground,
+    z: zIndex.visualBackground,
   })}
   ${size({ w: "100%", h: `100vh` })}
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ h: "100vw" })}
   }
 `;
@@ -224,14 +220,14 @@ export const StyledPDVisualTitleLine = styled.span<{ $index: number }>`
     height: "1.2em",
     spacing: 0,
     weight: 400,
-    family: typographyTokens.family.serifDisplay,
+    family: typography.family.serifDisplay,
   })}
   transition:color ${transTime.color / 1000}s,
     opacity 1.8s ${easing.quart} ${({ $index }: { $index: number }) =>
       0.16 * $index}s,
     transform 1.6s ${easing.quart} ${({ $index }: { $index: number }) =>
       0.16 * $index}s;
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${font({ size: 184, height: "1em" })}
   }
 `;
@@ -261,7 +257,7 @@ export const StyledPDVisualSubtitle = styled.p<{ $index: number }>`
     transform: translateY(100%);
   }
 
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ mt: 80 })}
     ${font({ height: "1em" })}
   }
@@ -270,7 +266,7 @@ export const StyledPDVisualSubtitle = styled.p<{ $index: number }>`
 export const StyledPDInfoItem = styled.dl<Partial<StyleOptionDetailInfoItem>>`
   ${size({ w: "100%", mb: 80, p: [0, 20] })}
 
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ w: `${widthRatio(12, 2)}%` })}
   }
 `;
@@ -290,10 +286,10 @@ export const StyledPDSummaryItem = styled(StyledPDInfoItem)`
     opacity: 0;
   }
 
-  @media only screen and ${mediaQueryTokens.max.tablet} and (orientation: landscape) {
+  @media only screen and ${media.max.tablet} and (orientation: landscape) {
     ${size({ w: `${widthRatio(12, 6)}%` })}
   }
-  @media only screen and ${mediaQueryTokens.min.tablet} and ${mediaQueryTokens.max.desktop} {
+  @media only screen and ${media.min.tablet} and ${media.max.desktop} {
     ${size({ w: `${widthRatio(12, 6)}%`, mb: 48 })}
   }
 `;
@@ -303,11 +299,11 @@ export const StyledPDStackItem = styled(StyledPDInfoItem)`
   &.details-stack-title {
     ${size({ w: `100%` })}
   }
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     display: block;
     ${size({ w: `${widthRatio(12, 3)}%` })}
   }
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${size({ w: `${widthRatio(12, 2)}%` })}
     &.details-stack-title {
       ${size({ w: `${widthRatio(12, 3)}%` })}
@@ -322,25 +318,25 @@ export const StyledPDInfoTitle = styled.dt`
     size: 32,
     weight: 500,
     height: "1em",
-    family: typographyTokens.family.serifKorean,
+    family: typography.family.serifKorean,
     spacing: 0,
   })}
 
-  @media only screen and ${mediaQueryTokens.max.tablet} and (orientation: landscape) {
+  @media only screen and ${media.max.tablet} and (orientation: landscape) {
     ${font({ size: 24 })}
   }
 
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${size({ mb: 16 })}
     ${font({ size: 20 })}
   }
 
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ mb: 32 })}
     ${font({ size: 32 })}
   }
 
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${size({ mb: 24 })}
     ${font({ size: 24 })}
   }
@@ -360,19 +356,19 @@ export const StyledPDInfoContents = styled.dd`
     weight: 500,
   })}
 
-  @media only screen and ${mediaQueryTokens.max.tablet} and (orientation: landscape) {
+  @media only screen and ${media.max.tablet} and (orientation: landscape) {
     ${font({ size: 24 })}
   }
 
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${font({ size: 20 })}
   }
 
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${font({ size: 32 })}
   }
 
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${font({ size: 24 })}
   }
 `;
@@ -391,7 +387,7 @@ export const StyledPDSummaryContainer = styled(StyledPDInfoContainer)`
   ${flex({ start: true, wrap: "wrap" })}
   ${size({ mb: 40 })}
 
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ mt: 120, mb: 0 })}
   }
 `;
@@ -399,25 +395,25 @@ export const StyledPDSummaryContainer = styled(StyledPDInfoContainer)`
 export const StyledPDStacksContainer = styled(StyledPDInfoContainer)`
   ${flex({ start: true, wrap: "wrap" })}
   ${size({ mt: 320 })}
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
   }
 `;
 
 export const StyledPDExpContainer = styled.div`
   ${size({ w: "100%" })}
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${size({
       w: `${widthRatio(12, 8)}%`,
       p: [0, 20],
     })}
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({
       w: `${widthRatio(12, 6)}%`,
       m: [0, `${widthRatio(12, 3)}%`],
     })}
   }
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${size({
       w: `${widthRatio(12, 5)}%`,
       m: [0, `${widthRatio(12, 2)}%`, 0, `${widthRatio(12, 5)}%`],
@@ -434,12 +430,12 @@ export const StyledPDExpTitle = styled.h5`
       weight: 400,
       spacing: `0.02em`,
       height: "1em",
-      family: typographyTokens.family.serifDisplay,
+      family: typography.family.serifDisplay,
       style: "italic",
     })}
   }
   opacity: 0;
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     span {
       ${font({ size: 120 })}
     }
@@ -469,15 +465,15 @@ export const StyledPDExpDesc = styled.li`
     flex: 1;
   }
 
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${font({ size: 24 })}
   }
 
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${font({ size: 32 })}
   }
 
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${font({ size: 24 })}
   }
 `;

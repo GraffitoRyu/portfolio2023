@@ -1,7 +1,7 @@
 "use client";
 
 import styled, { css } from "styled-components";
-import { mediaQueryTokens, zIndexTokens } from "@graffitoryu/ui";
+import { media, zIndex } from "@graffitoryu/ui";
 
 // util
 import { rem, widthRatio } from "@/utils/style.util";
@@ -13,7 +13,7 @@ import { easing } from "../preset/easing";
 
 export const StyledCareerList = styled.ul`
   ${size({ w: `calc(100% + ${rem(160)})`, m: [0, -80] })}
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ w: "100%", m: 0 })}
   }
 `;
@@ -63,7 +63,7 @@ export const StyledCareerBorder = styled.div`
 const careerSummaryCell = (col: number) => css`
   ${flex({ std: "flex-start" })}
   ${size({ w: `${widthRatio(12, col)}%`, h: "100%", p: [0, 20] })}
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${size({ w: `${widthRatio(7, col)}%` })}
   }
 `;
@@ -74,7 +74,7 @@ const careerFont = css`
     weight: 400,
     height: "1em",
   })}
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${font({ size: 24 })}
   }
 `;
@@ -113,7 +113,7 @@ export const StyledCareerPeriod = styled.time`
   ${StyledCareerItem}.hide & {
     ${fadeInUp_before}
   }
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${careerSummaryCell(1)}
   }
 `;
@@ -128,7 +128,7 @@ export const StyledCareerRole = styled.h3`
   ${StyledCareerItem}.hide & {
     ${fadeInUp_before}
   }
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${careerSummaryCell(2)}
   }
 `;
@@ -145,7 +145,7 @@ export const StyledCareerCompany = styled.div`
   ${StyledCareerItem}.hide & {
     ${fadeInUp_before}
   }
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${careerSummaryCell(2)}
   }
 `;
@@ -160,7 +160,7 @@ export const StyledCareerExpandCell = styled.div`
   ${StyledCareerItem}.hide & {
     ${fadeInUp_before}
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ m: 0 })}
     ${careerSummaryCell(1)}
   }
@@ -198,7 +198,7 @@ export const StyledCareerDetailContainer = styled.div`
   background-color: ${({ theme }) => theme.career.expandBg};
   overflow: clip;
   transition: height 0.4s;
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ p: [0, 20, 0, `${widthRatio(7, 2)}%`] })}
   }
 `;
@@ -207,7 +207,7 @@ export const StyledCareerDetailList = styled.div`
   ${size({ w: "100%", p: [80, 0] })}
   opacity:0;
   transition: opacity 0.4s;
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ p: [40, 0, 80, 10] })}
   }
 `;
@@ -217,7 +217,7 @@ export const StyledCareerDetailItem = styled.dl`
   &:last-child {
     ${size({ mb: 0 })}
   }
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${size({ mb: 40 })}
   }
 `;
@@ -245,7 +245,7 @@ export const StyledCareerDetailItemDesc = styled.dd`
     flex: 1;
     ${font({ spacing: 0 })}
   }
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     &:before {
       ${size({ h: 40 })}
     }
@@ -255,7 +255,7 @@ export const StyledCareerDetailItemDesc = styled.dd`
 export const StyledCareerSummaryContainer = styled.summary`
   ${size({ w: `100%`, h: "auto", p: [64, 60] })}
   ${flex({ std: "flex-start", wrap: "wrap" })}
-  ${position({ type: "relative", z: zIndexTokens.content })}
+  ${position({ type: "relative", z: zIndex.content })}
   cursor:pointer;
   &:before {
     content: "";
@@ -264,7 +264,7 @@ export const StyledCareerSummaryContainer = styled.summary`
       type: "absolute",
       top: 0,
       left: 20,
-      z: zIndexTokens.decoratedBackground,
+      z: zIndex.decoratedBackground,
     })}
     transition: background-color ${transTime.color / 1000}s;
   }
@@ -289,7 +289,7 @@ export const StyledCareerSummaryContainer = styled.summary`
     }
   }
 
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ w: `calc(100% + ${rem(40)})`, h: 160, m: [0, -20], p: 0 })}
   }
 `;

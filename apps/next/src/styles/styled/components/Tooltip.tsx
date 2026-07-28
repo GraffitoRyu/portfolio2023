@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "styled-components";
-import { zIndexTokens } from "@graffitoryu/ui";
+import { zIndex } from "@graffitoryu/ui";
 import { flex, font, position, size } from "../preset/mixins";
 import { rem } from "@/utils/style.util";
 import { transTime } from "../preset/transTime";
@@ -12,7 +12,7 @@ export const StyledTooltipContainer = styled.div`
 `;
 
 export const StyledTooltipPositionBox = styled.div<{ $pos: string[] }>`
-  ${position({ type: "absolute", z: zIndexTokens.floating })}
+  ${position({ type: "absolute", z: zIndex.floating })}
   ${({ $pos }) => {
     let direction = "";
     let centerPos = "";

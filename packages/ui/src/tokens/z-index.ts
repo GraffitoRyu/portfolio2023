@@ -1,4 +1,4 @@
-export const zIndexTokens = {
+export const zIndex = {
   visualBackground: -100,
   decoratedBackground: -5,
   headerBackdrop: -1,
@@ -14,5 +14,3 @@ export const zIndexTokens = {
   initializationCover: 4000,
   cursor: 9999,
 } as const;
-
-export type ZIndexTokens = typeof zIndexTokens;

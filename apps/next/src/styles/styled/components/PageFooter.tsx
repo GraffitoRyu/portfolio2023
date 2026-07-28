@@ -1,7 +1,7 @@
 "use client";
 
 import styled, { css } from "styled-components";
-import { mediaQueryTokens, zIndexTokens } from "@graffitoryu/ui";
+import { media, zIndex } from "@graffitoryu/ui";
 
 // style components
 import { StyledPageTitle } from "./PageTitle";
@@ -22,17 +22,17 @@ import { transTime } from "../preset/transTime";
 import { rem, widthRatio } from "@/utils/style.util";
 
 export const StyledFooterContainer = styled.footer`
-  ${position({ type: "relative", z: zIndexTokens.footer })}
+  ${position({ type: "relative", z: zIndex.footer })}
   ${size({ w: "100%", h: `100vh`, p: 80 })}
   background-color: ${({ theme }) => theme.footer.bg};
   overflow: hidden;
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ p: [120, 80] })}
   }
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${size({ p: [160, 80] })}
   }
-  @media only screen and ${mediaQueryTokens.min.extraLarge} {
+  @media only screen and ${media.min.extraLarge} {
     ${size({ p: [120, 80] })}
   }
 `;
@@ -44,7 +44,7 @@ export const StyledFooterWrap = styled.div`
 
 export const StyledFooterHeader = styled.header`
   ${size({ mb: 80 })}
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ mb: 160 })}
   }
 `;
@@ -61,17 +61,17 @@ export const StyledFooterTitleLine = styled(StyledPageTitle)`
   }
   &.filled-title {
   }
-  @media only screen and ${mediaQueryTokens.min.compact} {
+  @media only screen and ${media.min.compact} {
     ${font({ size: `80px` })}
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${font({ size: 180 })}
   }
 `;
 
 export const StyledFooterLowerContainer = styled.div`
   ${size({ w: "100%", m: 0 })}
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${flex({
       dir: "row-reverse",
       std: "flex-end",
@@ -85,17 +85,17 @@ export const StyledFooterLowerContainer = styled.div`
 export const StyledPortfolioSummaryContainer = styled.div`
   ${size({ w: "100%", mt: 160 })}
   max-width:300px;
-  @media only screen and ${mediaQueryTokens.min.fluidRoot} {
+  @media only screen and ${media.min.fluidRoot} {
     ${size({ mt: 80, pr: "50%" })}
     max-width:100%;
   }
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${size({ mt: 80, pr: "33.3333%" })}
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ mt: 40, p: [0, `calc(66.6667% + ${rem(20)})`, 0, 20] })}
   }
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${size({ w: `${widthRatio(12, 4)}%`, mt: 0, p: [0, 20] })}
   }
 `;
@@ -106,16 +106,16 @@ const FooterDescFont = css`
     weight: 400,
     height: "1em",
   })}
-  @media only screen and ${mediaQueryTokens.min.fluidRoot} {
+  @media only screen and ${media.min.fluidRoot} {
     ${font({ size: 18 })}
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${font({ size: 24 })}
   }
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${font({ size: 20 })}
   }
-  @media only screen and ${mediaQueryTokens.min.extraLarge} {
+  @media only screen and ${media.min.extraLarge} {
     ${font({ size: 16 })}
   }
 `;
@@ -124,10 +124,10 @@ export const StyledPortfolioDescription = styled.p`
   color: ${({ theme }) => theme.footer.summary};
   ${FooterDescFont}
   line-height: 1.5em;
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${maxSize({ w: 440 })}
   }
-  @media only screen and ${mediaQueryTokens.min.extraLarge} {
+  @media only screen and ${media.min.extraLarge} {
     ${maxSize({ w: 340 })}
   }
 `;
@@ -140,20 +140,20 @@ export const StyledPortfolioCopyright = styled.p`
 `;
 
 export const StyledFooterMenuContainer = styled.div`
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${flex({ start: true })}
   }
 `;
 
 export const StyledFooterMenuColumn = styled.div`
   width: 100%;
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ w: "41.6667%", p: [0, 20] })}
     &.none-page {
       width: 25%;
     }
   }
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     &.none-page {
       ${size({ w: `${widthRatio(12, 3)}%` })}
     }
@@ -165,16 +165,16 @@ export const StyledFooterMenuColumn = styled.div`
 
 export const StyledFooterMenuItem = styled.dl`
   ${size({ w: "100%", mb: 40 })}
-  @media only screen and ${mediaQueryTokens.min.compact} {
+  @media only screen and ${media.min.compact} {
     ${size({ mb: 24 })}
   }
-  @media only screen and ${mediaQueryTokens.min.tablet} {
+  @media only screen and ${media.min.tablet} {
     ${size({ mb: 24 })}
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ h: 200, mb: 0 })}
   }
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${size({ h: 200 })}
   }
 `;
@@ -182,10 +182,10 @@ export const StyledFooterMenuItem = styled.dl`
 export const StyledFooterMenuTitle = styled.dt`
   ${size({ w: "fit-content", mb: 16 })}
   color: ${({ theme }) => theme.footer.linkCategory};
-  @media only screen and ${mediaQueryTokens.min.compact} {
+  @media only screen and ${media.min.compact} {
     ${size({ mb: `10px` })}
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ mb: 24 })}
   }
   ${FooterDescFont}
@@ -194,7 +194,7 @@ export const StyledFooterMenuTitle = styled.dt`
 
 export const StyledFooterMenuContents = styled.dd`
   ${flex({ std: "flex-start", wrap: "wrap" })}
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     &.contact-menu {
       display: block;
     }
@@ -218,13 +218,13 @@ export const StyledFooterLinkIcon = styled.figure`
   circle {
     transition: fill ${transTime.color / 1000}s;
   }
-  @media only screen and ${mediaQueryTokens.min.grid} {
+  @media only screen and ${media.min.grid} {
     ${size({ w: `14px`, h: `14px` })};
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${size({ w: 28, h: 28 })};
   }
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${size({ w: 20, h: 20 })};
   }
 `;
@@ -256,13 +256,13 @@ export const StyledFooterLinkBtn = styled.a`
       ${({ theme }) => svgFill(theme.footer.linkHover)}
     }
   }
-  @media only screen and ${mediaQueryTokens.min.grid} {
+  @media only screen and ${media.min.grid} {
     ${font({ size: `14px` })}
   }
-  @media only screen and ${mediaQueryTokens.min.desktop} {
+  @media only screen and ${media.min.desktop} {
     ${font({ size: 32 })}
   }
-  @media only screen and ${mediaQueryTokens.min.wide} {
+  @media only screen and ${media.min.wide} {
     ${font({ size: 24 })}
   }
 `;

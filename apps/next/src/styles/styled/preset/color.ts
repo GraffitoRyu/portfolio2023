@@ -1,1 +1,1 @@
-export { themeTokens as customThemes } from "@graffitoryu/ui";
+export { themes as customThemes } from "@graffitoryu/ui";

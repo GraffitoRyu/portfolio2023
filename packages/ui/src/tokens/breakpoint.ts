@@ -1,4 +1,4 @@
-export const breakpointTokens = {
+export const breakpoints = {
   layout: {
     compact: 560,
     fluidRoot: 580,
@@ -18,22 +18,19 @@ export const breakpointTokens = {
 const minWidth = (value: number) => `(min-width: ${value}px)`;
 const maxWidth = (value: number) => `(max-width: ${value}px)`;
 
-export const mediaQueryTokens = {
+export const media = {
   min: {
-    compact: minWidth(breakpointTokens.layout.compact),
-    fluidRoot: minWidth(breakpointTokens.layout.fluidRoot),
-    grid: minWidth(breakpointTokens.layout.grid),
-    tablet: minWidth(breakpointTokens.layout.tablet),
-    desktop: minWidth(breakpointTokens.layout.desktop),
-    wide: minWidth(breakpointTokens.layout.wide),
-    large: minWidth(breakpointTokens.layout.large),
-    extraLarge: minWidth(breakpointTokens.layout.extraLarge),
+    compact: minWidth(breakpoints.layout.compact),
+    fluidRoot: minWidth(breakpoints.layout.fluidRoot),
+    grid: minWidth(breakpoints.layout.grid),
+    tablet: minWidth(breakpoints.layout.tablet),
+    desktop: minWidth(breakpoints.layout.desktop),
+    wide: minWidth(breakpoints.layout.wide),
+    large: minWidth(breakpoints.layout.large),
+    extraLarge: minWidth(breakpoints.layout.extraLarge),
   },
   max: {
-    tablet: maxWidth(breakpointTokens.layout.tablet),
-    desktop: maxWidth(breakpointTokens.layout.desktop),
+    tablet: maxWidth(breakpoints.layout.tablet),
+    desktop: maxWidth(breakpoints.layout.desktop),
   },
 } as const;
-
-export type BreakpointTokens = typeof breakpointTokens;
-export type MediaQueryTokens = typeof mediaQueryTokens;

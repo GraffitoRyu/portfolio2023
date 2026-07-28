@@ -1,4 +1,4 @@
-export const spacingTokens = {
+export const spacing = {
   column: 20,
   page: 80,
   section: {
@@ -17,13 +17,13 @@ export const spacingTokens = {
   },
 } as const;
 
-export const sizeTokens = {
+export const size = {
   common: {
     remStd: 25.6,
-    padding: spacingTokens.page,
+    padding: spacing.page,
     section: {
-      mobile: spacingTokens.section.mobile,
-      pc: spacingTokens.section.desktop,
+      mobile: spacing.section.mobile,
+      pc: spacing.section.desktop,
     },
   },
   cursor: { basic: 8, clickable: 80, text: 64 },
@@ -44,6 +44,3 @@ export const sizeTokens = {
     w1440: 48,
   },
 } as const;
-
-export type SpacingTokens = typeof spacingTokens;
-export type SizeTokens = typeof sizeTokens;
