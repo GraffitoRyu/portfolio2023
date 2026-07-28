@@ -1,8 +1,8 @@
 "use client";
 
 import type {
-  PortfolioRouteCode,
-  PortfolioRoutePath,
+  RouteCode,
+  RoutePath,
   SitemapRouteData,
 } from "@graffitoryu/preset-data";
 import { usePathname, useRouter } from "next/navigation";
@@ -12,15 +12,15 @@ import { useSetAtom } from "jotai";
 import { pageLoadState } from "@/jotai/load.state";
 import { transTime } from "@/styles/styled/preset/transTime";
 
-export const getPortfolioRouteCode = (pathname: string): PortfolioRouteCode =>
+export const getRouteCode = (pathname: string): RouteCode =>
   pathname === "/projects" || pathname.startsWith("/projects/")
     ? "projects"
     : "profile";
 
-export const getPortfolioRoutePath = (pathname: string): PortfolioRoutePath =>
-  getPortfolioRouteCode(pathname) === "projects" ? "/projects" : "/";
+export const getRoutePath = (pathname: string): RoutePath =>
+  getRouteCode(pathname) === "projects" ? "/projects" : "/";
 
-export default function usePortfolioNavigation() {
+export default function useNavigation() {
   const pathname = usePathname();
   const router = useRouter();
   const setPage = useSetAtom(pageLoadState);
@@ -44,7 +44,7 @@ export default function usePortfolioNavigation() {
   );
 
   return {
-    currentPath: getPortfolioRoutePath(pathname),
+    currentPath: getRoutePath(pathname),
     navigate,
   };
 }

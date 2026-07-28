@@ -11,7 +11,7 @@ import { pageDetailLoadState, pageLoadState } from "@/jotai/load.state";
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
 import useProjectCategoryDetailData from "@/hooks/data/useProjectCategoryDetailData";
-import { getPortfolioRouteCode } from "@/hooks/navigation/usePortfolioNavigation";
+import { getRouteCode } from "@/hooks/navigation/useNavigation";
 
 /**
  * Root/Library; 페이지 변경 이벤트 감지를 위한 컴포넌트
@@ -37,7 +37,7 @@ export default function PageLoadEvents() {
     // 동적 경로 제외한 실 페이지 경로
     const newPathName: string = pathname;
     // 현재 페이지의 코드(페이지 이름) 값
-    const newPageName = getPortfolioRouteCode(newPathName);
+    const newPageName = getRouteCode(newPathName);
 
     if (savedPathName === newPathName) return;
 

@@ -4,8 +4,8 @@
 export type SitemapCategoryType =
   "portfolio" | "recruit" | "contact" | "resume";
 
-export type PortfolioRouteCode = "profile" | "projects";
-export type PortfolioRoutePath = "/" | "/projects";
+export type RouteCode = "profile" | "projects";
+export type RoutePath = "/" | "/projects";
 
 type SitemapBaseData = {
   /**
@@ -28,8 +28,8 @@ type SitemapBaseData = {
 
 export type SitemapRouteData = SitemapBaseData & {
   kind: "route";
-  code: PortfolioRouteCode;
-  path: PortfolioRoutePath;
+  code: RouteCode;
+  path: RoutePath;
 };
 
 export type SitemapExternalData = SitemapBaseData & {

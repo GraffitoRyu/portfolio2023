@@ -17,7 +17,7 @@ import {
 
 // style
 import { transTime } from "@/styles/styled/preset/transTime";
-import usePortfolioNavigation from "@/hooks/navigation/usePortfolioNavigation";
+import useNavigation from "@/hooks/navigation/useNavigation";
 import { resolvePublicAssetUrl } from "@/data/assets";
 
 export default function FooterLink({
@@ -26,7 +26,7 @@ export default function FooterLink({
   name,
   path,
 }: SitemapDataType) {
-  const { navigate } = usePortfolioNavigation();
+  const { navigate } = useNavigation();
   const href = kind === "download" ? resolvePublicAssetUrl(path) : path;
 
   const downBtnRef = useRef<HTMLButtonElement | null>(null);

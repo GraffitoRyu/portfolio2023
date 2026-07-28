@@ -6,11 +6,11 @@ import { useState } from "react";
 // style components
 import { StyledSitemapLink } from "@/styles/styled/components/Gnb";
 
-import usePortfolioNavigation from "@/hooks/navigation/usePortfolioNavigation";
+import useNavigation from "@/hooks/navigation/useNavigation";
 
 export default function SitemapBtn(route: SitemapRouteData) {
   const { name, path } = route;
-  const { currentPath, navigate } = usePortfolioNavigation();
+  const { currentPath, navigate } = useNavigation();
   // 마우스오버 인터렉션 상태 관리
   const [hover, setHover] = useState<string>("");
 
