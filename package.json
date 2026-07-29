@@ -8,9 +8,9 @@
     "clean": "bash ./scripts/clean-package.sh",
     "clear": "bash ./scripts/clear-cache.sh",
     "prepare": "husky",
-    "next:dev": "turbo next:dev",
+    "dev:next": "turbo dev --filter=@graffitoryu/portfolio2023-nextjs",
     "next:start": "turbo next:start",
-    "vite:dev": "turbo vite:dev",
+    "dev:vite": "turbo dev --filter=@graffitoryu/portfolio2023-tanstack-router",
     "vite:preview": "turbo vite:preview"
   },
   "devDependencies": {

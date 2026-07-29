@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import { openBrowserLocalNextServer } from "@graffitoryu/preset-config";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true, // 리액트 엄격모드
@@ -19,12 +18,6 @@ const nextConfig: NextConfig = {
         as: "*.js",
       },
     },
-  },
-  async redirects() {
-    // 로컬 서버 구동 시, 브라우저 창 열기
-    // NODE_ENV === "development"에서만 열림
-    openBrowserLocalNextServer();
-    return [];
   },
 };
 
