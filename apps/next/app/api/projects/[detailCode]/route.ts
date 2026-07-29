@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getData } from "@/data/server";
+import { dataError, getData } from "@/data/server";
 import cacheOptions from "@/lib/cache";
 import { projectsData } from "@graffitoryu/preset-data";
 
@@ -14,26 +14,38 @@ import { projectsData } from "@graffitoryu/preset-data";
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ detailCode: string }> },
-): Promise<NextResponse<ProjectsAPIDataType | undefined>> {
+) {
   // 프로젝트 상세 코드
   const { detailCode } = await params;
 
   // 파라미터가 없는 경우
-  if (!detailCode) return NextResponse.json(undefined);
+  if (!detailCode) {
+    return NextResponse.json({ error: "PROJECT_NOT_FOUND" }, { status: 404 });
+  }
 
-  const data = await getData<ProjectsAPIDataType[]>({
-    routeUrl: `/api/projects/${detailCode}`,
-    sourcePath: "/projects",
-    localData: projectsData,
-    failResponse: [],
-  });
+  try {
+    const data = await getData<ProjectsAPIDataType | undefined>({
+      routeUrl: `/api/projects/${detailCode}`,
+      sourcePath: "/projects",
+      code: detailCode,
+      localData: projectsData.find(({ code }) => code === detailCode),
+      isValid: (value): value is ProjectsAPIDataType | undefined =>
+        typeof value === "undefined" ||
+        (typeof value === "object" &&
+          value !== null &&
+          "code" in value &&
+          value.code === detailCode &&
+          "summary" in value &&
+          typeof value.summary === "object" &&
+          value.summary !== null),
+    });
 
-  const res =
-    (typeof data !== "undefined" &&
-      Array.isArray(data) &&
-      data.length > 0 &&
-      data.filter(({ code }) => code === detailCode)?.[0]) ||
-    undefined;
+    if (typeof data === "undefined") {
+      return NextResponse.json({ error: "PROJECT_NOT_FOUND" }, { status: 404 });
+    }
 
-  return NextResponse.json(res, { ...cacheOptions });
+    return NextResponse.json(data, { ...cacheOptions });
+  } catch {
+    return NextResponse.json(dataError, { status: 502 });
+  }
 }

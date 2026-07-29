@@ -8,8 +8,15 @@ import type {
   StackKeyData,
 } from "@graffitoryu/preset-data";
 
-const getJson = async <TResponse>(route: string): Promise<TResponse> =>
-  await (await fetch(route)).json();
+const getJson = async <TResponse>(route: string): Promise<TResponse> => {
+  const response = await fetch(route);
+
+  if (!response.ok) {
+    throw new Error(`Request failed: ${response.status} ${route}`);
+  }
+
+  return response.json();
+};
 
 export const remote: DataSource = {
   async getProfile() {
@@ -26,6 +33,14 @@ export const remote: DataSource = {
     return getJson("/api/projects");
   },
   async getProject(code): Promise<ProjectData | undefined> {
-    return getJson(`/api/projects/${code}`);
+    const route = `/api/projects/${code}`;
+    const response = await fetch(route);
+
+    if (response.status === 404) return undefined;
+    if (!response.ok) {
+      throw new Error(`Request failed: ${response.status} ${route}`);
+    }
+
+    return response.json();
   },
 };

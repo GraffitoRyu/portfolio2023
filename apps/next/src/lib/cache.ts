@@ -1,6 +1,8 @@
+export const cacheTime = 7200;
+
 const cacheOptions = {
   headers: {
-    "Cache-Control": "s-maxage=7200, stale-while-revalidate=300",
+    "Cache-Control": `s-maxage=${cacheTime}, stale-while-revalidate=300`,
   },
 };
 
