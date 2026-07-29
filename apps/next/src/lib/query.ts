@@ -1,14 +1,8 @@
 "use client";
 
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
-import {
-  getProfileCareerData,
-  getProfileExperienceData,
-  getProfileStackKeysList,
-  getProfileStacksData,
-  getProjectsData,
-  getProjectsDetailData,
-} from "@/data/http";
+import type { ProjectItemData } from "@graffitoryu/preset-data";
+import { source } from "@/data";
 
 /**
  * 프로필 > 커리어 데이터 API 쿼리
@@ -20,8 +14,9 @@ export const useQueryProfileCareerData = (): UseQueryResult<
   CareerAPIDataType[]
 > =>
   useQuery({
-    queryKey: ["profile/career"],
-    queryFn: () => getProfileCareerData(),
+    queryKey: ["profile"],
+    queryFn: () => source.getProfile(),
+    select: ({ career }) => career,
   });
 
 /**
@@ -34,8 +29,9 @@ export const useQueryProfileExperienceData = (): UseQueryResult<
   ExperienceAPIDataTypes[]
 > =>
   useQuery({
-    queryKey: ["profile/experience"],
-    queryFn: () => getProfileExperienceData(),
+    queryKey: ["profile"],
+    queryFn: () => source.getProfile(),
+    select: ({ experience }) => experience,
   });
 
 /**
@@ -48,8 +44,9 @@ export const useQueryProfileStackKeys = (): UseQueryResult<
   StackKeyAPIDataTypes[]
 > =>
   useQuery({
-    queryKey: ["profile/stack/key"],
-    queryFn: () => getProfileStackKeysList(),
+    queryKey: ["profile"],
+    queryFn: () => source.getProfile(),
+    select: ({ stackKeys }) => stackKeys,
   });
 
 /**
@@ -62,8 +59,9 @@ export const useQueryProfileStacksData = (): UseQueryResult<
   StackAPIDataTypes[]
 > =>
   useQuery({
-    queryKey: ["profile/stack"],
-    queryFn: () => getProfileStacksData(),
+    queryKey: ["profile"],
+    queryFn: () => source.getProfile(),
+    select: ({ stacks }) => stacks,
   });
 
 /**
@@ -72,12 +70,10 @@ export const useQueryProfileStacksData = (): UseQueryResult<
  * @method GET
  * @route /api/projects
  */
-export const useQueryProjectListData = (): UseQueryResult<
-  ProjectsAPIDataType[]
-> =>
+export const useQueryProjectListData = (): UseQueryResult<ProjectItemData[]> =>
   useQuery({
     queryKey: ["projects"],
-    queryFn: () => getProjectsData(),
+    queryFn: () => source.getProjects(),
   });
 
 /**
@@ -92,6 +88,6 @@ export const useQueryProjectsDetailData = (
 ): UseQueryResult<ProjectsAPIDataType | undefined> =>
   useQuery({
     queryKey: ["projects/detail", code],
-    queryFn: () => getProjectsDetailData(code),
+    queryFn: () => source.getProject(code),
     enabled: typeof code === "string" && code !== "",
   });

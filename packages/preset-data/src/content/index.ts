@@ -6,6 +6,7 @@ import stacks from "./stacks.json";
 
 import type {
   CareerData,
+  DataSource,
   ExperienceData,
   ProjectData,
   StackData,
@@ -17,3 +18,20 @@ export const experienceData: ExperienceData[] = experience;
 export const projectsData: ProjectData[] = projects;
 export const stackKeysData: StackKeyData[] = stackKeys;
 export const stacksData: StackData[] = stacks;
+
+export const local: DataSource = {
+  async getProfile() {
+    return {
+      career: careerData,
+      experience: experienceData,
+      stackKeys: stackKeysData,
+      stacks: stacksData,
+    };
+  },
+  async getProjects() {
+    return projectsData.map(({ code, summary }) => ({ code, summary }));
+  },
+  async getProject(code) {
+    return projectsData.find(project => project.code === code);
+  },
+};
