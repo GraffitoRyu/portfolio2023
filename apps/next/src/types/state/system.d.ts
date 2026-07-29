@@ -31,9 +31,3 @@ type SystemThemeStateTypes = {
    */
   theme: SystemThemeType;
 };
-
-/**
- * 언어 설정
- * @state
- */
-type SystemLanguageType = "ko" | "en" | string;

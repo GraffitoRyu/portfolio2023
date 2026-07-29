@@ -28,23 +28,18 @@ import {
   StyledMainContainer,
 } from "@/styles/styled/components/Page";
 
-// state
-import { getServerState } from "@/jotai/server/util.server";
-
 /**
  * 레이아웃; 전역 레이아웃
  * @NextLayout
  */
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const locale = await getServerState<SystemLanguageType>("systemLocale", "ko");
-
   return (
     <html
-      lang={locale}
+      lang="ko"
       className={`${sans.variable} ${serif.variable} ${serif_dm.variable}`}
     >
       <body>
