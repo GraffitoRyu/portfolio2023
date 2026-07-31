@@ -41,7 +41,7 @@ export default function DetailHeaderWrap() {
     }));
     // bottom sheet가 모두 들어 간 뒤 경로 이동
     setTimeout(() => {
-      router.back();
+      router.replace("/projects", { scroll: false });
     }, transTime.detail.sheetSlide);
   }, [router, setDetailLoad]);
 
