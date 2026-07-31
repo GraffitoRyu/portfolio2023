@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import { string } from "./convert";
 
 /**
  * <br />이 포함된 텍스트를 jsx로 변환
@@ -50,11 +49,16 @@ export const convertArrayToJsx = (
   const commonKey = (index: number, key?: string): string => `${key}_${index}`;
 
   return text_array.map((content, index) => (
-    <Fragment key={commonKey(index, string(content))}>
+    <Fragment key={commonKey(index, options?.key || "convertArrayToJsx")}>
       {index !== 0 && (
         <>
           {new Array(options?.phraseGap || 1).fill({}).map((_, i) => (
-            <br key={commonKey(i, `${string(content)}_br`)} />
+            <br
+              key={commonKey(
+                i,
+                `${options?.key || "convertArrayToJsx"}_${index}_br`,
+              )}
+            />
           ))}
         </>
       )}
