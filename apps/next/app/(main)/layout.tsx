@@ -9,7 +9,7 @@ import ReactQueryProvider from "@/components/roots/provider/ReactQueryProvider";
 import StyledComponentsRegistry from "../../src/components/roots/lib/StyledRegistry";
 import StyledThemeColorProvider from "@/components/roots/provider/StyledThemeColorProvider";
 import PageLoadEvents from "@/components/roots/lib/PageLoadEvents";
-import ViewportDeviceChecker from "@/components/roots/lib/ViewportDeviceChecker";
+import ViewportSizeObserver from "@/components/roots/lib/ViewportSizeObserver";
 
 // vercel analytics
 import { Analytics } from "@vercel/analytics/next";
@@ -45,7 +45,7 @@ export default function RootLayout({
       <body>
         <ReactQueryProvider>
           <JotaiProvider>
-            <ViewportDeviceChecker />
+            <ViewportSizeObserver />
             <StyledComponentsRegistry>
               <StyledThemeColorProvider>
                 <HTMLThemeStyle />
