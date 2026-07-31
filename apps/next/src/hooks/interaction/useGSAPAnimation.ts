@@ -259,16 +259,19 @@ export default function useGSAPAnimation(
       ScrollTrigger.refresh();
       // console.log(`[useGSAPAnimation; ${key} :: useGSAP] deps`, deps);
     },
-    [
-      loadComplete,
-      key,
-      disabled,
-      options?.length,
-      containerEl,
-      // ...(elements || []),
-      validElementLength(),
-      ...(deps || []),
-    ],
+    {
+      dependencies: [
+        loadComplete,
+        key,
+        disabled,
+        options?.length,
+        containerEl,
+        // ...(elements || []),
+        validElementLength(),
+        ...(deps || []),
+      ],
+      revertOnUpdate: true,
+    },
     // {
     //   scope: propsContainerEl || globalContainerEl,
     //   dependencies: [...elements, ...(deps || [])],
