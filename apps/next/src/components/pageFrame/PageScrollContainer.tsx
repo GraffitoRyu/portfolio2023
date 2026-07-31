@@ -1,9 +1,6 @@
 // style components
 import { StyledScrollContainer } from "@/styles/styled/components/Page";
 
-// state
-import SimpleScrollContainer from "../scroll/SimpleScrollContainer";
-
 /**
  * 스크롤 컨테이너
  * @component
@@ -15,9 +12,5 @@ export default function ScrollContainer({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <StyledScrollContainer>
-      <SimpleScrollContainer standard="page">{children}</SimpleScrollContainer>
-    </StyledScrollContainer>
-  );
+  return <StyledScrollContainer>{children}</StyledScrollContainer>;
 }

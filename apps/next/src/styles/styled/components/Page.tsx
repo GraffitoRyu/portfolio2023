@@ -17,13 +17,15 @@ export const HTMLThemeStyle = createGlobalStyle`
 `;
 
 export const StyledMainContainer = styled.main`
-  ${position({ type: "fixed", z: zIndex.content })}
-  ${size({ w: "100%", h: "100%" })}
+  ${position({ type: "relative", z: zIndex.content })}
+  ${size({ w: "100%" })}
+  min-height: 100%;
 `;
 
 export const StyledScrollContainer = styled.div`
-  ${position({ type: "fixed", top: 0, left: 0, z: zIndex.base })}
-  ${size({ w: "100%", h: `100vh` })}
+  ${position({ type: "relative", z: zIndex.base })}
+  ${size({ w: "100%" })}
+  min-height: 100vh;
 `;
 
 export const StyledStickyContainer = styled.div`
