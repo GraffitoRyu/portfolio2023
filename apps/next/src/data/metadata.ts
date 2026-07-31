@@ -14,7 +14,7 @@ export const site: { title: string; desc: string; domain: string } = {
   domain:
     process.env.NODE_ENV === "production"
       ? "https://www.ryudh.com/"
-      : "https://localhost:3000",
+      : "https://localhost:3090",
 };
 
 export const viewport: Viewport = {

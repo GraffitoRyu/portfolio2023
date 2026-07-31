@@ -10,7 +10,7 @@ export default async function openBrowserLocalNextServer(
   if (process.env.NODE_ENV !== "development" || typeof open !== "function")
     return;
 
-  const PORT = props?.port || 3333;
+  const PORT = props?.port || 3090;
   const protocol = props?.https ? "https" : "http";
   const localhost = `${protocol}://localhost:${PORT}`;
   const network = `${protocol}://${getLocalNetwork()}:${PORT}`;
