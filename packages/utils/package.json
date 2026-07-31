@@ -14,9 +14,6 @@
   "exports": {
     ".": "./src/index.tsx"
   },
-  "dependencies": {
-    "@graffitoryu/preset-data": "workspace:*"
-  },
   "peerDependencies": {
     "react": ">= 18",
     "react-dom": ">= 18"
