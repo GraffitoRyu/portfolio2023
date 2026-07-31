@@ -1,10 +1,12 @@
+@use "sass:meta";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import "./reset";
-@import "./variables";
-@import "./common";
-@import "./simplebar";
-@import "./remRoot";
-@import "./transitions";
+@include meta.load-css("./reset");
+@include meta.load-css("./variables");
+@include meta.load-css("./common");
+@include meta.load-css("./simplebar");
+@include meta.load-css("./remRoot");
+@include meta.load-css("./transitions");
