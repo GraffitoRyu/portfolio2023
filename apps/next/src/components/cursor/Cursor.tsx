@@ -58,15 +58,18 @@ export default function Cursor() {
         isElement &&
         target.innerText &&
         target.closest("h1,h2,h3,h4,h5,h6,p,dt,dd,time,figcaption,strong,span")
-      )
+      ) {
+        const lineHeight = Number.parseFloat(
+          getComputedStyle(target).getPropertyValue("line-height"),
+        );
+
         Object.assign(c, {
           hover: "text",
-          height: Number(
-            getComputedStyle(target)
-              .getPropertyValue("line-height")
-              .replace("px", ""),
-          ),
+          height: Number.isFinite(lineHeight)
+            ? lineHeight
+            : sizePreset.cursor.text,
         });
+      }
 
       setCursor(c);
     },
