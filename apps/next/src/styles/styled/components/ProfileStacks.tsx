@@ -9,7 +9,7 @@ import { flex, font, size } from "../preset/mixins";
 // util
 import { rem, widthRatio } from "@/utils/style.util";
 
-function getLevelColor(index: number, level: number): string {
+function getLevelColor(index: number, level: number) {
   if (level === 4) return "levelFull";
   if (index <= level) return "levelFill";
   return "levelEmpty";
