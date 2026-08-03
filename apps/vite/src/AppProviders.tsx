@@ -28,6 +28,25 @@ const themeVariables = {
   "--color-experience-text": theme.exp.desc,
   "--color-stack-category": theme.stacks.category,
   "--color-stack-name": theme.stacks.stackName,
+  "--color-project-list-background-hover": theme.projectList.bgHover,
+  "--color-project-list-title": theme.projectList.title,
+  "--color-project-list-period": theme.projectList.period,
+  "--color-project-list-description": theme.projectList.desc,
+  "--color-project-list-slide-title": theme.projectList.slideTitle,
+  "--color-project-detail-background": theme.projectDetails.bg,
+  "--color-project-detail-visual-background": theme.projectDetails.visualBg,
+  "--color-project-detail-title": theme.projectDetails.visualTitle,
+  "--color-project-detail-subtitle": theme.projectDetails.visualSubtitle,
+  "--color-project-detail-info-title": theme.projectDetails.infoTitle,
+  "--color-project-detail-info-description": theme.projectDetails.infoDesc,
+  "--color-project-detail-experience-title": theme.projectDetails.expTitle,
+  "--color-project-detail-experience-description": theme.projectDetails.expDesc,
+  "--color-project-detail-stack-background": theme.projectDetails.stackBg,
+  "--color-project-detail-stack-border": theme.projectDetails.stackBorder,
+  "--color-project-detail-stack-text": theme.projectDetails.stackText,
+  "--color-project-detail-caption-title": theme.projectDetails.captionTitle,
+  "--color-project-detail-caption-description":
+    theme.projectDetails.captionDesc,
 } as CSSProperties;
 
 export default function AppProviders({ children }: { children: ReactNode }) {

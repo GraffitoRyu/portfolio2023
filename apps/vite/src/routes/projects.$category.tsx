@@ -1,12 +1,19 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
-import { PageSection } from "@graffitoryu/ui";
+import { createFileRoute, notFound } from "@tanstack/react-router";
+
+import ProjectDetailPage from "@/components/ProjectDetailPage";
 import {
   RouteError,
   RouteNotFound,
   RoutePending,
 } from "@/components/RouteStatus";
+import { source } from "@/data/source";
 
 export const Route = createFileRoute("/projects/$category")({
+  loader: async ({ params }) => {
+    const project = await source.getProject(params.category);
+    if (!project) throw notFound();
+    return project;
+  },
   component: ProjectDetailRouteComponent,
   errorComponent: RouteError,
   pendingComponent: RoutePending,
@@ -14,16 +21,7 @@ export const Route = createFileRoute("/projects/$category")({
 });
 
 function ProjectDetailRouteComponent() {
-  const { category } = Route.useParams();
+  const project = Route.useLoaderData();
 
-  return (
-    <PageSection className="detail-route" aria-labelledby="detail-route-title">
-      <p className="eyebrow">Project detail route</p>
-      <h2 id="detail-route-title">{category}</h2>
-      <p>실제 프로젝트 상세 화면과 데이터 조회는 V-04에서 연결합니다.</p>
-      <Link className="placeholder-link" to="/projects">
-        프로젝트 목록으로 닫기
-      </Link>
-    </PageSection>
-  );
+  return <ProjectDetailPage project={project} />;
 }
