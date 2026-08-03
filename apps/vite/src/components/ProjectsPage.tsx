@@ -2,6 +2,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { PageSection, ProjectCard } from "@graffitoryu/ui";
 
 import type { ProjectItemData } from "@graffitoryu/preset-data";
+import { useProjectInteraction } from "./AppInteractionBoundary";
 
 type ProjectsPageProps = {
   projects: ProjectItemData[];
@@ -9,17 +10,24 @@ type ProjectsPageProps = {
 
 export default function ProjectsPage({ projects }: ProjectsPageProps) {
   const navigate = useNavigate();
+  const { setProjectTrigger } = useProjectInteraction();
 
   return (
     <div className="projects-page">
-      <PageSection className="projects-visual" aria-labelledby="projects-title">
+      <PageSection
+        className="projects-visual"
+        aria-labelledby="projects-title"
+        data-reveal
+      >
         <p className="projects-kicker" aria-hidden="true">
           Selected projects
         </p>
         <div className="projects-intro-grid">
           <p className="projects-intro-label">Projects</p>
           <div>
-            <h1 id="projects-title">최근 참여한 프로젝트를 소개합니다.</h1>
+            <h1 id="projects-title" tabIndex={-1}>
+              최근 참여한 프로젝트를 소개합니다.
+            </h1>
             <p>
               참여했던 공개 가능한 프로젝트 중 일부를 정리했습니다. 주로
               프론트엔드 개발과 마크업을 담당했으며, 필요한 경우 Figma로
@@ -29,7 +37,11 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
         </div>
       </PageSection>
 
-      <PageSection className="projects-list-section" aria-label="프로젝트 목록">
+      <PageSection
+        className="projects-list-section"
+        aria-label="프로젝트 목록"
+        data-reveal
+      >
         {projects.length === 0 ? (
           <p className="projects-empty">표시할 프로젝트가 없습니다.</p>
         ) : (
@@ -39,12 +51,15 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
                 <ProjectCard
                   className="project-card"
                   aria-label={`${summary.title.join(" ")} 프로젝트 상세 보기`}
-                  onClick={() =>
+                  onClick={event => {
+                    setProjectTrigger(event.currentTarget);
                     navigate({
                       to: "/projects/$category",
                       params: { category: code },
-                    })
-                  }
+                      resetScroll: false,
+                      viewTransition: true,
+                    });
+                  }}
                 >
                   <span className="project-card-index">
                     {String(index + 1).padStart(2, "0")}

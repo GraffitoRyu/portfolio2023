@@ -175,7 +175,7 @@ export default function ProfilePage({
         </ol>
       </nav>
 
-      <PageSection className="profile-visual" id="profile-intro">
+      <PageSection className="profile-visual" id="profile-intro" data-reveal>
         <p className="profile-kicker">Ready for interaction</p>
         <div className="profile-intro-grid">
           <p className="profile-intro-label">Frontend Developer</p>
@@ -194,14 +194,18 @@ export default function ProfilePage({
         </div>
       </PageSection>
 
-      <PageSection className="profile-section" id="profile-career">
+      <PageSection className="profile-section" id="profile-career" data-reveal>
         <SectionHeader title="Career">
           지난 6년간 실무 경험을 쌓은 근무 경력입니다.
         </SectionHeader>
         <CareerList career={career} />
       </PageSection>
 
-      <PageSection className="profile-section" id="profile-experience">
+      <PageSection
+        className="profile-section"
+        id="profile-experience"
+        data-reveal
+      >
         <SectionHeader title="Experience">
           개인적인 작업부터 협업에 이르기까지 프로젝트에 참여하면서 경험한
           것들입니다.
@@ -209,7 +213,7 @@ export default function ProfilePage({
         <ExperienceList experience={experience} />
       </PageSection>
 
-      <PageSection className="profile-section" id="profile-stacks">
+      <PageSection className="profile-section" id="profile-stacks" data-reveal>
         <SectionHeader title="Tech Stacks">
           지난 5년간 경험한 기술들입니다. 항상 새로운 기술을 받아들이고 익히기
           위해 지속적으로 노력하고 있습니다.

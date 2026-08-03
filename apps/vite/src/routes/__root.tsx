@@ -1,5 +1,5 @@
 import { Link, Outlet, createRootRoute } from "@tanstack/react-router";
-import { Footer, Header, Link as SemanticLink } from "@graffitoryu/ui";
+import { Footer, Header } from "@graffitoryu/ui";
 import { sitemap } from "@graffitoryu/preset-data";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import {
@@ -7,6 +7,7 @@ import {
   RouteNotFound,
   RoutePending,
 } from "@/components/RouteStatus";
+import AppInteractionBoundary from "@/components/AppInteractionBoundary";
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -24,14 +25,15 @@ function AppShell({ children }: { children: React.ReactNode }) {
         본문으로 건너뛰기
       </a>
       <Header className="site-header">
-        <SemanticLink className="site-brand" href="/">
+        <Link className="site-brand" to="/" viewTransition>
           Yoo Yongwoo
-        </SemanticLink>
+        </Link>
         <nav aria-label="주요 메뉴">
           {portfolioRoutes.map(route => (
             <Link
               className="nav-link"
               to={route.path}
+              viewTransition
               activeOptions={{ exact: route.path === "/" }}
               activeProps={{ "aria-current": "page" }}
               key={route.key}
@@ -41,7 +43,9 @@ function AppShell({ children }: { children: React.ReactNode }) {
           ))}
         </nav>
       </Header>
-      <main id="main-content">{children}</main>
+      <main id="main-content">
+        <AppInteractionBoundary>{children}</AppInteractionBoundary>
+      </main>
       <Footer className="site-footer">
         <p>© Yoo Yongwoo. Frontend portfolio.</p>
       </Footer>

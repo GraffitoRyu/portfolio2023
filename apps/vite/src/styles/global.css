@@ -18,6 +18,7 @@ html {
   min-width: 320px;
   min-height: 100%;
   background: #141414;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -44,6 +45,25 @@ a {
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto 1fr auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--motion-duration-page);
+  animation-timing-function: var(--motion-easing-standard);
+}
+
+[data-reveal][data-reveal-ready="true"] {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+[data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity var(--motion-duration-section) var(--motion-easing-standard),
+    transform var(--motion-duration-section) var(--motion-easing-standard);
 }
 
 .skip-link {
@@ -690,6 +710,20 @@ main {
   color: var(--color-project-detail-info-description);
   background: var(--color-project-detail-background);
   overscroll-behavior: contain;
+  animation: detail-enter var(--motion-duration-detail)
+    var(--motion-easing-standard) both;
+}
+
+@keyframes detail-enter {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .project-detail-header {
@@ -1106,5 +1140,16 @@ main {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  .project-detail {
+    animation-duration: 0.01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

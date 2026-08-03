@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
-import { themes } from "@graffitoryu/ui";
+import { motion, themes } from "@graffitoryu/ui";
 import { ThemeProvider } from "styled-components";
 
 const theme = themes.dark;
@@ -47,6 +47,10 @@ const themeVariables = {
   "--color-project-detail-caption-title": theme.projectDetails.captionTitle,
   "--color-project-detail-caption-description":
     theme.projectDetails.captionDesc,
+  "--motion-duration-page": `${motion.duration.common.loadComplete}ms`,
+  "--motion-duration-section": `${motion.duration.visual.lower}ms`,
+  "--motion-duration-detail": `${motion.duration.detail.sheetSlide}ms`,
+  "--motion-easing-standard": motion.easing.expo,
 } as CSSProperties;
 
 export default function AppProviders({ children }: { children: ReactNode }) {

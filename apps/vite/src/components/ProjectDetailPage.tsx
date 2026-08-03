@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+import { useCallback, useEffect, useRef } from "react";
+import { useNavigate } from "@tanstack/react-router";
 import { ProjectDetail } from "@graffitoryu/ui";
 
 import {
@@ -6,6 +7,7 @@ import {
   type ProjectData,
   type ProjectMediaData,
 } from "@graffitoryu/preset-data";
+import { useProjectInteraction } from "./AppInteractionBoundary";
 
 type ProjectDetailPageProps = {
   project: ProjectData;
@@ -19,6 +21,10 @@ const stackLabels = {
 } as const;
 
 export default function ProjectDetailPage({ project }: ProjectDetailPageProps) {
+  const navigate = useNavigate();
+  const detailRef = useRef<HTMLElement | null>(null);
+  const closeRef = useRef<HTMLButtonElement | null>(null);
+  const { focusProjectTrigger, hasProjectTrigger } = useProjectInteraction();
   const {
     code,
     summary,
@@ -29,10 +35,71 @@ export default function ProjectDetailPage({ project }: ProjectDetailPageProps) {
   } = project;
   const projectAssets = getProjectAssets(code);
 
+  const closeDetail = useCallback(() => {
+    navigate({
+      to: "/projects",
+      replace: true,
+      resetScroll: !hasProjectTrigger(),
+      viewTransition: true,
+    });
+  }, [hasProjectTrigger, navigate]);
+
+  useEffect(() => {
+    const detail = detailRef.current;
+    if (!detail) return;
+
+    const background =
+      detail.parentElement?.querySelector<HTMLElement>(".projects-page");
+    if (background) background.inert = true;
+
+    const frame = window.requestAnimationFrame(() => closeRef.current?.focus());
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeDetail();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusable = Array.from(
+        detail.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter(element => !element.hasAttribute("hidden"));
+
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    detail.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      detail.removeEventListener("keydown", handleKeyDown);
+      if (background) background.inert = false;
+      window.requestAnimationFrame(focusProjectTrigger);
+    };
+  }, [closeDetail, focusProjectTrigger]);
+
   return (
     <ProjectDetail
+      ref={detailRef}
       className="project-detail"
       aria-labelledby="project-detail-title"
+      aria-modal="true"
+      role="dialog"
     >
       <header className="project-detail-header">
         <p>
@@ -45,14 +112,15 @@ export default function ProjectDetailPage({ project }: ProjectDetailPageProps) {
             </a>
           ))}
         </nav>
-        <Link
+        <button
+          ref={closeRef}
           className="project-detail-close"
-          to="/projects"
-          replace
+          type="button"
           aria-label="프로젝트 상세 페이지 닫기"
+          onClick={closeDetail}
         >
           <span aria-hidden="true">×</span>
-        </Link>
+        </button>
       </header>
 
       <section className="project-detail-hero">
