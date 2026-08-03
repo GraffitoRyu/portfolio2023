@@ -11,6 +11,7 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
+    "@graffitoryu/preset-data": "workspace:*",
     "@graffitoryu/ui": "workspace:*",
     "@tanstack/react-router": "1.170.18",
     "@tanstack/router-devtools": "1.167.0",

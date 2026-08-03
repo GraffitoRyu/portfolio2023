@@ -125,6 +125,9 @@ importers:
 
   apps/vite:
     dependencies:
+      "@graffitoryu/preset-data":
+        specifier: workspace:*
+        version: link:../../packages/preset-data
       "@graffitoryu/ui":
         specifier: workspace:*
         version: link:../../packages/ui
