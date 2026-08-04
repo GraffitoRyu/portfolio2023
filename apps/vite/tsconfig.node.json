@@ -1,21 +1,19 @@
 {
   "extends": "@graffitoryu/tsconfig/vite.node.json",
   "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "allowSyntheticDefaultImports": true,
-    "incremental": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
     "noEmit": true
   },
-  "include": [
-    "vite.config.ts",
-    "vite-env.d.ts",
-    "../../packages/types/src/styled-components/styled.d.ts"
-  ]
+  "include": ["vite.config.ts"]
 }
-
-// https://github.com/TanStack/router/blob/main/examples/react/router-monorepo-react-query/packages/app/package.json
-// https://github.com/bluwy/create-vite-extra/blob/master/template-ssr-react-ts/tsconfig.node.json
-
-// https://github.com/stormkit-io/monorepo-template-react/blob/main/tsconfig.json
