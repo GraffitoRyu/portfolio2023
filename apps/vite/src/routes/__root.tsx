@@ -1,7 +1,8 @@
 import { Link, Outlet, createRootRoute } from "@tanstack/react-router";
-import { Footer, Header } from "@graffitoryu/ui";
+import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { sitemap } from "@graffitoryu/preset-data";
-import { TanStackRouterDevtools } from "@tanstack/router-devtools";
+import { Footer, Header } from "@graffitoryu/ui";
+import type { ReactNode } from "react";
 import {
   RouteError,
   RouteNotFound,
@@ -12,13 +13,13 @@ import AppInteractionBoundary from "@/components/AppInteractionBoundary";
 export const Route = createRootRoute({
   component: RootComponent,
   errorComponent: RouteError,
-  pendingComponent: RoutePending,
   notFoundComponent: RouteNotFound,
+  pendingComponent: RoutePending,
 });
 
 const portfolioRoutes = sitemap.portfolio.filter(item => item.kind === "route");
 
-function AppShell({ children }: { children: React.ReactNode }) {
+function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className="app-shell">
       <a className="skip-link" href="#main-content">
@@ -26,17 +27,17 @@ function AppShell({ children }: { children: React.ReactNode }) {
       </a>
       <Header className="site-header">
         <Link className="site-brand" to="/" viewTransition>
-          Yoo Yongwoo
+          류대현
         </Link>
         <nav aria-label="주요 메뉴">
           {portfolioRoutes.map(route => (
             <Link
-              className="nav-link"
-              to={route.path}
-              viewTransition
               activeOptions={{ exact: route.path === "/" }}
               activeProps={{ "aria-current": "page" }}
+              className="nav-link"
               key={route.key}
+              to={route.path}
+              viewTransition
             >
               {route.name}
             </Link>
@@ -47,7 +48,7 @@ function AppShell({ children }: { children: React.ReactNode }) {
         <AppInteractionBoundary>{children}</AppInteractionBoundary>
       </main>
       <Footer className="site-footer">
-        <p>© Yoo Yongwoo. Frontend portfolio.</p>
+        <p>© 류대현. Frontend portfolio.</p>
       </Footer>
     </div>
   );

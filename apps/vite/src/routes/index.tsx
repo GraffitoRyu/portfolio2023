@@ -11,8 +11,8 @@ export const Route = createFileRoute("/")({
   component: HomeComponent,
   errorComponent: RouteError,
   loader: () => source.getProfile(),
-  pendingComponent: RoutePending,
   notFoundComponent: RouteNotFound,
+  pendingComponent: RoutePending,
 });
 
 function HomeComponent() {

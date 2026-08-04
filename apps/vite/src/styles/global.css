@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@300;500;700&display=swap");
+
 :root {
-  font-family:
-    "Noto Sans KR",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  --sans-kr:
+    "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --serif-dm: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --serif-kr: "Noto Serif KR", Georgia, "Times New Roman", serif;
+
+  font-family: var(--sans-kr);
   color-scheme: dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -422,7 +424,7 @@ main {
 .experience-list h3 {
   margin: 0 0 2.5rem;
   color: var(--color-experience-title);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif-dm);
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 400;
   letter-spacing: -0.04em;
@@ -653,7 +655,7 @@ main {
 .project-card-title {
   grid-column: 3 / -1;
   color: var(--color-project-list-title);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif-dm);
   font-size: clamp(2.4rem, 6vw, 5.8rem);
   letter-spacing: -0.055em;
   line-height: 0.96;
@@ -856,7 +858,7 @@ main {
 
 .project-detail-title-wrap h2 {
   color: var(--color-project-detail-title);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif-dm);
   font-size: clamp(4rem, 12vw, 10rem);
   font-weight: 400;
   letter-spacing: -0.065em;
@@ -889,7 +891,7 @@ main {
 .project-detail-experience h3 {
   margin: 0;
   color: var(--color-project-detail-experience-title);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif-dm);
   font-size: clamp(3.5rem, 9vw, 8rem);
   font-weight: 400;
   letter-spacing: -0.055em;
