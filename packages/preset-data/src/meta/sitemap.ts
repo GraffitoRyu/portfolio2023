@@ -1,5 +1,5 @@
 import {
-  SitemapDataType,
+  type SitemapDataType,
   type SitemapCollectionType,
 } from "@graffitoryu/types";
 
