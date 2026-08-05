@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useAtom, useAtomValue } from "jotai";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 import {
   StyledCareerCompany,
@@ -68,12 +67,6 @@ export default function CareerSummary({
       setOpen(updateOpen);
 
       if (updateOpen) itemEl.open = true;
-      // 닫힘 모션 끝나고 업데이트
-      else
-        setTimeout(() => {
-          itemEl.open = false;
-          ScrollTrigger.refresh();
-        }, 400);
     },
     [isOpen, itemEl, setOpen],
   );

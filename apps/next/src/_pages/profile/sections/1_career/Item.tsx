@@ -2,6 +2,7 @@
 
 import { useCallback, useRef, useState } from "react";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 // components
 import CareerSummary from "./details/CareerSummary";
@@ -68,10 +69,19 @@ export default function CareerItem({
   const onResetDetail = useCallback(() => {
     setHide(true);
     setCareerOpen(false);
-
-    if (detailsRef.current === null) return;
-    detailsRef.current.open = false;
   }, [setCareerOpen]);
+
+  const onDetailTransitionEnd = useCallback(
+    (event: React.TransitionEvent<HTMLDetailsElement>) => {
+      if (event.propertyName !== "height") return;
+
+      if (!isOpen && detailsRef.current !== null)
+        detailsRef.current.open = false;
+
+      ScrollTrigger.refresh();
+    },
+    [isOpen],
+  );
 
   // 경력 리스트 스크롤 인터랙션
   useGSAPAnimation(
@@ -119,6 +129,7 @@ export default function CareerItem({
         ref={updateExpendRef}
         className={isOpen ? "open" : ""}
         $height={expandHeight}
+        onTransitionEnd={onDetailTransitionEnd}
       >
         <CareerSummary code={code} {...summary} />
         <CareerDetail code={code} {...details} />
