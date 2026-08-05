@@ -23,9 +23,12 @@ import { rem, widthRatio } from "@/utils/style.util";
 
 export const StyledFooterContainer = styled.footer`
   ${position({ type: "relative", z: zIndex.footer })}
-  ${size({ w: "100%", h: `100vh`, p: 80 })}
+  ${flex({ dir: "column", std: "flex-start", cross: "stretch" })}
+  ${size({ w: "100%", p: 80 })}
+  min-height: 100vh;
+  min-height: 100dvh;
   background-color: ${({ theme }) => theme.footer.bg};
-  overflow: hidden;
+  overflow: clip;
   @media only screen and ${media.min.desktop} {
     ${size({ p: [120, 80] })}
   }
@@ -39,7 +42,8 @@ export const StyledFooterContainer = styled.footer`
 
 export const StyledFooterWrap = styled.div`
   ${flex({ dir: "column", std: "space-between", cross: "start" })}
-  ${size({ w: "100%", h: "100%" })}
+  ${size({ w: "100%" })}
+  flex: 1;
 `;
 
 export const StyledFooterHeader = styled.header`

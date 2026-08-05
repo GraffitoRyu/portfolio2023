@@ -9,7 +9,6 @@ import { flex, font, size } from "../preset/mixins";
 
 export const StyledExpScrollContainer = styled.div`
   ${size({ w: "100%", h: "100%" })}
-  overflow-x: clip;
 `;
 
 export const StyledExpList = styled.ul<StyleOptionExpList>`

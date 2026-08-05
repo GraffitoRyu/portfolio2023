@@ -1,7 +1,6 @@
 html {
   width: 100%;
   min-height: 100%;
-  overflow-x: hidden;
   overflow-y: auto;
 }
 
@@ -9,13 +8,6 @@ body {
   width: 100%;
   min-height: 100%;
   overflow: visible;
-}
-
-.page-container {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 0;
 }
 
 .pin-spacer {

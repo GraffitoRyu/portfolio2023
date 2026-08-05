@@ -26,6 +26,7 @@ export const StyledScrollContainer = styled.div`
   ${position({ type: "relative", z: zIndex.base })}
   ${size({ w: "100%" })}
   min-height: 100vh;
+  overflow-x: clip;
 `;
 
 export const StyledStickyContainer = styled.div`

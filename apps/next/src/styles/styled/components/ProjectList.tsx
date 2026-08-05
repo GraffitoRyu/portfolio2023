@@ -55,7 +55,7 @@ export const StyledProjectListItem = styled.li`
 export const StyledProjectItemContainer = styled.button`
   width: 100%;
   user-select: none;
-  overflow: hidden;
+  overflow: clip;
   position: relative;
 `;
 
@@ -75,7 +75,7 @@ export const StyledListBtnContainer = styled.div`
   ${position({ type: "relative" })}
   width:100%;
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   user-select: auto;
   ${transition([{ prop: "background-color", time: "0.4s" }])}
   ${StyledProjectItemContainer}:not(.hide).hover & {
@@ -141,7 +141,7 @@ export const StyledListBtnPeriod = styled(PeriodForward)`
 `;
 export const StyledFadeContainer = styled.div`
   text-align: left;
-  overflow: hidden;
+  overflow: clip;
   @media only screen and ${media.min.desktop} {
     text-align: right;
   }

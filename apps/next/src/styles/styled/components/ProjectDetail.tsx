@@ -21,7 +21,7 @@ import { StyledDefaultBtn } from "@/styles/styled//preset/buttons";
 export const StyledPDContainer = styled.article`
   ${size({ w: "100%", h: "100%" })}
   ${position({ type: "fixed", left: 0, bottom: 0, z: zIndex.detail })}
-  overflow: hidden;
+  overflow: clip;
   background: ${({ theme }) => theme.projectDetails.bg};
   ${transition([
     {
@@ -134,7 +134,7 @@ export const StyledPDVisualSection = styled(StyledPDSection)`
 `;
 
 export const StyledPDSubVisualSection = styled(StyledPDSection)`
-  overflow: hidden;
+  overflow: clip;
 `;
 
 export const StyledPDExpSection = styled(StyledPDSection)`
@@ -171,7 +171,7 @@ export const StyledPDVisualLower = styled.div`
 
 export const StyledPDVisualImageContainer = styled.div`
   pointer-events: none;
-  overflow: hidden;
+  overflow: clip;
   ${position({
     type: "fixed",
     top: 0,
@@ -496,7 +496,7 @@ export const StyledPDMediaItem = styled.div`
 export const StyledPDMediaFigure = styled.figure`
   ${size({ w: "100%", r: 40 })}
   position:relative;
-  overflow: hidden;
+  overflow: clip;
   opacity: 0;
   transform: scale(0.8);
   img {

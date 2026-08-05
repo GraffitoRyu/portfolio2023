@@ -41,6 +41,8 @@ export default function PageLoadEvents() {
 
     if (savedPathName === newPathName) return;
 
+    window.scrollTo(0, 0);
+
     // 페이지 상태 업데이트
     setPage(prev => ({
       ...prev,
