@@ -1,3 +1,11 @@
 packages:
   - "apps/*"
   - "packages/*"
+
+verifyDepsBeforeRun: false
+
+allowBuilds:
+  "@firebase/util": false
+  "@parcel/watcher": false
+  protobufjs: false
+  sharp: false
