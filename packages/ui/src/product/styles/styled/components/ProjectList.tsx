@@ -1,0 +1,302 @@
+"use client";
+
+import styled from "styled-components";
+import { keyframes } from "styled-components";
+import { media, zIndex } from "@graffitoryu/ui";
+
+// components
+import PeriodForward from "@graffitoryu/ui/product/components/period/Period";
+
+// style
+import { img } from "../preset/img";
+import { easing } from "../preset/easing";
+import {
+  svgFill,
+  flex,
+  font,
+  position,
+  size,
+  transition,
+} from "../preset/mixins";
+import { transTime } from "../preset/transTime";
+
+export const StyledProjectLoadingProgress = styled.progress`
+  ${position({
+    type: "fixed",
+    top: 0,
+    left: 0,
+    z: zIndex.projectLoading,
+  })}
+  ${size({ w: "100%", h: 8 })}
+  border: 0;
+  background-color: transparent;
+  appearance: none;
+  transition: opacity 0.8s;
+  &.hide {
+    opacity: 0;
+  }
+  &::-webkit-progress-bar {
+    background-color: transparent;
+  }
+  &::-webkit-progress-value {
+    background-color: orange;
+    transition: inline-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+`;
+
+export const StyledProjectListContainer = styled.ul`
+  width: 100%;
+`;
+
+export const StyledProjectListItem = styled.li`
+  width: 100%;
+`;
+
+export const StyledProjectItemContainer = styled.button`
+  width: 100%;
+  user-select: none;
+  overflow: clip;
+  position: relative;
+`;
+
+export const StyledProjectItemBorder = styled.div<{ $pos: "top" | "bottom" }>`
+  ${({ $pos }) => position({ type: "absolute", [$pos]: 0 })}
+  ${size({ w: 0, h: "1px" })}
+  background-color:${({ theme }) => theme.projectList.border};
+  transition:
+    width 0.6s ${easing.quart},
+    background-color ${transTime.color / 1000}s;
+  ${StyledProjectItemContainer}:not(.hide) & {
+    width: 100%;
+  }
+`;
+
+export const StyledListBtnContainer = styled.div`
+  ${position({ type: "relative" })}
+  width:100%;
+  position: relative;
+  overflow: clip;
+  user-select: auto;
+  ${transition([{ prop: "background-color", time: "0.4s" }])}
+  ${StyledProjectItemContainer}:not(.hide).hover & {
+    background-color: ${({ theme }) => theme.projectList.bgHover};
+  }
+`;
+
+export const StyledListBtnWrap = styled.div`
+  ${size({ w: "100%", p: 80 })}
+  color:${({ theme }) => theme.projectList.desc};
+  position: relative;
+  @media only screen and ${media.min.desktop} {
+    ${size({ w: 1440 })}
+  }
+`;
+
+export const StyledListBtnPeriod = styled(PeriodForward)`
+  color: ${({ theme }) => theme.projectList.period};
+  ${size({ h: "auto", mb: 40 })}
+  ${font({
+    size: 24,
+    weight: 500,
+  })}
+  span {
+    &:before {
+      background-color: ${({ theme }) => theme.projectList.period};
+      ${transition([
+        { prop: "width", time: "0.4s" },
+        { prop: "opacity", time: "0.4s" },
+      ])}
+    }
+  }
+  @media only screen and ${media.min.grid} {
+    ${size({ mb: 24 })}
+  }
+  @media only screen and ${media.min.desktop} {
+    ${position({ type: "absolute", left: "100%" })}
+    ${size({ h: 56, mb: 0 })}
+  }
+  time {
+    ${transition([
+      { prop: "opacity", time: "0.4s" },
+      { prop: "transform", time: "0.4s" },
+    ])}
+  }
+  time:nth-of-type(1) {
+  }
+  time:nth-of-type(2) {
+    transition-delay: 0.08s;
+  }
+  ${StyledProjectItemContainer}:not(.hide).hover &,
+  ${StyledProjectItemContainer}.hide & {
+    time {
+      transform: translateX(-50%);
+      opacity: 0;
+    }
+
+    span:before {
+      width: 0;
+      opacity: 0;
+    }
+  }
+`;
+export const StyledFadeContainer = styled.div`
+  text-align: left;
+  overflow: clip;
+  @media only screen and ${media.min.desktop} {
+    text-align: right;
+  }
+`;
+
+export const StyledFadeListContainer = styled(StyledFadeContainer)`
+  ${flex({ std: "flex-start" })}
+  @media only screen and ${media.min.desktop} {
+    justify-content: flex-end;
+  }
+`;
+
+export const StyledListBtnTitle = styled.h3`
+  ${size({ mb: 40 })}
+  color: ${({ theme }) => theme.projectList.title};
+  ${font({
+    size: 80,
+    weight: 700,
+    height: "1em",
+  })}
+  @media only screen and ${media.min.grid} {
+    ${size({ mb: 24 })}
+    ${font({ size: 56 })}
+  }
+  ${transition([
+    { prop: "transform", time: "0.4s", easing: easing.quart },
+    { prop: "opacity", time: "0.4s", easing: easing.quart },
+  ])}
+  ${StyledProjectItemContainer}:not(.hide).hover &,
+  ${StyledProjectItemContainer}.hide & {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+`;
+
+export const StyledListBtnDesc = styled.p`
+  ${size({ mb: 48 })}
+  ${font({
+    size: 32,
+    weight: 400,
+    height: "1.4em",
+  })}
+  ${transition([
+    { prop: "transform", time: "0.4s", easing: easing.quart, delay: "0.08s" },
+    { prop: "opacity", time: "0.4s", easing: easing.quart, delay: "0.08s" },
+  ])}
+  ${StyledProjectItemContainer}:not(.hide).hover &,
+  ${StyledProjectItemContainer}.hide & {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  @media only screen and ${media.min.grid} {
+    ${font({ size: 32, height: "1em" })}
+  }
+`;
+
+export const StyledListBtnRole = styled.li`
+  ${flex({ std: "flex-start" })}
+  ${font({
+    size: 32,
+    weight: 400,
+  })}
+  &:after {
+    content: "";
+    display: block;
+    ${size({ w: 2, h: 20, m: [0, 24] })}
+    background-color:${({ theme }) => theme.projectList.desc};
+  }
+  &:last-child {
+    &:after {
+      display: none;
+    }
+  }
+  ${transition([
+    { prop: "transform", time: "0.4s", easing: easing.quart },
+    { prop: "opacity", time: "0.4s", easing: easing.quart },
+  ])}
+  &:nth-child(1) {
+    transition-delay: 0.12s;
+  }
+  &:nth-child(2) {
+    transition-delay: 0.16s;
+  }
+  &:nth-child(3) {
+    transition-delay: 0.2s;
+  }
+  ${StyledProjectItemContainer}:not(.hide).hover &,
+  ${StyledProjectItemContainer}.hide & {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  @media only screen and ${media.min.grid} {
+    ${font({ size: 24 })}
+  }
+  @media only screen and ${media.min.desktop} {
+    justify-content: flex-end;
+  }
+`;
+
+export const StyledHoverSlideTitle = styled.h3`
+  ${position({ type: "absolute", top: "100%" })}
+  ${flex({ std: "flex-start" })}
+  width: 100%;
+  color: ${({ theme }) => theme.projectList.slideTitle};
+  text-align: left;
+  white-space: nowrap;
+  opacity: 0;
+  ${transition([
+    { prop: "transform", time: "0.4s", easing: easing.quart },
+    { prop: "opacity", time: "0.4s", easing: easing.quart },
+  ])}
+  ${StyledProjectItemContainer}:not(.hide).hover & {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+`;
+const textSlideAnimation = keyframes`
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+`;
+
+export const StyledTitleSpan = styled.span`
+  ${font({
+    size: 240,
+    weight: 700,
+    height: "1em",
+    deco: "underline",
+  })}
+  text-decoration-thickness: 0.05em;
+  animation: ${textSlideAnimation} 2s linear 0s infinite;
+`;
+
+export const StyledProjectOpenIcon = styled.figure`
+  ${size({ w: 160, h: 160 })}
+  ${position({ type: "absolute", top: 80, right: 80 })}
+  transform:translate(-100%,100%);
+  opacity: 0;
+  ${transition([
+    { prop: "opacity", time: "0.4s" },
+    { prop: "transform", time: "0.4s" },
+  ])}
+  svg {
+    ${img({})}
+  }
+  ${({ theme }) => svgFill(theme.projectList.slideTitle)}
+  @media only screen and ${media.min.desktop} {
+    ${size({ w: 120, h: 120 })}
+  }
+  ${StyledProjectItemContainer}:not(.hide).hover & {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+`;
