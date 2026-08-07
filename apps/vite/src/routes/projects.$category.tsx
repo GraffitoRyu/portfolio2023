@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
-import ProjectDetailPage from "@/components/ProjectDetailPage";
+import ProjectDetailContainer from "@graffitoryu/ui/product/pages/projects/detail/Container";
 import {
   RouteError,
   RouteNotFound,
@@ -21,7 +21,5 @@ export const Route = createFileRoute("/projects/$category")({
 });
 
 function ProjectDetailRouteComponent() {
-  const project = Route.useLoaderData();
-
-  return <ProjectDetailPage project={project} />;
+  return <ProjectDetailContainer />;
 }

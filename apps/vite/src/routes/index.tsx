@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import ProfilePage from "@/components/ProfilePage";
+import ProfileContainer from "@graffitoryu/ui/product/pages/profile/Container";
 import {
   RouteError,
   RouteNotFound,
@@ -16,7 +16,5 @@ export const Route = createFileRoute("/")({
 });
 
 function HomeComponent() {
-  const profile = Route.useLoaderData();
-
-  return <ProfilePage {...profile} />;
+  return <ProfileContainer />;
 }

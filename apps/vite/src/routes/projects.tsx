@@ -1,6 +1,6 @@
 import { Outlet, createFileRoute } from "@tanstack/react-router";
 
-import ProjectsPage from "@/components/ProjectsPage";
+import ProjectsContainer from "@graffitoryu/ui/product/pages/projects/Container";
 import {
   RouteError,
   RouteNotFound,
@@ -17,11 +17,9 @@ export const Route = createFileRoute("/projects")({
 });
 
 function ProjectsComponent() {
-  const projects = Route.useLoaderData();
-
   return (
     <>
-      <ProjectsPage projects={projects} />
+      <ProjectsContainer />
       <Outlet />
     </>
   );

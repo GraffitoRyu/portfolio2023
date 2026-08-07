@@ -29,5 +29,11 @@
     "noUncheckedSideEffectImports": true,
     "strict": true
   },
-  "include": ["src/data", "src/main.tsx", "src/routeTree.gen.ts", "src/routes"]
+  "include": [
+    "src/data",
+    "src/main.tsx",
+    "src/routeTree.gen.ts",
+    "src/routes",
+    "../../packages/types/src/svgr/svgr.d.ts"
+  ]
 }

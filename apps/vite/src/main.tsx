@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
-import AppProviders from "./AppProviders";
 import { routeTree } from "./routeTree.gen";
-import "./styles/global.css";
+import "./styles/fonts.css";
+import "@graffitoryu/ui/product/styles/globals.scss";
 
 const router = createRouter({
   routeTree,
@@ -19,8 +19,6 @@ declare module "@tanstack/react-router" {
 
 createRoot(document.getElementById("app")!).render(
   <StrictMode>
-    <AppProviders>
-      <RouterProvider router={router} />
-    </AppProviders>
+    <RouterProvider router={router} />
   </StrictMode>,
 );
