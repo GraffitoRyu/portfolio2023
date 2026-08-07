@@ -17,8 +17,8 @@ const svgrConfigNextjs = (config: WebpackConfigType) => {
 
   const isCheckSvg = (rule: WebpackModuleRuleType): boolean =>
     typeof rule === "object" &&
-    typeof rule?.test === "function" &&
-    rule?.test(".svg");
+    rule?.test instanceof RegExp &&
+    rule.test.test(".svg");
 
   // Grab the existing rule that handles SVG imports
   const fileLoaderRule: WebpackModuleRuleType =

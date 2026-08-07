@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { svgrConfigNextjs } from "@graffitoryu/preset-config";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true, // 리액트 엄격모드
@@ -9,6 +10,9 @@ const nextConfig: NextConfig = {
   // scss 컴파일 옵션
   sassOptions: {
     silenceDeprecations: ["legacy-js-api"],
+  },
+  webpack(config) {
+    return svgrConfigNextjs(config);
   },
   // Turbopack에서 svg를 React 컴포넌트로 변환
   turbopack: {
