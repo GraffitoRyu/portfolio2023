@@ -4,6 +4,7 @@
 .codex
 .agents
 AGENTS.md
+/docs/
 
 # Dependencies
 node_modules
@@ -44,6 +45,11 @@ lerna-debug.log*
 # Misc
 .DS_Store
 *.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
 
 # typescript
 *.tsbuildinfo
@@ -64,5 +70,4 @@ reference
 certificates
 *storybook.log
 storybook-static
-
 

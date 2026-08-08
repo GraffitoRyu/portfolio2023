@@ -17,9 +17,10 @@ export async function GET(
 ) {
   // 프로젝트 상세 코드
   const { detailCode } = await params;
+  const localProject = projectsData.find(({ code }) => code === detailCode);
 
-  // 파라미터가 없는 경우
-  if (!detailCode) {
+  // 지원하지 않는 프로젝트 코드인 경우
+  if (!localProject) {
     return NextResponse.json({ error: "PROJECT_NOT_FOUND" }, { status: 404 });
   }
 
@@ -28,7 +29,7 @@ export async function GET(
       routeUrl: `/api/projects/${detailCode}`,
       sourcePath: "/projects",
       code: detailCode,
-      localData: projectsData.find(({ code }) => code === detailCode),
+      localData: localProject,
       isValid: (value): value is ProjectsAPIDataType | undefined =>
         typeof value === "undefined" ||
         (typeof value === "object" &&
