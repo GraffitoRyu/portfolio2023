@@ -1,4 +1,4 @@
-import ProjectContainer from "@/_pages/projects/Container";
+import ProjectContainer from "@graffitoryu/ui/product/pages/projects/Container";
 
 /**
  * 페이지; 프로젝트 페이지

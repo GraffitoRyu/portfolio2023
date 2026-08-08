@@ -1,4 +1,4 @@
-import ProfileContainer from "@/_pages/profile/Container";
+import ProfileContainer from "@graffitoryu/ui/product/pages/profile/Container";
 
 /**
  * 페이지; 프로필 페이지 (메인)
