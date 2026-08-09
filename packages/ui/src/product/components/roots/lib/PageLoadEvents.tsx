@@ -44,7 +44,9 @@ export default function PageLoadEvents() {
 
     if (savedPathName === newPathName) return;
 
-    if (newPageName !== currentPage) window.scrollTo(0, 0);
+    // Next의 후속 scroll anchoring이 끝난 다음 초기화
+    if (newPageName !== currentPage)
+      requestAnimationFrame(() => setTimeout(() => window.scrollTo(0, 0)));
 
     // 페이지 상태 업데이트
     setPage(prev => ({
