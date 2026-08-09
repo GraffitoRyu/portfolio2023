@@ -4,6 +4,7 @@ import {
   ProductRuntimeProvider,
   type ProductImageProps,
 } from "@graffitoryu/ui/product/runtime/ProductRuntime";
+import { getRouteCode } from "@graffitoryu/ui/product/hooks/navigation/useNavigation";
 import { source } from "@/data/source";
 
 function ViteProductImage({
@@ -48,7 +49,7 @@ export default function ProductRuntimeAdapter({
       pathname,
       push: (path: string) => {
         void navigate({
-          resetScroll: false,
+          resetScroll: getRouteCode(pathname) !== getRouteCode(path),
           to: path as never,
           viewTransition: true,
         });
@@ -56,7 +57,7 @@ export default function ProductRuntimeAdapter({
       replace: (path: string) => {
         void navigate({
           replace: true,
-          resetScroll: false,
+          resetScroll: getRouteCode(pathname) !== getRouteCode(path),
           to: path as never,
           viewTransition: true,
         });

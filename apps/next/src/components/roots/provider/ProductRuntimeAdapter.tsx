@@ -7,6 +7,7 @@ import {
   ProductRuntimeProvider,
   type ProductImageProps,
 } from "@graffitoryu/ui/product/runtime/ProductRuntime";
+import { getRouteCode } from "@graffitoryu/ui/product/hooks/navigation/useNavigation";
 import { source } from "@/data";
 
 function NextProductImage(props: ProductImageProps) {
@@ -26,8 +27,14 @@ export default function ProductRuntimeAdapter({
       Image: NextProductImage,
       params,
       pathname,
-      push: (path: string) => router.push(path, { scroll: false }),
-      replace: (path: string) => router.replace(path, { scroll: false }),
+      push: (path: string) =>
+        router.push(path, {
+          scroll: getRouteCode(pathname) !== getRouteCode(path),
+        }),
+      replace: (path: string) =>
+        router.replace(path, {
+          scroll: getRouteCode(pathname) !== getRouteCode(path),
+        }),
       source,
     }),
     [params, pathname, router],
