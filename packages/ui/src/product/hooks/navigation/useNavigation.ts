@@ -32,10 +32,10 @@ export default function useNavigation() {
         ...prev,
         changePageName: code,
         loaded: false,
-        loadComplete: false,
       }));
 
       setTimeout(() => {
+        setPage(prev => ({ ...prev, loadComplete: false }));
         push(path);
       }, transTime.common.coverUp);
     },
