@@ -11,6 +11,20 @@ export const getSystemTheme = (): "dark" | "light" => {
     : "light";
 };
 
+export const watchSystemTheme = (
+  onChange: (theme: SystemThemeType) => void,
+) => {
+  if (typeof window === "undefined") return;
+
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  const syncTheme = () => onChange(media.matches ? "dark" : "light");
+
+  syncTheme();
+  media.addEventListener("change", syncTheme);
+
+  return () => media.removeEventListener("change", syncTheme);
+};
+
 /**
  * 테마 적용
  * @util

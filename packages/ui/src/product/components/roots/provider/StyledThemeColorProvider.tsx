@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useAtomValue } from "jotai";
+import { useEffect } from "react";
+import { useAtom } from "jotai";
 import { ThemeProvider } from "styled-components";
 
 // state
@@ -9,6 +9,7 @@ import { themeState } from "@graffitoryu/ui/product/jotai/theme.state";
 
 // style
 import { customThemes } from "@graffitoryu/ui/product/styles/styled/preset/color";
+import { watchSystemTheme } from "@graffitoryu/ui/product/utils/interactions/theme.util";
 
 /**
  * Root/Provider; Styled-component 테마 공급자
@@ -19,12 +20,15 @@ export default function StyledThemeColorProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { theme } = useAtomValue<SystemThemeStateTypes>(themeState);
-  const [mode, setMode] = useState<SystemThemeType>(theme ?? "dark");
+  const [{ isSystem, theme }, setTheme] = useAtom(themeState);
 
   useEffect(() => {
-    if (theme) setMode(theme);
-  }, [theme]);
+    if (!isSystem) return;
 
-  return <ThemeProvider theme={customThemes[mode]}>{children}</ThemeProvider>;
+    return watchSystemTheme(systemTheme =>
+      setTheme(prev => ({ ...prev, theme: systemTheme })),
+    );
+  }, [isSystem, setTheme]);
+
+  return <ThemeProvider theme={customThemes[theme]}>{children}</ThemeProvider>;
 }
