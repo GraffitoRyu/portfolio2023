@@ -51,7 +51,6 @@ export default function ProductRuntimeAdapter({
         void navigate({
           resetScroll: getRouteCode(pathname) !== getRouteCode(path),
           to: path as never,
-          viewTransition: true,
         });
       },
       replace: (path: string) => {
@@ -59,7 +58,6 @@ export default function ProductRuntimeAdapter({
           replace: true,
           resetScroll: getRouteCode(pathname) !== getRouteCode(path),
           to: path as never,
-          viewTransition: true,
         });
       },
       source,

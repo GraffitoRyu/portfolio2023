@@ -5,8 +5,8 @@ import type {
   RoutePath,
   SitemapRouteData,
 } from "@graffitoryu/preset-data";
-import { useCallback } from "react";
-import { useSetAtom } from "jotai";
+import { useCallback, useEffect, useRef } from "react";
+import { useAtom } from "jotai";
 import { useProductRuntime } from "@graffitoryu/ui/product/runtime/ProductRuntime";
 
 import { pageLoadState } from "@graffitoryu/ui/product/jotai/load.state";
@@ -22,11 +22,21 @@ export const getRoutePath = (pathname: string): RoutePath =>
 
 export default function useNavigation() {
   const { pathname, push } = useProductRuntime();
-  const setPage = useSetAtom(pageLoadState);
+  const [{ loaded }, setPage] = useAtom(pageLoadState);
+  const navigationTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  useEffect(
+    () => () => {
+      if (navigationTimer.current !== undefined)
+        clearTimeout(navigationTimer.current);
+    },
+    [],
+  );
 
   const navigate = useCallback(
     ({ code, path }: Pick<SitemapRouteData, "code" | "path">) => {
-      if (pathname === path) return;
+      if (pathname === path || !loaded || navigationTimer.current !== undefined)
+        return;
 
       setPage(prev => ({
         ...prev,
@@ -34,12 +44,14 @@ export default function useNavigation() {
         loaded: false,
       }));
 
-      setTimeout(() => {
+      navigationTimer.current = setTimeout(() => {
+        navigationTimer.current = undefined;
+        window.scrollTo(0, 0);
         setPage(prev => ({ ...prev, loadComplete: false }));
         push(path);
       }, transTime.common.coverUp);
     },
-    [pathname, push, setPage],
+    [loaded, pathname, push, setPage],
   );
 
   return {
