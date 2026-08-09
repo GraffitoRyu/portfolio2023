@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAtomValue } from "jotai";
 
 // style components
@@ -12,9 +12,15 @@ import {
 
 // state
 import { pageLoadState } from "@graffitoryu/ui/product/jotai/load.state";
+import { useProductRuntime } from "@graffitoryu/ui/product/runtime/ProductRuntime";
+
+// style
+import { transTime } from "@graffitoryu/ui/product/styles/styled/preset/transTime";
 
 // hooks
 import useVisualUpperAnimation from "@graffitoryu/ui/product/hooks/interaction/sectionVisual/useVisualUpperAnimation";
+
+const visualRevealAdvance = 500;
 
 /**
  * 페이지 본문 공통 요소; Section Visual
@@ -24,11 +30,26 @@ import useVisualUpperAnimation from "@graffitoryu/ui/product/hooks/interaction/s
  */
 export default function PageVisualUpper({ title }: { title: string[] }) {
   /** --- 페이지 진입 상태관리 시작 --- */
-  const { loadComplete } = useAtomValue(pageLoadState);
-  const loaded = useMemo(
-    () => (loadComplete ? "trans-title" : "trans-title loading"),
-    [loadComplete],
-  );
+  const { initComplete, loaded, loadComplete } = useAtomValue(pageLoadState);
+  const { pathname } = useProductRuntime();
+  const [revealedPathname, setRevealedPathname] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!loaded) return;
+
+    const delay = loadComplete
+      ? 0
+      : (initComplete
+          ? transTime.common.coverUp - 150
+          : transTime.common.initComplete + transTime.common.loadComplete) -
+        visualRevealAdvance;
+    const timer = setTimeout(() => setRevealedPathname(pathname), delay);
+
+    return () => clearTimeout(timer);
+  }, [initComplete, loadComplete, loaded, pathname]);
+
+  const visualClassName =
+    revealedPathname === pathname ? "trans-title" : "trans-title loading";
   /** --- 페이지 진입 상태관리 끝 --- */
 
   const visualRef = useRef<HTMLDivElement | null>(null);
@@ -38,7 +59,7 @@ export default function PageVisualUpper({ title }: { title: string[] }) {
 
   return (
     <StyledVisualContainer ref={visualRef}>
-      <StyledVisualTitle ref={visualTitleRef} className={loaded}>
+      <StyledVisualTitle ref={visualTitleRef} className={visualClassName}>
         <StyledVisualTitleLine className="visual-title stroke-title">
           {title[0]}
         </StyledVisualTitleLine>
