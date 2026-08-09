@@ -46,7 +46,7 @@ export default function TransCover() {
       // 커버 비활성화 모션 후, loadComplete 한다.
       setTimeout(() => {
         setPage(prev => ({ ...prev, loadComplete: true }));
-      }, transTime.common.loadComplete);
+      }, transTime.common.coverUp);
     } else {
       // loaded 전에 커버를 활성화한다.
       setLoading("loading");
