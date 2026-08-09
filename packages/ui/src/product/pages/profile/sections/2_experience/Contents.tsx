@@ -71,7 +71,7 @@ export default function ProfileExperienceContents() {
     [getActiveIndex],
   );
 
-  const scrollRange = useMemo((): number => {
+  const getScrollRange = useCallback((): number => {
     if (expListRef.current === null || expLength <= 0) return 0;
     return (
       Math.floor(
@@ -81,8 +81,8 @@ export default function ProfileExperienceContents() {
   }, [expLength]);
 
   const horizontalScrollEnd = useCallback(
-    () => `+=${scrollRange * (isCustomView ? 2 : 1)}`,
-    [isCustomView, scrollRange],
+    () => `+=${getScrollRange() * (isCustomView ? 2 : 1)}`,
+    [getScrollRange, isCustomView],
   );
 
   const fadeInOption = useCallback(
@@ -111,7 +111,7 @@ export default function ProfileExperienceContents() {
       target: expListRef.current,
       animation: [
         {
-          x: () => -scrollRange,
+          x: () => -getScrollRange(),
           ease: "none",
           scrollTrigger: {
             trigger: sectionExperience,
@@ -126,7 +126,12 @@ export default function ProfileExperienceContents() {
         },
       ],
     }),
-    [horizontalScrollEnd, onChangeActiveIndex, scrollRange, sectionExperience],
+    [
+      getScrollRange,
+      horizontalScrollEnd,
+      onChangeActiveIndex,
+      sectionExperience,
+    ],
   );
 
   useGSAPAnimation(

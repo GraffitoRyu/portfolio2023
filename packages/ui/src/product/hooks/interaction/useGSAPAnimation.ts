@@ -126,7 +126,8 @@ export default function useGSAPAnimation(
   deps: React.DependencyList,
 ) {
   // 페이지 진입상태 모니터링
-  const { loadComplete } = useAtomValue(pageLoadState);
+  const { initComplete, loaded, loadComplete } = useAtomValue(pageLoadState);
+  const animationReady = initComplete ? loadComplete : loaded;
 
   const container = useAtomValue(scrollPageSectionRefState("container"));
 
@@ -219,6 +220,7 @@ export default function useGSAPAnimation(
           props: {
             deps,
             disabled,
+            animationReady,
             loadComplete,
             isValidElements: validElementLength() === 0,
             options,
@@ -235,7 +237,7 @@ export default function useGSAPAnimation(
       if (typeof window === "undefined") return;
 
       // 페이지 진입 시, 완료될 때까지 GSAP 방지
-      if (!loadComplete) return;
+      if (!animationReady) return;
 
       if (validElementLength() === 0) {
         // console.error(
@@ -261,7 +263,7 @@ export default function useGSAPAnimation(
     },
     {
       dependencies: [
-        loadComplete,
+        animationReady,
         key,
         disabled,
         options?.length,
