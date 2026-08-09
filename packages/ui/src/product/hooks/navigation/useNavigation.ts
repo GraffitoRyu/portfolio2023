@@ -5,7 +5,7 @@ import type {
   RoutePath,
   SitemapRouteData,
 } from "@graffitoryu/preset-data";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useRef } from "react";
 import { useAtom } from "jotai";
 import { useProductRuntime } from "@graffitoryu/ui/product/runtime/ProductRuntime";
 
@@ -23,15 +23,8 @@ export const getRoutePath = (pathname: string): RoutePath =>
 export default function useNavigation() {
   const { pathname, push } = useProductRuntime();
   const [{ loaded }, setPage] = useAtom(pageLoadState);
+  // 상세 route 교체로 hook이 unmount되어도 요청된 페이지 이동은 완료한다.
   const navigationTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
-
-  useEffect(
-    () => () => {
-      if (navigationTimer.current !== undefined)
-        clearTimeout(navigationTimer.current);
-    },
-    [],
-  );
 
   const navigate = useCallback(
     ({ code, path }: Pick<SitemapRouteData, "code" | "path">) => {

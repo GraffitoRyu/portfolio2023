@@ -15,6 +15,7 @@ import { transTime } from "@graffitoryu/ui/product/styles/styled/preset/transTim
 import useProjectCategoryDetailData from "@graffitoryu/ui/product/hooks/data/useProjectCategoryDetailData";
 import { getRouteCode } from "@graffitoryu/ui/product/hooks/navigation/useNavigation";
 import { useProductRuntime } from "@graffitoryu/ui/product/runtime/ProductRuntime";
+import { resolvePageLoadChange } from "./pageLoadChange";
 
 /**
  * Root/Library; 페이지 변경 이벤트 감지를 위한 컴포넌트
@@ -51,8 +52,7 @@ export default function PageLoadEvents() {
     // 페이지 상태 업데이트
     setPage(prev => ({
       ...prev,
-      loaded: true,
-      currentPage: newPageName !== currentPage ? newPageName : currentPage,
+      ...resolvePageLoadChange(prev, newPageName),
     }));
     setPathname(newPathName);
   }, [currentPage, pathname, savedPathName, setPage]);
